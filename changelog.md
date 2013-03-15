@@ -1,5 +1,11 @@
 # Changelog
 
+### Version 11
+
+* Which tool added
+* DEB toolchain (dpkg) added (for scu generation)
+* Support for checkinstall
+
 ### Version 10
 
 * Inclusion of python interpreter
