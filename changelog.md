@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 12
+
+* Initial deployer added (scu)
+
 ### Version 11
 
 * Which tool added
