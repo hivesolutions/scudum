@@ -16,6 +16,7 @@ TODO
 
 ## TODO
 
+* Suport for PXE serving
 * Support for **scu** files
 * Removal of ssh files / key reconfiguration script
 * Convert stuff into raspberry pi
