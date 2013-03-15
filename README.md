@@ -17,7 +17,7 @@ TODO
 ## TODO
 
 * Suport for PXE serving
-* Support for **scu** files
+* Support for scu files
 * Removal of ssh files / key reconfiguration script
 * Convert stuff into raspberry pi
   * [link 1](http://akanto.wordpress.com/2012/09/25/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-1/)
