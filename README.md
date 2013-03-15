@@ -8,5 +8,5 @@ TODO
 
 ## TODO
 
-* Support for *scu* files
+* Support for **scu** files
 * Removal of ssh files
