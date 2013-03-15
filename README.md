@@ -16,6 +16,7 @@ TODO
 
 ## TODO
 
+* Light version of the kernel (less file systems)
 * Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
 * Suport for PXE serving
 * Support for scu files
