@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 13
+
+* Optimized RAM usage by tempfs (all memory available is used for rootfs)
+
 ### Version 12
 
 * Initial deployer added (scu)
