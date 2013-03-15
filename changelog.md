@@ -1,5 +1,17 @@
 # Changelog
 
+### Version 16
+
+* New boot file templates
+
+### Version 15
+
+* Removed unused dev files
+
+### Version 14
+
+* Boot process optimization
+
 ### Version 13
 
 * Optimized RAM usage by tempfs (all memory available is used for rootfs)

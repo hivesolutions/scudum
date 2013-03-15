@@ -37,6 +37,7 @@ __copyright__ = "Copyright (c) 2008-2012 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
+import json
 import flask
 import datetime
 
@@ -59,9 +60,11 @@ def index():
 
 @app.route("/base", methods = ("GET",))
 def base():
-    return flask.render_template(
-        "base.html.tpl",
-        link = "home"
+    ## tenho de retornar aki o json com a configuracao
+    ### hehe
+    return flask.Response(
+        json.dumps({"result" : 1}),
+        mimetype = "application/json"
     )
 
 def run():
