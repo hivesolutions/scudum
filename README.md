@@ -22,8 +22,8 @@ TODO
 * Support for scu files
 * Removal of ssh files / key reconfiguration script
 * Convert stuff into raspberry pi
-  * [link 1](http://akanto.wordpress.com/2012/09/25/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-1/)
-  * [link 2](http://akanto.wordpress.com/2012/10/02/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-2/)
+  * [link 1](http://akanto.wordpress.com/2012/09/25/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-1)
+  * [link 2](http://wiki.gentoo.org/wiki/Raspberry_Pi)
 
 ## References
 
