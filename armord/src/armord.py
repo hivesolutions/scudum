@@ -58,7 +58,22 @@ def index():
         link = "home"
     )
 
+@app.route("/signin", methods = ("GET",))
+def signin():
+    return flask.render_template(
+        "signin.html.tpl"
+    )
+
+@app.route("/signin", methods = ("POST",))
+def login():
+    # @TODO: must process authentication here
+    # authentication should be part of the model
+    return flask.render_template(
+        "signin.html.tpl"
+    )
+
 @app.route("/base", methods = ("GET",))
+@quorum.ensure()
 def base():
     ## tenho de retornar aki o json com a configuracao
     ### hehe
