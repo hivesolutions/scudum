@@ -1,5 +1,20 @@
 # Changelog
 
+### Version 19
+
+* lspci and lsusb utils added
+* grep now in color auto on /etc/profile
+* New network drivers added to kernel configuration
+
+### Version 18
+
+* Support for multicard readers in kernel
+* Booting using usb drive enabled
+
+### Version 17
+
+* Optimized linux kernel
+
 ### Version 16
 
 * New boot file templates
