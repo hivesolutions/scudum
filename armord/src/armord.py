@@ -82,22 +82,5 @@ def base():
         mimetype = "application/json"
     )
 
-def run():
-    # sets the debug control in the application
-    # then checks the current environment variable
-    # for the target port for execution (external)
-    # and then start running it (continuous loop)
-    debug = quorum.conf("DEBUG", False) and True or False
-    reloader = quorum.conf("RELOADER", False) and True or False
-    port = int(quorum.conf("PORT", 5000))
-    app.debug = debug
-    app.run(
-        use_debugger = debug,
-        debug = debug,
-        use_reloader = reloader,
-        host = "0.0.0.0",
-        port = port
-    )
-
 if __name__ == "__main__":
-    run()
+    quorum.run()
