@@ -1,5 +1,13 @@
 # Changelog
 
+### Version 21
+
+* Fixed execution using the "normal" grub loading
+
+### Version 20
+
+* Small code cleanup
+
 ### Version 19
 
 * lspci and lsusb utils added
