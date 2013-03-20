@@ -22,15 +22,3 @@
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2010-2012 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
-
-jQuery(document).ready(function() {
-            jQuery("ul li").dblclick(function() {
-                        var element = jQuery(this);
-                        var link = jQuery("a", element);
-                        var linkValue = link.attr("href");
-                        if (!linkValue) {
-                            return;
-                        }
-                        document.location = linkValue;
-                    });
-        });
