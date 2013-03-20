@@ -5,10 +5,10 @@ A simple Linux distribution for usage in colony, viriatum and tiberium distribut
 ## Objectives
 
 * Viriatum based web interface for configuration (scu installation and more)
-* RAM only operative system (not required bu objective)
+* RAM only operative system (not required but objective)
 * Easy auto configuration (Zeroconf and centralized server)
-* Fast boot
-* Low - Medium RAM usage (1.5 GB MAX)
+* Fast boot (< 10 sec)
+* Low - Medium RAM usage (< 1 GB)
 
 ## Installation
 
