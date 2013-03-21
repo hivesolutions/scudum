@@ -44,10 +44,10 @@ import datetime
 import quorum
 
 app = flask.Flask(__name__)
-app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(31)
 quorum.load(
     app,
-    name = "armord.debug"
+    name = "armord.debug",
+    PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
 )
 
 @app.route("/", methods = ("GET",))
