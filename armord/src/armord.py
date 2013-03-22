@@ -43,10 +43,9 @@ import datetime
 
 import quorum
 
-app = flask.Flask(__name__)
-quorum.load(
-    app,
-    name = "armord.debug",
+app = quorum.load(
+    name = __name__,
+    logger = "armord.debug",
     PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
 )
 
