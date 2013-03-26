@@ -17,7 +17,7 @@ TODO
 ## TODO
 
 * Light version of the kernel (less file systems)
-* Support for [lxe](http://lxc.sourceforge.net/) Linux containers
+* Support for [lxc](http://lxc.sourceforge.net/) Linux containers
 * Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
 * Suport for PXE serving
 * Support for scu files
