@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 22
+
+* Support for autorun.inf and icon
+
 ### Version 21
 
 * Fixed execution using the "normal" grub loading
