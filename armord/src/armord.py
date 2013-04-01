@@ -37,49 +37,26 @@ __copyright__ = "Copyright (c) 2008-2012 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import json
-import flask
+import flask #@UnusedImport
 import datetime
 
+import models
 import quorum
+
+MONGO_DATABASE = "armor"
+""" The default database to be used for the connection with
+the mongo database """
 
 app = quorum.load(
     name = __name__,
+    redis_session = True,
+    mongo_database = MONGO_DATABASE,
     logger = "armord.debug",
+    models = models,
     PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
 )
 
-@app.route("/", methods = ("GET",))
-@app.route("/index", methods = ("GET",))
-def index():
-    return flask.render_template(
-        "index.html.tpl",
-        link = "home"
-    )
-
-@app.route("/signin", methods = ("GET",))
-def signin():
-    return flask.render_template(
-        "signin.html.tpl"
-    )
-
-@app.route("/signin", methods = ("POST",))
-def login():
-    # @TODO: must process authentication here
-    # authentication should be part of the model
-    return flask.render_template(
-        "signin.html.tpl"
-    )
-
-@app.route("/base", methods = ("GET",))
-@quorum.ensure()
-def base():
-    ## tenho de retornar aki o json com a configuracao
-    ### hehe
-    return flask.Response(
-        json.dumps({"result" : 1}),
-        mimetype = "application/json"
-    )
+from views import * #@UnusedWildImport
 
 if __name__ == "__main__":
     quorum.run(server = "waitress")
