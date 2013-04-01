@@ -40,11 +40,46 @@ __license__ = "GNU General Public License (GPL), Version 3"
 import json
 import time
 
+import models
+
 from armord import app
 from armord import flask
+from armord import quorum
+
+@app.route("/api/signin.json", methods = ("GET", "POST"), json = True)
+def login_api():
+    # retrieves the login related fields and runs the
+    # login method on the user model using them
+    username = quorum.get_field("username")
+    password = quorum.get_field("password")
+    account = models.Account.login(username, password)
+
+    # updates the current user (name) in session with
+    # the username that has just be accepted in the login
+    flask.session["username"] = account.username
+    flask.session["tokens"] = account.tokens
+    flask.session["instance_id"] = account.instance_id
+    flask.session["acl"] = quorum.check_login
+
+    # makes the current session permanent this will allow
+    # the session to persist along multiple browser initialization
+    flask.session.permanent = True
+
+    # tries to retrieve the session identifier from the current
+    # session but only in case it exists
+    sid = hasattr(flask.session, "sid") and flask.session.sid or None
+
+    return flask.Response(
+        json.dumps({
+            "sid" : sid,
+            "session_id" : sid,
+            "username" : username
+        }),
+        mimetype = "application/json"
+    )
 
 @app.route("/api/info.json", methods = ("GET",))
-def info():
+def info_api():
     configuration = {
         "last_login" : time.time(),
         "resources" : [{
