@@ -79,6 +79,7 @@ def login_api():
     )
 
 @app.route("/api/info.json", methods = ("GET",))
+@quorum.ensure("info", json = True)
 def info_api():
     configuration = {
         "last_login" : time.time(),

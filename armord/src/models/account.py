@@ -61,7 +61,8 @@ of type admin (administrator) """
 USER_ACL = {
     USER_TYPE : (
         "index",
-        "about"
+        "about",
+        "info"
     ),
     ADMIN_TYPE : (
         "*",
