@@ -37,7 +37,6 @@ __copyright__ = "Copyright (c) 2008-2012 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import json
 import time
 
 import models
@@ -69,16 +68,13 @@ def login_api():
     # session but only in case it exists
     sid = hasattr(flask.session, "sid") and flask.session.sid or None
 
-    return flask.Response(
-        json.dumps({
-            "sid" : sid,
-            "session_id" : sid,
-            "username" : username
-        }),
-        mimetype = "application/json"
+    return dict(
+        sid = sid,
+        session_id = sid,
+        username = username
     )
 
-@app.route("/api/info.json", methods = ("GET",))
+@app.route("/api/info.json", methods = ("GET",), json = True)
 @quorum.ensure("info", json = True)
 def info_api():
     configuration = {
@@ -90,7 +86,4 @@ def info_api():
         }]
     }
 
-    return flask.Response(
-        json.dumps(configuration),
-        mimetype = "application/json"
-    )
+    return configuration
