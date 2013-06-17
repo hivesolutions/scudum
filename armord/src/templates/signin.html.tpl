@@ -10,7 +10,7 @@
     <div class="quote error">
         {{ error }}
     </div>
-    <form action="" method="post" class="form">
+    <form action="{{ url_for('login') }}" method="post" class="form">
         <div class="input">
             <input class="small" name="username" value="{{ username }}" placeholder="username" />
         </div>
