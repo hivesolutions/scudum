@@ -3,8 +3,8 @@
 A simple Linux distribution for usage in colony, viriatum and tiberium distributed solutions.
 
 The distribution is meant to provide a simple raw system that should be configured from
-configuration servers that are discoverable using auto-discover thechniques (Zeroconf, etc).
-Using sucum one could build an army of servers that are configurable from a single instance
+configuration servers that are discoverable using auto-discover techniques (Zeroconf, etc).
+Using scudum one could build an army of servers that are configurable from a single instance
 so that replacing them is easy and cheap (without human intervention).
 
 ## Objectives
