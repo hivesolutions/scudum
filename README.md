@@ -33,4 +33,5 @@ TODO
 
 ## References
 
+http://coreos.com
 http://www.stockwith.uklinux.net/hints
