@@ -1,5 +1,11 @@
 # Changelog
 
+### Version 24
+
+* Support for libcurl
+* Added support for https in git (using libcurl)
+* Installed libexpat (for xml parsing)
+
 ### Version 23
 
 * Changed kernel version to 3.12.x
