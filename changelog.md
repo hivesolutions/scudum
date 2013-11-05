@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 23
+
+* Changed kernel version to 3.12.x
+
 ### Version 22
 
 * Support for autorun.inf and icon
