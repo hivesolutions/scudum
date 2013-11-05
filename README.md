@@ -17,7 +17,8 @@ so that replacing them is easy and cheap (without human intervention).
 
 ## Installation
 
-TODO
+Current version of scudum vary in deployment currently there are three different
+options to choose from: DVD ISO, HD install and HD image.
 
 ## TODO
 
