@@ -4,7 +4,7 @@
 
 * Added htop (monitoring tool)
 * Added nethogs (network monitoring tool)
-* Included libpac for network packet capture
+* Included libpcap for network packet capture
 
 ### Version 24
 
