@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 26
+
+* Changed default [vesafs](http://en.wikipedia.org/wiki/VESA_BIOS_Extensions) mode to 791 (1024x768@16)
+
 ## Version 25
 
 * Added htop (monitoring tool)
