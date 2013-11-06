@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 25
+
+* Added htop (monitoring tool)
+* Added nethogs (network monitoring tool)
+
 ### Version 24
 
 * Support for libcurl
