@@ -7,6 +7,16 @@ configuration servers that are discoverable using auto-discover techniques (Zero
 Using scudum one could build an army of servers that are configurable from a single instance
 so that replacing them is easy and cheap (without human intervention).
 
+## Armor
+
+The armor client is the responsible for the installation of the various elements associated
+with the instance that is booting.
+
+The retrieval of the configuration should be done using a variaty of conditions that should
+include MAC address, ip address and credentials.
+
+## Armord (daemon)
+
 ## Objectives
 
 * Viriatum based web interface for configuration (scu installation and more)
