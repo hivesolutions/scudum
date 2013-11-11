@@ -1,11 +1,18 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
+# veirfies if a valid argument has been passed
+# to the process in case it's not prints a mesage
+# an exits the current process in error
 if [ -z "$1" ]; then
     echo "No valid scu file passed"
     exit -1
 fi
 
+# creates a new temporary directory and copies the
+# passed file to it then extracts the file as an ar
+# (archiver) file and moves the data part of the file
+# to the root directory of the file system
 mkdir /tmp/$1
 cp -p $1 /tmp/$1
 cd /tmp/$1
