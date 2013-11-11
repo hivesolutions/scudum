@@ -45,6 +45,10 @@ from armord import app
 from armord import flask
 from armord import quorum
 
+BASE_URL = "http://hole1.hive:9090/repos/scu"
+""" The base url to be used in the construction
+of the repository targeted urls """
+
 @app.route("/api/signin.json", methods = ("GET", "POST"), json = True)
 def login_api():
     # retrieves the login related fields and runs the
@@ -81,7 +85,7 @@ def info_api():
         "resources" : [{
             "name" : "viriatum",
             "version" : "1.0.2b",
-            "url" : "http://hole1.hive:9090/extra/scu/viriatum_1.0.0-1_amd64.scu"
+            "url" : "%s/viriatum_1.0.0-1_amd64.scu" % BASE_URL
         }]
     }
 
