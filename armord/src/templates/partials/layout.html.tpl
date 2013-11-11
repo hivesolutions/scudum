@@ -6,7 +6,7 @@
         <title>Armor / {% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
-<body class="ux wait-load">
+<body class="ux romantic wait-load">
     <div id="overlay" class="overlay"></div>
     <div id="header">
         {% block header %}
