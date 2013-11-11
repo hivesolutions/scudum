@@ -25,5 +25,20 @@ def main():
 
     pass
 
+def unpack(path):
+    """
+    Unpacks a scudum (.scu) based file into the current
+    file system installing it in the current environment.
+
+    The unpacking of the file should follow the pre-defined
+    specification in order for it to work.
+
+    @type path: String
+    @param path: The path to the file that is meant to be
+    installed in the current system.
+    """
+
+    pass
+
 if __name__ == "__main__":
     main()
