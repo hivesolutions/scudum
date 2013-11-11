@@ -13,7 +13,7 @@ The armor client is the responsible for the installation of the various elements
 with the instance that is booting.
 
 The retrieval of the configuration should be done using a variaty of conditions that should
-include MAC address, ip address and credentials.
+include MAC address, IP address and credentials.
 
 ## Armord (daemon)
 
