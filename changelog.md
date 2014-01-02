@@ -4,6 +4,7 @@
 
 * New lib directory for scudum `/lib/scudum`
 * Version file for scudum `/lib/scudum/VERSION`
+* Support for removal of pyc files on build
 
 ## Version 26
 
