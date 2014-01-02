@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 26
+## Version 27
 
 * New lib directory for scudum `/lib/scudum`
 * Version file for scudum `/lib/scudum/VERSION`
