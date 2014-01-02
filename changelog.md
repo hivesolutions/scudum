@@ -2,6 +2,11 @@
 
 ## Version 26
 
+* New lib directory for scudum `/lib/scudum`
+* Version file for scudum `/lib/scudum/VERSION`
+
+## Version 26
+
 * Changed default [vesafs](http://en.wikipedia.org/wiki/VESA_BIOS_Extensions) mode to 791 (1024x768@16)
 
 ## Version 25
