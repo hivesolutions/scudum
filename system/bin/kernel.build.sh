@@ -24,5 +24,8 @@ if [ "$BUILD" != "1" ]; then
 fi
 
 make
+
 cp -v arch/x86/boot/bzImage /boot/vmlinuz
 cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
+
+cp -v .config /boot/config
