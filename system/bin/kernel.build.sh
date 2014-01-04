@@ -8,7 +8,7 @@ BUILD=${BUILD-1}
 mkdir -p /sources
 cd /sources
 
-if [ ! -d "linux-$MINOR" ];
+if [ ! -d "linux-$MINOR" ]; then
     wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/linux-$MINOR.tar.xz
     tar -xvf linux-$MINOR.tar.xz
 fi
