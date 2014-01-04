@@ -7,8 +7,12 @@ BUILD=${BUILD-1}
 
 mkdir -p /sources
 cd /sources
-wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/linux-$MINOR.tar.xz
-tar -xvf linux-$MINOR.tar.xz
+
+if [ ! -d "linux-$MINOR" ];
+    wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/linux-$MINOR.tar.xz
+    tar -xvf linux-$MINOR.tar.xz
+fi
+
 cd linux-$MINOR
 cp /boot/config .config
 
