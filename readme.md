@@ -14,9 +14,7 @@ so that replacing them is easy and cheap (without human intervention).
 Building a kernel version and deploying it to the proper directories so that it can be used
 by the proper boot loader can be achieved using the following command:
 
-```bash
     MINOR=3.12.6 kernel.build
-```
 
 ## Armor
 
