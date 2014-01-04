@@ -2,6 +2,11 @@
 
 ## Version 27
 
+* New kernel version 3.12.6
+* New scudum system root build system
+
+## Version 27
+
 * New lib directory for scudum `/lib/scudum`
 * Version file for scudum `/lib/scudum/VERSION`
 * Support for removal of `*.pyc` files on build
