@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 29
+
+* Support for the tree command
+
 ## Version 28
 
 * New kernel version 3.12.6
