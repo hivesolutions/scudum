@@ -9,7 +9,7 @@ NAME=linux-$MINOR
 mkdir -p /sources
 cd /sources
 
-if [ ! -d "linux-$MINOR" ]; then
+if [ ! -d "$NAME" ]; then
     wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
     tar -xvf $NAME.tar.xz
 else
