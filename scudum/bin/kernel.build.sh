@@ -17,3 +17,5 @@ if [ "$BUILD" != "1" ]; then
 fi
 
 make
+cp arch/x86/boot/bzImage /boot/vmlinuz
+cp arch/x86/boot/bzImage /isolinux/vmlinuz
