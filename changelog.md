@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 28
+
+* New kernel version 3.12.6
+* New scudum system root build system, using git repository
+
 ## Version 27
 
 * New lib directory for scudum `/lib/scudum`

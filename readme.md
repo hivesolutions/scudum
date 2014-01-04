@@ -7,6 +7,15 @@ configuration servers that are discoverable using auto-discover techniques (Zero
 Using scudum one could build an army of servers that are configurable from a single instance
 so that replacing them is easy and cheap (without human intervention).
 
+## Usage
+
+### Kernel building
+
+Building a kernel version and deploying it to the proper directories so that it can be used
+by the proper boot loader can be achieved using the following command:
+
+    MINOR=3.12.6 kernel.build
+
 ## Armor
 
 The armor client is the responsible for the installation of the various elements associated
