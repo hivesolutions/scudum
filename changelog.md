@@ -4,6 +4,7 @@
 
 * Support for the tree command
 * New generation at boot of the `/etc/ssh/ssh_host_*` key files (more secure)
+* New scu based scripts (`scu.get`, `scu.build`, `scu.install`)
 
 ## Version 28
 
