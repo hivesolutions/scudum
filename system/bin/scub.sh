@@ -17,7 +17,7 @@ FILE=$NAME_F.scu
 # and then compresses all of the files contained
 # in the directory into the data file (contents)
 cd $TARGET
-tar -cf data.tar.gz * > /dev/null
+tar -cxf data.tar.gz * > /dev/null
 
 # creates the final archive file with the data file
 # contents, the information metadata should be added
