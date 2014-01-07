@@ -25,7 +25,10 @@ tar -cf data.tar.gz * > /dev/null
 ar cr $FILE data.tar.gz
 
 # copies the file that was just created into the
-# target repository and then removes it from the file
-# system as it's no longer going to be used
+# target repository as expected for deployment
 scp -q $FILE $USERNAME@$HOST:/scu
+
+# removes the various files used as their are no
+# longer going to be required (as expected)
+rm data.tar.gz
 rm $FILE
