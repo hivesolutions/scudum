@@ -3,7 +3,7 @@
 ## Version 29
 
 * Support for the tree command
-* New generation at boot of the `/etc/ssh/ssh_host_dsa_key` key file (more secure)
+* New generation at boot of the `/etc/ssh/ssh_host_*` key files (more secure)
 
 ## Version 28
 
