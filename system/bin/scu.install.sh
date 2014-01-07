@@ -1,6 +1,11 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
+# sets the global variable that are going to
+# be used for the configuration of the operation
+# that is going to install the scu file
+TARGET=${TARGET-/scu}
+
 # verifies if a valid argument has been passed
 # to the process in case it's not prints a mesage
 # an exits the current process in error
@@ -18,8 +23,8 @@ cp -p $1 /tmp/$1
 cd /tmp/$1
 ar x $1
 mkdir data
-mv data.tar.gz /
-cd /
+mv data.tar.gz $TARGET
+cd $TARGET
 
 # unpacks the data file from the associated file
 # should deploy all the file to the root path and
