@@ -4,7 +4,8 @@
 # allocates and sets the values of the various
 # variables that are going to be used for the
 # retrieval and installation of the file
-NAME=${NAME-program}
+BASE=$1
+NAME=${NAME-${BASE-program}}
 VERSION=${VERSION-1.0.0}
 ARCH=${ARCH-amd64}
 URL=${URL-http://hole1.hive:9090/repos/scu}
