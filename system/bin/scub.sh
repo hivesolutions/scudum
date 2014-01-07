@@ -3,7 +3,7 @@
 
 NAME=${NAME-program}
 VERSION=${VERSION-1.0.0}
-HOST=${USERNAME-files.hive}
+HOST=${HOST-files.hive}
 USERNAME=${USERNAME-anonymous}
 PASSWORD=${PASSWORD-anonymous}
 NAME_F=$NAME_$VERSION
