@@ -1,7 +1,7 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
-# veirfies if a valid argument has been passed
+# verifies if a valid argument has been passed
 # to the process in case it's not prints a mesage
 # an exits the current process in error
 if [ -z "$1" ]; then
