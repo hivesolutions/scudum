@@ -4,7 +4,7 @@
 # sets the global variable that are going to
 # be used for the configuration of the operation
 # that is going to install the scu file
-TARGET=${TARGET-/scu}
+TARGET=${TARGET-/scd}
 
 # verifies if a valid argument has been passed
 # to the process in case it's not prints a mesage
