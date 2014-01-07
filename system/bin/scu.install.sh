@@ -33,9 +33,3 @@ cd $TARGET
 tar -zxf data.tar.gz
 rm data.tar.gz
 rm -rf /tmp/$1
-
-# need to restore the usr to the original
-# location, this directory is considered
-# immutable and cannot be changed
-rm -rf /usr
-ln -s cdrom/usr /usr
