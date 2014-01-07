@@ -5,7 +5,7 @@ NAME=${NAME-program}
 VERSION=${VERSION-1.0.0}
 ARCH=${ARCH-amd64}
 URL=${URL-http://hole1.hive:9090/repos/scu}
-NAME_F="$NAME_$VERSION_$ARCH"
+NAME_F="$NAME"_"$VERSION"_"$ARCH"
 FILE=$NAME_F.scu
 
 wget $URL/$FILE
