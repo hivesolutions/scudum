@@ -13,6 +13,13 @@ PASSWORD=${PASSWORD-anonymous}
 NAME_F="$NAME"_"$VERSION"_"$ARCH"
 FILE=$NAME_F.scu
 
+# tests the target directory for existence in case
+# it does not exists returns immediately
+if [! -e "TARGET" ]; then
+    echo "Target directory does not exists"
+    exit -1
+fi
+
 # changes the current directory to the target one
 # and then compresses all of the files contained
 # in the directory into the data file (contents)
