@@ -21,8 +21,10 @@ tar -cf data.tar.gz * > /dev/null
 
 # creates the final archive file with the data file
 # contents, the information metadata should be added
-# also to the target file to guide it
+# also to the target file to guide it and then removes
+# the data file as it's no longer going to be required 
 ar cr $FILE data.tar.gz
+rm data.tar.gz
 
 # copies the file that was just created into the
 # target repository as expected for deployment
@@ -30,5 +32,4 @@ scp -q $FILE $USERNAME@$HOST:/scu
 
 # removes the various files used as their are no
 # longer going to be required (as expected)
-rm data.tar.gz
 rm $FILE
