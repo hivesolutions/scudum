@@ -10,7 +10,7 @@ ARCH=${ARCH-amd64}
 HOST=${HOST-files.hive}
 USERNAME=${USERNAME-anonymous}
 PASSWORD=${PASSWORD-anonymous}
-NAME_F=$NAME-$VERSION-$ARCH
+NAME_F="$NAME_$VERSION_$ARCH"
 FILE=$NAME_F.scu
 
 # changes the current directory to the target one
