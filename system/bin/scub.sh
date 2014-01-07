@@ -4,7 +4,7 @@
 TARGET=${TARGET-.}
 NAME=${NAME-program}
 VERSION=${VERSION-1.0.0}
-ARCH=${ARCH-amd63}
+ARCH=${ARCH-amd64}
 HOST=${HOST-files.hive}
 USERNAME=${USERNAME-anonymous}
 PASSWORD=${PASSWORD-anonymous}
@@ -15,7 +15,7 @@ FILE=$NAME_F.scu
 # and then compresses all of the files contained
 # in the directory into the target file
 cd $TARGET
-tar -cjf $FILE * > /dev/null
+tar -cf $FILE * > /dev/null
 
 # copies the file that was just created into the
 # target repository and then removes it from the file
