@@ -21,7 +21,7 @@ fi
 
 # retrieves the target file from the repository
 # and then uses the proper script for installation
-wget $URL/$FILE
+wget -s $URL/$FILE
 scu.install $FILE
 
 # removes the file that was retrieved as it's no
