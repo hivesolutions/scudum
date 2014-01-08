@@ -15,7 +15,7 @@ FILE=$NAME_F.scu
 
 # tests the target directory for existence in case
 # it does not exists returns immediately
-if [! -e "TARGET" ]; then
+if [ ! -e "TARGET" ]; then
     echo "Target directory does not exists"
     exit -1
 fi
