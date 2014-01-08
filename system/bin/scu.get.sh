@@ -23,3 +23,7 @@ fi
 # and then uses the proper script for installation
 wget $URL/$FILE
 scu.install $FILE
+
+# removes the file that was retrieved as it's no
+# longer going to be required (it's deployed)
+rm $FILE
