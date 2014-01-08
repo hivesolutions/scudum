@@ -8,7 +8,7 @@ BASE=$1
 NAME=${NAME-${BASE-program}}
 VERSION=${VERSION-1.0.0}
 ARCH=${ARCH-amd64}
-URL=${URL-http://hole1.hive:9090/repos/scu}
+URL=${URL-http://repo.stage.hive.pt/scu}
 NAME_F="$NAME"_"$VERSION"_"$ARCH"
 FILE=$NAME_F.scu
 
