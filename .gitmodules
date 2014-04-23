@@ -1,6 +1,3 @@
-[submodule "armord/src/quorum"]
-	path = armord/src/quorum
-	url = git@github.com:hivesolutions/flask_quorum_bin.git
 [submodule "armord/src/static/libs/uxf"]
 	path = armord/src/static/libs/uxf
 	url = git@github.com:hivesolutions/uxf_bin.git

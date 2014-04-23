@@ -3,6 +3,7 @@
 	<name>armord</name>
 	<comment></comment>
 	<projects>
+		<project>quorum</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
