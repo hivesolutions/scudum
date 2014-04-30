@@ -284,7 +284,7 @@ class Account(base.Base):
             receivers = ["%s <%s>" % (self.username, self.email)],
             plain = "email/confirm.txt.tpl",
             rich = "email/confirm.html.tpl",
-            context = {
-                "account" : account
-            }
+            context = dict(
+                account = account
+            )
         )
