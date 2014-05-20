@@ -101,9 +101,6 @@ class Account(base.Base):
         type = list
     )
 
-    def __init__(self):
-        base.Base.__init__(self)
-
     @classmethod
     def setup(cls):
         super(Account, cls).setup()
@@ -113,29 +110,25 @@ class Account(base.Base):
         root = cls.find(username = "root")
         if root: return
 
-        # encodes the provided password into an sha1 hash appending
-        # the salt value to it before the encoding
-        password = hashlib.sha1("root" + PASSWORD_SALT).hexdigest()
-        instance_id = hashlib.sha1(str(uuid.uuid4())).hexdigest()
+        # generates a new instance identifier for the instance that is going
+        # to be created with the new root account to be saved
+        instance_id = hashlib.sha1(str(uuid.uuid4())).hexdigest(),
 
-        # creates the structure to be used as the server description
-        # using the values provided as parameters
-        account = {
-            "enabled" : True,
-            "instance_id" : instance_id,
-            "username" : "root",
-            "password" : password,
-            "email" : "root@armorapp.com",
-            "login_count" : 0,
-            "last_login" : None,
-            "type" : ADMIN_TYPE,
-            "tokens" : USER_ACL.get(ADMIN_TYPE, ())
-        }
-
-        # saves the account instance into the data source, ensures
-        # that the account is ready for login
-        collection = cls._collection()
-        collection.save(account)
+        # creates the structure to be used as the root account description
+        # using the default value and then stores the account as it's going
+        # to be used as the default root entity (for administration)
+        account = cls(
+            enabled = True,
+            instance_id = instance_id,
+            username = "root",
+            password = "root",
+            plan = "full",
+            email = "root@armorapp.com",
+            type = ADMIN_TYPE
+        )
+        account.save(validate = False)
+        account.enabled = True
+        account.save()
 
     @classmethod
     def validate_new(cls):
@@ -251,8 +244,8 @@ class Account(base.Base):
         self.instance_id = hashlib.sha1(str(uuid.uuid4())).hexdigest()
         self.login_count = 0
         self.last_login = None
-        self.type = USER_TYPE
-        self.tokens =  USER_ACL.get(USER_TYPE, ())
+        if not hasattr(self, "type") or not self.type: self.type = USER_TYPE
+        self.tokens =  USER_ACL.get(self.type, ())
 
     def pre_update(self):
         base.Base.pre_update(self)
