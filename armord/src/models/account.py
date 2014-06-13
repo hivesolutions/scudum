@@ -172,6 +172,7 @@ class Account(base.Base):
         # the problem with the account retrieval
         account = cls.get(
             username = username,
+            rules = False,
             build = False,
             raise_e = False
         )
