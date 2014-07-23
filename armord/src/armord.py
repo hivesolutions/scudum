@@ -59,4 +59,4 @@ app = quorum.load(
 from views import * #@UnusedWildImport
 
 if __name__ == "__main__":
-    quorum.run(server = "waitress")
+    quorum.run(server = "netius")
