@@ -10,24 +10,24 @@ mkdir -pv /usr/{,local/}share/{misc,terminfo,zoneinfo}
 mkdir -pv /usr/{,local/}share/man/man{1..8}
 
 for dir in /usr /usr/local; do
-    ln -sv share/{man,doc,info} $dir
+    ln -svf share/{man,doc,info} $dir
 done
 
 case $(uname -m) in
-    x86_64) ln -sv lib /lib64 && ln -sv lib /usr/lib64 ;;
+    x86_64) ln -svf lib /lib64 && ln -svf lib /usr/lib64 ;;
 esac
 
 mkdir -pv /var/{log,mail,spool}
-ln -sv /run /var/run
-ln -sv /run/lock /var/lock
+ln -svf /run /var/run
+ln -svf /run/lock /var/lock
 mkdir -pv /var/{opt,cache,lib/{misc,locate},local}
 
-ln -sv /tools/bin/{bash,cat,echo,pwd,stty} /bin
-ln -sv /tools/bin/perl /usr/bin
-ln -sv /tools/lib/libgcc_s.so{,.1} /usr/lib
-ln -sv /tools/lib/libstdc++.so{,.6} /usr/lib
+ln -svf /tools/bin/{bash,cat,echo,pwd,stty} /bin
+ln -svf /tools/bin/perl /usr/bin
+ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
+ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
 sed 's/tools/usr/' /tools/lib/libstdc++.la > /usr/lib/libstdc++.la
-ln -sv bash /bin/sh
+ln -svf bash /bin/sh
 
 touch /etc/mtab
 
