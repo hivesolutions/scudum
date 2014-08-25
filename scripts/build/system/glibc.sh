@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.17}
 
-wget -q "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
+wget -q --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
 cd glibc-$VERSION
