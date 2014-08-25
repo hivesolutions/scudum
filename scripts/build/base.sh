@@ -12,8 +12,3 @@ export PREFIX=/tools
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
 export FORCE_UNSAFE_CONFIGURE=1
-
-# allows compialtion using four threads at a given
-# time, should perform faster on multi core based
-# processors (required for fast compilation)
-export MAKEFLAGS="-j 4"
