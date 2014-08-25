@@ -1,15 +1,4 @@
 
-#### man pages
-
-VERSION="3.47"
-tar -Jxf "man-pages-$VERSION.tar.xz"
-cd man-pages-$VERSION
-
-make install
-
-cd ..
-rm -rf man-pages-$VERSION
-
 #### glibc (final)
 
 VERSION="2.17"
