@@ -63,6 +63,7 @@ umask 022
 ../tools/tar.sh
 ../tools/texinfo.sh
 ../tools/xz.sh
+../tools/wget.sh
 
 # runs the strip operation on the complete set of tools
 # so that some disk space is spared by removing the debug
