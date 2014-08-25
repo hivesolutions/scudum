@@ -11,6 +11,9 @@ mount -vt devpts devpts $SCUDUM/dev/pts
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
+rm -f $SCUDUM/etc/resolv.conf
+cp -p /etc/resolv.conf $SCUDUM/etc/resolv.conf
+
 if [ -h $SCUDUM/dev/shm ]; then
     link=$(readlink $SCUDUM/dev/shm)
     mkdir -p $SCUDUM/$link

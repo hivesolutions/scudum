@@ -16,6 +16,9 @@ mount -vt devpts devpts $SCUDUM/dev/pts
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
+rm -f $SCUDUM/etc/resolv.conf
+cp -p /etc/resolv.conf $SCUDUM/etc/resolv.conf
+
 chroot $SCUDUM /usr/bin/env -i\
     HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
