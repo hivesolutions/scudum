@@ -12,3 +12,4 @@ mkdir sources
 cd sources
 
 /tools/repo/scripts/build/system/linux-headers.sh
+/tools/repo/scripts/build/system/man-pages.sh
