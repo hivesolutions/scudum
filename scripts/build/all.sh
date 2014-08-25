@@ -63,6 +63,7 @@ umask 022
 ../tools/tar.sh
 ../tools/texinfo.sh
 ../tools/xz.sh
+../tools/nettle.sh
 ../tools/gnutls.sh
 ../tools/wget.sh
 
