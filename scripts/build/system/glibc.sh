@@ -77,8 +77,8 @@ tar -xf ../tzdata2012j.tar.gz
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
 
-for tz in etcetera southamerica northamerica europe africa antarctica  \
-          asia australasia backward pacificnew solar87 solar88 solar89 \
+for tz in etcetera southamerica northamerica europe africa antarctica\
+          asia australasia backward pacificnew solar87 solar88 solar89\
           systemv; do
     zic -L /dev/null   -d $ZONEINFO       -y "sh yearistype.sh" ${tz}
     zic -L /dev/null   -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
@@ -96,7 +96,7 @@ cat > /etc/ld.so.conf << "EOF"
 EOF
 
 cat >> /etc/ld.so.conf << "EOF"
-# Add an include directory
+# adds an include directory
 include /etc/ld.so.conf.d/*.conf
 
 EOF
