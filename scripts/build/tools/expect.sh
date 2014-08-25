@@ -1,7 +1,7 @@
 VERSION=${VERSION-5.45}
 
 wget -q "http://prdownloads.sourceforge.net/expect/expect$VERSION.tar.gz"
-tar -zxf "expect$VERSION.tar.gz"
+rm -f "expect$VERSION" && tar -zxf "expect$VERSION.tar.gz"
 rm -f "expect$VERSION.tar.gz"
 cd expect$VERSION
 

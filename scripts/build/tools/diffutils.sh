@@ -1,7 +1,7 @@
 VERSION=${VERSION-3.2}
 
 wget -q "http://ftp.gnu.org/gnu/diffutils/diffutils-$VERSION.tar.gz"
-tar -zxf "diffutils-$VERSION.tar.gz"
+rm -f "diffutils-$VERSION" && tar -zxf "diffutils-$VERSION.tar.gz"
 rm -f "diffutils-$VERSION.tar.gz"
 cd diffutils-$VERSION
 
