@@ -13,7 +13,7 @@ mount -vt sysfs sysfs $SCUDUM/sys
 
 mkdir -pv $SCUDUM/etc
 rm -f $SCUDUM/etc/resolv.conf
-cp -p /etc/resolv.conf $SCUDUM/etc/resolv.conf
+echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
 
 if [ -h $SCUDUM/dev/shm ]; then
     link=$(readlink $SCUDUM/dev/shm)
