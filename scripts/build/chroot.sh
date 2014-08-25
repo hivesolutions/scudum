@@ -11,6 +11,7 @@ mount -vt devpts devpts $SCUDUM/dev/pts
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
+mkdir -pv $SCUDUM/etc
 rm -f $SCUDUM/etc/resolv.conf
 cp -p /etc/resolv.conf $SCUDUM/etc/resolv.conf
 
