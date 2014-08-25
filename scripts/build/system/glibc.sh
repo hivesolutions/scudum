@@ -101,7 +101,3 @@ include /etc/ld.so.conf.d/*.conf
 
 EOF
 mkdir /etc/ld.so.conf.d
-
-cd ..
-rm -rf glibc-build
-rm -rf glibc-$VERSION
