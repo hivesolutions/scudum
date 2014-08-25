@@ -71,7 +71,7 @@ rpc: files
 
 EOF
 
-wget -q http://www.iana.org//time-zones/repository/releases/tzdata2012j.tar.gz
+wget -q --no-check-certificate http://www.iana.org//time-zones/repository/releases/tzdata2012j.tar.gz
 tar -xf ../tzdata2012j.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
