@@ -5,6 +5,6 @@ tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
-./config --prefix=$PREFIX --openssldir=$PREFIX/ssl
+./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
 make
 make && make install
