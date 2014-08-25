@@ -7,7 +7,7 @@ set -e
 
 # changes the currently working directory to the build one
 # taking into account the deployed repository
-cd /repo/scripts/build
+cd /tools/repo/scripts/build
 
 # runs the building part of the system, this is considered
 # to be the main stage of the process
