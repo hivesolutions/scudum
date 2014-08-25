@@ -1,6 +1,6 @@
-VERSION=${VERSION-3.47}
+VERSION=${VERSION-3.71}
 
-wget -q "http://www.kernel.org/pub/linux/docs/man-pages/man-pages-$VERSION.tar.xz"
+wget -q --no-check-certificate "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-$VERSION.tar.xz"
 
 rm -f "man-pages-$VERSION" && tar -Jxf "man-pages-$VERSION.tar.xz"
 rm -f "man-pages-$VERSION.tar.gz"
