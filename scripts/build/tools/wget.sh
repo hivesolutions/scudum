@@ -5,5 +5,5 @@ tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --with-ssl=openssl
 make && make install
