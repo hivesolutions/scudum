@@ -34,3 +34,11 @@ chroot $SCUDUM /tools/bin/env -i\
     PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin\
     /tools/bin/bash $1 --login +h
+
+umount -v $SCUDUM/sys
+umount -v $SCUDUM/proc
+umount -v $SCUDUM/dev/pts
+umount -v $SCUDUM/dev
+
+rm -f $SCUDUM/dev/console
+rm -f $SCUDUM/dev/null
