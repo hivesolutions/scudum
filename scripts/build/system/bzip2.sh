@@ -5,7 +5,8 @@ rm -rf bzip2-$VERSION && tar -zxf "bzip2-$VERSION.tar.gz"
 rm -f "bzip2-$VERSION.tar.gz"
 cd bzip2-$VERSION
 
-patch -Np1 -i ../bzip2-$VERSION-install_docs-1.patch
+wget "http://www.linuxfromscratch.org/patches/lfs/7.3/bzip2-1.0.6-install_docs-1.patch"
+patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
