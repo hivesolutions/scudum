@@ -1,0 +1,7 @@
+ONBOOT="yes"
+IFACE="eth0"
+SERVICE="dhclient"
+DHCP_START=""
+DHCP_STOP=""
+PRINTIP="no"
+PRINTALL="no"
