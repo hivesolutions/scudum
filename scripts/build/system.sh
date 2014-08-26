@@ -47,3 +47,4 @@ cd sources
 /tools/repo/scripts/build/system/diffutils.sh
 /tools/repo/scripts/build/system/gawk.sh
 /tools/repo/scripts/build/system/findutils.sh
+/tools/repo/scripts/build/system/flex.sh
