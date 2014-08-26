@@ -3,7 +3,7 @@ set -e
 mkdir -pv $SCUDUM/{dev,proc,sys}
 
 # crates the main device nodes with the proper
-# flags set for the devices
+# flags set for the devices (going to be re-used)
 mknod -m 600 $SCUDUM/dev/console c 5 1
 mknod -m 666 $SCUDUM/dev/null c 1 3
 
@@ -39,6 +39,3 @@ umount -v $SCUDUM/sys
 umount -v $SCUDUM/proc
 umount -v $SCUDUM/dev/pts
 umount -v $SCUDUM/dev
-
-rm -f $SCUDUM/dev/console
-rm -f $SCUDUM/dev/null
