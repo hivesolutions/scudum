@@ -27,3 +27,4 @@ cd sources
 /tools/repo/scripts/build/system/pkg-config.sh
 /tools/repo/scripts/build/system/ncurses.sh
 /tools/repo/scripts/build/system/util-linux.sh
+/tools/repo/scripts/build/system/psmisc.sh
