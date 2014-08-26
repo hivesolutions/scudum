@@ -42,3 +42,4 @@ cd sources
 /tools/repo/scripts/build/system/gdbm.sh
 /tools/repo/scripts/build/system/inetutils.sh
 /tools/repo/scripts/build/system/perl.sh
+/tools/repo/scripts/build/system/autoconf.sh
