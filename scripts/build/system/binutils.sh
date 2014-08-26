@@ -1,11 +1,11 @@
 VERSION=${VERSION-2.23.1}
 
-wget "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
+wget --no-check-certificate "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
-wget "http://www.linuxfromscratch.org/patches/lfs/7.3/binutils-$VERSION-testsuite_fix-1.patch"
+wget --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/binutils-$VERSION-testsuite_fix-1.patch"
 patch -Np1 -i binutils-$VERSION-testsuite_fix-1.patch
 
 rm -fv etc/standards.info
