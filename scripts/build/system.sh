@@ -28,3 +28,4 @@ cd sources
 /tools/repo/scripts/build/system/ncurses.sh
 /tools/repo/scripts/build/system/util-linux.sh
 /tools/repo/scripts/build/system/psmisc.sh
+/tools/repo/scripts/build/system/e2fsprogs.sh
