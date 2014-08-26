@@ -49,3 +49,4 @@ cd sources
 /tools/repo/scripts/build/system/findutils.sh
 /tools/repo/scripts/build/system/flex.sh
 /tools/repo/scripts/build/system/gettext.sh
+/tools/repo/scripts/build/system/groff.sh
