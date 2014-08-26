@@ -59,3 +59,4 @@ cd sources
 /tools/repo/scripts/build/system/kmod.sh
 /tools/repo/scripts/build/system/libpipeline.sh
 /tools/repo/scripts/build/system/make.sh
+/tools/repo/scripts/build/system/man-db.sh
