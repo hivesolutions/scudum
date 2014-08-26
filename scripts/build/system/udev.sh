@@ -1,5 +1,5 @@
-VERSION="197"
-VERSION_L="197-2"
+VERSION=${VERSION-197}
+VERSION_L=${VERSION_L-197-2}
 
 wget --no-check-certificate "http://www.freedesktop.org/software/systemd/systemd-$VERSION.tar.xz"
 rm -rf systemd-$VERSION && tar -Jxf "systemd-$VERSION.tar.xz"
