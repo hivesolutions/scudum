@@ -51,3 +51,4 @@ cd sources
 /tools/repo/scripts/build/system/gettext.sh
 /tools/repo/scripts/build/system/groff.sh
 /tools/repo/scripts/build/system/xz.sh
+/tools/repo/scripts/build/system/grub.sh
