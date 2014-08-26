@@ -36,3 +36,4 @@ cd sources
 /tools/repo/scripts/build/system/m4.sh
 /tools/repo/scripts/build/system/bison.sh
 /tools/repo/scripts/build/system/grep.sh
+/tools/repo/scripts/build/system/readline.sh
