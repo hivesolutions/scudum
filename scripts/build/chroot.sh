@@ -4,8 +4,10 @@ mkdir -pv $SCUDUM/{dev,proc,sys}
 
 # crates the main device nodes with the proper
 # flags set for the devices (going to be re-used)
-mknod -m 600 $SCUDUM/dev/console c 5 1
-mknod -m 666 $SCUDUM/dev/null c 1 3
+test ! -f $SCUDUM/dev/console &&\
+    mknod -m 600 $SCUDUM/dev/console c 5 1
+test ! -f $SCUDUM/dev/null &&\
+    mknod -m 666 $SCUDUM/dev/null c 1 3
 
 mount -v --bind /dev $SCUDUM/dev
 
