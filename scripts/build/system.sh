@@ -61,3 +61,4 @@ cd sources
 /tools/repo/scripts/build/system/make.sh
 /tools/repo/scripts/build/system/man-db.sh
 /tools/repo/scripts/build/system/patch.sh
+/tools/repo/scripts/build/system/sysklogd.sh
