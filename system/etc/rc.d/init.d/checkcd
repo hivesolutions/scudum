@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. /lib/lsb/init-functions
+
+if [ ! -d /origin ]; then exit; fi
+
+log_info_msg "Making /tmp world writeable (1777)..."
+chmod 1777 /tmp
+evaluate_retval
+
+log_info_msg "Releasing unused memory from initrd..."
+umount /initrd/proc
+umount -l /initrd
+rm -rf /initrd
+evaluate_retval
+
+exit 0
