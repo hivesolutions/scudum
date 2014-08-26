@@ -33,3 +33,4 @@ cd sources
 /tools/repo/scripts/build/system/coreutils.sh
 /tools/repo/scripts/build/system/iana-etc.sh
 /tools/repo/scripts/build/system/m4.sh
+/tools/repo/scripts/build/system/bison.sh
