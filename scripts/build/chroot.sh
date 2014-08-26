@@ -1,3 +1,5 @@
+set -e
+
 mkdir -pv $SCUDUM/{dev,proc,sys}
 
 # crates the main device nodes with the proper
