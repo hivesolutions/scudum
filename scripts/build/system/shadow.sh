@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.1.5.1}
+VERSION=${VERSION-4.1.4.3}
 
 wget --no-check-certificate "http://pkg-shadow.alioth.debian.org/releases/shadow-$VERSION.tar.bz2"
 rm -rf shadow-$VERSION && tar -jxf "shadow-$VERSION.tar.bz2"
