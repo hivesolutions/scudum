@@ -14,6 +14,3 @@ cd pkg-config-$VERSION
 make
 make check
 make install
-
-cd ..
-rm -rf pkg-config-$VERSION
