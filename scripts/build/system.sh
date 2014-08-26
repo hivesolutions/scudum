@@ -22,3 +22,4 @@ cd sources
 /tools/repo/scripts/build/system/mpfr.sh
 /tools/repo/scripts/build/system/mpc.sh
 /tools/repo/scripts/build/system/gcc.sh
+/tools/repo/scripts/build/system/sed.sh
