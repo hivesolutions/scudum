@@ -6,4 +6,5 @@ rm -f "zlib-$VERSION.tar.gz"
 cd zlib-$VERSION
 
 ./configure --prefix=/usr
+
 make && make install

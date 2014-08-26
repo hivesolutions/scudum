@@ -28,6 +28,7 @@ cd ../gcc-build
     --disable-multilib\
     --disable-bootstrap\
     --with-system-zlib
+
 make && make install
 
 ln -sv ../usr/bin/cpp /lib

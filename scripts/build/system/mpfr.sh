@@ -7,6 +7,7 @@ cd mpfr-$VERSION
 
 ./configure --prefix=/usr --enable-thread-safe\
     --docdir=/usr/share/doc/mpfr-$VERSION
+
 make
 make check
 make install

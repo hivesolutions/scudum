@@ -7,6 +7,7 @@ cd sed-$VERSION
 
 ./configure --prefix=/usr --bindir=/bin\
     --htmldir=/usr/share/doc/sed-$VERSION
+
 make
 make html
 make check

@@ -6,7 +6,5 @@ rm -f "file-$VERSION.tar.gz"
 cd file-$VERSION
 
 ./configure --prefix=/usr
-make && make install
 
-cd ..
-rm -rf file-$VERSION
+make && make install
