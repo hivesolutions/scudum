@@ -1,0 +1,14 @@
+source /etc/colors
+
+export PATH="$PATH:/scd/bin"
+export LS_COLORS="ow=01;90:di=01;90"
+export TERM=linux
+export GREP_OPTIONS=--color=auto
+
+VERSION=$(cat /lib/scudum/VERSION)
+KVERSION=$(uname -r)
+SVERSION=alpha-$VERSION
+PS1="\u@\h:\w# "
+
+alias "ls=ls --color=auto"
+echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
