@@ -67,3 +67,4 @@ cd sources
 /tools/repo/scripts/build/system/texinfo.sh
 /tools/repo/scripts/build/system/udev.sh
 /tools/repo/scripts/build/system/vim.sh
+/tools/repo/scripts/build/system/nano.sh
