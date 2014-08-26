@@ -75,4 +75,6 @@ umask 022
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
 chown -R root:root $SCUDUM/tools
-../chroot.sh
+../chroot.sh /tools/repo/scripts/build/system.sh 
+
+../chroot.sh /tools/repo/scripts/build/system/strip.sh
