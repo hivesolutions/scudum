@@ -6,7 +6,7 @@ cd sed-$VERSION
     --htmldir=/usr/share/doc/sed-4.2.2
 make
 make html
-make check
+test $TEST && make check
 make install
 make -C doc install-html
 

@@ -12,5 +12,5 @@ cd pkg-config-$VERSION
     --docdir=/usr/share/doc/pkg-config-$VERSION
 
 make
-make check
+test $TEST && make check
 make install

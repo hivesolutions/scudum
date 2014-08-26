@@ -6,6 +6,7 @@ rm -f "mpc-$VERSION.tar.gz"
 cd mpc-$VERSION
 
 ./configure --prefix=/usr
+
 make
-make check
+test $TEST && make check
 make install

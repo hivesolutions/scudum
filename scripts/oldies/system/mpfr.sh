@@ -5,7 +5,7 @@ cd mpfr-$VERSION
 ./configure --prefix=/usr --enable-thread-safe\
     --docdir=/usr/share/doc/mpfr-3.1.1
 make
-make check
+test $TEST && make check
 make install
 make html
 make install-html

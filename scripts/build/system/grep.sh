@@ -8,5 +8,5 @@ cd grep-$VERSION
 ./configure --prefix=/usr --bindir=/bin
 
 make
-make check
+test $TEST && make check
 make install

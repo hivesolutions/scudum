@@ -13,7 +13,7 @@ cd ../binutils-build
 ../binutils-$VERSION/configure --prefix=/usr --enable-shared
 
 make tooldir=/usr
-make check
+test $TEST && make check
 make tooldir=/usr install
 
 cp -v ../binutils-2.23.1/include/libiberty.h /usr/include

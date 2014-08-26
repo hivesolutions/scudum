@@ -12,8 +12,9 @@ sed -i -e '/gets is a/d' lib/stdio.in.h
     --disable-syslogd\
     --disable-whois\
     --disable-servers
+
 make
-make check
+test $TEST && make check
 make install
 mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
 

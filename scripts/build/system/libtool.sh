@@ -8,5 +8,5 @@ cd libtool-$VERSION
 ./configure --prefix=/usr
 
 make
-make check
+test $TEST && make check
 make install

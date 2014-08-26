@@ -8,5 +8,5 @@ cd gdbm-$VERSION
 ./configure --prefix=/usr --enable-libgdbm-compat
 
 make
-make check
+test $TEST && make check
 make install

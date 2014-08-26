@@ -11,6 +11,5 @@ sed -i -e '/gets is a/d' lib/stdio.in.h
 make
 
 sed -i -e '41s/ENOENT/& || errno == EINVAL/' tests/test-readlink.h
-make check
-
+test $TEST && make check
 make install

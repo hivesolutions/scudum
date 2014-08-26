@@ -10,6 +10,6 @@ cd sed-$VERSION
 
 make
 make html
-make check
+test $TEST && make check
 make install
 make -C doc install-html

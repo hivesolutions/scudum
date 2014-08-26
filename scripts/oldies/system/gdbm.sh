@@ -3,8 +3,9 @@ tar -zxf "gdbm-$VERSION.tar.gz"
 cd gdbm-$VERSION
 
 ./configure --prefix=/usr --enable-libgdbm-compat
+
 make
-make check
+test $TEST && make check
 make install
 
 cd ..

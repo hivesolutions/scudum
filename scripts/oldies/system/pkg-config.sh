@@ -7,8 +7,9 @@ cd pkg-config-$VERSION
     --with-internal-glib\
     --disable-host-tool\
     --docdir=/usr/share/doc/pkg-config-$VERSION
+
 make
-make check
+test $TEST && make check
 make install
 
 cd ..

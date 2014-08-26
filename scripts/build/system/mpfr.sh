@@ -9,7 +9,7 @@ cd mpfr-$VERSION
     --docdir=/usr/share/doc/mpfr-$VERSION
 
 make
-make check
+test $TEST && make check
 make install
 make html
 make install-html

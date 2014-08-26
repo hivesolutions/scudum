@@ -18,7 +18,7 @@ cd build
     --disable-fsck
     
 make
-make check
+test $TEST && make check
 make install
 make install-libs
 

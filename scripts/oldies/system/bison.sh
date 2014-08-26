@@ -7,7 +7,7 @@ cd bison-$VERSION
 echo '#define YYENABLE_NLS 1' >> lib/config.h
 
 make
-make check
+test $TEST && make check
 make install
 
 cd ..
