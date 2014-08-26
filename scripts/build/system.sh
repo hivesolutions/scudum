@@ -56,3 +56,4 @@ cd sources
 /tools/repo/scripts/build/system/gzip.sh
 /tools/repo/scripts/build/system/iproute2.sh
 /tools/repo/scripts/build/system/kbd.sh
+/tools/repo/scripts/build/system/kmod.sh
