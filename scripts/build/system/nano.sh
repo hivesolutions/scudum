@@ -9,5 +9,4 @@ cd nano-$VERSION.tar
 
 ./configure --prefix=/usr
 
-make
-make install
+make && make install
