@@ -77,4 +77,6 @@ umask 022
 chown -R root:root $SCUDUM/tools
 ../chroot.sh /tools/repo/scripts/build/system.sh 
 
+# runs the final strip operation on the generated files so
+# that some of the size for the files is spared
 ../chroot.sh /tools/repo/scripts/build/system/strip.sh
