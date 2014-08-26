@@ -17,3 +17,4 @@ cd sources
 /tools/repo/scripts/build/system/adjusting.sh
 /tools/repo/scripts/build/system/zlib.sh
 /tools/repo/scripts/build/system/file.sh
+/tools/repo/scripts/build/system/binutils.sh
