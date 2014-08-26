@@ -64,13 +64,13 @@ case "${2}" in
         ip route add ${args} dev ${1}
         evaluate_retval
     ;;
-   
+
     down)
         log_info_msg "Removing '${desc}' route from the ${1} interface..."
         ip route del ${args} dev ${1}
         evaluate_retval
     ;;
-   
+
     *)
         echo "Usage: ${0} [interface] {up|down}"
         exit 1
