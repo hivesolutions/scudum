@@ -26,16 +26,16 @@ To create an ISO image of the Scudum distribution running using the [ISOLINUX](h
 loader use the following command taking note that the disk contents should be located at `/dev/sdb`:
 
     DEV_NAME=/dev/sdb make.iso.sh
-    
+
 Note that because the fstab file for the ISO version is different a rebuild operation should be performed
 first to avoid problems, to do that use:
 
     DEV_NAME=/dev/sdb REBUILD=1 make.iso.sh
-  
+
 In order to create a Virtual Box compatible image (VDI) issue the command:
 
     DEV_NAME=/dev/sdb make.vdi.sh
-    
+
 To deploy a new version of the Scudum distrubtion to the repository use, note that the deployment
 is going to use the `/mnt/builds/scudum` path by default but may be changed using the `TARGET` variable:
 
@@ -45,7 +45,7 @@ In order to work (change the scudum base system) you need to deploy the latest v
 (typically `/dev/sdb`) in order to do that use:
 
     DEV_NAME=/dev/sdb VERSION=latest install.dev.sh
-    
+
 Please be aware that `/dev/sdb` drive will be completely erased during this operation.
 
 To create an `img` file of an hard drive and then install it on a device use (experimental):
@@ -56,7 +56,7 @@ To restore the hard drive to the original (empty) state run the following comman
 remove the scudum files from it.
 
     dd if=/dev/zero of=/dev/sdb bs=4096
-    
+
 As an alternative you may only remove the `MBR` from it as it's a faster operation.
 
     dd if=/dev/zero of=/dev/sdb bs=446 count=1
