@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.23.1}
 
-wget -q "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
+wget "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION

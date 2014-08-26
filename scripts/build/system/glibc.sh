@@ -1,7 +1,7 @@
 VERSION=${VERSION-2.17}
 
-wget -q --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata2012j.tar.gz"
-wget -q --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
+wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata2012j.tar.gz"
+wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
 cd glibc-$VERSION

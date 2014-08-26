@@ -1,6 +1,6 @@
 VERSION=${VERSION-0.18.2}
 
-wget -q "http://ftp.gnu.org/gnu/gettext/gettext-$VERSION.tar.gz"
+wget "http://ftp.gnu.org/gnu/gettext/gettext-$VERSION.tar.gz"
 rm -f "gettext-$VERSION" && tar -zxf "gettext-$VERSION.tar.gz"
 rm -f "gettext-$VERSION.tar.xz"
 cd gettext-$VERSION
