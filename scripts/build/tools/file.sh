@@ -1,5 +1,7 @@
 VERSION=${VERSION-5.13}
 
+set -e
+
 wget "ftp://ftp.astron.com/pub/file/file-$VERSION.tar.gz"
 rm -f "file-$VERSION" && tar -zxf "file-$VERSION.tar.gz"
 rm -f "file-$VERSION.tar.gz"

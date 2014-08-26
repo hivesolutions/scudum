@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.5}
 
+set -e
+
 wget "http://ftp.gnu.org/gnu/dejagnu/dejagnu-$VERSION.tar.gz"
 rm -f "dejagnu-$VERSION" && tar -zxf "dejagnu-$VERSION.tar.gz"
 rm -f "dejagnu-$VERSION.tar.gz"
