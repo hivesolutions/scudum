@@ -25,3 +25,4 @@ cd sources
 /tools/repo/scripts/build/system/sed.sh
 /tools/repo/scripts/build/system/bzip2.sh
 /tools/repo/scripts/build/system/pkg-config.sh
+/tools/repo/scripts/build/system/ncurses.sh
