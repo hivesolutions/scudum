@@ -41,3 +41,4 @@ cd sources
 /tools/repo/scripts/build/system/libtool.sh
 /tools/repo/scripts/build/system/gdbm.sh
 /tools/repo/scripts/build/system/inetutils.sh
+/tools/repo/scripts/build/system/perl.sh
