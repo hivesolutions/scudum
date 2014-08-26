@@ -20,3 +20,4 @@ cd sources
 /tools/repo/scripts/build/system/binutils.sh
 /tools/repo/scripts/build/system/gmp.sh
 /tools/repo/scripts/build/system/mpfr.sh
+/tools/repo/scripts/build/system/mpc.sh
