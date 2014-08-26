@@ -40,3 +40,4 @@ cd sources
 /tools/repo/scripts/build/system/bash.sh
 /tools/repo/scripts/build/system/libtool.sh
 /tools/repo/scripts/build/system/gdbm.sh
+/tools/repo/scripts/build/system/inetutils.sh
