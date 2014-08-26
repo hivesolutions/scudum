@@ -23,3 +23,4 @@ cd sources
 /tools/repo/scripts/build/system/mpc.sh
 /tools/repo/scripts/build/system/gcc.sh
 /tools/repo/scripts/build/system/sed.sh
+/tools/repo/scripts/build/system/bzip2.sh
