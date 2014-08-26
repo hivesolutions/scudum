@@ -1,12 +1,13 @@
 VERSION="197"
 VERSION_L="197-2"
 
-wget --no-check-certificate http://anduin.linuxfromscratch.org/sources/other/udev-lfs-$VERSION_L.tar.bz2
-rm -rf systemd-$VERSION && tar -jxf "systemd-$VERSION.tar.bz2"
-rm -f "systemd-$VERSION.tar.xz"
+wget --no-check-certificate "http://www.freedesktop.org/software/systemd/systemd-VERSION.tar.xz"
+rm -rf systemd-$VERSION && tar -Jxf "systemd-$VERSION.tar.xz"
 cd systemd-$VERSION
 
-tar -zxf ../udev-lfs-$VERSION_L.tar.bz2
+wget --no-check-certificate "http://anduin.linuxfromscratch.org/sources/other/udev-lfs-$VERSION_L.tar.bz2"
+rm -rf udev-lfs-$VERSION_L && tar -zxf udev-lfs-$VERSION_L.tar.bz2
+rm -f udev-lfs-$VERSION_L.tar.bz2
 
 make -f udev-lfs-$VERSION_L/Makefile.lfs
 make -f udev-lfs-$VERSION_L/Makefile.lfs install
