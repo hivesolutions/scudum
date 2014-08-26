@@ -16,3 +16,4 @@ cd sources
 /tools/repo/scripts/build/system/glibc.sh
 /tools/repo/scripts/build/system/adjusting.sh
 /tools/repo/scripts/build/system/zlib.sh
+/tools/repo/scripts/build/system/file.sh
