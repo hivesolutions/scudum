@@ -39,3 +39,4 @@ cd sources
 /tools/repo/scripts/build/system/readline.sh
 /tools/repo/scripts/build/system/bash.sh
 /tools/repo/scripts/build/system/libtool.sh
+/tools/repo/scripts/build/system/gdbm.sh
