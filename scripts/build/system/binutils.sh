@@ -6,7 +6,7 @@ rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
 wget "http://www.linuxfromscratch.org/patches/lfs/7.3/binutils-$VERSION-testsuite_fix-1.patch"
-patch -Np1 -i ../binutils-$VERSION-testsuite_fix-1.patch
+patch -Np1 -i binutils-$VERSION-testsuite_fix-1.patch
 
 rm -fv etc/standards.info
 sed -i.bak '/^INFO/s/standards.info //' etc/Makefile.in
