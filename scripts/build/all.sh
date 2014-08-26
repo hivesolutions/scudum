@@ -71,6 +71,10 @@ umask 022
 # and the unneeded symbols from the libraries
 ../tools/strip.sh
 
+# removes the directory where the building process has been done
+# so that no extra files leak to the final building stages
+cd .. && rm -rf build
+
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
@@ -80,8 +84,3 @@ chown -R root:root $SCUDUM/tools
 # runs the final strip operation on the generated files so
 # that some of the size for the files is spared
 ../chroot.sh /tools/repo/scripts/build/system/strip.sh
-
-# removes the directory where the building process has been done
-# so that no extra files leak to the final building stages
-cd ..
-rm -rf build
