@@ -65,3 +65,4 @@ cd sources
 /tools/repo/scripts/build/system/sysvinit.sh
 /tools/repo/scripts/build/system/tar.sh
 /tools/repo/scripts/build/system/texinfo.sh
+/tools/repo/scripts/build/system/udev.sh
