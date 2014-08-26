@@ -58,3 +58,4 @@ cd sources
 /tools/repo/scripts/build/system/kbd.sh
 /tools/repo/scripts/build/system/kmod.sh
 /tools/repo/scripts/build/system/libpipeline.sh
+/tools/repo/scripts/build/system/make.sh
