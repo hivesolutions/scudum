@@ -46,4 +46,4 @@ cd sources
 /tools/repo/scripts/build/system/automake.sh
 /tools/repo/scripts/build/system/diffutils.sh
 /tools/repo/scripts/build/system/gawk.sh
-/tools/repo/scripts/build/system/findurils.sh
+/tools/repo/scripts/build/system/findutils.sh
