@@ -53,3 +53,4 @@ cd sources
 /tools/repo/scripts/build/system/xz.sh
 /tools/repo/scripts/build/system/grub.sh
 /tools/repo/scripts/build/system/less.sh
+/tools/repo/scripts/build/system/gzip.sh
