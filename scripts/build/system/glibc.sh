@@ -73,6 +73,7 @@ rpc: files
 EOF
 
 tar -xf ../tzdata2012j.tar.gz
+rm -f ../tzdata2012j.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
