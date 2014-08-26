@@ -1,6 +1,8 @@
 VERSION=${VERSION-7.3}
 VERSION_L=${VERSION_L-73}
 
+set -e
+
 wget --no-check-certificate "ftp://ftp.vim.org/pub/vim/unix/vim-$VERSION.tar.bz2"
 rm -rf vim$VERSION_L && tar -jxf "vim-$VERSION.tar.bz2"
 rm -f "vim-$VERSION.tar.bz2"

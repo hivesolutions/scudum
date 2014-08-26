@@ -1,5 +1,7 @@
 VERSION=${VERSION-5.0.4}
 
+set -e
+
 wget --no-check-certificate "http://tukaani.org/xz/xz-$VERSION.tar.xz"
 rm -rf xz-$VERSION && tar -Jxf "xz-$VERSION.tar.xz"
 rm -f "xz-$VERSION.tar.xz"

@@ -1,5 +1,7 @@
 VERSION=${VERSION-2.7.1}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/patch/patch-$VERSION.tar.xz"
 rm -rf atch-$VERSION && tar -Jxf "patch-$VERSION.tar.xz"
 rm -f  "patch-$VERSION.tar.xz"

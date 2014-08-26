@@ -1,5 +1,7 @@
 VERSION=${VERSION-2.6.3}
 
+set -e
+
 wget --no-check-certificate "http://download.savannah.gnu.org/releases/man-db/man-db-$VERSION.tar.xz"
 rm -rf man-db-$VERSION && tar -Jxf "man-db-$VERSION.tar.xz"
 rm -f "man-db-$VERSION.tar.xz"

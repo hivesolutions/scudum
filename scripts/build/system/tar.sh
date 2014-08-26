@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.26}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/tar/tar-$VERSION.tar.bz2"
 rm -rf tar-$VERSION && tar -jxf "tar-$VERSION.tar.bz2"
 rm -f "tar-$VERSION.tar.bz2"

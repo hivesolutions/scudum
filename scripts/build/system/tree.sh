@@ -1,3 +1,5 @@
+set -e
+
 mkdir -pv /{bin,boot,etc/{opt,sysconfig},home,lib,mnt,opt,run}
 mkdir -pv /{media/{floppy,cdrom},sbin,srv,var}
 

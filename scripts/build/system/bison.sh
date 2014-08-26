@@ -1,4 +1,6 @@
-VERSION="2.7"
+VERSION=${VERSION-2.7}
+
+set -e
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/bison/bison-$VERSION.tar.xz"
 rm -rf bison-$VERSION && tar -Jxf "bison-$VERSION.tar.xz"

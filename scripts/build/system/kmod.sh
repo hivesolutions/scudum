@@ -1,5 +1,7 @@
 VERSION=${VERSION-12}
 
+set -e
+
 wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
 rm -rf kmod-$VERSION && tar -Jxf "kmod-$VERSION.tar.xz"
 rm -f "kmod-$VERSION.tar.xz"

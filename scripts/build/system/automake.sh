@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.13.1}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/automake/automake-$VERSION.tar.xz"
 rm -rf automake-$VERSION && tar -Jxf "automake-$VERSION.tar.xz"
 rm -f "automake-$VERSION.tar.xz"

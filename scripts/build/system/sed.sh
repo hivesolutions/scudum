@@ -1,5 +1,7 @@
 VERSION=${VERSION-4.2.2}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.bz2"
 rm -rf sed-$VERSION && tar -jxf "sed-$VERSION.tar.bz2"
 rm -f "sed-$VERSION.tar.bz2"

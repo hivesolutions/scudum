@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.5}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gzip/gzip-$VERSION.tar.xz"
 rm -rf gzip-$VERSION && tar -Jxf "gzip-$VERSION.tar.xz"
 rm -f "gzip-$VERSION.tar.xz"

@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.15.5}
 
+set -e
+
 wget --no-check-certificate "http://ftp.altlinux.org/pub/people/legion/kbd/kbd-$VERSION.tar.gz"
 rm -rf kbd-$VERSION && tar -zxf "kbd-$VERSION.tar.gz"
 rm -f "kbd-$VERSION.tar.gz"

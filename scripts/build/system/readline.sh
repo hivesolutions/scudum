@@ -1,5 +1,7 @@
 VERSION=${VERSION-6.2}
 
+set -e
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/readline/readline-$VERSION.tar.gz"
 rm -rf readline-$VERSION && tar -zxf "readline-$VERSION.tar.gz"
 rm -f "readline-$VERSION.tar.gz"

@@ -1,5 +1,7 @@
 VERSION=${VERSION-3.8.2}
 
+set -e
+
 wget --no-check-certificate "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.bz2"
 rm -rf linux-$VERSION && tar -jxf "linux-$VERSION.tar.bz2"
 rm -f "linux-$VERSION.tar.bz2"

@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.42.7}
 
+set -e
+
 wget --no-check-certificate "http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-$VERSION.tar.gz"
 rm -rf e2fsprogs-$VERSION && tar -zxf "e2fsprogs-$VERSION.tar.gz"
 rm -f "e2fsprogs-$VERSION.tar.gz"

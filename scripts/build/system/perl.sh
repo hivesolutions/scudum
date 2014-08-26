@@ -1,5 +1,7 @@
 VERSION=${VERSION-5.16.2}
 
+set -e
+
 wget --no-check-certificate "http://www.cpan.org/src/5.0/perl-$VERSION.tar.bz2"
 rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
 rm -f "perl-$VERSION.tar.bz2"
