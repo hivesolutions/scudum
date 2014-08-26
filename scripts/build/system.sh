@@ -38,3 +38,4 @@ cd sources
 /tools/repo/scripts/build/system/grep.sh
 /tools/repo/scripts/build/system/readline.sh
 /tools/repo/scripts/build/system/bash.sh
+/tools/repo/scripts/build/system/libtool.sh
