@@ -1,4 +1,4 @@
-# Scudum
+# [Scudum](http://scudum.hive.pt)
 
 A simple Linux distribution for usage in colony, viriatum and tiberium distributed solutions.
 
