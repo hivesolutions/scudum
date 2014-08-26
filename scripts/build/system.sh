@@ -30,3 +30,4 @@ cd sources
 /tools/repo/scripts/build/system/psmisc.sh
 /tools/repo/scripts/build/system/e2fsprogs.sh
 /tools/repo/scripts/build/system/shadow.sh
+/tools/repo/scripts/build/system/coreutils.sh
