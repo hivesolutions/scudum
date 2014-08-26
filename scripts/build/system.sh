@@ -37,3 +37,4 @@ cd sources
 /tools/repo/scripts/build/system/bison.sh
 /tools/repo/scripts/build/system/grep.sh
 /tools/repo/scripts/build/system/readline.sh
+/tools/repo/scripts/build/system/bash.sh
