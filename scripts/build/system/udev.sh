@@ -2,7 +2,7 @@ VERSION="197"
 VERSION_L="197-2"
 
 wget --no-check-certificate http://anduin.linuxfromscratch.org/sources/other/udev-lfs-$VERSION_L.tar.bz2
-rm -rf systemd-$VERSION && tar -Jxf "systemd-$VERSION.tar.xz"
+rm -rf systemd-$VERSION && tar -jxf "systemd-$VERSION.tar.bz2"
 rm -f "systemd-$VERSION.tar.xz"
 cd systemd-$VERSION
 
