@@ -63,3 +63,4 @@ cd sources
 /tools/repo/scripts/build/system/patch.sh
 /tools/repo/scripts/build/system/sysklogd.sh
 /tools/repo/scripts/build/system/sysvinit.sh
+/tools/repo/scripts/build/system/tar.sh
