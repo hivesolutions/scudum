@@ -45,3 +45,4 @@ cd sources
 /tools/repo/scripts/build/system/autoconf.sh
 /tools/repo/scripts/build/system/automake.sh
 /tools/repo/scripts/build/system/diffutils.sh
+/tools/repo/scripts/build/system/gawk.sh
