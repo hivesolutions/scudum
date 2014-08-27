@@ -63,7 +63,7 @@ losetup /dev/loop1 ramdisk
 
 # creates the the ext2 based file system in the loop
 # device and then mounts it under the temporary directory
-mke2fs /dev/loop1 > /dev/null
+mke2fs /dev/loop1
 mkdir -p /mnt/loop1
 mount /dev/loop1 $TEMP_DIR
 rm -rf $TEMP_DIR/lost+found
