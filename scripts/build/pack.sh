@@ -46,6 +46,6 @@ find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}
 cd $SCUDUM
 
 rm -f $BASE/$FILE
-tar -zcvf $BASE/$FILE $SCUDUM/*
+tar -zcvf $BASE/$FILE *
 
 cd $BASE
