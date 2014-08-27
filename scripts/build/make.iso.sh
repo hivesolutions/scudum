@@ -4,9 +4,11 @@
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
 FILE=${FILE-$NAME-$VERSION.iso}
-LABEL=${LABEL-Scudum Linux}
+LABEL=${LABEL-Scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
+SCHEMA=${SCHEMA-transient}
+CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-1}
 SQUASH=${SQUASH-1}
@@ -19,6 +21,10 @@ set -e
 source $DIR/base/config.sh
 
 apt-get -y install squashfs-tools
+
+if [ "$CONFIG" == "1" ]; then
+    SCHEMA=$SCHEMA $DIR/config.sh
+fi
 
 if [ ! -e $SCUDUM/CONFIGURED ]; then
     echo "Scudum not configured, not possible to make ISO"
