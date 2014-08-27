@@ -5,7 +5,6 @@ NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
 FILE=${FILE-$NAME-$VERSION.iso}
 LABEL=${NAME-Scudum Linux}
-SCUDUM=${SCUDUM-/scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
 DEPLOY=${DEPLOY-1}
@@ -13,6 +12,8 @@ SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
 
 set -e
+
+source $DIR/base/config.sh
 
 apt-get -y install squashfs-tools
 
