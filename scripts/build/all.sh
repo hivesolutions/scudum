@@ -12,15 +12,15 @@ cd build
 
 # installs the dependencies for the various operations
 # that are going to be performed in the next steps
-../extra/deps.sh
+../base/deps.sh
 
 # loads the complete set of environment variables
 # that are going to be used in the build process
-source ../extra/base.sh
+source ../base/config.sh
 
 # runs the cleanup operation, this should remove any
 # previous installation of scudum from the file system
-../extra/cleanup.sh
+../base/cleanup.sh
 
 # changes the default remembering option and the
 # creation mask for the current user
@@ -74,8 +74,8 @@ cd .. && rm -rf build
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
 chown -R root:root $SCUDUM/tools
-extra/chroot.sh /tools/repo/scripts/build/extra/system.sh 
+base/chroot.sh /tools/repo/scripts/build/base/system.sh 
 
 # runs the final strip operation on the generated files so
 # that some of the size for the files is spared
-extra/chroot.sh /tools/repo/scripts/build/system/strip.sh
+base/chroot.sh /tools/repo/scripts/build/system/strip.sh
