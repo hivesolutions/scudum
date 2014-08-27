@@ -3,6 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
+FILE=${FILE-$NAME-$VERSION.tar.gz}
 TARGET=${TARGET-/mnt/builds/$NAME}
 
 LATEST=$NAME-latest.tar.gz
