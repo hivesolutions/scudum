@@ -67,5 +67,6 @@ cd sources
 /tools/repo/scripts/build/system/udev.sh
 /tools/repo/scripts/build/system/vim.sh
 /tools/repo/scripts/build/system/nano.sh
+/tools/repo/scripts/build/system/wget.sh
 
 cd .. && rm -rf sources
