@@ -43,7 +43,9 @@ find $SCUDUM -name "*.pyc" -delete
 
 find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
 
-cd $BASE
+cd $SCUDUM
 
-rm -f $FILE
-tar -zcvf $FILE $SCUDUM/*
+rm -f $BASE/$FILE
+tar -zcvf $BASE/$FILE $SCUDUM/*
+
+cd $BASE
