@@ -11,4 +11,7 @@ set -e
 
 source ../base/config.sh
 
+rm -rf $SCUDUM/tools
+rm -rf $SCUDUM/sources
+
 tar -zcvf $FULL_NAME $SCUDUM/*
