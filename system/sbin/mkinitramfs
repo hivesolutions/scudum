@@ -55,6 +55,18 @@ INIT_IN=linuxrc
 # files will be stored for the creation of the image
 TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 
+# creates the ramdisk file and zeros it taking into
+# account the requested size (this is very important)
+rm -f ramdisk
+dd if=/dev/zero of=ramdisk bs=1k count=32768
+losetup /dev/loop1 ramdisk
+
+# creates the the ext2 based file system in the loop
+# device and then mounts it under the temporary directory
+mke2fs /dev/loop1
+mkdir -p /mnt/loop1
+mount /dev/loop1 $TEMP_DIR
+
 # creates base directory structure
 mkdir -p $TEMP_DIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
 mkdir -p $TEMP_DIR/etc/{modprobe.d,udev/rules.d}
@@ -182,7 +194,17 @@ if [ -n "$KERNEL_VERSION" ]; then
     depmod -b $TEMP_DIR $KERNEL_VERSION
 fi
 
-( cd $TEMP_DIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
+# syncs the current filesystem and the unmounts
+# it removing then the directory reference
+sync
+umount $TEMP_DIR
+rm -rf $TEMP_DIR
+
+# runs the compression of the ramdisk into the init
+# rma file and then removes the ramdisk file (as it
+# is no longer required for the operation)
+gzip -9 -c ramdisk > $INITRAMFS_FILE
+rm -rf ramdisk
 
 # copies the initramfs file to the various repositories
 # of information that are valid for booting, and then removes
