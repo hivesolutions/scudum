@@ -20,5 +20,5 @@ patch -Np1 -i bash-$VERSION-fixes-11.patch
 make
 
 chown -Rv nobody .
-su nobody -s /bin/bash -c "PATH=$PATH make tests"
+test $TEST && su nobody -s /bin/bash -c "PATH=$PATH make tests"
 make install
