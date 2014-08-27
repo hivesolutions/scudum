@@ -166,6 +166,8 @@ if [ -d /lib/systemd ]; then
 fi
 
 # installs the kernel modules if they were requested
+# these may be used at initram time so that extra dev
+# functionality is enabled and may be used
 if [ -n "$KERNEL_VERSION" ]; then
     find\
         /lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib}\
