@@ -3,6 +3,7 @@
 
 FILE=${FILE-scudum.iso}
 NAME=${NAME-scudum}
+LABEL=${NAME-Scudum Linux}
 SCUDUM=${SCUDUM-/scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
@@ -38,7 +39,7 @@ fi
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
     -b isolinux/isolinux.bin -c isolinux/boot.cat\
     -no-emul-boot -boot-load-size 4 -boot-info-tabl\
-    -V $NAME $ISO_DIR
+    -V $LABEL $ISO_DIR
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $ISO_DIR/autorun.inf
