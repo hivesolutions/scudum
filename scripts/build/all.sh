@@ -19,6 +19,11 @@ cd build
 # that are going to be used in the build process
 source ../base.sh
 
+# creates the base directory where the scudum
+# distribution will be installed for execution
+rm -rf $SCUDUM
+mkdir -pv $SCUDUM
+
 # creates the proper tools directory where the
 # build toolchain is going to be set and sets
 # it as the root directory of the system
