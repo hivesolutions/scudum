@@ -4,7 +4,7 @@
 DEV_NAME=${DEV_NAME-/dev/sdb}
 DEV_BOOT=${DEV_BOOT-"$DEV_NAME"1}
 DEV_ROOT=${DEV_ROOT-"$DEV_NAME"3}
-SCUDUM=${SCUDUM-/mnt/scudum}
+SCUDUM=${SCUDUM-/scudum}
 
 mkdir -pv $SCUDUM
 mount -v $DEV_ROOT $SCUDUM
