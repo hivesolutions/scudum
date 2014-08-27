@@ -78,7 +78,7 @@ cd .. && rm -rf build
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
 chown -R root:root $SCUDUM/tools
-$DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh 
+$DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
 
 # runs the final strip operation on the generated files so
 # that some of the size for the files is spared
