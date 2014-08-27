@@ -7,5 +7,5 @@ rm -rf "cpio-$VERSION" && tar -zxf "cpio-$VERSION.tar.gz"
 rm -f "cpio-$VERSION.tar.gz"
 cd cpio-$VERSION
 
-./configure --prefix=/usr
+./configure --prefix=/usr --bindir=/bin --enable-mt -with-rmt=/usr/libexec/rmt 
 make && make install
