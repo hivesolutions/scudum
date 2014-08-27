@@ -99,7 +99,7 @@ fi
 # loading stage of the linux kernel
 install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/linuxrc
 
-if [  -n "$KERNEL_VERSION" ] ; then
+if [ -n "$KERNEL_VERSION" ] ; then
     if [ -x /bin/kmod ] ; then
         binfiles="$binfiles kmod"
     else
@@ -111,7 +111,7 @@ fi
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
 for f in $binfiles ; do
-    ldd /bin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    ldd $(type $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     copy $f bin
 done
 
@@ -119,7 +119,7 @@ done
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
 for f in $sbinfiles ; do
-    ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    ldd $(type $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     copy $f sbin
 done
 
