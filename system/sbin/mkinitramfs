@@ -11,10 +11,10 @@ copy()
     fi
 
     if [ -n $file ] ; then
-        cp $file $WDIR/$2
+        cp $file $TEMP_DIR/$2
     else
         echo "Missing required file: $1 for directory $2"
-        rm -rf $WDIR
+        rm -rf $TEMP_DIR
         exit 1
     fi
 }
@@ -37,14 +37,14 @@ binfiles="sh cat cp dd killall ls mkdir mknod mount "
 binfiles="$binfiles umount sed sleep ln rm uname"
 
 # systemd installs udevadm in /bin. Other udev implementations
-# have it in /sbin
+# have it in /sbin, take note of possible problems/issues
 if [ -x /bin/udevadm ] ; then binfiles="$binfiles udevadm"; fi
 
-sbinfiles="modprobe blkid switch_root"
+sbinfiles="modprobe blkid switch_root pivot_root"
 
 # optional files and locations
 for f in mdadm udevd udevadm; do
-  if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
+    if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
 done
 
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
@@ -52,38 +52,39 @@ unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 DATADIR=/usr/share/mkinitramfs
 INITIN=init.in
 
-# creates a temporrary working directory
-WDIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
+# creates a temporrary working directory, where the
+# files will be stored for the creation of the image
+TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 
 # creates base directory structure
-mkdir -p $WDIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
-mkdir -p $WDIR/etc/{modprobe.d,udev/rules.d}
-touch $WDIR/etc/modprobe.d/modprobe.conf
-ln -s lib $WDIR/lib64
+mkdir -p $TEMP_DIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
+mkdir -p $TEMP_DIR/etc/{modprobe.d,udev/rules.d}
+touch $TEMP_DIR/etc/modprobe.d/modprobe.conf
+ln -s lib $TEMP_DIR/lib64
 
 # creates necessary device nodes
-mknod -m 640 $WDIR/dev/console c 5 1
-mknod -m 664 $WDIR/dev/null    c 1 3
+mknod -m 640 $TEMP_DIR/dev/console c 5 1
+mknod -m 664 $TEMP_DIR/dev/null    c 1 3
 
 # installs the udev configuration files
 if [ -f /etc/udev/udev.conf ]; then
-    cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
+    cp /etc/udev/udev.conf $TEMP_DIR/etc/udev/udev.conf
 fi
 
 for file in $(find /etc/udev/rules.d/ -type f) ; do
-    cp $file $WDIR/etc/udev/rules.d
+    cp $file $TEMP_DIR/etc/udev/rules.d
 done
 
 # installs any firmware present
-cp -a /lib/firmware $WDIR/lib
+cp -a /lib/firmware $TEMP_DIR/lib
 
 # copies the RAID configuration file if present
 if [ -f /etc/mdadm.conf ] ; then
-    cp /etc/mdadm.conf $WDIR/etc
+    cp /etc/mdadm.conf $TEMP_DIR/etc
 fi
 
 # installs the init file
-install -m0755 $DATADIR/$INITIN $WDIR/init
+install -m0755 $DATADIR/$INITIN $TEMP_DIR/init
 
 if [  -n "$KERNEL_VERSION" ] ; then
     if [ -x /bin/kmod ] ; then
@@ -104,8 +105,8 @@ done
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
 for f in $sbinfiles ; do
-  ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
-  copy $f sbin
+    ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    copy $f sbin
 done
 
 # adds udevd libraries if not in /sbin
@@ -117,33 +118,33 @@ fi
 
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
-    ln -s kmod $WDIR/bin/lsmod
-    ln -s kmod $WDIR/bin/insmod
+    ln -s kmod $TEMP_DIR/bin/lsmod
+    ln -s kmod $TEMP_DIR/bin/insmod
 fi
 
 # adds lvm symlinks if appropriate, also copies
 # the lvm.conf file
 if  [ -x /sbin/lvm ] ; then
-    ln -s lvm $WDIR/sbin/lvchange
-    ln -s lvm $WDIR/sbin/lvrename
-    ln -s lvm $WDIR/sbin/lvextend
-    ln -s lvm $WDIR/sbin/lvcreate
-    ln -s lvm $WDIR/sbin/lvdisplay
-    ln -s lvm $WDIR/sbin/lvscan
+    ln -s lvm $TEMP_DIR/sbin/lvchange
+    ln -s lvm $TEMP_DIR/sbin/lvrename
+    ln -s lvm $TEMP_DIR/sbin/lvextend
+    ln -s lvm $TEMP_DIR/sbin/lvcreate
+    ln -s lvm $TEMP_DIR/sbin/lvdisplay
+    ln -s lvm $TEMP_DIR/sbin/lvscan
 
-    ln -s lvm $WDIR/sbin/pvchange
-    ln -s lvm $WDIR/sbin/pvck
-    ln -s lvm $WDIR/sbin/pvcreate
-    ln -s lvm $WDIR/sbin/pvdisplay
-    ln -s lvm $WDIR/sbin/pvscan
+    ln -s lvm $TEMP_DIR/sbin/pvchange
+    ln -s lvm $TEMP_DIR/sbin/pvck
+    ln -s lvm $TEMP_DIR/sbin/pvcreate
+    ln -s lvm $TEMP_DIR/sbin/pvdisplay
+    ln -s lvm $TEMP_DIR/sbin/pvscan
 
-    ln -s lvm $WDIR/sbin/vgchange
-    ln -s lvm $WDIR/sbin/vgcreate
-    ln -s lvm $WDIR/sbin/vgscan
-    ln -s lvm $WDIR/sbin/vgrename
-    ln -s lvm $WDIR/sbin/vgck
+    ln -s lvm $TEMP_DIR/sbin/vgchange
+    ln -s lvm $TEMP_DIR/sbin/vgcreate
+    ln -s lvm $TEMP_DIR/sbin/vgscan
+    ln -s lvm $TEMP_DIR/sbin/vgrename
+    ln -s lvm $TEMP_DIR/sbin/vgck
 
-    cp -a /etc/lvm $WDIR/etc
+    cp -a /etc/lvm $TEMP_DIR/etc
 fi
 
 # installs libraries
@@ -157,15 +158,15 @@ sort $unsorted | uniq | while read library ; do
 done
 
 if [ -d /lib/udev ]; then
-    cp -a /lib/udev $WDIR/lib
+    cp -a /lib/udev $TEMP_DIR/lib
 fi
 if [ -d /lib/systemd ]; then
-    cp -a /lib/systemd $WDIR/lib
+    cp -a /lib/systemd $TEMP_DIR/lib
 fi
 
-( cd $WDIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
+( cd $TEMP_DIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
 
 # remove the temporary directory and file (no longer required)
 # and prints a message about the end of the operation
-rm -rf $WDIR $unsorted
+rm -rf $TEMP_DIR $unsorted
 printf "done.\n"
