@@ -7,9 +7,12 @@ FILE=${FILE-$NAME-$VERSION.iso}
 LABEL=${LABEL-Scudum Linux}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
+CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-1}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
+
+DIR=$(dirname $(readlink -f $0))
 
 set -e
 
@@ -20,6 +23,10 @@ apt-get -y install squashfs-tools
 if [ ! -e $SCUDUM/CONFIGURED ]; then
     echo "Scudum not configured, not possible to make ISO"
     exit 1
+fi
+
+if [ "$CLEANUP" == "1" ]; then
+    $DIR/cleanup.sh
 fi
 
 if [ "$SQUASH" == "1" ]; then
