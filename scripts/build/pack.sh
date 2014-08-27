@@ -9,7 +9,7 @@ FULL_NAME="%NAME_%VERSION_%DATE.tar.gz"
 
 set -e
 
-source ../base/config.sh
+source base/config.sh
 
 rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
