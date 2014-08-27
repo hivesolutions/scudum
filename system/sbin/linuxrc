@@ -1,0 +1,159 @@
+#!/bin/sh
+
+# declares the function to be used to echo information
+# inside the initrd area, allows easier debug
+function echoi() {
+    echo "[initrd] $1"
+}
+
+# sets the global constant values that are used to
+# control the behavior of the loader
+USE_RAMFS=0
+USE_SWAP=0
+
+# sets the initial values for the various variables
+# to be used in the loader
+mounted=0
+
+# prints a message marking the start of the linux
+# so that the end-user may know that interaction
+# is now enable (at least using keyboard)
+echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2014"
+
+# /proc is needed to find the cd
+mount -t proc none /proc
+
+# creates the directory to be used as the mount point
+# for the root file system (will be stored in ram)
+mkdir -p ram
+
+# makes the ram file system storage in case the
+# current mode is set to ram
+if [ "$USE_RAMFS" == "1" ]; then
+    dd if=/dev/zero of=/dev/ram1 bs=1k count=262144;
+    mke2fs -q /dev/ram1
+fi
+
+# mounts the apropriate ram storage according to
+# the currently set configuration
+if [ "$USE_RAMFS" == "1" ]; then
+    mount /dev/ram1 /ram
+else
+    mount -t tmpfs tmpfs /ram
+fi
+
+# moves the current directory to the ram one
+# and creates the cdrom mount point
+cd /ram
+mkdir origin
+
+# prints a message indicating the operation of finding
+# the origin device for loading
+echoi "Finding origin device location..."
+
+# iterates over "some time" to try to find the proper
+# device for the scudum, in a normal situation this
+# operation should succed
+for i in {1..5}; do
+    # retreives the name of the device that is named
+    # scudum (this is considered) the primary mounting
+    # strategy for the scudum origin
+    drive=$(blkid | grep scudum | cut -d : -f 1)
+    if [ "$drive" != "" ]; then
+        echoi "Origin device located at $drive"
+        mount -o ro -n $drive /ram/origin
+        mounted=1
+        break
+    fi
+    echoi "Trying again in 3 seconds..."
+    sleep 3
+done
+
+# uses the current cdrom to mount the origin for
+# the system loading, the cdrom is considered the
+# first fallback for the process, then after that
+# tries to mount all of the scsi discs available
+if [ "$mounted" == "0" ]; then
+    echoi "Origin device not located using fallback"
+    mount -t iso9660 -o ro -n /dev/sr0 /ram/origin;
+    if [ "$?" == "0" ]; then mounted=1; fi
+    for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
+        if [ "$mounted" == "1" ]; then break; fi
+        mount -o ro -n $drive /ram/origin
+        if [ "$?" == "0" ]; then mounted=1; fi
+    done
+fi
+
+# verifies if the squashfs file exists for the current
+# ofigin media and in case it does mounts it
+if [ -f /ram/origin/scudum.sqfs ]; then
+    SQUASH=1
+    echoi "Mounting squashfs based file (scudum.sqfs) as source"
+    mkdir source
+    mount -o loop -t squashfs /ram/origin/scudum.sqfs /ram/source
+else
+    SQUASH=0
+    echoi "Linking origin as source"
+    ln -s origin /ram/source
+fi
+
+# mounts proc and set links to the cd
+mkdir -p run sys
+mkdir proc
+mount -t proc none /ram/proc
+ln -s source/bin bin
+ln -s source/sbin sbin
+ln -s source/lib lib
+ln -s source/boot boot
+ln -s source/usr usr
+ln -s lib lib64
+
+# set up some swap space in case the flag that controls
+# its usage is currently set, otherwise ignores it
+if [ "$USE_SWAP" == "1" ]; then
+    echoi "Creating the swap area (for cache)"
+    dd if=/dev/zero of=swapspace bs=1k count=32768
+    mkswap swapspace
+fi
+
+echoi "Preparing file systems for pivot"
+
+# finish off setting up, it's going to create the complete
+# set of directories used for the system, and then touch
+# some of the file as requested
+mkdir scd
+mkdir home
+mkdir disk
+mkdir tmp
+mkdir mnt
+mkdir var
+cd var
+mkdir lib lock log mail run spool tmp opt cache lib/misc lib/sshd lib/dhclient local
+touch run/sshd.pid
+
+# changes the current path to the root of the temporary
+# ram device in order to decompress the various files
+# that represent the directories that are going to be
+# set as writable (and pre populated)
+cd /ram
+echoi "Unpacking tar.gz files for /root /dev /etc"
+
+# these are the only writeable directories
+# and are pre-populates with he data contained
+# in the provided compressed files
+tar -zxf /ram/source/images/root.tar.gz
+tar -zxf /ram/source/images/dev.tar.gz
+tar -zxf /ram/source/images/etc.tar.gz
+mkdir -p initrd
+
+# runs the pivot operation setting the current directory
+# as the root for execution (the ram device becomes the root)
+pivot_root . initrd
+
+# changes to new root and swap to new root's devices
+exec /usr/sbin/chroot . /sbin/init <dev/console >dev/console 2>&1
+
+# it should never reach this place as reaching it means
+# that a problom occurend in the execution of the chroot
+# operation that marks the beginning of the execution
+exit
