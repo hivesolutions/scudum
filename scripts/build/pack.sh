@@ -3,13 +3,14 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
-FULL_NAME="$NAME-$VERSION.tar.gz"
+FILE=${FILE-$NAME-$VERSION.tar.gz}
 
 BASE=$(pwd)
+DIR=$(dirname $(readlink -f $0))
 
 set -e
 
-source base/config.sh
+source $DIR/base/config.sh
 
 rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
@@ -43,4 +44,4 @@ find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}
 
 cd $BASE
 
-tar -zcvf $FULL_NAME $SCUDUM/*
+tar -zcvf $FILE $SCUDUM/*
