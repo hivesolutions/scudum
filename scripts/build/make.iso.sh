@@ -37,7 +37,6 @@ fi
 
 if [ "$SQUASH" == "1" ]; then
     ISO_DIR=/tmp/$NAME.iso.dir
-
     mksquashfs $SCUDUM $NAME.sqfs
     mkdir -pv $ISO_DIR
     cp -rp $SCUDUM/isolinux $ISO_DIR
