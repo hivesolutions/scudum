@@ -16,6 +16,7 @@ rm -rf .[^.] .??* *
 rm -rf $SCUDUM/scd/*
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
+rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/extras
 rm -rf $SCUDUM/lost+found
