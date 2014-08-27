@@ -7,21 +7,20 @@ set -e
 
 # removes any previously existing build directory
 # and re-constructs the directory changing into it
-rm -rf build
-mkdir build
+rm -rf build && mkdir build
 cd build
 
 # installs the dependencies for the various operations
 # that are going to be performed in the next steps
-../deps.sh
+../extra/deps.sh
 
 # loads the complete set of environment variables
 # that are going to be used in the build process
-source ../base.sh
+source ../extra/base.sh
 
 # runs the cleanup operation, this should remove any
 # previous installation of scudum from the file system
-../cleanup.sh
+../extra/cleanup.sh
 
 # changes the default remembering option and the
 # creation mask for the current user
@@ -75,8 +74,8 @@ cd .. && rm -rf build
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
 chown -R root:root $SCUDUM/tools
-./chroot.sh /tools/repo/scripts/build/system.sh 
+extra/chroot.sh /tools/repo/scripts/build/extra/system.sh 
 
 # runs the final strip operation on the generated files so
 # that some of the size for the files is spared
-./chroot.sh /tools/repo/scripts/build/system/strip.sh
+extra/chroot.sh /tools/repo/scripts/build/system/strip.sh

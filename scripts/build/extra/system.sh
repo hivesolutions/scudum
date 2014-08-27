@@ -7,8 +7,7 @@ set -e
 
 /tools/repo/scripts/build/system/tree.sh
 
-rm -rf sources
-mkdir sources
+rm -rf sources && mkdir sources
 cd sources
 
 /tools/repo/scripts/build/system/linux-headers.sh
@@ -68,3 +67,5 @@ cd sources
 /tools/repo/scripts/build/system/udev.sh
 /tools/repo/scripts/build/system/vim.sh
 /tools/repo/scripts/build/system/nano.sh
+
+cd .. && rm -rf sources

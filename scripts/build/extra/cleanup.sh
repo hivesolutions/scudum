@@ -15,13 +15,10 @@ test mountpoint -q $SCUDUM/sys &&\
 
 # creates the base directory where the scudum
 # distribution will be installed for execution
-rm -rf $SCUDUM
-mkdir -pv $SCUDUM
+rm -rf $SCUDUM && mkdir -pv $SCUDUM
 
 # creates the proper tools directory where the
 # build toolchain is going to be set and sets
 # it as the root directory of the system
-rm -rf $SCUDUM/tools
-rm -rf /tools
-mkdir -pv $SCUDUM/tools
-ln -sv $SCUDUM/tools /
+rm -rf $SCUDUM/tools && mkdir -pv $SCUDUM/tools
+rm -rf /tools && ln -sv $SCUDUM/tools /
