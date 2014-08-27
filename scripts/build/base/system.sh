@@ -70,5 +70,6 @@ cd sources
 /tools/repo/scripts/build/system/openssl.sh
 /tools/repo/scripts/build/system/wget.sh
 /tools/repo/scripts/build/system/git.sh
+/tools/repo/scripts/build/system/openssh.sh
 
 cd .. && rm -rf sources
