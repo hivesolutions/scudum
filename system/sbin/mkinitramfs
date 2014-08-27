@@ -50,7 +50,7 @@ done
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 
 DATADIR=/usr/share/mkinitramfs
-INITIN=init.in
+INIT_IN=linuxrc
 
 # creates a temporrary working directory, where the
 # files will be stored for the creation of the image
@@ -83,8 +83,9 @@ if [ -f /etc/mdadm.conf ] ; then
     cp /etc/mdadm.conf $TEMP_DIR/etc
 fi
 
-# installs the init file
-install -m0755 $DATADIR/$INITIN $TEMP_DIR/init
+# installs the init file that will be used for the initial
+# loading stage of the linux kernel
+install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/linuxrc
 
 if [  -n "$KERNEL_VERSION" ] ; then
     if [ -x /bin/kmod ] ; then
