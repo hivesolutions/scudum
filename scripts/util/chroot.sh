@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 SCUDUM=${SCUDUM-/scudum}
+CHROOT_ARGS=${1---login}
 
 mount -v --bind /dev $SCUDUM/dev
 mount -vt devpts devpts $SCUDUM/dev/pts
@@ -15,7 +16,7 @@ echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
 chroot $SCUDUM /usr/bin/env -i\
     HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
-    /bin/bash $1 --login
+    /bin/bash $CHROOT_ARGS
 
 sync
 umount -v $SCUDUM/sys
