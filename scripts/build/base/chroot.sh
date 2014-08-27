@@ -12,6 +12,8 @@ DIR=$(dirname $(readlink -f $0))
 
 set -e
 
+source $DIR/config.sh
+
 mkdir -pv $SCUDUM/{dev,proc,sys}
 
 # crates the main device nodes with the proper
