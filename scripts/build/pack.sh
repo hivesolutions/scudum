@@ -12,6 +12,7 @@ set -e
 
 source $DIR/base/config.sh
 
+rm -f /tools
 rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
 
