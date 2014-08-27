@@ -12,7 +12,7 @@ set -e
 
 source $DIR/base/config.sh
 
-if -e $SCUDUM/CONFIGURED; do
+if [ -e $SCUDUM/CONFIGURED ]; then
     echo "Scudum already configured, not possible to pack"
     exit 1
 fi
