@@ -12,6 +12,10 @@ URL=${URL-http://repo.stage.hive.pt/scu}
 NAME_F="$NAME"_"$VERSION"_"$ARCH"
 FILE=$NAME_F.scu
 
+# sets the strict execution mode so that if an error
+# occurs in execution the script is returned in error
+set -e
+
 # verifies if a valid name for retrieval has been
 # provided if not returns immediately in error
 if [ -z "$NAME" ]; then

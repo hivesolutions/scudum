@@ -6,6 +6,8 @@ MINOR=${MINOR-3.12.6}
 BUILD=${BUILD-1}
 NAME=linux-$MINOR
 
+set -e
+
 mkdir -p /sources
 cd /sources
 
