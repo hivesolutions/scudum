@@ -10,9 +10,6 @@ DEPLOY=${DEPLOY-1}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
 
-CUR=$(pwd)
-DIR=$(dirname $(readlink -f $0))
-
 set -e
 
 apt-get -y install squashfs-tools
@@ -21,8 +18,6 @@ if [ ! -e $SCUDUM/CONFIGURED ]; then
     echo "Scudum not configured, not possible to make ISO"
     exit 1
 fi
-
-cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
     ISO_DIR=/tmp/$NAME.iso.dir
