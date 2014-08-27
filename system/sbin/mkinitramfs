@@ -147,7 +147,8 @@ if  [ -x /sbin/lvm ] ; then
     cp -a /etc/lvm $TEMP_DIR/etc
 fi
 
-# installs libraries
+# installs libraries into the proper directory
+# so that they may be used at runtime
 sort $unsorted | uniq | while read library ; do
     if [ "$library" == "linux-vdso.so.1" ] ||
         [ "$library" == "linux-gate.so.1" ]; then
@@ -162,6 +163,21 @@ if [ -d /lib/udev ]; then
 fi
 if [ -d /lib/systemd ]; then
     cp -a /lib/systemd $TEMP_DIR/lib
+fi
+
+# installs the kernel modules if they were requested
+if [ -n "$KERNEL_VERSION" ]; then
+    find\
+        /lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib}\
+        /lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,md,firewire}\
+        /lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio}\
+        /lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage}\
+        -type f 2> /dev/null | cpio --make-directories -p --quiet $TEMP_DIR
+
+    cp /lib/modules/$KERNEL_VERSION/modules.{builtin,order}\
+        $TEMP_DIR/lib/modules/$KERNEL_VERSION
+
+    depmod -b $TEMP_DIR $KERNEL_VERSION
 fi
 
 ( cd $TEMP_DIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
