@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-scudum}
-VERSION=${VERSION-v1}
-DATE=${DATE-$(date +%Y%m%d)}
+VERSION=${VERSION-$(date +%Y%m%d)}
 
-FULL_NAME="$NAME-$VERSION-$DATE.tar.gz"
+FULL_NAME="$NAME-$VERSION.tar.gz"
 
 set -e
 
