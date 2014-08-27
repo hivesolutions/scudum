@@ -21,6 +21,7 @@ $DIR/base/deps.sh
 # loads the complete set of environment variables
 # that are going to be used in the build process
 source $DIR/base/config.sh
+source $DIR/base/config.tools.sh
 
 # runs the cleanup operation, this should remove any
 # previous installation of scudum from the file system

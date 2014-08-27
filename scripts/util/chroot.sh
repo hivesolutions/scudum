@@ -1,15 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-DEV_NAME=${DEV_NAME-/dev/sdb}
-DEV_BOOT=${DEV_BOOT-"$DEV_NAME"1}
-DEV_ROOT=${DEV_ROOT-"$DEV_NAME"3}
 SCUDUM=${SCUDUM-/scudum}
-
-mkdir -pv $SCUDUM
-mount -v $DEV_ROOT $SCUDUM
-mkdir -pv $SCUDUM/boot
-mount -v $DEV_BOOT $SCUDUM/boot
 
 mount -v --bind /dev $SCUDUM/dev
 mount -vt devpts devpts $SCUDUM/dev/pts
@@ -30,6 +22,3 @@ umount -v $SCUDUM/sys
 umount -v $SCUDUM/proc
 umount -v $SCUDUM/dev/pts
 umount -v $SCUDUM/dev
-
-umount -v $SCUDUM/boot && rm -rvf $SCUDUM/boot
-umount -v $SCUDUM && rm -rvf $SCUDUM
