@@ -41,6 +41,10 @@ rm -f $SCUDUM/etc/fstab
 cp -p $SCUDUM/etc/fstab.orig $SCUDUM/etc/fstab
 rm -f $SCUDUM/etc/ssh/ssh_host_*
 
+find $SCUDUM -name "*.pyc" -delete
+
+find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";"
+
 cd $BASE
 
 tar -zcvf $FULL_NAME $SCUDUM/*
