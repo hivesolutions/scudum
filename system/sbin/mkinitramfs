@@ -19,10 +19,10 @@ copy() {
 }
 
 if [ -z $1 ] ; then
-    INITRAMFS_FILE=initrd.img-no-kmods
+    INITRAMFS_FILE=initrd.img
 else
     KERNEL_VERSION=$1
-    INITRAMFS_FILE=initrd.img-$KERNEL_VERSION
+    INITRAMFS_FILE=initrd.img
 fi
 
 if [ -n "$KERNEL_VERSION" ] && [ ! -d "/lib/modules/$1" ] ; then
