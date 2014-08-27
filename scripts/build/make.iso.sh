@@ -1,8 +1,9 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-FILE=${FILE-scudum.iso}
 NAME=${NAME-scudum}
+VERSION=${VERSION-$(date +%Y%m%d)}
+FILE=${FILE-$NAME-$VERSION.iso}
 LABEL=${NAME-Scudum Linux}
 SCUDUM=${SCUDUM-/scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
