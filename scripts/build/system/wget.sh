@@ -7,5 +7,5 @@ rm -rf "wget-$VERSION" && tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
-./configure --prefix=/usr --with-ssl=openssl --with-libssl-prefix=/usr
+./configure --prefix=/usr --with-ssl=openssl
 make && make install
