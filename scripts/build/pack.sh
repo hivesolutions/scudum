@@ -14,9 +14,9 @@ source base/config.sh
 rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
 
-mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
-mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
-mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
 mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
+mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
 
 tar -zcvf $FULL_NAME $SCUDUM/*
