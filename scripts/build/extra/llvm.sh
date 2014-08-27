@@ -16,7 +16,7 @@ wget --no-check-certificate "http://llvm.org/releases/$VERSION_M/compiler-rt-$VE
 tar -zxf "compiler-rt-$VERSION_M.src.tar.gz" -C projects
 mv projects/compiler-rt-$VERSION_M projects/compiler-rt
 
-sed -e 's:/docs/llvm:/share/doc/llvm-3.4.2:'\
+sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
     -i Makefile.config.in
 
 CC=gcc CXX=g++ ./configure --prefix=/usr\
