@@ -19,6 +19,21 @@ cd build
 # that are going to be used in the build process
 source ../base.sh
 
+# runs the unmount operation for the complete set
+# of devices associated with scudum (as expected)
+if ! mountpoint -q $SCUDUM/dev; then
+    mount -v --bind /dev $SCUDUM/dev
+fi
+if ! mountpoint -q $SCUDUM/dev/pts; then
+    mount -vt devpts devpts $SCUDUM/dev/pts
+fi
+if ! mountpoint -q $SCUDUM/proc; then
+    mount -vt proc proc $SCUDUM/proc
+fi
+if ! mountpoint -q $SCUDUM/sys; then
+    mount -vt sysfs sysfs $SCUDUM/sys
+fi
+
 # creates the base directory where the scudum
 # distribution will be installed for execution
 rm -rf $SCUDUM
