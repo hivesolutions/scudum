@@ -12,7 +12,7 @@ LOADER=${LOADER-grub}
 SCUDUM=${SCUDUM-/tmp/scudum}
 NAME=${NAME-scudum}
 VERSION=${VERSION-latest}
-REPO=${REPO-http://hole1.hive:9090/builds/scudum}
+REPO=${REPO-http://hole1.hive:9090/builds/$NAME}
 
 if [ $DEV_ROOT == $DEV_BOOT ]; then BOOT_FS=$ROOT_FS; fi
 
