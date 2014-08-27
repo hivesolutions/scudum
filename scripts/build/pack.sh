@@ -12,6 +12,11 @@ set -e
 
 source $DIR/base/config.sh
 
+if -e $SCUDUM/CONFIGURED; do
+    echo "Scudum already configured, not possible to pack"
+    exit 1
+fi
+
 rm -f /tools
 rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
