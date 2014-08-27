@@ -4,16 +4,16 @@ VERSION_M=${VERSION_M-3.4}
 set -e
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
-rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.tar.gz"
+rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.src.tar.gz"
 rm -f "llvm-$VERSION.tar.gz"
 cd llvm-$VERSION
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
-tar -zxf cfe-$VERSION.src.tar.gz -C tools
+tar -zxf "cfe-$VERSION.src.tar.gz" -C tools
 mv tools/cfe-$VERSION.src tools/clang
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.gz"
-tar -zxf compiler-rt-$VERSION_M.src.tar.gz -C projects
+tar -zxf "compiler-rt-$VERSION_M.src.tar.gz" -C projects
 mv projects/compiler-rt-$VERSION_M projects/compiler-rt
 
 sed -e 's:/docs/llvm:/share/doc/llvm-3.4.2:'\
