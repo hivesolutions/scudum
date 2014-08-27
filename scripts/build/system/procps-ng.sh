@@ -18,7 +18,7 @@ cd procps-ng-$VERSION
     
 make
 
-if [ $TEST ]; do
+if [ $TEST ]; then
     pushd testsuite
         sed -i -e 's|exec which sleep|exec echo /tools/bin/sleep|'\
             -e 's|999999|&9|' config/unix.exp
