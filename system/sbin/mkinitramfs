@@ -33,7 +33,7 @@ fi
 printf "Creating $INITRAMFS_FILE... "
 
 binfiles="sh cat cp dd killall ls mkdir mknod mount "
-binfiles="$binfiles umount sed sleep ln rm uname"
+binfiles="$binfiles umount sed sleep ln rm uname grep cut tar"
 
 # systemd installs udevadm in /bin. Other udev implementations
 # have it in /sbin, take note of possible problems/issues
@@ -58,12 +58,12 @@ TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 # creates the ramdisk file and zeros it taking into
 # account the requested size (this is very important)
 rm -f ramdisk
-dd if=/dev/zero of=ramdisk bs=1k count=32768 > /dev/null
+dd if=/dev/zero of=ramdisk bs=1k count=32768 &> /dev/null
 losetup /dev/loop1 ramdisk
 
 # creates the the ext2 based file system in the loop
 # device and then mounts it under the temporary directory
-mke2fs /dev/loop1 > /dev/null
+mke2fs /dev/loop1 &> /dev/null
 mkdir -p /mnt/loop1
 mount /dev/loop1 $TEMP_DIR
 rm -rf $TEMP_DIR/lost+found
@@ -108,7 +108,8 @@ if [  -n "$KERNEL_VERSION" ] ; then
     fi
 fi
 
-# installs basic binaries
+# installs basic binaries, that may be used under the
+# the linux rc script for processing
 for f in $binfiles ; do
     ldd /bin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     copy $f bin
@@ -120,6 +121,7 @@ if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 for f in $sbinfiles ; do
     ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     copy $f sbin
+    copy $f bin
 done
 
 # adds udevd libraries if not in /sbin
