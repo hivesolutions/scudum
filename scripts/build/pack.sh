@@ -3,12 +3,11 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
-
 FULL_NAME="$NAME-$VERSION.tar.gz"
 
-set -e
-
 BASE=$(pwd)
+
+set -e
 
 source base/config.sh
 
