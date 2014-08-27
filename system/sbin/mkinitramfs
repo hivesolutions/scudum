@@ -121,7 +121,6 @@ if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 for f in $sbinfiles ; do
     ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     copy $f sbin
-    copy $f bin
 done
 
 # adds udevd libraries if not in /sbin

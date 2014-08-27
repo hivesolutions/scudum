@@ -6,6 +6,11 @@ function echoi() {
     echo "[initrd] $1"
 }
 
+# updates the current path variable so that the proper
+# relations are used and the executables found
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+export PATH
+
 # sets the global constant values that are used to
 # control the behavior of the loader
 USE_RAMFS=0
