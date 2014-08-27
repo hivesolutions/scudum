@@ -1,3 +1,6 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
 # tries to retrieve the proper chroot (bash) arguments
 # using the provided arguments if they exist or an interactive
 # fallback approach otherwise (as expected)
