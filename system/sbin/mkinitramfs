@@ -36,12 +36,13 @@ printf "Creating $INITRAMFS_FILE... "
 binfiles="sh cat cp dd killall ls mkdir mknod mount "
 binfiles="$binfiles umount sed sleep ln rm uname"
 
-# Systemd installs udevadm in /bin. Other udev implementations have it in /sbin
+# systemd installs udevadm in /bin. Other udev implementations
+# have it in /sbin
 if [ -x /bin/udevadm ] ; then binfiles="$binfiles udevadm"; fi
 
 sbinfiles="modprobe blkid switch_root"
 
-#Optional files and locations
+# optional files and locations
 for f in mdadm udevd udevadm; do
   if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
 done
@@ -51,55 +52,55 @@ unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 DATADIR=/usr/share/mkinitramfs
 INITIN=init.in
 
-# Create a temporrary working directory
+# creates a temporrary working directory
 WDIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 
-# Create base directory structure
+# creates base directory structure
 mkdir -p $WDIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
 mkdir -p $WDIR/etc/{modprobe.d,udev/rules.d}
 touch $WDIR/etc/modprobe.d/modprobe.conf
 ln -s lib $WDIR/lib64
 
-# Create necessary device nodes
+# creates necessary device nodes
 mknod -m 640 $WDIR/dev/console c 5 1
 mknod -m 664 $WDIR/dev/null    c 1 3
 
-# Install the udev configuration files
+# installs the udev configuration files
 if [ -f /etc/udev/udev.conf ]; then
-  cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
+    cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
 fi
 
 for file in $(find /etc/udev/rules.d/ -type f) ; do
-  cp $file $WDIR/etc/udev/rules.d
+    cp $file $WDIR/etc/udev/rules.d
 done
 
-# Install any firmware present
+# installs any firmware present
 cp -a /lib/firmware $WDIR/lib
 
-# Copy the RAID configuration file if present
+# copies the RAID configuration file if present
 if [ -f /etc/mdadm.conf ] ; then
-  cp /etc/mdadm.conf $WDIR/etc
+    cp /etc/mdadm.conf $WDIR/etc
 fi
 
-# Install the init file
+# installs the init file
 install -m0755 $DATADIR/$INITIN $WDIR/init
 
 if [  -n "$KERNEL_VERSION" ] ; then
-  if [ -x /bin/kmod ] ; then
-    binfiles="$binfiles kmod"
-  else
-    binfiles="$binfiles lsmod"
-    sbinfiles="$sbinfiles insmod"
-  fi
+    if [ -x /bin/kmod ] ; then
+        binfiles="$binfiles kmod"
+    else
+        binfiles="$binfiles lsmod"
+        sbinfiles="$sbinfiles insmod"
+    fi
 fi
 
-# Install basic binaries
+# installs basic binaries
 for f in $binfiles ; do
-  ldd /bin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
-  copy $f bin
+    ldd /bin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    copy $f bin
 done
 
-# Add lvm if present
+# adds lvm if present
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
 for f in $sbinfiles ; do
@@ -107,78 +108,64 @@ for f in $sbinfiles ; do
   copy $f sbin
 done
 
-# Add udevd libraries if not in /sbin
+# adds udevd libraries if not in /sbin
 if [ -x /lib/udev/udevd ] ; then
-  ldd /lib/udev/udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    ldd /lib/udev/udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
 elif [ -x /lib/systemd/systemd-udevd ] ; then
-  ldd /lib/systemd/systemd-udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    ldd /lib/systemd/systemd-udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
 fi
 
-# Add module symlinks if appropriate
+# adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
-  ln -s kmod $WDIR/bin/lsmod
-  ln -s kmod $WDIR/bin/insmod
+    ln -s kmod $WDIR/bin/lsmod
+    ln -s kmod $WDIR/bin/insmod
 fi
 
-# Add lvm symlinks if appropriate
-# Also copy the lvm.conf file
+# adds lvm symlinks if appropriate, also copies
+# the lvm.conf file
 if  [ -x /sbin/lvm ] ; then
-  ln -s lvm $WDIR/sbin/lvchange
-  ln -s lvm $WDIR/sbin/lvrename
-  ln -s lvm $WDIR/sbin/lvextend
-  ln -s lvm $WDIR/sbin/lvcreate
-  ln -s lvm $WDIR/sbin/lvdisplay
-  ln -s lvm $WDIR/sbin/lvscan
+    ln -s lvm $WDIR/sbin/lvchange
+    ln -s lvm $WDIR/sbin/lvrename
+    ln -s lvm $WDIR/sbin/lvextend
+    ln -s lvm $WDIR/sbin/lvcreate
+    ln -s lvm $WDIR/sbin/lvdisplay
+    ln -s lvm $WDIR/sbin/lvscan
 
-  ln -s lvm $WDIR/sbin/pvchange
-  ln -s lvm $WDIR/sbin/pvck
-  ln -s lvm $WDIR/sbin/pvcreate
-  ln -s lvm $WDIR/sbin/pvdisplay
-  ln -s lvm $WDIR/sbin/pvscan
+    ln -s lvm $WDIR/sbin/pvchange
+    ln -s lvm $WDIR/sbin/pvck
+    ln -s lvm $WDIR/sbin/pvcreate
+    ln -s lvm $WDIR/sbin/pvdisplay
+    ln -s lvm $WDIR/sbin/pvscan
 
-  ln -s lvm $WDIR/sbin/vgchange
-  ln -s lvm $WDIR/sbin/vgcreate
-  ln -s lvm $WDIR/sbin/vgscan
-  ln -s lvm $WDIR/sbin/vgrename
-  ln -s lvm $WDIR/sbin/vgck
-  # Conf file(s)
-  cp -a /etc/lvm $WDIR/etc
+    ln -s lvm $WDIR/sbin/vgchange
+    ln -s lvm $WDIR/sbin/vgcreate
+    ln -s lvm $WDIR/sbin/vgscan
+    ln -s lvm $WDIR/sbin/vgrename
+    ln -s lvm $WDIR/sbin/vgck
+
+    cp -a /etc/lvm $WDIR/etc
 fi
 
-# Install libraries
+# installs libraries
 sort $unsorted | uniq | while read library ; do
-  if [ "$library" == "linux-vdso.so.1" ] ||
-     [ "$library" == "linux-gate.so.1" ]; then
-    continue
-  fi
+    if [ "$library" == "linux-vdso.so.1" ] ||
+        [ "$library" == "linux-gate.so.1" ]; then
+        continue
+    fi
 
-  copy $library lib
+    copy $library lib
 done
 
 if [ -d /lib/udev ]; then
-  cp -a /lib/udev $WDIR/lib
+    cp -a /lib/udev $WDIR/lib
 fi
 if [ -d /lib/systemd ]; then
-  cp -a /lib/systemd $WDIR/lib
-fi
-
-# Install the kernel modules if requested
-if [ -n "$KERNEL_VERSION" ]; then
-  find                                                                        \
-     /lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib}                      \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,md,firewire}      \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio} \
-     /lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage}           \
-     -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
-
-  cp /lib/modules/$KERNEL_VERSION/modules.{builtin,order}                     \
-            $WDIR/lib/modules/$KERNEL_VERSION
-
-  depmod -b $WDIR $KERNEL_VERSION
+    cp -a /lib/systemd $WDIR/lib
 fi
 
 ( cd $WDIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
 
-# Remove the temporary directory and file
+# remove the temporary directory and file (no longer required)
+# and prints a message about the end of the operation
 rm -rf $WDIR $unsorted
 printf "done.\n"
