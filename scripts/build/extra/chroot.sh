@@ -12,14 +12,10 @@ test ! -e $SCUDUM/dev/null &&\
 # verifies each of the special filesystems for
 # mounting and in case they are mounted umounts
 # them avoiding a duplicate re-mounting
-test mountpoint -q $SCUDUM/dev &&\
-    umount $SCUDUM/dev
-test mountpoint -q $SCUDUM/dev/pts &&\
-    umount $SCUDUM/dev/pts
-test mountpoint -q $SCUDUM/proc &&\
-    umount $SCUDUM/proc
-test mountpoint -q $SCUDUM/sys &&\
-    umount $SCUDUM/sys
+mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
+mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
+mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
 
 mount -v --bind /dev $SCUDUM/dev
 
