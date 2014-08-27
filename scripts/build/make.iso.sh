@@ -13,6 +13,8 @@ AUTORUN=${AUTORUN-1}
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
+set -e
+
 if [ ! -e $SCUDUM/CONFIGURED ]; then
     echo "Scudum not configured, not possible to make ISO"
     exit 1
