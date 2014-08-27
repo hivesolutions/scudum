@@ -41,7 +41,7 @@ rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 find $SCUDUM -name "*.pyc" -delete
 
-find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";"
+find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
 
 cd $BASE
 
