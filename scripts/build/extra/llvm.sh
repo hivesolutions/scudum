@@ -5,7 +5,7 @@ set -e
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
 rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.src.tar.gz"
-rm -f "llvm-$VERSION.tar.gz"
+rm -f "llvm-$VERSION.src.tar.gz"
 cd llvm-$VERSION
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
