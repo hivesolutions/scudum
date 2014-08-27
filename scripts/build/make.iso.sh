@@ -4,7 +4,7 @@
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
 FILE=${FILE-$NAME-$VERSION.iso}
-LABEL=${NAME-Scudum Linux}
+LABEL=${LABEL-Scudum Linux}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
 DEPLOY=${DEPLOY-1}
