@@ -37,8 +37,6 @@ rm -rf $SCUDUM/boot/lost+found
 rm -f $SCUDUM/boot/initrd.img
 rm -f $SCUDUM/isolinux/initrd.img
 rm -f $SCUDUM/boot/grub/grub.cfg
-rm -f $SCUDUM/etc/fstab
-cp -p $SCUDUM/etc/fstab.orig $SCUDUM/etc/fstab
 rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 find $SCUDUM -name "*.pyc" -delete
