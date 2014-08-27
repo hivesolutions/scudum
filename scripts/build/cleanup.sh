@@ -4,18 +4,14 @@ set -e
 
 # runs the unmount operation for the complete set
 # of devices associated with scudum (as expected)
-if mountpoint -q $SCUDUM/dev; then
+test mountpoint -q $SCUDUM/dev &&\
     umount $SCUDUM/dev
-fi
-if mountpoint -q $SCUDUM/dev/pts; then
+test mountpoint -q $SCUDUM/dev/pts &&\
     umount $SCUDUM/dev/pts
-fi
-if mountpoint -q $SCUDUM/proc; then
+test mountpoint -q $SCUDUM/proc &&\
     umount $SCUDUM/proc
-fi
-if mountpoint -q $SCUDUM/sys; then
+test mountpoint -q $SCUDUM/sys &&\
     umount $SCUDUM/sys
-fi
 
 # creates the base directory where the scudum
 # distribution will be installed for execution
