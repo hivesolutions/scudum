@@ -63,9 +63,10 @@ losetup /dev/loop1 ramdisk
 
 # creates the the ext2 based file system in the loop
 # device and then mounts it under the temporary directory
-mke2fs /dev/loop1
+mke2fs /dev/loop1 > /dev/null
 mkdir -p /mnt/loop1
 mount /dev/loop1 $TEMP_DIR
+rm -rf $TEMP_DIR/lost+found
 
 # creates base directory structure
 mkdir -p $TEMP_DIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
@@ -192,6 +193,7 @@ fi
 # it removing then the directory reference
 sync
 umount $TEMP_DIR
+losetup -d /dev/loop1
 rm -rf $TEMP_DIR
 
 # runs the compression of the ramdisk into the init
