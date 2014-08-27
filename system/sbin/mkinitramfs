@@ -1,7 +1,6 @@
 #!/bin/bash
 
-copy()
-{
+copy() {
     local file
 
     if [ "$2" == "lib" ]; then
