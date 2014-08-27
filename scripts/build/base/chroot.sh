@@ -1,3 +1,7 @@
+# retrieves the reference to the current files directory
+# so that it's possible to "write" the scripts as relative
+DIR=$(dirname $(readlink -f $0))
+
 set -e
 
 mkdir -pv $SCUDUM/{dev,proc,sys}
@@ -36,7 +40,7 @@ else
     mount -vt tmpfs shm $SCUDUM/dev/shm
 fi
 
-cp -rp $(readlink -f "../../../scudum") /tools/repo
+cp -rp $(readlink -f "$DIR/../../../../scudum") /tools/repo
 
 chroot $SCUDUM /tools/bin/env -i\
     HOME=/root\
