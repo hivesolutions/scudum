@@ -7,7 +7,7 @@ ADDRESS=$(ifconfig | sed -n "s/.*inet addr:\([0-9.]\+\)\s.*/\1/p" | grep -v "127
 PROCESS_COUNT=$(ps hax -o user | wc -l) 
 
 echo -e "Linux "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
-echo -e "Copyright Hive Solutions Lda. 2008-2013"
+echo -e "Copyright Hive Solutions Lda. 2008-2014"
 echo -e ""
 echo -e "  IP address: $ADDRESS"
 echo -e "  Processes: $PROCESS_COUNT"
