@@ -30,6 +30,8 @@ fi
 
 cp -rp $(readlink -f "../../../scudum") /tools/repo
 
+set +e
+
 chroot $SCUDUM /tools/bin/env -i\
     HOME=/root\
     TERM="$TERM"\
