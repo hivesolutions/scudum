@@ -28,7 +28,6 @@ fi
 
 make -j $CONCURRENCY
 
-cp -v arch/x86/boot/bzImage /vmlinuz
 cp -v arch/x86/boot/bzImage /boot/vmlinuz
 cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
