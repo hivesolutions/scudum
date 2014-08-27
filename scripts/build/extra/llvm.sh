@@ -21,7 +21,6 @@ sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
 
 CC=gcc CXX=g++ ./configure --prefix=/usr\
     --sysconfdir=/etc\
-    --enable-libffi\
     --enable-optimized\
     --enable-shared\
     --disable-assertions
