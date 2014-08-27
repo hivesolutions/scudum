@@ -70,6 +70,7 @@ cd sources
 /tools/repo/scripts/build/system/nano.sh
 /tools/repo/scripts/build/system/openssl.sh
 /tools/repo/scripts/build/system/wget.sh
+/tools/repo/scripts/build/system/curl.sh
 /tools/repo/scripts/build/system/git.sh
 /tools/repo/scripts/build/system/openssh.sh
 
