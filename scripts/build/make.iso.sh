@@ -2,43 +2,22 @@
 # -*- coding: utf-8 -*-
 
 FILE=${FILE-scudum.iso}
-DEV_NAME=${DEV_NAME-/dev/null}
-BOOT_SIZE=${BOOT_SIZE-+1G}
-SWAP_SIZE=${SWAP_SIZE-+2G}
 NAME=${NAME-scudum}
-SCUDUM=${SCUDUM-/tmp/scudum}
+SCUDUM=${SCUDUM-/scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
-SCHEMA=${SCHEMA-transient}
 LOADER=${LOADER-isolinux}
-VERSION=${VERSION-latest}
-REBUILD=${REBUILD-0}
 DEPLOY=${DEPLOY-1}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
 
-DEV_BOOT="$DEV_NAME"1
-DEV_SWAP="$DEV_NAME"2
-DEV_ROOT="$DEV_NAME"3
-
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
-if [ "$DEV_NAME" == "/dev/null" ]; then
-    echo "DEV_NAME not specified, it's required"
+if [ ! -e $SCUDUM/CONFIGURED ]; then
+    echo "Scudum not configured, not possible to make ISO"
     exit 1
 fi
 
-mkdir -pv $SCUDUM
-mount -v $DEV_ROOT $SCUDUM
-if [ $DEV_ROOT != $DEV_BOOT ]; then
-    mkdir -pv $SCUDUM/boot
-    mount -v $DEV_BOOT $SCUDUM/boot
-fi
-
-cd $SCUDUM
-tar -zcf images/root.tar.gz root
-tar -zcf images/dev.tar.gz dev
-tar -zcf images/etc.tar.gz etc
 cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
@@ -74,14 +53,3 @@ fi
 if [ "$DEPLOY" == "1" ]; then
     mv $FILE $TARGET
 fi
-
-rm -v $SCUDUM/isolinux/initrd.img
-rm -v $SCUDUM/images/root.tar.gz
-rm -v $SCUDUM/images/dev.tar.gz
-rm -v $SCUDUM/images/etc.tar.gz
-
-sync
-if [ $DEV_ROOT != $DEV_BOOT ]; then
-    umount -v $SCUDUM/boot && rm -rvf $SCUDUM/boot
-fi
-umount -v $SCUDUM && rm -rvf $SCUDUM
