@@ -3,7 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-v1}
-DATE=${DATE-$(date +%Y%m%dT%H%M%S)}
+DATE=${DATE-$(date +%Y%m%d)}
 
 FULL_NAME="$NAME-$VERSION-$DATE.tar.gz"
 
