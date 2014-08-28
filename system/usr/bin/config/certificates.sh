@@ -11,4 +11,4 @@ install -d ${SSLDIR}/certs &&\
 cp -v certs/*.pem ${SSLDIR}/certs &&\
 c_rehash &&\
 install BLFS-ca-bundle*.crt ${SSLDIR}/ca-bundle.crt &&\
-ln -sfv ../ca-bundle.crt ${SSLDIR}/certs/ca-certificates.crt &&\
+ln -sfv ../ca-bundle.crt ${SSLDIR}/certs/ca-certificates.crt
