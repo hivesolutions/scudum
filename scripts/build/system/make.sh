@@ -7,7 +7,8 @@ rm -rf make-$VERSION && tar -jxf "make-$VERSION.tar.bz2"
 rm -f "make-$VERSION.tar.bz2"
 cd make-$VERSION
 
-patch -Np1 -i ../make-$VERSION-upstream_fixes-3.patch
+wget --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/make-$VERSION-upstream_fixes-3.patch"
+patch -Np1 -i make-$VERSION-upstream_fixes-3.patch
 
 ./configure --prefix=/usr
 
