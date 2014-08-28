@@ -1,6 +1,14 @@
+# retrieves the reference to the current files directory
+# so that it's possible to "write" the scripts as relative
+DIR=$(dirname $(readlink -f $0))
+
 # sets the abort on error flag so that if any of the
 # commands fails the execution is stopped
 set -e
+
+# loads the currently defined configuration so that
+# some of the required variables become available
+source $DIR/config.sh
 
 # runs the unmount operation for the complete set
 # of devices associated with scudum (as expected)
