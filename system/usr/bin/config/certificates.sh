@@ -1,3 +1,6 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
 SSLDIR=/usr/ssl
 
 set -e
