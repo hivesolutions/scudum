@@ -38,7 +38,7 @@ fi
 
 cd $SCUDUM
 
-mkdir -pv images
+rm -rfv images && mkdir -pv images
 tar -zcf images/root.tar.gz root
 tar -zcf images/dev.tar.gz dev
 tar -zcf images/etc.tar.gz etc
