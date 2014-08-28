@@ -62,7 +62,9 @@ cd gcc-build
     --disable-libsanitizer\
     --disable-libssp\
     --disable-libstdc++-v3\
-    --enable-languages=c,c++
+    --enable-languages=c,c++\
+    --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
+    --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
 ln -sv libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`

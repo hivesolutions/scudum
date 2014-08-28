@@ -1,4 +1,7 @@
 VERSION=${VERSION-4.8.3}
+VERSION_MPFR=${VERSION_MPFR-3.1.2}
+VERSION_GMP=${VERSION_GMP-5.1.3}
+VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e
 
@@ -6,10 +9,6 @@ wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
-
-# downloads all the requirements for the current gcc builds
-# should as required by the current build system strategy
-./contrib/download_prerequisites
 
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
@@ -31,6 +30,23 @@ do
     touch $file.orig
 done
 
+wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
+rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
+rm -f "gcc-$VERSION.tar.bz2"
+cd gcc-$VERSION
+
+wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
+tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
+mv mpfr-$VERSION_MPFR mpfr
+
+wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
+tar -Jxf "gmp-$VERSION_GMP.tar.xz"
+mv gmp-$VERSION_GMP gmp
+
+wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
+tar -zxf "mpc-$VERSION_MPC.tar.gz"
+mv mpc-$VERSION_MPC mpc
+
 cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
@@ -47,7 +63,9 @@ CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ../gcc-$
     --disable-libstdcxx-pch\
     --disable-multilib\
     --disable-bootstrap\
-    --disable-libgomp
+    --disable-libgomp\
+    --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
+    --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
 
