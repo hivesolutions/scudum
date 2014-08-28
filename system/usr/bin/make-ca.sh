@@ -28,7 +28,7 @@ VERSION=$(echo $REVISION | cut -f2 -d" ")
 
 TEMPDIR=$(mktemp -d)
 TRUSTATTRIBUTES="CKA_TRUST_SERVER_AUTH"
-BUNDLE="BLFS-ca-bundle-${VERSION}.crt"
+BUNDLE="ca-bundle-${VERSION}.crt"
 CONVERTSCRIPT="/usr/bin/make-cert.pl"
 SSLDIR="/etc/ssl"
 
