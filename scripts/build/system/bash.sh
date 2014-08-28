@@ -16,7 +16,7 @@ patch -Np1 -i bash-$VERSION-fixes-11.patch
     --htmldir=/usr/share/doc/bash-$VERSION\
     --without-bash-malloc\
     --with-installed-readline
-    
+
 make
 
 chown -Rv nobody .

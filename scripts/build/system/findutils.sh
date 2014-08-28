@@ -11,7 +11,7 @@ cd findutils-$VERSION
     --prefix=/usr\
     --libexecdir=/usr/lib/findutils\
     --localstatedir=/var/lib/locate
-    
+
 make
 test $TEST && make check
 make install

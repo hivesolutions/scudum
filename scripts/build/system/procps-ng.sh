@@ -15,7 +15,7 @@ cd procps-ng-$VERSION
     --disable-static\
     --disable-skill\
     --disable-kill
-    
+
 make
 
 if [ $TEST ]; then

@@ -18,7 +18,7 @@ cd build
     --disable-libuuid\
     --disable-uuidd\
     --disable-fsck
-    
+
 make
 test $TEST && make check
 make install
