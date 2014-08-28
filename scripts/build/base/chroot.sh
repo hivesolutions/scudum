@@ -52,7 +52,7 @@ else
     mount -vt tmpfs shm $SCUDUM/dev/shm
 fi
 
-cp -rp $(readlink -f "$DIR/../../../../scudum") /tools/repo
+cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
 
 chroot $SCUDUM /tools/bin/env -i\
     HOME=/root\
