@@ -13,8 +13,9 @@ esac
 
 sed -i -e /autogen/d -e /check.sh/d fixincludes/Makefile.in
 
-mkdir -v ../gcc-build
-cd ../gcc-build
+cd ..
+rm -rf gcc-build && mkdir gcc-build
+cd gcc-build
 
 ../gcc-$VERSION/configure\
     --prefix=/usr\

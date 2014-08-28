@@ -32,8 +32,7 @@ do
 done
 
 cd ..
-rm -rf gcc-build
-mkdir gcc-build
+rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ../gcc-$VERSION/configure\

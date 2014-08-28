@@ -27,8 +27,7 @@ done
 sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure
 
 cd ..
-rm -rf gcc-build
-mkdir gcc-build
+rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 ../gcc-$VERSION/configure\
