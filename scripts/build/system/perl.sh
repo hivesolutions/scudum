@@ -22,5 +22,5 @@ sh Configure -des -Dprefix=/usr\
     Duseshrplib
 
 make
-make -k test
+test $TEST && make -k test
 make install

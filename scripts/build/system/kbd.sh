@@ -7,7 +7,7 @@ rm -rf kbd-$VERSION && tar -zxf "kbd-$VERSION.tar.gz"
 rm -f "kbd-$VERSION.tar.gz"
 cd kbd-$VERSION
 
-patch -Np1 -i ../kbd-$VERSION-backspace-1.patch
+patch -Np1 -i kbd-$VERSION-backspace-1.patch
 
 sed -i -e '326 s/if/while/' src/loadkeys.analyze.l
 
