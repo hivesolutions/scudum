@@ -44,11 +44,14 @@ cd gcc-build
     --disable-decimal-float\
     --disable-threads\
     --disable-libatomic\
-    --disable-libmudflap\
-    --disable-libssp\
     --disable-libgomp\
+    --disable-libitm\
+    --disable-libmudflap\
     --disable-libquadmath\
-    --enable-languages=c
+    --disable-libsanitizer\
+    --disable-libssp\
+    --disable-libstdc++-v3\
+    --enable-languages=c,c++
 
 make && make install
 ln -sv libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
