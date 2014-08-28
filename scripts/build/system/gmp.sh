@@ -10,6 +10,10 @@ cd gmp-$VERSION
 ./configure --prefix=/usr --enable-cxx
 
 make
-make check 2>&1 | tee gmp-check-log
-awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log
+
+if [ $TEST ]; then
+    make check 2>&1 | tee gmp-check-log
+    awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log
+fi
+
 make install
