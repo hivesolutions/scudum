@@ -73,8 +73,10 @@ $DIR/tools/wget.sh
 $DIR/tools/strip.sh
 
 # removes the directory where the building process has been done
-# so that no extra files leak to the final building stages
+# so that no extra files leak to the final building stages, then
+# deletes also the dynamic link reference in tools (not required)
 cd .. && rm -rf build
+rm -f /tools
 
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution
