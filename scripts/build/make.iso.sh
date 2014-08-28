@@ -14,6 +14,7 @@ DEPLOY=${DEPLOY-1}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
 
+CUR=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
 set -e
@@ -34,6 +35,15 @@ fi
 if [ "$CLEANUP" == "1" ]; then
     $DIR/cleanup.sh
 fi
+
+cd $SCUDUM
+
+mkdir -pv images
+tar -zcf images/root.tar.gz root
+tar -zcf images/dev.tar.gz dev
+tar -zcf images/etc.tar.gz etc
+
+cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
     ISO_DIR=/tmp/$NAME.iso.dir
