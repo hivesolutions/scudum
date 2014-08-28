@@ -78,6 +78,10 @@ $DIR/tools/strip.sh
 cd .. && rm -rf build
 rm -f /tools
 
+# runs the sync command so that the current write operations are
+# flushed and further operations reflect the new system state
+sync
+
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
