@@ -37,5 +37,5 @@ case $SCHEMA in
 esac
 
 $DIR/../util/chroot.sh /bin/kernel.build
+$DIR/../util/chroot.sh /bin/cert.build
 $DIR/../util/chroot.sh /sbin/mkinitramfs
-$DIR/../util/chroot.sh /usr/bin/config/certificates.sh
