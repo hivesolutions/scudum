@@ -2,9 +2,9 @@ VERSION=${VERSION-3.13.3}
 
 set -e
 
-wget --no-check-certificate "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.bz2"
-rm -rf linux-$VERSION && tar -jxf "linux-$VERSION.tar.bz2"
-rm -f "linux-$VERSION.tar.bz2"
+wget --no-check-certificate "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.xz"
+rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
+rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION
 
 make mrproper
