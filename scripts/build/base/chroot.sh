@@ -37,6 +37,8 @@ mount -vt devpts devpts $SCUDUM/dev/pts
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
+sync
+
 mkdir -pv $SCUDUM/etc
 rm -f $SCUDUM/etc/resolv.conf
 echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
