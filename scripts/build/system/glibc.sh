@@ -20,8 +20,11 @@ cd glibc-build
     --libexecdir=/usr/lib/glibc
 
 make
-make -k check 2>&1 | tee glibc-check-log
-grep Error glibc-check-log
+
+if [ $TEST ]; then
+    make -k check 2>&1 | tee glibc-check-log
+    grep Error glibc-check-log
+fi
 
 touch /etc/ld.so.conf
 make install
