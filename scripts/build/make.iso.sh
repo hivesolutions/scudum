@@ -77,3 +77,5 @@ fi
 if [ "$DEPLOY" == "1" ]; then
     mv $FILE $TARGET
 fi
+
+rm -rv $SCUDUM/images
