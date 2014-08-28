@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.23.1}
+VERSION=${VERSION-2.24}
 
 set -e
 
@@ -10,7 +10,8 @@ cd binutils-$VERSION
 CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ./configure\
     --prefix=/tools\
     --disable-nls\
-    --with-lib-path=/tools/lib
+    --with-lib-path=/tools/lib\
+    --with-sysroot
 
 make && make install
 
