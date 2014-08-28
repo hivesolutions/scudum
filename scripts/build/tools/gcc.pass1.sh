@@ -12,15 +12,15 @@ cd gcc-$VERSION
 
 wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
-mv -v mpfr-$VERSION_MPFR mpfr
+rm -rf mpft && mv mpfr-$VERSION_MPFR mpfr
 
 wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
-mv -v gmp-$VERSION_GMP gmp
+rm -rf gmp && mv gmp-$VERSION_GMP gmp
 
 wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
 tar -zxf "mpc-$VERSION_MPC.tar.gz"
-mv -v mpc-$VERSION_MPC mpc
+rm -rf mpc && mv mpc-$VERSION_MPC mpc
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
