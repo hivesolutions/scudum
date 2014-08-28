@@ -1,4 +1,4 @@
-SSLDIR=/etc/ssl
+SSLDIR=/usr/ssl
 
 set -e
 
@@ -14,3 +14,4 @@ install ca-bundle*.crt ${SSLDIR}/ca-bundle.crt &&\
 ln -sfv ../ca-bundle.crt ${SSLDIR}/certs/ca-certificates.crt
 
 rm -r certs ca-bundle*
+rm -f certdata.txt
