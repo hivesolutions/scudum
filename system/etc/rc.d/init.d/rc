@@ -121,11 +121,11 @@ if [ "${IPROMPT}" == "yes" -a "${runlevel}" == "S" ]; then
     read -t "${itime}" -n 1 interactive 2>&1 > /dev/null
 fi
 
-# Make lower case
+# makes lower case
 [ "${interactive}" == "I" ] && interactive="i"
 [ "${interactive}" != "i" ] && interactive=""
 
-# Read the state file if it exists from runlevel S
+# reads the state file if it exists from runlevel S
 [ -r /var/run/interactive ] && source /var/run/interactive
 
 # attempts to stop all services started by the previous runlevel,
