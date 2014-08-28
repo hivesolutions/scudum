@@ -30,11 +30,6 @@ do
     touch $file.orig
 done
 
-wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
-rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
-rm -f "gcc-$VERSION.tar.bz2"
-cd gcc-$VERSION
-
 wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
