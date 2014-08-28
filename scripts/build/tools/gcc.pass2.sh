@@ -51,7 +51,7 @@ cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
-CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ../gcc-$VERSION/configure\
+CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ../gcc-$VERSION/configure\
     --prefix=/tools\
     --with-local-prefix=/tools\
     --with-native-system-header-dir=/tools/include\
