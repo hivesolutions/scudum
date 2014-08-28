@@ -29,7 +29,9 @@ cd gcc-build
     --disable-bootstrap\
     --with-system-zlib
 
-make && make install
+make
+test $TEST && make -k check
+make install
 
 ln -sv ../usr/bin/cpp /lib
 ln -sv gcc /usr/bin/cc
