@@ -14,9 +14,9 @@ cd gcc-$VERSION
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-cp -v gcc/Makefile.in{,.tmp}
-sed 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in.tmp\
-    > gcc/Makefile.in
+case `uname -m` in
+    i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
+esac
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
@@ -30,8 +30,6 @@ do
 #define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
     touch $file.orig
 done
-
-sed -i 's/BUILD_INFO=info/BUILD_INFO=/' gcc/configure
 
 cd ..
 rm -rf gcc-build
