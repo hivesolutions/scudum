@@ -8,4 +8,5 @@ rm -f "git-$VERSION.tar.xz"
 cd git-$VERSION
 
 ./configure --prefix=/usr
+
 make && make install

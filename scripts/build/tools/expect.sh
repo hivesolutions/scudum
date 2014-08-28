@@ -12,6 +12,4 @@ sed 's:/usr/local/bin:/bin:' configure.orig > configure
 
 ./configure --prefix=$PREFIX --with-tcl=$PREFIX/lib\
     --with-tclinclude=$PREFIX/include
-
-make
-make SCRIPTS="" install
+make && make SCRIPTS="" install

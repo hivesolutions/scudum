@@ -8,4 +8,5 @@ rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
 ./configure --prefix=/usr --with-ssl=openssl
+
 make && make install

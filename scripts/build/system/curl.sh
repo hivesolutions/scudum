@@ -8,4 +8,5 @@ rm -f "curl-$VERSION.tar.gz"
 cd curl-$VERSION
 
 ./configure --prefix=/usr
+
 make && make install

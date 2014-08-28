@@ -8,4 +8,5 @@ rm -f "cpio-$VERSION.tar.gz"
 cd cpio-$VERSION
 
 ./configure --prefix=/usr
+
 make && make install

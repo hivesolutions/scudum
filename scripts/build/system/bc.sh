@@ -8,4 +8,5 @@ rm -f "bc-$VERSION.tar.gz"
 cd bc-$VERSION
 
 ./configure --prefix=/usr
+
 make && make install

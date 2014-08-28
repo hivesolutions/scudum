@@ -7,5 +7,4 @@ rm -f "bzip2-$VERSION" && tar -zxf "bzip2-$VERSION.tar.gz"
 rm -f "bzip2-$VERSION.tar.gz"
 cd bzip2-$VERSION
 
-make
-make PREFIX=$PREFIX install
+make && make PREFIX=$PREFIX install

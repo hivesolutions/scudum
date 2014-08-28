@@ -10,6 +10,6 @@ cd xz-$VERSION
 ./configure --prefix=/usr --libdir=/lib\
     --docdir=/usr/share/doc/xz-$VERSION
 
-    make
+make
 test $TEST && make check
 make pkgconfigdir=/usr/lib/pkgconfig install

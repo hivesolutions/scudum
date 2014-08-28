@@ -14,6 +14,7 @@ wget --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/rea
 patch -Np1 -i readline-$VERSION-fixes-1.patch
 
 ./configure --prefix=/usr --libdir=/lib
+
 make SHLIB_LIBS=-lncurses
 make install
 

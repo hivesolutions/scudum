@@ -22,5 +22,4 @@ cd glibc-build
     libc_cv_forced_unwind=yes\
     libc_cv_ctors_header=yes\
     libc_cv_c_cleanup=yes
-
 make && make install
