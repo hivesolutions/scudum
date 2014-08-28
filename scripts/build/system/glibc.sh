@@ -1,8 +1,9 @@
 VERSION=${VERSION-2.19}
+VERSION_T=${VERSION-2013i}
 
 set -e
 
-wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata2012j.tar.gz"
+wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
 wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
@@ -15,7 +16,7 @@ cd glibc-build
 ../glibc-$VERSION/configure\
     --prefix=/usr\
     --disable-profile\
-    --enable-kernel=2.6.25\
+    --enable-kernel=2.6.32\
     --libexecdir=/usr/lib/glibc
 
 make
@@ -78,8 +79,8 @@ rpc: files
 
 EOF
 
-tar -xf ../tzdata2012j.tar.gz
-rm -f ../tzdata2012j.tar.gz
+tar -xf ../tzdata$VERSION_T.tar.gz
+rm -f ../tzdata$VERSION_T.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
