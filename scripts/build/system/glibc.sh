@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.17}
+VERSION=${VERSION-2.19}
 
 set -e
 
@@ -24,6 +24,11 @@ grep Error glibc-check-log
 
 touch /etc/ld.so.conf
 make install
+
+# installs the configuration file and runtime directory
+# for nscd (as originally expected)
+cp -v ../glibc-$VERSION/nscd/nscd.conf /etc/nscd.conf
+mkdir -pv /var/cache/nscd
 
 # installs nis and rpc related headers that are
 # not installed by default
