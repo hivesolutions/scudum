@@ -19,7 +19,7 @@ tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv -v gmp-$VERSION_GMP gmp
 
 wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
-tar -Jxf "mpc-$VERSION_MPC.tar.xz"
+tar -zxf "mpc-$VERSION_MPC.tar.gz"
 mv -v mpc-$VERSION_MPC mpc
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
