@@ -1,4 +1,7 @@
 VERSION=${VERSION-4.8.3}
+VERSION_MPFR=${VERSION_MPFR-3.1.2}
+VERSION_GMP=${VERSION_GMP-5.1.3}
+VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e
 
@@ -7,9 +10,17 @@ rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
 
-# downloads all the requirements for the current gcc builds
-# should as required by the current build system strategy
-./contrib/download_prerequisites
+wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
+tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
+mv -v mpfr-$VERSION_MPFR mpfr
+
+wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
+tar -Jxf "gmp-$VERSION_GMP.tar.xz"
+mv -v gmp-$VERSION_GMP gmp
+
+wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
+tar -Jxf "mpc-$VERSION_MPC.tar.xz"
+mv -v mpc-$VERSION_MPC mpc
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
