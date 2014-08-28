@@ -33,7 +33,8 @@ fi
 printf "Creating $INITRAMFS_FILE... "
 
 binfiles="sh cat cp dd killall ls mkdir mknod mount "
-binfiles="$binfiles umount sed sleep ln rm uname grep cut tar"
+binfiles="$binfiles umount sed sleep ln rm uname grep "
+binfiles="$binfiles cut tar gzip"
 
 # systemd installs udevadm in /bin. Other udev implementations
 # have it in /sbin, take note of possible problems/issues
