@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.7.2}
+VERSION=${VERSION-4.8.3}
 
 set -e
 
@@ -6,9 +6,6 @@ wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSIO
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
-
-sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
-sed -i 's/BUILD_INFO=info/BUILD_INFO=/' gcc/configure
 
 case `uname -m` in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;

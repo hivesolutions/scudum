@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.7.4}
+VERSION=${VERSION-4.8.3}
 
 set -e
 
@@ -12,11 +12,11 @@ cd gcc-$VERSION
 ./contrib/download_prerequisites
 
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
-  `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+    `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
 cp -v gcc/Makefile.in{,.tmp}
 sed 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in.tmp\
-  > gcc/Makefile.in
+    > gcc/Makefile.in
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do

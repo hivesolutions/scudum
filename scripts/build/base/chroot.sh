@@ -1,3 +1,6 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
 # tries to retrieve the proper chroot (bash) arguments
 # using the provided arguments if they exist or an interactive
 # fallback approach otherwise (as expected)
@@ -8,6 +11,8 @@ CHROOT_ARGS=${1---login +h}
 DIR=$(dirname $(readlink -f $0))
 
 set -e
+
+source $DIR/config.sh
 
 mkdir -pv $SCUDUM/{dev,proc,sys}
 

@@ -8,7 +8,7 @@ rm -f "bash-$VERSION.tar.gz"
 cd bash-$VERSION
 
 wget --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/bash-$VERSION-fixes-11.patch"
-patch -Np1 -i ../bash-$VERSION-fixes-11.patch
+patch -Np1 -i bash-$VERSION-fixes-11.patch
 
 ./configure\
     --prefix=/usr\
@@ -20,5 +20,5 @@ patch -Np1 -i ../bash-$VERSION-fixes-11.patch
 make
 
 chown -Rv nobody .
-su nobody -s /bin/bash -c "PATH=$PATH make tests"
+test $TEST && su nobody -s /bin/bash -c "PATH=$PATH make tests"
 make install
