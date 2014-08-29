@@ -7,5 +7,8 @@ rm -rf net-tools-$VERSION && tar -zxf "net-tools-$VERSION.tar.gz"
 rm -f "net-tools-$VERSION.tar.gz"
 cd net-tools-$VERSION
 
+wget --no-check-certificate http://www.linuxfromscratch.org/patches/blfs/7.5/net-tools-$VERSION-remove_dups-1.patch
+patch -Np1 -i net-tools-$VERSION-remove_dups-1.patch
+
 yes "" | make config > /dev/null
 make && make install
