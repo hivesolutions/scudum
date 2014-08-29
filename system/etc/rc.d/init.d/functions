@@ -711,14 +711,13 @@ killproc()
 # Todo: logging
 #
 #*******************************************************************************
-log_success_msg()
-{
-   ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
-   ${ECHO} -e "${SET_COL}""${BRACKET}""[""${SUCCESS}""  OK  ""${BRACKET}""]""${NORMAL}"
+log_success_msg() {
+    ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+    ${ECHO} -e "${SET_COL}""${BRACKET}""[""${SUCCESS}""  OK  ""${BRACKET}""]""${NORMAL}"
 
-   [ -d /run/var ] || return 0
-   ${ECHO} -n -e "${@}  [ OK ]"  >> /run/var/bootlog
-   return 0
+    [ -d /run/var ] || return 0
+    ${ECHO} -n -e "${@}  [ OK ]"  >> /run/var/bootlog
+    return 0
 }
 
 #*******************************************************************************
@@ -736,12 +735,12 @@ log_success_msg()
 #
 #*******************************************************************************
 log_failure_msg() {
-   ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
-   ${ECHO} -e "${SET_COL}""${BRACKET}""[""${FAILURE}"" FAIL ""${BRACKET}""]""${NORMAL}"
+    ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+    ${ECHO} -e "${SET_COL}""${BRACKET}""[""${FAILURE}"" FAIL ""${BRACKET}""]""${NORMAL}"
 
-   [ -d /run/var ] || return 0
-   ${ECHO} -e "${@}  [ FAIL ]" >> /run/var/bootlog
-   return 0
+    [ -d /run/var ] || return 0
+    ${ECHO} -e "${@}  [ FAIL ]" >> /run/var/bootlog
+    return 0
 }
 
 #*******************************************************************************
@@ -759,12 +758,12 @@ log_failure_msg() {
 #
 #*******************************************************************************
 log_warning_msg() {
-   ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
-   ${ECHO} -e "${SET_COL}""${BRACKET}""[""${WARNING}"" WARN ""${BRACKET}""]""${NORMAL}"
+    ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+    ${ECHO} -e "${SET_COL}""${BRACKET}""[""${WARNING}"" WARN ""${BRACKET}""]""${NORMAL}"
 
-   [ -d /run/var ] || return 0
-   ${ECHO} -e "${@}  [ WARN ]" >> /run/var/bootlog
-   return 0
+    [ -d /run/var ] || return 0
+    ${ECHO} -e "${@}  [ WARN ]" >> /run/var/bootlog
+    return 0
 }
 
 #*******************************************************************************
@@ -782,12 +781,10 @@ log_warning_msg() {
 #
 #*******************************************************************************
 log_skipped_msg() {
-   ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
-   ${ECHO} -e "${SET_COL}""${BRACKET}""[""${WARNING}"" SKIP ""${BRACKET}""]""${NORMAL}"
+    ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+    ${ECHO} -e "${SET_COL}""${BRACKET}""[""${WARNING}"" SKIP ""${BRACKET}""]""${NORMAL}"
 
-   [ -d /run/var ] || return 0
-   ${ECHO} -e "${@}  [ SKIP ]" >> /run/var/bootlog
-   return 0
+    [ -d /run/var ] || return 0
+    ${ECHO} -e "${@}  [ SKIP ]" >> /run/var/bootlog
+    return 0
 }
-
-# End boot functions
