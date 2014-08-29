@@ -1,6 +1,6 @@
 source /etc/colors
 
-export PATH="$PATH:/scd/bin"
+export PATH="$PATH:/opt/bin;/scd/bin"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export GREP_OPTIONS=--color=auto
