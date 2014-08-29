@@ -79,8 +79,9 @@ cd .. && rm -rf build
 rm -f /tools
 
 # runs the sync command so that the current write operations are
-# flushed and further operations reflect the new system state
-sync
+# flushed and further operations reflect the new system state,
+# note that the current bash hash state is also cleared
+hash -r && sync
 
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution
