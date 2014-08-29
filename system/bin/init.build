@@ -22,3 +22,46 @@ install -d -m 755 /sbin
 # that the (library) scripts become available
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
+
+ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
+ln -sf ../init.d/modules /etc/rc.d/rcS.d/S05modules
+ln -sf ../init.d/localnet /etc/rc.d/rcS.d/S08localnet
+ln -sf ../init.d/udev /etc/rc.d/rcS.d/S10udev
+ln -sf ../init.d/swap /etc/rc.d/rcS.d/S20swap
+ln -sf ../init.d/checkfs /etc/rc.d/rcS.d/S30checkfs
+ln -sf ../init.d/mountfs /etc/rc.d/rcS.d/S40mountfs
+ln -sf ../init.d/cleanfs /etc/rc.d/rcS.d/S45cleanfs
+ln -sf ../init.d/udev_retry /etc/rc.d/rcS.d/S50udev_retry
+ln -sf ../init.d/console /etc/rc.d/rcS.d/S70console
+ln -sf ../init.d/sysctl /etc/rc.d/rcS.d/S90sysctl
+
+ln -sf ../init.d/network /etc/rc.d/rc0.d/K80network
+ln -sf ../init.d/sysklogd /etc/rc.d/rc0.d/K90sysklogd
+ln -sf ../init.d/sendsignals /etc/rc.d/rc0.d/S60sendsignals
+ln -sf ../init.d/swap /etc/rc.d/rc0.d/S65swap
+ln -sf ../init.d/mountfs /etc/rc.d/rc0.d/S70mountfs
+ln -sf ../init.d/localnet /etc/rc.d/rc0.d/S90localnet
+ln -sf ../init.d/halt /etc/rc.d/rc0.d/S99halt
+
+ln -sf ../init.d/network /etc/rc.d/rc1.d/K80network
+ln -sf ../init.d/sysklogd /etc/rc.d/rc1.d/K90sysklogd
+
+ln -sf ../init.d/network /etc/rc.d/rc2.d/K80network
+ln -sf ../init.d/sysklogd /etc/rc.d/rc2.d/K90sysklogd
+
+ln -sf ../init.d/sysklogd /etc/rc.d/rc3.d/S10sysklogd
+ln -sf ../init.d/network /etc/rc.d/rc3.d/S20network
+
+ln -sf ../init.d/sysklogd /etc/rc.d/rc4.d/S10sysklogd
+ln -sf ../init.d/network /etc/rc.d/rc4.d/S20network
+
+ln -sf ../init.d/sysklogd /etc/rc.d/rc5.d/S10sysklogd
+ln -sf ../init.d/network /etc/rc.d/rc5.d/S20network
+
+ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
+ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
+ln -sf ../init.d/sendsignals /etc/rc.d/rc6.d/S60sendsignals
+ln -sf ../init.d/swap /etc/rc.d/rc6.d/S65swap
+ln -sf ../init.d/mountfs /etc/rc.d/rc6.d/S70mountfs
+ln -sf ../init.d/localnet /etc/rc.d/rc6.d/S90localnet
+ln -sf ../init.d/reboot /etc/rc.d/rc6.d/S99reboot
