@@ -9,7 +9,6 @@ source $DIR/common.sh
 wget --no-check-certificate "http://prdownloads.sourceforge.net/nethogs/nethogs-$VERSION.tar.gz"
 rm -rf nethogs && tar -zxf "nethogs-$VERSION.tar.gz"
 rm -f "nethogs-$VERSION.tar.gz"
-cd nethogs-$VERSION
+cd nethogs
 
-./configure --prefix=$PREFIX
 make && make install
