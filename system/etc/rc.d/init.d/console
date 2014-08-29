@@ -81,7 +81,7 @@ case "${1}" in
         # if any of the commands above failed, the trap at the
         # top would set $failed to 1
         ( exit $failed ) 
-         evaluate_retval
+        evaluate_retval
 
         exit $failed
         ;;
