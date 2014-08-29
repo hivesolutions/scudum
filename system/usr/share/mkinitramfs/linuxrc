@@ -16,6 +16,10 @@ export PATH
 USE_RAMFS=0
 USE_SWAP=0
 
+# sets the name to be used in the finding of the device
+# that contains the storage of information
+DEVICE=Scudum
+
 # sets the initial values for the various variables
 # to be used in the loader
 mounted=0
@@ -58,12 +62,12 @@ echoi "Finding origin device location..."
 
 # iterates over "some time" to try to find the proper
 # device for the scudum, in a normal situation this
-# operation should succed
+# operation should succeed
 for i in {1..5}; do
     # retreives the name of the device that is named
     # scudum (this is considered) the primary mounting
     # strategy for the scudum origin
-    drive=$(blkid | grep scudum | cut -d : -f 1)
+    drive=$(blkid | grep $DEVICE | cut -d : -f 1)
     if [ "$drive" != "" ]; then
         echoi "Origin device located at $drive"
         mount -o ro -n $drive /ram/origin
