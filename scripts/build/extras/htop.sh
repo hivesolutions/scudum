@@ -12,5 +12,4 @@ rm -f "htop-$VERSION.tar.gz"
 cd htop-$VERSION
 
 ./configure --prefix=$PREFIX
-
 make && make install
