@@ -1,6 +1,7 @@
 source /etc/colors
 
 export PATH="$PATH:/opt/bin:/scd/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/lib:/scd/lib"
 export LIBRARY_PATH="$LIBRARY_PATH:/opt/lib:/scd/lib"
 export C_INCLUDE_PATH="$C_INCLUDE_PATH:/opt/include:/scd/include"
 export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/opt/include:/scd/include"
