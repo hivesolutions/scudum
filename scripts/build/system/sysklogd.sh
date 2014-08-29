@@ -1,6 +1,6 @@
 VERSION=${VERSION-1.5}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://www.infodrom.org/projects/sysklogd/download/sysklogd-$VERSION.tar.gz"
 rm -rf sysklogd-$VERSION && tar -zxf "sysklogd-$VERSION.tar.gz"

@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.2.2}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.bz2"
 rm -f "sed-$VERSION" && tar -jxf "sed-$VERSION.tar.bz2"

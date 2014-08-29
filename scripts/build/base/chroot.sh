@@ -10,7 +10,7 @@ CHROOT_ARGS=${1---login +h}
 # so that it's possible to "write" the scripts as relative
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/config.sh
 

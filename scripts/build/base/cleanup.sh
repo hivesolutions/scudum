@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f $0))
 
 # sets the abort on error flag so that if any of the
 # commands fails the execution is stopped
-set -e
+set -e +h
 
 # loads the currently defined configuration so that
 # some of the required variables become available

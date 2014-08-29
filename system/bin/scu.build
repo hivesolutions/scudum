@@ -15,7 +15,7 @@ FILE=$NAME_F.scu
 
 # sets the strict execution mode so that if an error
 # occurs in execution the script is returned in error
-set -e
+set -e +h
 
 # tests the target directory for existence in case
 # it does not exists returns immediately

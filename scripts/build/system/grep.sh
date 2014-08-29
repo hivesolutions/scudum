@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.14}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/grep/grep-$VERSION.tar.xz"
 rm -rf grep-$VERSION && tar -Jxf "grep-$VERSION.tar.xz"

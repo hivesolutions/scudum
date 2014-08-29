@@ -1,6 +1,6 @@
 VERSION=${VERSION-6.6p1}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VERSION.tar.gz"
 rm -rf openssh-$VERSION && tar -zxf "openssh-$VERSION.tar.gz"

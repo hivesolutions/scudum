@@ -1,6 +1,6 @@
 VERSION=${VERSION-3.2}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/diffutils/diffutils-$VERSION.tar.gz"
 rm -rf diffutils-$VERSION && tar -zxf "diffutils-$VERSION.tar.gz"

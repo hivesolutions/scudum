@@ -14,7 +14,7 @@ FILE=$NAME_F.scu
 
 # sets the strict execution mode so that if an error
 # occurs in execution the script is returned in error
-set -e
+set -e +h
 
 # verifies if a valid name for retrieval has been
 # provided if not returns immediately in error

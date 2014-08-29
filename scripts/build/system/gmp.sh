@@ -1,6 +1,6 @@
 VERSION=${VERSION-5.1.3}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION.tar.xz"
 rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"

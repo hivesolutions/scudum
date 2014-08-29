@@ -1,6 +1,6 @@
 VERSION=${VERSION-1.22.2}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/groff/groff-$VERSION.tar.gz"
 rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"

@@ -1,6 +1,6 @@
 VERSION=${VERSION-8.21}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/coreutils/coreutils-$VERSION.tar.xz"
 rm -f "coreutils-$VERSION" && tar -Jxf "coreutils-$VERSION.tar.xz"

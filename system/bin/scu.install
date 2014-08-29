@@ -8,7 +8,7 @@ TARGET=${TARGET-/scd}
 
 # sets the strict execution mode so that if an error
 # occurs in execution the script is returned in error
-set -e
+set -e +h
 
 # verifies if a valid argument has been passed
 # to the process in case it's not prints a mesage

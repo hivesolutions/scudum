@@ -1,6 +1,6 @@
 VERSION=${VERSION-1.10}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gdbm/gdbm-$VERSION.tar.gz"
 rm -rf gdbm-$VERSION && tar -zxf "gdbm-$VERSION.tar.gz"

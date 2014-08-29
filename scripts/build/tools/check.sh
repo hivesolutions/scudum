@@ -1,6 +1,6 @@
 VERSION=${VERSION-0.9.9}
 
-set -e
+set -e +h
 
 wget "http://sourceforge.net/projects/check/files/check/$VERSION/check-$VERSION.tar.gz"
 rm -f "check-$VERSION" && tar -zxf "check-$VERSION.tar.gz"

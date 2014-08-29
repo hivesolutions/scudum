@@ -1,7 +1,7 @@
 VERSION=${VERSION-2.19}
 VERSION_T=${VERSION_T-2013i}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
 wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"

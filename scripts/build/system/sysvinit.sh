@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.88dsf}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://download.savannah.gnu.org/releases/sysvinit/sysvinit-$VERSION.tar.bz2"
 rm -rf sysvinit-$VERSION && tar -jxf "sysvinit-$VERSION.tar.bz2"

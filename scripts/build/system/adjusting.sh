@@ -1,4 +1,4 @@
-set -e
+set -e +h
 
 mv -v /tools/bin/{ld,ld-old}
 mv -v /tools/$(gcc -dumpmachine)/bin/{ld,ld-old}

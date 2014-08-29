@@ -1,4 +1,4 @@
-set -e
+set -e +h
 
 if [ -e /bin ]; then
     exit 0;

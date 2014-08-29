@@ -1,6 +1,6 @@
 VERSION=${VERSION-5.0.4}
 
-set -e
+set -e +h
 
 wget "http://tukaani.org/xz/xz-$VERSION.tar.xz"
 rm -f "xz-$VERSION" && tar -Jxf "xz-$VERSION.tar.xz"

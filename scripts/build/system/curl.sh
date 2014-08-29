@@ -1,6 +1,6 @@
 VERSION=${VERSION-7.37.1}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://curl.haxx.se/download/curl-$VERSION.tar.gz"
 rm -rf "curl-$VERSION" && tar -zxf "curl-$VERSION.tar.gz"
