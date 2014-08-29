@@ -33,7 +33,7 @@ ln -sfv libncurses.so /usr/lib/libcurses.so
 ln -sfv libncursesw.a /usr/lib/libcursesw.a
 ln -sfv libncurses.a /usr/lib/libcurses.a
 
-mkdir -v /usr/share/doc/ncurses-$VERSION
+mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION
 
 make distclean

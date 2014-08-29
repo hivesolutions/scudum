@@ -10,7 +10,7 @@ cd groff-$VERSION
 PAGE=letter ./configure --prefix=/usr
 
 make
-mkdir -p /usr/share/doc/groff-1.22/pdf
+mkdir -pv /usr/share/doc/groff-$VERSION/pdf
 make install
 
 ln -sv eqn /usr/bin/geqn
