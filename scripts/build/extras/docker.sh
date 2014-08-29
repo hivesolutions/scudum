@@ -10,4 +10,4 @@ wget --no-check-certificate "https://get.docker.io/builds/Linux/x86_64/docker-$V
 
 chmod +x docker-$VERSION
 mkdir -pv $PREFIX/bin
-install -v docker-$VERSION $PREFIX/bin
+mv docker-$VERSION $PREFIX/bin/docker
