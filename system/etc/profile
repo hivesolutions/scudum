@@ -1,9 +1,12 @@
 source /etc/colors
 
-export PATH="$PATH:/opt/bin;/scd/bin"
+export PATH="$PATH:/opt/bin:/scd/bin"
+export LIBRARY_PATH="$LIBRARY_PATH:/opt/lib:/scd/lib"
+export C_INCLUDE_PATH="$C_INCLUDE_PATH:/opt/include:/scd/include"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export GREP_OPTIONS=--color=auto
+export PREFIX=/opt
 
 VERSION=$(cat /lib/scudum/VERSION)
 KVERSION=$(uname -r)
