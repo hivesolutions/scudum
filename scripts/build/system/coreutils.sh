@@ -30,11 +30,11 @@ fi
 
 make install
 
-mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin && hash -r && sync
-mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm} /bin && hash -r && sync
-mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin && hash -r && sync
-mv -v /usr/bin/{head,sleep,nice} /bin && hash -r && sync
-mv -v /usr/bin/chroot /usr/sbin && hash -r && sync
+mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin
+mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm} /bin
+mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin
+mv -v /usr/bin/{head,sleep,nice} /bin
+mv -v /usr/bin/chroot /usr/sbin
 mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
 
 sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8

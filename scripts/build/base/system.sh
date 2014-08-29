@@ -4,6 +4,7 @@
 # sets the execution break on error so that if any
 # of the commands fails the execution is broken
 set -e
+set +h
 
 /tools/repo/scripts/build/system/tree.sh
 
