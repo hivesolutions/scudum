@@ -9,7 +9,6 @@ source $DIR/common.sh
 wget --no-check-certificate "https://storage.googleapis.com/golang/go$VERSION.src.tar.gz"
 rm -rf go && tar -zxf "go$VERSION.src.tar.gz"
 rm -f "go$VERSION.src.tar.gz"
-cd go
+cd go/src
 
-cd src
-./all.sh
+./all.bash
