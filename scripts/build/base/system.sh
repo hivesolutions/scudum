@@ -74,5 +74,6 @@ cd sources
 /tools/repo/scripts/build/system/curl.sh
 /tools/repo/scripts/build/system/git.sh
 /tools/repo/scripts/build/system/openssh.sh
+/tools/repo/scripts/build/system/dhcp.sh
 
 cd .. && rm -rf sources
