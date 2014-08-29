@@ -13,7 +13,7 @@ cd go/src
 
 sed -i 's/if pwd != d {/if false {/' pkg/os/os_test.go
 
-mkdir $PREFIX/go-build && cd $PREFIX/go-build
+mkdir -pv $PREFIX/go-build && cd $PREFIX/go-build
 
 $DIR/go/src/all.bash
 
