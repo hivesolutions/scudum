@@ -3,5 +3,22 @@
 
 set -e +h
 
+# creates the various directories that are going to
+# be used to store the services scripts (as expected)
+install -d -m 755 /etc/rc.d/rc0.d
+install -d -m 755 /etc/rc.d/rc1.d
+install -d -m 755 /etc/rc.d/rc2.d
+install -d -m 755 /etc/rc.d/rc3.d
+install -d -m 755 /etc/rc.d/rc4.d
+install -d -m 755 /etc/rc.d/rc5.d
+install -d -m 755 /etc/rc.d/rc6.d
+install -d -m 755 /etc/rc.d/rcS.d
+install -d -m 755 /etc/sysconfig
+install -d -m 755 /lib/services
+install -d -m 755 /usr/share/man/man8
+install -d -m 755 /sbin
+
+# creates symbolic links for the services directories so
+# that the (library) scripts become available
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
