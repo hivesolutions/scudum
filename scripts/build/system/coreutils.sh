@@ -16,24 +16,25 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure\
     --enable-no-install-program=kill,uptime
 
 make
-make NON_ROOT_USERNAME=nobody check-root
-echo "dummy:x:1000:nobody" >> /etc/group
-chown -Rv nobody .
 
-test $TEST && su nobody -s /bin/bash\
+if [ $TEST ]; then
+    make NON_ROOT_USERNAME=nobody check-root
+    echo "dummy:x:1000:nobody" >> /etc/group
+    chown -Rv nobody .
+
+    su nobody -s /bin/bash\
     -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"
 
-sed -i '/dummy/d' /etc/group
+    sed -i '/dummy/d' /etc/group
+fi
 
 make install
 
-cp -p /usr/bin/mv /bin && sync
-mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin && sync
-mv -v /usr/bin/{false,ln,ls,mkdir,mknod,pwd,rm} /bin && sync
-mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin && sync
-mv -v /usr/bin/{head,sleep,nice} /bin && sync
-mv -v /usr/bin/chroot /usr/sbin && sync
-mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8 && sync
-rm /usr/bin/mv && sync
+mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin && hash -d && sync
+mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm} /bin && hash -d && sync
+mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin && hash -d && sync
+mv -v /usr/bin/{head,sleep,nice} /bin && hash -d && sync
+mv -v /usr/bin/chroot /usr/sbin && hash -d && sync
+mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
 
 sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8
