@@ -36,6 +36,7 @@ case $SCHEMA in
         ;;
 esac
 
+$DIR/../util/chroot.sh /bin/account.build
 $DIR/../util/chroot.sh /bin/kernel.build
 $DIR/../util/chroot.sh /bin/init.build
 $DIR/../util/chroot.sh /bin/cert.build
