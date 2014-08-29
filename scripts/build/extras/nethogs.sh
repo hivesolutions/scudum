@@ -11,4 +11,4 @@ rm -rf nethogs && tar -zxf "nethogs-$VERSION.tar.gz"
 rm -f "nethogs-$VERSION.tar.gz"
 cd nethogs
 
-make && make install
+make && make DEST_DIR=$PREFIX install
