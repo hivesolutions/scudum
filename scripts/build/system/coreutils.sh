@@ -27,12 +27,13 @@ sed -i '/dummy/d' /etc/group
 
 make install
 
+cp -p /usr/bin/mv /bin
 mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin && sync
-mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm} /bin && sync
+mv -v /usr/bin/{false,ln,ls,mkdir,mknod,pwd,rm} /bin && sync
 mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin && sync
 mv -v /usr/bin/{head,sleep,nice} /bin && sync
 mv -v /usr/bin/chroot /usr/sbin && sync
-
 mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8 && sync
+rm /usr/bin/mv
 
 sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8
