@@ -1,5 +1,17 @@
 source /etc/colors
 
+### BEGIN INIT INFO
+# Provides:            welcome
+# Required-Start:
+# Should-Start:
+# Required-Stop: 
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Shows welcome/diagnostics information.
+# Description:         Shows welcome/diagnostics information.
+### END INIT INFO
+
 VERSION=$(cat /lib/scudum/VERSION)
 KVERSION=$(uname -r)
 SVERSION=alpha-$VERSION
