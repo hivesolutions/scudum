@@ -7,4 +7,4 @@ set -e +h
 source $DIR/common.sh
 
 wget --no-check-certificate "https://get.docker.io/builds/Linux/x86_64/docker-$VERSION"
-chmod +x docker-$VERSION && install docker-$VERSION $PREFIX/bin
+chmod +x docker-$VERSION && install -v docker-$VERSION $PREFIX/bin
