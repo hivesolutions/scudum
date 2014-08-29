@@ -13,7 +13,7 @@ cd iptables-$VERSION
 
 ./configure --prefix=$PREFIX\
     --sbindir=/sbin\
-    --with-xtlibdir=/lib/xtables \
+    --with-xtlibdir=/lib/xtables\
     --enable-libipq
 
 make && make install
