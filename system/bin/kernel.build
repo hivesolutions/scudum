@@ -14,7 +14,8 @@ cd /sources
 
 if [ ! -d "$NAME" ]; then
     wget --no-check-certificate https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
-    tar -xvf $NAME.tar.xz
+    rm -rf $NAME && tar -xvf $NAME.tar.xz
+    rm -f $NAME.tar.xz
 else
     echo "Skipping $NAME retrieval, already exists ..."
 fi
