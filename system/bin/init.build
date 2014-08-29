@@ -43,26 +43,32 @@ ln -sf ../init.d/mountfs /etc/rc.d/rc0.d/S70mountfs
 ln -sf ../init.d/localnet /etc/rc.d/rc0.d/S90localnet
 ln -sf ../init.d/halt /etc/rc.d/rc0.d/S99halt
 ln -sf ../init.d/sshd /etc/rc.d/rc0.d/K30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc0.d/K40welcome
 
 ln -sf ../init.d/network /etc/rc.d/rc1.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc1.d/K90sysklogd
 ln -sf  ../init.d/sshd /etc/rc.d/rc1.d/K30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc1.d/K40welcome
 
 ln -sf ../init.d/network /etc/rc.d/rc2.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc2.d/K90sysklogd
 ln -sf ../init.d/sshd /etc/rc.d/rc2.d/K30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc2.d/K40welcome
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc3.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc3.d/S20network
 ln -sf ../init.d/sshd /etc/rc.d/rc3.d/S30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc3.d/S40welcome
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc4.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc4.d/S20network
 ln -sf ../init.d/sshd /etc/rc.d/rc4.d/S30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc4.d/S40welcome
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc5.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc5.d/S20network
 ln -sf ../init.d/sshd /etc/rc.d/rc5.d/S30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc5.d/S40welcome
 
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
@@ -72,3 +78,4 @@ ln -sf ../init.d/mountfs /etc/rc.d/rc6.d/S70mountfs
 ln -sf ../init.d/localnet /etc/rc.d/rc6.d/S90localnet
 ln -sf ../init.d/reboot /etc/rc.d/rc6.d/S99reboot
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
+ln -sf ../init.d/welcome /etc/rc.d/rc6.d/K40welcome
