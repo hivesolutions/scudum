@@ -1,0 +1,6 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+set -e +h
+
+echo "root:root" | chpasswd
