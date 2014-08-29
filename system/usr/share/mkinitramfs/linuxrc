@@ -160,6 +160,7 @@ mkdir -p initrd
 pivot_root . initrd
 
 # changes to new root and swap to new root's devices
+# this should trigger the inital system loading (init)
 exec /usr/sbin/chroot . /sbin/init <dev/console >dev/console 2>&1
 
 # it should never reach this place as reaching it means
