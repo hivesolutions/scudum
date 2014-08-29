@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget --no-check-certificate "http://www.netfilter.org/projects/iptables/files/iptables-$VERSION.tar.bz2"
-rm -rf iptables-$VERSION && tar -Jxf "iptables-$VERSION.tar.bz2"
+rm -rf iptables-$VERSION && tar -jxf "iptables-$VERSION.tar.bz2"
 rm -f "iptables-$VERSION.tar.bz2"
 cd iptables-$VERSION
 
