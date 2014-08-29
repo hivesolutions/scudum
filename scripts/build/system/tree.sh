@@ -24,6 +24,7 @@ case $(uname -m) in
         ln -svf lib /usr/local/lib64 ;;
 esac
 
+mkdir -pv /run/var
 mkdir -pv /var/{log,mail,spool}
 ln -svf /run /var/run
 ln -svf /run/lock /var/lock
