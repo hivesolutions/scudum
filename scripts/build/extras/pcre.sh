@@ -7,8 +7,8 @@ set -e +h
 source $DIR/common.sh
 
 wget --no-check-certificate "ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$VERSION.tar.gz"
-rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tgz"
-rm -f "pcre-$VERSION.tar.xz"
+rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tar.gz"
+rm -f "pcre-$VERSION.tar.gz"
 cd pcre-$VERSION
 
 ./configure --prefix=$PREFIX
