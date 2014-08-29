@@ -11,9 +11,6 @@ rm -rf iptables-$VERSION && tar -jxf "iptables-$VERSION.tar.bz2"
 rm -f "iptables-$VERSION.tar.bz2"
 cd iptables-$VERSION
 
-./configure --prefix=$PREFIX\
-    --sbindir=/sbin\
-    --with-xtlibdir=/lib/xtables\
-    --enable-libipq
+./configure --prefix=$PREFIX
 
 make && make install
