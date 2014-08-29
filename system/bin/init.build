@@ -1,9 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-SSLDIR=/usr/ssl
-
-set -e
+set -e +h
 
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
