@@ -10,3 +10,5 @@ cd nano-$VERSION
 ./configure --prefix=/usr
 
 make && make install
+
+ln -sv nano /usr/bin/pico
