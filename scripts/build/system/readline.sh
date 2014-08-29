@@ -1,6 +1,6 @@
 VERSION=${VERSION-6.2}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/readline/readline-$VERSION.tar.gz"
 rm -rf readline-$VERSION && tar -zxf "readline-$VERSION.tar.gz"
@@ -24,6 +24,6 @@ rm -v /lib/lib{readline,history}.so
 ln -sfv ../../lib/libreadline.so.6 /usr/lib/libreadline.so
 ln -sfv ../../lib/libhistory.so.6 /usr/lib/libhistory.so
 
-mkdir -v /usr/share/doc/readline-$VERSION
+mkdir -pv /usr/share/doc/readline-$VERSION
 install -v -m644 doc/*.{ps,pdf,html,dvi}\
     /usr/share/doc/readline-$VERSION

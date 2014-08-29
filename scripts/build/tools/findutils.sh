@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.4.2}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/findutils/findutils-$VERSION.tar.gz"
 rm -f "findutils-$VERSION" && tar -zxf "findutils-$VERSION.tar.gz"

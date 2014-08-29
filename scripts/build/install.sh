@@ -7,7 +7,7 @@ REPO=${REPO-http://hole1.hive:9090/builds/$NAME}
 
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/base/config.sh
 

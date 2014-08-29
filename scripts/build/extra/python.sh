@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.7.8}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz"
 rm -rf "Python-$VERSION" && tar -zxf "Python-$VERSION.tgz"

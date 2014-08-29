@@ -1,6 +1,6 @@
 VERSION=${VERSION-5.0}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/texinfo/texinfo-$VERSION.tar.xz"
 rm -rf texinfo-$VERSION && tar -Jxf "texinfo-$VERSION.tar.xz"

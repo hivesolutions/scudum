@@ -8,7 +8,7 @@ FILE=${FILE-$NAME-$VERSION.tar.gz}
 BASE=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/base/config.sh
 

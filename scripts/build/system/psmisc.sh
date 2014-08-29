@@ -1,6 +1,6 @@
 VERSION=${VERSION-22.20}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://prdownloads.sourceforge.net/psmisc/psmisc-$VERSION.tar.gz"
 rm -rf psmisc-$VERSION && tar -zxf "psmisc-$VERSION.tar.gz"

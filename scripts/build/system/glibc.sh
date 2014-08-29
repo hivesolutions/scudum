@@ -1,7 +1,7 @@
 VERSION=${VERSION-2.19}
-VERSION_T=${VERSION-2013i}
+VERSION_T=${VERSION_T-2013i}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
 wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
@@ -20,8 +20,11 @@ cd glibc-build
     --libexecdir=/usr/lib/glibc
 
 make
-make -k check 2>&1 | tee glibc-check-log
-grep Error glibc-check-log
+
+if [ $TEST ]; then
+    make -k check 2>&1 | tee glibc-check-log
+    grep Error glibc-check-log
+fi
 
 touch /etc/ld.so.conf
 make install
@@ -86,8 +89,7 @@ ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
 
 for tz in etcetera southamerica northamerica europe africa antarctica\
-    asia australasia backward pacificnew solar87 solar88 solar89\
-    systemv; do
+    asia australasia backward pacificnew systemv; do
     zic -L /dev/null -d $ZONEINFO -y "sh yearistype.sh" ${tz}
     zic -L /dev/null -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
     zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}

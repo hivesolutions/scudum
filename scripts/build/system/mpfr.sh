@@ -1,6 +1,6 @@
-VERSION=${VERSION-3.1.1}
+VERSION=${VERSION-3.1.2}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://www.mpfr.org/mpfr-$VERSION/mpfr-$VERSION.tar.xz"
 rm -rf mpfr-$VERSION && tar -Jxf "mpfr-$VERSION.tar.xz"

@@ -1,6 +1,6 @@
 VERSION=${VERSION-3.3.6}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://sourceforge.net/projects/procps-ng/files/Production/procps-ng-$VERSION.tar.xz"
 rm -rf procps-ng-$VERSION && tar -Jxf "procps-ng-$VERSION.tar.xz"

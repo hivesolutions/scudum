@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.5.37}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://prdownloads.sourceforge.net/flex/flex-$VERSION.tar.bz2"
 rm -rf flex-$VERSION && tar -jxf "flex-$VERSION.tar.bz2"

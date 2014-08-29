@@ -1,6 +1,6 @@
 VERSION=${VERSION-1.4.16}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/m4/m4-$VERSION.tar.bz2"
 rm -rf cd m4-$VERSION && tar -jxf "m4-$VERSION.tar.bz2"

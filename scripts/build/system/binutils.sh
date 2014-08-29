@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.24}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"

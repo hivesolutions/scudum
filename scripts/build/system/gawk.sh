@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.0.2}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gawk/gawk-$VERSION.tar.xz"
 rm -rf gawk-$VERSION && tar -Jxf "gawk-$VERSION.tar.xz"

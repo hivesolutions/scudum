@@ -1,6 +1,6 @@
 VERSION=${VERSION-3.13.3}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.xz"
 rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"

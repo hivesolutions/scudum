@@ -9,7 +9,7 @@ TARGET=${TARGET-/mnt/builds/$NAME}
 LATEST=$NAME-latest.tar.gz
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/base/config.sh
 

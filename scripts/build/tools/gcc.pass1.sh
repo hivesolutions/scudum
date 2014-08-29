@@ -3,7 +3,7 @@ VERSION_MPFR=${VERSION_MPFR-3.1.2}
 VERSION_GMP=${VERSION_GMP-5.1.3}
 VERSION_MPC=${VERSION_MPC-1.0.2}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"

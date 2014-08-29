@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.8.3}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
@@ -29,7 +29,9 @@ cd gcc-build
     --disable-bootstrap\
     --with-system-zlib
 
-make && make install
+make
+test $TEST && make -k check
+make install
 
 ln -sv ../usr/bin/cpp /lib
 ln -sv gcc /usr/bin/cc

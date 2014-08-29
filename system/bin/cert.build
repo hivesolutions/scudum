@@ -3,7 +3,7 @@
 
 SSLDIR=/usr/ssl
 
-set -e
+set -e +h
 
 rm -f certdata.txt &&\
 cp -p /usr/share/ssl/certdata.txt certdata.txt &&\

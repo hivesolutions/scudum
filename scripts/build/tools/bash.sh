@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.2}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/bash/bash-$VERSION.tar.gz"
 rm -f "bash-$VERSION" && tar -zxf "bash-$VERSION.tar.gz"

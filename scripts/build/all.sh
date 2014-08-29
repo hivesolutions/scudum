@@ -7,7 +7,7 @@ DIR=$(dirname $(readlink -f $0))
 
 # sets the execution break on error so that if any
 # of the commands fails the execution is broken
-set -e
+set -e +h
 
 # removes any previously existing build directory
 # and re-constructs the directory changing into it
@@ -77,6 +77,11 @@ $DIR/tools/strip.sh
 # deletes also the dynamic link reference in tools (not required)
 cd .. && rm -rf build
 rm -f /tools
+
+# runs the sync command so that the current write operations are
+# flushed and further operations reflect the new system state,
+# note that the current bash hash state is also cleared
+hash -r && sync
 
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution

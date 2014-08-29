@@ -1,6 +1,6 @@
 VERSION=${VERSION-3.8.0}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$VERSION.tar.xz"
 rm -rf iproute2-$VERSION && tar -Jxf "iproute2-$VERSION.tar.xz"

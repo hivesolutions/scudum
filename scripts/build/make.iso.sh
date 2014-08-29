@@ -17,7 +17,7 @@ AUTORUN=${AUTORUN-1}
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/base/config.sh
 

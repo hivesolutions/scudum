@@ -10,7 +10,7 @@ CHROOT_ARGS=${1---login +h}
 # so that it's possible to "write" the scripts as relative
 DIR=$(dirname $(readlink -f $0))
 
-set -e
+set -e +h
 
 source $DIR/config.sh
 
@@ -59,7 +59,7 @@ chroot $SCUDUM /tools/bin/env -i\
     TERM="$TERM"\
     PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin\
-    /tools/bin/bash $1 --login +h
+    /tools/bin/bash --login +h $1
 
 sync
 umount -v $SCUDUM/sys

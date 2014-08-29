@@ -1,7 +1,7 @@
 VERSION=${VERSION-3.4.2}
 VERSION_M=${VERSION_M-3.4}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
 rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.src.tar.gz"

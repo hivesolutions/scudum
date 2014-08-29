@@ -1,6 +1,6 @@
 VERSION=${VERSION-2.00}
 
-set -e
+set -e +h
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/grub/grub-$VERSION.tar.xz"
 rm -rf grub-$VERSION && tar -Jxf "grub-$VERSION.tar.xz"

@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.8.3}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"

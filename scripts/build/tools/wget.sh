@@ -1,6 +1,6 @@
 VERSION=${VERSION-1.15}
 
-set -e
+set -e +h
 
 wget "http://ftp.gnu.org/gnu/wget/wget-$VERSION.tar.gz"
 rm -rf "wget-$VERSION" && tar -zxf "wget-$VERSION.tar.gz"
