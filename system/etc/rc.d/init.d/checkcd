@@ -1,5 +1,17 @@
 #!/bin/sh
 
+### BEGIN INIT INFO
+# Provides:            checkcd
+# Required-Start:
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:       S
+# Default-Stop:
+# Short-Description:   Runs a series of validations for tmpfs systems.
+# Description:         Runs a series of validations for tmpfs systems.
+### END INIT INFO
+
 . /lib/lsb/init-functions
 
 if [ ! -d /origin ]; then exit; fi
