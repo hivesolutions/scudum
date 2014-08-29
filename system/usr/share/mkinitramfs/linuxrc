@@ -164,6 +164,6 @@ pivot_root . initrd
 exec /usr/sbin/chroot . /sbin/init <dev/console >dev/console 2>&1
 
 # it should never reach this place as reaching it means
-# that a problom occurend in the execution of the chroot
+# that a problem occurend in the execution of the chroot
 # operation that marks the beginning of the execution
 exit
