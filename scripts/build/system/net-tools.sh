@@ -7,6 +7,6 @@ rm -rf net-tools-$VERSION && tar -jxf "net-tools-$VERSION.tar.bz2"
 rm -f "net-tools-$VERSION.tar.bz2"
 cd net-tools-$VERSION
 
-./configure --prefix=/usr
-
-make && make install
+less Makefile
+make config
+make && make -n install && make install
