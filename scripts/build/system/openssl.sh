@@ -9,3 +9,5 @@ cd openssl-$VERSION
 
 ./config shared --prefix=/usr --openssldir=/usr/ssl
 make && make install
+
+ln -s /usr/ssl /etc/ssl
