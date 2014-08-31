@@ -19,4 +19,4 @@ mv -fv $FILE $TARGET
 
 cd $TARGET
 rm -fv $LATEST
-ln -s $FILE $LATEST
+ln -sv $FILE $LATEST
