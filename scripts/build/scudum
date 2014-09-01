@@ -10,4 +10,4 @@ if [ ! -e $DIR/$1.sh ]; then
     exit 1
 fi
 
-$DIR/$1
+$DIR/$1.sh
