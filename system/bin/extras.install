@@ -7,7 +7,7 @@ set -e +h
 
 cd $TARGET
 
-if [ ! -e /opt/repo ]; then
+if [ ! -e scudum ]; then
     git -d 1 clone https://github.com/hivesolutions/scudum.git
     cd scudum
 else
