@@ -1,0 +1,15 @@
+VERSION=${VERSION-2.9.0}
+
+DIR=$(dirname $(readlink -f $0))
+
+set -e +h
+
+source $DIR/common.sh
+
+wget --no-check-certificate "http://xmlsoft.org/sources/libxml2-$VERSION.tar.gz"
+rm -rf libxml2-$VERSION && tar -zxf "libxml2-$VERSION.tar.gz"
+rm -f "libxml2-$VERSION.tar.gz"
+cd libxml2-$VERSION
+
+./configure --prefix=$PREFIX --disable-shared
+make && make install
