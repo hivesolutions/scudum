@@ -5,7 +5,7 @@ TARGET=/opt
 
 set -e +h
 
-cd $TARGET
+mkdir -p $TARGET && cd $TARGET
 
 if [ ! -e scudum ]; then
     git -d 1 clone https://github.com/hivesolutions/scudum.git
