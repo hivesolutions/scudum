@@ -1,0 +1,22 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+TARGET=/opt
+
+set -e +h
+
+cd $TARGET
+
+if [ ! -e /opt/repo ]; then
+    git -d 1 clone https://github.com/hivesolutions/scudum.git
+    cd scudum
+else
+    cd scudum && git pull
+fi
+
+if [ ! -e scripts/extras/$1.sh ]; then
+    echo "No valid package found for name '$1'"
+    exit 1
+fi
+
+scripts/extras/$1.sh
