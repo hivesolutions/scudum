@@ -6,7 +6,7 @@ Custom linux distribution that aims at providing an easy to use system for
 [Viriatum](https://github.com/hivesolutions/viriatum) / [Automium](https://github.com/hivesolutions/automium) /
 [Tiberium](https://github.com/hivesolutions/tiberium).
 
-There are a series of [scripts](build/util) that aim at providing a simple to use toolchain for
+There are a series of [scripts](scripts/util) that aim at providing a simple to use toolchain for
 scudum customization.
 
 The distribution is meant to provide a simple raw system that should be configured from
@@ -99,11 +99,9 @@ Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs
 ## TODO
 
 * Light version of the kernel (less file systems)
-* Support for [lxc](http://lxc.sourceforge.net/) Linux containers or for [Docker](http://docker.io)
 * Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
 * Suport for PXE serving
 * Support for scu files
-* Removal of ssh files / key reconfiguration script
 * Convert stuff into raspberry pi
   * [link 1](http://akanto.wordpress.com/2012/09/25/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-1)
   * [link 2](http://wiki.gentoo.org/wiki/Raspberry_Pi)

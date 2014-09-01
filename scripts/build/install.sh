@@ -11,6 +11,7 @@ set -e +h
 
 source $DIR/base/config.sh
 
+rm -f /tools
 rm -rf $SCUDUM && mkdir $SCUDUM
 cd $SCUDUM
 
