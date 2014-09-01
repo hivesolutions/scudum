@@ -8,7 +8,7 @@ set -e +h
 mkdir -p $TARGET && cd $TARGET
 
 if [ ! -e scudum ]; then
-    git --depth 1 clone https://github.com/hivesolutions/scudum.git
+    git clone --depth 1 https://github.com/hivesolutions/scudum.git
     cd scudum
 else
     cd scudum && git pull
@@ -19,6 +19,5 @@ for package in "$@"; do
         echo "No valid package found for name '$package'"
         exit 1
     fi
-
     scripts/build/extras/$package.sh
 done
