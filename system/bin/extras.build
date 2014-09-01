@@ -1,0 +1,8 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+EXTRAS=$(cat /CONFIGURED)
+
+set -e +h
+
+extras.install $EXTRAS
