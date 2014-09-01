@@ -14,9 +14,11 @@ else
     cd scudum && git pull
 fi
 
-if [ ! -e scripts/build/extras/$1.sh ]; then
-    echo "No valid package found for name '$1'"
-    exit 1
-fi
+for package in "$@"; do
+    if [ ! -e scripts/build/extras/$package.sh ]; then
+        echo "No valid package found for name '$package'"
+        exit 1
+    fi
 
-scripts/build/extras/$1.sh
+    scripts/build/extras/$package.sh
+done
