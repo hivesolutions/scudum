@@ -8,7 +8,7 @@ set -e +h
 mkdir -p $TARGET && cd $TARGET
 
 if [ ! -e scudum ]; then
-    git -d 1 clone https://github.com/hivesolutions/scudum.git
+    git --depth 1 clone https://github.com/hivesolutions/scudum.git
     cd scudum
 else
     cd scudum && git pull
