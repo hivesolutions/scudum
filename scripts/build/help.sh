@@ -14,4 +14,4 @@ The most commonly used git commands are:\n\
    make.iso  Builds an ISO image with the current configuration\n\
    pack      Packs the current Scudum deployment into tar.gz file (requires no configuration)\n"
 
-echo -e $MESSAGE
+echo -e "$MESSAGE"
