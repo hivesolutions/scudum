@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-export CFLAGS="-fpic"
+export CFLAGS="$CFLAGS -fpic"
 
 wget --no-check-certificate "http://downloads.php.net/stas/php-$VERSION.tar.gz" "--output-document=php-$VERSION.tar.gz"
 rm -rf php-$VERSION && tar -zxf "php-$VERSION.tar.gz"
