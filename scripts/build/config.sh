@@ -14,8 +14,8 @@ set -e +h
 
 source $DIR/base/config.sh
 
-if [ -e config.sh ]; then
-    source config.sh
+if [ -e config ]; then
+    source config
 fi
 
 touch $SCUDUM/CONFIGURED
