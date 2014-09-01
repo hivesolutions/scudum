@@ -1,0 +1,13 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+DIR=$(dirname $(readlink -f $0))
+
+set -e +h
+
+if [ ! -e $DIR/$1.sh ]; then
+    echo "Command '$1' not found"
+    exit 1
+fi
+
+$DIR/$1
