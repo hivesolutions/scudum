@@ -15,7 +15,6 @@ set -e +h
 source $DIR/base/config.sh
 
 touch $SCUDUM/CONFIGURED
-echo $EXTRAS >> $SCUDUM/CONFIGURED
 
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
