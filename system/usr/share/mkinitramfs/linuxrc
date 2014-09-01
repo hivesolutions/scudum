@@ -125,6 +125,9 @@ if [ "$USE_SWAP" == "1" ]; then
     mkswap swapspace
 fi
 
+# prints a message about the starting of the creation
+# of the various directories in preparation for the pivot
+# operation that is going to be performed
 echoi "Preparing file systems for pivot"
 
 # finish off setting up, it's going to create the complete
