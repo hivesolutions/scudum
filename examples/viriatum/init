@@ -1,1 +1,4 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
 viriatum < /dev/null &> /dev/null &
