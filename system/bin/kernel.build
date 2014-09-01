@@ -27,7 +27,7 @@ if [ "$BUILD" != "1" ]; then
     exit 0
 fi
 
-make -j $CONCURRENCY
+make -j $CONCURRENCY && make modules_install
 
 cp -v arch/x86/boot/bzImage /boot/vmlinuz
 cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
