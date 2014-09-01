@@ -14,6 +14,7 @@ cd $SCUDUM/tmp
 rm -rf .[^.] .??* *
 
 rm -rf $SCUDUM/scd/*
+rm -rf $SCUDUM/opt
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
 rm -rf $SCUDUM/tools
