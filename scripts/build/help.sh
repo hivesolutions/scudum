@@ -11,4 +11,4 @@ install - Creates a new Scudum instance from the most up-to-date remote Scudum\n
 make.iso - Builds an ISO image with the current configuration\n\
 pack - Packs the current Scudum deployment into tar.gz file (requires no configuration)"
 
-echo -n $MESSAGE
+echo -ne $MESSAGE
