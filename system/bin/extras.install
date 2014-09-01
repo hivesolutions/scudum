@@ -14,9 +14,9 @@ else
     cd scudum && git pull
 fi
 
-if [ ! -e scripts/extras/$1.sh ]; then
+if [ ! -e scripts/build/extras/$1.sh ]; then
     echo "No valid package found for name '$1'"
     exit 1
 fi
 
-scripts/extras/$1.sh
+scripts/build/extras/$1.sh
