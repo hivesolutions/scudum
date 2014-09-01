@@ -3,11 +3,13 @@
 
 TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
+CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
+CONFIG_FILE=${CONFIG_FILE-$CONFIG_DIR/INSTALLED}
 
 set -e +h
 
-touch /INSTALLED
-installed=$(cat /INSTALLED)
+mkdir -p $CONFIG_DIR && touch $CONFIG_FILE
+installed=$(cat $CONFIG_FILE)
 
 mkdir -p $TARGET && cd $TARGET
 
@@ -29,7 +31,7 @@ for package in "$@"; do
         echo "Package '$package' already installed"
     else
         $EXTRAS/$package.sh
-        echo -n "$package " >> /INSTALLED
+        echo -n "$package " >> $CONFIG_FILE
     fi
 done
 
