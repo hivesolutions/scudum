@@ -7,5 +7,5 @@ tar -zxf "php-$VERSION.tar.gz"
 rm -f "php-$VERSION.tar.gz"
 cd php-$VERSION
 
-./configure --enable-embed
+./configure --prefix=$PREFIX --enable-embed
 make && make install
