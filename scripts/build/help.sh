@@ -12,7 +12,6 @@ The most commonly used git commands are:\n\
    help      Prints this help message\n\
    install   Creates a new Scudum instance from the most up-to-date remote Scudum\n\
    make.iso  Builds an ISO image with the current configuration\n\
-   pack      Packs the current Scudum deployment into tar.gz file (requires no configuration)\n\
-\n"
+   pack      Packs the current Scudum deployment into tar.gz file (requires no configuration)\n"
 
-echo -ne $MESSAGE
+echo -e $MESSAGE
