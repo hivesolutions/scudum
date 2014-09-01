@@ -9,6 +9,6 @@ cd zlib-$VERSION
 
 ./configure --prefix=/usr
 
-make 
+make
 test $TEST && make check
 make install
