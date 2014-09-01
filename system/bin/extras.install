@@ -6,6 +6,7 @@ EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 
 set -e +h
 
+touch /INSTALLED
 installed=$(cat /INSTALLED)
 
 mkdir -p $TARGET && cd $TARGET
