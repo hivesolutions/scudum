@@ -8,7 +8,7 @@ INSTALLED_FILE=${CONFIG_FILE-$CONFIG_DIR/INSTALLED}
 
 set -e +h
 
-mkdir -p $CONFIG_DIR && touch $CONFIG_FILE
+mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
 installed=$(cat $INSTALLED_FILE)
 
 mkdir -p $TARGET && cd $TARGET

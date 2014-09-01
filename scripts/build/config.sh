@@ -14,6 +14,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e config.sh ]; then
+    source config.sh
+fi
+
 touch $SCUDUM/CONFIGURED
 echo $EXTRAS > $SCUDUM/CONFIGURED
 
