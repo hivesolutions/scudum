@@ -14,4 +14,4 @@ export TEST=
 # variable that defines the complete set of extra
 # packages that are going to be installed when the
 # extras script execution is triggered
-export EXTRAS=python clang
+export EXTRAS=sqlite3 pcre iptables python cifs-utils
