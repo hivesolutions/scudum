@@ -1,7 +1,8 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-TARGET=/opt
+TARGET=${TARGET-/opt}
+EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 
 set -e +h
 
@@ -14,10 +15,14 @@ else
     cd scudum && git pull --quiet
 fi
 
+mkdir -p $TARGET/sources && cd $TARGET/sources
+
 for package in "$@"; do
-    if [ ! -e scripts/build/extras/$package.sh ]; then
+    if [ ! -e $EXTRAS/$package.sh ]; then
         echo "No valid package found for name '$package'"
         exit 1
     fi
-    scripts/build/extras/$package.sh
+    $EXTRAS/$package.sh
 done
+
+cd .. && rm -rf $TARGET/sources
