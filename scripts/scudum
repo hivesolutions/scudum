@@ -1,0 +1,21 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+DIR=$(dirname $(readlink -f $0))
+
+set -e +h
+
+if [ ! -e $DIR/build/$1.sh && ! -e $DIR/util/$1.sh ]; then
+    echo "Command '$1' not found"
+    exit 1
+fi
+
+if [ -e $DIR/build/$1.sh ]; then
+    $DIR/build/$1.sh
+fi
+
+if [ -e $DIR/util/$1.sh ]; then
+    $DIR/util/$1.sh
+fi
+
+exit $?
