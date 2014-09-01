@@ -11,5 +11,6 @@ rm -rf php-$VERSION && tar -zxf "php-$VERSION.tar.gz"
 rm -f "php-$VERSION.tar.gz"
 cd php-$VERSION
 
-./configure --prefix=$PREFIX --enable-embed
+./configure --prefix=$PREFIX --enable-embed --disable-dom --disable-simplexml\
+    --disable-xml --disable-xmlreader --disable-xmlwriter --without-pear --without-iconv
 make && make install
