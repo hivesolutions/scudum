@@ -69,7 +69,7 @@ fi
 
 # leaves the interface up if there are additional
 # interfaces in the device
-link_status=`ip link show ${IFACE} 2>/dev/null`
+link_status=`ip link show ${IFACE} 2> /dev/null`
 
 if [ -n "${link_status}" ]; then
     if [ "$(echo "${link_status}" | grep UP)" != "" ]; then

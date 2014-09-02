@@ -24,7 +24,7 @@ case "$2" in
     up)
 
         if [ -e ${PIDFILE} ]; then
-            ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
+            ps $(cat ${PIDFILE}) | grep dhclient &> /dev/null
             if [ "$?" = "0" ]; then
                 log_warning_msg "\n dhclient appears to be running on $1"
                 exit 0
@@ -83,7 +83,7 @@ case "$2" in
         /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1 > /dev/null
 
         if [ -e ${PIDFILE} ]; then
-            ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
+            ps $(cat ${PIDFILE}) | grep dhclient &> /dev/null
 
             if [ "$?" != "0" ]; then
                 rm -f ${PIDFILE}
