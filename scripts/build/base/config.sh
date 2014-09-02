@@ -11,6 +11,10 @@ export FORCE_UNSAFE_CONFIGURE=1
 # should be done with unit tests runnig (more time)
 export TEST=
 
+# name of the current deployment of sucudum, the default
+# value should be generic as no custom deployment is done
+export NAME="generic"
+
 # variable that defines the complete set of extra
 # packages that are going to be installed when the
 # extras script execution is triggered
