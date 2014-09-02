@@ -2,4 +2,8 @@
 
 set -e
 
+if [ -e source/var/viriatum ]; then
+    ln -s /source/var/viriatum /var/viriatum
+fi
+
 viriatum < /dev/null &> /dev/null &
