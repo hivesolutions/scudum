@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+echo -e "  Netius: http://$ADDRESS:9090/"
+
+exit 0

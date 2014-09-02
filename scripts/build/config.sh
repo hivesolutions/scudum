@@ -33,6 +33,10 @@ if [ -e boot ]; then
     cp -p boot $SCUDUM/etc/boot/$DISTRIB
 fi
 
+if [ -e welcome ]; then
+    cp -p welcome $SCUDUM/etc/welcome/$DISTRIB
+fi
+
 if [ -e system ]; then
     cp -rpv system/* $SCUDUM
 fi
