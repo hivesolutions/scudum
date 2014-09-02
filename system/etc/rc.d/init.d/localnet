@@ -18,6 +18,8 @@
 
 case "${1}" in
     start)
+        dmesg -n 1
+
         log_info_msg "Bringing up the loopback interface..."
         ip addr add 127.0.0.1/8 label lo dev lo
         ip link set lo up
