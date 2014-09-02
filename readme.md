@@ -73,7 +73,7 @@ As an alternative you may only remove the `MBR` from it as it's a faster operati
 Building a kernel version and deploying it to the proper directories so that it can be used
 by the proper boot loader can be achieved using the following command:
 
-    MINOR=3.12.6 kernel.build
+    MINOR=3.16.1 kernel.build
 
 ## Armor
 
