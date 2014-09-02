@@ -17,6 +17,10 @@ mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
 mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
 
+# runs the sync operation so that the unmounting is sure
+# to be completed (avoiding possible removal errors)
+sync
+
 # creates the base directory where the scudum
 # distribution will be installed for execution
 rm -rf $SCUDUM && mkdir -pv $SCUDUM

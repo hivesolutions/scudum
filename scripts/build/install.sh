@@ -16,6 +16,8 @@ mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
 mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
 
+sync
+
 rm -f /tools
 rm -rf $SCUDUM && mkdir $SCUDUM
 cd $SCUDUM
