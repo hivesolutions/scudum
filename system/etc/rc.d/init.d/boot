@@ -15,11 +15,11 @@
 . /lib/lsb/init-functions
 
 do_start() {
-    if [ -x /etc/rc.local ]; then
-        log_info_msg "Running local boot scripts (/etc/rc.local)"
-        /etc/rc.local
-        evaluate_retval
-    fi
+    log_info_msg "Running scudum boot scripts (/etc/boot/*)"
+    for file in /etc/boot/*; do
+        $file
+    done
+    echo_ok
 }
 
 case "$1" in
