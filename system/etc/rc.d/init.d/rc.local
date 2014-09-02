@@ -2,7 +2,7 @@
 
 ### BEGIN INIT INFO
 # Provides:            rc.local
-# Required-Start:      $all
+# Required-Start:      $network
 # Should-Start:
 # Required-Stop:
 # Should-Stop:
