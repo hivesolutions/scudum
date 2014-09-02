@@ -12,4 +12,4 @@ rm -f "ntfs-3g_ntfsprogs-$VERSION.tgz"
 cd ntfs-3g_ntfsprogs-$VERSION
 
 ./configure --prefix=$PREFIX
-make && make instal
+make && make install
