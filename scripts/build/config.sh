@@ -14,6 +14,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
+    echo "Scudum already configured, may create duplicated files"
+fi
+
 if [ -e config ]; then
     DISTRIB=${PWD##*/}
     source config
@@ -32,6 +36,10 @@ echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
+
+if [ -e system ]; then
+    cp -rpv system/* $SCUDUM
+fi
 
 cp -p $SCUDUM/etc/fstab.orig $SCUDUM/etc/fstab
 
