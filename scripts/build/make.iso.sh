@@ -3,7 +3,6 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
-FILE=${FILE-$NAME-$VERSION.iso}
 LABEL=${LABEL-Scudum}
 TARGET=${TARGET-/mnt/builds/$NAME}
 LOADER=${LOADER-isolinux}
@@ -20,6 +19,14 @@ DIR=$(dirname $(readlink -f $0))
 set -e +h
 
 source $DIR/base/config.sh
+
+DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
+
+if [ "$DISTRIB" == "generic" ]; then
+    FILE=${FILE-$NAME-$VERSION.iso}
+else
+    FILE=${FILE-$NAME-$VERSION-$DISTRIB.iso}
+fi
 
 apt-get -y install squashfs-tools
 
