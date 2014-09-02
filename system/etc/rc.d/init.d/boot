@@ -19,7 +19,7 @@ do_start() {
     for file in /etc/boot/*; do
         $file
     done
-    echo_ok
+    log_success_msg2
 }
 
 case "$1" in
