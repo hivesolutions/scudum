@@ -23,11 +23,11 @@ if [ -e boot ]; then
     cp -p boot $SCUDUM/etc/boot/$NAME
 fi
 
-touch $SCUDUM/NAME
-touch $SCUDUM/CONFIGURED
+touch $SCUDUM/etc/scudum/NAME
+touch $SCUDUM/etc/scudum/CONFIGURED
 
-echo $NAME > $SCUDUM/NAME
-echo $EXTRAS > $SCUDUM/CONFIGURED
+echo $NAME > $SCUDUM/etc/scudum/NAME
+echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM

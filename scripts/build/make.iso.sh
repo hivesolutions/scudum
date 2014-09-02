@@ -27,7 +27,7 @@ if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA $DIR/config.sh
 fi
 
-if [ ! -e $SCUDUM/CONFIGURED ]; then
+if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "Scudum not configured, not possible to make ISO"
     exit 1
 fi
