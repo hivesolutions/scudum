@@ -30,6 +30,7 @@ fi
 mkdir -p $SCUDUM/etc/scudum
 touch $SCUDUM/etc/scudum/DISTRIB
 touch $SCUDUM/etc/scudum/CONFIGURED
+
 echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
 echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 
