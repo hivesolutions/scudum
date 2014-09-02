@@ -18,11 +18,6 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "Scudum already configured, may create duplicated files"
 fi
 
-if [ -e config ]; then
-    DISTRIB=${PWD##*/}
-    source config
-fi
-
 mkdir -p $SCUDUM/etc/scudum
 touch $SCUDUM/etc/scudum/DISTRIB
 touch $SCUDUM/etc/scudum/CONFIGURED

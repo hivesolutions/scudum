@@ -15,7 +15,14 @@ export TEST=
 # value should be generic as no custom deployment is done
 export DISTRIB="generic"
 
-# variable that defines the complete set of extra
-# packages that are going to be installed when the
-# extras script execution is triggered
+# variable that defines the complete set of extra packages
+# that are going to be installed when the extras script
+# execution is triggered (may be changed by others)
 export EXTRAS="sqlite3 pcre iptables python cifs-utils ntfsprogs"
+
+# verifies if there's a local configuration file if there's
+# one runs it's source so that it may be used for other operations
+if [ -e config ]; then
+    DISTRIB=${PWD##*/}
+    source config
+fi
