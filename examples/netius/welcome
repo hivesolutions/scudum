@@ -1,1 +1,1 @@
-echo -e "  Netius: http://$ADDRESS:9090/"
+echo -e "  Netius URL: http://$ADDRESS:9090/"
