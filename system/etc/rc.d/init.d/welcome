@@ -1,4 +1,4 @@
-source /etc/colors
+#!/bin/sh
 
 ### BEGIN INIT INFO
 # Provides:            welcome
@@ -11,6 +11,8 @@ source /etc/colors
 # Short-Description:   Shows welcome/diagnostics information.
 # Description:         Shows welcome/diagnostics information.
 ### END INIT INFO
+
+. /etc/colors
 
 VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
