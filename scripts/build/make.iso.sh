@@ -25,7 +25,7 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.iso}
 else
-    FILE=${FILE-$NAME-$VERSION-$DISTRIB.iso}
+    FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
 fi
 
 apt-get -y install squashfs-tools
