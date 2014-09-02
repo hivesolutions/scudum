@@ -18,8 +18,18 @@
 # used in the console output of the kernel log
 LEVEL=1
 
-# runs the dmesg operation so that the verbosity of the
-# kernel logging to the console is changed accordingly
-dmesg -n $LEVEL
+case "${1}" in
+    start)
+        # runs the dmesg operation so that the verbosity of the
+        # kernel logging to the console is changed accordingly
+        dmesg -n $LEVEL
+        exit $?
+        ;;
+
+    *)
+        echo "Usage: ${0} {start}"
+        exit 1
+        ;;
+esac
 
 exit 0
