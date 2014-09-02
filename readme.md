@@ -16,16 +16,22 @@ so that replacing them is easy and cheap (without human intervention).
 
 ## Usage
 
+### Installation
+
+In order to install the scudum development tools run:
+
+    make install
+
 ### Examples
 
-To enter into the current scudum development environment located under `/dev/sdb` use the following command:
+To enter into the current scudum development environment deployed in the current machine use:
 
-    chroot.sh
+    scudum chroot
 
 To create an ISO image of the Scudum distribution running using the [ISOLINUX](http://www.syslinux.org) boot
-loader use the following command taking note that the disk contents should be located at `/dev/sdb`:
+loader use the following command taking note that the disk contents should be located at `/scudum`:
 
-    DEV_NAME=/dev/sdb make.iso.sh
+    scudum make.iso
 
 Note that because the fstab file for the ISO version is different a rebuild operation should be performed
 first to avoid problems, to do that use:
