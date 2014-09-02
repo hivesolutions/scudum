@@ -1,0 +1,9 @@
+#!/bin/sh
+
+BASE_PATH=${BASE_PATH-/}
+
+set -e
+
+pip install netius --user
+
+BASE_PATH=$BASE_PATH python -m netius.extras.file
