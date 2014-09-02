@@ -80,4 +80,3 @@ ln -sf ../init.d/mountfs /etc/rc.d/rc6.d/S70mountfs
 ln -sf ../init.d/localnet /etc/rc.d/rc6.d/S90localnet
 ln -sf ../init.d/reboot /etc/rc.d/rc6.d/S99reboot
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
-ln -sf ../init.d/welcome /etc/rc.d/rc6.d/K40welcome
