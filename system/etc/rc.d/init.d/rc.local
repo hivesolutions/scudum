@@ -16,7 +16,7 @@
 
 do_start() {
     if [ -x /etc/rc.local ]; then
-        [ "$VERBOSE" != no ] && log_info_msg "Running local boot scripts (/etc/rc.local)"
+        log_info_msg "Running local boot scripts (/etc/rc.local)"
         /etc/rc.local
         evaluate_retval
     fi
