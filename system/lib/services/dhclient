@@ -80,8 +80,6 @@ case "$2" in
              exit 0
         fi
 
-        log_info_msg "\n Stopping dhclient on the $1 interface..."
-
         /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1
 
         if [ -e ${PIDFILE} ]; then
