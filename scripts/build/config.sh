@@ -23,10 +23,6 @@ if [ -e config ]; then
     source config
 fi
 
-if [ -e boot ]; then
-    cp -p boot $SCUDUM/etc/boot/$DISTRIB
-fi
-
 mkdir -p $SCUDUM/etc/scudum
 touch $SCUDUM/etc/scudum/DISTRIB
 touch $SCUDUM/etc/scudum/CONFIGURED
@@ -37,6 +33,10 @@ echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
+
+if [ -e boot ]; then
+    cp -p boot $SCUDUM/etc/boot/$DISTRIB
+fi
 
 if [ -e system ]; then
     cp -rpv system/* $SCUDUM
