@@ -18,13 +18,14 @@ so that replacing them is easy and cheap (without human intervention).
 
 ### Installation
 
-In order to install the scudum development tools run:
+In order to install the Scudum development tools, to be able to use the commands described in
+the next section (examples) use:
 
     make install
 
 ### Examples
 
-To enter into the current scudum development environment deployed in the current machine use:
+To enter into the current Scudum development environment deployed in the current machine use:
 
     scudum chroot
 
@@ -33,10 +34,10 @@ loader use the following command taking note that the disk contents should be lo
 
     scudum make.iso
 
-Note that because the fstab file for the ISO version is different a rebuild operation should be performed
-first to avoid problems, to do that use:
+To be able to re-create a new Scudum deployment and then build a new ISO from it (all of the operations)
+use the following command (note that this operation may take some time):
 
-    DEV_NAME=/dev/sdb REBUILD=1 make.iso.sh
+    scudum all
 
 In order to create a Virtual Box compatible image (VDI) issue the command:
 
