@@ -15,18 +15,18 @@ set -e +h
 source $DIR/base/config.sh
 
 if [ -e config ]; then
-    NAME=${PWD##*/}
+    DISTRIB=${PWD##*/}
     source config
 fi
 
 if [ -e boot ]; then
-    cp -p boot $SCUDUM/etc/boot/$NAME
+    cp -p boot $SCUDUM/etc/boot/$DISTRIB
 fi
 
-touch $SCUDUM/etc/scudum/NAME
+touch $SCUDUM/etc/scudum/DISTRIB
 touch $SCUDUM/etc/scudum/CONFIGURED
 
-echo $NAME > $SCUDUM/etc/scudum/NAME
+echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
 echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
