@@ -1,0 +1,25 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:            log
+# Required-Start:
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:       S
+# Default-Stop:
+# Short-Description:   Starts the kernel logging with the proper level.
+# Description:         Starts the kernel logging with the proper level.
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+# defines the default verbosity level that is going to be
+# used in the console output of the kernel log
+LEVEL=1
+
+# runs the dmesg operation so that the verbosity of the
+# kernel logging to the console is changed accordingly
+dmesg -n $LEVEL
+
+exit 0

@@ -15,10 +15,6 @@ export PATH
 # that contains the storage of information
 DEVICE=Scudum
 
-# defines the default verbosity level that is going to be
-# used in the console output of the kernel log
-LEVEL=1
-
 # sets the global constant values that are used to
 # control the behavior of the loader
 USE_RAMFS=0
@@ -165,10 +161,6 @@ mkdir -p initrd
 # runs the pivot operation setting the current directory
 # as the root for execution (the ram device becomes the root)
 pivot_root . initrd
-
-# runs the dmesg operation so that the verbosity of the
-# kernel logging to the console is changed accordingly
-dmesg -n $LEVEL
 
 # changes to new root and swap to new root's devices
 # this should trigger the inital system loading (init)
