@@ -43,7 +43,7 @@ case "$2" in
         # prints the assigned settings if requested
         # retrieving info from dhclient.leases file
         if  is_true "$PRINTIP"  -o  is_true "$PRINTALL"; then
-        
+
             IPADDR=`getipstats | grep "fixed-address" | \
                 sed 's/ fixed-address //' | \
                 sed 's/\;//'`
