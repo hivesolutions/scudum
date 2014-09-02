@@ -7,7 +7,7 @@ source /etc/colors
 # Required-Stop: 
 # Should-Stop:
 # Default-Start:       1 2 3 4 5
-# Default-Stop:        0 6
+# Default-Stop:
 # Short-Description:   Shows welcome/diagnostics information.
 # Description:         Shows welcome/diagnostics information.
 ### END INIT INFO
