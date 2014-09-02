@@ -34,7 +34,7 @@ loader use the following command taking note that the disk contents should be lo
 
     scudum make.iso
 
-To be able to re-create a new Scudum deployment and then build a new ISO from it (all of the operations)
+To be able to re-create a new Scudum deployment (into `/scudum`) and then build a new ISO from it (all of the operations)
 use the following command (note that this operation may take some time):
 
     scudum all
