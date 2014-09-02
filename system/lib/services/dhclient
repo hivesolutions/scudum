@@ -33,7 +33,7 @@ case "$2" in
             fi
         fi
 
-        /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1
+        /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1 > /dev/null
 
         if [ "$?" != "0" ]; then
             log_failure_msg2
@@ -80,7 +80,7 @@ case "$2" in
              exit 0
         fi
 
-        /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1
+        /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1 > /dev/null
 
         if [ -e ${PIDFILE} ]; then
             ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
