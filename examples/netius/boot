@@ -1,9 +1,10 @@
 #!/bin/sh
 
+HOST=${HOST-0.0.0.0}
 BASE_PATH=${BASE_PATH-/}
 
 set -e
 
 pip install netius --user
 
-BASE_PATH=$BASE_PATH python -m netius.extras.file
+HOST=$HOST BASE_PATH=$BASE_PATH python -m netius.extras.file
