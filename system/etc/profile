@@ -10,7 +10,7 @@ export TERM=linux
 export GREP_OPTIONS=--color=auto
 export PREFIX=/opt
 
-VERSION=$(cat /lib/scudum/VERSION)
+VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
 SVERSION=alpha-$VERSION
 PS1="\u@\h:\w# "

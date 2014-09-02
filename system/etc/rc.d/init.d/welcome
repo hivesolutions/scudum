@@ -12,7 +12,7 @@ source /etc/colors
 # Description:         Shows welcome/diagnostics information.
 ### END INIT INFO
 
-VERSION=$(cat /lib/scudum/VERSION)
+VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
 SVERSION=alpha-$VERSION
 ADDRESS=$(ifconfig | sed -n "s/.*inet addr:\([0-9.]\+\)\s.*/\1/p" | grep -v "127.0.0.1")

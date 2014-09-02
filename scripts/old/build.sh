@@ -68,7 +68,7 @@ rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 > $SCUDUM/etc/resolv.conf
 
-echo "$VERSION" > $SCUDUM/lib/scudum/VERSION
+echo "$VERSION" > $SCUDUM/etc/scudum/VERSION
 
 find $SCUDUM -name "*.pyc" -delete
 
