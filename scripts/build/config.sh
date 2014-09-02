@@ -30,7 +30,7 @@ cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
 if [ -e boot ]; then
-    cp -p boot $SCUDUM/etc/boot/$DISTRIB
+    rm -f $SCUDUM/etc/boot/$DISTRIB && cp -p boot $SCUDUM/etc/boot/$DISTRIB
 fi
 
 if [ -e system ]; then
