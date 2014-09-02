@@ -14,16 +14,25 @@
 
 . /lib/lsb/init-functions
 
-if [ ! -d /origin ]; then exit; fi
+case "${1}" in
+    start)
+        if [ ! -d /origin ]; then exit; fi
 
-log_info_msg "Making /tmp world writeable (1777)..."
-chmod 1777 /tmp
-evaluate_retval
+        log_info_msg "Making /tmp world writeable (1777)..."
+        chmod 1777 /tmp
+        evaluate_retval
 
-log_info_msg "Releasing unused memory from initrd..."
-umount /initrd/proc
-umount -l /initrd
-rm -rf /initrd
-evaluate_retval
+        log_info_msg "Releasing unused memory from initrd..."
+        umount /initrd/proc
+        umount -l /initrd
+        rm -rf /initrd
+        evaluate_retval
+        ;;
+
+    *)
+        echo "Usage: ${0} {start}"
+        exit 1
+        ;;
+esac
 
 exit 0
