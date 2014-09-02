@@ -36,6 +36,8 @@ file=/etc/sysconfig/ifconfig.${1}
 
 . /lib/lsb/init-functions 
 
+log_info_msg "Bringing down the ${1} interface... "
+
 if [ ! -r "${file}" ]; then
     log_warning_msg "${file} is missing or cannot be accessed."
     exit 1
