@@ -20,7 +20,7 @@ if [ -e config ]; then
 fi
 
 if [ -e boot ]; then
-    cp -p boot $SCUDUM/etc/boot
+    cp -p boot $SCUDUM/etc/boot/$NAME
 fi
 
 touch $SCUDUM/NAME
