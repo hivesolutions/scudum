@@ -84,10 +84,12 @@ case "$2" in
 
         /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1
 
-        ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
+        if [ -e ${PIDFILE} ]; then
+            ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
 
-        if [ "$?" != "0" ]; then
-            rm -f ${PIDFILE}
+            if [ "$?" != "0" ]; then
+                rm -f ${PIDFILE}
+            fi
         fi
 
         evaluate_retval
