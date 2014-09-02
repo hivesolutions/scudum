@@ -1,0 +1,39 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:            boot
+# Required-Start:      $network
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:       2 3 4 5
+# Default-Stop:
+# Short-Description:   Runs the complete set of Scudum boot scripts.
+# Description:         Runs the complete set of Scudum boot scripts.
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+do_start() {
+    if [ -x /etc/rc.local ]; then
+        log_info_msg "Running local boot scripts (/etc/rc.local)"
+        /etc/rc.local
+        evaluate_retval
+    fi
+}
+
+case "$1" in
+    start)
+        do_start
+        ;;
+
+    stop)
+        ;;
+
+    *)
+        echo "Usage: ${0} {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
