@@ -11,6 +11,11 @@ set -e +h
 
 source $DIR/base/config.sh
 
+mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
+mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
+
 rm -f /tools
 rm -rf $SCUDUM && mkdir $SCUDUM
 cd $SCUDUM
