@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "https://get.docker.io/builds/Linux/x86_64/docker-$VERSION"
+wget "https://get.docker.io/builds/Linux/x86_64/docker-$VERSION"
 
 chmod +x docker-$VERSION
 mkdir -pv $PREFIX/bin

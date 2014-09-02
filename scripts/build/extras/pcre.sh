@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$VERSION.tar.gz"
+wget "ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$VERSION.tar.gz"
 rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tar.gz"
 rm -f "pcre-$VERSION.tar.gz"
 cd pcre-$VERSION

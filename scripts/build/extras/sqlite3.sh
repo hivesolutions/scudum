@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "http://www.sqlite.org/2014/sqlite-autoconf-$VERSION.tar.gz"
+wget "http://www.sqlite.org/2014/sqlite-autoconf-$VERSION.tar.gz"
 rm -rf sqlite-autoconf-$VERSION && tar -zxf "sqlite-autoconf-$VERSION.tar.gz"
 rm -f "sqlite-autoconf-$VERSION.tar.gz"
 cd sqlite-autoconf-$VERSION

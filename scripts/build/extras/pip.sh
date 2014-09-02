@@ -4,5 +4,5 @@ set -e +h
 
 source $DIR/common.sh
 
-rm -f get-pip.py && wget --no-check-certificate "https://bootstrap.pypa.io/get-pip.py"
+rm -f get-pip.py && wget "https://bootstrap.pypa.io/get-pip.py"
 python get-pip.py --user

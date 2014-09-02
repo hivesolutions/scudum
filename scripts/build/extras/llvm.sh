@@ -7,16 +7,16 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
+wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
 rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.src.tar.gz"
 rm -f "llvm-$VERSION.src.tar.gz"
 cd llvm-$VERSION.src
 
-wget --no-check-certificate "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
+wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
 tar -zxf "cfe-$VERSION.src.tar.gz" -C tools
 mv tools/cfe-$VERSION.src tools/clang
 
-wget --no-check-certificate "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.gz"
+wget "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.gz"
 tar -zxf "compiler-rt-$VERSION_M.src.tar.gz" -C projects
 mv projects/compiler-rt-$VERSION_M projects/compiler-rt
 

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "https://storage.googleapis.com/golang/go$VERSION.src.tar.gz"
+wget "https://storage.googleapis.com/golang/go$VERSION.src.tar.gz"
 rm -rf go && tar -zxf "go$VERSION.src.tar.gz"
 rm -f "go$VERSION.src.tar.gz"
 mv go $PREFIX && cd $PREFIX/go/src
