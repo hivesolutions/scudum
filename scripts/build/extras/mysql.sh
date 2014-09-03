@@ -16,4 +16,4 @@ cd mysql-$VERSION
 cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX .
 make && make install
 
-bin/mysql_install_db --user=mysql
+scripts/mysql_install_db
