@@ -13,3 +13,5 @@ cd mysql-$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
+
+bin/mysql_install_db --user=mysql
