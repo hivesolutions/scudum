@@ -13,4 +13,4 @@ rm -rf mongodb-src-r$VERSION && tar -zxf "mongodb-src-r$VERSION.tar.gz"
 rm -f "mongodb-src-r$VERSION.tar.gz"
 cd mongodb-src-r$VERSION
 
-scons mongod -Wno-unused-local-typedefs
+CLAGS="-Wno-unused-local-typedefs" CXXFLAGS="-Wno-unused-local-typedefs" scons mongod
