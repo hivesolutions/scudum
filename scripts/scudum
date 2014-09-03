@@ -11,11 +11,11 @@ if [ ! -e $DIR/build/$1.sh ] && [ ! -e $DIR/util/$1.sh ]; then
 fi
 
 if [ -e $DIR/build/$1.sh ]; then
-    $DIR/build/$1.sh
+    $DIR/build/$1.sh ${@:2}
 fi
 
 if [ -e $DIR/util/$1.sh ]; then
-    $DIR/util/$1.sh
+    $DIR/util/$1.sh ${@:2}
 fi
 
 exit $?
