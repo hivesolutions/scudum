@@ -11,10 +11,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
-mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
-mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
-mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
-mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
+mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
+mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
 sync
 
