@@ -4,7 +4,8 @@
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
 LABEL=${LABEL-Scudum}
-TARGET=${TARGET-/mnt/builds/$NAME}
+BASE=${BASE-/mnt/builds}
+TARGET=${TARGET-$BASE/$NAME/iso}
 LOADER=${LOADER-isolinux}
 SCHEMA=${SCHEMA-transient}
 CONFIG=${CONFIG-1}
