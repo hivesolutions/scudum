@@ -19,4 +19,4 @@ rm -rf scons-$VERSION && tar -zxf "scons-$VERSION.tar.gz"
 rm -f "scons-$VERSION.tar.gz"
 cd scons-$VERSION
 
-python setup.py $ARGS
+python setup.py install $ARGS
