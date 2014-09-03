@@ -13,13 +13,11 @@ mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
 
 mkdir -p $TARGET && cd $TARGET
 
-if [ "$REFRESH" == "1" ]; then
-    if [ ! -e scudum ]; then
-        git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
-        cd scudum
-    else
-        cd scudum && git pull --quiet
-    fi
+if [ ! -e scudum ]; then
+    git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
+    cd scudum
+elif [ "$REFRESH" == "1" ]; then
+    cd scudum && git pull --quiet
 fi
 
 mkdir -p $TARGET/sources && cd $TARGET/sources
