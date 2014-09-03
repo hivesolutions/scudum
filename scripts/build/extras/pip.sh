@@ -4,6 +4,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "python"
+
 if [ "$PREFIX" == "/usr" ]; then
     ARGS=""
 else
