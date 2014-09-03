@@ -9,7 +9,6 @@ INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 set -e +h
 
 mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
-installed=$(cat $INSTALLED_FILE)
 
 mkdir -p $TARGET && cd $TARGET
 
@@ -27,6 +26,7 @@ for package in "$@"; do
         echo "No valid package found for name '$package'"
         exit 1
     fi
+    installed=$(cat $INSTALLED_FILE)
     if [[ $installed == *$package* ]]; then
         echo "Package '$package' already installed"
     else
