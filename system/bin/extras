@@ -10,6 +10,6 @@ if [ ! -e $DIR/extras.$1 ]; then
     exit 1
 fi
 
-$DIR/extras.$1 ${2} ... ${N}
+$DIR/extras.$1 ${2}...${N}
 
 exit $?
