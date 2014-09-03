@@ -1,6 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+REMOVE=${REMOVE-1}
 REFRESH=${REFRESH-1}
 TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
@@ -36,4 +37,6 @@ for package in "$@"; do
     fi
 done
 
-cd .. && rm -rf $TARGET/sources
+if [ "$REMOVE" == "1" ]; then
+    cd .. && rm -rf $TARGET/sources
+fi
