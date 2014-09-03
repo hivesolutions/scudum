@@ -13,7 +13,7 @@ rm -rf mysql-$VERSION && tar -zxf "mysql-$VERSION.tar.gz"
 rm -f "mysql-$VERSION.tar.gz"
 cd mysql-$VERSION
 
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX ..
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX .
 make && make install
 
 scripts/mysql_install_db
