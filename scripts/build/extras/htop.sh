@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "libpcap"
+
 wget "http://hisham.hm/htop/releases/$VERSION/htop-$VERSION.tar.gz"
 rm -rf htop-$VERSION && tar -zxf "htop-$VERSION.tar.gz"
 rm -f "htop-$VERSION.tar.gz"
