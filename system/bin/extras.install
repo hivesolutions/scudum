@@ -1,6 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+REFRESH=${REFRESH-1}
 TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
@@ -12,11 +13,13 @@ mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
 
 mkdir -p $TARGET && cd $TARGET
 
-if [ ! -e scudum ]; then
-    git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
-    cd scudum
-else
-    cd scudum && git pull --quiet
+if [ "$REFRESH" == "1" ]; then
+    if [ ! -e scudum ]; then
+        git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
+        cd scudum
+    else
+        cd scudum && git pull --quiet
+    fi
 fi
 
 mkdir -p $TARGET/sources && cd $TARGET/sources
