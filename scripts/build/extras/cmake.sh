@@ -11,5 +11,5 @@ rm -rf cmake-$VERSION && tar -zxf "cmake-$VERSION.tar.gz"
 rm -f "cmake-$VERSION.tar.gz"
 cd cmake-$VERSION
 
-./bootstrap --prefix=$PREFIX
+./bootstrap
 make && make install
