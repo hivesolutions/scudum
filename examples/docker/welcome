@@ -1,0 +1,1 @@
+echo -e "  Docker daemon is runnig, use 'docker run -i -t ubuntu /bin/bash'"
