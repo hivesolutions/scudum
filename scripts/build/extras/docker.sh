@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends("iptables")
+depends "iptables"
 
 wget "https://get.docker.io/builds/Linux/x86_64/docker-$VERSION"
 

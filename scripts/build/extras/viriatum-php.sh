@@ -4,6 +4,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "php"
+
 export CFLAGS="$CFLAGS -I/usr/include/php -I/usr/include/php/main\
     -I/usr/include/php/TSRM -I/usr/include/php/Zend -I$PREFIX/include/php\
     -I$PREFIX/include/php/main -I$PREFIX/include/php/TSRM -I$PREFIX/include/php/Zend"

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends("sqlite3", "pcre")
+depends "sqlite3" "pcre"
 
 wget "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz"
 rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
