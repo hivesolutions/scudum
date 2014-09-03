@@ -11,5 +11,4 @@ rm -rf redis-$VERSION && tar -zxf "redis-$VERSION.tar.gz"
 rm -f "redis-$VERSION.tar.gz"
 cd redis-$VERSION
 
-./configure --prefix=$PREFIX
-make && make install
+make PREFIX=$PREFIX && make install
