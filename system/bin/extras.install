@@ -21,6 +21,10 @@ elif [ "$REFRESH" == "1" ]; then
     cd scudum && git pull --quiet
 fi
 
+if [ "$REMOVE" == "1" ]; then
+    rm -rf $TARGET/sources
+fi
+
 mkdir -p $TARGET/sources && cd $TARGET/sources
 
 for package in "$@"; do
