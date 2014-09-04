@@ -23,4 +23,4 @@ cmake ..\
 
 make && make install
 
-scripts/mysql_install_db
+/opt/scripts/mysql_install_db
