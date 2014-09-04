@@ -6,6 +6,12 @@ DEV_BOOT=${DEV_BOOT-/dev/null}
 DEV_SWAP=${DEV_SWAP-/dev/null}
 DEV_ROOT=${DEV_ROOT-/dev/null}
 SCHEMA=${SCHEMA-transient}
+BCERT=${BCERT-1}
+BEXTRAS=${BEXTRAS-1}
+BACCOUNT=${BACCOUNT-1}
+BKERNEL=${BKERNEL-1}
+BINIT=${BINIT-1}
+BRAMFS=${BRAMFS-1}
 
 BASE=$(pwd)
 DIR=$(dirname $(readlink -f $0))
@@ -57,9 +63,9 @@ case $SCHEMA in
         ;;
 esac
 
-$DIR/../util/chroot.sh /bin/cert.build
-$DIR/../util/chroot.sh /bin/extras.build
-$DIR/../util/chroot.sh /bin/account.build
-$DIR/../util/chroot.sh /bin/kernel.build
-$DIR/../util/chroot.sh /bin/init.build
-$DIR/../util/chroot.sh /sbin/mkinitramfs
+test $BCERT == "1" && $DIR/../util/chroot.sh /bin/cert.build
+test $BEXTRAS == "1" && $DIR/../util/chroot.sh /bin/extras.build
+test $BACCOUNT == "1" && $DIR/../util/chroot.sh /bin/account.build
+test $BKERNEL == "1" && $DIR/../util/chroot.sh /bin/kernel.build
+test $BINIT == "1" && $DIR/../util/chroot.sh /bin/init.build
+test $BRAMFS == "1" && $DIR/../util/chroot.sh /sbin/mkinitramfs
