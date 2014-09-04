@@ -26,6 +26,8 @@ cmake ..\
 
 make && make install
 
+ln -s ../mysql/bin/mysql $PREFIX/bin/mysql
+
 cd $PREFIX/mysql
 
 chown -R mysql:mysql .
