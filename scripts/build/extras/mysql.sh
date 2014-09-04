@@ -13,7 +13,8 @@ rm -rf mysql-$VERSION && tar -zxf "mysql-$VERSION.tar.gz"
 rm -f "mysql-$VERSION.tar.gz"
 cd mysql-$VERSION
 
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX .
+mkdir -pv build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_CXX_FLAGS="-w -fpermissive" -DCMAKE_C_FLAGS="-w -fpermissive"
 make && make install
 
 scripts/mysql_install_db
