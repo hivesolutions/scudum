@@ -12,7 +12,6 @@ CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 
-CUR=$(pwd)
 DIR=$(dirname $(readlink -f $0))
 
 set -e +h
@@ -42,9 +41,7 @@ if [ "$CLEANUP" == "1" ]; then
     $DIR/cleanup.sh
 fi
 
-cd $SCUDUM
-
-sudo tar -C scudum -c . | sudo docker import - scudum
+tar -C $SCUDUM -c . | docker import - scudum
 
 if [ "$DEPLOY" == "1" ]; then
     mv $FILE $TARGET
