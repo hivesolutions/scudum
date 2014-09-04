@@ -6,7 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-rm -rf samba-$VERSION && git clone -b samba-$VERSION --depth 1 git://git.samba.org/samba.git samba-$VERSION
+wget "http://ftp.samba.org/pub/samba/stable/samba-$VERSION.tar.gz"
+rm -rf samba-$VERSION && tar -zxf "samba-$VERSION.tar.gz"
+rm -f "samba-$VERSION.tar.gz"
 cd samba-$VERSION
 
 ./configure --prefix=$PREFIX
