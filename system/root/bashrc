@@ -16,3 +16,4 @@ SVERSION=alpha-$VERSION
 PS1="\u@\h:\w# "
 
 alias "ls=ls --color=auto"
+echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
