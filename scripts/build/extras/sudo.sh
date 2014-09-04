@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.8.10p3}
+VERSION=${VERSION-1.8.9p3}
 
 DIR=$(dirname $(readlink -f $0))
 
