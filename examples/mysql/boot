@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+cd /usr/mysql
+bin/mysqld_safe --user=mysql < /dev/null &> /dev/null &
