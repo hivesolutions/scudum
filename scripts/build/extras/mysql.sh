@@ -13,14 +13,24 @@ rm -rf mysql-$VERSION && tar -zxf "mysql-$VERSION.tar.gz"
 rm -f "mysql-$VERSION.tar.gz"
 cd mysql-$VERSION
 
+groupadd mysql
+useradd -r -g mysql mysql
+
 mkdir -pv build && cd build
 
 cmake ..\
-    -DCMAKE_INSTALL_PREFIX=$PREFIX\
+    -DCMAKE_INSTALL_PREFIX=$PREFIX/mysql\
     -DWITH_UNIT_TESTS=OFF\
     -DCMAKE_CXX_FLAGS="-w -fpermissive"\
     -DCMAKE_C_FLAGS="-w -fpermissive"
 
 make && make install
 
-/opt/scripts/mysql_install_db
+cd $PREFIX/mysql
+
+chown -R mysql:mysql .
+
+scripts/mysql_install_db --user=mysql
+
+chown -R root .
+chown -R mysql data
