@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 wget "http://samba.org/ftp/rsync/src/rsync-$VERSION.tar.gz"
 rm -rf rsync-$VERSION && tar -zxf "rsync-$VERSION.tar.gz"
-rm -f "rsync-$VERSION"
+rm -f "rsync-$VERSION.tar.gz"
 cd rsync-$VERSION
 
 ./configure --prefix=$PREFIX
