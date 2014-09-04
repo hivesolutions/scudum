@@ -1,10 +1,10 @@
 source /etc/colors
 
 export PATH="~/.local/bin:~/.local/sbin:/opt/bin:/opt/sbin:/scd/bin:/scd/sbin:$PATH"
-export LD_LIBRARY_PATH="~/.local/lib:/opt/lib:/scd/lib:$LD_LIBRARY_PATH"
-export LIBRARY_PATH="~/.local/lib:/opt/lib:/scd/lib:$LIBRARY_PATH"
-export C_INCLUDE_PATH="~/.local/include:/opt/include:/scd/include:$C_INCLUDE_PATH"
-export CPLUS_INCLUDE_PATH="~/.local/include:/opt/include:/scd/include:$CPLUS_INCLUDE_PATH"
+export LD_LIBRARY_PATH="~/.local/lib:/opt/lib:/scd/lib"
+export LIBRARY_PATH="~/.local/lib:/opt/lib:/scd/lib"
+export C_INCLUDE_PATH="~/.local/include:/opt/include:/scd/include"
+export CPLUS_INCLUDE_PATH="~/.local/include:/opt/include:/scd/include"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export GREP_OPTIONS=--color=auto
