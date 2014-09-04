@@ -3,7 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
-USER=${USER-hivesolutions}
+DOCKER_USER=${DOCKER_USER-hivesolutions}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}
 LOADER=${LOADER-isolinux}
@@ -44,8 +44,8 @@ if [ "$CLEANUP" == "1" ]; then
     $DIR/cleanup.sh
 fi
 
-tar -C $SCUDUM -c . | docker import - $USER/$FILE
+tar -C $SCUDUM -c . | docker import - $DOCKER_USER/$FILE
 
 if [ "$DEPLOY" == "1" ]; then
-    docker push $USER/$FILE
+    docker push $DOCKER_USER/$FILE
 fi
