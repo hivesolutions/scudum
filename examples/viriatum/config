@@ -1,1 +1,1 @@
-export EXTRAS="php viriatum viriatum-php"
+export EXTRAS="viriatum viriatum-php"

@@ -1,1 +1,1 @@
-export EXTRAS="iptables docker"
+export EXTRAS="docker"
