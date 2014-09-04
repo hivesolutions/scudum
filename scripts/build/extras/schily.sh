@@ -18,3 +18,4 @@ ln -s ../schily/bin/mkisofs $PREFIX/bin/mkisofs
 ln -s ../schily/bin/isoinfo $PREFIX/bin/isoinfo
 ln -s ../schily/bin/isodump $PREFIX/bin/isodump
 ln -s ../schily/bin/isodebug $PREFIX/bin/isodebug
+ln -s ../schily/bin/cdrecord $PREFIX/bin/cdrecord

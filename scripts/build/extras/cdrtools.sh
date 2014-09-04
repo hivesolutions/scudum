@@ -14,3 +14,4 @@ cd cdrtools-$VERSION
 make && make install PREFIX=$PREFIX
 
 ln -s ../schily/bin/mkisofs $PREFIX/bin/mkisofs
+ln -s ../schily/bin/cdrecord $PREFIX/bin/cdrecord
