@@ -12,6 +12,8 @@ CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 BKERNEL=${BKERNEL-0}
+BINIT=${BINIT-0}
+BRAMFS=${BRAMFS-0}
 
 DIR=$(dirname $(readlink -f $0))
 
@@ -30,7 +32,7 @@ fi
 apt-get -y install lxc-docker
 
 if [ "$CONFIG" == "1" ]; then
-    SCHEMA=$SCHEMA BKERNEL=$BKERNEL $DIR/config.sh
+    SCHEMA=$SCHEMA BKERNEL=$BKERNEL BINIT=$BINIT BRAMFS=$BRAMFS $DIR/config.sh
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
