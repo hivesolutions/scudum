@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.8.9p3}
+VERSION=${VERSION-1.8.10p3}
 
 DIR=$(dirname $(readlink -f $0))
 
@@ -11,5 +11,8 @@ rm -rf sudo-$VERSION && tar -zxf "sudo-$VERSION.tar.gz"
 rm -f "sudo-$VERSION.tar.gz"
 cd sudo-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX\
+    --with-all-insults\
+    --with-env-editor
+
 make && make install
