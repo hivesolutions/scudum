@@ -11,8 +11,5 @@ rm -rf sudo-$VERSION && tar -zxf "sudo-$VERSION.tar.gz"
 rm -f "sudo-$VERSION.tar.gz"
 cd sudo-$VERSION
 
-./configure --prefix=$PREFIX\
-    --with-all-insults\
-    --with-env-editor
-
+./configure --prefix=$PREFIX
 make && make install
