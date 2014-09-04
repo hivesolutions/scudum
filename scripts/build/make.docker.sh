@@ -21,9 +21,9 @@ source $DIR/base/config.sh
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
-    FILE=${FILE-$NAME-$VERSION.iso}
+    FILE=${FILE-$NAME-$VERSION}
 else
-    FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
+    FILE=${FILE-$NAME-$DISTRIB-$VERSION}
 fi
 
 apt-get -y install lxc-docker
@@ -41,7 +41,7 @@ if [ "$CLEANUP" == "1" ]; then
     $DIR/cleanup.sh
 fi
 
-tar -C $SCUDUM -c . | docker import - scudum
+tar -C $SCUDUM -c . | docker import - $FILE
 
 if [ "$DEPLOY" == "1" ]; then
     mv $FILE $TARGET
