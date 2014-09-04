@@ -11,5 +11,4 @@ rm -rf cdrtools-$VERSION && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION
 
-./configure --prefix=$PREFIX
-make && make install
+make && PREFIX=$PREFIX DEFMANBASE=. make install
