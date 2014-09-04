@@ -14,3 +14,5 @@ VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
 SVERSION=alpha-$VERSION
 PS1="\u@\h:\w# "
+
+alias "ls=ls --color=auto"
