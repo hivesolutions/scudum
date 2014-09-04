@@ -8,10 +8,10 @@ set -e +h
 source $DIR/base/config.sh
 
 cd $SCUDUM/root
-rm -rf .[^.] .??* *
+find . ! -name ".bashrc" -delete
 
 cd $SCUDUM/tmp
-rm -rf .[^.] .??* *
+find . -delete
 
 rm -rf $SCUDUM/scd/*
 rm -rf $SCUDUM/opt

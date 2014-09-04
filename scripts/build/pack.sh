@@ -27,10 +27,10 @@ mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
 
 cd $SCUDUM/root
-rm -rf .[^.] .??* *
+find . -delete
 
 cd $SCUDUM/tmp
-rm -rf .[^.] .??* *
+find . -delete
 
 rm -rf $SCUDUM/scd/*
 rm -rf $SCUDUM/source
