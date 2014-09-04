@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.6.19}
+VERSION=${VERSION-5.6.20}
 
 DIR=$(dirname $(readlink -f $0))
 
@@ -14,7 +14,13 @@ rm -f "mysql-$VERSION.tar.gz"
 cd mysql-$VERSION
 
 mkdir -pv build && cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_CXX_FLAGS="-w -fpermissive" -DCMAKE_C_FLAGS="-w -fpermissive"
+
+cmake ..\
+    -DCMAKE_INSTALL_PREFIX=$PREFIX\
+    -DWITH_UNIT_TESTS=OFF\
+    -DCMAKE_CXX_FLAGS="-w -fpermissive"\
+    -DCMAKE_C_FLAGS="-w -fpermissive"
+
 make && make install
 
 scripts/mysql_install_db
