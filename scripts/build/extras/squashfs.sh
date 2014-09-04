@@ -9,7 +9,6 @@ source $DIR/common.sh
 wget "http://prdownloads.sourceforge.net/squashfs/squashfs$VERSION.tar.gz"
 rm -rf squashfs$VERSION && tar -zxf "squashfs$VERSION.tar.gz"
 rm -f "squashfs$VERSION.tar.gz"
-cd squashfs$VERSION
+cd squashfs$VERSION/squashfs-tools
 
-./configure --prefix=$PREFIX
-make && make install
+make && make INSTALL_DIR=$PREFIX/bin install
