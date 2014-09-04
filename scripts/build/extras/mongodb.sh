@@ -13,5 +13,5 @@ rm -rf mongodb-src-r$VERSION && tar -zxf "mongodb-src-r$VERSION.tar.gz"
 rm -f "mongodb-src-r$VERSION.tar.gz"
 cd mongodb-src-r$VERSION
 
-scons all --ssl
+scons core tools --ssl
 scons install --prefix=$PREFIX
