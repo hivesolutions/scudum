@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "sqlite3" "pcre"
-
 wget "http://cache.ruby-lang.org/pub/ruby/2.1/ruby-$VERSION.tar.gz"
 rm -rf ruby-$VERSION && tar -zxf "ruby-$VERSION.tar.gz"
 rm -f "ruby-$VERSION.tar.gz"
