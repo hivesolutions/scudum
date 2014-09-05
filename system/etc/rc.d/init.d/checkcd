@@ -37,6 +37,7 @@ case "${1}" in
             cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
         for device in $storage; do
             mkdir -p pst && mount /dev/$device pst
+            break
         done
         evaluate_retval
         ;;
