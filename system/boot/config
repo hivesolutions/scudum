@@ -1686,7 +1686,7 @@ CONFIG_DM_ZERO=y
 # CONFIG_DM_VERITY is not set
 # CONFIG_DM_SWITCH is not set
 # CONFIG_TARGET_CORE is not set
-# CONFIG_FUSION is not set
+CONFIG_FUSION=y
 
 #
 # IEEE 1394 (FireWire) support
