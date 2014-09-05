@@ -15,6 +15,10 @@ export PATH
 # that contains the storage of information
 DEVICE=Scudum
 
+# the name that is going to be used to detect devices that
+# are registered for storage for scudum infra-structure
+STORAGE=PSTSCU
+
 # sets the global constant values that are used to
 # control the behavior of the loader
 USE_RAMFS=0
@@ -124,6 +128,16 @@ if [ "$USE_SWAP" == "1" ]; then
     dd if=/dev/zero of=swapspace bs=1k count=32768
     mkswap swapspace
 fi
+
+# retrieves the complete set of devices located for storage
+# under the current environment/system, these devices are 
+# going to be mounted under the proper persistence directory
+storage = $(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
+    cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
+for device in $storage; do
+    mkdir pst
+    mount /dev/$device /pst
+done
 
 # prints a message about the starting of the creation
 # of the various directories in preparation for the pivot
