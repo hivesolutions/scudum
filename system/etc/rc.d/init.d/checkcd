@@ -14,6 +14,10 @@
 
 . /lib/lsb/init-functions
 
+# the name of the volume label that is going to be used
+# for finding the persistent storage devices
+STORAGE=PSTSCU
+
 case "${1}" in
     start)
         if [ ! -d /origin ]; then exit; fi
@@ -26,6 +30,14 @@ case "${1}" in
         umount /initrd/proc
         umount -l /initrd
         rm -rf /initrd
+        evaluate_retval
+
+        log_info_msg "Mounting persistent storage..."
+        storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
+            cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
+        for device in $storage; do
+            mkdir -p pst && mount /dev/$device pst
+        done
         evaluate_retval
         ;;
 
