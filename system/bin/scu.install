@@ -3,6 +3,7 @@
 
 REMOVE=${REMOVE-1}
 REFRESH=${REFRESH-1}
+PERSIST=${PERSIST-/scd}
 TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
@@ -10,8 +11,8 @@ INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
 set -e +h
 
-if mountpoint -q /scd; then
-    BUILDER=/scd/sources
+if mountpoint -q $PERSIST; then
+    BUILDER=$PERSIST/sources
 else
     BUILDER=$TARGET/sources
 if
