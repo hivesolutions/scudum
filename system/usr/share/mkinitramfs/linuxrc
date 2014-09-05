@@ -136,7 +136,7 @@ storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
     cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
 for device in $storage; do
     echoi "Mounting /dev/$device as persistence (/pst)"
-    mkdir -p pst && mount /dev/$device /pst
+    mkdir -p pst && mount /dev/$device pst
 done
 
 # prints a message about the starting of the creation
