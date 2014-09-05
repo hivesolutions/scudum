@@ -52,7 +52,7 @@ rm -rf .[^.] .??* *
 cd $SCUDUM/images
 rm -rf .[^.] .??* *
 
-rm -rf $SCUDUM/scd/*
+rm -rf $SCUDUM/scd
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
 rm -rf $SCUDUM/sources
