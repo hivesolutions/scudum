@@ -10,9 +10,15 @@ INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
 set -e +h
 
+if mountpoint -q /scd; then
+    BUILDER=/scd
+else
+    BUILDER=$TARGET
+if
+
 mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
 
-mkdir -p $TARGET && cd $TARGET
+mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -e scudum ]; then
     git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
@@ -22,10 +28,10 @@ elif [ "$REFRESH" == "1" ]; then
 fi
 
 if [ "$REMOVE" == "1" ]; then
-    rm -rf $TARGET/sources
+    rm -rf $BUILDER/sources
 fi
 
-mkdir -p $TARGET/sources && cd $TARGET/sources
+mkdir -p $BUILDER/sources && cd $BUILDER/sources
 
 for package in "$@"; do
     if [ ! -e $EXTRAS/$package.sh ]; then
