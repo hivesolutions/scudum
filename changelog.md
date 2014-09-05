@@ -94,7 +94,7 @@
 
 * Inclusion of python interpreter
 * Support for DHCP
-* Created /scd directory for internal usage (added to PATH)
+* Created /pst directory for internal usage (added to PATH)
 
 ### Version 9
 

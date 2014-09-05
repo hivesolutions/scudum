@@ -32,7 +32,7 @@ find . -delete
 cd $SCUDUM/tmp
 find . -delete
 
-rm -rf $SCUDUM/scd
+rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
 rm -rf $SCUDUM/tools

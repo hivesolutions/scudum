@@ -133,7 +133,7 @@ echoi "Preparing file systems for pivot"
 # finish off setting up, it's going to create the complete
 # set of directories used for the system, and then touch
 # some of the file as requested
-mkdir scd
+mkdir pst
 mkdir home
 mkdir disk
 mkdir tmp

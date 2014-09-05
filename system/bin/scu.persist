@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 DEV=${DEV-/dev/sda1}
-TARGET=${TARGET-/scd}
+TARGET=${TARGET-/pst}
 LABEL=${LABEL-SSTORAGE}
 
 echo "Going to start persistence for $DEV"
