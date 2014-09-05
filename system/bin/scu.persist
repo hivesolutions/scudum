@@ -3,7 +3,7 @@
 
 DEV=${DEV-/dev/sda1}
 TARGET=${TARGET-/pst}
-LABEL=${LABEL-SSTORAGE}
+LABEL=${LABEL-PSTSCU}
 
 echo "Going to start persistence for $DEV"
 
