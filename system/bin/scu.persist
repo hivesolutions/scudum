@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 
 DEV=${DEV-/dev/sda1}
+TARGET=${TARGET-/scd}
 
 echo "Going to start persistence for $DEV"
 
 mkfs.ext4 $DEV
 
-cp -rp /scu /scu.back
+cp -rp $TARGET $TARGET.back
 
-mkdir -pv /scu
-mount -v $DEV /scu
+mkdir -pv $TARGET
+mount -v $DEV $TARGET
 
-cp -rp /scu.back/* /scu
+cp -rp $TARGET.back/* $TARGET
