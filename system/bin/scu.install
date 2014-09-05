@@ -15,7 +15,7 @@ if mountpoint -q $PERSIST; then
     BUILDER=$PERSIST/sources
 else
     BUILDER=$TARGET/sources
-if
+fi
 
 mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
 

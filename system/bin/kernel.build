@@ -15,7 +15,7 @@ if mountpoint -q $PERSIST; then
     BUILDER=$PERSIST/ksources
 else
     BUILDER=$TARGET/ksources
-if
+fi
 
 mkdir -p $BUILDER && cd $BUILDER
 
