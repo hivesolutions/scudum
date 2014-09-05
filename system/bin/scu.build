@@ -5,4 +5,4 @@ EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
 
-extras.install $EXTRAS
+scu.install $EXTRAS
