@@ -18,7 +18,7 @@ VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
 SVERSION=alpha-$VERSION
 ADDRESS=$(ifconfig | sed -n "s/.*inet addr:\([0-9.]\+\)\s.*/\1/p" | grep -v "127.0.0.1")
-PROCESS_COUNT=$(ps hax -o user | wc -l) 
+PROCESS_COUNT=$(ps --ppid 2 -p 2 --deselect -o user | wc -l) 
 
 case "${1}" in
     start)
