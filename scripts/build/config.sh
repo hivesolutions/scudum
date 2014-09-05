@@ -64,7 +64,7 @@ case $SCHEMA in
 esac
 
 test $BCERT == "1" && $DIR/../util/chroot.sh /bin/cert.build || true
-test $BEXTRAS == "1" && $DIR/../util/chroot.sh /bin/extras.build || true
+test $BEXTRAS == "1" && $DIR/../util/chroot.sh /bin/scu.build || true
 test $BACCOUNT == "1" && $DIR/../util/chroot.sh /bin/account.build || true
 test $BKERNEL == "1" && $DIR/../util/chroot.sh /bin/kernel.build || true
 test $BINIT == "1" && $DIR/../util/chroot.sh /bin/init.build || true
