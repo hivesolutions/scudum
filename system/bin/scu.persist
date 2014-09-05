@@ -12,3 +12,5 @@ e2label $DEV "$LABEL"
 
 mkdir -pv $TARGET
 mount -v $DEV $TARGET
+
+rm -rf $TARGET/lost+found
