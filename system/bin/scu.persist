@@ -1,0 +1,15 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+DEV=${DEV-/dev/sda1}
+
+echo "Going to start persistence for $DEV"
+
+mkfs.ext4 $DEV
+
+cp -rp /scu /scu.back
+
+mkdir -pv /scu
+mount -v $DEV /scu
+
+cp -rp /scu.back/* /scu
