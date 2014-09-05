@@ -5,6 +5,7 @@ export LD_LIBRARY_PATH="~/.local/lib:/opt/lib:/pst/lib:/usr/local/lib:/usr/lib:/
 export LIBRARY_PATH="~/.local/lib:/opt/lib:/pst/lib:/usr/local/lib:/usr/lib:/lib"
 export C_INCLUDE_PATH="~/.local/include:/opt/include:/pst/include:/usr/local/include:/usr/include:/include"
 export CPLUS_INCLUDE_PATH="~/.local/include:/opt/include:/pst/include:/usr/local/include:/usr/include:/include"
+export MANPATH="~/.local/man:/opt/man:/opt/share/man:/pst/man:/pst/share/man:/usr/share/man:/usr/man:/usr/local/share/man"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export GREP_OPTIONS=--color=auto
