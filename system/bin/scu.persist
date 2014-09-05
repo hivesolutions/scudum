@@ -3,14 +3,12 @@
 
 DEV=${DEV-/dev/sda1}
 TARGET=${TARGET-/scd}
+LABEL=${LABEL-SSTORAGE}
 
 echo "Going to start persistence for $DEV"
 
 mkfs.ext4 $DEV
-
-cp -rp $TARGET $TARGET.back
+e2label $DEV "$LABEL"
 
 mkdir -pv $TARGET
 mount -v $DEV $TARGET
-
-cp -rp $TARGET.back/* $TARGET
