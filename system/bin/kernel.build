@@ -28,7 +28,7 @@ else
 fi
 
 cd $NAME
-cp /boot/config .config
+cp -v /boot/config .config
 
 if [ "$BUILD" != "1" ]; then
     exit 0
