@@ -135,7 +135,7 @@ fi
 storage = $(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
     cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
 for device in $storage; do
-    mkdir pst
+    mkdir -p pst
     mount /dev/$device /pst
 done
 
