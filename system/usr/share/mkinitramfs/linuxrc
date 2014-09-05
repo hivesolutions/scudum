@@ -132,7 +132,7 @@ fi
 # retrieves the complete set of devices located for storage
 # under the current environment/system, these devices are 
 # going to be mounted under the proper persistence directory
-storage = $(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
+storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
     cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
 for device in $storage; do
     mkdir -p pst
