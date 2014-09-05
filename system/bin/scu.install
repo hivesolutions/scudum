@@ -1,39 +1,46 @@
-#!/bin/sh
+#!/bin/bash
 # -*- coding: utf-8 -*-
 
-# sets the global variable that are going to
-# be used for the configuration of the operation
-# that is going to install the scu file
-TARGET=${TARGET-/scd}
+REMOVE=${REMOVE-1}
+REFRESH=${REFRESH-1}
+TARGET=${TARGET-/opt}
+EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
+CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
+INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
-# sets the strict execution mode so that if an error
-# occurs in execution the script is returned in error
 set -e +h
 
-# verifies if a valid argument has been passed
-# to the process in case it's not prints a mesage
-# an exits the current process in error
-if [ -z "$1" ]; then
-    echo "No valid scu file passed"
-    exit -1
+mkdir -p $CONFIG_DIR && touch $INSTALLED_FILE
+
+mkdir -p $TARGET && cd $TARGET
+
+if [ ! -e scudum ]; then
+    git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
+    cd scudum
+elif [ "$REFRESH" == "1" ]; then
+    cd scudum && git pull --quiet
 fi
 
-# creates a new temporary directory and copies the
-# passed file to it then extracts the file as an ar
-# (archiver) file and moves the data part of the file
-# to the root directory of the file system
-mkdir /tmp/$1
-cp -p $1 /tmp/$1
-cd /tmp/$1
-ar x $1
-mkdir data
-mv data.tar.gz $TARGET
-cd $TARGET
+if [ "$REMOVE" == "1" ]; then
+    rm -rf $TARGET/sources
+fi
 
-# unpacks the data file from the associated file
-# should deploy all the file to the root path and
-# then runs the cleanup operation removing the current
-# temporary directory
-tar -zxf data.tar.gz
-rm data.tar.gz
-rm -rf /tmp/$1
+mkdir -p $TARGET/sources && cd $TARGET/sources
+
+for package in "$@"; do
+    if [ ! -e $EXTRAS/$package.sh ]; then
+        echo "No valid package found for name '$package'"
+        exit 1
+    fi
+    installed=$(cat $INSTALLED_FILE)
+    if [[ $installed == *$package* ]]; then
+        echo "Package '$package' already installed"
+    else
+        $EXTRAS/$package.sh
+        echo -n "$package " >> $INSTALLED_FILE
+    fi
+done
+
+if [ "$REMOVE" == "1" ]; then
+    cd .. && rm -rf $TARGET/sources
+fi
