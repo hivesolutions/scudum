@@ -21,8 +21,4 @@ cd gcc-build
 make
 make install
 
-ln -sv ..$PREFIX/bin/cpp /lib
 ln -sv gcc $PREFIX/bin/cc
-
-mkdir -pv $PREFIX/share/gdb/auto-load/usr/lib
-mv -v $PREFIX/lib/*gdb.py $PREFIX/share/gdb/auto-load/usr/lib
