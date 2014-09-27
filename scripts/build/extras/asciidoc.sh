@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "python"
+
 wget "http://prdownloads.sourceforge.net/asciidoc/asciidoc-$VERSION.tar.gz"
 rm -rf asciidoc-$VERSION && tar -zxf "asciidoc-$VERSION.tar.gz"
 rm -f "asciidoc-$VERSION.tar.gz"
