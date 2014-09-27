@@ -13,5 +13,5 @@ rm -rf xmlto-$VERSION && tar -jxf "xmlto-$VERSION.tar.bz2"
 rm -f "xmlto-$VERSION.tar.bz2"
 cd xmlto-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-static
 make && make install
