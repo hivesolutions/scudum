@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "unzip"
+depends "unzip sgml-common"
 
 wget "http://www.docbook.org/sgml/$VERSION/docbook-$VERSION.zip"
 rm -rf docbook-$VERSION && unzip "docbook-$VERSION.zip" -d docbook-$VERSION
