@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+export CFLAGS="$CFLAGS -fpic"
+
 wget "http://xmlsoft.org/sources/libxml2-$VERSION.tar.gz"
 rm -rf libxml2-$VERSION && tar -zxf "libxml2-$VERSION.tar.gz"
 rm -f "libxml2-$VERSION.tar.gz"
