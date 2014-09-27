@@ -15,14 +15,14 @@ cd docbook-$VERSION
 
 sed -i -e '/ISO 8879/d' -e '/gml/d' docbook.cat
 
-install -v -d $PREFIX/share/sgml/docbook/sgml-dtd-4.5
+install -v -d $PREFIX/share/sgml/docbook/sgml-dtd-$VERSION
 chown -R root:root .
 
-install -v docbook.cat $PREFIX/share/sgml/docbook/sgml-dtd-4.5/catalog
-cp -v -af *.dtd *.mod *.dcl $PREFIX/share/sgml/docbook/sgml-dtd-4.5
+install -v docbook.cat $PREFIX/share/sgml/docbook/sgml-dtd-$VERSION/catalog
+cp -v -af *.dtd *.mod *.dcl $PREFIX/share/sgml/docbook/sgml-dtd-$VERSION
 
-install-catalog --add /etc/sgml/sgml-docbook-dtd-4.5.cat\
-    $PREFIX/share/sgml/docbook/sgml-dtd-4.5/catalog
+install-catalog --add /etc/sgml/sgml-docbook-dtd-$VERSION.cat\
+    $PREFIX/share/sgml/docbook/sgml-dtd-$VERSION/catalog
 
-install-catalog --add /etc/sgml/sgml-docbook-dtd-4.5.cat\
+install-catalog --add /etc/sgml/sgml-docbook-dtd-$VERSION.cat\
     /etc/sgml/sgml-docbook.cat
