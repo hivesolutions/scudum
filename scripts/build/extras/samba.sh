@@ -11,5 +11,5 @@ rm -rf samba-$VERSION && tar -zxf "samba-$VERSION.tar.gz"
 rm -f "samba-$VERSION.tar.gz"
 cd samba-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --without-quotas
 make && make install
