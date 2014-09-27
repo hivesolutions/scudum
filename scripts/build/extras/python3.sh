@@ -13,5 +13,5 @@ rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
 rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-shared
 make && make install
