@@ -11,5 +11,10 @@ rm -rf samba-$VERSION && tar -zxf "samba-$VERSION.tar.gz"
 rm -f "samba-$VERSION.tar.gz"
 cd samba-$VERSION
 
-./configure --prefix=$PREFIX --without-quotas
+./configure\
+    --prefix=$PREFIX\
+    --with-perl-arch-install-dir=$PREFIX/lib/perl5\
+    --with-perl-lib-install-dir=$PREFIX/lib/perl5\
+    --without-quotas
+
 make && make install
