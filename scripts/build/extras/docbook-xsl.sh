@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "unzip"
-
 wget "http://downloads.sourceforge.net/docbook/docbook-xsl-$VERSION.tar.bz2"
 rm -rf docbook-xsl-$VERSION && tar -jxf "docbook-xsl-$VERSION.tar.bz2"
 rm -f "docbook-xsl-$VERSION.tar.bz2"
@@ -25,3 +23,25 @@ ln -s VERSION $PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION/VERSION.xsl
 
 install -v -m644 -D README $PREFIX/share/doc/docbook-xsl-$VERSION/README.txt
 install -v -m644 RELEASE-NOTES* NEWS* $PREFIX/share/doc/docbook-xsl-$VERSION
+
+if [ ! -d /etc/xml ]; then install -v -m755 -d /etc/xml; fi
+if [ ! -f /etc/xml/catalog ]; then
+    xmlcatalog --noout --create /etc/xml/catalog
+fi
+
+xmlcatalog --noout --add "rewriteSystem"\
+    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
+    "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
+    /etc/xml/docbook
+xmlcatalog --noout --add "rewriteURI"\
+    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
+    "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
+    /etc/xml/docbook
+xmlcatalog --noout --add "rewriteSystem"\
+    "http://docbook.sourceforge.net/release/xsl/current"\
+    "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
+    /etc/xml/docbook
+xmlcatalog --noout --add "rewriteURI" \
+    "http://docbook.sourceforge.net/release/xsl/current"\
+    "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
+    /etc/xml/docbook
