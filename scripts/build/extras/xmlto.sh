@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libxml2 libxslt docbook docbook-xml"
+depends "libxml2 libxslt docbook docbook-xml docbook-xls"
 
 wget "https://fedorahosted.org/releases/x/m/xmlto/xmlto-$VERSION.tar.bz2"
 rm -rf xmlto-$VERSION && tar -jxf "xmlto-$VERSION.tar.bz2"
