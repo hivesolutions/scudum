@@ -11,5 +11,5 @@ rm -rf ruby-$VERSION && tar -zxf "ruby-$VERSION.tar.gz"
 rm -f "ruby-$VERSION.tar.gz"
 cd ruby-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-shared
 make && make install
