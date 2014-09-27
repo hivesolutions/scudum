@@ -23,6 +23,8 @@ if [ ! -e /etc/xml/docbook ]; then
     xmlcatalog --noout --create /etc/xml/docbook
 fi
 
+rm -f /etc/xml/catalog && ln -s docbook /etc/xml/catalog
+
 xmlcatalog --noout --add "public"\
     "-//OASIS//DTD DocBook XML V$VERSION//EN"\
     "http://www.oasis-open.org/docbook/xml/$VERSION/docbookx.dtd"\
