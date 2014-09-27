@@ -41,7 +41,7 @@ xmlcatalog --noout --add "rewriteSystem"\
     "http://docbook.sourceforge.net/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
-xmlcatalog --noout --add "rewriteURI" \
+xmlcatalog --noout --add "rewriteURI"\
     "http://docbook.sourceforge.net/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
