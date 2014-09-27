@@ -17,7 +17,7 @@ cd samba-$VERSION
     --prefix=$PREFIX\
     --with-perl-arch-install-dir=$PREFIX/lib/perl5\
     --with-perl-lib-install-dir=$PREFIX/lib/perl5\
-    --sysconfdir=/etc\
+    --sysconfdir=/etc/samba\
     --without-quotas
 
 make && make install
