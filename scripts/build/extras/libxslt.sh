@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "libxml2"
+
 wget "http://xmlsoft.org/sources/libxslt-$VERSION.tar.gz"
 rm -rf libxslt-$VERSION && tar -zxf "libxslt-$VERSION.tar.gz"
 rm -f "libxslt-$VERSION.tar.gz"
