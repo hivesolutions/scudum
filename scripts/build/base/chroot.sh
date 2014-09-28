@@ -54,7 +54,7 @@ fi
 
 cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
 
-chroot $SCUDUM /tools/bin/env -i\
+chroot $SCUDUM/tools/bin/env -i\
     HOME=/root\
     TERM="$TERM"\
     PS1='\u:\w\$ '\
