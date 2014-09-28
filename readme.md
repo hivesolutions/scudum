@@ -25,7 +25,17 @@ the next section (examples) use:
 
 ### Examples
 
-To enter into the current Scudum development environment deployed in the current machine use:
+Building the "root environment" of scudum required the following command:
+
+    scudum root
+
+To deploy a new version of the Scudum ditribution to the repository a deploy operation must be performed,
+note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
+using the `TARGET` variable:
+
+    scudum deploy
+
+To enter into the current Scudum development environment (root) deployed in the current machine use:
 
     scudum chroot
 
@@ -42,12 +52,7 @@ use the following command (note that this operation may take some time):
 In order to create a Virtual Box compatible image (VDI) issue the command:
 
     DEV_NAME=/dev/sdb make.vdi.sh
-
-To deploy a new version of the Scudum distrubtion to the repository use, note that the deployment
-is going to use the `/mnt/builds/scudum` path by default but may be changed using the `TARGET` variable:
-
-    VERSION=v1 deploy.sh
-
+    
 In order to work (change the scudum base system) you need to deploy the latest version into a local drive
 (typically `/dev/sdb`) in order to do that use:
 
