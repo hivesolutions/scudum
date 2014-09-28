@@ -25,7 +25,7 @@ the next section (examples) use:
 
 ### Examples
 
-Building the root/base Scudum environment a (very) long process of compilation of both the bootstrap
+Building the root/base Scudum environment, a (very) long process of compilation of both the bootstrap
 base tools and the base system infra-structure is required, to start the process use:
 
     scudum root
