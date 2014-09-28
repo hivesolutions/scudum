@@ -15,7 +15,7 @@ VERSION=${VERSION-latest}
 SLEEP_TIME=3
 
 SIZE_B=$(expr $SIZE / $BLOCK_SIZE)
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B
 

@@ -8,7 +8,7 @@ CHROOT_ARGS=${1---login +h}
 
 # retrieves the reference to the current files directory
 # so that it's possible to "write" the scripts as relative
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

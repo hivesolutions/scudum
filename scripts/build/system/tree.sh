@@ -21,7 +21,8 @@ done
 
 case $(uname -m) in
     x86_64) ln -svf lib /lib64 && ln -svf lib /usr/lib64 &&\
-        ln -svf lib /usr/local/lib64 ;;
+        ln -svf lib /usr/local/lib64
+        ;;
 esac
 
 mkdir -pv /run/var

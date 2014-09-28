@@ -14,7 +14,7 @@ BINIT=${BINIT-1}
 BRAMFS=${BRAMFS-1}
 
 BASE=$(pwd)
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

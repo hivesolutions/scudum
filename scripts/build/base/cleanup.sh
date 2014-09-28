@@ -1,6 +1,6 @@
 # retrieves the reference to the current files directory
 # so that it's possible to "write" the scripts as relative
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 # sets the abort on error flag so that if any of the
 # commands fails the execution is stopped

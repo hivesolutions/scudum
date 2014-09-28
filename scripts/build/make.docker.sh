@@ -15,7 +15,7 @@ BKERNEL=${BKERNEL-0}
 BINIT=${BINIT-0}
 BRAMFS=${BRAMFS-0}
 
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

@@ -9,7 +9,7 @@ LOADER=${LOADER-grub}
 VERSION=${VERSION-latest}
 SLEEP_TIME=3
 
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 if [ "$DEV_NAME" == "/dev/null" ]; then
     echo "DEV_NAME not specified, it's required"

@@ -1,7 +1,7 @@
 VERSION=${VERSION-3.4.2}
 VERSION_M=${VERSION_M-3.4}
 
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

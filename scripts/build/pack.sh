@@ -6,7 +6,7 @@ VERSION=${VERSION-$(date +%Y%m%d)}
 FILE=${FILE-$NAME-$VERSION.tar.gz}
 
 BASE=$(pwd)
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

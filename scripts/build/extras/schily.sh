@@ -1,6 +1,6 @@
 VERSION=${VERSION-2014-06-12}
 
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 

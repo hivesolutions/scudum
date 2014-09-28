@@ -7,7 +7,7 @@ FILE=${FILE-$NAME-$VERSION.tar.gz}
 TARGET=${TARGET-/mnt/builds/$NAME}
 
 LATEST=$NAME-latest.tar.gz
-DIR=$(dirname $(readlink -f $0))
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
