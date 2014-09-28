@@ -35,6 +35,11 @@ note that the deployment is going to use the `/mnt/builds/scudum` path by defaul
 using the `TARGET` variable:
 
     scudum deploy
+    
+To install the latest available Scudum root/base/development environment a connection to the Internet must
+exist and the following command should be executed:
+
+    scudum install
 
 To enter into the current Scudum development environment (root) deployed in the current machine use:
 
