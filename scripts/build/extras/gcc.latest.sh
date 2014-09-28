@@ -13,7 +13,6 @@ cd gcc-build
 
 ../gcc-$VERSION/configure\
     --prefix=$PREFIX\
-    --target=$(uname -m)-pc-linux-gnu\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
