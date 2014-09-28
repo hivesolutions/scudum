@@ -8,6 +8,7 @@ rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
 CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ./configure\
+    --target=$PC_TARGET\
     --prefix=/tools\
     --disable-nls\
     --with-lib-path=/tools/lib\
