@@ -3,6 +3,10 @@
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_TARGET=$(uname -m)-scudum-linux-gnu
 
+# exports the generic target value for a pc based
+# infra-structure may be used in final scudum build
+export PC_TARGET=$(uname -m)-pc-linux-gnu
+
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
 export FORCE_UNSAFE_CONFIGURE=1
