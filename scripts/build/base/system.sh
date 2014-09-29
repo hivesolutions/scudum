@@ -5,6 +5,8 @@
 # of the commands fails the execution is broken
 set -e +h
 
+source /tools/repo/scripts/base/config.sh
+
 /tools/repo/scripts/build/system/tree.sh
 
 rm -rf sources && mkdir sources
