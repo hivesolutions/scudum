@@ -1,4 +1,5 @@
 PREFIX=${PREFIX-/usr}
+MAKEFLAGS=${MAKEFLAGS--j 6}
 
 depends() {
     for package in $@; do
