@@ -17,7 +17,6 @@ else
     BUILDER=$TARGET/ksources
 fi
 
-
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
