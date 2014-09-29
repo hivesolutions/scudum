@@ -1,4 +1,6 @@
 VERSION=${VERSION-6.3}
+VERSION_L=${VERSION_L-63}
+PATCH_SEQ=${PATCH_SEQ-1 8}
 
 set -e +h
 
@@ -6,6 +8,11 @@ wget --no-check-certificate "http://ftp.gnu.org/gnu/readline/readline-$VERSION.t
 rm -rf readline-$VERSION && tar -zxf "readline-$VERSION.tar.gz"
 rm -f "readline-$VERSION.tar.gz"
 cd readline-$VERSION
+
+for index in $(seq -f "%03g" $PATCH_SEQ); do
+    wget http://ftp.gnu.org/gnu/readline/readline-$VERSION-patches/readline$VERSION_L-$index
+    patch -Np0 -i readline$VERSION_L-$index
+done
 
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
