@@ -11,6 +11,11 @@ export PC_TARGET=$(uname -m)-pc-linux-gnu
 # a root user may configure all the packages
 export FORCE_UNSAFE_CONFIGURE=1
 
+# exports the flag that defines the level of parallelism
+# for the compilation of the various elements, this vaçue
+# should be enough to take advantage of the various cores
+export MAKEFLAGS="-j 6"
+
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
 export TEST=
