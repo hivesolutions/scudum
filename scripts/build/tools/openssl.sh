@@ -1,5 +1,7 @@
 VERSION=${VERSION-1.0.1i}
 
+unset MAKEFLAGS
+
 set -e +h
 
 wget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
