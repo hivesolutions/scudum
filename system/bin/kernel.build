@@ -17,10 +17,11 @@ else
     BUILDER=$TARGET/ksources
 fi
 
+
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
-    wget --no-check-certificate https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
+    rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
     rm -rf $NAME && tar -xvf $NAME.tar.xz
     rm -f $NAME.tar.xz
 else
