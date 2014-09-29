@@ -5,3 +5,4 @@ install:
 
 uninstall:
 	rm -rf /usr/scudum/scripts
+	rm -f /usr/bin/scudum
