@@ -10,13 +10,10 @@ cd readline-$VERSION
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
 
-wget --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/readline-$VERSION-fixes-1.patch"
-patch -Np1 -i readline-$VERSION-fixes-1.patch
-
 ./configure --prefix=/usr --libdir=/lib
 
 make SHLIB_LIBS=-lncurses
-make install
+make SHLIB_LIBS=-lncurses install
 
 mv -v /lib/lib{readline,history}.a /usr/lib
 
