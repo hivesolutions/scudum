@@ -13,7 +13,9 @@ export FORCE_UNSAFE_CONFIGURE=1
 
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
-# should be enough to take advantage of the various cores
+# should be enough to take advantage of the various cores,
+# this flag should also be used carefully as it is know to
+# create some problems in compilation of some packages
 export MAKEFLAGS="-j 6"
 
 # the test value that defines if the current build
