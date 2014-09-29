@@ -10,7 +10,7 @@ rm -f "readline-$VERSION.tar.gz"
 cd readline-$VERSION
 
 for index in $(seq -f "%03g" $PATCH_SEQ); do
-    wget http://ftp.gnu.org/gnu/readline/readline-$VERSION-patches/readline$VERSION_L-$index
+    wget --no-check-certificate http://ftp.gnu.org/gnu/readline/readline-$VERSION-patches/readline$VERSION_L-$index
     patch -Np0 -i readline$VERSION_L-$index
 done
 

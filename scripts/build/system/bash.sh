@@ -10,7 +10,7 @@ rm -f "bash-$VERSION.tar.gz"
 cd bash-$VERSION
 
 for index in $(seq -f "%03g" $PATCH_SEQ); do
-    wget http://ftp.gnu.org/gnu/bash/bash-$VERSION-patches/bash$VERSION_L-$index
+    wget --no-check-certificate http://ftp.gnu.org/gnu/bash/bash-$VERSION-patches/bash$VERSION_L-$index
     patch -Np0 -i bash$VERSION_L-$index
 done
 
