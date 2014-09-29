@@ -5,6 +5,11 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
+if [ -z "$1" ]; then
+    echo "No command provided"
+    exit 1
+fi
+
 if [ ! -e $DIR/scu.$1 ]; then
     echo "Command '$1' not found"
     exit 1
