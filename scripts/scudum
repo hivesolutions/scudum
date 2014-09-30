@@ -6,12 +6,12 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 set -e +h
 
 if [ -z "$1" ]; then
-    echo "No command provided"
+    echo "Usage: scudum <command> [<args>]"
     exit 1
 fi
 
 if [ ! -e $DIR/build/$1.sh ] && [ ! -e $DIR/util/$1.sh ]; then
-    echo "Command '$1' not found"
+    echo "$1: unrecognized command"
     exit 1
 fi
 

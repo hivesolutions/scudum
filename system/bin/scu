@@ -6,12 +6,12 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 set -e +h
 
 if [ -z "$1" ]; then
-    echo "No command provided"
+    echo "Usage: scu <command> [<args>]"
     exit 1
 fi
 
 if [ ! -e $DIR/scu.$1 ]; then
-    echo "Command '$1' not found"
+    echo "$1: unrecognized command"
     exit 1
 fi
 
