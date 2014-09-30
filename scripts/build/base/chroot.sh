@@ -4,7 +4,7 @@
 # tries to retrieve the proper chroot (bash) arguments
 # using the provided arguments if they exist or an interactive
 # fallback approach otherwise (as expected)
-CHROOT_ARGS=${1---login +h}
+CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
 # retrieves the reference to the current files directory
 # so that it's possible to "write" the scripts as relative

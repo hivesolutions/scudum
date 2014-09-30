@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 SCUDUM=${SCUDUM-/scudum}
-CHROOT_ARGS=${1---login +h}
+CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
 mount -v --bind /dev $SCUDUM/dev
 mount -vt devpts devpts $SCUDUM/dev/pts
