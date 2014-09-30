@@ -6,7 +6,7 @@ SSLDIR=${SSLDIR-/usr/ssl}
 
 set -e +h
 
-if [ -e ${SSLDIR}/certs ] && [ "$FORCE" != "1" ]; then
+if [ -e ${SSLDIR}/ca-bundle.crt ] && [ "$FORCE" != "1" ]; then
     exit 0
 fi
 
