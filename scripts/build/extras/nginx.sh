@@ -13,9 +13,8 @@ cd nginx-$VERSION
 
 ./configure\
     --prefix=$PREFIX/nginx\
+    --sbin-path=$PREFIX/sbin/nginx\
+    --conf-path=/etc/nginx/nginx.conf\
     --with-http_ssl_module
 
 make && make install
-
-mkdir -p $PREFIX/sbin
-ln -s $PREFIX/nginx/sbin/nginx $PREFIX/sbin/nginx
