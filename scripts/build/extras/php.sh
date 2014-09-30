@@ -13,7 +13,8 @@ rm -rf php-$VERSION && tar -zxf "php-$VERSION.tar.gz"
 rm -f "php-$VERSION.tar.gz"
 cd php-$VERSION
 
-./configure --prefix=$PREFIX\
+./configure\
+    --prefix=$PREFIX\
     --enable-embed=static\
     --disable-libxml\
     --disable-dom\

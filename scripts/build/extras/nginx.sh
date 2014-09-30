@@ -11,6 +11,8 @@ rm -rf nginx-$VERSION && tar -zxf "nginx-$VERSION.tar.gz"
 rm -f "nginx-$VERSION.tar.gz"
 cd nginx-$VERSION
 
-./configure --prefix=$PREFIX
+./configure\
+    --prefix=$PREFIX/nginx\
+    --with-http_ssl_module
 
 make && make install
