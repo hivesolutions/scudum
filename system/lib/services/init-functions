@@ -768,6 +768,14 @@ log_end_msg() {
 }
 
 status_of_proc() {
-    statusproc "$@"
+    pidfile=
+    OPTIND=1
+    while getopts p: opt ; do
+        case "$opt" in
+            p) pidfile="$OPTARG" ;;
+        esac
+    done
+    shift $(($OPTIND - 1))
+    statusproc -p "$pidfile" "$1"
     return "$?"
 }
