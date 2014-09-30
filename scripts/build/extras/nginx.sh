@@ -16,3 +16,6 @@ cd nginx-$VERSION
     --with-http_ssl_module
 
 make && make install
+
+mkdir -p $PREFIX/sbin
+ln -s $PREFIX/sbin/nginx $PREFIX/nginx/sbin/nginx 
