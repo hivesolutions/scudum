@@ -768,15 +768,6 @@ log_end_msg() {
 }
 
 status_of_proc() {
-    OPTIND=1
-    while getopts p: opt ; do
-        case "$opt" in
-            ;;
-        esac
-    done
-    shift $(($OPTIND - 1))
-    daemon="$1"
-    name="$2"
-    statusproc "$daemon"
+    statusproc "$@"
     return "$?"
 }
