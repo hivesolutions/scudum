@@ -9,7 +9,8 @@ cd dhcp-$VERSION
 
 CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
-    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure --prefix=/usr\
+    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure\
+    --prefix=/usr\
     --sysconfdir=/etc/dhcp\
     --localstatedir=/var\
     --with-srv-lease-file=/var/lib/dhcpd/dhcpd.leases\

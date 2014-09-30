@@ -23,7 +23,8 @@ mv projects/compiler-rt-$VERSION_M projects/compiler-rt
 sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
     -i Makefile.config.in
 
-CC=gcc CXX=g++ ./configure --prefix=$PREFIX\
+CC=gcc CXX=g++ ./configure\
+    --prefix=$PREFIX\
     --sysconfdir=/etc\
     --enable-optimized\
     --enable-shared\
