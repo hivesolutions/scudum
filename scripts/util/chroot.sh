@@ -19,7 +19,7 @@ chroot $SCUDUM /usr/bin/env -i\
     /bin/bash $CHROOT_ARGS $1
 
 sync
-umount -v $SCUDUM/sys &&
-umount -v $SCUDUM/proc &&
-umount -v $SCUDUM/dev/pts &&
-umount -v $SCUDUM/dev &&
+umount -v $SCUDUM/sys
+umount -v $SCUDUM/proc
+umount -v $SCUDUM/dev/pts
+umount -v $SCUDUM/dev
