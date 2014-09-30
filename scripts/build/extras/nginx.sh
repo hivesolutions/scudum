@@ -18,4 +18,4 @@ cd nginx-$VERSION
 make && make install
 
 mkdir -p $PREFIX/sbin
-ln -s $PREFIX/sbin/nginx $PREFIX/nginx/sbin/nginx 
+ln -s $PREFIX/nginx/sbin/nginx $PREFIX/sbin/nginx
