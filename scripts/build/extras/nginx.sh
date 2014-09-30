@@ -15,6 +15,9 @@ cd nginx-$VERSION
     --prefix=$PREFIX/nginx\
     --sbin-path=$PREFIX/sbin/nginx\
     --conf-path=/etc/nginx/nginx.conf\
+    --pid-path=/var/run/nginx.pid\
+    --error-log-path=/var/log/nginx/error.log\
+    --http-log-path=/var/log/nginx/access.log\
     --with-http_ssl_module
 
 make && make install
