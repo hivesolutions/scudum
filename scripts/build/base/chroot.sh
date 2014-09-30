@@ -34,7 +34,7 @@ mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
 mount -v --bind /dev $SCUDUM/dev
 
-mount -vt devpts devpts $SCUDUM/dev/pts
+mount -vt devpts devpts $SCUDUM/dev/pts -o gid=5,mode=620
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
