@@ -21,10 +21,10 @@ installed=$(cat $INSTALLED_FILE)
 for file in $EXTRAS/*; do
     base=$(basename $file)
     package=${base%.*}
-    printf $FORMAT $package
     if [[ $package != *$1* ]]; then
-        cotinue
+        continue
     fi
+    printf $FORMAT $package
     if [[ $installed == *$package* ]]; then
         echo -e $COLOR_GREEN"INSTALLED"$COLOR_RESET
     else
