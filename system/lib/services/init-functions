@@ -501,7 +501,7 @@ statusproc() {
 
     if [ -n "${pidlist}" ]; then
         /bin/echo -e "${INFO}${base} is running, process"\
-            "${pidlist}.${NORMAL}"
+            "${pidlist}${NORMAL}"
     else
         if [ -n "${base}" -a -e "/var/run/${base}.pid" ]; then
             /bin/echo -e "${WARNING}${1} is not running but"\
