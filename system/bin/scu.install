@@ -9,9 +9,11 @@ EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
 INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
-REFRESH=$REFRESH TARGET=$TARGET scu update
+REFRESH=$REFRESH TARGET=$TARGET $DIR/scu.update
 
 if mountpoint -q $PERSIST; then
     BUILDER=$PERSIST/sources
