@@ -6,4 +6,4 @@ if [ -e source/var/viriatum ]; then
     ln -s /source/var/viriatum /var/viriatum
 fi
 
-service viriatum start
+viriatum < /dev/null &> /dev/null &
