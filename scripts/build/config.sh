@@ -16,7 +16,7 @@ CHROOT_ARGS=${CHROOT_ARGS-+h}
 
 BASE=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-CHROOT="CHROOT_ARGS=$CHROOT_ARGS $DIR/../util/chroot.sh"
+CHROOT=CHROOT_ARGS=$CHROOT_ARGS $DIR/../util/chroot.sh
 
 set -e +h
 
