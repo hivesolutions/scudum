@@ -3,7 +3,7 @@
 
 REFRESH=${REFRESH-1}
 TARGET=${TARGET-/opt}
-URK=${URL-https://github.com/hivesolutions/scudum.git}
+URL=${URL-https://github.com/hivesolutions/scudum.git}
 
 set -e +h
 
