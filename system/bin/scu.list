@@ -13,14 +13,7 @@ set -e +h
 
 source /etc/colors
 
-mkdir -p $TARGET && cd $TARGET
-
-if [ ! -e scudum ]; then
-    git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
-    cd scudum
-elif [ "$REFRESH" == "1" ]; then
-    cd scudum && git pull --quiet
-fi
+REFRESH=$REFRESH TARGET=$TARGET scu update
 
 installed=$(cat $INSTALLED_FILE)
 

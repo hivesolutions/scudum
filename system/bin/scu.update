@@ -1,0 +1,19 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+REFRESH=${REFRESH-1}
+TARGET=${TARGET-/opt}
+URK=${URL-https://github.com/hivesolutions/scudum.git}
+
+set -e +h
+
+source /etc/colors
+
+mkdir -p $TARGET && cd $TARGET
+
+if [ ! -e scudum ]; then
+    git clone --quiet --depth 1 $URL
+    cd scudum
+elif [ "$REFRESH" == "1" ]; then
+    cd scudum && git pull --quiet
+fi
