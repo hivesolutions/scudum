@@ -26,10 +26,10 @@ test ! -e $SCUDUM/dev/null &&\
 # verifies each of the special filesystems for
 # mounting and in case they are mounted umounts
 # them avoiding a duplicate re-mounting
-mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
-mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
-mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
-mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
+mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys &&
+mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc &&
+mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts &&
+mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev &&
 
 mount -v --bind /dev $SCUDUM/dev
 
@@ -62,7 +62,7 @@ chroot $SCUDUM /tools/bin/env -i\
     /tools/bin/bash $CHROOT_ARGS $1
 
 sync
-umount -v $SCUDUM/sys
-umount -v $SCUDUM/proc
-umount -v $SCUDUM/dev/pts
-umount -v $SCUDUM/dev
+umount -v $SCUDUM/sys &&
+umount -v $SCUDUM/proc &&
+umount -v $SCUDUM/dev/pts &&
+umount -v $SCUDUM/dev &&
