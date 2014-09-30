@@ -15,6 +15,7 @@ echo "Installing root files into $SCUDUM ..."
 
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
