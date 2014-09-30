@@ -31,12 +31,12 @@ mkdir -p $BUILDER && cd $BUILDER
 
 for package in "$@"; do
     if [ ! -e $EXTRAS/$package.sh ]; then
-        echo "No valid package found for name '$package'"
+        echo "$package: package not found"
         exit 1
     fi
     installed=$(cat $INSTALLED_FILE)
     if [[ $installed == *$package* ]]; then
-        echo "Package '$package' already installed"
+        echo "$package: package already installed"
     else
         $EXTRAS/$package.sh
         echo -n "$package " >> $INSTALLED_FILE
