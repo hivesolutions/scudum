@@ -504,14 +504,14 @@ statusproc() {
             "${pidlist}${NORMAL}"
     else
         if [ -n "${base}" -a -e "/var/run/${base}.pid" ]; then
-            /bin/echo -e "${WARNING}${1} is not running but"\
+            /bin/echo -e "${WARNING}${base} is not running but"\
                 "/var/run/${base}.pid exists${NORMAL}"
         else
             if [ -n "${pidfile}" -a -e "${pidfile}" ]; then
-                /bin/echo -e "${WARNING}${1} is not running"\
+                /bin/echo -e "${WARNING}${base} is not running"\
                     "but ${pidfile} exists${NORMAL}"
             else
-                /bin/echo -e "${INFO}${1} is not running${NORMAL}"
+                /bin/echo -e "${INFO}${base} is not running${NORMAL}"
             fi
         fi
     fi
