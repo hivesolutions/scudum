@@ -1,11 +1,13 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-REFRESH=${REFRESH-1}
+REFRESH=${REFRESH-0}
 TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
 INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
+
+FORMAT="%-20s"
 
 set -e +h
 
@@ -20,12 +22,15 @@ elif [ "$REFRESH" == "1" ]; then
     cd scudum && git pull --quiet
 fi
 
-for file in $EXTRAS; do
-    package=${file%.*}
-    installed=$(cat $INSTALLED_FILE)
+installed=$(cat $INSTALLED_FILE)
+
+for file in $EXTRAS/*; do
+    base=$(basename $file)
+    package=${base%.*}
+    printf $FORMAT $package
     if [[ $installed == *$package* ]]; then
-        echo "'$package'\t\t"$COLOR_GREEN"$INSTALLED"$COLOR_RESET
+        echo -e $COLOR_GREEN"INSTALLED"$COLOR_RESET
     else
-        echo "'$package'\t\t"$COLOR_RED"$NOT INSTALLED"$COLOR_RESET
+        echo -e $COLOR_RED"NOT INSTALLED"$COLOR_RESET
     fi
 done
