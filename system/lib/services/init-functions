@@ -208,22 +208,22 @@ killproc() {
                 shift 2
                 ;;
  
-             *)
-                 program="${1}"
-                 if [ -n "${2}" ]; then
-                     signal="${2}"
-                     fallback=""
-                 else
-                     nosig=1
-                 fi
+            *)
+                program="${1}"
+                if [ -n "${2}" ]; then
+                    signal="${2}"
+                    fallback=""
+                else
+                    nosig=1
+                fi
 
-                 # Error on additional arguments
-                 if [ -n "${3}" ]; then
-                     return 2
-                 else 
-                     break
-                 fi                 
-                 ;;
+                # Error on additional arguments
+                if [ -n "${3}" ]; then
+                    return 2
+                else 
+                    break
+                fi                 
+                ;;
         esac
     done
 
@@ -655,8 +655,7 @@ log_info_msg2() {
 #                                                                              #
 # Return values: Not used                                                      #
 ################################################################################
-evaluate_retval()
-{
+evaluate_retval() {
    local error_value="${?}"
 
    if [ ${error_value} = 0 ]; then
@@ -750,4 +749,34 @@ wait_for_user() {
 is_true() {
    [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||  [ "$1" = "y" ] ||
    [ "$1" = "t" ]
+}
+
+log_daemon_msg() {
+    log_info_msg "$@"
+    return "$?"
+}
+
+log_end_msg() {
+    if [ $1 -eq 0 ]; then
+        log_success_msg
+    elif [ $1 -eq 255 ]; then
+        log_failure_msg
+    else
+        log_failure_msg
+    fi
+    return "$1"
+}
+
+status_of_proc() {
+    OPTIND=1
+    while getopts p: opt ; do
+        case "$opt" in
+            ;;
+        esac
+    done
+    shift $(($OPTIND - 1))
+    daemon="$1"
+    name="$2"
+    statusproc "$daemon"
+    return "$?"
 }
