@@ -8,7 +8,8 @@ TARGET=${TARGET-/opt}
 EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
 INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
-MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
+
+export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 
 set -e +h
 
