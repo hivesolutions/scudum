@@ -1,5 +1,5 @@
-PREFIX=${PREFIX-/usr}
-MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
+export PREFIX=${PREFIX-/usr}
+export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 
 depends() {
     for package in $@; do
