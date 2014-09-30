@@ -4,12 +4,12 @@
 set -e +h
 
 if [ -z "$1" ]; then
-    echo "No service name provided"
+    echo "Usage: service <name> [<args>]"
     exit 1
 fi
 
 if [ ! -e /etc/init.d/$1 ]; then
-    echo "Service '$1' not found"
+    echo "$1: unrecognized service"
     exit 1
 fi
 
