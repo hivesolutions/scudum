@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/infozip/zip$VERSION.tgz"
-rm -rf zip$VERSION && tar -zxf "zip$VERSION.tgz"
-rm -f "zip$VERSION.tgz"
+wget "http://prdownloads.sourceforge.net/infozip/zip$VERSION.tar.gz"
+rm -rf zip$VERSION && tar -zxf "zip$VERSION.tar.gz"
+rm -f "zip$VERSION.tar.gz"
 cd zip$VERSION
 
 make -f unix/Makefile generic_gcc
