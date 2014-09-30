@@ -59,7 +59,7 @@ chroot $SCUDUM /tools/bin/env -i\
     TERM="$TERM"\
     PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin\
-    /tools/bin/bash --login +h $1
+    /tools/bin/bash $CHROOT_ARGS $1
 
 sync
 umount -v $SCUDUM/sys
