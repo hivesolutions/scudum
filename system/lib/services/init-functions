@@ -500,18 +500,18 @@ statusproc() {
     base="${1##*/}"
 
     if [ -n "${pidlist}" ]; then
-        /bin/echo -e "${INFO}${base} is running with Process"\
-            "ID(s) ${pidlist}.${NORMAL}"
+        /bin/echo -e "${INFO}${base} is running, process"\
+            "${pidlist}.${NORMAL}"
     else
         if [ -n "${base}" -a -e "/var/run/${base}.pid" ]; then
             /bin/echo -e "${WARNING}${1} is not running but"\
-                "/var/run/${base}.pid exists.${NORMAL}"
+                "/var/run/${base}.pid exists${NORMAL}"
         else
             if [ -n "${pidfile}" -a -e "${pidfile}" ]; then
                 /bin/echo -e "${WARNING}${1} is not running"\
-                    "but ${pidfile} exists.${NORMAL}"
+                    "but ${pidfile} exists${NORMAL}"
             else
-                /bin/echo -e "${INFO}${1} is not running.${NORMAL}"
+                /bin/echo -e "${INFO}${1} is not running${NORMAL}"
             fi
         fi
     fi
@@ -542,7 +542,7 @@ timespec() {
 # Return values: Not used                                                      #
 ################################################################################
 log_success_msg() {
-     /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
 
     # Strip non-printable characters from log file
