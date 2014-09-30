@@ -1,0 +1,31 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+REFRESH=${REFRESH-1}
+PERSIST=${PERSIST-/pst}
+TARGET=${TARGET-/opt}
+EXTRAS=${EXTRAS-$TARGET/scudum/scripts/build/extras}
+CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
+
+set -e +h
+
+source /etc/colors
+
+mkdir -p $TARGET && cd $TARGET
+
+if [ ! -e scudum ]; then
+    git clone --quiet --depth 1 https://github.com/hivesolutions/scudum.git
+    cd scudum
+elif [ "$REFRESH" == "1" ]; then
+    cd scudum && git pull --quiet
+fi
+
+for file in $EXTRAS; do
+    package=${file%.*}
+    installed=$(cat $INSTALLED_FILE)
+    if [[ $installed == *$package* ]]; then
+        echo "'$package'\t\t"$COLOR_GREEN"$INSTALLED"$COLOR_RESET
+    else
+        echo "'$package'\t\t"$COLOR_RED"$NOT INSTALLED"$COLOR_RESET
+    fi
+done
