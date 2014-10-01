@@ -1,6 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+FORCE=${FORCE-0}
 REMOVE=${REMOVE-1}
 REFRESH=${REFRESH-1}
 PERSIST=${PERSIST-/pst}
@@ -36,7 +37,11 @@ for package in "$@"; do
     fi
     installed=$(cat $INSTALLED_FILE)
     if [[ $installed == *$package* ]]; then
-        echo "$package: package already installed"
+        if [ "$FORCE" == "1" ]; then
+            $EXTRAS/$package.sh
+        else
+            echo "$package: package already installed"
+        fi
     else
         $EXTRAS/$package.sh
         echo -n "$package " >> $INSTALLED_FILE
