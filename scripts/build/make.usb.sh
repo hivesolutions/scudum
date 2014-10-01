@@ -76,7 +76,7 @@ fi
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
 dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
-(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo 2; echo c; echo w) | fdisk -H 255 -S 63 $FILE
+(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H 255 -S 63 $FILE
 sleep $SLEEP_TIME && sync
 
 DEV_NAME=$(losetup -f --show $FILE)
@@ -85,7 +85,7 @@ DEV_MAIN=/dev/loop$(expr $DEV_INDEX + 1)
 
 losetup --verbose --offset $OFFSET $DEV_MAIN $DEV_NAME
 
-mkfs.fat32 -F 32 $DEV_MAIN && sync
+mkfs.vfat -F 32 $DEV_MAIN && sync
 
 REF_DIR=/tmp/$NAME.ref
 mkdir -pv $REF_DIR
