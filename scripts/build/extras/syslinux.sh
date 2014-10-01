@@ -18,4 +18,4 @@ make bios installer
 mkdir -p $PREFIX/syslinux
 install -m 755 bios/linux/syslinux $PREFIX/bin
 install -m 755 bios/linux/syslinux-nomtools $PREFIX/bin
-install -m 755 bios/linux/mbr/*.bin $PREFIX/syslinux
+install -m 755 bios/mbr/*.bin $PREFIX/syslinux
