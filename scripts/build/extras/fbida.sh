@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "jpeg"
+depends "jpeg" "libexif"
 
 wget "https://www.kraxel.org/releases/fbida/fbida-$VERSION.tar.gz"
 rm -rf fbida-$VERSION && tar -zxf "fbida-$VERSION.tar.gz"
