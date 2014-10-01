@@ -13,5 +13,5 @@ rm -rf imlib2-$VERSION && tar -zxf "imlib2-$VERSION.tar.gz"
 rm -f "imlib2-$VERSION.tar.gz"
 cd imlib2-$VERSION
 
-./configure --prefix=$PREFIX --without-x
+./configure --prefix=$PREFIX
 make && make install
