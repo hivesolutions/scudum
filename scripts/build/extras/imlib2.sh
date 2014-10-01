@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "freetype"
+
 wget "http://prdownloads.sourceforge.net/enlightenment/imlib2-$VERSION.tar.gz"
 rm -rf imlib2-$VERSION && tar -zxf "imlib2-$VERSION.tar.gz"
 rm -f "imlib2-$VERSION.tar.gz"
