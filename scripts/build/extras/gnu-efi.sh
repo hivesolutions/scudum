@@ -13,5 +13,15 @@ rm -f "gnu-efi_$VERSION.orig.tar.gz"
 cd gnu-efi-$VERSION_L
 
 make
+
+ARCH=$(gcc -dumpmachine | cut -f1 -d-| sed s,i[3456789]86,ia32,)
+
 install -m 644 gnuefi/*.lds $PREFIX/lib
 install -m 644 gnuefi/*.a $PREFIX/lib
+
+mkdir -p $PREFIX/include/efi
+mkdir -p $PREFIX/include/efi/protocol
+mkdir -p $PREFIX/include/efi/$ARCH
+install -m 644 inc/*.h $PREFIX/include/efi
+install -m 644 inc/protocol/*.h $PREFIX/include/efi/protocol
+install -m 644 inc/$ARCH/*.h $PREFIX/include/efi/$ARCH
