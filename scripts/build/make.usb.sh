@@ -88,6 +88,7 @@ DEV_MAIN=/dev/loop$(expr $DEV_INDEX + 1)
 losetup --verbose --offset $OFFSET $DEV_MAIN $DEV_NAME
 
 mkfs.vfat -F 32 $DEV_MAIN && sync
+mlabel -i $DEV_MAIN ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
 mount -v $DEV_MAIN $MOUNT_DIR
