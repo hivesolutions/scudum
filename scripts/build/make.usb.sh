@@ -7,6 +7,9 @@ LABEL=${LABEL-Scudum}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
 SCHEMA=${SCHEMA-transient}
+SIZE=${SIZE-1073741824}
+OFFSET=${OFFSET-1048576}
+BLOCK_SIZE=${BLOCK_SIZE-4096}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
@@ -14,6 +17,9 @@ SQUASH=${SQUASH-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+SIZE_B=$(expr $SIZE / $BLOCK_SIZE)
+
+SLEEP_TIME=3
 
 set -e +h
 
@@ -28,9 +34,9 @@ else
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install squashfs-tools
+    apt-get -y install syslinux squashfs-tools dosfstools
 elif type scu &> /dev/null; then
-    scu install squashfs-tools
+    scu install syslinux squashfs-tools dosfstools
 else
     exit 1
 fi
@@ -58,20 +64,45 @@ tar -zcf images/etc.tar.gz etc
 cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
-    ISO_DIR=/tmp/$NAME.iso.dir
+    IMG_DIR=/tmp/$NAME.iso.dir
     mksquashfs $SCUDUM $NAME.sqfs
-    mkdir -pv $ISO_DIR
-    cp -rp $SCUDUM/isolinux $ISO_DIR
-    mv $NAME.sqfs $ISO_DIR
+    mkdir -pv $IMG_DIR
+    cp -rp $SCUDUM/boot $IMG_DIR
+    mv $NAME.sqfs $IMG_DIR
 else
-    ISO_DIR=$SCUDUM
+    IMG_DIR=$SCUDUM
 fi
 
-mkimgfs $ISO_DIR
-#grub-install --root-directory=$SCUDUM/boot/grub $DEV_NAME && sync
+dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
+dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
-   
-    
+(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo 2; echo c; echo w) | fdisk -H 255 -S 63 $FILE
+sleep $SLEEP_TIME && sync
+
+DEV_NAME=$(losetup -f --show $FILE)
+DEV_INDEX=${DEV_NAME:${#DEV_NAME} - 1}
+DEV_MAIN=/dev/loop$(expr $DEV_INDEX + 1)
+
+losetup --verbose --offset $OFFSET $DEV_MAIN $DEV_NAME
+
+mkfs.fat32 -F 32 $DEV_MAIN && sync
+
+REF_DIR=/tmp/$NAME.ref
+mkdir -pv $REF_DIR
+mount $DEV_MAIN $REF_DIR
+
+cp -rp $IMG_DIR/* $REF_DIR
+
+extlinux --heads=255 --sectors=63 --install $REF_DIR/boot && sync
+
+umount $REF_DIR
+rm -rf $REF_DIR
+
+losetup -dv $DEV_MAIN
+losetup -dv $DEV_NAME
+
+#mkimgfs $ISO_DIR
+
 if [ "$SQUASH" == "1" ]; then
     rm -rf $ISO_DIR
 fi
