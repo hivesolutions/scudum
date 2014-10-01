@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-export CFLAGS="$CFLAGS -fpic"
-
 wget "http://prdownloads.sourceforge.net/libexif/libexif-$VERSION.tar.gz"
 rm -rf libexif-$VERSION && tar -zxf "libexif-$VERSION.tar.gz"
 rm -f "libexif-$VERSION.tar.gz"
