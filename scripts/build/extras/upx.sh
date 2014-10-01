@@ -14,4 +14,4 @@ rm -f "upx-$VERSION-src.tar.bz2"
 cd upx-$VERSION-src
 
 make all
-cp -p src/upx.out $PREFIX/bin
+cp -p src/upx.out $PREFIX/bin/upx
