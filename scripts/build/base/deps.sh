@@ -6,5 +6,6 @@ if hash apt-get 2> /dev/null; then
 elif hash scu 2> /dev/null; then
     echo "scudum: all dependencies already installed"
 else
+    echo "scudum: cannot install dependencies"
     exit 1
 fi
