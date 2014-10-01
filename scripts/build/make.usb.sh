@@ -4,6 +4,7 @@
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
 LABEL=${LABEL-Scudum}
+PREFIX=${PREFIX-/usr}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
 SCHEMA=${SCHEMA-transient}
