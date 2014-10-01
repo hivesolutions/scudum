@@ -29,9 +29,9 @@ else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
 fi
 
-if hash apt-get 2> /dev/null; then
+if type apt-get 2> /dev/null; then
     apt-get -y install squashfs-tools
-elif hash scu 2> /dev/null; then
+elif type scu 2> /dev/null; then
     scu install squashfs-tools
 else
     exit 1
