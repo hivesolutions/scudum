@@ -94,7 +94,7 @@ mount $DEV_MAIN $REF_DIR
 
 cp -rp $IMG_DIR/* $REF_DIR
 
-extlinux --heads=255 --sectors=63 --install $REF_DIR/boot && sync
+syslinux --heads=255 --sectors=63 --install $REF_DIR/boot && sync
 
 umount $REF_DIR
 rm -rf $REF_DIR
