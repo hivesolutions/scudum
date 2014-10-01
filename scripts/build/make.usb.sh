@@ -94,15 +94,13 @@ mount -v $DEV_MAIN $REF_DIR
 
 cp -rp $IMG_DIR/* $REF_DIR
 
-syslinux --heads=255 --sectors=63 --install $REF_DIR/boot && sync
+syslinux --heads=255 --sectors=63 --install $REF_DIR/boot
 
 umount -v $REF_DIR
 rm -rf $REF_DIR
 
 losetup -dv $DEV_MAIN
 losetup -dv $DEV_NAME
-
-#mkimgfs $ISO_DIR
 
 if [ "$SQUASH" == "1" ]; then
     rm -rf $ISO_DIR
