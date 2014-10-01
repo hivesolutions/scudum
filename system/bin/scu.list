@@ -4,7 +4,7 @@
 REFRESH=${REFRESH-0}
 TARGET=${TARGET-/opt}
 REPO=${REPO-scu}
-EXTRAS=${EXTRAS-$TARGET/$REPO/scripts/build/extras}
+EXTRAS_DIR=${EXTRAS_DIR-$TARGET/$REPO/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
 INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
@@ -19,7 +19,7 @@ REFRESH=$REFRESH TARGET=$TARGET $DIR/scu.update
 
 installed=$(cat $INSTALLED_FILE)
 
-for file in $EXTRAS/*; do
+for file in $EXTRAS_DIR/*; do
     base=$(basename $file)
     package=${base%.*}
     if [[ $package != *$1* ]]; then

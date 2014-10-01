@@ -7,7 +7,7 @@ REFRESH=${REFRESH-1}
 PERSIST=${PERSIST-/pst}
 TARGET=${TARGET-/opt}
 REPO=${REPO-scu}
-EXTRAS=${EXTRAS-$TARGET/$REPO/scripts/build/extras}
+EXTRAS_DIR=${EXTRAS_DIR-$TARGET/$REPO/scripts/build/extras}
 CONFIG_DIR=${CONFIG_DIR-/etc/scudum}
 INSTALLED_FILE=${INSTALLED_FILE-$CONFIG_DIR/INSTALLED}
 
@@ -32,19 +32,19 @@ fi
 mkdir -p $BUILDER && cd $BUILDER
 
 for package in "$@"; do
-    if [ ! -e $EXTRAS/$package.sh ]; then
+    if [ ! -e $EXTRAS_DIR/$package.sh ]; then
         echo "$package: package not found"
         exit 1
     fi
     installed=$(cat $INSTALLED_FILE)
     if [[ $installed == *$package* ]]; then
         if [ "$FORCE" == "1" ]; then
-            $EXTRAS/$package.sh
+            $EXTRAS_DIR/$package.sh
         else
             echo "$package: package already installed"
         fi
     else
-        $EXTRAS/$package.sh
+        $EXTRAS_DIR/$package.sh
         echo -n "$package " >> $INSTALLED_FILE
     fi
 done
