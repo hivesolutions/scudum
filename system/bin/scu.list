@@ -26,8 +26,8 @@ for file in $EXTRAS/*; do
     fi
     printf $FORMAT $package
     if [[ $installed == *$package* ]]; then
-        echo -e $COLOR_GREEN"INSTALLED"$COLOR_RESET
+        echo -e $COLOR_GREEN"Installed"$COLOR_RESET
     else
-        echo -e $COLOR_RED"NOT INSTALLED"$COLOR_RESET
+        echo -e $COLOR_RED"Not Installed"$COLOR_RESET
     fi
 done
