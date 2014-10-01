@@ -30,9 +30,9 @@ else
 fi
 
 if type apt-get > /dev/null 2> &1; then
-    apt-get -y install squashfs-tools
+    apt-get -y install genisoimage squashfs-tools
 elif type > /dev/null 2> &1; then
-    scu install squashfs-tools
+    scu install cdrtools squashfs-tools
 else
     exit 1
 fi
