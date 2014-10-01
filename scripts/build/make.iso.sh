@@ -29,7 +29,13 @@ else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
 fi
 
-apt-get -y install squashfs-tools
+if hash apt-get 2> /dev/null; then
+    apt-get -y install squashfs-tools
+elif hash scu 2> /dev/null; then
+    scu install squashfs-tools
+else
+    exit 1
+fi
 
 if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA $DIR/config.sh
