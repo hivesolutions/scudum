@@ -4,10 +4,11 @@
 DEV=${DEV-/dev/sda1}
 TARGET=${TARGET-/pst}
 LABEL=${LABEL-PSTSCU}
+FS=${FS-ext4}
 
-echo "Going to start persistence for $DEV"
+echo "scu: creating persistence for $DEV using $FS"
 
-mkfs.ext4 $DEV
+mkfs.$FS $DEV
 e2label $DEV "$LABEL"
 
 mkdir -pv $TARGET
