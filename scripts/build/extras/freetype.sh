@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+require "libpng"
+
 wget "http://download.savannah.gnu.org/releases/freetype/freetype-$VERSION.tar.gz"
 rm -rf freetype-$VERSION && tar -zxf "freetype-$VERSION.tar.gz"
 rm -f "freetype-$VERSION.tar.gz"
