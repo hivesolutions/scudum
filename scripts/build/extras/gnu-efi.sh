@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/gnu-efi/gnu-efi-$VERSION.orig.tar.gz"
-rm -rf gnu-efi-$VERSION && tar -zxf "gnu-efi-$VERSION.orig.tar.gz"
-rm -f "gnu-efi-$VERSION.orig.tar.gz"
+wget "http://prdownloads.sourceforge.net/gnu-efi/gnu-efi_$VERSION.orig.tar.gz"
+rm -rf gnu-efi-$VERSION && tar -zxf "gnu-efi_$VERSION.orig.tar.gz"
+rm -f "gnu-efi_$VERSION.orig.tar.gz"
 cd gnu-efi-$VERSION
 
 make
