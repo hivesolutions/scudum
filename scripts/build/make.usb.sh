@@ -90,13 +90,13 @@ mkfs.vfat -F 32 $DEV_MAIN && sync
 
 REF_DIR=/tmp/$NAME.ref
 mkdir -pv $REF_DIR
-mount $DEV_MAIN $REF_DIR
+mount -v $DEV_MAIN $REF_DIR
 
 cp -rp $IMG_DIR/* $REF_DIR
 
 syslinux --heads=255 --sectors=63 --install $REF_DIR/boot && sync
 
-umount $REF_DIR
+umount -v $REF_DIR
 rm -rf $REF_DIR
 
 losetup -dv $DEV_MAIN
