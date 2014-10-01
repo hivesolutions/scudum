@@ -29,9 +29,9 @@ else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
 fi
 
-if type apt-get > /dev/null 2> &1; then
+if type apt-get &> /dev/null; then
     apt-get -y install genisoimage squashfs-tools
-elif type > /dev/null 2> &1; then
+elif type &> /dev/null; then
     scu install cdrtools squashfs-tools
 else
     exit 1
