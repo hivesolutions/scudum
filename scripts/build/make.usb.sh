@@ -21,6 +21,7 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 SIZE_B=$(expr $SIZE / $BLOCK_SIZE)
 
 SLEEP_TIME=3
+MOUNT_DIR=/tmp/$NAME.mount
 
 set -e +h
 
@@ -88,16 +89,15 @@ losetup --verbose --offset $OFFSET $DEV_MAIN $DEV_NAME
 
 mkfs.vfat -F 32 $DEV_MAIN && sync
 
-REF_DIR=/tmp/$NAME.ref
-mkdir -pv $REF_DIR
-mount -v $DEV_MAIN $REF_DIR
+mkdir -pv $MOUNT_DIR
+mount -v $DEV_MAIN $MOUNT_DIR
 
-cp -rp $IMG_DIR/* $REF_DIR
+cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux --heads=255 --sectors=63 --install $REF_DIR/boot
+syslinux --heads=255 --sectors=63 --install $MOUNT_DIR/boot
 
-umount -v $REF_DIR
-rm -rf $REF_DIR
+umount -v $MOUNT_DIR
+rm -rf $MOUNT_DIR
 
 losetup -dv $DEV_MAIN
 losetup -dv $DEV_NAME
