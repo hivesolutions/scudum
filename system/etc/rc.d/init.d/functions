@@ -455,7 +455,7 @@ killproc() {
         shift 2
         log_failure_msg "Usage: killproc  [-p pidfile] pathname [signal]"
         return 2
-     fi
+    fi
 
     if [ -z "${pidfile}" ]; then
         pidofproc -s "${1}"
