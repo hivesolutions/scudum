@@ -37,9 +37,9 @@ else
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install syslinux squashfs-tools dosfstools mtools
+    apt-get -y install syslinux.old squashfs-tools dosfstools mtools
 elif type scu &> /dev/null; then
-    scu install syslinux squashfs-tools dosfstools mtools
+    scu install syslinux.old squashfs-tools dosfstools mtools
 else
     exit 1
 fi
