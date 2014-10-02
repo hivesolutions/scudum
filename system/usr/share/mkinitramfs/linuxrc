@@ -12,8 +12,10 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 export PATH
 
 # sets the name to be used in the finding of the device
-# that contains the storage of information
+# that contains the storage of information, note that an
+# extra variable is set with the uppercase version
 DEVICE=Scudum
+DEVICE_U=SCUDUM
 
 # sets the global constant values that are used to
 # control the behavior of the loader
@@ -67,7 +69,7 @@ for i in {1..5}; do
     # retreives the name of the device that is named
     # scudum (this is considered) the primary mounting
     # strategy for the scudum origin
-    drive=$(blkid | grep $DEVICE | cut -d : -f 1)
+    drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
     if [ "$drive" != "" ]; then
         echoi "Origin device located at $drive"
         mount -o ro -n $drive /ram/origin
