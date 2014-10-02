@@ -83,7 +83,7 @@ fi
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
 
-(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk $FILE
+(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H 64 -S 32 $FILE
 sleep $SLEEP_TIME && sync
 
 dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
@@ -102,7 +102,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux --force --install $DEV_MAIN
+syslinux --heads=64 --sectors=32 --force --install $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
