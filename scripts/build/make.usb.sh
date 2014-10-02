@@ -94,7 +94,7 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$CYLINDER_COUNT && sync
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE
 sleep $SLEEP_TIME && sync
 
-dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
+dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
 
