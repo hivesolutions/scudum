@@ -10,7 +10,9 @@ TARGET=${TARGET-$BASE/$NAME/usb}
 SCHEMA=${SCHEMA-transient}
 SIZE=${SIZE-1073741824}
 OFFSET=${OFFSET-1048576}
-BLOCK_SIZE=${BLOCK_SIZE-4096}
+HEADS=${HEADS-64}
+SECTORS=${SECTORS-32}
+BYTES_SECTOR=${BYTES_SECTOR-512}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
@@ -19,7 +21,10 @@ AUTORUN=${AUTORUN-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-SIZE_B=$(expr $SIZE / $BLOCK_SIZE)
+BLOCK_SIZE=$(expr $HEADS * $SECTORS * $BYTES_SECTOR)
+CYLINDER_COUNT=$(expr $SIZE / $BLOCK_SIZE)
+AVAILABLE_SIZE=$(expr $SIZE - $OFFSET)
+AVAILABLE_BLOCKS=$(expr $AVAILABLE_SIZE / $BYTES_SECTOR / $HEADS * $SECTORS)
 
 SLEEP_TIME=3
 MOUNT_DIR=/tmp/$NAME.mount
@@ -27,6 +32,9 @@ MOUNT_DIR=/tmp/$NAME.mount
 set -e +h
 
 source $DIR/base/config.sh
+
+echo "make.usb: $HEADS heads, $SECTORS sectors, $BYTES_SECTOR bytes/sector"
+echo "make.usb: $CYLINDER_COUNT cylinders, $AVAILABLE_SIZE bytes, $AVAILABLE_BLOCKS blocks"
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
@@ -81,9 +89,9 @@ if [ "$AUTORUN" == "1" ]; then
     cp $SCUDUM/isolinux/scudum.ico $IMG_DIR
 fi
 
-dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
+dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$CYLINDER_COUNT && sync
 
-(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H 64 -S 32 $FILE
+(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE
 sleep $SLEEP_TIME && sync
 
 dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
@@ -94,7 +102,7 @@ DEV_MAIN=/dev/loop$(expr $DEV_INDEX + 1)
 
 losetup --verbose --offset $OFFSET $DEV_MAIN $DEV_NAME
 
-mkfs.vfat -F 32 $DEV_MAIN && sync
+mkfs.vfat -F 32 $DEV_MAIN $AVAILABLE_BLOCKS && sync
 mlabel -i $DEV_MAIN ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
@@ -102,7 +110,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -H 64 -S 32 --install $DEV_MAIN
+syslinux -H $HEADS -S $SECTORS --install $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
