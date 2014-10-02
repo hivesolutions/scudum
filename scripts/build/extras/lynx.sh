@@ -9,7 +9,7 @@ source $DIR/common.sh
 wget "ftp://artfiles.org/lynx.isc.org/lynx$VERSION/lynx$VERSION.tar.gz"
 rm -rf lynx$VERSION && tar -zxf "lynx$VERSION.tar.gz"
 rm -f "lynx$VERSION.tar.gz"
-cd lynx$VERSION.tar.gz
+cd lynx$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
