@@ -94,7 +94,7 @@ sleep $SLEEP_TIME && sync
 dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
-DEV_LOOP=/dev/mapper/DEV_LOOP_BASE
+DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 kpartx -a $FILE
 
