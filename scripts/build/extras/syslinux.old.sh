@@ -18,6 +18,6 @@ cd syslinux-$VERSION
 make installer
 
 mkdir -p $PREFIX/lib/syslinux
-install -m 755 bios/linux/syslinux $PREFIX/bin
-install -m 755 bios/linux/syslinux-nomtools $PREFIX/bin
-install -m 755 bios/mbr/*.bin $PREFIX/lib/syslinux
+install -m 755 linux/syslinux $PREFIX/bin
+install -m 755 linux/syslinux-nomtools $PREFIX/bin
+install -m 755 mbr/*.bin $PREFIX/lib/syslinux
