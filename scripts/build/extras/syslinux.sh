@@ -1,5 +1,7 @@
 VERSION=${VERSION-6.02}
 
+unset MAKEFLAGS
+
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
