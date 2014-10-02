@@ -102,7 +102,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux --heads=64 --sectors=32 --force --install $DEV_MAIN
+syslinux -H 64 -S 32 --install $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
