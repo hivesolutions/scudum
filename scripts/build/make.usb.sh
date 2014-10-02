@@ -112,7 +112,7 @@ rm -rf $MOUNT_DIR
 
 losetup -vd $DEV_LOOP
 
-syslinux -H $HEADS -S $SECTORS --offset  $OFFSET --install $FILE && sync
+syslinux -H $HEADS -S $SECTORS --offset $OFFSET --install $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
