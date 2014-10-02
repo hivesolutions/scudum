@@ -15,6 +15,7 @@ CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 SQUASH=${SQUASH-1}
+AUTORUN=${AUTORUN-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -75,6 +76,11 @@ else
     IMG_DIR=$SCUDUM
 fi
 
+if [ "$AUTORUN" == "1" ]; then
+    cp $SCUDUM/isolinux/autorun.inf $IMG_DIR
+    cp $SCUDUM/isolinux/scudum.ico $IMG_DIR
+fi
+
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H 255 -S 63 $FILE
@@ -104,8 +110,13 @@ rm -rf $MOUNT_DIR
 losetup -vd $DEV_MAIN
 losetup -vd $DEV_NAME
 
+if [ "$AUTORUN" == "1" ]; then
+    rm -v $IMG_DIR/autorun.inf
+    rm -v $IMG_DIR/scudum.ico
+fi
+
 if [ "$SQUASH" == "1" ]; then
-    rm -rf $ISO_DIR
+    rm -rf $IMG_DIR
 fi
 
 if [ "$DEPLOY" == "1" ]; then

@@ -69,8 +69,8 @@ else
 fi
 
 if [ "$AUTORUN" == "1" ]; then
-    cp $ISO_DIR/isolinux/autorun.inf $ISO_DIR
-    cp $ISO_DIR/isolinux/scudum.ico $ISO_DIR
+    cp $SCUDUM/isolinux/autorun.inf $ISO_DIR
+    cp $SCUDUM/isolinux/scudum.ico $ISO_DIR
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
