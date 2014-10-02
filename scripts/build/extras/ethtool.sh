@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "http://prdownloads.sourceforge.net/gkernel/ethtool-$VERSION.tar.gz"
-rm -rf ethtool-$VERSION && tar -jxf "ethtool-$VERSION.tar.gz"
+rm -rf ethtool-$VERSION && tar -zxf "ethtool-$VERSION.tar.gz"
 rm -f "ethtool-$VERSION.tar.gz"
 cd ethtool-$VERSION
 
