@@ -42,9 +42,9 @@ else
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install syslinux.old squashfs-tools dosfstools mtools
+    apt-get -y install syslinux.old squashfs-tools dosfstools mtools kpartx
 elif type scu &> /dev/null; then
-    scu install syslinux.old squashfs-tools dosfstools mtools
+    scu install syslinux.old squashfs-tools dosfstools mtools kpartx
 else
     exit 1
 fi
@@ -93,10 +93,13 @@ sleep $SLEEP_TIME && sync
 
 dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
-DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
+DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
+DEV_LOOP=/dev/mapper/DEV_LOOP_BASE
+
+kpartx -a $FILE
 
 #mkfs.vfat -F 32 $DEV_LOOP && sync
-mkdosfs -F 32 -I $DEV_LOOP && sync
+mkdosfs -F 32 -I -n BOOT $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
@@ -110,7 +113,9 @@ rm -rf $MOUNT_DIR
 syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 #dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
 
-losetup -vd $DEV_LOOP
+kpartx -d $FILE
+
+#losetup -vd $DEV_LOOP
 
 #syslinux --directory /boot/syslinux/ --offset $OFFSET --install $FILE && sync
 
