@@ -101,8 +101,8 @@ syslinux --install --force --directory /boot/syslinux $DEV_MAIN
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
 
-losetup -dv $DEV_MAIN
-losetup -dv $DEV_NAME
+losetup -vd $DEV_MAIN
+losetup -vd $DEV_NAME
 
 if [ "$SQUASH" == "1" ]; then
     rm -rf $ISO_DIR

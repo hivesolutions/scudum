@@ -43,8 +43,8 @@ losetup --verbose --offset $ROOT_OFFSET $DEV_ROOT $DEV_NAME
 DEV_NAME=$DEV_NAME DEV_BOOT=$DEV_BOOT DEV_SWAP=$DEV_SWAP\
     DEV_ROOT=$DEV_ROOT SCHEMA=$SCHEMA LOADER=$LOADER VERSION=$VERSION $DIR/install.sh
 
-losetup -dv $DEV_ROOT
-losetup -dv $DEV_SWAP
-losetup -dv $DEV_BOOT
-losetup -dv $DEV_NAME
+losetup -vd $DEV_ROOT
+losetup -vd $DEV_SWAP
+losetup -vd $DEV_BOOT
+losetup -vd $DEV_NAME
 sync
