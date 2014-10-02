@@ -95,7 +95,8 @@ dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
 
-mkfs.vfat -F 32 $DEV_LOOP && sync
+#mkfs.vfat -F 32 $DEV_LOOP && sync
+mkdosfs -F 32 -I $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
@@ -103,7 +104,7 @@ mount -v $DEV_LOOP $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-#syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
+syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
@@ -112,7 +113,7 @@ rm -rf $MOUNT_DIR
 
 losetup -vd $DEV_LOOP
 
-syslinux -H $HEADS -S $SECTORS --offset $OFFSET --install $FILE && sync
+#syslinux --directory /boot/syslinux/ --offset $OFFSET --install $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
