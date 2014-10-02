@@ -102,7 +102,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux --heads=255 --sectors=63 --force --directory /boot/syslinux $DEV_MAIN
+syslinux --heads=255 --sectors=63 --force $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
