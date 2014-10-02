@@ -103,14 +103,16 @@ mount -v $DEV_LOOP $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
+#syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
 
-dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
+#dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
 
 losetup -vd $DEV_LOOP
+
+syslinux -H $HEADS -S $SECTORS --offset  $OFFSET --install $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
