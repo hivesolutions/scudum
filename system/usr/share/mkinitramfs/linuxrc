@@ -65,7 +65,7 @@ echoi "Finding origin device location..."
 # iterates over "some time" to try to find the proper
 # device for the scudum, in a normal situation this
 # operation should succeed
-for i in {1..3}; do
+for i in {1..5}; do
     # retreives the name of the device that is named
     # scudum (this is considered) the primary mounting
     # strategy for the scudum origin
