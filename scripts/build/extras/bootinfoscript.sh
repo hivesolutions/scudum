@@ -6,10 +6,12 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz"
-rm -rf bootinfoscript-$VERSION && tar -zxf "bootinfoscript-$VERSION.tar.gz" -C bootinfoscript-$VERSION
-rm -f "syslinux-$VERSION.tar.xz"
+rm -rf bootinfoscript-$VERSION && mkdir -p bootinfoscript-$VERSION
 cd bootinfoscript-$VERSION
+
+wget "http://prdownloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz"
+tar -zxf "bootinfoscript-$VERSION.tar.gz"
+rm -f "bootinfoscript-$VERSION.tar.xz"
 
 mkdir -p $PREFIX/bin
 cp -p bootinfoscript $PREFIX/bin
