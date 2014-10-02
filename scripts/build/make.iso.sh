@@ -41,7 +41,7 @@ if [ "$CONFIG" == "1" ]; then
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
-    echo "Scudum not configured, not possible to make ISO"
+    echo "make.iso: scudum not configured, not possible to make ISO"
     exit 1
 fi
 

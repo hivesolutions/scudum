@@ -54,7 +54,7 @@ if [ "$CONFIG" == "1" ]; then
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
-    echo "Scudum not configured, not possible to make USB"
+    echo "make.usb: scudum not configured, not possible to make USB"
     exit 1
 fi
 
