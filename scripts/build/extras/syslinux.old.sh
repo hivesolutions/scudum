@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.05}
+VERSION=${VERSION-4.07}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -15,7 +15,7 @@ rm -rf syslinux-$VERSION && tar -Jxf "syslinux-$VERSION.tar.xz"
 rm -f "syslinux-$VERSION.tar.xz"
 cd syslinux-$VERSION
 
-make bios installer
+make installer
 
 mkdir -p $PREFIX/lib/syslinux
 install -m 755 bios/linux/syslinux $PREFIX/bin
