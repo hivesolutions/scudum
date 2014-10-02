@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/re-alpine/re-alpine-$VERSION.tar.gz"
-rm -rf re-alpine-$VERSION && tar -zxf "re-alpine-$VERSION.tar.gz"
-rm -f "re-alpine-$VERSION.tar.gz"
+wget "http://prdownloads.sourceforge.net/re-alpine/re-alpine-$VERSION.tar.bz2"
+rm -rf re-alpine-$VERSION && tar -jxf "re-alpine-$VERSION.tar.bz2"
+rm -f "re-alpine-$VERSION.tar.bz2"
 cd re-alpine-$VERSION
 
 ./configure --prefix=$PREFIX
