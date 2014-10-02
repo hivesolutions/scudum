@@ -108,10 +108,10 @@ mount -v $DEV_LOOP $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP
-
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
+
+syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP
 
 losetup -vd $DEV_LOOP
 
