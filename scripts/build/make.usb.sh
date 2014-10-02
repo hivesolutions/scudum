@@ -104,11 +104,10 @@ mount -v $DEV_LOOP $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
-
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
 
+syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 #dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
 
 losetup -vd $DEV_LOOP
