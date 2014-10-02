@@ -96,24 +96,24 @@ sleep $SLEEP_TIME && sync
 
 dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
-DEV_MAIN=$(losetup --verbose --find --show --offset $OFFSET $FILE)
+DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
 
 $(losetup -f --show $FILE)
 
-mkfs.vfat -F 32 $DEV_MAIN $AVAILABLE_BLOCKS && sync
-mlabel -i $DEV_MAIN ::$LABEL && sync
+mkfs.vfat -F 32 $DEV_LOOP $AVAILABLE_BLOCKS && sync
+mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
-mount -v $DEV_MAIN $MOUNT_DIR
+mount -v $DEV_LOOP $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -H $HEADS -S $SECTORS --install $DEV_MAIN
+syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
 
-losetup -vd $DEV_MAIN
+losetup -vd $DEV_LOOP
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
