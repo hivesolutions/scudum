@@ -95,7 +95,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux --heads=255 --sectors=63 --install $MOUNT_DIR/boot
+syslinux --heads=255 --sectors=63 --install $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
