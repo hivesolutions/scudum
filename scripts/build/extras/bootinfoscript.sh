@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "http://prdownloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz"
-rm -rf bootinfoscript-$VERSION && tar -zxf "bootinfoscript-$VERSION.tar.gz"
+rm -rf bootinfoscript-$VERSION && tar -zxf "bootinfoscript-$VERSION.tar.gz" -C bootinfoscript-$VERSION
 rm -f "syslinux-$VERSION.tar.xz"
 cd bootinfoscript-$VERSION
 
