@@ -82,10 +82,11 @@ if [ "$AUTORUN" == "1" ]; then
 fi
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$SIZE_B && sync
-dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H 255 -S 63 $FILE
 sleep $SLEEP_TIME && sync
+
+dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
 DEV_NAME=$(losetup -f --show $FILE)
 DEV_INDEX=${DEV_NAME:${#DEV_NAME} - 1}
