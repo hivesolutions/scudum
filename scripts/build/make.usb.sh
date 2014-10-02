@@ -98,8 +98,6 @@ dd if=$PREFIX/lib/syslinux/mbr.bin conv=notrunc bs=440 count=1 of=$FILE && sync
 
 DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
 
-$(losetup -f --show $FILE)
-
 mkfs.vfat -F 32 $DEV_LOOP $AVAILABLE_BLOCKS && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
