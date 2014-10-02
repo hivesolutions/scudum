@@ -95,7 +95,7 @@ mount -v $DEV_MAIN $MOUNT_DIR
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-syslinux -maf -d /syslinux --install $DEV_MAIN
+syslinux --install --mbr --active --force --directory /boot/syslinux $DEV_MAIN
 
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
