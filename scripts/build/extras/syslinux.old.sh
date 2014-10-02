@@ -21,3 +21,4 @@ mkdir -p $PREFIX/lib/syslinux
 install -m 755 linux/syslinux $PREFIX/bin
 install -m 755 linux/syslinux-nomtools $PREFIX/bin
 install -m 755 mbr/*.bin $PREFIX/lib/syslinux
+install -m 755 core/*.bss $PREFIX/lib/syslinux
