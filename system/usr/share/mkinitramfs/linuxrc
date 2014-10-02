@@ -65,7 +65,7 @@ echoi "Finding origin device location..."
 # iterates over "some time" to try to find the proper
 # device for the scudum, in a normal situation this
 # operation should succeed
-for i in {1..5}; do
+for i in {1..3}; do
     # retreives the name of the device that is named
     # scudum (this is considered) the primary mounting
     # strategy for the scudum origin
@@ -86,7 +86,7 @@ done
 # tries to mount all of the scsi discs available
 if [ "$mounted" == "0" ]; then
     echoi "Origin device not located using fallback"
-    mount -t iso9660 -o ro -n /dev/sr0 /ram/origin;
+    mount -t iso9660 -o ro -n /dev/sr0 /ram/origin
     if [ "$?" == "0" ]; then mounted=1; fi
     for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
         if [ "$mounted" == "1" ]; then break; fi
