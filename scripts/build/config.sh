@@ -22,6 +22,11 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e $SCUDUM ]; then
+    echo "Scudum is not installed in the system"
+    exit 1
+fi
+
 if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "Scudum already configured, may create duplicated files"
 fi
