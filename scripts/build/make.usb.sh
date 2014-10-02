@@ -8,8 +8,9 @@ PREFIX=${PREFIX-/usr}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
 SCHEMA=${SCHEMA-transient}
-SIZE=${SIZE-1073741824}
+SIZE=${SIZE-1073741824}8225280
 OFFSET=${OFFSET-1048576}
+BLOCK_SIZE=${OFFSET-4096}
 HEADS=${HEADS-255}
 SECTORS=${SECTORS-63}
 BYTES_SECTOR=${BYTES_SECTOR-512}
@@ -21,10 +22,7 @@ AUTORUN=${AUTORUN-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-BLOCK_SIZE=$(expr $HEADS * $SECTORS * $BYTES_SECTOR)
-CYLINDER_COUNT=$(expr $SIZE / $BLOCK_SIZE)
-AVAILABLE_SIZE=$(expr $SIZE - $OFFSET)
-AVAILABLE_BLOCKS=$(expr $AVAILABLE_SIZE / $BYTES_SECTOR / $HEADS * $SECTORS)
+BLOCK_COUNT=$(expr $SIZE / $BLOCK_SIZE)
 
 SLEEP_TIME=3
 MOUNT_DIR=/tmp/$NAME.mount
@@ -34,7 +32,6 @@ set -e +h
 source $DIR/base/config.sh
 
 echo "make.usb: $HEADS heads, $SECTORS sectors, $BYTES_SECTOR bytes/sector"
-echo "make.usb: $CYLINDER_COUNT cylinders, $AVAILABLE_SIZE bytes, $AVAILABLE_BLOCKS blocks"
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
@@ -89,7 +86,7 @@ if [ "$AUTORUN" == "1" ]; then
     cp $SCUDUM/isolinux/scudum.ico $IMG_DIR
 fi
 
-dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$CYLINDER_COUNT && sync
+dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE
 sleep $SLEEP_TIME && sync
@@ -98,7 +95,7 @@ dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP=$(losetup --verbose --find --show --offset $OFFSET $FILE)
 
-mkfs.vfat -F 32 $DEV_LOOP $AVAILABLE_BLOCKS && sync
+mkfs.vfat -F 32 $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
