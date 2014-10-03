@@ -53,10 +53,10 @@ cd $CUR
 if [ "$SQUASH" == "1" ]; then
     ISO_DIR=/tmp/$NAME.iso.dir
 
-    mksquashfs $SCUDUM data.sqfs
+    mksquashfs $SCUDUM $NAME.sqfs
     mkdir -pv $ISO_DIR
     cp -rp $SCUDUM/isolinux $ISO_DIR
-    mv data.sqfs $ISO_DIR
+    mv $NAME.sqfs $ISO_DIR
 else
     ISO_DIR=$SCUDUM
 fi

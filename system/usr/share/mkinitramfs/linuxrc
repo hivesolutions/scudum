@@ -95,15 +95,18 @@ if [ "$mounted" == "0" ]; then
     done
 fi
 
-ls -la /ram/origin
-
 # verifies if the squashfs file exists for the current
 # ofigin media and in case it does mounts it
-if [ -e /ram/origin/data.sqfs ]; then
+if [ -f /ram/origin/scudum.sqfs ]; then
     SQUASH=1
-    echoi "Mounting squashfs based file (data.sqfs) as source"
+    echoi "Mounting squashfs based file (scudum.sqfs) as source"
     mkdir source
-    mount -o loop -t squashfs /ram/origin/data.sqfs /ram/source
+    mount -o loop -t squashfs /ram/origin/scudum.sqfs /ram/source
+elif [ -f /ram/origin/scudum.sqf ]; then
+    SQUASH=1
+    echoi "Mounting squashfs based file (scudum.sqf) as source"
+    mkdir source
+    mount -o loop -t squashfs /ram/origin/scudum.sqf /ram/source
 else
     SQUASH=0
     echoi "Linking origin as source (plain structure)"

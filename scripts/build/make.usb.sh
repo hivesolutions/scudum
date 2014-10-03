@@ -75,10 +75,10 @@ cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
     IMG_DIR=/tmp/$NAME.iso.dir
-    mksquashfs $SCUDUM data.sqfs
+    mksquashfs $SCUDUM $NAME.sqfs
     mkdir -pv $IMG_DIR
     cp -rp $SCUDUM/boot $IMG_DIR
-    mv -v data.sqfs $IMG_DIR
+    mv -v $NAME.sqfs $IMG_DIR
 else
     IMG_DIR=$SCUDUM
 fi
