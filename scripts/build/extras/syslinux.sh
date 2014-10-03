@@ -15,4 +15,11 @@ rm -rf syslinux-$VERSION && tar -Jxf "syslinux-$VERSION.tar.xz"
 rm -f "syslinux-$VERSION.tar.xz"
 cd syslinux-$VERSION
 
-make firmware=bios && make install INSTALLROOT=$PREFIX BINDIR=/bin firmware=bios
+make firmware=bios
+make install\
+    firmware=bios
+    INSTALLROOT=$PREFIX\
+    BINDIR=/bin\
+    LIBDIR=/lib\
+    DATADIR=/share\
+    AUXDIR=/lib/syslinux
