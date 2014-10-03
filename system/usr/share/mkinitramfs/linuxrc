@@ -95,6 +95,8 @@ if [ "$mounted" == "0" ]; then
     done
 fi
 
+ls -la /ram/origin
+
 # verifies if the squashfs file exists for the current
 # ofigin media and in case it does mounts it
 if [ -f /ram/origin/scudum.sqfs ]; then
