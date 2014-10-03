@@ -16,7 +16,7 @@ rm -f "syslinux-$VERSION.tar.xz"
 cd syslinux-$VERSION
 
 make
-make isntall\
+make install\
     INSTALLROOT=$PREFIX\
     BINDIR=/bin\
     LIBDIR=/lib\
