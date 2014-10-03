@@ -19,6 +19,7 @@ BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
 LATEST=$NAME_L-latest
+LATEST_CONFIG=$LATEST.config
 
 set -e +h
 
@@ -61,7 +62,9 @@ if [ "$DEPLOY" == "1" ]; then
 
     cd $REPO
     rm -fv $LATEST
+    rm -fv $LATEST_CONFIG
     ln -sv $FILE $LATEST
+    ln -sv $FILE_CONFIG $LATEST_CONFIG
 else
     cp -v arch/x86/boot/bzImage /boot/vmlinuz
     cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
