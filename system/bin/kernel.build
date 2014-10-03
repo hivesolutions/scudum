@@ -4,10 +4,18 @@
 PERSIST=${PERSIST-/pst}
 TARGET=${TARGET-/opt}
 CONCURRENCY=${CONCURRENCY-$(nproc)}
+NAME=${NAME-linux-$MINOR}
+NAME_L=${NAME_L-kernel}
 MAJOR=${MAJOR-3.x}
 MINOR=${MINOR-3.16.1}
+DATE=${DATE-$(date +%Y%m%d)}
+VERSION=${VERSION-$MINOR-$DATE}
+FILE=${FILE-$NAME_L-$VERSION}
+TARGET=${TARGET-/mnt/builds/scudum}
 BUILD=${BUILD-1}
-NAME=linux-$MINOR
+DEPLOY=${DEPLOY-0}
+
+LATEST=$NAME-latest
 
 set -e +h
 
@@ -40,3 +48,16 @@ cp -v arch/x86/boot/bzImage /boot/vmlinuz
 cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
 cp -v .config /boot/config
+
+if [ "$DEPLOY" != "1" ]; then
+    exit 0
+fi
+
+cp -p arch/x86/boot/bzImage $FILE
+
+mkdir -pv $TARGET
+mv -fv $FILE $TARGET
+
+cd $TARGET
+rm -fv $LATEST
+ln -sv $FILE $LATEST
