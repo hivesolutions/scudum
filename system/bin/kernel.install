@@ -6,6 +6,8 @@ VERSION=${VERSION-latest}
 REBUILD=${REBUILD-0}
 REPO=${REPO-http://hole1.hive:9090/builds/kernel}
 
+set -e +h
+
 if [ "$REBUILD" == "1" ]; then
     kernel.build
     exit $?
@@ -17,3 +19,5 @@ wget "$REPO/$NAME-$VERSION"
 
 cp -v $NAME-$VERSION /boot/vmlinuz
 cp -v $NAME-$VERSION /isolinux/vmlinuz
+
+rm -f $NAME-$VERSION
