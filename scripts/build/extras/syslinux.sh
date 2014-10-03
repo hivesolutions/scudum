@@ -17,7 +17,7 @@ cd syslinux-$VERSION
 
 make firmware=bios
 make install\
-    firmware=bios
+    firmware=bios\
     INSTALLROOT=$PREFIX\
     BINDIR=/bin\
     LIBDIR=/lib\
