@@ -15,13 +15,4 @@ rm -rf syslinux-$VERSION && tar -Jxf "syslinux-$VERSION.tar.xz"
 rm -f "syslinux-$VERSION.tar.xz"
 cd syslinux-$VERSION
 
-make bios installer
-
-mkdir -p $PREFIX/lib/syslinux
-install -m 755 bios/linux/syslinux $PREFIX/bin
-install -m 755 bios/linux/syslinux-nomtools $PREFIX/bin
-install -m 755 bios/mbr/*.bin $PREFIX/lib/syslinux
-install -m 755 bios/core/*.bss $PREFIX/lib/syslinux
-
-cd utils
-make && make install INSTALLROOT=$PREFIX BINDIR=/bin
+make firmware=bios && make install INSTALLROOT=$PREFIX BINDIR=/bin firmware=bios
