@@ -1,0 +1,13 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+NAME=${NAME-kernel}
+VERSION=${VERSION-latest}
+REPO=${REPO-http://hole1.hive:9090/builds/$NAME}
+
+echo "kernel.install: deploying kernel files"
+
+wget "$REPO/$NAME-$VERSION"
+
+cp -v $NAME-$VERSION /boot/vmlinuz
+cp -v $NAME-$VERSION /isolinux/vmlinuz
