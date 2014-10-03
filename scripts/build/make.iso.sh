@@ -63,14 +63,14 @@ if [ "$SQUASH" == "1" ]; then
     mksquashfs $SCUDUM $NAME.sqfs
     mkdir -pv $ISO_DIR
     cp -rp $SCUDUM/isolinux $ISO_DIR
-    mv $NAME.sqfs $ISO_DIR
+    mv -v $NAME.sqfs $ISO_DIR
 else
     ISO_DIR=$SCUDUM
 fi
 
 if [ "$AUTORUN" == "1" ]; then
-    cp $SCUDUM/isolinux/autorun.inf $ISO_DIR
-    cp $SCUDUM/isolinux/scudum.ico $ISO_DIR
+    cp -v $SCUDUM/isolinux/autorun.inf $ISO_DIR
+    cp -v $SCUDUM/isolinux/scudum.ico $ISO_DIR
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
@@ -88,7 +88,7 @@ if [ "$SQUASH" == "1" ]; then
 fi
 
 if [ "$DEPLOY" == "1" ]; then
-    mkdir -p $TARGET && mv $FILE $TARGET
+    mkdir -pv $TARGET && mv -v $FILE $TARGET
 fi
 
 rm -rv $SCUDUM/images

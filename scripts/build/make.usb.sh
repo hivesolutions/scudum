@@ -78,14 +78,14 @@ if [ "$SQUASH" == "1" ]; then
     mksquashfs $SCUDUM $NAME.sqfs
     mkdir -pv $IMG_DIR
     cp -rp $SCUDUM/boot $IMG_DIR
-    mv $NAME.sqfs $IMG_DIR
+    mv -v $NAME.sqfs $IMG_DIR
 else
     IMG_DIR=$SCUDUM
 fi
 
 if [ "$AUTORUN" == "1" ]; then
-    cp $SCUDUM/isolinux/autorun.inf $IMG_DIR
-    cp $SCUDUM/isolinux/scudum.ico $IMG_DIR
+    cp -v $SCUDUM/isolinux/autorun.inf $IMG_DIR
+    cp -v $SCUDUM/isolinux/scudum.ico $IMG_DIR
 fi
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
@@ -125,7 +125,7 @@ if [ "$SQUASH" == "1" ]; then
 fi
 
 if [ "$DEPLOY" == "1" ]; then
-    mkdir -p $TARGET && mv $FILE $TARGET
+    mkdir -pv $TARGET && mv -v $FILE $TARGET
 fi
 
 rm -rv $SCUDUM/images
