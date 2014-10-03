@@ -9,7 +9,7 @@ BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
 SCHEMA=${SCHEMA-transient}
 SIZE=${SIZE-1073741824}
-OFFSET=${OFFSET-1048576}
+OFFSET_SECTORS=${OFFSET_SECTORS-2048}
 BLOCK_SIZE=${BLOCK_SIZE-4096}
 HEADS=${HEADS-255}
 SECTORS=${SECTORS-63}
@@ -22,6 +22,7 @@ AUTORUN=${AUTORUN-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+OFFSET=$(expr $OFFSET_SECTORS * $BYTES_SECTOR)
 BLOCK_COUNT=$(expr $SIZE / $BLOCK_SIZE)
 
 SLEEP_TIME=3
@@ -98,7 +99,7 @@ DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 kpartx -a $FILE && sync
 
-mkfs.vfat -h 2048 -F 32 -I -n $LABEL $DEV_LOOP && sync
+mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
