@@ -80,7 +80,7 @@ mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
     -b isolinux/isolinux.bin -c isolinux/boot.cat\
     -no-emul-boot -boot-load-size 4 -boot-info-table\
     -V $LABEL $ISO_DIR
-    
+
 if [ "$BASIC" == "1" ]; then
     mkisofs -o $FILE_BASIC\
         -b isolinux/isolinux.bin -c isolinux/boot.cat\
