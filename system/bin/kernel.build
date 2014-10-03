@@ -11,7 +11,7 @@ NAME=${NAME-linux-$MINOR}
 DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VERSION}
-TARGET=${TARGET-/mnt/builds/scudum}
+REPO=${REPO-/mnt/builds/scudum}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
@@ -47,10 +47,10 @@ make -j $CONCURRENCY
 if [ "$DEPLOY" == "1" ]; then
     cp -p arch/x86/boot/bzImage $FILE
 
-    mkdir -pv $TARGET
-    mv -fv $FILE $TARGET
+    mkdir -pv $REPO
+    mv -fv $FILE $REPO
 
-    cd $TARGET
+    cd $REPO
     rm -fv $LATEST
     ln -sv $FILE $LATEST
 else
