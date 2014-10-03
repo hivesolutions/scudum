@@ -111,14 +111,9 @@ cp -rp $IMG_DIR/* $MOUNT_DIR
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-#syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
-#dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
+syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 
 kpartx -d $FILE && sync
-
-#losetup -vd $DEV_LOOP
-
-#syslinux -H $HEADS -S $SECTORS --directory /boot/syslinux/ --offset $OFFSET --install $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
