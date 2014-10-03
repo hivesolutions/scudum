@@ -11,6 +11,7 @@ NAME=${NAME-linux-$MINOR}
 DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VERSION}
+FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config}
 FALLBACK=${CONFIG-/boot/config}
@@ -51,10 +52,12 @@ fi
 make -j $CONCURRENCY
 
 if [ "$DEPLOY" == "1" ]; then
-    cp -p arch/x86/boot/bzImage $FILE
+    cp -pv arch/x86/boot/bzImage $FILE
+    cp -pv .config $FILE_CONFIG
 
     mkdir -pv $REPO
     mv -fv $FILE $REPO
+    mv -fv $FILE_CONFIG $REPO
 
     cd $REPO
     rm -fv $LATEST
