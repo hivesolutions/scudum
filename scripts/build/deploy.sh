@@ -15,6 +15,7 @@ source $DIR/base/config.sh
 
 NAME=$NAME VERSION=$VERSION FILE=$FILE $DIR/pack.sh
 
+mkdir -pv $TARGET
 mv -fv $FILE $TARGET
 
 cd $TARGET
