@@ -109,7 +109,7 @@ elif [ -f /ram/origin/SCUDUM.SQFS ]; then
     mount -o loop -t squashfs /ram/origin/SCUDUM.SQFS /ram/source
 else
     SQUASH=0
-    echoi "Linking origin as source"
+    echoi "Linking origin as source (plain structure)"
     ln -s origin /ram/source
 fi
 
