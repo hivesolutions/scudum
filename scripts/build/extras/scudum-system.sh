@@ -8,4 +8,10 @@ rm -rf scudum && git clone --depth 1 https://github.com/hivesolutions/scudum.git
 cd scudum
 
 mkdir -p $PREFIX/bin
+mkdir -p $PREFIX/sbin
+
 cp -rp system/bin/* $PREFIX/bin
+cp -rp system/sbin/* $PREFIX/sbin
+
+rm -rf $PREFIX/system
+cp -rp system $PREFIX
