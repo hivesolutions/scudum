@@ -44,20 +44,18 @@ fi
 
 make -j $CONCURRENCY
 
-cp -v arch/x86/boot/bzImage /boot/vmlinuz
-cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
+if [ "$DEPLOY" == "1" ]; then
+    cp -p arch/x86/boot/bzImage $FILE
 
-cp -v .config /boot/config
+    mkdir -pv $TARGET
+    mv -fv $FILE $TARGET
 
-if [ "$DEPLOY" != "1" ]; then
-    exit 0
+    cd $TARGET
+    rm -fv $LATEST
+    ln -sv $FILE $LATEST
+else
+    cp -v arch/x86/boot/bzImage /boot/vmlinuz
+    cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
+
+    cp -v .config /boot/config
 fi
-
-cp -p arch/x86/boot/bzImage $FILE
-
-mkdir -pv $TARGET
-mv -fv $FILE $TARGET
-
-cd $TARGET
-rm -fv $LATEST
-ln -sv $FILE $LATEST
