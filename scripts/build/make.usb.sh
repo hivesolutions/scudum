@@ -98,8 +98,7 @@ DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 kpartx -a $FILE
 
-#mkfs.vfat -F 32 $DEV_LOOP && sync
-mkdosfs -F 32 -I -n BOOT $DEV_LOOP && sync
+mkfs.vfat -F 32 -I -n $LABEL $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
@@ -110,14 +109,14 @@ cp -rp $IMG_DIR/* $MOUNT_DIR
 umount -v $MOUNT_DIR
 rm -rf $MOUNT_DIR
 
-syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
+#syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 #dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
 
 kpartx -d $FILE
 
 #losetup -vd $DEV_LOOP
 
-#syslinux --directory /boot/syslinux/ --offset $OFFSET --install $FILE && sync
+syslinux -H $HEADS -S $SECTORS --directory /boot/syslinux/ --offset $OFFSET --install $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
