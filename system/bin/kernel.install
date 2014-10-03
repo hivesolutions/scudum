@@ -4,7 +4,7 @@
 NAME=${NAME-kernel}
 VERSION=${VERSION-latest}
 REBUILD=${REBUILD-0}
-REPO=${REPO-http://hole1.hive:9090/builds/kernel}
+REPO=${REPO-http://hq.hive.pt:9999/builds/kernel}
 
 set -e +h
 

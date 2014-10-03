@@ -3,7 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-latest}
-REPO=${REPO-http://hole1.hive:9090/builds/$NAME}
+REPO=${REPO-http://hq.hive.pt:9999/builds/$NAME}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 

@@ -45,7 +45,7 @@ from armord import app
 from armord import flask
 from armord import quorum
 
-BASE_URL = "http://hole1.hive:9090/repos/scu"
+BASE_URL = "http://hq.hive.pt:9999/repos/scu"
 """ The base url to be used in the construction
 of the repository targeted urls """
 
