@@ -96,23 +96,23 @@ dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-kpartx -a $FILE
+kpartx -a $FILE && sync
 
-mkfs.vfat -F 32 -I -n $LABEL $DEV_LOOP && sync
+mkfs.vfat -R 2048 -F 32 -I -n $LABEL $DEV_LOOP && sync
 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
-mount -v $DEV_LOOP $MOUNT_DIR
+mount -v $DEV_LOOP $MOUNT_DIR && sync
 
 cp -rp $IMG_DIR/* $MOUNT_DIR
 
-umount -v $MOUNT_DIR
+umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
 #syslinux -H $HEADS -S $SECTORS --install $DEV_LOOP && sync
 #dd if=$PREFIX/lib/syslinux/ldlinux.bss of=$DEV_LOOP && sync
 
-kpartx -d $FILE
+kpartx -d $FILE && sync
 
 #losetup -vd $DEV_LOOP
 
