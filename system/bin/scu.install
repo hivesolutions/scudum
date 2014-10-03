@@ -37,7 +37,7 @@ for package in "$@"; do
         exit 1
     fi
     installed=$(cat $INSTALLED_FILE)
-    if [[ $installed == *$package* ]]; then
+    if [[ "$installed" == *"$package "* ]]; then
         if [ "$FORCE" == "1" ]; then
             $EXTRAS_DIR/$package.sh
         else
