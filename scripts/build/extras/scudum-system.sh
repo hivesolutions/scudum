@@ -9,5 +9,3 @@ cd scudum
 
 mkdir -p $PREFIX/bin
 cp -rp system/bin/* $PREFIX/bin
-
-hash -r
