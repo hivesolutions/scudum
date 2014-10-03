@@ -12,13 +12,18 @@ DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VERSION}
 REPO=${REPO-/mnt/builds/$NAME_L}
-CONFIG=${CONFIG-/boot/config}
+CONFIG=${CONFIG-$PREFIX/system/boot/config}
+FALLBACK=${CONFIG-/boot/config}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
 LATEST=$NAME_L-latest
 
 set -e +h
+
+if [ ! -e $CONFIG ]; then
+    CONFIG=$FALLBACK
+fi
 
 if mountpoint -q $PERSIST; then
     BUILDER=$PERSIST/ksources
