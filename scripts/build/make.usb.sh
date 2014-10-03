@@ -111,7 +111,7 @@ cp -rp $IMG_DIR/* $MOUNT_DIR
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-syslinux --heads=$HEADS --sectors=$SECTORS --install $DEV_LOOP && sync
+syslinux --install $DEV_LOOP && sync
 
 kpartx -d $FILE && sync
 
