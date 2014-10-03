@@ -33,7 +33,7 @@ set -e +h
 source $DIR/base/config.sh
 
 echo "make.usb: $HEADS heads, $SECTORS sectors, $BYTES_SECTOR bytes/sector"
-echo "make.usb: $OFFSET offset ($OFFSET_SECTORS)"
+echo "make.usb: $OFFSET ($OFFSET_SECTORS) offset"
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
