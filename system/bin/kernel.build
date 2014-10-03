@@ -15,7 +15,7 @@ REPO=${REPO-/mnt/builds/scudum}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
-LATEST=$NAME-latest
+LATEST=$NAME_L-latest
 
 set -e +h
 
