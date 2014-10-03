@@ -21,5 +21,7 @@ make install\
     INSTALLROOT=$PREFIX\
     BINDIR=/bin\
     LIBDIR=/lib\
+    INCDIR=/include\
+    MANDIR=/man\
     DATADIR=/share\
     AUXDIR=/lib/syslinux
