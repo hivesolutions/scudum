@@ -3,7 +3,13 @@
 
 NAME=${NAME-kernel}
 VERSION=${VERSION-latest}
+REBUILD=${REBUILD-0}
 REPO=${REPO-http://hole1.hive:9090/builds/$NAME}
+
+if [ "$REBUILD" == "1" ]; then
+    kernel.build
+    exit $?
+fi
 
 echo "kernel.install: deploying kernel files"
 
