@@ -7,6 +7,7 @@ LABEL=${LABEL-Scudum}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}
 SCHEMA=${SCHEMA-transient}
+BASIC=${BASIC-1}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
@@ -24,8 +25,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.iso}
+    FILE_BASIC=${FILE-$NAME-$VERSION.basic.iso}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
+    FILE_BASIC=${FILE-$NAME-$DISTRIB-$VERSION.basic.iso}
 fi
 
 if type apt-get &> /dev/null; then
@@ -77,6 +80,13 @@ mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
     -b isolinux/isolinux.bin -c isolinux/boot.cat\
     -no-emul-boot -boot-load-size 4 -boot-info-table\
     -V $LABEL $ISO_DIR
+    
+if [ "$BASIC" == "1" ]; then
+    mkisofs -o $FILE_BASIC\
+        -b isolinux/isolinux.bin -c isolinux/boot.cat\
+        -no-emul-boot -boot-load-size 4 -boot-info-table\
+        -V $LABEL $ISO_DIR
+fi
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $ISO_DIR/autorun.inf
@@ -89,6 +99,7 @@ fi
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
+    if [ "$BASIC" == "1" ]; then mv -v $FILE_BASIC $TARGET; fi
 fi
 
 rm -rv $SCUDUM/images
