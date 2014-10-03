@@ -66,8 +66,11 @@ if [ "$DEPLOY" == "1" ]; then
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
 else
+    rm -fv /boot/vmlinuz
+    rm -fv /isolinux/vmlinuz
     cp -v arch/x86/boot/bzImage /boot/vmlinuz
     cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
-
+    
+    rm -fv /boot/config
     cp -v .config /boot/config
 fi

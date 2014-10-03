@@ -18,9 +18,12 @@ echo "kernel.install: deploying kernel files"
 wget "$REPO/$NAME-$VERSION"
 wget "$REPO/$NAME-$VERSION.config"
 
+rm -fv /boot/vmlinuz
+rm -fv /isolinux/vmlinuz
 cp -v $NAME-$VERSION /boot/vmlinuz
 cp -v $NAME-$VERSION /isolinux/vmlinuz
 
+rm -fv /boot/config
 cp -v $NAME-$VERSION.config /boot/config
 
 rm -f $NAME-$VERSION
