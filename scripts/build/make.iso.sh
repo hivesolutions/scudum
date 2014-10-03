@@ -25,10 +25,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.iso}
-    FILE_BASIC=${FILE-$NAME-$VERSION.basic.iso}
+    FILE_BASIC=${FILE_BASIC-$NAME-$VERSION.basic.iso}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
-    FILE_BASIC=${FILE-$NAME-$DISTRIB-$VERSION.basic.iso}
+    FILE_BASIC=${FILE_BASIC-$NAME-$DISTRIB-$VERSION.basic.iso}
 fi
 
 if type apt-get &> /dev/null; then
