@@ -3,7 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-$(date +%Y%m%d)}
-LABEL=${LABEL-Scudum}
+LABEL=${LABEL-SCUDUM}
 PREFIX=${PREFIX-/usr}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
