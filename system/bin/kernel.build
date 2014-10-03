@@ -12,6 +12,7 @@ DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VERSION}
 REPO=${REPO-/mnt/builds/scudum}
+CONFIG=${CONFIG-/boot/config}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
@@ -36,7 +37,7 @@ else
 fi
 
 cd $NAME
-cp -v /boot/config .config
+cp -v $CONFIG .config
 
 if [ "$BUILD" != "1" ]; then
     exit 0
