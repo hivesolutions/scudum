@@ -8,8 +8,6 @@ source $DIR/common.sh
 
 depends "freetype" "pixman"
 
-CFLAGS="$CFLAGS -ffat-lto-objects"
-
 wget "http://cairographics.org/releases/cairo-$VERSION.tar.xz"
 rm -rf cairo-$VERSION && tar -Jxf "cairo-$VERSION.tar.xz"
 rm -f "cairo-$VERSION.tar.xz"
