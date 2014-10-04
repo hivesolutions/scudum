@@ -18,7 +18,6 @@ cd cairo-$VERSION
 ./configure\
     --prefix=$PREFIX\
     --disable-static\
-    --enable-drm\
     --enable-tee
 
 make && make install
