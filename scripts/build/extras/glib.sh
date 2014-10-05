@@ -14,5 +14,5 @@ rm -rf glib-$VERSION && tar -Jxf "glib-$VERSION.tar.xz"
 rm -f "glib-$VERSION.tar.xz"
 cd glib-$VERSION
 
-./configure --prefix=$PREFIX --with-pcre=system
+./configure --prefix=$PREFIX
 make && make install
