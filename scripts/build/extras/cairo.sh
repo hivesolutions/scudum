@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "freetype" "pixman"
+depends "libpng" "freetype" "pixman"
 
 export CFLAGS="$CFLAGS -fpic"
 
