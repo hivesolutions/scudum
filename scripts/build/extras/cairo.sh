@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libpng" "freetype" "pixman"
+depends "libpng" "freetype" "pixman" "glib"
 
 wget "http://cairographics.org/releases/cairo-$VERSION.tar.xz"
 rm -rf cairo-$VERSION && tar -Jxf "cairo-$VERSION.tar.xz"
