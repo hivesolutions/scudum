@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "cairo" "freetype"
+depends "cairo" "freetype" "glib"
 
 wget "http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-$VERSION.tar.bz2"
 rm -rf harfbuzz-$VERSION && tar -jxf "harfbuzz-$VERSION.tar.bz2"
