@@ -4,6 +4,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "libpng" "mesa" "xbitmaps" "xcb-util"
+
 XORG_CONFIG="--prefix=$PREFIX --sysconfdir=/etc\
     --localstatedir=/var --disable-static"
 
