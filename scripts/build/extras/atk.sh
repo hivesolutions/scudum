@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "pango"
+depends "glib"
 
 wget "http://ftp.gnome.org/pub/gnome/sources/atk/$VERSION_L/atk-$VERSION.tar.xz"
 rm -rf atk-$VERSION && tar -Jxf "atk-$VERSION.tar.xz"
