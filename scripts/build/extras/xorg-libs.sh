@@ -4,7 +4,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "fontconfig" "xcb-proto"
+depends "fontconfig" "xorg-protocol"
 
 XORG_CONFIG="--prefix=$PREFIX --sysconfdir=/etc\
     --localstatedir=/var --disable-static"
