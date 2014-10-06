@@ -9,10 +9,10 @@ source $DIR/common.sh
 
 depends "pango"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/at-spi2-atk/$VERSION_L/at-spi2-atk-$VERSION.tar.xz"
-rm -rf at-spi2-atk-$VERSION && tar -Jxf "at-spi2-atk-$VERSION.tar.xz"
-rm -f "at-spi2-atk-$VERSION.tar.xz"
-cd at-spi2-atk-$VERSION
+wget "http://ftp.gnome.org/pub/gnome/sources/atk/$VERSION_L/atk-$VERSION.tar.xz"
+rm -rf atk-$VERSION && tar -Jxf "atk-$VERSION.tar.xz"
+rm -f "atk-$VERSION.tar.xz"
+cd atk-$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
