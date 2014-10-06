@@ -44,7 +44,7 @@ grep -v '^#' ../xorg-protocol.md5 | awk '{print $2}' | wget -i- -c \
     -B http://xorg.freedesktop.org/releases/individual/proto/
 md5sum -c ../xorg-protocol.md5
 
-for package in $(grep -v '^#' ../proto-7.7.md5 | awk '{print $2}'); do
+for package in $(grep -v '^#' ../xorg-protocol.md5 | awk '{print $2}'); do
     packagedir=${package%.tar.bz2}
     tar -xf $package
     pushd $packagedir
