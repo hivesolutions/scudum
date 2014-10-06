@@ -54,7 +54,7 @@ EOF
 
 mkdir proto && cd proto
 grep -v '^#' ../xorg-fonts.md5 | awk '{print $2}' | wget -i- -c \
-    -B http://xorg.freedesktop.org/releases/individual/app/
+    -B http://xorg.freedesktop.org/releases/individual/font/
 md5sum -c ../xorg-fonts.md5
 
 for package in $(grep -v '^#' ../xorg-fonts.md5 | awk '{print $2}'); do
