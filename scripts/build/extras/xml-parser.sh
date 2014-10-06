@@ -13,5 +13,10 @@ rm -rf XML-Parser-$VERSION && tar -zxf "XML-Parser-$VERSION.tar.gz"
 rm -f "XML-Parser-$VERSION.tar.gz"
 cd XML-Parser-$VERSION
 
-perl Makefile.PL PREFIX=$PREFIX LIB=$PREFIX/lib/perl5 EXPATLIBPATH=$PREFIX/lib
+if [ "$PREFIX" == "/usr" ]; then
+    perl Makefile.PL
+else
+    perl Makefile.PL PREFIX=$PREFIX LIB=$PREFIX/lib/perl5 EXPATLIBPATH=$PREFIX/lib
+fi
+
 make && make install
