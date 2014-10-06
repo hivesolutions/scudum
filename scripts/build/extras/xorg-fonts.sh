@@ -66,3 +66,7 @@ for package in $(grep -v '^#' ../xorg-fonts.md5 | awk '{print $2}'); do
     popd
     rm -rf $packagedir
 done
+
+install -v -d -m755 $PREFIX/share/fonts
+ln -svfn $PREFIX/share/fonts/X11/OTF $PREFIX/share/fonts/X11-OTF
+ln -svfn $PREFIX/share/fonts/X11/TTF $PREFIX//share/fonts/X11-TTF
