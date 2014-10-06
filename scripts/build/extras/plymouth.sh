@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libpng" "pango" "gtk+2"
+depends "libpng" "pango" "gtk+2" "libdrm"
 
 wget "http://www.freedesktop.org/software/plymouth/releases/plymouth-$VERSION.tar.bz2"
 rm -rf plymouth-$VERSION && tar -jxf "plymouth-$VERSION.tar.bz2"
