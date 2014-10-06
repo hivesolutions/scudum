@@ -13,5 +13,5 @@ rm -rf imlib2-$VERSION && tar -jxf "imlib2-$VERSION.tar.bz2"
 rm -f "imlib2-$VERSION.tar.bz2"
 cd imlib2-$VERSION
 
-./autogen.sh --prefix=$PREFIX --disable-static
+./configure --prefix=$PREFIX --disable-static
 make && make install
