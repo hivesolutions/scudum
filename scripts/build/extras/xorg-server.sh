@@ -13,5 +13,18 @@ rm -rf xorg-server-$VERSION && tar -jxf "xorg-server-$VERSION.tar.bz2"
 rm -f "xorg-server-$VERSION.tar.bz2"
 cd xorg-server-$VERSION
 
-./configure --prefix=$PREFIX
+./configure\
+    --prefix=$PREFIX\
+    --with-xkb-output=/var/lib/xkb\
+    --enable-dmx\
+    --enable-glamor\
+    --enable-install-setuid\
+    --enable-suid-wrapper
+
 make && make install
+
+mkdir -pv /etc/X11/xorg.conf.d
+cat >> /etc/sysconfig/createfiles << "EOF"
+/tmp/.ICE-unix dir 1777 root root
+/tmp/.X11-unix dir 1777 root root
+EOF
