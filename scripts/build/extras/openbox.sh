@@ -13,5 +13,5 @@ rm -rf openbox-$VERSION && tar -zxf "openbox-$VERSION.tar.gz"
 rm -f "openbox-$VERSION.tar.gz"
 cd openbox-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --sysconfdir=/etc --disable-static
 make && make install
