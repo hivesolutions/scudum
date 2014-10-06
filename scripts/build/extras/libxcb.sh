@@ -13,6 +13,7 @@ rm -rf libxcb-$VERSION && tar -jxf "libxcb-$VERSION.tar.bz2"
 rm -f "libxcb-$VERSION.tar.bz2"
 cd libxcb-$VERSION
 
+sed "s/pthread-stubs//" -i configure
 ./configure\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
