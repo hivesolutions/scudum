@@ -40,8 +40,8 @@ e793ecefeaecfeabd1aed6a01095174e  xf86vidmodeproto-2.3.1.tar.bz2
 EOF
 
 mkdir proto && cd proto
-grep -v '^#' ../xorg-protocol.md5 | awk '{print $2}' | wget -i\
-    http://xorg.freedesktop.org/releases/individual/proto/ &&
+grep -v '^#' ../xorg-protocol.md5 | awk '{print $2}' | wget -i- -c \
+    -B http://xorg.freedesktop.org/releases/individual/proto/
 md5sum -c ../xorg-protocol.md5
 
 for package in $(grep -v '^#' ../proto-7.7.md5 | awk '{print $2}'); do
