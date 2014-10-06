@@ -14,5 +14,5 @@ rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --with-gallium-drivers="nouveau,swrast"
 make && make install
