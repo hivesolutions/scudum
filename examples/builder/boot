@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+mkdir -p /mnt/builds
+mount -t cifs -o username=anonymous,password=anonymous //files.hive/builds /mnt/builds
