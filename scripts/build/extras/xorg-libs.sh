@@ -48,7 +48,7 @@ b7c0d3afce14eedca57312a3141ec13a  libpciaccess-0.13.2.tar.bz2
 EOF
 
 mkdir lib && cd lib
-grep -v '^#' ../xorg-libs.md5 | awk '{print $2}' | wget -i -c\
+grep -v '^#' ../xorg-libs.md5 | awk '{print $2}' | wget -i- -c\
     -B http://xorg.freedesktop.org/releases/individual/lib/
 md5sum -c ../xorg-libs.md5
 
