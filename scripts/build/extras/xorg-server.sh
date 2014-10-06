@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "pixman" "libdrm" "dbus" "mesa" "xkeyboard-config" "xorg-applications" "xorg-fonts" "xterm" "xclock" "twm"
+depends "pixman" "libdrm" "dbus" "mesa" "xkeyboard-config" "xorg-applications" "xorg-fonts" "xterm" "xclock" "twm" "xinit"
 
 wget "http://xorg.freedesktop.org/archive/individual/xserver/xorg-server-$VERSION.tar.bz2"
 rm -rf xorg-server-$VERSION && tar -jxf "xorg-server-$VERSION.tar.bz2"
