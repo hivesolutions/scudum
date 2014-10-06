@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "xml-parser"
+
 wget "https://launchpad.net/intltool/trunk/$VERSION/+download/intltool-$VERSION.tar.gz"
 rm -rf intltool-$VERSION && tar -zxf "intltool-$VERSION.tar.gz"
 rm -f "intltool-$VERSION.tar.gz"
