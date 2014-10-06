@@ -15,6 +15,9 @@ cd xorg-server-$VERSION
 
 ./configure\
     --prefix=$PREFIX\
+    --with-fontrootdir=$PREFIX/share/fonts/X11\
+    --sysconfdir=/etc\
+    --localstatedir=/var\
     --with-xkb-output=/var/lib/xkb\
     --enable-dmx\
     --enable-glamor\
