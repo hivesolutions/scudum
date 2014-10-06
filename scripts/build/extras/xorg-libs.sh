@@ -49,7 +49,7 @@ grep -v '^#' ../xorg-libs.md5 | awk '{print $2}' | wget -i- -c\
     -B http://xorg.freedesktop.org/releases/individual/lib/ &&
 md5sum -c ../xorg-libs.md5
 
-for package in $(grep -v '^#' ../lib-7.7.md5 | awk '{print $2}'); do
+for package in $(grep -v '^#' ../xorg-libs.md5 | awk '{print $2}'); do
     packagedir=${package%.tar.bz2}
     tar -xf $package
     pushd $packagedir
