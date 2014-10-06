@@ -11,5 +11,5 @@ rm -rf expat-$VERSION && tar -zxf "expat-$VERSION.tar.gz"
 rm -f "expat-$VERSION.tar.gz"
 cd expat-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-static
 make && make install
