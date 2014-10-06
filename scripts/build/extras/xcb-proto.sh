@@ -11,5 +11,5 @@ rm -rf xcb-proto-$VERSION && tar -jxf "xcb-proto-$VERSION.tar.bz2"
 rm -f "xcb-proto-$VERSION.tar.bz2"
 cd xcb-proto-$VERSION
 
-./configure --prefix=$PREFIX --sysconfdir=/etc --disable-static
+./configure --prefix=$PREFIX --sysconfdir=/etc
 make && make install
