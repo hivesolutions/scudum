@@ -4,7 +4,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "fontconfig" "libxcb"
+depends "fontconfig"
 
 rm -rf xorg-libs && mkdir -p xorg-libs
 cd xorg-libs
