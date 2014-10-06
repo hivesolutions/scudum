@@ -22,9 +22,3 @@ cd xorg-server-$VERSION
     --enable-suid-wrapper
 
 make && make install
-
-mkdir -pv /etc/X11/xorg.conf.d
-cat >> /etc/sysconfig/createfiles << "EOF"
-/tmp/.ICE-unix dir 1777 root root
-/tmp/.X11-unix dir 1777 root root
-EOF
