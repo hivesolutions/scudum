@@ -6,6 +6,9 @@ source $DIR/common.sh
 
 depends "fontconfig"
 
+XORG_CONFIG="--prefix=$PREFIX --sysconfdir=/etc\
+    --localstatedir=/var --disable-static"
+
 rm -rf xorg-libs && mkdir -p xorg-libs
 cd xorg-libs
 
@@ -55,7 +58,7 @@ for package in $(grep -v '^#' ../xorg-libs.md5 | awk '{print $2}'); do
     pushd $packagedir
     case $packagedir in
         libXfont-[0-9]*)
-            ./configure $XORG_CONFIG --disable-devel-docs
+            ./configure --prefix=$PREFIX $XORG_CONFIG --disable-devel-docs
             ;;
         libXt-[0-9]*)
             ./configure $XORG_CONFIG\
