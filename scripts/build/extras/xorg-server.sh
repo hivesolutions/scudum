@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "pixman"
+
 wget "http://xorg.freedesktop.org/archive/individual/xserver/xorg-server-$VERSION.tar.bz2"
 rm -rf xorg-server-$VERSION && tar -jxf "xorg-server-$VERSION.tar.bz2"
 rm -f "xorg-server-$VERSION.tar.bz2"
