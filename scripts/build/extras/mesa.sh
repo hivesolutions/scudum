@@ -10,9 +10,9 @@ source $DIR/common.sh
 depends "xorg-libs" "libdrm" "python"
 
 wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION_L/MesaLib-$VERSION.tar.bz2"
-rm -rf MesaLib-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
+rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
-cd MesaLib-$VERSION
+cd Mesa-$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
