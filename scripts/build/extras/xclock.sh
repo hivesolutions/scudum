@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs"
+depends "xorg-applications"
 
 wget "http://xorg.freedesktop.org/releases/individual/app/xclock-$VERSION.tar.bz2"
 rm -rf xclock-$VERSION && tar -jxf "xclock-$VERSION.tar.bz2"
