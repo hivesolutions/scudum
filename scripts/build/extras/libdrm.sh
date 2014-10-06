@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs"
+depends "xorg-libs" "pthread-stubs"
 
 wget "http://dri.freedesktop.org/libdrm/libdrm-$VERSION.tar.bz2"
 rm -rf libdrm-$VERSION && tar -jxf "libdrm-$VERSION.tar.bz2"
