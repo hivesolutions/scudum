@@ -11,7 +11,7 @@ rm -rf cdrtools-$VERSION && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION
 
-make GMAKE_NOWARN=true && make install PREFIX=$PREFIX
+make GMAKE_NOWARN=true && make install PREFIX=$PREFIX GMAKE_NOWARN=true
 
 ln -s ../schily/bin/mkisofs $PREFIX/bin/mkisofs
 ln -s ../schily/bin/cdrecord $PREFIX/bin/cdrecord
