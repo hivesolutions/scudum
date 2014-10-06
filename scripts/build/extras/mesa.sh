@@ -7,12 +7,12 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs" "libdrm" "python"
+depends "xorg-libs" "libdrm" "python" "expat"
 
 wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION_L/MesaLib-$VERSION.tar.bz2"
 rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
 
-./autogen.sh --with-gallium-drivers="nouveau,swrast"
+./autogen.sh --prefix=$PREFIX --with-gallium-drivers="nouveau,swrast"
 make && make install
