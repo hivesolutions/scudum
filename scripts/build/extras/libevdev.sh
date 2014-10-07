@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "python"
+
 wget "http://www.freedesktop.org/software/libevdev/libevdev-$VERSION.tar.xz"
 rm -rf libevdev-$VERSION && tar -Jxf "libevdev-$VERSION.tar.xz"
 rm -f "libevdev-$VERSION.tar.xz"
