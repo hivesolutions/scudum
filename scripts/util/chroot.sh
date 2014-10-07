@@ -17,9 +17,12 @@ chroot $SCUDUM /usr/bin/env -i\
     HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
     /bin/bash $CHROOT_ARGS $1
+result=$?
 
 sync
 umount -v $SCUDUM/sys
 umount -v $SCUDUM/proc
 umount -v $SCUDUM/dev/pts
 umount -v $SCUDUM/dev
+
+exit result
