@@ -1,6 +1,7 @@
 VERSION_EVDEV=${VERSION_EVDEV-2.9.0}
 VERSION_SYNAPTICS=${VERSION_SYNAPTICS-1.8.1}
 VERSION_VESA=${VERSION_VESA-2.3.3}
+VERSION_NOUVEAU=${VERSION_NOUVEAU-1.0.11}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -30,6 +31,14 @@ wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vesa-$VER
 rm -rf xf86-video-vesa-$VERSION_VESA && tar -jxf "xf86-video-vesa-$VERSION_VESA.tar.bz2"
 rm -f "xf86-video-vesa-$VERSION_VESA.tar.bz2"
 cd xf86-video-vesa-$VERSION_VESA
+
+./configure --prefix=$PREFIX
+make && make install
+
+wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
+rm -rf xf86-video-nouveau-$VERSION_NOUVEAU && tar -jxf "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
+rm -f "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
+cd xf86-video-nouveau-$VERSION_NOUVEAU
 
 ./configure --prefix=$PREFIX
 make && make install
