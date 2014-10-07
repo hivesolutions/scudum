@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS xorg-server openbox"
+export EXTRAS="$EXTRAS xinit openbox"
