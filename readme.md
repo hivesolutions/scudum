@@ -58,7 +58,7 @@ use the following command (note that this operation may take some time):
 In order to create a Virtual Box compatible image (VDI) issue the command:
 
     DEV_NAME=/dev/sdb make.vdi.sh
-    
+
 In order to work (change the scudum base system) you need to deploy the latest version into a local drive
 (typically `/dev/sdb`) in order to do that use:
 
