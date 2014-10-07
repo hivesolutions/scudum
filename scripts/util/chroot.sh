@@ -25,4 +25,4 @@ umount -v $SCUDUM/proc
 umount -v $SCUDUM/dev/pts
 umount -v $SCUDUM/dev
 
-exit result
+exit $result
