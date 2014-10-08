@@ -2,6 +2,7 @@ VERSION_EVDEV=${VERSION_EVDEV-2.9.0}
 VERSION_SYNAPTICS=${VERSION_SYNAPTICS-1.8.1}
 VERSION_VESA=${VERSION_VESA-2.3.3}
 VERSION_NOUVEAU=${VERSION_NOUVEAU-1.0.11}
+VERSION_VMWARE=${VERSION_VMWARE-13.0.2}
 VERSION_INTEL=${VERSION_INTEL-1.4.0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -40,6 +41,14 @@ wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-nouveau-$
 rm -rf xf86-video-nouveau-$VERSION_NOUVEAU && tar -jxf "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
 rm -f "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
 cd xf86-video-nouveau-$VERSION_NOUVEAU
+
+./configure --prefix=$PREFIX
+make && make install
+
+wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
+rm -rf xf86-video-vmware-$VERSION_VMWARE && tar -jxf "xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
+rm -f "xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
+cd xf86-video-vmware-$VERSION_VMWARE
 
 ./configure --prefix=$PREFIX
 make && make install
