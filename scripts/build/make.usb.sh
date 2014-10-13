@@ -7,6 +7,7 @@ LABEL=${LABEL-SCUDUM}
 PREFIX=${PREFIX-/usr}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
+DIRECTORY=${DIRECTORY-/boot/syslinux}
 SCHEMA=${SCHEMA-transient}
 SIZE=${SIZE-1073741824}
 OFFSET_SECTORS=${OFFSET_SECTORS-2048}
@@ -111,7 +112,7 @@ cp -rp $IMG_DIR/* $MOUNT_DIR
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-syslinux --install $DEV_LOOP && sync
+syslinux --directory $DIRECTORY --install $DEV_LOOP && sync
 
 kpartx -d $FILE && sync
 
