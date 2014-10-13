@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS xinit openbox"
+export EXTRAS="$EXTRAS xinit openbox plymouth"
