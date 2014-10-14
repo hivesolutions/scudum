@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "alsa" "gtk+2" "zip" "unzip" "sqlite3" "yasm" "dbus-glib"
+depends "alsa" "gtk+2" "zip" "unzip" "sqlite3" "yasm" "dbus-glib" "gstreamer"
 
 wget "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
 rm -rf mozilla-release && tar -jxf "firefox-$VERSION.source.tar.bz2"
@@ -16,10 +16,9 @@ cd mozilla-release
 cat > mozconfig << "EOF"
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-libnotify
-ac_add_options --disable-gstreamer
-
 ac_add_options --disable-pulseaudio
 
+ac_add_options --enable-gstreamer=1.0
 ac_add_options --enable-system-sqlite
 
 ac_add_options --prefix=$PREFIX
