@@ -16,9 +16,10 @@ export TERM=linux
 export GREP_OPTIONS=--color=auto
 export PREFIX=/opt
 
+DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
-SVERSION=alpha-$VERSION
+SVERSION=$DISTRIB-$VERSION
 PS1="\u@\h:\w# "
 
 alias "ls=ls --color=auto"

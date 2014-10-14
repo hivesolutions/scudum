@@ -1,9 +1,10 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
-SVERSION=alpha-$VERSION
+SVERSION=$DISTRIB-$VERSION
 EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
