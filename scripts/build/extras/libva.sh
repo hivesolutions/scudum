@@ -13,5 +13,5 @@ rm -rf libva-$VERSION && tar -jxf "libva-$VERSION.tar.bz2"
 rm -f "libva-$VERSION.tar.bz2"
 cd libva-$VERSION
 
-./configure --prefix=$PREFIX --disable-wayland
+./configure --prefix=$PREFIX --enable-wayland=0
 make && make install
