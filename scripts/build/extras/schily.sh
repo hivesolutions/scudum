@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/schilytools/schily-$VERSION.tar.bz2"
+wget "http://downloads.sourceforge.net/schilytools/schily-$VERSION.tar.bz2"
 rm -rf schily-$VERSION && tar -jxf "schily-$VERSION.tar.bz2"
 rm -f "schily-$VERSION.tar.bz2"
 cd schily-$VERSION

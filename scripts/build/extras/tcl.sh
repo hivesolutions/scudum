@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/tcl/tcl$VERSION-src.tar.gz"
+wget "http://downloads.sourceforge.net/tcl/tcl$VERSION-src.tar.gz"
 rm -f "tcl$VERSION" && tar -zxf "tcl$VERSION-src.tar.gz"
 rm -f "tcl$VERSION-src.tar.gz"
 cd tcl$VERSION

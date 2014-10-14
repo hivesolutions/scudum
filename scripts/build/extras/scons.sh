@@ -14,7 +14,7 @@ else
     ARGS="--user"
 fi
 
-wget "http://prdownloads.sourceforge.net/scons/scons-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/scons/scons-$VERSION.tar.gz"
 rm -rf scons-$VERSION && tar -zxf "scons-$VERSION.tar.gz"
 rm -f "scons-$VERSION.tar.gz"
 cd scons-$VERSION

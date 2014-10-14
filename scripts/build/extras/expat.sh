@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/expat/expat-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/expat/expat-$VERSION.tar.gz"
 rm -rf expat-$VERSION && tar -zxf "expat-$VERSION.tar.gz"
 rm -f "expat-$VERSION.tar.gz"
 cd expat-$VERSION

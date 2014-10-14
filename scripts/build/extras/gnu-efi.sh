@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/gnu-efi/gnu-efi_$VERSION.orig.tar.gz"
+wget "http://downloads.sourceforge.net/gnu-efi/gnu-efi_$VERSION.orig.tar.gz"
 rm -rf gnu-efi-$VERSION_L && tar -zxf "gnu-efi_$VERSION.orig.tar.gz"
 rm -f "gnu-efi_$VERSION.orig.tar.gz"
 cd gnu-efi-$VERSION_L

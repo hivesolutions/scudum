@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/cdrtools/cdrtools-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/cdrtools/cdrtools-$VERSION.tar.gz"
 rm -rf cdrtools-$VERSION && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION

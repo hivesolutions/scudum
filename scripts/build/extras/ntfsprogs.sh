@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://prdownloads.sourceforge.net/linux-ntfs/ntfsprogs-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/linux-ntfs/ntfsprogs-$VERSION.tar.gz"
 rm -rf ntfsprogs-$VERSION && tar -zxf "ntfsprogs-$VERSION.tar.gz"
 rm -f "ntfsprogs-$VERSION.tar.gz"
 cd ntfsprogs-$VERSION

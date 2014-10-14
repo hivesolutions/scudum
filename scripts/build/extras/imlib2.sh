@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs" "libpng" "jpeg" "tiff"
 
-wget "http://prdownloads.sourceforge.net/enlightenment/imlib2-$VERSION.tar.bz2"
+wget "http://downloads.sourceforge.net/enlightenment/imlib2-$VERSION.tar.bz2"
 rm -rf imlib2-$VERSION && tar -jxf "imlib2-$VERSION.tar.bz2"
 rm -f "imlib2-$VERSION.tar.bz2"
 cd imlib2-$VERSION
