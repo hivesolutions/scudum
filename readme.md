@@ -16,6 +16,10 @@ so that replacing them is easy and cheap (without human intervention).
 
 ## Usage
 
+### Environment
+
+The currently recomended environments are Ubuntu 14.04+ or Scudum itself configured for building.
+
 ### Installation
 
 In order to install the Scudum development tools, to be able to use the commands described in
