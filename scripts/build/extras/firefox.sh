@@ -9,9 +9,9 @@ source $DIR/common.sh
 depends "alsa" "gtk+2" "zip" "unzip" "dbus" "sqlite3" "yasm"
 
 wget "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
-rm -rf firefox-$VERSION.source && tar -jxf "firefox-$VERSION.source.tar.bz2"
+rm -rf mozilla-release && tar -jxf "firefox-$VERSION.source.tar.bz2"
 rm -f "firefox-$VERSION.source.tar.bz2"
-cd firefox-$VERSION.source
+cd mozilla-release
 
 cat > mozconfig << "EOF"
 ac_add_options --disable-necko-wifi
