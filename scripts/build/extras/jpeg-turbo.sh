@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-require "nasm" "yasm"
+depends "nasm" "yasm"
 
 wget "http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"
 rm -rf libjpeg-turbo-$VERSION && tar -zxf "libjpeg-turbo-$VERSION.tar.gz"
