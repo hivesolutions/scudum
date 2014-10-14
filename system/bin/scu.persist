@@ -6,6 +6,11 @@ TARGET=${TARGET-/pst}
 LABEL=${LABEL-PSTSCU}
 FS=${FS-ext4}
 
+if [ ! -e $DEV ]; then
+    echo "scu: $DEV not found"
+    exit 1
+fi
+
 echo "scu: creating persistence for $DEV using $FS"
 
 mkfs.$FS $DEV
