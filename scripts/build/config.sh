@@ -35,14 +35,9 @@ git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
-mkdir -p $SCUDUM/etc/scudum
-touch $SCUDUM/etc/scudum/VERSION
-touch $SCUDUM/etc/scudum/DISTRIB
-touch $SCUDUM/etc/scudum/CONFIGURED
-
-echo $VERSION > $SCUDUM/etc/scudum/VERSION
-echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
-echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
+if [ -e system ]; then
+    cp -rpv system/* $SCUDUM
+fi
 
 if [ -e boot ]; then
     cp -p boot $SCUDUM/etc/boot/$DISTRIB
@@ -52,9 +47,9 @@ if [ -e welcome ]; then
     cp -p welcome $SCUDUM/etc/welcome/$DISTRIB
 fi
 
-if [ -e system ]; then
-    cp -rpv system/* $SCUDUM
-fi
+echo $VERSION > $SCUDUM/etc/scudum/VERSION
+echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
+echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 
 cp -p $SCUDUM/etc/fstab.orig $SCUDUM/etc/fstab
 
