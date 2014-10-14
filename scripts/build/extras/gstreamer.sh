@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "glib" "libxml2"
+depends "glib" "libxml2" "libffi"
 
 export CFLAGS="$CFLAGS -fpic"
 
