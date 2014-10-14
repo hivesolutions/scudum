@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "gstreamer" "pango" "alsa" "libogg"
+depends "gstreamer" "pango" "alsa" "libogg" "libtheora" "libvorbis"
 
 wget "http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-$VERSION.tar.xz"
 rm -rf gst-plugins-base-$VERSION && tar -Jxf "gst-plugins-base-$VERSION.tar.xz"
