@@ -100,13 +100,15 @@ zic -d $ZONEINFO -p America/New_York
 unset ZONEINFO
 
 cat > /etc/ld.so.conf << "EOF"
+/usr/lib
 /usr/local/lib
+/usr/lib64
+/usr/local/lib64
 /opt/lib
 
 EOF
 
 cat >> /etc/ld.so.conf << "EOF"
-# adds an include directory
 include /etc/ld.so.conf.d/*.conf
 
 EOF
