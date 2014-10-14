@@ -1,5 +1,5 @@
-VERSION=${VERSION-10.3.0}
-VERSION_L=${VERSION_L-10.3}
+VERSION=${VERSION-10.3.1}
+VERSION_L=${VERSION_L-10.3.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -13,6 +13,9 @@ wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION_L/MesaLib-$VERSION.tar.bz2"
 rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
+
+wget "http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$VERSION-add_xdemos-1.patch"
+patch -Np1 -i MesaLib-$VERSION-add_xdemos-1.patch
 
 ./autogen.sh\
     --prefix=$PREFIX\
