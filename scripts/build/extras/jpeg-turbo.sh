@@ -1,0 +1,22 @@
+VERSION=${VERSION-1.3.1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
+set -e +h
+
+source $DIR/common.sh
+
+require "nasm" "yasm"
+
+wget "http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"
+rm -rf libjpeg-turbo-$VERSION && tar -zxf "libjpeg-turbo-$VERSION.tar.gz"
+rm -f "libjpeg-turbo-$VERSION.tar.gz"
+cd libjpeg-turbo-$VERSION
+
+./configure\
+    --prefix=$PREFIX\
+    --mandir=$PREFIX/share/man\
+    --with-jpeg8\
+    --disable-static
+
+make && make install
