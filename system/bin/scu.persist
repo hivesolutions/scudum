@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-DEV=${DEV-${1-}}
+DEV=${DEV-$1}
 TARGET=${TARGET-/pst}
 LABEL=${LABEL-PSTSCU}
 FS=${FS-ext4}
