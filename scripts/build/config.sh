@@ -32,9 +32,11 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
 fi
 
 mkdir -p $SCUDUM/etc/scudum
+touch $SCUDUM/etc/scudum/VERSION
 touch $SCUDUM/etc/scudum/DISTRIB
 touch $SCUDUM/etc/scudum/CONFIGURED
 
+echo $VERSION > $SCUDUM/etc/scudum/VERSION
 echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
 echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 
