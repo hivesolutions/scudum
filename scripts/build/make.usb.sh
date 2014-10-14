@@ -106,7 +106,7 @@ mlabel -i $DEV_LOOP ::$LABEL && sync
 mkdir -pv $MOUNT_DIR
 mount -v $DEV_LOOP -t vfat $MOUNT_DIR && sync
 
-cp -rp $IMG_DIR/* $MOUNT_DIR
+cp -rp $IMG_DIR/* $MOUNT_DIR && sync
 
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
