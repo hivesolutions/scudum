@@ -15,8 +15,7 @@ cd plymouth-$VERSION
 
 ./configure\
     --prefix=$PREFIX\
-    --sbindir=$PREFIX/sbin\
     --sysconfdir=/etc\
-    disable-documentation
+    --disable-documentation
 
 make && make install
