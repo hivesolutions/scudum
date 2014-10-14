@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libpng" "freetype" "pixman" "glib" "fontconfig" "xorg-libs"
+depends "libpng" "freetype" "pixman" "glib" "fontconfig" "xorg-libs" "mesa"
 
 wget "http://cairographics.org/releases/cairo-$VERSION.tar.xz"
 rm -rf cairo-$VERSION && tar -Jxf "cairo-$VERSION.tar.xz"
@@ -16,6 +16,8 @@ cd cairo-$VERSION
 ./configure\
     --prefix=$PREFIX\
     --disable-static\
-    --enable-tee
+    --enable-tee\
+    --enable-gl\
+    --enable-glesv2
 
 make && make install
