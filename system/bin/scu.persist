@@ -7,7 +7,7 @@ LABEL=${LABEL-PSTSCU}
 FS=${FS-ext4}
 
 if [[ "$DEV" == "" ]]; then
-    echo "Usage: scu persist <device>"
+    echo "Usage: scu.persist <device>"
     exit 1
 fi
 
