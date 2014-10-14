@@ -58,5 +58,6 @@ rm -rf libva-intel-driver-$VERSION_INTEL && tar -jxf "libva-intel-driver-$VERSIO
 rm -f "libva-intel-driver-$VERSION_INTEL.tar.bz2"
 cd libva-intel-driver-$VERSION_INTEL
 
+mkdir -p m4 && autoreconf -f
 ./configure --prefix=$PREFIX
 make && make install
