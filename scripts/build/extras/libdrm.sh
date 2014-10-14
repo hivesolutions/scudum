@@ -13,5 +13,5 @@ rm -rf libdrm-$VERSION && tar -jxf "libdrm-$VERSION.tar.bz2"
 rm -f "libdrm-$VERSION.tar.bz2"
 cd libdrm-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-udev
 make && make install
