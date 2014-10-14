@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "glib" "python" "xorg-server"
+depends "glib" "python" "x11"
 
 wget "http://wiki.qemu.org/download/qemu-$VERSION.tar.bz2"
 rm -rf qemu-$VERSION && tar -jxf "qemu-$VERSION.tar.bz2"
