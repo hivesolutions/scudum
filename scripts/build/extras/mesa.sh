@@ -33,4 +33,4 @@ patch -Np1 -i MesaLib-$VERSION-add_xdemos-1.patch
     --with-egl-platforms="drm,x11"\
     --with-gallium-drivers="nouveau,i915,ilo,svga,swrast"
 
-make && make install
+make && make -C xdemos DEMOS_PREFIX=$PREFIX && make install
