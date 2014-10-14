@@ -9,6 +9,8 @@ source $DIR/common.sh
 
 depends "glib" "libxml2"
 
+export CFLAGS="$CFLAGS -fpic"
+
 wget "http://ftp.gnome.org/pub/gnome/sources/gstreamer/$VERSION_L/gstreamer-$VERSION.tar.xz"
 rm -rf gstreamer-$VERSION && tar -Jxf "gstreamer-$VERSION.tar.xz"
 rm -f "gstreamer-$VERSION.tar.xz"
