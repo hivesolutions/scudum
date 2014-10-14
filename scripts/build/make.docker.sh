@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-scudum}
-VERSION=${VERSION-$(date +%Y%m%d)}
 DOCKER_USER=${DOCKER_USER-hivesolutions}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}

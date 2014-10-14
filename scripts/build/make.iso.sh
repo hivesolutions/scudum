@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-scudum}
-VERSION=${VERSION-$(date +%Y%m%d)}
 LABEL=${LABEL-Scudum}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}
