@@ -13,5 +13,5 @@ rm -rf libxml2-$VERSION && tar -zxf "libxml2-$VERSION.tar.gz"
 rm -f "libxml2-$VERSION.tar.gz"
 cd libxml2-$VERSION
 
-./configure --prefix=$PREFIX --disable-shared
+./configure --prefix=$PREFIX --disable-static --with-history
 make && make install
