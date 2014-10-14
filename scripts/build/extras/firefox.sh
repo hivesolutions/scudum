@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "alsa" "gtk+2" "zip" "unzip" "dbus" "sqlite3" "yasm"
+depends "alsa" "gtk+2" "zip" "unzip" "sqlite3" "yasm"
 
 wget "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
 rm -rf mozilla-release && tar -jxf "firefox-$VERSION.source.tar.bz2"
@@ -14,8 +14,10 @@ rm -f "firefox-$VERSION.source.tar.bz2"
 cd mozilla-release
 
 cat > mozconfig << "EOF"
+ac_add_options --disable-dbus
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-libnotify
+ac_add_options --disable-gstreamer
 
 ac_add_options --disable-pulseaudio
 
@@ -45,7 +47,7 @@ ac_add_options --with-pthreads
 
 ac_add_options --with-system-bz2
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-png
+ac_add_options --without-system-png
 ac_add_options --with-system-zlib
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
