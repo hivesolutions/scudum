@@ -20,6 +20,7 @@ cd xorg-server-$VERSION
     --localstatedir=/var\
     --with-xkb-output=/var/lib/xkb\
     --enable-dmx\
+    --enable-glamor\
     --enable-install-setuid
 
 make && make install
