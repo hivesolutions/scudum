@@ -3,6 +3,11 @@
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_TARGET=$(uname -m)-scudum-linux-gnu
 
+# exports the version string value for the current
+# distribution in building, the default value is set
+# to the currently defined date (to the day value)
+export VERSION=${VERSION-$(date +%Y%m%d)}
+
 # exports the generic target value for a pc based
 # infra-structure may be used in final scudum build
 export PC_TARGET=$(uname -m)-pc-linux-gnu
