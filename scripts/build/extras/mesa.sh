@@ -14,5 +14,20 @@ rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
 
-./autogen.sh --prefix=$PREFIX --with-gallium-drivers="nouveau,swrast"
+./autogen.sh CFLAGS="-O2" CXXFLAGS="-O2"\
+    --prefix=$PREFIX\
+    --sysconfdir=/etc\
+    --enable-texture-float\
+    --enable-gles1\
+    --enable-gles2\
+    --enable-openvg\
+    --enable-osmesa\
+    --enable-xa\
+    --enable-gbm\
+    --enable-gallium-egl\
+    --enable-gallium-gbm\
+    --enable-glx-tls\
+    --with-egl-platforms="drm,x11"\
+    --with-gallium-drivers="nouveau,r300,r600,radeonsi,svga,swrast"
+
 make && make install
