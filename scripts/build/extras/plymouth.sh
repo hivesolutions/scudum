@@ -13,5 +13,5 @@ rm -rf plymouth-$VERSION && tar -jxf "plymouth-$VERSION.tar.bz2"
 rm -f "plymouth-$VERSION.tar.bz2"
 cd plymouth-$VERSION
 
-./configure --prefix=$PREFIX --disable-documentation
+./configure --prefix=$PREFIX --sysconfdir=/etc --disable-documentation
 make && make install
