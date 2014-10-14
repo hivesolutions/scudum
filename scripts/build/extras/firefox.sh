@@ -57,4 +57,4 @@ test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozcon
 make -f client.mk && make -f client.mk install INSTALL_SDK=
 
 mkdir -pv $PREFIX/lib/mozilla/plugins
-ln -sfv ../mozilla/plugins $PREFIX/lib/firefox-$VERSION
+ln -sfv mozilla/plugins $PREFIX/lib/firefox-$VERSION
