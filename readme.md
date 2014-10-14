@@ -53,6 +53,11 @@ To create an ISO image of the Scudum distribution running using the [ISOLINUX](h
 loader use the following command taking note that the disk contents should be located at `/scudum`:
 
     scudum make.iso
+    
+To crate a filesystem image able to be used inside a USB pend drive (configured with SYSLINUX) use the folowing
+command:
+
+    scudum make.usb
 
 To be able to re-create a new Scudum deployment (into `/scudum`) and then build a new ISO from it (all of the operations)
 use the following command (note that this operation may take some time):
