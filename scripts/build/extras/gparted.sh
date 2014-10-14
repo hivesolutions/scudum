@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "parted"
+depends "parted" "gtkmm"
 
 wget "http://downloads.sourceforge.net/gparted/gparted-$VERSION.tar.bz2"
 rm -rf gparted-$VERSION && tar -jxf "gparted-$VERSION.tar.bz2"
