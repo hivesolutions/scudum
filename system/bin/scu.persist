@@ -7,7 +7,7 @@ LABEL=${LABEL-PSTSCU}
 FS=${FS-ext4}
 
 if [[ "$DEV" == "" ]]; then
-    echo "scu: target device not specified"
+    echo "Usage: scu persist <device>"
     exit 1
 fi
 
