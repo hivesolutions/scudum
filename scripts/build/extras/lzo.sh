@@ -11,5 +11,5 @@ rm -rf lzo-$VERSION && tar -zxf "lzo-$VERSION.tar.gz"
 rm -f "lzo-$VERSION.tar.gz"
 cd lzo-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-shared --disable-static
 make && make install
