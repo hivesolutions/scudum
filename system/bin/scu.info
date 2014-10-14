@@ -1,8 +1,12 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+VERSION=$(cat /etc/scudum/VERSION)
+KVERSION=$(uname -r)
+SVERSION=alpha-$VERSION
 EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
 
+echo -e "Scudum $SVERSION (GNU/Linux $KVERSION)"
 echo $EXTRAS
