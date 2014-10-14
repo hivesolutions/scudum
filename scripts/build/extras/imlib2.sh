@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs" "libpng" "jpeg" "tiff"
+depends "xorg-libs" "libpng" "jpeg-turbo" "tiff"
 
 wget "http://downloads.sourceforge.net/enlightenment/imlib2-$VERSION.tar.bz2"
 rm -rf imlib2-$VERSION && tar -jxf "imlib2-$VERSION.tar.bz2"
