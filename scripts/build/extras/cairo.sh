@@ -17,7 +17,6 @@ cd cairo-$VERSION
     --prefix=$PREFIX\
     --disable-static\
     --enable-tee\
-    --enable-gl\
-    --enable-glesv2
+    --enable-gl
 
 make && make install
