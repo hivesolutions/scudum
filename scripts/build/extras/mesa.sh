@@ -28,6 +28,6 @@ cd Mesa-$VERSION
     --enable-gallium-gbm\
     --enable-glx-tls\
     --with-egl-platforms="drm,x11"\
-    --with-gallium-drivers="nouveau,r300,r600,radeonsi,svga,swrast"
+    --with-gallium-drivers="nouveau,i915,ilo,svga,swrast"
 
 make && make install
