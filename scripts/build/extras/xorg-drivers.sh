@@ -53,7 +53,7 @@ cd xf86-video-vmware-$VERSION_VMWARE
 ./configure --prefix=$PREFIX
 make && make install
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/libva-intel-driver-$VERSION_INTEL.tar.bz2"
+wget "http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-$VERSION_INTEL.tar.bz2"
 rm -rf libva-intel-driver-$VERSION_INTEL && tar -jxf "libva-intel-driver-$VERSION_INTEL.tar.bz2"
 rm -f "libva-intel-driver-$VERSION_INTEL.tar.bz2"
 cd libva-intel-driver-$VERSION_INTEL
