@@ -25,7 +25,7 @@ case "$1" in
         start_daemon -f /usr/sbin/sshd
         evaluate_retval
         sleep 1
-        pid=$(cat /var/run/sshd.pid 2>/dev/null)
+        pid=$(cat /var/run/sshd.pid 2> /dev/null)
         echo "-16" >/proc/${pid}/oom_score_adj
         ;;
 
@@ -37,7 +37,7 @@ case "$1" in
 
     reload)
         log_info_msg "Reloading SSH Server..."
-        pid=$(cat /var/run/sshd.pid 2>/dev/null)
+        pid=$(cat /var/run/sshd.pid 2> /dev/null)
 
         if [ -n "${pid}" ]; then
            kill -HUP "${pid}"

@@ -24,7 +24,7 @@ case "${1}" in
         fi
 
         log_info_msg "Mounting root file system in read-only mode... "
-        mount -n -o remount,ro / >/dev/null
+        mount -n -o remount,ro / > /dev/null
 
         if [ ${?} != 0 ]; then
             log_failure_msg2
@@ -56,7 +56,7 @@ case "${1}" in
         if is_true "$VERBOSE_FSCK"; then
             fsck ${options} -a -A -C -T
         else
-            fsck ${options} -a -A -C -T >/dev/null
+            fsck ${options} -a -A -C -T > /dev/null
         fi
 
         error_value=${?}
