@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "gtk+2"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/libwnck/$VERSION/libwnck-$VERSION.tar.xz"
+wget "http://ftp.gnome.org/pub/gnome/sources/libwnck/$VERSION_L/libwnck-$VERSION.tar.xz"
 rm -rf libwnck-$VERSION && tar -Jxf "libwnck-$VERSION.tar.xz"
 rm -f "libwnck-$VERSION_L.tar.xz"
 cd libwnck-$VERSION
