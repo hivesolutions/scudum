@@ -21,6 +21,7 @@ cd xorg-server-$VERSION
     --with-xkb-output=/var/lib/xkb\
     --enable-dmx\
     --enable-glamor\
-    --enable-install-setuid
+    --enable-install-setuid\
+    --enable-suid-wrapper
 
 make && make install
