@@ -5,7 +5,7 @@ PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
-if mountpoint -q $PERSIST && [ -d $PERSIST/scudum ]; then
+if mountpoint -q $PERSIST; then
     SCUDUM=$PERSIST/scudum
 fi
 

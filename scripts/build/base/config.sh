@@ -50,9 +50,9 @@ if [ -e config ]; then
 fi
 
 # verifies if the perist directory/mountpoint exists and if that's
-# the case and the relative scudum directory also exits then changes
-# the current scudum directory reference to the persist one so that
-# it's possible to spare some extra memory (using secondary storage)
-if mountpoint -q $PERSIST && [ -d $PERSIST/scudum ]; then
+# the current situation changes the current scudum directory reference
+# to the persist one so that it's possible to spare some extra memory,
+# using secondary storage to store the installation
+if mountpoint -q $PERSIST; then
     export SCUDUM=$PERSIST/scudum
 fi
