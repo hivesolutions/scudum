@@ -48,7 +48,6 @@ ln -sf ../init.d/cleanfs /etc/rc.d/rcS.d/S45cleanfs
 ln -sf ../init.d/udev_retry /etc/rc.d/rcS.d/S50udev_retry
 ln -sf ../init.d/console /etc/rc.d/rcS.d/S70console
 ln -sf ../init.d/sysctl /etc/rc.d/rcS.d/S90sysctl
-ln -sf ../init.d/splash /etc/rc.d/rcS.d/K95splash
 
 ln -sf ../init.d/sshd /etc/rc.d/rc0.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc0.d/K80network
@@ -62,12 +61,14 @@ ln -sf ../init.d/halt /etc/rc.d/rc0.d/S99halt
 ln -sf ../init.d/welcome /etc/rc.d/rc1.d/S99welcome
 ln -sf ../init.d/network /etc/rc.d/rc1.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc1.d/K90sysklogd
+ln -sf ../init.d/splash /etc/rc.d/rc1.d/K95splash
 
 ln -sf ../init.d/boot /etc/rc.d/rc2.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc2.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc2.d/S99welcome
 ln -sf ../init.d/network /etc/rc.d/rc2.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc2.d/K90sysklogd
+ln -sf ../init.d/splash /etc/rc.d/rc2.d/K95splash
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc3.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc3.d/S20network
@@ -75,6 +76,7 @@ ln -sf ../init.d/sshd /etc/rc.d/rc3.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc3.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc3.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc3.d/S99welcome
+ln -sf ../init.d/splash /etc/rc.d/rc3.d/K95splash
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc4.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc4.d/S20network
@@ -82,6 +84,7 @@ ln -sf ../init.d/sshd /etc/rc.d/rc4.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc4.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc4.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc4.d/S99welcome
+ln -sf ../init.d/splash /etc/rc.d/rc4.d/K95splash
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc5.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc5.d/S20network
@@ -89,6 +92,7 @@ ln -sf ../init.d/sshd /etc/rc.d/rc5.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc5.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc5.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc5.d/S99welcome
+ln -sf ../init.d/splash /etc/rc.d/rc5.d/K95splash
 
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
