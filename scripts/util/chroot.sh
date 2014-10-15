@@ -1,8 +1,13 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
+
+if mountpoint -q $PERSIST && [ -d $PERSIST$SCUDUM ]; then
+    SCUDUM=$PERSIST$SCUDUM
+fi
 
 mount -v --bind /dev $SCUDUM/dev
 mount -vt devpts devpts $SCUDUM/dev/pts -o gid=5,mode=620
