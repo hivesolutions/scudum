@@ -26,15 +26,13 @@ case "${1}" in
         rm -f /fastboot /forcefsck
 
         log_info_msg "Recording existing mounts in /etc/mtab..."
-        > /etc/mtab
+        touch /etc/mtab
 
         mount -f / || failed=1
         mount -f /proc || failed=1
         mount -f /sys || failed=1
         mount -f /run || failed=1
         mount -f /dev || failed=1
-
-        mountpoint -q /pst && mount -f /pst || failed=1
 
         (exit ${failed})
         evaluate_retval
