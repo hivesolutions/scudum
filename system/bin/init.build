@@ -5,14 +5,14 @@ set -e +h
 
 # removes the complete set of directories that may
 # already exist and create overlap with the new ones
-rm -rf 755 /etc/rc.d/rc0.d
-rm -rf 755 /etc/rc.d/rc1.d
-rm -rf 755 /etc/rc.d/rc2.d
-rm -rf 755 /etc/rc.d/rc3.d
-rm -rf 755 /etc/rc.d/rc4.d
-rm -rf 755 /etc/rc.d/rc5.d
-rm -rf 755 /etc/rc.d/rc6.d
-rm -rf 755 /etc/rc.d/rcS.d
+rm -rf /etc/rc.d/rc0.d
+rm -rf /etc/rc.d/rc1.d
+rm -rf /etc/rc.d/rc2.d
+rm -rf /etc/rc.d/rc3.d
+rm -rf /etc/rc.d/rc4.d
+rm -rf /etc/rc.d/rc5.d
+rm -rf /etc/rc.d/rc6.d
+rm -rf /etc/rc.d/rcS.d
 
 # creates the various directories that are going to
 # be used to store the services scripts (as expected)
