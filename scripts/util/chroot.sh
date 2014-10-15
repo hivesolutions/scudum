@@ -5,15 +5,9 @@ PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
-echo "before"
-echo $SCUDUM
-
 if mountpoint -q $PERSIST && [ -d $PERSIST$SCUDUM ]; then
     SCUDUM=$PERSIST$SCUDUM
 fi
-
-echo "after"
-echo $SCUDUM
 
 mount -v --bind /dev $SCUDUM/dev
 mount -vt devpts devpts $SCUDUM/dev/pts -o gid=5,mode=620
