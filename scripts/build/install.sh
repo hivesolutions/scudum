@@ -21,8 +21,24 @@ mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
 sync
 
+# removes the tools symbolic link from the current system
+# as it's considered to be not required for operation
 rm -f /tools
-rm -rf $SCUDUM && mkdir $SCUDUM
+
+# verifies if there's a persist mountpoint enabled for
+# the current installation if that's the case it must
+# be used for the scudum persistence by using a symbolic
+# link into its location, note that for every options the
+# scudum installation is first removed (prior to install)
+if mountpoint -q $PERSIST; then
+    rm -rf $PERSIST$SCUDUM
+    rm -f $SCUDUM && ln -s $PERSIST$SCUDUM $SCUDUM
+else
+    rm -rf $SCUDUM && mkdir $SCUDUM
+fi
+
+# changes the current directory into the scudum one as the
+# various retrieve contents are going to be unpacked there
 cd $SCUDUM
 
 wget "$REPO/$NAME-$VERSION.tar.gz"

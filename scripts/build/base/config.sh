@@ -1,3 +1,9 @@
+# exports the location that is assumed to contain
+# the persitent storage sub-filesystem that is going
+# to be used for the build process in case it exists
+# (this allows for larger builds using volatile system)
+export PERSIST=${PERSIST-/pst}
+
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
