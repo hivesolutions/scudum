@@ -23,6 +23,7 @@ install -d -m 755 /sbin
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
 
+ln -sf ../init.d/plymouth /etc/rc.d/rcS.d/S00plymouth
 ln -sf ../init.d/log /etc/rc.d/rcS.d/S00log
 ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
 ln -sf ../init.d/modules /etc/rc.d/rcS.d/S05modules
