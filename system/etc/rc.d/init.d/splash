@@ -25,6 +25,14 @@ case "${1}" in
         evaluate_retval
         ;;
 
+    stop)
+        if [ ! -e /sbin/plymouthd ]; then exit; fi
+        if [ ! -e /bin/plymouth ]; then exit; fi
+
+        log_info_msg "Stopping plymouth splash screen..."
+        /bin/plymouth quit
+        evaluate_retval
+
     *)
         echo "Usage: ${0} {start}"
         exit 1
