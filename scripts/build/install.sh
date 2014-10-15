@@ -11,14 +11,21 @@ set -e +h
 
 source $DIR/base/config.sh
 
+# prints an information message about the deployment of the
+# (pre-built) root files into the target directory
 echo "install: deploying root files into $SCUDUM"
 
+# verifies if any of the special file systems is mounted
+# and in case it's unmounts it to avoid extra operations
+# to be performed or changed over it
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
 mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
+# runs the synchronization operation so that all the pending
+# input/ouput operations are properly flushed (avoids errors)
 sync
 
 # removes the tools symbolic link from the current system
