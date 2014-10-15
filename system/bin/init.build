@@ -56,6 +56,7 @@ ln -sf ../init.d/sendsignals /etc/rc.d/rc0.d/S60sendsignals
 ln -sf ../init.d/swap /etc/rc.d/rc0.d/S65swap
 ln -sf ../init.d/mountfs /etc/rc.d/rc0.d/S70mountfs
 ln -sf ../init.d/localnet /etc/rc.d/rc0.d/S90localnet
+ln -sf ../init.d/splash /etc/rc.d/rc0.d/K95splash
 ln -sf ../init.d/halt /etc/rc.d/rc0.d/S99halt
 
 ln -sf ../init.d/welcome /etc/rc.d/rc1.d/S99welcome
@@ -97,6 +98,7 @@ ln -sf ../init.d/splash /etc/rc.d/rc5.d/K95splash
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
+ln -sf ../init.d/splash /etc/rc.d/rc6.d/K95splash
 ln -sf ../init.d/sendsignals /etc/rc.d/rc6.d/S60sendsignals
 ln -sf ../init.d/swap /etc/rc.d/rc6.d/S65swap
 ln -sf ../init.d/mountfs /etc/rc.d/rc6.d/S70mountfs
