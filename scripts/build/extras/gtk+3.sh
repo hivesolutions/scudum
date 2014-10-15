@@ -22,3 +22,5 @@ cd gtk+-$VERSION
     --disable-wayland-backend
 
 make && make install
+
+glib-compile-schemas $PREFIX/share/glib-2.0/schemas
