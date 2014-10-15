@@ -20,7 +20,7 @@
 case "${1}" in
     start)
         log_info_msg "Remounting root file system in read-write mode..."
-        mount -n -o remount,rw / >/dev/null
+        mount -n -o remount,rw / > /dev/null
         evaluate_retval
 
         rm -f /fastboot /forcefsck
@@ -37,14 +37,14 @@ case "${1}" in
         evaluate_retval
 
         log_info_msg "Mounting remaining file systems..."
-        mount -a -O no_netdev >/dev/null
+        mount -a -O no_netdev > /dev/null
         evaluate_retval
         exit $failed
         ;;
 
     stop)
         log_info_msg "Unmounting all other currently mounted file systems..."
-        umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc >/dev/null
+        umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc > /dev/null
         evaluate_retval
         ;;
 
