@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS x11 openbox plymouth"
+export EXTRAS="$EXTRAS x11 openbox rox-filer firefox plymouth"
