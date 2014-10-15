@@ -13,7 +13,7 @@ set -e +h
 source $DIR/base/config.sh
 
 if mountpoint -q $TARGET; then
-    unmount $TARGET
+    umount $TARGET
 fi
 
 mkdir -p $TARGET && mount -t cifs -o username=$USERNAME,password=$PASSWORD $ORIGIN $TARGET
