@@ -163,7 +163,6 @@ if [ "$runlevel" == "6" -a -n "${FASTBOOT}" ]; then
     touch /fastboot
 fi
 
-
 # starts all functions in this runlevel
 for i in $( ls -v /etc/rc.d/rc${runlevel}.d/S* 2> /dev/null)
 do
