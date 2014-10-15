@@ -53,6 +53,6 @@ fi
 # the case and the relative scudum directory also exits then changes
 # the current scudum directory reference to the persist one so that
 # it's possible to spare some extra memory (using secondary storage)
-if mountpoint -q $PERSIST && [ -d $PERSIST$SCUDUM ]; then
-    export SCUDUM=$PERSIST$SCUDUM
+if mountpoint -q $PERSIST && [ -d $PERSIST/scudum ]; then
+    export SCUDUM=$PERSIST/scudum
 fi
