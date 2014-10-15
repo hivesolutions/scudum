@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "exo" "libxfce4ui"
+depends "exo" "libxfce4ui" "lxde-icon-theme"
 
 wget "http://archive.xfce.org/src/xfce/thunar/$VERSION_L/Thunar-$VERSION.tar.bz2"
 rm -rf Thunar-$VERSION && tar -jxf "Thunar-$VERSION.tar.bz2"
