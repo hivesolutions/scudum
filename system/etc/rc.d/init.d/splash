@@ -32,6 +32,7 @@ case "${1}" in
         log_info_msg "Stopping plymouth splash screen..."
         /bin/plymouth quit
         evaluate_retval
+        ;;
 
     *)
         echo "Usage: ${0} {start}"
