@@ -22,9 +22,9 @@ case "${1}" in
             # skips if $file is * (because nothing was found)
             if [ "${interface}" = "*" ]; then
                 continue
-             fi
+            fi
 
-             /sbin/ifup ${interface}
+            /sbin/ifup ${interface}
         done
         ;;
 
