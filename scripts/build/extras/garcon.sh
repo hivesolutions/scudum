@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libxfce4ui" "libxfce4util" "uri"
+depends "libxfce4util" "gtk+2"
 
 wget "http://archive.xfce.org/src/xfce/garcon/$VERSION_L/garcon-$VERSION.tar.bz2"
 rm -rf garcon-$VERSION && tar -jxf "garcon-$VERSION.tar.bz2"
