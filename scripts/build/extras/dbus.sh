@@ -23,3 +23,5 @@ cd dbus-$VERSION
     --disable-static
 
 make && make install
+
+dbus-uuidgen --ensure
