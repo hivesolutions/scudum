@@ -21,3 +21,9 @@ cd plymouth-$VERSION
     --enable-gtk
 
 make && make install
+
+cat > /etc/plymouth/plymouthd.conf << "EOF"
+[Daemon]
+Theme=spinner
+ShowDelay=5
+EOF
