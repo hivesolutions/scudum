@@ -24,4 +24,5 @@ cd dbus-$VERSION
 
 make && make install
 
+dbus-uuidgen > /etc/machine-id
 dbus-uuidgen --ensure
