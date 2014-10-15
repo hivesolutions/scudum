@@ -46,7 +46,7 @@ fi
 if type apt-get &> /dev/null; then
     apt-get -y install syslinux squashfs-tools dosfstools mtools kpartx
 elif type scu &> /dev/null; then
-    scu install syslinux squashfs-tools dosfstools mtools kpartx
+    env -u VERSION scu install syslinux squashfs-tools dosfstools mtools kpartx
 else
     exit 1
 fi
