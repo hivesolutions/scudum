@@ -7,6 +7,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "libxml2" "gtk+2" "python"
+
 wget "http://ftp.gnome.org/pub/gnome/sources/libglade/$VERSION_L/libglade-$VERSION.tar.bz2"
 rm -rf libglade-$VERSION && tar -jxf "libglade-$VERSION.tar.bz2"
 rm -f "libglade-$VERSION.tar.bz2"
