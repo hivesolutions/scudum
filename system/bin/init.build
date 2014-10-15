@@ -34,6 +34,8 @@ install -d -m 755 /sbin
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
 
+ln -sfn splash splashe
+
 ln -sf ../init.d/log /etc/rc.d/rcS.d/S00log
 ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
 ln -sf ../init.d/splash /etc/rc.d/rcS.d/S00splash
@@ -56,20 +58,19 @@ ln -sf ../init.d/sendsignals /etc/rc.d/rc0.d/S60sendsignals
 ln -sf ../init.d/swap /etc/rc.d/rc0.d/S65swap
 ln -sf ../init.d/mountfs /etc/rc.d/rc0.d/S70mountfs
 ln -sf ../init.d/localnet /etc/rc.d/rc0.d/S90localnet
-ln -sf ../init.d/splash /etc/rc.d/rc0.d/K95splash
 ln -sf ../init.d/halt /etc/rc.d/rc0.d/S99halt
 
 ln -sf ../init.d/welcome /etc/rc.d/rc1.d/S99welcome
 ln -sf ../init.d/network /etc/rc.d/rc1.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc1.d/K90sysklogd
-ln -sf ../init.d/splash /etc/rc.d/rc1.d/K95splash
+ln -sf ../init.d/splashe /etc/rc.d/rc1.d/K95splashe
 
 ln -sf ../init.d/boot /etc/rc.d/rc2.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc2.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc2.d/S99welcome
 ln -sf ../init.d/network /etc/rc.d/rc2.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc2.d/K90sysklogd
-ln -sf ../init.d/splash /etc/rc.d/rc2.d/K95splash
+ln -sf ../init.d/splashe /etc/rc.d/rc2.d/K95splashe
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc3.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc3.d/S20network
@@ -77,7 +78,7 @@ ln -sf ../init.d/sshd /etc/rc.d/rc3.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc3.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc3.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc3.d/S99welcome
-ln -sf ../init.d/splash /etc/rc.d/rc3.d/K95splash
+ln -sf ../init.d/splashe /etc/rc.d/rc3.d/K95splashe
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc4.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc4.d/S20network
@@ -85,7 +86,7 @@ ln -sf ../init.d/sshd /etc/rc.d/rc4.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc4.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc4.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc4.d/S99welcome
-ln -sf ../init.d/splash /etc/rc.d/rc4.d/K95splash
+ln -sf ../init.d/splashe /etc/rc.d/rc4.d/K95splashe
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc5.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc5.d/S20network
@@ -93,12 +94,11 @@ ln -sf ../init.d/sshd /etc/rc.d/rc5.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc5.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc5.d/S35rc.local
 ln -sf ../init.d/welcome /etc/rc.d/rc5.d/S99welcome
-ln -sf ../init.d/splash /etc/rc.d/rc5.d/K95splash
+ln -sf ../init.d/splashe /etc/rc.d/rc5.d/K95splashe
 
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
-ln -sf ../init.d/splash /etc/rc.d/rc6.d/K95splash
 ln -sf ../init.d/sendsignals /etc/rc.d/rc6.d/S60sendsignals
 ln -sf ../init.d/swap /etc/rc.d/rc6.d/S65swap
 ln -sf ../init.d/mountfs /etc/rc.d/rc6.d/S70mountfs
