@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib"
 
-wget "http://archive.xfce.org/src/xfce/libxfce4ui/$VERSION_L/libxfce4util-$VERSION.tar.bz2"
+wget "http://archive.xfce.org/src/xfce/libxfce4util/$VERSION_L/libxfce4util-$VERSION.tar.bz2"
 rm -rf libxfce4util-$VERSION && tar -jxf "libxfce4util-$VERSION.tar.bz2"
 rm -f "libxfce4util-$VERSION.tar.bz2"
 cd libxfce4util-$VERSION
