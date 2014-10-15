@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "dbux-glib" "libxfce4util"
+depends "dbus-glib" "libxfce4util"
 
 wget "http://archive.xfce.org/src/xfce/xfconf/$VERSION_L/xfconf-$VERSION.tar.bz2"
 rm -rf xfconf-$VERSION && tar -jxf "xfconf-$VERSION.tar.bz2"
