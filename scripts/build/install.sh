@@ -41,6 +41,9 @@ fi
 # various retrieve contents are going to be unpacked there
 cd $SCUDUM
 
+# retrieves the requested package containing the scudum root
+# files and then unacks it into the current scudum location,
+# this location may then be used as a normal chroot environment
 wget "$REPO/$NAME-$VERSION.tar.gz"
 tar -zxf $NAME-$VERSION.tar.gz
 rm -v $NAME-$VERSION.tar.gz
