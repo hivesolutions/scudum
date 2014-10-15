@@ -24,14 +24,7 @@ sync
 
 # creates the base directory where the scudum
 # distribution will be installed for execution
-# note that in case a persist location exits for
-# it is used instead for the building process
-if mountpoint -q $PERSIST; then
-    rm -rf $PERSIST$SCUDUM && mkdir -pv $PERSIST$SCUDUM
-    rm -f $SCUDUM && ln -sv $PERSIST$SCUDUM $SCUDUM
-else
-    rm -rf $SCUDUM && mkdir -pv $SCUDUM
-fi
+rm -rf $SCUDUM && mkdir -pv $SCUDUM
 
 # creates the proper tools directory where the
 # build toolchain is going to be set and sets

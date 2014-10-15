@@ -32,17 +32,10 @@ sync
 # as it's considered to be not required for operation
 rm -f /tools
 
-# verifies if there's a persist mountpoint enabled for
-# the current installation if that's the case it must
-# be used for the scudum persistence by using a symbolic
-# link into its location, note that for every options the
-# scudum installation is first removed (prior to install)
-if mountpoint -q $PERSIST; then
-    rm -rf $PERSIST$SCUDUM && mkdir $PERSIST$SCUDUM
-    rm -f $SCUDUM && ln -s $PERSIST$SCUDUM $SCUDUM
-else
-    rm -rf $SCUDUM && mkdir $SCUDUM
-fi
+# removes the previously existing scudum implementation
+# directory and re-creates it so that it's possible to
+# re-deploy it to the newly created directory
+rm -rf $SCUDUM && mkdir $SCUDUM
 
 # changes the current directory into the scudum one as the
 # various retrieve contents are going to be unpacked there

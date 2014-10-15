@@ -48,3 +48,11 @@ if [ -e config ]; then
     DISTRIB=${PWD##*/}
     source config
 fi
+
+# verifies if the perist directory/mountpoint exists and if that's
+# the case and the relative scudum directory also exits then changes
+# the current scudum directory reference to the persist one so that
+# it's possible to spare some extra memory (using secondary storage)
+if mountpoint -q $PERSIST && [ -d $PERSIST$SCUDUM ]; then
+    export SCUDUM=$PERSIST$SCUDUM
+fi
