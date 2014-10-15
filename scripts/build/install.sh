@@ -31,7 +31,7 @@ rm -f /tools
 # link into its location, note that for every options the
 # scudum installation is first removed (prior to install)
 if mountpoint -q $PERSIST; then
-    rm -rf $PERSIST$SCUDUM
+    rm -rf $PERSIST$SCUDUM && mkdir $PERSIST$SCUDUM
     rm -f $SCUDUM && ln -s $PERSIST$SCUDUM $SCUDUM
 else
     rm -rf $SCUDUM && mkdir $SCUDUM

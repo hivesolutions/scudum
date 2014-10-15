@@ -27,7 +27,7 @@ sync
 # note that in case a persist location exits for
 # it is used instead for the building process
 if mountpoint -q $PERSIST; then
-    rm -rf $PERSIST$SCUDUM
+    rm -rf $PERSIST$SCUDUM && mkdir -pv $PERSIST$SCUDUM
     rm -f $SCUDUM && ln -sv $PERSIST$SCUDUM $SCUDUM
 else
     rm -rf $SCUDUM && mkdir -pv $SCUDUM
