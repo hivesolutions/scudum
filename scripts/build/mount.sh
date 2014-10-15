@@ -6,6 +6,8 @@ TARGET=${TARGET-/mnt/builds}
 USERNAME=${USERNAME-anonymous}
 PASSWORD=${PASSWORD-anonymous}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
 source $DIR/base/config.sh
