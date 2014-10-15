@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS xorg-server plymouth"
+export EXTRAS="$EXTRAS plymouth"

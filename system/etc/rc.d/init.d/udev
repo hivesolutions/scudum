@@ -51,7 +51,7 @@ case "${1}" in
 
         # if any LVM based partitions are on the system, ensures they
         # are activated so they can be used.
-        if [ -x /sbin/vgchange ]; then /sbin/vgchange -a y >/dev/null; fi 
+        if [ -x /sbin/vgchange ]; then /sbin/vgchange -a y > /dev/null; fi 
 
         log_success_msg2 
         ;;

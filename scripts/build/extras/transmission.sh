@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libevent"
+depends "libevent" "gtk+3"
 
 wget "http://download.transmissionbt.com/files/transmission-$VERSION.tar.xz"
 rm -rf transmission-$VERSION && tar -Jxf "transmission-$VERSION.tar.xz"

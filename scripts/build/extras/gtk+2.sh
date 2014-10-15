@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "pango" "atk" "gdk-pixbuf" "xorg-libs"
+depends "pango" "atk" "gdk-pixbuf" "xorg-libs" "hicolor-icon-theme"
 
 wget "http://ftp.gnome.org/pub/gnome/sources/gtk+/$VERSION_L/gtk+-$VERSION.tar.xz"
 rm -rf gtk+-$VERSION && tar -Jxf "gtk+-$VERSION.tar.xz"

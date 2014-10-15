@@ -14,7 +14,7 @@ FILE=${FILE-$NAME_L-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config}
-FALLBACK=${CONFIG-/boot/config}
+FALLBACK=${FALLBACK-/boot/config}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 

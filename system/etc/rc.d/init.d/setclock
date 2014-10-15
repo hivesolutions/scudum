@@ -30,12 +30,12 @@ esac
 
 case ${1} in
     start)
-        hwclock --hctosys ${CLOCKPARAMS} >/dev/null
+        hwclock --hctosys ${CLOCKPARAMS} > /dev/null
         ;;
 
     stop)
         log_info_msg "Setting hardware clock..."
-        hwclock --systohc ${CLOCKPARAMS} >/dev/null
+        hwclock --systohc ${CLOCKPARAMS} > /dev/null
         evaluate_retval
         ;;
 

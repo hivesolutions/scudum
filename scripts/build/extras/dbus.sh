@@ -23,3 +23,6 @@ cd dbus-$VERSION
     --disable-static
 
 make && make install
+
+dbus-uuidgen > /etc/machine-id
+dbus-uuidgen --ensure

@@ -14,7 +14,7 @@ rm -f "rox-filer-$VERSION.tar.bz2"
 cd rox-filer-$VERSION
 
 cd ROX-Filer
-sed -i 's:g_strdup(getenv("APP_DIR")):"$PREFIX/share/rox":' src/main.c
+sed -i "s:g_strdup(getenv(\"APP_DIR\")):\"$PREFIX/share/rox\":" src/main.c
 
 mkdir build
 pushd build

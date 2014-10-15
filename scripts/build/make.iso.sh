@@ -33,7 +33,7 @@ fi
 if type apt-get &> /dev/null; then
     apt-get -y install genisoimage squashfs-tools
 elif type scu &> /dev/null; then
-    scu install cdrtools squashfs-tools
+    env -u VERSION scu install cdrtools squashfs-tools
 else
     exit 1
 fi
@@ -62,7 +62,7 @@ cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
     ISO_DIR=/tmp/$NAME.iso.dir
-    mksquashfs $SCUDUM $NAME.sqfs
+    mksquashfs $(readlink -f $SCUDUM) $NAME.sqfs
     mkdir -pv $ISO_DIR
     cp -rp $SCUDUM/isolinux $ISO_DIR
     mv -v $NAME.sqfs $ISO_DIR

@@ -1,3 +1,9 @@
+# exports the location that is assumed to contain
+# the persitent storage sub-filesystem that is going
+# to be used for the build process in case it exists
+# (this allows for larger builds using volatile system)
+export PERSIST=${PERSIST-/pst}
+
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
@@ -41,4 +47,12 @@ export EXTRAS="sudo python rsync iptables cifs-utils ntfsprogs"
 if [ -e config ]; then
     DISTRIB=${PWD##*/}
     source config
+fi
+
+# verifies if the persist directory/mountpoint exists and if that's
+# the current situation then changes the current scudum directory
+# reference to the persist one so that it's possible to spare some
+# extra memory, by using secondary storage to store the installation
+if mountpoint -q $PERSIST; then
+    export SCUDUM=$PERSIST/scudum
 fi
