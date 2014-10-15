@@ -17,10 +17,12 @@ export GREP_OPTIONS=--color=auto
 export PREFIX=/opt
 export PS1="\u@\h:\w# "
 
-local DISTRIB=$(cat /etc/scudum/DISTRIB)
-local VERSION=$(cat /etc/scudum/VERSION)
-local KVERSION=$(uname -r)
-local SVERSION=$DISTRIB-$VERSION
+DISTRIB=$(cat /etc/scudum/DISTRIB)
+VERSION=$(cat /etc/scudum/VERSION)
+KVERSION=$(uname -r)
+SVERSION=$DISTRIB-$VERSION
 
 alias "ls=ls --color=auto"
 echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
+
+unset DISTRIB VERSION KVERSION SVERSION
