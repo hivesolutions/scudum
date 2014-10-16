@@ -20,7 +20,6 @@ case "${1}" in
         if [ ! -e /bin/plymouth ]; then exit; fi
 
         /bin/plymouth quit
-        evaluate_retval
         ;;
 
     *)

@@ -21,7 +21,6 @@ case "${1}" in
 
         /sbin/plymouthd --mode=boot
         /bin/plymouth show-splash
-        evaluate_retval
         ;;
 
     *)
