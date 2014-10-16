@@ -6,8 +6,8 @@
 # Should-Start:
 # Required-Stop:
 # Should-Stop:
-# Default-Start:
-# Default-Stop:        1 2 3 4 5
+# Default-Start:       1 2 3 4 5
+# Default-Stop:
 # Short-Description:   Runs the end operation of splash screen.
 # Description:         Runs the end operation of splash screen.
 ### END INIT INFO
