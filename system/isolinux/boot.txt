@@ -1,1 +1,2 @@
 1 - Scudum GNU/Linux, Linux Stable
+2 - Scudum GNU/Linux, Linux Stable (Safe)
