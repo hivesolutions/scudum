@@ -681,7 +681,7 @@ evaluate_retval() {
 check_signal() {
     local valsig
 
-    # Add error handling for invalid signals
+    # adds error handling for invalid signals
     valsig="-ALRM -HUP -INT -KILL -PIPE -POLL -PROF -TERM -USR1 -USR2"
     valsig="${valsig} -VTALRM -STKFLT -PWR -WINCH -CHLD -URG -TSTP -TTIN"
     valsig="${valsig} -TTOU -STOP -CONT -ABRT -FPE -ILL -QUIT -SEGV -TRAP"
