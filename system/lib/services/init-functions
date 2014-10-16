@@ -633,7 +633,7 @@ log_info_msg() {
     logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
     timespec
     /bin/echo -n -e "${STAMP} ${logmessage}" >> ${BOOTLOG}
-    
+
     return 0
 }
 
