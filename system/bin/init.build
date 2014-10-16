@@ -34,9 +34,9 @@ install -d -m 755 /sbin
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
 
-ln -sf ../init.d/splash /etc/rc.d/rcS.d/S00splash
-ln -sf ../init.d/log /etc/rc.d/rcS.d/S01log
-ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S02mountvirtfs
+ln -sf ../init.d/log /etc/rc.d/rcS.d/S00log
+ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
+ln -sf ../init.d/splash /etc/rc.d/rcS.d/S03splash
 ln -sf ../init.d/modules /etc/rc.d/rcS.d/S05modules
 ln -sf ../init.d/localnet /etc/rc.d/rcS.d/S08localnet
 ln -sf ../init.d/udev /etc/rc.d/rcS.d/S10udev
