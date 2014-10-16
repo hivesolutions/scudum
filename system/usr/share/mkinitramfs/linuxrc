@@ -175,6 +175,7 @@ pivot_root . initrd
 mkdir -m 0755 /run/plymouth
 /sbin/plymouthd --mode=boot --attach-to-session --pid-file=/run/plymouth/pid
 /bin/plymouth --show-splash
+echoi "Starting the splash screen system to display"
 
 # changes to new root and swap to new root's devices
 # this should trigger the inital system loading (init)
