@@ -25,8 +25,8 @@ cd plymouth-$VERSION
     --enable-drm\
     --with-system-root-install\
     --without-rhgb-compat-link\
-    --with-boot-tty=/dev/tty7\
-    --with-shutdown-tty=/dev/tty7
+    --with-boot-tty=/dev/tty1\
+    --with-shutdown-tty=/dev/tty1
 
 make && make install
 
