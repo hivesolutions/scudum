@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS x11 openbox rox-filer firefox transmission plymouth"
+export EXTRAS="$EXTRAS x11 openbox gnome-themes rox-filer firefox transmission plymouth"
