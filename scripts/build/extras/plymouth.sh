@@ -23,6 +23,9 @@ cd plymouth-$VERSION
     --enable-tracing\
     --enable-gtk\
     --enable-drm\
+    --with-background-start-color-stop=0x0073b3\
+    --with-background-end-color-stop=0x00457e\
+    --with-background-color=0x3391cd\
     --with-logo=/usr/share/scudum/scudum-logo-grey.png\
     --without-rhgb-compat-link\
     --with-boot-tty=/dev/tty1\
