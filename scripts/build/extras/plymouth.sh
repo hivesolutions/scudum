@@ -24,7 +24,6 @@ cd plymouth-$VERSION
     --enable-gtk\
     --enable-drm\
     --with-logo=/usr/share/scudum/scudum-logo.png\
-    --with-system-root-install\
     --without-rhgb-compat-link\
     --with-boot-tty=/dev/tty1\
     --with-shutdown-tty=/dev/tty1
