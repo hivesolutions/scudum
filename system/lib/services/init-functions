@@ -545,12 +545,12 @@ log_success_msg() {
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
 
-    # Strip non-printable characters from log file
+    # strips non-printable characters from log file
     logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
 
     timespec
     /bin/echo -e "${STAMP} ${logmessage} OK" >> ${BOOTLOG}
-    
+
     return 0
 }
 
@@ -559,7 +559,7 @@ log_success_msg2() {
     /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
 
     echo " OK" >> ${BOOTLOG}
-    
+
     return 0
 }
 
@@ -610,7 +610,6 @@ log_warning_msg() {
     /bin/echo -e "${CURS_ZERO}${WARNING_PREFIX}${SET_COL}${WARNING_SUFFIX}"
 
     # Strip non-printable characters from log file
-    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
     timespec
     /bin/echo -e "${STAMP} ${logmessage} WARN" >> ${BOOTLOG}
     
