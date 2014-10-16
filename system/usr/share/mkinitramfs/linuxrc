@@ -165,17 +165,17 @@ tar -zxf /ram/source/images/dev.tar.gz
 tar -zxf /ram/source/images/etc.tar.gz
 mkdir -p initrd
 
-# runs the pivot operation setting the current directory
-# as the root for execution (the ram device becomes the root)
-pivot_root . initrd
-
 # in case the splash screen is required the process
 # is started with the creation of the directory and
 # then starts the plymouth support for the display
-mkdir -m 0755 ./run/plymouth
-./sbin/plymouthd --mode=boot --pid-file=./run/plymouth/pid
-./bin/plymouth --show-splash
+mkdir -m 0755 run/plymouth
+sbin/plymouthd --mode=boot --pid-file=run/plymouth/pid
+bin/plymouth --show-splash
 echoi "Starting the splash screen system to display"
+
+# runs the pivot operation setting the current directory
+# as the root for execution (the ram device becomes the root)
+pivot_root . initrd
 
 # changes to new root and swap to new root's devices
 # this should trigger the inital system loading (init)
