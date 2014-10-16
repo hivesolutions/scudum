@@ -1,15 +1,15 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:            splash
+# Provides:            spashe
 # Required-Start:
 # Should-Start:
 # Required-Stop:
 # Should-Stop:
-# Default-Start:       S
-# Default-Stop:
-# Short-Description:   Runs the initial splash screen.
-# Description:         Runs the initial splash screen.
+# Default-Start:
+# Default-Stop:        1 2 3 4 5
+# Short-Description:   Runs the end operation of splash screen.
+# Description:         Runs the end operation of splash screen.
 ### END INIT INFO
 
 . /lib/lsb/init-functions
@@ -19,14 +19,13 @@ case "${1}" in
         if [ ! -e /sbin/plymouthd ]; then exit; fi
         if [ ! -e /bin/plymouth ]; then exit; fi
 
-        log_info_msg "Starting plymouth splash screen..."
-        /sbin/plymouthd --mode=boot
-        /bin/plymouth show-splash
+        log_info_msg "Stopping plymouth splash screen..."
+        /bin/plymouth quit
         evaluate_retval
         ;;
 
     *)
-        echo "Usage: ${0} {start}"
+        echo "Usage: ${0} {start|stop}"
         exit 1
         ;;
 esac
