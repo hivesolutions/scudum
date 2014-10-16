@@ -34,7 +34,7 @@ install -d -m 755 /sbin
 ln -sfn services /lib/lsb
 ln -sfn rc.d/init.d /etc/init.d
 
-ln -sfn splash splashe
+ln -sfn splash /etc/rc.d/init.d/splashe
 
 ln -sf ../init.d/log /etc/rc.d/rcS.d/S00log
 ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
