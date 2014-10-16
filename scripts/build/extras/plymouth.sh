@@ -20,7 +20,6 @@ cd plymouth-$VERSION
     --disable-documentation\
     --disable-gdm-transition\
     --enable-pango\
-	--enable-systemd-integration\
 	--enable-static\
     --enable-tracing\
     --enable-gtk\
