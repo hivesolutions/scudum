@@ -23,7 +23,7 @@ cd plymouth-$VERSION
     --enable-tracing\
     --enable-gtk\
     --enable-drm\
-    --with-logo=/usr/share/scudum/scudum-logo.png\
+    --with-logo=/usr/share/scudum/scudum-logo-grey.png\
     --without-rhgb-compat-link\
     --with-boot-tty=/dev/tty1\
     --with-shutdown-tty=/dev/tty1
@@ -32,6 +32,6 @@ make && make install
 
 cat > /etc/plymouth/plymouthd.conf << "EOF"
 [Daemon]
-Theme=spinner
+Theme=fade-in
 ShowDelay=0
 EOF
