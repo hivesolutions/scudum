@@ -19,7 +19,7 @@ case "${1}" in
         if [ ! -e /sbin/plymouthd ]; then exit; fi
         if [ ! -e /bin/plymouth ]; then exit; fi
 
-        /sbin/plymouthd --mode=boot --attach-to-session
+        /sbin/plymouthd --mode=boot
         /bin/plymouth show-splash
         ;;
 

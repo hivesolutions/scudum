@@ -173,7 +173,7 @@ pivot_root . initrd
 # is started with the creation of the directory and
 # then starts the plymouth support for the display
 mkdir -m 0755 /run/plymouth
-/sbin/plymouthd --mode=boot --attach-to-session --pid-file=/run/plymouth/pid
+/sbin/plymouthd --mode=boot --pid-file=/run/plymouth/pid
 /bin/plymouth --show-splash
 echoi "Starting the splash screen system to display"
 
