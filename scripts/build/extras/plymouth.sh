@@ -16,9 +16,18 @@ cd plymouth-$VERSION
 ./configure\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
+    --disable-silent-rules\
     --disable-documentation\
+    --disable-gdm-transition\
     --enable-pango\
-    --enable-gtk
+	--enable-static\
+    --enable-tracing\
+    --enable-gtk\
+    --enable-drm\
+    --with-system-root-install\
+    --without-rhgb-compat-link\
+    --with-boot-tty=/dev/tty1\
+    --with-shutdown-tty=/dev/tty1
 
 make && make install
 
