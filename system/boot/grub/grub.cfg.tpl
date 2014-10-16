@@ -5,5 +5,5 @@ insmod ${BOOT_FS}
 set root=(hd0,1)
 
 menuentry "Scudum GNU/Linux, Linux Stable" {
-    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=0×318 usb-storage.delay_use=0 quiet splash
+    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 quiet splash
 }
