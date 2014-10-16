@@ -24,7 +24,6 @@ cd plymouth-$VERSION
     --enable-tracing\
     --enable-gtk\
     --enable-drm\
-    --with-system-root-install\
     --without-rhgb-compat-link\
     --with-boot-tty=/dev/tty1\
     --with-shutdown-tty=/dev/tty1
