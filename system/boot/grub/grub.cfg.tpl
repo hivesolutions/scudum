@@ -11,3 +11,7 @@ menuentry "Scudum GNU/Linux, Linux Stable" {
 menuentry "Scudum GNU/Linux, Linux Stable (Safe)" {
     linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 nomodeset
 }
+
+menuentry "Scudum GNU/Linux, Linux Stable (Debug)" {
+    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 nomodeset loglevel=7
+}
