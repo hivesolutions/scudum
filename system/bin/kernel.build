@@ -40,7 +40,7 @@ if [ ! -d "$NAME" ]; then
     rm -rf $NAME && tar -xvf $NAME.tar.xz
     rm -f $NAME.tar.xz
 else
-    echo "kenel.build: skipping $NAME retrieval, already exists ..."
+    echo "kernel.build: skipping $NAME retrieval, already exists ..."
 fi
 
 cd $NAME
@@ -54,7 +54,7 @@ fi
 make -j $CONCURRENCY
 
 if [ "$DEPLOY" == "1" ]; then
-    echo "kenel.build: deploying kernel into $REPO ..."
+    echo "kernel.build: deploying kernel into $REPO ..."
 
     cp -pv arch/x86/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
@@ -69,6 +69,8 @@ if [ "$DEPLOY" == "1" ]; then
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
 else
+    echo "kernel.build: installing kernel into the system ..."
+
     cp -v arch/x86/boot/bzImage /boot/vmlinuz
     cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
