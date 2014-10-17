@@ -53,7 +53,7 @@ else
     mount -vt tmpfs shm $SCUDUM/dev/shm
 fi
 
-trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
+trap "SCUDUM=$SCUDUM MTAB=0 $DIR/release.sh" SIGINT SIGTERM
 
 cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
 
