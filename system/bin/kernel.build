@@ -12,6 +12,7 @@ DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
+FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config}
 FALLBACK=${FALLBACK-/boot/config}
@@ -21,6 +22,7 @@ DEPLOY=${DEPLOY-0}
 
 LATEST=$NAME_L-latest
 LATEST_CONFIG=$LATEST.config
+LATEST_MODULES=$LATEST.modules.tar.gz
 
 set -e +h
 
@@ -61,21 +63,30 @@ mkdir -p modules_install
 make -j $CONCURRENCY
 make modules_install INSTALL_MOD_PATH=modules_install
 
+cd modules_install/lib
+tar -zcvf modules.tar.gz modules
+mv modules.tar.gz ../..
+cd ../..
+
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying kernel into $REPO ..."
 
     cp -pv arch/x86/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
+    cp -pv modules.tar.gz $FILE_MODULES
 
     mkdir -pv $REPO
     mv -fv $FILE $REPO
     mv -fv $FILE_CONFIG $REPO
+    mv -fv $FILE_MODULES $REPO
 
     cd $REPO
     rm -fv $LATEST
     rm -fv $LATEST_CONFIG
+    rm -fv $LATEST_MODULES
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
+    ln -sv $FILE_MODULES $LATEST_MODULES
 else
     echo "kernel.build: installing kernel into the system ..."
 
@@ -83,4 +94,6 @@ else
     cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
     cp -v .config /boot/config
+
+    tar -zxvf modules.tar.gz -C /lib
 fi
