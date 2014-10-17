@@ -16,4 +16,4 @@ cp -rp system/sbin/* $PREFIX/sbin
 rm -rf $PREFIX/system
 cp -rp system $PREFIX
 
-echo "scudum-system: you may need to run 'hash -d' to run new binaries"
+echo "scudum-system: you may need to run 'hash -r' to run new binaries"
