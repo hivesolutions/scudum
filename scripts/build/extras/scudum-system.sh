@@ -16,4 +16,4 @@ cp -rp system/sbin/* $PREFIX/sbin
 rm -rf $PREFIX/system
 cp -rp system $PREFIX
 
-shopt -s checkhash
+PATH=$PATH
