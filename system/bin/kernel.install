@@ -27,6 +27,6 @@ cp -v $NAME-$VERSION.config /boot/config
 rm -rf /lib/modules
 tar -zxvf $NAME-$VERSION.modules.tar.gz -C /lib
 
-rm -f $NAME-$VERSION
-rm -f $NAME-$VERSION.config
-rm -f $NAME-$VERSION.modules.tar.gz
+rm -f $NAME-$VERSION*
+rm -f $NAME-$VERSION.config*
+rm -f $NAME-$VERSION.modules.tar.gz*
