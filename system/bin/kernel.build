@@ -63,8 +63,10 @@ mkdir -p modules_install
 make -j $CONCURRENCY
 make modules_install INSTALL_MOD_PATH=modules_install
 
+release=$(cat include/config/kernel.release)
+
 cd modules_install/lib
-rm -f build && rm -f source
+rm -f modules/$release/build && rm -f modules/$release/source
 tar -zcvf modules.tar.gz modules
 mv modules.tar.gz ../..
 cd ../..
