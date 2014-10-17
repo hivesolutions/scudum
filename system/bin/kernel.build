@@ -15,6 +15,7 @@ FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config}
 FALLBACK=${FALLBACK-/boot/config}
+SAFE=${SAFE-0}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
@@ -44,7 +45,11 @@ else
 fi
 
 cd $NAME
-make mrproper
+
+if [ "$SAFE" == "1" ]; then
+    make mrproper
+fi
+
 cp -v $CONFIG .config
 
 if [ "$BUILD" != "1" ]; then
