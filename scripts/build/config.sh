@@ -33,7 +33,7 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     PREVIOUS=$(cat $SCUDUM/etc/scudum/DISTRIB)
 
     if [ "$PREVIOUS" != "$DISTRIB" ]; then
-        echo "'$PREVIOUS' configuration cannot be changed to '$DISTRIB'"
+        echo "config: '$PREVIOUS' configuration cannot be changed to '$DISTRIB'"
         exit 1
     fi
 fi
