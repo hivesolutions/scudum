@@ -53,6 +53,8 @@ else
     mount -vt tmpfs shm $SCUDUM/dev/shm
 fi
 
+trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
+
 cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
 
 chroot $SCUDUM /tools/bin/env -i\
@@ -61,12 +63,8 @@ chroot $SCUDUM /tools/bin/env -i\
     PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin\
     /tools/bin/bash $CHROOT_ARGS $1
+result=$?
 
-sync
+SCUDUM=$SCUDUM $DIR/release.sh
 
-mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
-
-umount -v $SCUDUM/sys
-umount -v $SCUDUM/proc
-umount -v $SCUDUM/dev/pts
-umount -v $SCUDUM/dev
+exit $result
