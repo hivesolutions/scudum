@@ -16,7 +16,7 @@ mount -vt devpts devpts $SCUDUM/dev/pts -o gid=5,mode=620
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
-trap "SCUDUM=$SCUDUM MTAB=0 $DIR/release.sh" SIGINT SIGTERM
+trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
 
 mkdir -pv $SCUDUM/etc
 rm -f $SCUDUM/etc/resolv.conf
