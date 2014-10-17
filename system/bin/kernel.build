@@ -73,7 +73,7 @@ mv modules.tar.gz ../..
 cd ../..
 
 if [ "$DEPLOY" == "1" ]; then
-    echo "kernel.build: deploying kernel into $REPO ..."
+    echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
     cp -pv arch/x86/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
@@ -92,7 +92,7 @@ if [ "$DEPLOY" == "1" ]; then
     ln -sv $FILE_CONFIG $LATEST_CONFIG
     ln -sv $FILE_MODULES $LATEST_MODULES
 else
-    echo "kernel.build: installing kernel into the system ..."
+    echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
     if [ "$VARIANT" == "default" ]; then
         cp -v arch/x86/boot/bzImage /boot/vmlinuz
