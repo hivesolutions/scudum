@@ -7,20 +7,21 @@ CONCURRENCY=${CONCURRENCY-$(nproc)}
 NAME_L=${NAME_L-kernel}
 MAJOR=${MAJOR-3.x}
 MINOR=${MINOR-3.16.3}
+VARIANT=${VARIANT-default}
 NAME=${NAME-linux-$MINOR}
 DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
-FILE=${FILE-$NAME_L-$VERSION}
+FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
 REPO=${REPO-/mnt/builds/$NAME_L}
-CONFIG=${CONFIG-$PREFIX/system/boot/config}
-FALLBACK=${FALLBACK-/boot/config}
+CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
+FALLBACK=${FALLBACK-/boot/config.$VARIANT}
 SAFE=${SAFE-0}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
 
-LATEST=$NAME_L-latest
+LATEST=$NAME_L-$VARIANT-latest
 LATEST_CONFIG=$LATEST.config
 LATEST_MODULES=$LATEST.modules.tar.gz
 
@@ -93,10 +94,17 @@ if [ "$DEPLOY" == "1" ]; then
 else
     echo "kernel.build: installing kernel into the system ..."
 
-    cp -v arch/x86/boot/bzImage /boot/vmlinuz
-    cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
+    if [ "$VARIANT" == "default" ]; then
+        cp -v arch/x86/boot/bzImage /boot/vmlinuz
+        cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
-    cp -v .config /boot/config
+        cp -v .config /boot/config
+    else
+        cp -v arch/x86/boot/bzImage /boot/vmlinuz-$VARIANT
+        cp -v arch/x86/boot/bzImage /isolinux/vmlinuz-$VARIANT
+
+        cp -v .config /boot/config-$VARIANT
+    fi
 
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib
