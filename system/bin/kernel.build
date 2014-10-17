@@ -51,7 +51,10 @@ if [ "$BUILD" != "1" ]; then
     exit 0
 fi
 
+mkdir -p modules_install
+
 make -j $CONCURRENCY
+make modules_install INSTALL_MOD_PATH=modules_install
 
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying kernel into $REPO ..."
