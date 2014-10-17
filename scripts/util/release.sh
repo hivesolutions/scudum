@@ -12,7 +12,7 @@ fi
 
 sync
 
-umount -v $FLAGS $SCUDUM/sys
-umount -v $FLAGS $SCUDUM/proc
-umount -v $FLAGS $SCUDUM/dev/pts
-umount -v $FLAGS $SCUDUM/dev
+mountpoint -q $SCUDUM/sys && umount -v $FLAGS $SCUDUM/sys
+mountpoint -q $SCUDUM/proc && umount -v $FLAGS $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/pts && umount -v $FLAGS $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/dev && umount -v $FLAGS $SCUDUM/dev
