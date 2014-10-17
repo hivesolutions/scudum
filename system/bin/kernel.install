@@ -15,6 +15,8 @@ fi
 
 echo "kernel.install: deploying kernel files"
 
+rm -f $NAME-$VERSION*
+
 wget "$REPO/$NAME-$VERSION"
 wget "$REPO/$NAME-$VERSION.config"
 wget "$REPO/$NAME-$VERSION.modules.tar.gz"
@@ -27,6 +29,6 @@ cp -v $NAME-$VERSION.config /boot/config
 rm -rf /lib/modules
 tar -zxvf $NAME-$VERSION.modules.tar.gz -C /lib
 
-rm -f $NAME-$VERSION*
-rm -f $NAME-$VERSION.config*
-rm -f $NAME-$VERSION.modules.tar.gz*
+rm -f $NAME-$VERSION
+rm -f $NAME-$VERSION.config
+rm -f $NAME-$VERSION.modules.tar.gz
