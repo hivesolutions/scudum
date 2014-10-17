@@ -5,14 +5,7 @@ PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
-release() {
-    sync
-
-    umount -v $SCUDUM/sys
-    umount -v $SCUDUM/proc
-    umount -v $SCUDUM/dev/pts
-    umount -v $SCUDUM/dev
-}
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 if mountpoint -q $PERSIST; then
     SCUDUM=$PERSIST/scudum
@@ -23,7 +16,7 @@ mount -vt devpts devpts $SCUDUM/dev/pts -o gid=5,mode=620
 mount -vt proc proc $SCUDUM/proc
 mount -vt sysfs sysfs $SCUDUM/sys
 
-trap "release" SIGINT SIGTERM
+trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
 
 mkdir -pv $SCUDUM/etc
 rm -f $SCUDUM/etc/resolv.conf
@@ -35,6 +28,6 @@ chroot $SCUDUM /usr/bin/env -i\
     /bin/bash $CHROOT_ARGS $1
 result=$?
 
-release
+SCUDUM=$SCUDUM $DIR/release.sh
 
 exit $result
