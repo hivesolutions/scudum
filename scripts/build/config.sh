@@ -29,6 +29,13 @@ fi
 
 if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "config: scudum already configured, may create duplicated files"
+
+    PREVIOUS=$(cat $SCUDUM/etc/scudum/DISTRIB)
+
+    if [ "$PREVIOUS" != "$DISTRIB" ]; then
+        echo: '$PREVIOUS' configuration cannot be changed to '$DISTRIB'
+        exit 1
+    fi
 fi
 
 git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
