@@ -64,6 +64,7 @@ make -j $CONCURRENCY
 make modules_install INSTALL_MOD_PATH=modules_install
 
 cd modules_install/lib
+rm -f build && rm -f source
 tar -zcvf modules.tar.gz modules
 mv modules.tar.gz ../..
 cd ../..
