@@ -40,7 +40,7 @@ if [ ! -d "$NAME" ]; then
     rm -rf $NAME && tar -xvf $NAME.tar.xz
     rm -f $NAME.tar.xz
 else
-    echo "Skipping $NAME retrieval, already exists ..."
+    echo "kenel.build: skipping $NAME retrieval, already exists ..."
 fi
 
 cd $NAME
