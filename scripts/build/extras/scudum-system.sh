@@ -16,4 +16,4 @@ cp -rp system/sbin/* $PREFIX/sbin
 rm -rf $PREFIX/system
 cp -rp system $PREFIX
 
-export PATH=$PATH
+echo "scudum-system: you may need to run 'hash -d' to run new binaries"
