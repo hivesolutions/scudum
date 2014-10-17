@@ -54,6 +54,8 @@ fi
 make -j $CONCURRENCY
 
 if [ "$DEPLOY" == "1" ]; then
+    echo "kenel.build: deploying kernel into $REPO ..."
+
     cp -pv arch/x86/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
 
