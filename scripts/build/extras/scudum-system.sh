@@ -16,4 +16,4 @@ cp -rp system/sbin/* $PREFIX/sbin
 rm -rf $PREFIX/system
 cp -rp system $PREFIX
 
-hash kernel.build
+shopt -s checkhash
