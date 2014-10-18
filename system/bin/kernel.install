@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-kernel}
+VARIANT=${VARIANT-${1-default}}
 VERSION=${VERSION-latest}
 REBUILD=${REBUILD-0}
 REPO=${REPO-http://hq.hive.pt:9999/builds/kernel}
@@ -17,14 +18,21 @@ echo "kernel.install: deploying kernel files"
 
 rm -f $NAME-$VERSION*
 
-wget "$REPO/$NAME-$VERSION"
-wget "$REPO/$NAME-$VERSION.config"
-wget "$REPO/$NAME-$VERSION.modules.tar.gz"
+wget "$REPO/$NAME-$VARIANT-$VERSION"
+wget "$REPO/$NAME-$VARIANT-$VERSION.config"
+wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
 
-cp -v $NAME-$VERSION /boot/vmlinuz
-cp -v $NAME-$VERSION /isolinux/vmlinuz
+if [ "$VARIANT" == "default" ]; then
+    cp -v $NAME-$VERSION /boot/vmlinuz
+    cp -v $NAME-$VERSION /isolinux/vmlinuz
 
-cp -v $NAME-$VERSION.config /boot/config
+    cp -v $NAME-$VERSION.config /boot/config
+else
+    cp -v $NAME-$VERSION /boot/vmlinuz-$VARIANT
+    cp -v $NAME-$VERSION /isolinux/vmlinuz-$VARIANT
+
+    cp -v $NAME-$VERSION.config /boot/config-$VARIANT
+fi
 
 rm -rf /lib/modules
 tar -zxvf $NAME-$VERSION.modules.tar.gz -C /lib
