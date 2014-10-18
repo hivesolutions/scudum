@@ -16,27 +16,27 @@ fi
 
 echo "kernel.install: deploying kernel files"
 
-rm -f $NAME-$VERSION*
+rm -f $NAME-$VARIANT-$VERSION*
 
 wget "$REPO/$NAME-$VARIANT-$VERSION"
 wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
 
 if [ "$VARIANT" == "default" ]; then
-    cp -v $NAME-$VERSION /boot/vmlinuz
-    cp -v $NAME-$VERSION /isolinux/vmlinuz
+    cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz
+    cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz
 
-    cp -v $NAME-$VERSION.config /boot/config
+    cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 else
-    cp -v $NAME-$VERSION /boot/vmlinuz-$VARIANT
-    cp -v $NAME-$VERSION /isolinux/vmlinuz-$VARIANT
+    cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz-$VARIANT
+    cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz-$VARIANT
 
-    cp -v $NAME-$VERSION.config /boot/config-$VARIANT
+    cp -v $NAME-$VARIANT-$VERSION.config /boot/config-$VARIANT
 fi
 
 rm -rf /lib/modules
-tar -zxvf $NAME-$VERSION.modules.tar.gz -C /lib
+tar -zxvf $NAME-$VARIANT-$VERSION.modules.tar.gz -C /lib
 
-rm -f $NAME-$VERSION
-rm -f $NAME-$VERSION.config
-rm -f $NAME-$VERSION.modules.tar.gz
+rm -f $NAME-$VARIANT-$VERSION
+rm -f $NAME-$VARIANT-$VERSION.config
+rm -f $NAME-$VARIANT-$VERSION.modules.tar.gz
