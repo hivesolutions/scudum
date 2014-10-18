@@ -115,9 +115,8 @@ fi
 
 # creates the various directories for which the special
 # file systems will be mounted and mounts the proc fs
-mkdir -p run sys
-mkdir proc
-mount -t proc none /ram/proc
+mkdir -p run sys proc
+mount -t proc none proc
 
 # creates the various symbolic links that point the source
 # drive/filesystem to the proper binaries for usage
