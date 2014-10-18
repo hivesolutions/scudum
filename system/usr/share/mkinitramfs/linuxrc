@@ -113,10 +113,14 @@ else
     ln -s origin /ram/source
 fi
 
-# mounts proc and set links to the cd
+# creates the various directories for which the special
+# file systems will be mounted and mounts the proc fs
 mkdir -p run sys
 mkdir proc
 mount -t proc none /ram/proc
+
+# creates the various symbolic links that point the source
+# drive/filesystem to the proper binaries for usage
 ln -s source/bin bin
 ln -s source/sbin sbin
 ln -s source/lib lib
