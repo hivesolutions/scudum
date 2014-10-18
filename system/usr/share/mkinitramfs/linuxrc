@@ -100,12 +100,12 @@ fi
 if [ -f /ram/origin/scudum.sqfs ]; then
     SQUASH=1
     echoi "Mounting squashfs based file (scudum.sqfs) as source"
-    mkdir source
+    mkdir -p source
     mount -o loop -t squashfs /ram/origin/scudum.sqfs /ram/source
 elif [ -f /ram/origin/scudum.sqf ]; then
     SQUASH=1
     echoi "Mounting squashfs based file (scudum.sqf) as source"
-    mkdir source
+    mkdir -p source
     mount -o loop -t squashfs /ram/origin/scudum.sqf /ram/source
 else
     SQUASH=0
@@ -143,14 +143,10 @@ echoi "Preparing file systems for pivot"
 # finish off setting up, it's going to create the complete
 # set of directories used for the system, and then touch
 # some of the file as requested
-mkdir pst
-mkdir home
-mkdir disk
-mkdir tmp
-mkdir mnt
-mkdir var
+mkdir -p pst home disk tmp mnt var
 cd var
-mkdir lib lock log mail run spool tmp opt cache lib/misc lib/sshd lib/dhclient local
+mkdir -p lib lock log mail run spool tmp opt cache lib/misc\
+    lib/sshd lib/dhclient local
 touch run/sshd.pid
 
 # changes the current path to the root of the temporary
