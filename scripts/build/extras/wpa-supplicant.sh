@@ -44,6 +44,8 @@ EOF
 cd wpa_supplicant
 make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
 
+mkdir -p $PREFIX/bin && mkdir -p $PREFIX/share
+
 install -v -m755 wpa_{cli,passphrase,supplicant} $PREFIX/bin
 install -v -m644 doc/docbook/wpa_supplicant.conf.5 $PREFIX/share/man/man5
 install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 $PREFIX/share/man/man8
