@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Environmental setup
 # Setup default values for environment

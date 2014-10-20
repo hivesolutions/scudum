@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # IFCONFIG=<filename> /lib/services/dhclient <IFACE> <up | down>
 
