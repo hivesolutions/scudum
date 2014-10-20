@@ -42,7 +42,7 @@ CFLAGS += -I/usr/include/libnl3
 EOF
 
 cd wpa_supplicant
-make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib
+make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
 make install-service-wpa
 
 cat > /etc/sysconfig/ifconfig.wifi0 << "EOF"
