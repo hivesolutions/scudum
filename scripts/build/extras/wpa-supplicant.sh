@@ -40,4 +40,19 @@ CONFIG_SMARTCARD=y
 CONFIG_WPS=y
 CFLAGS += -I/usr/include/libnl3
 EOF
-make && make install
+
+cd wpa_supplicant
+make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib
+make install-service-wpa
+
+cat > /etc/sysconfig/ifconfig.wifi0 << "EOF"
+ONBOOT="yes"
+IFACE="wlan0"
+SERVICE="wpa"
+WPA_ARGS=""
+WPA_SERVICE="dhclient"
+DHCP_START=""
+DHCP_STOP=""
+PRINTIP="no"
+PRINTALL="no"
+EOF
