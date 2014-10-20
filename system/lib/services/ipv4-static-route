@@ -7,28 +7,28 @@ case "${TYPE}" in
     ("" | "network")
         need_ip=1
         need_gateway=1
-    ;;
+        ;;
 
     ("default")
         need_gateway=1
         args="${args} default"
         desc="default"
-    ;;
+        ;;
 
     ("host")
         need_ip=1
-    ;;
+        ;;
 
     ("unreachable")
         need_ip=1
         args="${args} unreachable"
         desc="unreachable "
-    ;;
+        ;;
 
     (*)
         log_failure_msg "Unknown route type (${TYPE}) in ${IFCONFIG}, cannot continue."
         exit 1
-    ;;
+        ;;
 esac
 
 if [ -n "${need_ip}" ]; then
@@ -63,16 +63,16 @@ case "${2}" in
         log_info_msg "Adding '${desc}' route to the ${1} interface..."
         ip route add ${args} dev ${1}
         evaluate_retval
-    ;;
+        ;;
 
     down)
         log_info_msg "Removing '${desc}' route from the ${1} interface..."
         ip route del ${args} dev ${1}
         evaluate_retval
-    ;;
+        ;;
 
     *)
         echo "Usage: ${0} [interface] {up|down}"
         exit 1
-    ;;
+        ;;
 esac

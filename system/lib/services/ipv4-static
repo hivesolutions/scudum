@@ -42,7 +42,7 @@ case "${2}" in
         else
             log_warning_msg "Cannot add IPv4 address ${IP} to ${1}.  Already present."
         fi
-    ;;
+        ;;
 
     down)
         if [ "$(ip addr show ${1} 2>/dev/null | grep ${IP}/)" != "" ]; then
@@ -59,10 +59,10 @@ case "${2}" in
                 evaluate_retval
             fi
         fi
-    ;;
+        ;;
 
     *)
         echo "Usage: ${0} [interface] {up|down}"
         exit 1
-    ;;
+        ;;
 esac

@@ -22,7 +22,6 @@ is_true() {
 
 case "$2" in
     up)
-
         if [ -e ${PIDFILE} ]; then
             ps $(cat ${PIDFILE}) | grep dhclient > /dev/null
             if [ "$?" = "0" ]; then
@@ -70,7 +69,7 @@ case "$2" in
                 log_info_msg " IP Addresss:""$IPADDR"
             fi
         fi
-        
+
         log_success_msg2
         ;;
 
