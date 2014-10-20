@@ -5,6 +5,7 @@
 . /lib/lsb/init-functions
 . $IFCONFIG
 
+TIMEOUT=5
 PIDFILE=/run/dhclient-$1.pid
 LFILE=/var/lib/dhclient/dhclient-$1.leases
 
@@ -32,7 +33,7 @@ case "$2" in
             fi
         fi
 
-        /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1 &> /dev/null
+        /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} -timeout $TIMEOUT $DHCP_START $1 &> /dev/null
 
         if [ "$?" != "0" ]; then
             log_failure_msg2
