@@ -47,7 +47,7 @@ case "$2" in
 
             IFCONFIG=${IFCONFIG} /lib/services/${WPA_SERVICE} $1 up
         fi
-    ;;
+        ;;
 
     down)
         if [ -n "${WPA_SERVICE}" ]; then
@@ -68,10 +68,10 @@ case "$2" in
             log_warning_msg "\n wpa_supplicant already stopped on $1"
             exit 0
         fi
-   ;;
+        ;;
 
    *)
         echo "Usage: $0 [interface] {up|down}"
         exit 1
-   ;;
+        ;;
 esac
