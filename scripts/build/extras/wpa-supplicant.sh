@@ -11,7 +11,7 @@ depends "libnl"
 wget "http://hostap.epitest.fi/releases/wpa_supplicant-$VERSION.tar.gz"
 rm -rf wpa_supplicant-$VERSION && tar -zxf "wpa_supplicant-$VERSION.tar.gz"
 rm -f "wpa_supplicant-$VERSION.tar.gz"
-cd cairo-$VERSION
+cd wpa_supplicant-$VERSION
 
 cat > wpa_supplicant/.config << "EOF"
 CONFIG_BACKEND=file
