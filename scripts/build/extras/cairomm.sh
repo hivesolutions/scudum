@@ -9,7 +9,7 @@ source $DIR/common.sh
 depends "cairo" "libsigc++"
 
 wget "http://cairographics.org/releases/cairomm-$VERSION.tar.gz"
-rm -rf cairomm-$VERSION && tar -xxf "cairomm-$VERSION.tar.gz"
+rm -rf cairomm-$VERSION && tar -zxf "cairomm-$VERSION.tar.gz"
 rm -f "cairomm-$VERSION.tar.gz"
 cd cairomm-$VERSION
 
