@@ -8,6 +8,7 @@ BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/usb}
 DIRECTORY=${DIRECTORY-/boot/syslinux}
 SCHEMA=${SCHEMA-transient}
+KVARIANT=${KVARIANT-default}
 SIZE=${SIZE-1073741824}
 OFFSET_SECTORS=${OFFSET_SECTORS-2048}
 BLOCK_SIZE=${BLOCK_SIZE-4096}
@@ -52,7 +53,7 @@ else
 fi
 
 if [ "$CONFIG" == "1" ]; then
-    SCHEMA=$SCHEMA $DIR/config.sh
+    SCHEMA=$SCHEMA KVARIANT=$KVARIANT $DIR/config.sh
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then

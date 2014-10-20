@@ -6,6 +6,7 @@ DEV_BOOT=${DEV_BOOT-/dev/null}
 DEV_SWAP=${DEV_SWAP-/dev/null}
 DEV_ROOT=${DEV_ROOT-/dev/null}
 SCHEMA=${SCHEMA-transient}
+KVARIANT=${KVARIANT-default}
 BCERT=${BCERT-1}
 BEXTRAS=${BEXTRAS-1}
 BACCOUNT=${BACCOUNT-1}
@@ -77,6 +78,6 @@ esac
 test $BCERT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/cert.build
 test $BEXTRAS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build
 test $BACCOUNT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build
-test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install
+test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT
 test $BINIT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build
 test $BRAMFS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /sbin/mkinitramfs

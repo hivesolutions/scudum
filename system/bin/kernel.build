@@ -94,17 +94,10 @@ if [ "$DEPLOY" == "1" ]; then
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
-    if [ "$VARIANT" == "default" ]; then
-        cp -v arch/x86/boot/bzImage /boot/vmlinuz
-        cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
+    cp -v arch/x86/boot/bzImage /boot/vmlinuz
+    cp -v arch/x86/boot/bzImage /isolinux/vmlinuz
 
-        cp -v .config /boot/config
-    else
-        cp -v arch/x86/boot/bzImage /boot/vmlinuz-$VARIANT
-        cp -v arch/x86/boot/bzImage /isolinux/vmlinuz-$VARIANT
-
-        cp -v .config /boot/config-$VARIANT
-    fi
+    cp -v .config /boot/config
 
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib

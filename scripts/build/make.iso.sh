@@ -6,6 +6,7 @@ LABEL=${LABEL-Scudum}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}
 SCHEMA=${SCHEMA-transient}
+KVARIANT=${KVARIANT-default}
 BASIC=${BASIC-1}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
@@ -39,7 +40,7 @@ else
 fi
 
 if [ "$CONFIG" == "1" ]; then
-    SCHEMA=$SCHEMA $DIR/config.sh
+    SCHEMA=$SCHEMA KVARIANT=$KVARIANT $DIR/config.sh
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then

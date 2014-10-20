@@ -22,17 +22,10 @@ wget "$REPO/$NAME-$VARIANT-$VERSION"
 wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
 
-if [ "$VARIANT" == "default" ]; then
-    cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz
-    cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz
+cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz
+cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz
 
-    cp -v $NAME-$VARIANT-$VERSION.config /boot/config
-else
-    cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz-$VARIANT
-    cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz-$VARIANT
-
-    cp -v $NAME-$VARIANT-$VERSION.config /boot/config-$VARIANT
-fi
+cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 
 rm -rf /lib/modules
 tar -zxvf $NAME-$VARIANT-$VERSION.modules.tar.gz -C /lib
