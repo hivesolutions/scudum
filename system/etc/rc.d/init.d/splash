@@ -14,8 +14,23 @@
 
 . /lib/lsb/init-functions
 
+SPLASH="0"
+
+for ARGUMENT in $(cat /proc/cmdline); do
+	case "${ARGUMENT}" in
+		splash*)
+			SPLASH="1"
+			;;
+
+		nosplash*)
+			SPLASH="0"
+			;;
+	esac
+done
+
 case "${1}" in
     start)
+        if [ "$SPLASH" == "0" ]; then exit; fi
         if [ ! -e /sbin/plymouthd ]; then exit; fi
         if [ ! -e /bin/plymouth ]; then exit; fi
 
@@ -24,6 +39,7 @@ case "${1}" in
         ;;
 
     stop)
+        if [ "$SPLASH" == "0" ]; then exit; fi
         if [ ! -e /sbin/plymouthd ]; then exit; fi
         if [ ! -e /bin/plymouth ]; then exit; fi
 
