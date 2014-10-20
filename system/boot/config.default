@@ -2076,17 +2076,7 @@ CONFIG_RSI_SDIO=y
 #
 # Enable WiMAX (Networking options) to see the WiMAX drivers
 #
-CONFIG_WAN=y
-# CONFIG_HDLC is not set
-# CONFIG_DLCI is not set
-CONFIG_LAPBETHER=y
-CONFIG_X25_ASY=y
-# CONFIG_SBNI is not set
-CONFIG_IEEE802154_DRIVERS=y
-CONFIG_IEEE802154_FAKEHARD=y
-CONFIG_IEEE802154_FAKELB=y
-CONFIG_VMXNET3=y
-# CONFIG_ISDN is not set
+# CONFIG_WAN is not set
 
 #
 # Input device support
