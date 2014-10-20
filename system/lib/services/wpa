@@ -29,7 +29,7 @@ case "$2" in
 
         mkdir -p /run/wpa_supplicant
 
-        /sbin/wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} -C/run/wpa_supplicant -c${CFGFILE} -i$1 ${WPA_ARGS}
+        wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} -C/run/wpa_supplicant -c${CFGFILE} -i$1 ${WPA_ARGS}
 
         if [ "$?" != "0" ]; then
             log_failure_msg2
