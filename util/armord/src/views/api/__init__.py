@@ -36,4 +36,4 @@ __license__ = "GNU General Public License (GPL), Version 3"
 
 import base
 
-from base import *
+from base import login_api, info_api

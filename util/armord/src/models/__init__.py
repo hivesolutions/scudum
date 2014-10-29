@@ -37,5 +37,5 @@ __license__ = "GNU General Public License (GPL), Version 3"
 import account
 import base
 
-from account import *
-from base import *
+from account import USER_TYPE, ADMIN_TYPE, Account
+from base import Base
