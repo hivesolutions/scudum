@@ -1,4 +1,4 @@
-# [Scudum](http://scudum.hive.pt)
+# [![Scudum](res/logo.png)](http://scudum.hive.pt)
 
 A simple Linux distribution for usage in colony, viriatum and tiberium distributed solutions.
 
