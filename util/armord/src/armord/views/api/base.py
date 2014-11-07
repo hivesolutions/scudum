@@ -39,11 +39,11 @@ __license__ = "GNU General Public License (GPL), Version 3"
 
 import time
 
-import models
+from armord import models
 
-from armord import app
-from armord import flask
-from armord import quorum
+from armord.main import app
+from armord.main import flask
+from armord.main import quorum
 
 BASE_URL = "http://hq.hive.pt:9999/repos/scu"
 """ The base url to be used in the construction

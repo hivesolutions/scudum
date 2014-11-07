@@ -37,11 +37,11 @@ __copyright__ = "Copyright (c) 2008-2014 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import models
+from armord import models
 
-from armord import app
-from armord import flask
-from armord import quorum
+from armord.main import app
+from armord.main import flask
+from armord.main import quorum
 
 @app.route("/", methods = ("GET",))
 @app.route("/index", methods = ("GET",))
@@ -71,7 +71,7 @@ def login():
     username = quorum.get_field("username")
     password = quorum.get_field("password")
     try: account = models.Account.login(username, password)
-    except quorum.OperationalError, error:
+    except quorum.OperationalError as error:
         return flask.render_template(
             "signin.html.tpl",
             username = username,

@@ -19,6 +19,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Hive Armor Daemon. If not, see <http://www.gnu.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,6 +37,26 @@ __copyright__ = "Copyright (c) 2008-2014 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import base
+import flask #@UnusedImport
+import datetime
 
-from base import login_api, info_api
+import models
+import quorum
+
+MONGO_DATABASE = "armor"
+""" The default database to be used for the connection with
+the mongo database """
+
+app = quorum.load(
+    name = __name__,
+    redis_session = True,
+    mongo_database = MONGO_DATABASE,
+    logger = "armord.debug",
+    models = models,
+    PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
+)
+
+import armord.views #@UnusedImport
+
+if __name__ == "__main__":
+    quorum.run(server = "netius")

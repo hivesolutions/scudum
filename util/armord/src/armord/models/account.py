@@ -44,7 +44,7 @@ import datetime
 
 import quorum
 
-import base
+from armord.models import base
 
 PASSWORD_SALT = "pingu"
 """ The salt suffix to be used during the encoding
