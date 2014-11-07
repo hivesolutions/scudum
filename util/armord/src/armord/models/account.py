@@ -46,7 +46,7 @@ import quorum
 
 from armord.models import base
 
-PASSWORD_SALT = "pingu"
+PASSWORD_SALT = "armor"
 """ The salt suffix to be used during the encoding
 of the password into an hash value """
 
@@ -274,7 +274,7 @@ class Account(base.Base):
         # the email address associated with the current account
         quorum.send_mail_a(
             subject = "Welcome to Armor, please confirm you email",
-            sender = "Pingu Mailer <mailer@armorapp.com>",
+            sender = "Armor Mailer <mailer@armorapp.com>",
             receivers = ["%s <%s>" % (self.username, self.email)],
             plain = "email/confirm.txt.tpl",
             rich = "email/confirm.html.tpl",
