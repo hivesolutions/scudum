@@ -1,6 +1,6 @@
 <!-- css inclusion -->
 <link rel="stylesheet" type="text/css" href="//libs.bemisc.com/uxf/css/ux-min.css" />
-<link rel="stylesheet" type="text/css" href="//libs.bemisc.com/layout/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="//libs.bemisc.com/layout/css/layout.modern.css" />
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/layout.css') }}" />
 
 <!-- favicon inclusion -->

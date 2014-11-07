@@ -40,8 +40,9 @@ __license__ = "GNU General Public License (GPL), Version 3"
 import flask #@UnusedImport
 import datetime
 
-import models
 import quorum
+
+import armord.models
 
 MONGO_DATABASE = "armor"
 """ The default database to be used for the connection with
@@ -52,7 +53,7 @@ app = quorum.load(
     redis_session = True,
     mongo_database = MONGO_DATABASE,
     logger = "armord.debug",
-    models = models,
+    models = armord.models,
     PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
 )
 

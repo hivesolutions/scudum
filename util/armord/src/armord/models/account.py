@@ -112,7 +112,7 @@ class Account(base.Base):
 
         # generates a new instance identifier for the instance that is going
         # to be created with the new root account to be saved
-        instance_id = hashlib.sha1(str(uuid.uuid4())).hexdigest(),
+        instance_id = hashlib.sha1(quorum.legacy.bytes(str(uuid.uuid4()))).hexdigest()
 
         # creates the structure to be used as the root account description
         # using the default value and then stores the account as it's going
@@ -184,7 +184,7 @@ class Account(base.Base):
 
         # creates the sha1 hash value for the password and verifies that
         # the provided password is the expected
-        password_sha1 = hashlib.sha1(password + PASSWORD_SALT).hexdigest()
+        password_sha1 = hashlib.sha1(quorum.legacy.bytes(password + PASSWORD_SALT)).hexdigest()
         _password = account.password
         if not password_sha1 == _password:
             raise quorum.OperationalError(
@@ -227,7 +227,7 @@ class Account(base.Base):
         model["enabled_l"] = enabled and "enabled" or "disabled"
         model["email_s"] = email and email.replace("@", " at ").replace(".", " dot ")
         model["last_login_l"] = last_login_string
-        model["email_md5"] = email and hashlib.md5(email).hexdigest()
+        model["email_md5"] = email and hashlib.md5(quorum.legacy.bytes(email)).hexdigest()
 
     def pre_create(self):
         base.Base.pre_create(self)
@@ -235,14 +235,14 @@ class Account(base.Base):
         # "encrypts" the password into the target format defined
         # by the salt and the sha1 hash function and then creates
         # the api key for the current account
-        self.password = hashlib.sha1(self.password + PASSWORD_SALT).hexdigest()
-        self.api_key = hashlib.sha1(str(uuid.uuid4())).hexdigest()
-        self.confirmation = hashlib.sha1(str(uuid.uuid4())).hexdigest()
+        self.password = hashlib.sha1(quorum.legacy.bytes(self.password + PASSWORD_SALT)).hexdigest()
+        self.api_key = hashlib.sha1(quorum.legacy.bytes(str(uuid.uuid4()))).hexdigest()
+        self.confirmation = hashlib.sha1(quorum.legacy.bytes(str(uuid.uuid4()))).hexdigest()
 
         # updates the various default values for the current account
         # user to be created
         self.enabled = False
-        self.instance_id = hashlib.sha1(str(uuid.uuid4())).hexdigest()
+        self.instance_id = hashlib.sha1(quorum.legacy.bytes(str(uuid.uuid4()))).hexdigest()
         self.login_count = 0
         self.last_login = None
         if not hasattr(self, "type") or not self.type: self.type = USER_TYPE
