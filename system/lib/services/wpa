@@ -21,7 +21,7 @@ case "$2" in
         fi
 
         if [ ! -e ${CFGFILE} ]; then
-            if [ "$STRICT == "1" ]; then
+            if [ "$STRICT" == "1" ]; then
                 log_info_msg "\n wpa_supplicant configuration file ${CFGFILE} not present"
                 log_failure_msg2
                 exit 1
