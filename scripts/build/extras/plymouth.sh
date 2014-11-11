@@ -19,7 +19,7 @@ cd plymouth-$VERSION
     --disable-silent-rules\
     --disable-gdm-transition\
     --enable-pango\
-	--enable-static\
+    --enable-static\
     --enable-tracing\
     --enable-gtk\
     --enable-drm\

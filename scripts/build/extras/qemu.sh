@@ -14,5 +14,5 @@ rm -rf qemu-$VERSION && tar -jxf "qemu-$VERSION.tar.bz2"
 rm -f "qemu-$VERSION.tar.bz2"
 cd qemu-$VERSION
 
-./configure --prefix=$PREFIX --target-list=$TARGET_LIST --sysconfdir=/etc 
+./configure --prefix=$PREFIX --target-list=$TARGET_LIST --sysconfdir=/etc
 make && make install
