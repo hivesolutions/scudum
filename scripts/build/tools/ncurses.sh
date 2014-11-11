@@ -8,6 +8,6 @@ rm -f "ncurses-$VERSION.tar.gz"
 cd ncurses-$VERSION
 
 ./configure --prefix=$PREFIX --with-shared\
-    --without-debug --without-ada --enable-overwrite
+    --without-debug --without-ada --enable-overwrite --enable-widec
 
 make && make install
