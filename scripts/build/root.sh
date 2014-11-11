@@ -31,7 +31,6 @@ source $DIR/base/config.tools.sh
 # so that no issues occur in the instalation of the various
 # parts of the root infra-structure and system
 unset VERSION
-unset LD_LIBRARY_PATH
 unset LIBRARY_PATH
 unset C_INCLUDE_PATH
 unset CPLUS_INCLUDE_PATH
