@@ -35,6 +35,8 @@ unset LD_LIBRARY_PATH
 unset LIBRARY_PATH
 unset C_INCLUDE_PATH
 unset CPLUS_INCLUDE_PATH
+unset MANPATH
+unset PKG_CONFIG_PATH
 
 # changes the default remembering option and the
 # creation mask for the current user
