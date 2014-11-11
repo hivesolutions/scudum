@@ -14,6 +14,8 @@ mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
+sync
+
 if [ -d $SCUDUM/root ]; then
     cd $SCUDUM/root
     find . ! -name ".bashrc" -delete

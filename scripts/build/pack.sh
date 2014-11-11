@@ -28,6 +28,8 @@ mountpoint -q $SCUDUM/dev/shm && umount $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
 
+sync
+
 cd $SCUDUM/root
 find . -delete
 
