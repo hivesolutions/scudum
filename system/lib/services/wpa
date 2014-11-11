@@ -3,6 +3,7 @@
 . /lib/lsb/init-functions
 . $IFCONFIG
 
+STRICT=0
 CFGFILE=/etc/sysconfig/wpa_supplicant-${IFCONFIG##*.}.conf
 PIDFILE=/run/wpa_supplicant/$1.pid
 CONTROL_IFACE=/run/wpa_supplicant/$1
@@ -20,9 +21,13 @@ case "$2" in
         fi
 
         if [ ! -e ${CFGFILE} ]; then
-            log_info_msg "\n wpa_supplicant configuration file ${CFGFILE} not present"
-            log_failure_msg2
-            exit 1
+            if [ "$STRICT == "1" ]; then
+                log_info_msg "\n wpa_supplicant configuration file ${CFGFILE} not present"
+                log_failure_msg2
+                exit 1
+            else
+                exit 0
+            fi
         fi
 
         log_info_msg "\n Starting wpa_supplicant on the $1 interface..."
