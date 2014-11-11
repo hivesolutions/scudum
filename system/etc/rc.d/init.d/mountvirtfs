@@ -47,7 +47,7 @@ case "${1}" in
         cp -a /lib/udev/devices/* /dev
 
         ln -sfn /run/shm /dev/shm
-      
+
         (exit ${failed})
         evaluate_retval
         exit $failed
