@@ -7,6 +7,8 @@ set -e +h
 
 source /tools/repo/scripts/build/base/config.sh
 
+unset VERSION
+
 /tools/repo/scripts/build/system/tree.sh
 
 rm -rf sources && mkdir sources
