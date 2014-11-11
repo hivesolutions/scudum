@@ -27,10 +27,14 @@ $DIR/base/cleanup.sh
 source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
-# removes the version variable from the current environment
+# removes a series of variables from the current environment
 # so that no issues occur in the instalation of the various
 # parts of the root infra-structure and system
 unset VERSION
+unset LD_LIBRARY_PATH
+unset LIBRARY_PATH
+unset C_INCLUDE_PATH
+unset CPLUS_INCLUDE_PATH
 
 # changes the default remembering option and the
 # creation mask for the current user
