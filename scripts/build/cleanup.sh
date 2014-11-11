@@ -13,11 +13,15 @@ mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
-cd $SCUDUM/root
-find . ! -name ".bashrc" -delete
+if [ -d $SCUDUM/root ]; then
+    cd $SCUDUM/root
+    find . ! -name ".bashrc" -delete
+fi
 
-cd $SCUDUM/tmp
-find . -delete
+if [ -d $SCUDUM/tmp ]; then
+    cd $SCUDUM/tmp
+    find . -delete
+fi
 
 rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
