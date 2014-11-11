@@ -27,6 +27,11 @@ $DIR/base/cleanup.sh
 source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
+# removes the version variable from the current environment
+# so that no issues occur in the instalation of the various
+# parts of the root infra-structure and system
+unset VERSION
+
 # changes the default remembering option and the
 # creation mask for the current user
 set +h
