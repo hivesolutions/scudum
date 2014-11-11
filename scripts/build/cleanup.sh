@@ -7,6 +7,11 @@ set -e +h
 
 source $DIR/base/config.sh
 
+mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
+mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
+mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
+mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
+
 cd $SCUDUM/root
 find . ! -name ".bashrc" -delete
 
