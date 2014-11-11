@@ -23,6 +23,7 @@ rm -rf $SCUDUM/sources
 
 mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
+mountpoint -q $SCUDUM/run/shm && umount $SCUDUM/run/shm
 mountpoint -q $SCUDUM/dev/shm && umount $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev

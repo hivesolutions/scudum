@@ -12,6 +12,7 @@ fi
 
 sync
 
+mountpoint -q $SCUDUM/run/shm && umount -v $FLAGS $SCUDUM/run/shm
 mountpoint -q $SCUDUM/dev/shm && umount -v $FLAGS $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/sys && umount -v $FLAGS $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $FLAGS $SCUDUM/proc
