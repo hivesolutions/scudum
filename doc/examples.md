@@ -2,14 +2,22 @@
 
 ## Building
 
-#### Mounting the repository share
+### Basics
+
+##### Mounting the repository share
 
     scudum mount
 
-#### Building and deploying to repository
+##### Building and deploying to repository
 
     DEPLOY=1 scudum make.usb
 
-#### Using the basic kernel version
+##### Using the basic kernel version
 
     KVARIANT=basic scudum make.usb
+
+### Kernel
+
+##### Build the basic version of the kernel and deploy
+
+    VARIANT=basic DEPLOY=1 kernel.build
