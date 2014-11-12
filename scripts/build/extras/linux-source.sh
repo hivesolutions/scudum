@@ -7,4 +7,4 @@ rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 
 mkdir -p $PREFIX/src
-mv linux-$VERSION $PREFIX/src/$(uname -r)
+mv linux-$VERSION $PREFIX/src/linux

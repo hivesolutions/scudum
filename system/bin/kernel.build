@@ -67,7 +67,8 @@ make modules_install INSTALL_MOD_PATH=modules_install
 release=$(cat include/config/kernel.release)
 
 cd modules_install/lib
-rm -f modules/$release/source
+rm -f modules/$release/build && rm -f modules/$release/source
+ln -s /opt/src/linux modules/$release/build
 tar -zcvf modules.tar.gz modules
 mv modules.tar.gz ../..
 cd ../..
