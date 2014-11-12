@@ -10,7 +10,7 @@ cd linux-$VERSION
 make mrproper
 
 cp /boot/config .config
-make modules_install INSTALL_MOD_PATH=modules_install
+make && make modules_install INSTALL_MOD_PATH=modules_install
 
 cd ..
 
