@@ -10,16 +10,12 @@ cd inetutils-$VERSION
 echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h 
 
 ./configure\
-    --prefix=/usr\
-    --libexecdir=/usr/sbin\
+    --prefix=$PREFIX\
+    --libexecdir=$PREFIX/sbin\
     --localstatedir=/var\
     --disable-logger\
     --disable-syslogd\
     --disable-whois\
     --disable-servers
 
-make
-test $TEST && make check
-make install
-mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
-mv -v /usr/bin/ifconfig /sbin
+make && make install
