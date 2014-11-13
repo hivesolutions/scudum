@@ -44,7 +44,7 @@ import datetime
 
 import quorum
 
-from armord.models import base
+from . import base
 
 PASSWORD_SALT = "armor"
 """ The salt suffix to be used during the encoding
