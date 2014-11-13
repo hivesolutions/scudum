@@ -7,7 +7,7 @@ rm -rf inetutils-$VERSION && tar -zxf "inetutils-$VERSION.tar.gz"
 rm -f "inetutils-$VERSION.tar.gz"
 cd inetutils-$VERSION
 
-echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h 
+echo "#define PATH_PROCNET_DEV \"/proc/net/dev\"" >> ifconfig/system/linux.h 
 
 ./configure\
     --prefix=$PREFIX\
