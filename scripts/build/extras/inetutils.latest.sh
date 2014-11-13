@@ -1,8 +1,12 @@
 VERSION=${VERSION-1.9.2}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
+source $DIR/common.sh
+
+wget "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
 rm -rf inetutils-$VERSION && tar -zxf "inetutils-$VERSION.tar.gz"
 rm -f "inetutils-$VERSION.tar.gz"
 cd inetutils-$VERSION
