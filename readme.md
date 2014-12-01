@@ -39,7 +39,7 @@ note that the deployment is going to use the `/mnt/builds/scudum` path by defaul
 using the `TARGET` variable:
 
     scudum deploy
-    
+
 To install the latest available Scudum root/base/development environment a connection to the Internet must
 exist and the following command should be executed:
 
@@ -53,7 +53,7 @@ To create an ISO image of the Scudum distribution running using the [ISOLINUX](h
 loader use the following command taking note that the disk contents should be located at `/scudum`:
 
     scudum make.iso
-    
+
 To crate a filesystem image able to be used inside a USB pend drive (configured with SYSLINUX) use the folowing
 command:
 
