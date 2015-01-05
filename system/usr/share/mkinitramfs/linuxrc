@@ -29,7 +29,7 @@ mounted=0
 # prints a message marking the start of the linux
 # so that the end-user may know that interaction
 # is now enable (at least using keyboard)
-echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2014"
+echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
 
 # /proc is needed to find the cd
 mount -t proc none /proc
