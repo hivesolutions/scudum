@@ -99,7 +99,7 @@ To install a previously build kernel image (and modules) avoiding the rebuilding
 one should be connected with the target repository and the issue:
 
     VARIANT=default VERSION=basic kernel.install
-    
+
 ### Examples
 
 To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
