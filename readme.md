@@ -106,6 +106,7 @@ To build a DVD ISO image of the latest Scudum system image, the basic kernel ima
 and then deploy it to the repository one should issue.
 
     scu install scudum-tools
+    scudum install
     KVARIANT=basic DEPLOY=1 scudum make.iso
 
 To build a specialized version of Scudum (eg: docker) one should first clone the repository
@@ -114,6 +115,7 @@ and then start building the image under the proper context directory.
     git clone --depth 1 https://github.com/hivesolutions/scudum.git
     cd scudum/examples/docker
     scu install scudum-tools
+    scudum install
     KVARIANT=basic DEPLOY=1 scudum make.iso
     cd ../../.. && rm -rf scudum
 
