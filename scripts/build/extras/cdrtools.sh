@@ -12,6 +12,7 @@ rm -rf cdrtools-$VERSION_L && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION_L
 
+make clean GMAKE_NOWARN=true
 make GMAKE_NOWARN=true && make install INS_BASE=$PREFIX GMAKE_NOWARN=true
 
 ln -s ../schily/bin/mkisofs $PREFIX/bin/mkisofs
