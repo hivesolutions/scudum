@@ -8,20 +8,21 @@ function echoi() {
 
 # updates the current path variable so that the proper
 # relations are used and the executables found
-PATH=/bin:/usr/bin:/sbin:/usr/sbin
-export PATH
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+# sets the global constant values that are used to
+# control the behavior of the loader, note that these
+# values are exported so that they may consitional some
+# of the operations latter on the boot process
+export USE_RAMFS=0
+export USE_SWAP=0
+export USE_OVERLAYFS=1
 
 # sets the name to be used in the finding of the device
 # that contains the storage of information, note that an
 # extra variable is set with the uppercase version
 DEVICE=Scudum
 DEVICE_U=SCUDUM
-
-# sets the global constant values that are used to
-# control the behavior of the loader
-USE_RAMFS=0
-USE_SWAP=0
-USE_OVERLAYFS=1
 
 # sets the initial values for the various variables
 # to be used in the loader
