@@ -27,10 +27,11 @@ USE_OVERLAYFS=1
 # to be used in the loader
 mounted=0
 
-# sets the default root directory for which the final
-# pivot operation will be performed, may change due
-# to the usage of the overlayfs strategy
+# sets the default root and mount directories for
+# which the final pivot operation will be performed,
+# may change due to the usage of the overlayfs strategy
 rootdir=/ram
+mountdir=/ram
 
 # prints a message marking the start of the linux
 # so that the end-user may know that interaction
@@ -64,61 +65,6 @@ fi
 cd /ram
 mkdir origin
 
-# prints a message indicating the operation of finding
-# the origin device for loading
-echoi "Finding origin device location..."
-
-# iterates over "some time" to try to find the proper
-# device for the scudum, in a normal situation this
-# operation should succeed
-for i in {1..5}; do
-    # retreives the name of the device that is named
-    # scudum (this is considered) the primary mounting
-    # strategy for the scudum origin
-    drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
-    if [ "$drive" != "" ]; then
-        echoi "Origin device located at $drive"
-        mount -o ro -n $drive /ram/origin
-        mounted=1
-        break
-    fi
-    echoi "Trying again in 3 seconds..."
-    sleep 3
-done
-
-# uses the current cdrom to mount the origin for
-# the system loading, the cdrom is considered the
-# first fallback for the process, then after that
-# tries to mount all of the scsi discs available
-if [ "$mounted" == "0" ]; then
-    echoi "Origin device not located using fallback"
-    mount -t iso9660 -o ro -n /dev/sr0 /ram/origin
-    if [ "$?" == "0" ]; then mounted=1; fi
-    for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
-        if [ "$mounted" == "1" ]; then break; fi
-        mount -o ro -n $drive /ram/origin
-        if [ "$?" == "0" ]; then mounted=1; fi
-    done
-fi
-
-# verifies if the squashfs file exists for the current
-# ofigin media and in case it does mounts it
-if [ -f /ram/origin/scudum.sqfs ]; then
-    SQUASH=1
-    echoi "Mounting squashfs based file (scudum.sqfs) as source"
-    mkdir -p source
-    mount -o loop -t squashfs /ram/origin/scudum.sqfs /ram/source
-elif [ -f /ram/origin/scudum.sqf ]; then
-    SQUASH=1
-    echoi "Mounting squashfs based file (scudum.sqf) as source"
-    mkdir -p source
-    mount -o loop -t squashfs /ram/origin/scudum.sqf /ram/source
-else
-    SQUASH=0
-    echoi "Linking origin as source (plain structure)"
-    ln -s origin /ram/source
-fi
-
 # creates the various directories for which the special
 # file systems will be mounted and mounts the proc fs
 mkdir -p run sys proc
@@ -138,7 +84,63 @@ fi
 if [ "$USE_OVERLAYFS" == "1" ]; then
     echoi "OverlayFS mode is enabled (read & write)"
     rootdir=/overlay
+    mountdir=
     mkdir -p $rootdir
+fi
+
+# prints a message indicating the operation of finding
+# the origin device for loading
+echoi "Finding origin device location..."
+
+# iterates over "some time" to try to find the proper
+# device for the scudum, in a normal situation this
+# operation should succeed
+for i in {1..5}; do
+    # retreives the name of the device that is named
+    # scudum (this is considered) the primary mounting
+    # strategy for the scudum origin
+    drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
+    if [ "$drive" != "" ]; then
+        echoi "Origin device located at $drive"
+        mount -o ro -n $drive $mountdir/origin
+        mounted=1
+        break
+    fi
+    echoi "Trying again in 3 seconds..."
+    sleep 3
+done
+
+# uses the current cdrom to mount the origin for
+# the system loading, the cdrom is considered the
+# first fallback for the process, then after that
+# tries to mount all of the scsi discs available
+if [ "$mounted" == "0" ]; then
+    echoi "Origin device not located using fallback"
+    mount -t iso9660 -o ro -n /dev/sr0 $mountdir/origin
+    if [ "$?" == "0" ]; then mounted=1; fi
+    for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
+        if [ "$mounted" == "1" ]; then break; fi
+        mount -o ro -n $drive $mountdir/origin
+        if [ "$?" == "0" ]; then mounted=1; fi
+    done
+fi
+
+# verifies if the squashfs file exists for the current
+# ofigin media and in case it does mounts it
+if [ -f $mountdir/origin/scudum.sqfs ]; then
+    SQUASH=1
+    echoi "Mounting squashfs based file (scudum.sqfs) as source"
+    mkdir -p source
+    mount -o loop -t squashfs $mountdir/origin/scudum.sqfs $mountdir/source
+elif [ -f $mountdir/origin/scudum.sqf ]; then
+    SQUASH=1
+    echoi "Mounting squashfs based file (scudum.sqf) as source"
+    mkdir -p source
+    mount -o loop -t squashfs $mountdir/origin/scudum.sqf $mountdir/source
+else
+    SQUASH=0
+    echoi "Linking origin as source (plain structure)"
+    ln -s origin $mountdir/source
 fi
 
 # verifies if the overlay fs mode is active and if that's not
@@ -184,33 +186,30 @@ mkdir -p lib lock log mail run spool tmp opt cache lib/misc\
     lib/sshd lib/dhclient local
 touch run/sshd.pid
 
-# changes the current path to the root of the temporary
-# ram device in order to decompress the various files
-# that represent the directories that are going to be
-# set as writable (and pre populated)
-cd /ram
-echoi "Unpacking tar.gz files for /root /dev /etc"
-
-# these are the only writeable directories
-# and are pre-populates with he data contained
-# in the provided compressed files
-tar -zxf /ram/source/images/root.tar.gz
-tar -zxf /ram/source/images/dev.tar.gz
-tar -zxf /ram/source/images/etc.tar.gz
-
 # in case the overlay fs mode is enabled must mount
 # the final overlay file system using the source squash
 # file system for read and the ram based one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
     mkdir -p /ram/work
-    mount -o lowerdir=/ram/source,upperdir=/ram,workdir=/ram/work -t overlay overlayfs /overlay
+    mount -o lowerdir=/source,upperdir=/ram,workdir=/ram/work -t overlay overlayfs /overlay
 fi
 
-# chantes the current deirectory to the directory that
-# will be used as the new root directory and creates
-# the (fallback) directory to hold the reference to the
-# orifinal initrd directory (after pivot)
+# changes the current path to the root of the base/target
+# directory order to decompress the various files that
+# represent the directories that are going to be set
+# as writable (and pre populated)
 cd $rootdir
+echoi "Unpacking tar.gz files for /root /dev /etc to $rootdir"
+
+# these are the only writeable directories
+# and are pre-populates with he data contained
+# in the provided compressed files
+tar -zxf $mountdir/source/images/root.tar.gz
+tar -zxf $mountdir/source/images/dev.tar.gz
+tar -zxf $mountdir/source/images/etc.tar.gz
+
+# creates the (fallback) directory to hold the reference
+# to the original initrd directory (after pivot)
 mkdir -p initrd
 
 # runs the pivot operation setting the current directory
