@@ -199,7 +199,7 @@ echoi "Preparing file systems for pivot"
 # finish off setting up, it's going to create the complete
 # set of directories used for the system, and then touch
 # some of the file as requested
-mkdir -p pst home disk tmp mnt var
+mkdir -p pst opt home disk tmp mnt var
 pushd var
 mkdir -p cache lib local log mail opt spool tmp\
     lib/misc lib/sshd lib/dhclient 
