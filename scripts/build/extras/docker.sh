@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "iptables"
 
-wget "https://get.docker.io/builds/Linux/x86_64/docker-$VERSION"
+wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION"
 
 chmod +x docker-$VERSION
 mkdir -pv $PREFIX/bin
