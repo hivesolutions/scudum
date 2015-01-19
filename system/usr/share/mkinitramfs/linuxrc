@@ -200,13 +200,12 @@ echoi "Preparing file systems for pivot"
 # set of directories used for the system, and then touch
 # some of the file as requested
 mkdir -p pst opt home disk tmp mnt var
-pushd var
-mkdir -p cache lib local log mail opt spool tmp\
+cd var
+mkdir -p cache lib local log mail opt run spool tmp\
     lib/misc lib/sshd lib/dhclient 
-test ! -e lock && mkdir -p lock
-test ! -e run && mkdir -p run
+test "$USE_OVERLAYFS" == "0" && mkdir -p lock
 touch run/sshd.pid
-popd
+cd ..
 
 # displays a message about the unpacking operation of the
 # various compressed directories that will be used as root
