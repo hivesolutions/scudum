@@ -111,10 +111,11 @@ and then deploy it to the repository one should issue.
 To build a specialized version of Scudum (eg: docker) one should first clone the repository
 and then start building the image under the proper context directory.
 
-    git clone --depth 1 git@github.com:hivesolutions/scudum.git
+    git clone --depth 1 https://github.com/hivesolutions/scudum.git
     cd scudum/examples/docker
     scu install scudum-tools
     KVARIANT=basic DEPLOY=1 scudum make.iso
+    cd ../../.. && rm -rf scudum
 
 ## Armor
 
