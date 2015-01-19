@@ -64,7 +64,7 @@ fi
 # moves the current directory to the ram one
 # and creates the cdrom mount point
 cd /ram
-mkdir origin
+mkdir -p origin
 
 # tries to determine if the overlay fs infra-structure is
 # available under the current kernel implementation, in
