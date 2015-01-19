@@ -222,7 +222,7 @@ tar -zxf $mountdir/source/images/etc.tar.gz
 mkdir -p initrd
 
 # runs the pivot operation setting the current directory
-# as the root for execution (the ram device becomes the root)
+# as the root for execution (the root directory becomes the root)
 pivot_root . initrd
 
 # changes to new root and swap to new root's devices
