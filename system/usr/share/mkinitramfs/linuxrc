@@ -136,7 +136,7 @@ fi
 # the target (unified) directory and change the target
 # root directory to it (print and info message)
 if [ "$USE_OVERLAYFS" == "1" ]; then
-    echoi "OverlayFS mode is enabled (read & write)..."
+    echoi "OverlayFS mode is enabled (read & write)"
     rootdir=/overlay
     mkdir -p $rootdir
 fi
