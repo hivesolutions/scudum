@@ -3,8 +3,6 @@
 
 NAME=${NAME-scudum}
 DOCKER_USER=${DOCKER_USER-hivesolutions}
-BASE=${BASE-/mnt/builds}
-TARGET=${TARGET-$BASE/$NAME/iso}
 LOADER=${LOADER-isolinux}
 SCHEMA=${SCHEMA-transient}
 KVARIANT=${KVARIANT-default}
