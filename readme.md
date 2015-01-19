@@ -105,8 +105,8 @@ one should be connected with the target repository and the issue:
 To build a DVD ISO image of the latest scudum system image, the basic kernel image and modules
 and then deploy it to the repository one should issue.
 
-scu install scudum-tools
-KVARIANT=basic DEPLOY=1 scudum make.iso
+    scu install scudum-tools
+    KVARIANT=basic DEPLOY=1 scudum make.iso
 
 ## Armor
 
