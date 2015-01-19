@@ -143,9 +143,26 @@ else
     ln -s origin $mountdir/source
 fi
 
-# changes the current directory to the directory where the
-# file system will be initially populated
-cd /ram
+# set up some swap space in case the flag that controls
+# its usage is currently set, otherwise ignores it
+if [ "$USE_SWAP" == "1" ]; then
+    echoi "Creating the swap area (for cache)"
+    dd if=/dev/zero of=swapspace bs=1k count=32768
+    mkswap swapspace
+fi
+
+# in case the overlay fs mode is enabled must mount
+# the final overlay file system using the source squash
+# file system for read and the ram based one for write
+if [ "$USE_OVERLAYFS" == "1" ]; then
+    mkdir -p /ram/root
+    mkdir -p /ram/work
+    mount -o lowerdir=/source,upperdir=/ram/root,workdir=/ram/work -t overlay overlayfs /overlay
+fi
+
+# changes the current path to the root of the base/target
+# directory to start building the system's structure
+cd $rootdir
 
 # creates the various directories for which the special
 # file systems will be mounted and mounts them so that
@@ -174,14 +191,6 @@ fi
 # for libraries and the more generic one (legacy compatibility)
 ln -s lib lib64
 
-# set up some swap space in case the flag that controls
-# its usage is currently set, otherwise ignores it
-if [ "$USE_SWAP" == "1" ]; then
-    echoi "Creating the swap area (for cache)"
-    dd if=/dev/zero of=swapspace bs=1k count=32768
-    mkswap swapspace
-fi
-
 # prints a message about the starting of the creation
 # of the various directories in preparation for the pivot
 # operation that is going to be performed
@@ -196,19 +205,9 @@ mkdir -p lib lock log mail run spool tmp opt cache lib/misc\
     lib/sshd lib/dhclient local
 touch run/sshd.pid
 
-# in case the overlay fs mode is enabled must mount
-# the final overlay file system using the source squash
-# file system for read and the ram based one for write
-if [ "$USE_OVERLAYFS" == "1" ]; then
-    mkdir -p /work
-    mount -o lowerdir=/source,upperdir=/ram,workdir=/work -t overlay overlayfs /overlay
-fi
-
-# changes the current path to the root of the base/target
-# directory order to decompress the various files that
-# represent the directories that are going to be set
-# as writable (and pre populated)
-cd $rootdir
+# displays a message about the unpacking operation of the
+# various compressed directories that will be used as root
+# and entrypoints for the system's configuration/state
 echoi "Unpacking tar.gz files for /root /dev /etc to $rootdir"
 
 # these are the only writeable directories
