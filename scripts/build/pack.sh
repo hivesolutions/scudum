@@ -27,6 +27,7 @@ mountpoint -q $SCUDUM/run/shm && umount $SCUDUM/run/shm
 mountpoint -q $SCUDUM/dev/shm && umount $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount $SCUDUM/dev
+mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 
 sync
 
