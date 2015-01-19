@@ -202,7 +202,8 @@ tar -zxf /ram/source/images/etc.tar.gz
 # the final overlay file system using the source squash
 # file system for read and the ram based one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
-    mount -o lowerdir=/ram/source,upperdir=/ram,workdir=/overlay -t overlay overlayfs /overlay
+    mkdir -p /ram/work
+    mount -o lowerdir=/ram/source,upperdir=/ram,workdir=/ram/work -t overlay overlayfs /overlay
 fi
 
 # chantes the current deirectory to the directory that
