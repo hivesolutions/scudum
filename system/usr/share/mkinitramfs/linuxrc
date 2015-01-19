@@ -65,16 +65,10 @@ fi
 cd /ram
 mkdir origin
 
-# creates the various directories for which the special
-# file systems will be mounted and mounts them so that
-# some special operations are ready to be used/processed
-mkdir -p run sys proc
-mount -t proc none proc
-
 # tries to determine if the overlay fs infra-structure is
 # available under the current kernel implementation, in
 # case no support is available the overlay fs mode is disabled
-result=$(cat proc/filesystems | grep overlay)
+result=$(cat /proc/filesystems | grep overlay)
 if [ "$result" == "" ]; then
     USE_OVERLAYFS=0
 fi
@@ -143,6 +137,12 @@ else
     echoi "Linking origin as source (plain structure)"
     ln -s origin $mountdir/source
 fi
+
+# creates the various directories for which the special
+# file systems will be mounted and mounts them so that
+# some special operations are ready to be used/processed
+mkdir -p run sys proc
+mount -t proc none proc
 
 # verifies if the overlay fs mode is active and if that's not
 # the case  starts the process of linking directories between
