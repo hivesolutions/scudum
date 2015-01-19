@@ -80,8 +80,12 @@ if [ "$USE_OVERLAYFS" == "1" ]; then
 fi
 
 # moves the current directory to the mount (target) one
-# and creates the (origin) cdrom mount point
-cd $mountdir
+# and creates the (origin) cdrom mount point, note that
+# in case the mount directory is the root one no changing
+# of directory occurs as it's not required (creates issues)
+if [ "$mountdir" != "" ]; then
+    cd $mountdir
+fi
 mkdir -p origin
 
 # prints a message indicating the operation of finding
@@ -196,8 +200,8 @@ touch run/sshd.pid
 # the final overlay file system using the source squash
 # file system for read and the ram based one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
-    mkdir -p /ram/work
-    mount -o lowerdir=/source,upperdir=/ram,workdir=/ram/work -t overlay overlayfs /overlay
+    mkdir -p /work
+    mount -o lowerdir=/source,upperdir=/ram,workdir=/work -t overlay overlayfs /overlay
 fi
 
 # changes the current path to the root of the base/target
