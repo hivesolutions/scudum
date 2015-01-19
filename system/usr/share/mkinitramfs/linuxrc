@@ -204,7 +204,7 @@ cd var
 mkdir -p lib lock log mail run spool tmp opt cache lib/misc\
     lib/sshd lib/dhclient local
 touch run/sshd.pid
-cd $rootdir
+cd ..
 
 # displays a message about the unpacking operation of the
 # various compressed directories that will be used as root
