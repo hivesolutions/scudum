@@ -223,7 +223,7 @@ tar -zxf $mountdir/source/images/etc.tar.gz
 # verifies that the overlay fs feature is active and
 # touches the proper configuration file so that latter
 # on the boot process some actions may be taken
-test "$USE_OVERLAYFS" == "1" && touch /etc/scudum/OVERLAYFS
+test "$USE_OVERLAYFS" == "1" && touch etc/scudum/OVERLAYFS
 
 # creates the (fallback) directory to hold the reference
 # to the original initrd directory (after pivot)
