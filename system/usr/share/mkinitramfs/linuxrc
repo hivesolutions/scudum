@@ -82,6 +82,8 @@ if [ "$USE_OVERLAYFS" == "1" ]; then
     rootdir=/overlay
     mountdir=
     mkdir -p $rootdir
+    mkdir -p $mountdir/origin
+    mkdir -p $mountdir/source
 fi
 
 # prints a message indicating the operation of finding
