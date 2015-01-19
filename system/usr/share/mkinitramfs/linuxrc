@@ -61,11 +61,6 @@ else
     mount -t tmpfs tmpfs /ram
 fi
 
-# moves the current directory to the ram one
-# and creates the cdrom mount point
-cd /ram
-mkdir -p origin
-
 # tries to determine if the overlay fs infra-structure is
 # available under the current kernel implementation, in
 # case no support is available the overlay fs mode is disabled
@@ -82,9 +77,12 @@ if [ "$USE_OVERLAYFS" == "1" ]; then
     rootdir=/overlay
     mountdir=
     mkdir -p $rootdir
-    mkdir -p $mountdir/origin
-    mkdir -p $mountdir/source
 fi
+
+# moves the current directory to the mount (target) one
+# and creates the (origin) cdrom mount point
+cd $mountdir
+mkdir -p origin
 
 # prints a message indicating the operation of finding
 # the origin device for loading
@@ -140,6 +138,10 @@ else
     echoi "Linking origin as source (plain structure)"
     ln -s origin $mountdir/source
 fi
+
+# changes the current directory to the directory where the
+# file system will be initially populated
+cd /ram
 
 # creates the various directories for which the special
 # file systems will be mounted and mounts them so that
