@@ -128,7 +128,7 @@ mount -t proc none proc
 # available under the current kernel implementation, in
 # case no support is available the overlay fs mode is disabled
 result=$(cat proc/filesystems | grep overlay)
-if [ $result == "" ]; then
+if [ "$result" == "" ]; then
     USE_OVERLAYFS=0
 fi
 
