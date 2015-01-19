@@ -27,7 +27,7 @@ the next section (examples) use:
 
     make install
 
-### Examples
+### Reference
 
 Building the Scudum root/base/development environment, a (very) long process of compilation of both the bootstrap
 base tools and the base system infra-structure is required, to start the process use:
@@ -99,6 +99,22 @@ To install a previously build kernel image (and modules) avoiding the rebuilding
 one should be connected with the target repository and the issue:
 
     VARIANT=default VERSION=basic kernel.install
+    
+### Examples
+
+To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
+and then deploy it to the repository one should issue.
+
+    scu install scudum-tools
+    KVARIANT=basic DEPLOY=1 scudum make.iso
+
+To build a specialized version of Scudum (eg: docker) one should first clone the repository
+and then start building the image under the proper context directory.
+
+    git clone --depth 1 git@github.com:hivesolutions/scudum.git
+    cd scudum/examples/docker
+    scu install scudum-tools
+    KVARIANT=basic DEPLOY=1 scudum make.iso
 
 ## Armor
 
