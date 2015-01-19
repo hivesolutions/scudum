@@ -119,6 +119,12 @@ and then start building the image under the proper context directory.
     KVARIANT=basic DEPLOY=1 scudum make.iso
     cd ../../.. && rm -rf scudum
 
+To safely build the latest kernel version and deploy it use:
+
+    scu install scudum-system
+    hash -r
+    MINOR=3.18.3 VARIANT=basic DEPLOY=1 kernel.build
+
 ## Armor
 
 The armor client is the responsible for the installation of the various elements associated
