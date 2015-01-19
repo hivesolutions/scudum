@@ -102,9 +102,17 @@ one should be connected with the target repository and the issue:
     
 ### Examples
 
-To build a DVD ISO image of the latest scudum system image, the basic kernel image and modules
+To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
 and then deploy it to the repository one should issue.
 
+    scu install scudum-tools
+    KVARIANT=basic DEPLOY=1 scudum make.iso
+
+To build a specialized version of Scudum (eg: docker) one should first clone the repository
+and then start building the image under the proper context directory.
+
+    git clone --depth 1 git@github.com:hivesolutions/scudum.git
+    cd scudum/examples/docker
     scu install scudum-tools
     KVARIANT=basic DEPLOY=1 scudum make.iso
 
