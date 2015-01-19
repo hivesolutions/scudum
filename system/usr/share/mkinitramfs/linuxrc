@@ -200,11 +200,13 @@ echoi "Preparing file systems for pivot"
 # set of directories used for the system, and then touch
 # some of the file as requested
 mkdir -p pst home disk tmp mnt var
-cd var
-mkdir -p lib lock log mail run spool tmp opt cache lib/misc\
-    lib/sshd lib/dhclient local
+pushd var
+mkdir -p cache lib local log mail opt spool tmp\
+    lib/misc lib/sshd lib/dhclient 
+test ! -e lock && mkdir -p lock
+test ! -e run && mkdir -p run
 touch run/sshd.pid
-cd ..
+popd
 
 # displays a message about the unpacking operation of the
 # various compressed directories that will be used as root
