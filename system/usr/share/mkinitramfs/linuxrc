@@ -38,7 +38,8 @@ mountdir=/ram
 # is now enable (at least using keyboard)
 echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
 
-# /proc is needed to find the cd
+# mount the proc filesystem as it's required for
+# some of the operations in the linuxrc
 mount -t proc none /proc
 
 # creates the directory to be used as the mount point
