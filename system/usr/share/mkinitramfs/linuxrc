@@ -21,10 +21,16 @@ DEVICE_U=SCUDUM
 # control the behavior of the loader
 USE_RAMFS=0
 USE_SWAP=0
+USE_OVERLAYFS=1
 
 # sets the initial values for the various variables
 # to be used in the loader
 mounted=0
+
+# sets the default root directory for which the final
+# pivot operation will be performed, may change due
+# to the usage of the overlayfs strategy
+rootdir=/ram
 
 # prints a message marking the start of the linux
 # so that the end-user may know that interaction
@@ -118,13 +124,42 @@ fi
 mkdir -p run sys proc
 mount -t proc none proc
 
-# creates the various symbolic links that point the source
-# drive/filesystem to the proper binaries for usage
-ln -s source/bin bin
-ln -s source/sbin sbin
-ln -s source/lib lib
-ln -s source/boot boot
-ln -s source/usr usr
+# tries to determine if the overlay fs infra-structure is
+# available under the current kernel implementation, in
+# case no support is available the overlay fs mode is disabled
+result=$(cat proc/filesystems | grep overlay)
+if [ $result == "" ]; then
+    USE_OVERLAYFS=0
+fi
+
+# in case the overlay fs mode is active must create
+# the target (unified) directory and change the target
+# root directory to it (print and info message)
+if [ "$USE_OVERLAYFS" == "1" ]; then
+    echoi "OverlayFS mode is enabled (read & write)..."
+    rootdir=/overlay
+    mkdir -p $rootdir
+fi
+
+# verifies if the overlay fs mode is active and if that's not
+# the case  starts the process of linking directories between
+# the source and the target ram based operative system
+if [ "$USE_OVERLAYFS" == "0" ]; then
+    # prints a message about the symbolic linking of the various
+    # directories as part of the legacy operation
+    echoi "Creating symbolic links for static directories"
+
+    # creates the various symbolic links that point the source
+    # drive/filesystem to the proper binaries for usage
+    ln -s source/bin bin
+    ln -s source/sbin sbin
+    ln -s source/lib lib
+    ln -s source/boot boot
+    ln -s source/usr usr
+fi
+
+# creates a symbolic link between the arch dependent directory
+# for libraries and the more generic one (legacy compatibility)
 ln -s lib lib64
 
 # set up some swap space in case the flag that controls
@@ -162,6 +197,19 @@ echoi "Unpacking tar.gz files for /root /dev /etc"
 tar -zxf /ram/source/images/root.tar.gz
 tar -zxf /ram/source/images/dev.tar.gz
 tar -zxf /ram/source/images/etc.tar.gz
+
+# in case the overlay fs mode is enabled must mount
+# the final overlay file system using the source squash
+# file system for read and the ram based one for write
+if [ "$USE_OVERLAYFS" == "1" ]; then
+    mount -o lowerdir=/ram/source,upperdir=/ram,workdir=/overlay -t overlay overlayfs /overlay
+fi
+
+# chantes the current deirectory to the directory that
+# will be used as the new root directory and creates
+# the (fallback) directory to hold the reference to the
+# orifinal initrd directory (after pivot)
+cd $rootdir
 mkdir -p initrd
 
 # runs the pivot operation setting the current directory
