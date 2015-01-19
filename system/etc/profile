@@ -14,8 +14,13 @@ export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export GREP_OPTIONS=--color=auto
-export PREFIX=/opt
 export PS1="\u@\h:\w# "
+
+if [ -e /etc/scudum/OVERLAYFS ]; then
+    export PREFIX=/usr
+else
+    export PREFIX=/opt
+fi
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
