@@ -36,17 +36,11 @@ binfiles="sh cat cp dd killall ls mkdir mknod mount "
 binfiles="$binfiles umount sed sleep ln rm uname grep "
 binfiles="$binfiles egrep cut tar gzip touch"
 
-echo "zona1"
-
 # systemd installs udevadm in /bin. Other udev implementations
 # have it in /sbin, take note of possible problems/issues
 if [ -x /bin/udevadm ] ; then binfiles="$binfiles udevadm"; fi
 
-echo "zona1"
-
 sbinfiles="modprobe blkid switch_root pivot_root"
-
-echo "zona2"
 
 # optional files and locations
 for f in mdadm udevd udevadm; do
@@ -55,18 +49,12 @@ done
 
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 
-echo "zona3"
-
 DATADIR=/usr/share/mkinitramfs
 INIT_IN=linuxrc
-
-echo "zona4"
 
 # creates a temporrary working directory, where the
 # files will be stored for the creation of the image
 TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
-
-echo "zona5"
 
 # creates the ramdisk file and zeros it taking into
 # account the requested size (this is very important)
@@ -112,8 +100,6 @@ fi
 # loading stage of the linux kernel
 install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/linuxrc
 
-echo "zona6"
-
 if [ -n "$KERNEL_VERSION" ] ; then
     if [ -x /bin/kmod ] ; then
         binfiles="$binfiles kmod"
@@ -123,26 +109,12 @@ if [ -n "$KERNEL_VERSION" ] ; then
     fi
 fi
 
-echo "zona7"
-cat $unsorted
-echo "-------------------------------------------------------"
-
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
 for f in $binfiles ; do
-    
     ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
-    echo "-----------------------------------------------------"
-    echo $f
-    ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 
-    echo "-----------------------------------------------------"
-    
     copy $f bin
 done
-
-echo "zona8"
-cat $unsorted
-echo "-------------------------------------------------------"
 
 # adds lvm if present
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
@@ -152,10 +124,6 @@ for f in $sbinfiles ; do
     copy $f sbin
 done
 
-echo "zona9"
-cat $unsorted
-echo "-------------------------------------------------------"
-
 # adds udevd libraries if not in /sbin
 if [ -x /lib/udev/udevd ] ; then
     ldd /lib/udev/udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
@@ -163,17 +131,11 @@ elif [ -x /lib/systemd/systemd-udevd ] ; then
     ldd /lib/systemd/systemd-udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
 fi
 
-echo "zona10"
-cat $unsorted
-echo "-------------------------------------------------------"
-
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
     ln -s kmod $TEMP_DIR/bin/lsmod
     ln -s kmod $TEMP_DIR/bin/insmod
 fi
-
-echo "zona11"
 
 # adds lvm symlinks if appropriate, also copies
 # the lvm.conf file
@@ -200,27 +162,18 @@ if  [ -x /sbin/lvm ] ; then
     cp -a /etc/lvm $TEMP_DIR/etc
 fi
 
-echo "zona12"
-
-echo $unsorted
-
-ls -la $unsorted
-
 # installs libraries into the proper directory
 # so that they may be used at runtime
 sort $unsorted | uniq | while read library ; do
     if [ "$library" == "linux-vdso.so.1" ] ||
-        [ "$library" == "linux-gate.so.1" ] ||
+        [ "$library" == "linux-gate.so.1" ]  ||
+        [ "$library" == "not" ] ||
         [ "$library" == "" ]; then
         continue
     fi
 
-    echo "$library"
-
     copy $library lib
 done
-
-echo "zona13"
 
 if [ -d /lib/udev ]; then
     cp -a /lib/udev $TEMP_DIR/lib
