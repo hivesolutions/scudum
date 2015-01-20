@@ -25,8 +25,6 @@ STORAGE=PSTSCU
 
 case "${1}" in
     start)
-        if [ ! -d /origin ]; then exit; fi
-
         log_info_msg "Waiting for /dev to become populated..."
         sleep $SLEEP
         evaluate_retval
@@ -34,6 +32,11 @@ case "${1}" in
         log_info_msg "Making /tmp world writeable (1777)..."
         chmod 1777 /tmp
         evaluate_retval
+
+        # verifies if the current system structure contains the
+        # persistence structure and if that's not the case, exits
+        # the current working login, nothing remaining to be done
+        if [ ! -d /initrd ]; then exit; fi
 
         log_info_msg "Releasing unused memory from initrd..."
         umount /initrd/proc
