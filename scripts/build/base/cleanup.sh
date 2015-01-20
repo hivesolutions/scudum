@@ -12,13 +12,13 @@ source $DIR/config.sh
 
 # runs the unmount operation for the complete set
 # of devices associated with scudum (as expected)
+mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
 mountpoint -q $SCUDUM/run/shm && umount -v $SCUDUM/run/shm
 mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
-mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 
 # runs the sync operation so that the unmounting is sure
 # to be completed (avoiding possible removal errors)

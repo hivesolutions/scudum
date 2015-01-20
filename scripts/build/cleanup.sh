@@ -7,13 +7,13 @@ set -e +h
 
 source $DIR/base/config.sh
 
+mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
 mountpoint -q $SCUDUM/run/shm && umount -v $SCUDUM/run/shm
 mountpoint -q $SCUDUM/dev/shm && umount -v $SCUDUM/dev/shm
 mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
-mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 
 sync
 
