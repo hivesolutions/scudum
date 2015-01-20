@@ -1,4 +1,5 @@
-VERSION=${VERSION-3080600}
+VERSION=${VERSION-3080801}
+YEAR=${VERSION-2015}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -11,7 +12,7 @@ export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1\
     -DSQLITE_ENABLE_UNLOCK_NOTIFY=1\
     -DSQLITE_SECURE_DELETE=1"
 
-wget "http://www.sqlite.org/2014/sqlite-autoconf-$VERSION.tar.gz"
+wget "http://www.sqlite.org/$YEAR/sqlite-autoconf-$VERSION.tar.gz"
 rm -rf sqlite-autoconf-$VERSION && tar -zxf "sqlite-autoconf-$VERSION.tar.gz"
 rm -f "sqlite-autoconf-$VERSION.tar.gz"
 cd sqlite-autoconf-$VERSION
