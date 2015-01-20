@@ -156,7 +156,7 @@ options to choose from: DVD ISO, HD install and HD image.
 To be able to configure a wireless network interface one must created/edit a configuration file
 for example one located under `/etc/wlan0.conf`:
 
-    ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
+    ctrl_interface=/run/wpa_supplicant
     update_config=1
     fast_reauth=1
     ap_scan=1
