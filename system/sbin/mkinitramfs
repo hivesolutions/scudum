@@ -165,15 +165,14 @@ fi
 # installs libraries into the proper directory
 # so that they may be used at runtime
 sort $unsorted | uniq | while read library ; do
-    if [ "$library" == "linux-vdso.so.1" ] ||
-        [ "$library" == "linux-gate.so.1" ]  ||
-        [ "$library" == "not" ] ||
-        [ "$library" == "" ]; then
+    if [[ "$library" != *".so"* ]] ||
+        [ "$library" == "linux-vdso.so.1" ] ||
+        [ "$library" == "linux-gate.so.1" ]; then
         continue
     fi
-
-    echo $library
     
+    echo $library
+
     copy $library lib
 done
 
