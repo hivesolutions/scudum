@@ -44,7 +44,8 @@ case "${1}" in
         /sbin/udevadm trigger --action=add --type=devices
         /sbin/udevadm trigger --action=change --type=devices
 
-        # waits for udevd to process the uevents we triggered
+        # waits for udevd to process the uevents we triggered, this
+        # is a blocking call that may take some time to "respond"
         if ! is_true "$OMIT_UDEV_SETTLE"; then
             /sbin/udevadm settle
         fi

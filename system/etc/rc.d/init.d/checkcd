@@ -17,7 +17,7 @@
 # ammount of time that is going to be spent in the boot
 # process to wait for the devices to become available,
 # note that usb devices are asynchronous in loading
-SLEEP=3
+SLEEP=0
 
 # the name of the volume label that is going to be used
 # for finding the persistent storage devices
@@ -25,9 +25,11 @@ STORAGE=PSTSCU
 
 case "${1}" in
     start)
-        log_info_msg "Waiting for /dev to become populated..."
-        sleep $SLEEP
-        evaluate_retval
+        if [ "$SLEEP" != "0" ]; then
+            log_info_msg "Waiting for /dev to become populated..."
+            sleep $SLEEP
+            evaluate_retval
+        fi
 
         log_info_msg "Making /tmp world writeable (1777)..."
         chmod 1777 /tmp
