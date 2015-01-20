@@ -149,6 +149,13 @@ storage as part of the node configuration.
 Current version of scudum vary in deployment currently there are three different
 options to choose from: DVD ISO, HD install and HD image.
 
+### Usage
+
+#### WPA (Wireless Networking)
+
+    wpa_cli
+    ifup wifi0
+
 ### Links
 
 Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
