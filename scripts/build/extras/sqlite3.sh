@@ -1,5 +1,5 @@
 VERSION=${VERSION-3080801}
-YEAR=${VERSION-2015}
+YEAR=${YEAR-2015}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
