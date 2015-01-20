@@ -130,7 +130,13 @@ echo "-------------------------------------------------------"
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
 for f in $binfiles ; do
+    
     ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    echo "-----------------------------------------------------"
+    echo $f
+    ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 
+    echo "-----------------------------------------------------"
+    
     copy $f bin
 done
 
