@@ -32,9 +32,16 @@ case "$2" in
             fi
         fi
 
+        # ensures that the interface for which the dhclient will
+        # be performed is running and up (required for proper usage)
+        ip link set $1 up
+
+        # runs the dhcp request configuring the requested interface
+        # with the data returned from the local dhcp server
         /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1 &> /dev/null
 
         if [ "$?" != "0" ]; then
+            ip link set $1 down
             log_failure_msg2
             exit 1
         fi
