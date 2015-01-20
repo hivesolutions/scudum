@@ -83,12 +83,14 @@ for S in ${SERVICE}; do
     fi
 done
 
-# creates/configures the interface
+# iterates over each of the services to try to configure
+# the interface using each of the strategies, first pass
 for S in ${SERVICE}; do 
     IFCONFIG=${file} /lib/services/${S} ${IFACE} up
 done
 
-# brings up the interface and any components
+# brings up the interface and any associated components
+# from this moment the interface is considered to be ready
 for I in $IFACE $INTERFACE_COMPONENTS; do up $I; done
 
 # sets MTU if requested, checks if MTU has a "good" value
