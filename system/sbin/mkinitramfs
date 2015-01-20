@@ -163,15 +163,15 @@ if  [ -x /sbin/lvm ] ; then
 fi
 
 # installs libraries into the proper directory
-# so that they may be used at runtime
+# so that they may be used at runtime, note that
+# the unsorted (including duplicates) list is sorted
+# so that duplicated values/libraries are removed
 sort $unsorted | uniq | while read library ; do
     if [[ "$library" != *".so"* ]] ||
         [ "$library" == "linux-vdso.so.1" ] ||
         [ "$library" == "linux-gate.so.1" ]; then
         continue
     fi
-    
-    echo $library
 
     copy $library lib
 done
