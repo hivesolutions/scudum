@@ -12,7 +12,7 @@ fi
 
 sync
 
-mountpoint -q $SCUDUM/mnt/builds && umount -v -n $SCUDUM/mnt/builds
+mountpoint -q $SCUDUM/mnt/builds && umount -v $FLAGS $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount -v $FLAGS $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $FLAGS $SCUDUM/proc
 mountpoint -q $SCUDUM/dev/pts && umount -v $FLAGS $SCUDUM/dev/pts
