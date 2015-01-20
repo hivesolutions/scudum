@@ -16,7 +16,7 @@ up() {
     fi
 }
 
-RELEASE="7.2"
+RELEASE="1.0"
 
 USAGE="Usage: $0 [ -hV ] [--help] [--version] interface"
 VERSTR="Scudum ifup, version ${RELEASE}"
