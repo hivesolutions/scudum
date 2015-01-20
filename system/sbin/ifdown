@@ -1,7 +1,6 @@
 #!/bin/bash 
 
-RELEASE="7.0"
-
+RELEASE="1.0"
 USAGE="Usage: $0 [ -hV ] [--help] [--version] interface"
 VERSTR="Scudum ifdown, version ${RELEASE}"
 
