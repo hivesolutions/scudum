@@ -172,6 +172,8 @@ sort $unsorted | uniq | while read library ; do
         continue
     fi
 
+    echo $library
+    
     copy $library lib
 done
 
