@@ -71,7 +71,11 @@ case "$2" in
             rm -f ${PIDFILE} ${CONTROL_IFACE}
             evaluate_retval
         else
-            log_warning_msg "\n wpa_supplicant already stopped on $1"
+            if [ "$STRICT" == "1" ]; then
+                log_warning_msg "\n wpa_supplicant already stopped on $1"
+            else
+                log_success_msg2
+            fi
             exit 0
         fi
         ;;
