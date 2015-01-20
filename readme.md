@@ -165,7 +165,7 @@ for example one located under `/etc/wlan0.conf`:
         psk="YOUR_PASSPHRASE"
     }
 
-Then to start the interface run the following commands to start wpasiplicant and then start the
+Then to start the interface run the following commands to start wpa supplicant and then start the
 dhclient to request DHCP based information.
 
     wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
