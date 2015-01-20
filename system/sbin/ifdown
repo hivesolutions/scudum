@@ -42,6 +42,8 @@ if [ ! -r "${file}" ]; then
     exit 1
 fi
 
+# executes the target network configuration file for the device
+# as this will load the required variable values for shutdown
 . ${file}
 
 if [ "$IFACE" = "" ]; then
@@ -73,7 +75,7 @@ link_status=`ip link show ${IFACE} 2> /dev/null`
 if [ -n "${link_status}" ]; then
     if [ "$(echo "${link_status}" | grep UP)" != "" ]; then
         if [ "$(ip addr show ${IFACE} | grep 'inet ')" == ""  ]; then
-            log_info_msg "Bringing down the ${IFACE} interface..."
+            log_info_msg "Shutting down the ${IFACE} interface..."
             ip link set ${IFACE} down
             evaluate_retval
         fi
