@@ -188,6 +188,8 @@ fi
 
 echo "zona12"
 
+echo $unsorted
+
 # installs libraries into the proper directory
 # so that they may be used at runtime
 sort $unsorted | uniq | while read library ; do
