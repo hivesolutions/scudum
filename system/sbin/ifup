@@ -66,8 +66,8 @@ if [ "$IFACE" = "" ]; then
     exit 1
 fi
 
-# does not process this service if started by boot, and ONBOOT
-# is not set to yes
+# does not process this service if started by boot, and onboot
+# is not set to yes (skips the operation)
 if [ "${IN_BOOT}" = "1" -a "${ONBOOT}" != "yes" ]; then
     log_info_msg2 "skipped"
     exit 0
