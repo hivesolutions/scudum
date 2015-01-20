@@ -33,6 +33,15 @@ case "${1}" in
         chmod 1777 /tmp
         evaluate_retval
 
+        log_info_msg "Mounting persistent storage..."
+        storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
+            cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
+        for device in $storage; do
+            mkdir -p pst && mount /dev/$device pst
+            break
+        done
+        evaluate_retval
+
         # verifies if the current system structure contains the
         # persistence structure and if that's not the case, exits
         # the current working login, nothing remaining to be done
@@ -42,15 +51,6 @@ case "${1}" in
         umount /initrd/proc
         umount -l /initrd
         rm -rf /initrd
-        evaluate_retval
-
-        log_info_msg "Mounting persistent storage..."
-        storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
-            cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
-        for device in $storage; do
-            mkdir -p pst && mount /dev/$device pst
-            break
-        done
         evaluate_retval
         ;;
 
