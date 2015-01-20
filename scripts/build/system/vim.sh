@@ -10,7 +10,7 @@ cd vim$VERSION_L
 
 echo "#define SYS_VIMRC_FILE \"/etc/vimrc\"" >> src/feature.h
 
-./configure --prefix=/usr --enable-multibyte
+./configure --prefix=/usr
 
 make
 test $TEST && make test
