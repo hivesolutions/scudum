@@ -1,5 +1,5 @@
-VERSION=${VERSION-7.3}
-VERSION_L=${VERSION_L-73}
+VERSION=${VERSION-7.4}
+VERSION_L=${VERSION_L-74}
 
 set -e +h
 
@@ -8,7 +8,7 @@ rm -rf vim$VERSION_L && tar -jxf "vim-$VERSION.tar.bz2"
 rm -f "vim-$VERSION.tar.bz2"
 cd vim$VERSION_L
 
-echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+echo "#define SYS_VIMRC_FILE \"/etc/vimrc\"" >> src/feature.h
 
 ./configure --prefix=/usr --enable-multibyte
 
