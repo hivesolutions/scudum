@@ -14,6 +14,11 @@
 
 . /lib/lsb/init-functions
 
+# ammount of time that is going to be spent in the boot
+# process to wait for the devices to become available,
+# note that usb devices are asynchronous in loading
+SLEEP=3
+
 # the name of the volume label that is going to be used
 # for finding the persistent storage devices
 STORAGE=PSTSCU
@@ -21,6 +26,10 @@ STORAGE=PSTSCU
 case "${1}" in
     start)
         if [ ! -d /origin ]; then exit; fi
+
+        log_info_msg "Waiting for /dev to become populated..."
+        sleep $SLEEP
+        evaluate_retval
 
         log_info_msg "Making /tmp world writeable (1777)..."
         chmod 1777 /tmp
