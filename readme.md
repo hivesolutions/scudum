@@ -169,7 +169,6 @@ Then to start the interface run the following commands to start wpasiplicant and
 dhclient to request DHCP based information.
 
     wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
-    ip link set wlan0 up
     dhclient wlan0
 
 ### Links
