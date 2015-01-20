@@ -149,6 +149,35 @@ storage as part of the node configuration.
 Current version of scudum vary in deployment currently there are three different
 options to choose from: DVD ISO, HD install and HD image.
 
+### Usage
+
+#### WPA (Wireless Networking)
+
+As a quick start a simple one time configuration may be used with the following commands that
+start the daemon for the wireless support and then run the DHCP client to obtain IP based information
+that will be used to configure the interface.
+
+    wpa_supplicant -B -i wlan0 -c <(wpa_passphrase YOUR_SSID YOUR_PASSPHRASE)
+    dhclient wlan0
+
+To be able to configure a wireless network interface using a more "persistent" approach one must
+created/edit a configuration file for wireless interface under a location (eg: `/etc/wlan0.conf`):
+
+    ctrl_interface=/run/wpa_supplicant
+    update_config=1
+    fast_reauth=1
+    ap_scan=1
+    network={
+        ssid="YOUR_SSID"
+        psk="YOUR_PASSPHRASE"
+    }
+
+Then to start the interface run the following commands to start wpa supplicant and then start the
+dhclient to request DHCP based information.
+
+    wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
+    dhclient wlan0
+
 ### Links
 
 Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html

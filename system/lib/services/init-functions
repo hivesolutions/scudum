@@ -578,12 +578,11 @@ log_failure_msg() {
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${FAILURE_PREFIX}${SET_COL}${FAILURE_SUFFIX}"
 
-    # Strip non-printable characters from log file
-
+    # strips non-printable characters from log file
     timespec
     logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
     /bin/echo -e "${STAMP} ${logmessage} FAIL" >> ${BOOTLOG}
-    
+
     return 0
 }
 
@@ -592,7 +591,7 @@ log_failure_msg2() {
     /bin/echo -e "${CURS_ZERO}${FAILURE_PREFIX}${SET_COL}${FAILURE_SUFFIX}"
 
     echo "FAIL" >> ${BOOTLOG}
-    
+
     return 0
 }
 
@@ -609,10 +608,10 @@ log_warning_msg() {
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${WARNING_PREFIX}${SET_COL}${WARNING_SUFFIX}"
 
-    # Strip non-printable characters from log file
+    # strips non-printable characters from log file
     timespec
     /bin/echo -e "${STAMP} ${logmessage} WARN" >> ${BOOTLOG}
-    
+
     return 0
 }
 

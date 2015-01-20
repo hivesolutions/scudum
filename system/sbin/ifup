@@ -16,8 +16,7 @@ up() {
     fi
 }
 
-RELEASE="7.2"
-
+RELEASE="1.0"
 USAGE="Usage: $0 [ -hV ] [--help] [--version] interface"
 VERSTR="Scudum ifup, version ${RELEASE}"
 
@@ -73,6 +72,8 @@ if [ "${IN_BOOT}" = "1" -a "${ONBOOT}" != "yes" ]; then
     exit 0
 fi
 
+# iterates over the complete set of services to verify if
+# all of them exist and are installed in the system (validation)
 for S in ${SERVICE}; do
     if [ ! -x "/lib/services/${S}" ]; then
         MSG="\nUnable to process ${file}.  Either " 
@@ -83,15 +84,15 @@ for S in ${SERVICE}; do
     fi
 done
 
+# brings up the interface and any associated components
+# from this moment the interface is considered to be ready
+for I in $IFACE $INTERFACE_COMPONENTS; do up $I; done
+
 # iterates over each of the services to try to configure
 # the interface using each of the strategies, first pass
 for S in ${SERVICE}; do 
     IFCONFIG=${file} /lib/services/${S} ${IFACE} up
 done
-
-# brings up the interface and any associated components
-# from this moment the interface is considered to be ready
-for I in $IFACE $INTERFACE_COMPONENTS; do up $I; done
 
 # sets MTU if requested, checks if MTU has a "good" value
 if test -n "${MTU}"; then

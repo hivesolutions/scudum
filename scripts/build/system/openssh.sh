@@ -1,4 +1,4 @@
-VERSION=${VERSION-6.6p1}
+VERSION=${VERSION-6.7p1}
 
 set -e +h
 
@@ -11,7 +11,7 @@ install -v -m700 -d /var/lib/sshd
 chown -v root:sys /var/lib/sshd
 
 groupadd -g 50 sshd
-useradd -c 'sshd PrivSep' -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
+useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
 
 ./configure --prefix=/usr\
     --sysconfdir=/etc/ssh\

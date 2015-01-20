@@ -3,17 +3,19 @@
 
 set -e +h
 
-if grep -v '^#' /etc/fstab | grep -q cgroup; then
-	echo 'cgroups mounted from fstab, not mounting /sys/fs/cgroup'
+if grep -v "^#" /etc/fstab | grep -q cgroup; then
+	echo "cgroups mounted from fstab, not mounting /sys/fs/cgroup"
 	exit 0
 fi
 
 if [ ! -e /proc/cgroups ]; then
-	exit 0
+    echo "/proc/cgroups not found, not mounting /sys/fs/cgroup"
+	exit 1
 fi
 
 if [ ! -d /sys/fs/cgroup ]; then
-	exit 0
+    echo "/sys/fs/cgroup is not a directory, not mounting /sys/fs/cgroup"
+	exit 1
 fi
 
 if ! mountpoint -q /sys/fs/cgroup; then
