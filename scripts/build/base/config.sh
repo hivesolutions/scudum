@@ -54,6 +54,6 @@ fi
 # the current situation then changes the current scudum directory
 # reference to the persist one so that it's possible to spare some
 # extra memory, by using secondary storage to store the installation
-if mountpoint -q $PERSIST; then
+if [-e $PERSIST ] && mountpoint -q $PERSIST; then
     export SCUDUM=$PERSIST/scudum
 fi
