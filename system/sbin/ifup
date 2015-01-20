@@ -100,7 +100,7 @@ if test -n "${MTU}"; then
     else
         log_info_msg2 "Invalid MTU $MTU"
     fi
-fi 
+fi
 
 # sets the route default gateway if requested
 if [ -n "${GATEWAY}" ]; then
