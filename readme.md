@@ -153,6 +153,13 @@ options to choose from: DVD ISO, HD install and HD image.
 
 #### WPA (Wireless Networking)
 
+As a quick start a simple one time configuration may be used with the following commands that
+start the daemon for the wireless support and then run the DHCP client to obtain IP based information
+that will be used to configure the interface.
+
+    wpa_supplicant -B -i wlan0 -c <(wpa_passphrase YOUR_SSID YOUR_PASSPHRASE)
+    dhclient wlan0
+
 To be able to configure a wireless network interface one must created/edit a configuration file
 for example one located under `/etc/wlan0.conf`:
 
