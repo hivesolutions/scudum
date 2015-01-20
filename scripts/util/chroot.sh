@@ -31,7 +31,7 @@ result=$?
 chroot $SCUDUM /usr/bin/env -i\
     HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
-    /bin/bash $CHROOT_ARGS /bin/umount -v -a
+    /bin/bash $CHROOT_ARGS -c "/bin/umount -v -a"
 
 SCUDUM=$SCUDUM $DIR/release.sh
 
