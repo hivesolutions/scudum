@@ -40,6 +40,9 @@ case "$2" in
         # with the data returned from the local dhcp server
         /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1 &> /dev/null
 
+        # verifies if there was an issue runinng the dhclient on the
+        # requested interface and in case there was logs the error and
+        # shuts down the interface (fallback process)
         if [ "$?" != "0" ]; then
             ip link set $1 down
             log_failure_msg2
