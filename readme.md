@@ -153,8 +153,24 @@ options to choose from: DVD ISO, HD install and HD image.
 
 #### WPA (Wireless Networking)
 
-    wpa_cli
-    ifup wifi0
+To be able to configure a wireless network interface one must created/edit a configuration file
+for example one located under `/etc/wlan0.conf`:
+
+    ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
+    update_config=1
+    fast_reauth=1
+    ap_scan=1
+    network={
+        ssid="YOUR_SSID"
+        psk="YOUR_PASSPHRASE"
+    }
+
+Then to start the interface run the following commands to start wpasiplicant and then start the
+dhclient to request DHCP based information.
+
+    wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
+    ip link set wlan0 up
+    dhclient wlan0
 
 ### Links
 
