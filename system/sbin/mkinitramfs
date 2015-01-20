@@ -124,6 +124,8 @@ if [ -n "$KERNEL_VERSION" ] ; then
 fi
 
 echo "zona7"
+cat $unsorted
+echo "-------------------------------------------------------"
 
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
