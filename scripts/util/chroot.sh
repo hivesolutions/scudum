@@ -23,13 +23,13 @@ rm -f $SCUDUM/etc/resolv.conf
 echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
 
 chroot $SCUDUM /usr/bin/env -i\
-    HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
+    HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
     /bin/bash $CHROOT_ARGS $@
 result=$?
 
 chroot $SCUDUM /usr/bin/env -i\
-    HOME=/root TERM="$TERM" PS1='\u:\w\$ '\
+    HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
     PATH=/bin:/usr/bin:/sbin:/usr/sbin\
     /bin/bash -c "/bin/umount -v -a"
 
