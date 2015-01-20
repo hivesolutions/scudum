@@ -160,8 +160,8 @@ that will be used to configure the interface.
     wpa_supplicant -B -i wlan0 -c <(wpa_passphrase YOUR_SSID YOUR_PASSPHRASE)
     dhclient wlan0
 
-To be able to configure a wireless network interface one must created/edit a configuration file
-for example one located under `/etc/wlan0.conf`:
+To be able to configure a wireless network interface using a more "persistent" approach one must
+created/edit a configuration file for wireless interface under a location (eg: `/etc/wlan0.conf`):
 
     ctrl_interface=/run/wpa_supplicant
     update_config=1
