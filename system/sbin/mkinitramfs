@@ -134,6 +134,7 @@ done
 
 echo "zona8"
 cat $unsorted
+echo "-------------------------------------------------------"
 
 # adds lvm if present
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
@@ -145,6 +146,7 @@ done
 
 echo "zona9"
 cat $unsorted
+echo "-------------------------------------------------------"
 
 # adds udevd libraries if not in /sbin
 if [ -x /lib/udev/udevd ] ; then
@@ -155,6 +157,7 @@ fi
 
 echo "zona10"
 cat $unsorted
+echo "-------------------------------------------------------"
 
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
