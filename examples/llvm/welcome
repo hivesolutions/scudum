@@ -1,1 +1,2 @@
 echo -e "  C Compiler: $CC"
+echo -e "  C++ Compiler: $CXX"
