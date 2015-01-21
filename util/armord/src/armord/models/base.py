@@ -37,63 +37,7 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import flask
+import appier_extras
 
-import quorum
-
-class Base(quorum.Model):
-
-    id = dict(
-        type = int,
-        index = True,
-        increment = True,
-    )
-
-    enabled = dict(
-        type = bool,
-        index = True
-    )
-
-    instance_id = dict(
-        index = True
-    )
-
-    @classmethod
-    def get_i(cls, *args, **kwargs):
-        instance_id = flask.session["instance_id"]
-        return cls.get(
-            enabled = True,
-            instance_id = instance_id,
-            *args,
-            **kwargs
-        )
-
-    @classmethod
-    def find_i(cls, *args, **kwargs):
-        instance_id = flask.session["instance_id"]
-        return cls.find(
-            enabled = True,
-            instance_id = instance_id,
-            *args,
-            **kwargs
-        )
-
-    def pre_create(self):
-        self.enabled = True
-
-        if not self.val("instance_id"):
-            self.instance_id = flask.session.get("instance_id", None)
-
-    def enable(self):
-        store = self._get_store()
-        store.update(
-            {"_id" : self._id},
-            {"$set" : {"enabled" : True}}
-        )
-
-    def disable(self):
-        store = self._get_store()
-        store.update(
-            {"_id" : self._id},
-            {"$set" : {"enabled" : False}}
-        )
+class ArmorBase(appier_extras.admin.Base):
+    pass

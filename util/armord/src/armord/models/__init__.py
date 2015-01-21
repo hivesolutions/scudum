@@ -34,8 +34,8 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-from . import account
+from . import asset
 from . import base
 
-from .account import USER_TYPE, ADMIN_TYPE, Account
-from .base import Base
+from .asset import Asset
+from .base import ArmorBase

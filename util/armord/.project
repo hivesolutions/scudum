@@ -3,7 +3,8 @@
 	<name>armord</name>
 	<comment></comment>
 	<projects>
-		<project>quorum</project>
+		<project>appier</project>
+		<project>appier_extras</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

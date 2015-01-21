@@ -19,6 +19,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Hive Armor Daemon. If not, see <http://www.gnu.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,6 +37,23 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-from . import base
+import appier
 
-from .base import login_api, info_api
+class BaseController(appier.Controller):
+
+    @appier.route("/", "GET")
+    @appier.route("/index", "GET")
+    @appier.ensure("base")
+    def index(self):
+        return self.template(
+            "index.html.tpl",
+            link = "home"
+        )
+
+    @appier.route("/about", "GET")
+    @appier.ensure("base")
+    def about(self):
+        return self.template(
+            "about.html.tpl",
+            link = "about"
+        )

@@ -37,27 +37,22 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import flask #@UnusedImport
-import datetime
+#import armord
 
-import quorum
+import appier
+import appier_extras
 
-import armord.models
+class ArmordApp(appier.WebApp):
 
-MONGO_DATABASE = "armor"
-""" The default database to be used for the connection with
-the mongo database """
-
-app = quorum.load(
-    name = __name__,
-    redis_session = True,
-    mongo_database = MONGO_DATABASE,
-    logger = "armord.debug",
-    models = armord.models,
-    PERMANENT_SESSION_LIFETIME = datetime.timedelta(31)
-)
-
-import armord.views #@UnusedImport
+    def __init__(self):
+        appier.WebApp.__init__(
+            self,
+            name = "armord",
+            parts = (
+                appier_extras.AdminPart,
+            )
+        )
 
 if __name__ == "__main__":
-    quorum.run(server = "netius")
+    app = ArmordApp()
+    app.serve()
