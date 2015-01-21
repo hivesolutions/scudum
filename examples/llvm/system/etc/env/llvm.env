@@ -1,2 +1,2 @@
-CC=clang
-CXX=clang++
+export CC=clang
+export CXX=clang++
