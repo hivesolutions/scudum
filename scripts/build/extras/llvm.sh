@@ -7,9 +7,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.gz"
-rm -rf llvm-$VERSION && tar -zxf "llvm-$VERSION.src.tar.gz"
-rm -f "llvm-$VERSION.src.tar.gz"
+wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.xz"
+rm -rf llvm-$VERSION && tar -Jxf "llvm-$VERSION.src.tar.xz"
+rm -f "llvm-$VERSION.src.tar.xz"
 cd llvm-$VERSION.src
 
 wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
