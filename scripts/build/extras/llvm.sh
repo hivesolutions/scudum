@@ -17,7 +17,7 @@ mv tools/cfe-$VERSION.src tools/clang
 
 wget "http://llvm.org/releases/$VERSION/compiler-rt-$VERSION.src.tar.xz"
 tar -Jxf "compiler-rt-$VERSION.src.tar.xz" -C projects
-mv projects/compiler-rt-$VERSION projects/compiler-rt
+mv projects/compiler-rt-$VERSION.src projects/compiler-rt
 
 sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
     -i Makefile.config.in
