@@ -12,12 +12,12 @@ rm -rf llvm-$VERSION && tar -Jxf "llvm-$VERSION.src.tar.xz"
 rm -f "llvm-$VERSION.src.tar.xz"
 cd llvm-$VERSION.src
 
-wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.gz"
-tar -zxf "cfe-$VERSION.src.tar.gz" -C tools
+wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.xz"
+rm -rf tools && tar -Jxf "cfe-$VERSION.src.tar.xz" -C tools
 mv tools/cfe-$VERSION.src tools/clang
 
-wget "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.gz"
-tar -zxf "compiler-rt-$VERSION_M.src.tar.gz" -C projects
+wget "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.xz"
+rm -rf projects && tar -Jxf "compiler-rt-$VERSION_M.src.tar.xz" -C projects
 mv projects/compiler-rt-$VERSION_M projects/compiler-rt
 
 sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
