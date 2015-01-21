@@ -1,4 +1,5 @@
-VERSION=${VERSION-2.1.2}
+VERSION=${VERSION-2.2.0}
+VERSION_L=${VERSION_L-2.2}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -6,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://cache.ruby-lang.org/pub/ruby/2.1/ruby-$VERSION.tar.gz"
+wget "http://cache.ruby-lang.org/pub/ruby/$VERSION_L/ruby-$VERSION.tar.gz"
 rm -rf ruby-$VERSION && tar -zxf "ruby-$VERSION.tar.gz"
 rm -f "ruby-$VERSION.tar.gz"
 cd ruby-$VERSION
