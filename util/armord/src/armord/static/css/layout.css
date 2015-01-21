@@ -28,3 +28,13 @@
  __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
  __license__   = GNU General Public License (GPL), Version 3
 */
+
+.footer-logo {
+    background-image: url(../images/logo-footer.png);
+    height: 43px;
+    width: 101px;
+}
+
+.footer-logo:hover {
+    background-position: left top;
+}
