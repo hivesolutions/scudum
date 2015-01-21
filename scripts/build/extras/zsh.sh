@@ -13,3 +13,10 @@ cd zsh-$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
+
+cat > /root/.zshrc  << "EOF"
+autoload -U compinit promptinit
+compinit
+promptinit
+prompt walters
+EOF
