@@ -13,7 +13,6 @@ export PERL5LIB="/opt/lib/perl5:/opt/lib/perl5/site_perl:/pst/lib/perl5:/pst/lib
 export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
-export GREP_OPTIONS=--color=auto
 export PS1="\u@\h:\w# "
 
 if [ -e /etc/scudum/OVERLAYFS ]; then
