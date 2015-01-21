@@ -30,7 +30,7 @@ KVERSION=$(uname -r)
 SVERSION=$DISTRIB-$VERSION
 
 for file in /etc/env/*.env; do
-    source /etc/env/$file
+    source $file
 done
 
 alias "ls=ls --color=auto"
