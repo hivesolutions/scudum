@@ -16,6 +16,8 @@ export TERM=linux
 
 if [ "$BASH" != "" ]; then
     export PS1="\u@\h:\w# "
+else
+    unset PS1
 fi
 
 if [ -e /etc/scudum/OVERLAYFS ]; then
