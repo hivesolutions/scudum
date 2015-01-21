@@ -50,6 +50,7 @@ class ArmordApp(appier.WebApp):
                 appier_extras.AdminPart,
             )
         )
+        self.login_redirect = "base.index"
 
 if __name__ == "__main__":
     app = ArmordApp()
