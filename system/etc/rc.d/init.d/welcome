@@ -29,7 +29,7 @@ case "${1}" in
         echo -e "  IP address: $ADDRESS"
         echo -e "  Processes: $PROCESS_COUNT"
         for file in /etc/welcome/*; do
-            . $file
+            /bin/sh $file
         done
         exit 0
         ;;
