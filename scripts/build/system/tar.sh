@@ -7,8 +7,6 @@ rm -rf tar-$VERSION && tar -jxf "tar-$VERSION.tar.bz2"
 rm -f "tar-$VERSION.tar.bz2"
 cd tar-$VERSION
 
-sed -i -e '/gets is a/d' gnu/stdio.in.h
-
 FORCE_UNSAFE_CONFIGURE=1\
     ./configure\
     --prefix=/usr\
