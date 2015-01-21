@@ -1,2 +1,4 @@
+source /etc/env/llvm.env
+
 echo -e "  C Compiler: $CC"
 echo -e "  C++ Compiler: $CXX"
