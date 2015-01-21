@@ -50,6 +50,8 @@ class ArmordApp(appier.WebApp):
                 appier_extras.AdminPart,
             )
         )
+        self.theme = "modern"
+        self.style = "romantic"
         self.login_redirect = "base.index"
 
 if __name__ == "__main__":
