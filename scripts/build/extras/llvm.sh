@@ -1,5 +1,4 @@
 VERSION=${VERSION-3.5.0}
-VERSION_M=${VERSION_M-3.5}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -16,9 +15,9 @@ wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.xz"
 tar -Jxf "cfe-$VERSION.src.tar.xz" -C tools
 mv tools/cfe-$VERSION.src tools/clang
 
-wget "http://llvm.org/releases/$VERSION_M/compiler-rt-$VERSION_M.src.tar.xz"
-tar -Jxf "compiler-rt-$VERSION_M.src.tar.xz" -C projects
-mv projects/compiler-rt-$VERSION_M projects/compiler-rt
+wget "http://llvm.org/releases/$VERSION/compiler-rt-$VERSION.src.tar.xz"
+tar -Jxf "compiler-rt-$VERSION.src.tar.xz" -C projects
+mv projects/compiler-rt-$VERSION projects/compiler-rt
 
 sed -e 's:/docs/llvm:/share/doc/llvm-$VERSION:'\
     -i Makefile.config.in
