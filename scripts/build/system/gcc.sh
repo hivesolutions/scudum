@@ -21,6 +21,7 @@ SED=sed ../gcc-$VERSION/configure\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
+    --with-tune=generic\
     --with-system-zlib
 
 make
