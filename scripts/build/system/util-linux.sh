@@ -1,16 +1,25 @@
-VERSION=${VERSION-2.22.2}
+VERSION=${VERSION-2.25.2}
+VERSION_MAJOR=${VERSION_MAJOR-2.25}
 
 set -e +h
 
-wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/util-linux/v2.22/util-linux-$VERSION.tar.xz"
+wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/util-linux/v$VERSION_MAJOR/util-linux-$VERSION.tar.xz"
 rm -rf util-linux-$VERSION && tar -Jxf "util-linux-$VERSION.tar.xz"
 rm -f "util-linux-$VERSION.tar.xz"
 cd util-linux-$VERSION
 
-sed -i -e 's@etc/adjtime@var/lib/hwclock/adjtime@g'\
-    $(grep -rl '/etc/adjtime' .)
 mkdir -pv /var/lib/hwclock
 
-./configure --disable-su --disable-sulogin --disable-login
+./configure ADJTIME_PATH=/var/lib/hwclock/adjtime\
+    --docdir=/usr/share/doc/util-linux-2.25.2\
+    --disable-chfn-chsh\
+    --disable-login\
+    --disable-su\
+    --disable-setpriv\
+    --disable-runuser\
+    --disable-pylibmount\
+    --without-python\
+    --without-systemd\
+    --without-systemdsystemunitdir
 
 make && make install
