@@ -7,7 +7,7 @@ rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
 
-./configure --prefix=/usr --enable-cxx
+./configure --prefix=/usr --with-tune=generic --enable-cxx
 
 make
 
