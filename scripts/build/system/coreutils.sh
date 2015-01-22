@@ -1,4 +1,4 @@
-VERSION=${VERSION-8.21}
+VERSION=${VERSION-8.23}
 
 set -e +h
 
@@ -7,10 +7,7 @@ rm -rf coreutils-$VERSION && tar -Jxf "coreutils-$VERSION.tar.xz"
 rm -f "coreutils-$VERSION.tar.xz"
 cd coreutils-$VERSION
 
-wget --no-check-certificate http://www.linuxfromscratch.org/patches/lfs/7.3/coreutils-$VERSION-i18n-1.patch
-patch -Np1 -i coreutils-$VERSION-i18n-1.patch
-
-FORCE_UNSAFE_CONFIGURE=1 ./configure\
+./configure\
     --prefix=/usr\
     --libexecdir=/usr/lib\
     --enable-no-install-program=kill,uptime
