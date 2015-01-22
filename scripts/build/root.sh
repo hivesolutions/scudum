@@ -49,7 +49,6 @@ $DIR/tools/gcc.pass1.sh
 $DIR/tools/linux-headers.sh
 $DIR/tools/glibc.sh
 $DIR/tools/libstdc++.sh
-$DIR/tools/libstdcpp.sh
 $DIR/tools/binutils.pass2.sh
 $DIR/tools/gcc.pass2.sh
 $DIR/tools/tcl.sh
