@@ -14,6 +14,8 @@ export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export PS1="\u@\h:\w# "
+export LC_ALL="en_US.utf8"
+export LANG="en_US.utf8"
 
 if [ -e /etc/scudum/OVERLAYFS ]; then
     export PREFIX=/usr
