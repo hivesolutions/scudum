@@ -61,6 +61,7 @@ cd gcc-build
     --disable-libquadmath\
     --disable-libsanitizer\
     --disable-libssp\
+    --disable-libvtv\
     --disable-libstdc++-v3\
     --enable-languages=c,c++\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
