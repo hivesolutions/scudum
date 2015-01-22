@@ -70,5 +70,3 @@ cd gcc-build
 
 make && make install
 ln -sv libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
-
-rm -rf gcc-$VERSION
