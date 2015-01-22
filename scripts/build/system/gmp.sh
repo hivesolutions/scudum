@@ -7,7 +7,9 @@ rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
 
-./configure --prefix=/usr --with-tune=generic --enable-cxx
+export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -m64 -march=athlon64 -mtune=generic"
+
+./configure --prefix=/usr --enable-cxx
 
 make
 
