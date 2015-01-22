@@ -20,5 +20,4 @@ cd gcc-build
     --disable-libstdcxx-threads\
     --disable-libstdcxx-pch\
     --with-gxx-include-dir=$PREFIX/$SCUDUM_TARGET/include/c++/$VERSION
-
 make && make install
