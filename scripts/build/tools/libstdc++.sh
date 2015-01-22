@@ -19,6 +19,6 @@ cd gcc-build
     --disable-nls\
     --disable-libstdcxx-threads\
     --disable-libstdcxx-pch\
-    --with-gxx-include-dir=/tools/$SCUDUM_TARGET/include/c++/$VERSION
+    --with-gxx-include-dir=$PREFIX/$SCUDUM_TARGET/include/c++/$VERSION
 
 make && make install
