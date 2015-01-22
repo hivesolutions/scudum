@@ -13,12 +13,12 @@ cd gcc-build
 
 ../gcc-$VERSION/libstdc++-v3/configure\
     --host=$SCUDUM_TARGET\
-    --prefix=/tools\
+    --prefix=$PREFIX\
     --disable-multilib\
     --disable-shared\
     --disable-nls\
     --disable-libstdcxx-threads\
     --disable-libstdcxx-pch\
-    --with-gxx-include-dir=/tools/$SCUDUM_TARGET/include/c++/$VERSION
+    --with-gxx-include-dir=$PREFIX/$SCUDUM_TARGET/include/c++/$VERSION
 
 make && make install

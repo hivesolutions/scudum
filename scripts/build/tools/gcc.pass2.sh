@@ -47,9 +47,9 @@ rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ../gcc-$VERSION/configure\
-    --prefix=/tools\
-    --with-local-prefix=/tools\
-    --with-native-system-header-dir=/tools/include\
+    --prefix=$PREFIX\
+    --with-local-prefix=$PREFIX\
+    --with-native-system-header-dir=$PREFIX/include\
     --enable-clocale=gnu\
     --enable-shared\
     --enable-threads=posix\
@@ -64,4 +64,4 @@ CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM
 
 make && make install
 
-ln -sv gcc /tools/bin/cc
+ln -sv gcc $PREFIX/bin/cc

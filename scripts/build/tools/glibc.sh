@@ -12,12 +12,12 @@ rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
 ../glibc-$VERSION/configure\
-    --prefix=/tools\
+    --prefix=$PREFIX\
     --host=$SCUDUM_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
     --enable-kernel=2.6.32\
-    --with-headers=/tools/include\
+    --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
     libc_cv_ctors_header=yes\
     libc_cv_c_cleanup=yes

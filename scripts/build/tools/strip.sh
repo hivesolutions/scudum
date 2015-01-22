@@ -1,4 +1,4 @@
-strip --strip-debug /tools/lib/*
-strip --strip-unneeded /tools/{,s}bin/*
+strip --strip-debug $PREFIX/lib/*
+strip --strip-unneeded $PREFIX/{,s}bin/*
 
-rm -rf /tools/{,share}/{info,man,doc}
+rm -rf $PREFIX/{,share}/{info,man,doc}

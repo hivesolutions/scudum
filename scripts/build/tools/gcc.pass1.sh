@@ -43,12 +43,12 @@ cd gcc-build
 
 ../gcc-$VERSION/configure\
     --target=$SCUDUM_TARGET\
-    --prefix=/tools\
+    --prefix=$PREFIX\
     --with-sysroot=$SCUDUM\
     --with-newlib\
     --without-headers\
-    --with-local-prefix=/tools\
-    --with-native-system-header-dir=/tools/include\
+    --with-local-prefix=$PREFIX\
+    --with-native-system-header-dir=$PREFIX/include\
     --disable-nls\
     --disable-shared\
     --disable-multilib\
