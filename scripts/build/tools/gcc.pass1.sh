@@ -45,7 +45,6 @@ cd gcc-build
     --target=$SCUDUM_TARGET\
     --prefix=$PREFIX\
     --with-sysroot=$SCUDUM\
-    --with-tune=generic\
     --with-newlib\
     --without-headers\
     --with-local-prefix=$PREFIX\
