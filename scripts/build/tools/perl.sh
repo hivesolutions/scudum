@@ -8,7 +8,7 @@ rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
 rm -f "perl-$VERSION.tar.bz2"
 cd perl-$VERSION
 
-sh Configure -des -Dprefix=$PREFIX
+sh Configure -des -Dprefix=$PREFIX -Dlibs=-lm
 make
 cp -v perl cpan/podlators/pod2man $PREFIX/bin
 mkdir -pv $PREFIX/lib/perl5/$VERSION
