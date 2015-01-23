@@ -87,12 +87,15 @@ fi
 case "$GCC_FLAVOUR" in
     latest)
         export GCC_BUILD_BINARY="gcc.latest"
+        export GCC_BUILD_VERSION="4.9.2"
         ;;
     normal)
         export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.4"
         ;;
     *)
         export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.4"
         ;;
 esac
 
