@@ -42,7 +42,7 @@ export TEST=
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_FLAGS="all"
+export SET_FLAGS="basic"
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
