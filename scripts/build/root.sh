@@ -52,12 +52,12 @@ sleep 3
 # runs the complete set of package specific scripts
 # in order to build their source code properly
 $DIR/tools/binutils.pass1.sh
-$DIR/tools/gcc.pass1.sh
+$DIR/tools/$GCC_BUILD_BINARY.pass1.sh
 $DIR/tools/linux-headers.sh
 $DIR/tools/glibc.sh
 $DIR/tools/libstdc++.sh
 $DIR/tools/binutils.pass2.sh
-$DIR/tools/gcc.pass2.sh
+$DIR/tools/$GCC_BUILD_BINARY.pass2.sh
 $DIR/tools/tcl.sh
 $DIR/tools/expect.sh
 $DIR/tools/dejagnu.sh

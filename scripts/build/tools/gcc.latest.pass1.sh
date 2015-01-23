@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.8.4}
+VERSION=${VERSION-4.9.2}
 VERSION_MPFR=${VERSION_MPFR-3.1.2}
 VERSION_GMP=${VERSION_GMP-5.1.3}
 VERSION_MPC=${VERSION_MPC-1.0.2}
@@ -63,6 +63,8 @@ cd gcc-build
     --disable-libquadmath\
     --disable-libsanitizer\
     --disable-libssp\
+    --disable-libvtv\
+    --disable-libcilkrts\
     --disable-libstdc++-v3\
     --enable-languages=c,c++\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \

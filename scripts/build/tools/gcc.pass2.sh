@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.9.2}
+VERSION=${VERSION-4.8.4}
 VERSION_MPFR=${VERSION_MPFR-3.1.2}
 VERSION_GMP=${VERSION_GMP-5.1.3}
 VERSION_MPC=${VERSION_MPC-1.0.2}
@@ -12,6 +12,10 @@ cd gcc-$VERSION
 
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+
+case `uname -m` in
+    i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
+esac
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
