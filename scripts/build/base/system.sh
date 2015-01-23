@@ -24,7 +24,7 @@ cd sources
 /tools/repo/scripts/build/system/gmp.sh
 /tools/repo/scripts/build/system/mpfr.sh
 /tools/repo/scripts/build/system/mpc.sh
-/tools/repo/scripts/build/system/gcc.sh
+/tools/repo/scripts/build/system/$GCC_BUILD_BINARY.sh
 /tools/repo/scripts/build/system/sed.sh
 /tools/repo/scripts/build/system/bzip2.sh
 /tools/repo/scripts/build/system/pkg-config.sh

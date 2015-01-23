@@ -81,3 +81,17 @@ fi
 if [ -e $PERSIST ] && mountpoint -q $PERSIST; then
     export SCUDUM=$PERSIST/scudum
 fi
+
+# verifies the target gcc flavour and uses this value to construct
+# the proper naming convention for the binary to be built for gcc
+case "$GCC_FLAVOUR" in
+    latest)
+        export GCC_BUILD_BINARY="gcc.latest"
+        ;;
+    normal)
+        export GCC_BUILD_BINARY=="gcc"
+        ;;
+    *)
+        export GCC_BUILD_BINARY="gcc"
+        ;;
+esac
