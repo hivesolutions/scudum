@@ -102,7 +102,7 @@ DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 kpartx -a $FILE && sync
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
-mlabel -i $DEV_LOOP ::$LABEL && sync
+MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync
 
 mkdir -pv $MOUNT_DIR
 mount -v $DEV_LOOP -t vfat $MOUNT_DIR && sync
