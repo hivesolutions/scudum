@@ -7,7 +7,7 @@ rm -rf grub-$VERSION && tar -Jxf "grub-$VERSION.tar.xz"
 rm "grub-$VERSION.tar.xz"
 cd grub-$VERSION
 
-sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
+unset CFLAGS
 
 ./configure\
     --prefix=/usr\
