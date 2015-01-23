@@ -21,7 +21,9 @@ SED=sed ../gcc-$VERSION/configure\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
-    --with-system-zlib
+    --with-system-zlib\
+    --with-arch=$GCC_DEFAULT_ARCH\
+    --with-tune=$GCC_DEFAULT_TUNE
 
 make
 test $TEST && make -k check
