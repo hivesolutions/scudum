@@ -9,7 +9,7 @@ rm -rf mpc-$VERSION && tar -zxf "mpc-$VERSION.tar.gz"
 rm -f "mpc-$VERSION.tar.gz"
 cd mpc-$VERSION
 
-./configure --prefix=/usr
+./configure --prefix=/usr --docdir=/usr/share/doc/mpc-$VERSION
 
 make
 test $TEST && make check
