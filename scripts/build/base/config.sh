@@ -29,12 +29,6 @@ export FORCE_UNSAFE_CONFIGURE=1
 # create some problems in compilation of some packages
 export MAKEFLAGS="-j $(nproc)"
 
-# exprts the flags theat define the deault optimization flags
-# for both the base c compiler and the c++ compiler so that the
-# resulting build is generic enough for proper handling
-export CFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
-export CXXFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
-
 # exports the various gcc related flags that will be used to
 # define the default/target arch and tune values, note that
 # these values are relevant to avoid cross compilation issues
@@ -46,6 +40,10 @@ export GCC_DEFAULT_TUNE="generic"
 # should be done with unit tests runnig (more time)
 export TEST=
 
+# the flag value that is going to be used to control if the
+# c and c++ compiler flags should be defined statically
+export SET_FLAGS=
+
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
 export DISTRIB="generic"
@@ -55,6 +53,14 @@ export DISTRIB="generic"
 # execution is triggered (may be changed by others)
 export EXTRAS="sudo python rsync iptables cifs-utils ntfsprogs \
 wireless-tools wpa-supplicant"
+
+# exports the flags theat define the deault optimization flags
+# for both the base c compiler and the c++ compiler so that the
+# resulting build is generic enough for proper handling
+if [ $SET_FLAGS ]; then
+    export CFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
+    export CXXFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
+fi
 
 # verifies if there's a local configuration file if there's
 # one runs it's source so that it may be used for other operations
