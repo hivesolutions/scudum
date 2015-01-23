@@ -1,6 +1,6 @@
 VERSION=${VERSION-4.9.2}
 VERSION_MPFR=${VERSION_MPFR-3.1.2}
-VERSION_GMP=${VERSION_GMP-5.1.3}
+VERSION_GMP=${VERSION_GMP-6.0.0}
 VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e +h
@@ -14,7 +14,7 @@ wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
-wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
+wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 

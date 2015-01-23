@@ -1,10 +1,10 @@
-VERSION=${VERSION-5.1.3}
+VERSION=${VERSION-6.0.0}
 
 set -e +h
 
 export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION.tar.xz"
+wget --no-check-certificate "https://gmplib.org/download/gmp/gmp-$VERSION.tar.xz"
 rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
