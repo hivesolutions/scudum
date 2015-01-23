@@ -7,7 +7,8 @@ export PERSIST=${PERSIST-/pst}
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
-export SCUDUM_TARGET=${SCUDUM_TARGET-$(uname -m)-scudum-linux-gnu}
+export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
+export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-linux-gnu}
 
 # exports the version string value for the current
 # distribution in building, the default value is set
@@ -16,7 +17,7 @@ export VERSION=${VERSION-$(date +%Y%m%d)}
 
 # exports the generic target value for a pc based
 # infra-structure may be used in final scudum build
-export PC_TARGET=${PC_TARGET-$(uname -m)-pc-linux-gnu}
+export PC_TARGET=${PC_TARGET-$SCUDUM_ARCH-pc-linux-gnu}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
