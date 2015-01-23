@@ -2,12 +2,14 @@ VERSION=${VERSION-2.00}
 
 set -e +h
 
+unset CFLAGS
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/grub/grub-$VERSION.tar.xz"
 rm -rf grub-$VERSION && tar -Jxf "grub-$VERSION.tar.xz"
 rm "grub-$VERSION.tar.xz"
 cd grub-$VERSION
 
-unset CFLAGS
+sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
 
 ./configure\
     --prefix=/usr\

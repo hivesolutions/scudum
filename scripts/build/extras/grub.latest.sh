@@ -6,12 +6,14 @@ set -e +h
 
 source $DIR/common.sh
 
+unset CFLAGS
+
 wget "http://ftp.gnu.org/gnu/grub/grub-$VERSION.tar.gz"
 rm -rf grub-$VERSION && tar -zxf "grub-$VERSION.tar.gz"
 rm -f "grub-$VERSION.tar.gz"
 cd grub-$VERSION
 
-unset CFLAGS
+sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
 
 ./configure\
     --prefix=$PREFIX\
