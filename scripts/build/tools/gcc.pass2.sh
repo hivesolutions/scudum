@@ -13,10 +13,6 @@ cd gcc-$VERSION
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-case `uname -m` in
-    i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
-esac
-
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
     cp -uv $file{,.orig}
