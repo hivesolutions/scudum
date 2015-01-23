@@ -42,6 +42,13 @@ unset PKG_CONFIG_PATH
 set +h
 umask 022
 
+# prints some information about the current configuration
+# that is going to be used in the building operation and
+# then sleeps for some time (allows reading)
+print_scudum
+print_scudum_tools
+sleep 3
+
 # runs the complete set of package specific scripts
 # in order to build their source code properly
 $DIR/tools/binutils.pass1.sh

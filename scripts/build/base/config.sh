@@ -47,7 +47,7 @@ export TEST=
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_FLAGS="basic"
+export SET_CFLAGS="basic"
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
@@ -62,7 +62,7 @@ wireless-tools wpa-supplicant"
 # exports the flags theat define the deault optimization flags
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
-if [ "$SET_FLAGS" == "all" ]; then
+if [ "$SET_CFLAGS" == "all" ]; then
     export CFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
     export CXXFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
 fi
@@ -95,3 +95,23 @@ case "$GCC_FLAVOUR" in
         export GCC_BUILD_BINARY="gcc"
         ;;
 esac
+
+print_scudum() {
+    echo "PERSIST := $PERSIST"
+    echo "SCUDUM := $SCUDUM"
+    echo "SCUDUM_TARGET := $SCUDUM_TARGET"
+    echo "VERSION := $VERSION"
+    echo "PC_TARGET := $PC_TARGET"
+    echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
+    echo "MAKEFLAGS := $MAKEFLAGS"
+    echo "GCC_FLAVOUR := $GCC_FLAVOUR"
+    echo "GCC_DEFAULT_ARCH := $GCC_DEFAULT_ARCH"
+    echo "GCC_DEFAULT_TUNE := $GCC_DEFAULT_TUNE"
+    echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
+    echo "TEST := $TEST"
+    echo "SET_CFLAGS := $SET_CFLAGS"
+    echo "DISTRIB := $DISTRIB"
+    echo "EXTRAS := $EXTRAS"
+    echo "CFLAGS := $CFLAGS"
+    echo "CXXFLAGS := $CXXFLAGS"
+}
