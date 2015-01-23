@@ -7,7 +7,7 @@ export PERSIST=${PERSIST-/pst}
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
-export SCUDUM_TARGET=$(uname -m)-scudum-linux-gnu
+export SCUDUM_TARGET=${SCUDUM_TARGET-$(uname -m)-scudum-linux-gnu}
 
 # exports the version string value for the current
 # distribution in building, the default value is set
@@ -16,31 +16,31 @@ export VERSION=${VERSION-$(date +%Y%m%d)}
 
 # exports the generic target value for a pc based
 # infra-structure may be used in final scudum build
-export PC_TARGET=$(uname -m)-pc-linux-gnu
+export PC_TARGET=${PC_TARGET-$(uname -m)-pc-linux-gnu}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
-export FORCE_UNSAFE_CONFIGURE=1
+export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
 
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
 # should be enough to take advantage of the various cores,
 # this flag should also be used carefully as it is know to
 # create some problems in compilation of some packages
-export MAKEFLAGS="-j $(nproc)"
+export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 
 # the flavour to be used for gcc (eg: normal vs latest) note
 # that using the latest version make create some compatability
 # issues with older cpu based computers
-export GCC_FLAVOUR="normal"
+export GCC_FLAVOUR=${GCC_FLAVOUR-normal}
 
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
-export TEST=
+export TEST=${TEST-}
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_CFLAGS="basic"
+export SET_CFLAGS=${SET_CFLAGS-basic}
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
