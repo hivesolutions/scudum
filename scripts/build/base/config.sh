@@ -29,6 +29,11 @@ export FORCE_UNSAFE_CONFIGURE=1
 # create some problems in compilation of some packages
 export MAKEFLAGS="-j $(nproc)"
 
+# the flavour to be used for gcc (eg: normal vs latest) note
+# that using the latest version make create some compatability
+# issues with older cpu based computers
+export GCC_FLAVOUR="normal"
+
 # exports the various gcc related flags that will be used to
 # define the default/target arch and tune values, note that
 # these values are relevant to avoid cross compilation issues
