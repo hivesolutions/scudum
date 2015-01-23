@@ -7,7 +7,7 @@ rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
 
-export CFLAGS="$CFLAGS -pedantic -fomit-frame-pointer"
+export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
 
 ./configure --prefix=/usr --enable-cxx
 

@@ -7,7 +7,7 @@ rm -rf mpc-$VERSION && tar -zxf "mpc-$VERSION.tar.gz"
 rm -f "mpc-$VERSION.tar.gz"
 cd mpc-$VERSION
 
-export CFLAGS="$CFLAGS -pedantic -fomit-frame-pointer"
+export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
 
 ./configure --prefix=/usr
 
