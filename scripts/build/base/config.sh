@@ -42,7 +42,7 @@ export TEST=
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_FLAGS=
+export SET_FLAGS="all"
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
@@ -57,7 +57,7 @@ wireless-tools wpa-supplicant"
 # exports the flags theat define the deault optimization flags
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
-if [ $SET_FLAGS ]; then
+if [ "$SET_FLAGS" == "all" ]; then
     export CFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
     export CXXFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
 fi
