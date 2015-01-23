@@ -111,6 +111,7 @@ print_scudum() {
     echo "GCC_DEFAULT_ARCH := $GCC_DEFAULT_ARCH"
     echo "GCC_DEFAULT_TUNE := $GCC_DEFAULT_TUNE"
     echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
+    echo "GCC_BUILD_VERSION := $GCC_BUILD_VERSION"
     echo "TEST := $TEST"
     echo "SET_CFLAGS := $SET_CFLAGS"
     echo "DISTRIB := $DISTRIB"
