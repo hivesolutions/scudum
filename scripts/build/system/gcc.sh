@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.9.2}
+VERSION=${VERSION-4.8.4}
 
 set -e +h
 
@@ -7,11 +7,17 @@ rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
 
+case `uname -m` in
+    i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
+esac
+
+sed -i -e /autogen/d -e /check.sh/d fixincludes/Makefile.in
+
 cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
-SED=sed ../gcc-$VERSION/configure\
+../gcc-$VERSION/configure\
     --prefix=/usr\
     --libexecdir=/usr/lib\
     --enable-shared\
