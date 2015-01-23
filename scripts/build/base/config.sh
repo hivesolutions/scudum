@@ -29,6 +29,11 @@ export FORCE_UNSAFE_CONFIGURE=1
 # create some problems in compilation of some packages
 export MAKEFLAGS="-j $(nproc)"
 
+# exprts the flags theat define the deault optimization flags
+# for both the base c compiler and the c++ compiler so that the
+# resulting build is generic enough for proper handling 
+export CFLAGS="-O2 -m64 -mtune=generic -march=x86-64"
+
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
 export TEST=

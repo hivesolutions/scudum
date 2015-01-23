@@ -7,7 +7,7 @@ rm -rf mpfr-$VERSION && tar -Jxf "mpfr-$VERSION.tar.xz"
 rm -f "mpfr-$VERSION.tar.xz"
 cd mpfr-$VERSION
 
-export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
+export CFLAGS="$CFLAGS -pedantic -fomit-frame-pointer"
 
 ./configure --prefix=/usr --enable-thread-safe\
     --docdir=/usr/share/doc/mpfr-$VERSION
