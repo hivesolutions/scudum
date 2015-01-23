@@ -1,13 +1,12 @@
-VERSION=${VERSION-6.0.0}
-VERSION_F=${VERSION_F-a}
+VERSION=${VERSION-5.1.3}
 
 set -e +h
 
 export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION$VERSION_F.tar.xz"
-rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION$VERSION_F.tar.xz"
-rm -f "gmp-$VERSION$VERSION_F.tar.xz"
+wget --no-check-certificate "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION.tar.xz"
+rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
+rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
 
 ./configure --prefix=/usr --enable-cxx\
