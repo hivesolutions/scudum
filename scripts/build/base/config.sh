@@ -33,6 +33,7 @@ export MAKEFLAGS="-j $(nproc)"
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
 export CFLAGS="-O2 -m64 -mtune=generic -march=x86-64"
+export CXXFLAGS="-O2 -m64 -mtune=generic -march=x86-64"
 
 # exports the various gcc related flags that will be used to
 # define the default/target arch and tune values, note that
