@@ -50,8 +50,6 @@ CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM
     --prefix=$PREFIX\
     --with-local-prefix=$PREFIX\
     --with-native-system-header-dir=$PREFIX/include\
-    --with-arch=$GCC_DEFAULT_ARCH\
-    --with-tune=$GCC_DEFAULT_TUNE\
     --enable-clocale=gnu\
     --enable-shared\
     --enable-threads=posix\

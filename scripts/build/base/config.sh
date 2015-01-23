@@ -34,13 +34,6 @@ export MAKEFLAGS="-j $(nproc)"
 # issues with older cpu based computers
 export GCC_FLAVOUR="normal"
 
-# exports the various gcc related flags that will be used to
-# define the default/target arch and tune values, note that
-# these values are relevant to avoid cross compilation issues
-# and make binaries that are able to work across machines
-export GCC_DEFAULT_ARCH="x86-64"
-export GCC_DEFAULT_TUNE="generic"
-
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
 export TEST=
@@ -108,8 +101,6 @@ print_scudum() {
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "GCC_FLAVOUR := $GCC_FLAVOUR"
-    echo "GCC_DEFAULT_ARCH := $GCC_DEFAULT_ARCH"
-    echo "GCC_DEFAULT_TUNE := $GCC_DEFAULT_TUNE"
     echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
     echo "GCC_BUILD_VERSION := $GCC_BUILD_VERSION"
     echo "TEST := $TEST"

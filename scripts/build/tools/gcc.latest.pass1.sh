@@ -49,8 +49,6 @@ cd gcc-build
     --without-headers\
     --with-local-prefix=$PREFIX\
     --with-native-system-header-dir=$PREFIX/include\
-    --with-arch=$GCC_DEFAULT_ARCH\
-    --with-tune=$GCC_DEFAULT_TUNE\
     --disable-nls\
     --disable-shared\
     --disable-multilib\
