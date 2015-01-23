@@ -89,7 +89,7 @@ case "$GCC_FLAVOUR" in
         export GCC_BUILD_BINARY="gcc.latest"
         ;;
     normal)
-        export GCC_BUILD_BINARY=="gcc"
+        export GCC_BUILD_BINARY="gcc"
         ;;
     *)
         export GCC_BUILD_BINARY="gcc"
