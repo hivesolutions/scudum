@@ -9,6 +9,12 @@ source /tools/repo/scripts/build/base/config.sh
 
 unset VERSION
 
+# prints some information about the current configuration
+# that is going to be used in the system building operation
+# and then sleeps for some time to display this information
+print_scudum
+sleep 10
+
 /tools/repo/scripts/build/system/tree.sh
 
 rm -rf sources && mkdir sources

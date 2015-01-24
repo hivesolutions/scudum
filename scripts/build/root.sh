@@ -47,7 +47,7 @@ umask 022
 # then sleeps for some time (allows reading)
 print_scudum
 print_scudum_tools
-sleep 3
+sleep 10
 
 # runs the complete set of package specific scripts
 # in order to build their source code properly
