@@ -34,6 +34,11 @@ base tools and the base system infra-structure is required, to start the process
 
     scudum root
 
+To start the Scudum build process building the latest version of GCC and setting the strict CFLAGS so that the
+build is controlled and does not compile using any (unwanted) optimization and runnnig as a background task use:
+    
+    SET_CFLAGS=all GCC_FLAVOUR=latest scudum root < /dev/null &> /pst/scudum.log & 
+
 To deploy a new version of the Scudum ditribution to the repository a deploy operation must be performed,
 note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
 using the `TARGET` variable:
