@@ -8,6 +8,7 @@ export PERSIST=${PERSIST-/pst}
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
+export SCUDUM_MARCH=${SCUDUM_ARCH//_/-}
 export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-linux-gnu}
 
 # exports the version string value for the current
@@ -57,8 +58,8 @@ wireless-tools wpa-supplicant"
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
 if [ "$SET_CFLAGS" == "all" ]; then
-    export CFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
-    export CXXFLAGS="-O2 -m64 -march=x86-64 -mtune=generic"
+    export CFLAGS="-O2 -m64 -march=$SCUDUM_MARCH -mtune=generic"
+    export CXXFLAGS="-O2 -m64 -march=$SCUDUM_MARCH -mtune=generic"
 fi
 
 # verifies if there's a local configuration file if there's
@@ -96,6 +97,8 @@ esac
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
+    echo "SCUDUM_ARCH := $SCUDUM_ARCH"
+    echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "VERSION := $VERSION"
     echo "PC_TARGET := $PC_TARGET"
