@@ -34,7 +34,7 @@ export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 # the flavour to be used for gcc (eg: normal vs latest) note
 # that using the latest version make create some compatability
 # issues with older cpu based computers
-export GCC_FLAVOUR=${GCC_FLAVOUR-normal}
+export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
 
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
@@ -42,7 +42,7 @@ export TEST=${TEST-}
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_CFLAGS=${SET_CFLAGS-basic}
+export SET_CFLAGS=${SET_CFLAGS-all}
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
@@ -58,8 +58,8 @@ wireless-tools wpa-supplicant"
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
 if [ "$SET_CFLAGS" == "all" ]; then
-    export CFLAGS="-O2 -m64 -march=$SCUDUM_MARCH -mtune=generic"
-    export CXXFLAGS="-O2 -m64 -march=$SCUDUM_MARCH -mtune=generic"
+    export CFLAGS="-O2 -march=$SCUDUM_MARCH -mtune=generic"
+    export CXXFLAGS="-O2 -march=$SCUDUM_MARCH -mtune=generic"
 fi
 
 # verifies if there's a local configuration file if there's
