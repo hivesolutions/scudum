@@ -33,8 +33,11 @@ export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 
 # the flavour to be used for gcc (eg: normal vs latest) note
 # that using the latest version make create some compatability
-# issues with older cpu based computers
-export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
+# issues with older cpu based computers, then defines if the
+# multiarch strategy should be used in glibc/gcc generation
+# the possible options are enable and disable
+export GCC_FLAVOUR=${GCC_FLAVOUR-normal}
+export GCC_MULTIARCH=${GCC_MULTIARCH-enable}
 
 # the test value that defines if the current build
 # should be done with unit tests runnig (more time)
@@ -42,7 +45,7 @@ export TEST=${TEST-}
 
 # the flag value that is going to be used to control if the
 # c and c++ compiler flags should be defined statically
-export SET_CFLAGS=${SET_CFLAGS-all}
+export SET_CFLAGS=${SET_CFLAGS-basic}
 
 # name of the current distribution of sucudum, the default
 # value should be generic as no custom deployment is done
@@ -105,6 +108,7 @@ print_scudum() {
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "GCC_FLAVOUR := $GCC_FLAVOUR"
+    echo "GCC_MULTIARCH := $GCC_MULTIARCH"
     echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
     echo "GCC_BUILD_VERSION := $GCC_BUILD_VERSION"
     echo "TEST := $TEST"

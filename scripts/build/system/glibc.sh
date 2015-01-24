@@ -16,7 +16,7 @@ cd glibc-build
 ../glibc-$VERSION/configure\
     --prefix=/usr\
     --disable-profile\
-    --disable-multi-arch\
+    --$GCC_MULTIARCH-multi-arch\
     --enable-kernel=2.6.32\
     --libexecdir=/usr/lib/glibc
 

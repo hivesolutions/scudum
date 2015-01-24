@@ -16,7 +16,7 @@ cd glibc-build
     --host=$SCUDUM_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
-    --disable-multi-arch\
+    --$GCC_MULTIARCH-multi-arch\
     --enable-kernel=2.6.32\
     --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
