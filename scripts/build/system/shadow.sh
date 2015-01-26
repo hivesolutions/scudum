@@ -2,7 +2,7 @@ VERSION=${VERSION-4.2.1}
 
 set -e +h
 
-wget --no-check-certificate "http://pkgs.fedoraproject.org/repo/pkgs/shadow-utils/shadow-$VERSION.tar.xz"
+wget --no-check-certificate "http://pkg-shadow.alioth.debian.org/releases/shadow-$VERSION.tar.xz"
 rm -rf shadow-$VERSION && tar -Jxf "shadow-$VERSION.tar.xz"
 rm -f "shadow-$VERSION.tar.bz2"
 cd shadow-$VERSION
