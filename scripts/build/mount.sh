@@ -3,7 +3,7 @@
 
 ORIGIN=${ORIGIN-//files.hive/builds}
 TARGET=${TARGET-/mnt/builds}
-USERNAME=${USERNAME-anonymous}
+USERNAME=${USERNAME-bot}
 PASSWORD=${PASSWORD-anonymous}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
