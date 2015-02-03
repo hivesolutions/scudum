@@ -52,6 +52,14 @@ class Asset(base.ArmorBase):
         index = True
     )
 
+    owner = dict(
+        index = True
+    )
+
+    permissions = dict(
+        type = int
+    )
+
     data = appier.field(
         type = appier.File,
         private = True
