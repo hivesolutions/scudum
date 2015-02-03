@@ -15,3 +15,10 @@ cd pypy-$VERSION-src
 
 cd pypy/goal
 python ../../rpython/bin/rpython -Ojit targetpypystandalone
+cd ../tool/release
+python package.py --targetdir pypy-$VERSION.tar.gz --archive-name pypy --without-tk
+
+mv pypy-$VERSION.tar.gz $PREFIX/lib
+cd $PREFIX/lib
+
+rm -rf pypy && tar -zxvf pypy-$VERSION.tar.gz
