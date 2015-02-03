@@ -54,8 +54,8 @@ export DISTRIB="generic"
 # variable that defines the complete set of extra packages
 # that are going to be installed when the extras script
 # execution is triggered (may be changed by others)
-export EXTRAS="sudo python rsync iptables cifs-utils ntfsprogs \
-wireless-tools wpa-supplicant"
+export EXTRAS="sudo python lshw rsync iptables cifs-utils \
+ntfsprogs wireless-tools wpa-supplicant"
 
 # exports the flags theat define the deault optimization flags
 # for both the base c compiler and the c++ compiler so that the
