@@ -15,6 +15,7 @@ mv -v pypy-$VERSION-linux64.tar.bz2 $PREFIX/lib
 cd $PREFIX/lib
 
 rm -rvf pypy && tar -jxf pypy-$VERSION-linux64.tar.bz2
+mv pypy-$VERSION-linux64 pypy
 rm -vf pypy-$VERSION-linux64.tar.bz2
 
 ln -sv ../lib/pypy/bin/pypy $PREFIX/bin/pypy
