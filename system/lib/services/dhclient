@@ -48,13 +48,15 @@ case "$2" in
             log_failure_msg2
             exit 1
         fi
-        
+
         # loads the host name value from the current ip stats and then
         # uses it to set the hostname value for the current machine
         HOSTNAME=`getipstats | grep "host-name" | \
             sed 's/ host-name //' | \
             sed 's/\;//'`
-        echo $HOSTNAME > /etc/hostname
+        if [ "$HOSTNAME" != "" ]; then
+            echo "$HOSTNAME" > /etc/hostname
+        fi
 
         # prints the assigned settings if requested
         # retrieving info from dhclient.leases file
