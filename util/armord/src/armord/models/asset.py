@@ -40,6 +40,7 @@ __license__ = "GNU General Public License (GPL), Version 3"
 import appier
 
 from . import base
+from . import node
 
 class Asset(base.ArmorBase):
 
@@ -64,3 +65,23 @@ class Asset(base.ArmorBase):
         type = appier.File,
         private = True
     )
+
+    node = appier.field(
+        type = appier.reference(
+            node.Node,
+            name = "name"
+        )
+    )
+
+    @classmethod
+    def validate(cls):
+        return super(Asset, cls).validate() + [
+            appier.not_null("name"),
+            appier.not_empty("name"),
+
+            appier.not_null("node")
+        ]
+
+    @classmethod
+    def list_names(cls):
+        return ["name", "owner", "node"]

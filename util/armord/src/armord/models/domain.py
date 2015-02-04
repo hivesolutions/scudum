@@ -52,7 +52,8 @@ class Domain(base.ArmorBase):
     def validate(cls):
         return super(Domain, cls).validate() + [
             appier.not_null("name"),
-            appier.not_empty("name")
+            appier.not_empty("name"),
+            appier.not_duplicate("name", cls._name())
         ]
 
     @classmethod
