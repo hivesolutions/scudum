@@ -23,11 +23,6 @@ else
     export PREFIX=/opt
 fi
 
-if [ -e /etc/scudum/RUNNING ]; then
-    export CFLAGS="-march=native -mtune=native"
-    export CXXFLAGS="-march=native -mtune=native"
-fi
-
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
