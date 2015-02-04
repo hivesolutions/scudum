@@ -20,6 +20,8 @@ OPENSSL_1.0.0 {
 };
 EOF
 
+make clean
+
 ./config shared --prefix=/usr --openssldir=/usr/ssl\
     -Wl,--version-script=openssl.ld -Wl,-Bsymbolic-functions
 make && make install
