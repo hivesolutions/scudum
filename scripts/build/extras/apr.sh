@@ -12,4 +12,6 @@ rm -f "apr-$VERSION.tar.gz"
 cd apr-$VERSION
 
 ./configure --prefix=$PREFIX
-make && make install
+make
+chmod +x tools/gen_test_char
+make install
