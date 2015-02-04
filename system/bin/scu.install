@@ -37,7 +37,8 @@ for package in "$@"; do
         exit 1
     fi
     installed=$(cat $INSTALLED_FILE)
-    if [[ "$installed" == *"$package "* ]]; then
+    package_base=$(echo "$package" | cut -f1 -d.)
+    if [[ "$installed" == *"$package_base "* ]]; then
         if [ "$FORCE" == "1" ]; then
             $EXTRAS_DIR/$package.sh
         else
@@ -45,7 +46,7 @@ for package in "$@"; do
         fi
     else
         $EXTRAS_DIR/$package.sh
-        echo -n "$package " >> $INSTALLED_FILE
+        echo -n "$package_base " >> $INSTALLED_FILE
     fi
 done
 
