@@ -16,7 +16,7 @@ cd pypy-$VERSION-src
 cd pypy/goal
 python ../../rpython/bin/rpython -Ojit targetpypystandalone
 cd ../tool/release
-python package.py --targetdir pypy-$VERSION.tar.bz2 --archive-name pypy --without-tk
+python package.py --targetdir pypy-$VERSION.tar.bz2 --archive-name pypy --without-tk || true
 
 mv pypy-$VERSION.tar.gz $PREFIX/lib
 cd $PREFIX/lib
