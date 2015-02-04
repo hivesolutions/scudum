@@ -34,7 +34,8 @@ mkdir -p $BUILDER && cd $BUILDER
 for package in "$@"; do
     installed=$(cat $INSTALLED_FILE)
     package_base=$(echo "$package" | cut -f1 -d.)
-    if [[ "$installed" == *"$package_base "* ]]; then
+    if [[ "$installed" == *" $package_base "* ]] ||\
+        [[ "$installed" == "$package_base "* ]]; then
         is_installed=1
     else
         is_installed=0
