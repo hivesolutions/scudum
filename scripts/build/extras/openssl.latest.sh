@@ -13,7 +13,7 @@ rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
-./config shared --prefix=/usr --openssldir=/usr/ssl
+./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
 make && make install
 
-ln -sv /usr/ssl /etc/ssl
+ln -sv $PREFIX/ssl /etc/ssl
