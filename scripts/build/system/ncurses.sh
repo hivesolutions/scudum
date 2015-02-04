@@ -33,6 +33,9 @@ echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -sfv libncurses.so /usr/lib/libcurses.so
 ln -sfv libncursesw.a /usr/lib/libcursesw.a
 ln -sfv libncurses.a /usr/lib/libcurses.a
+ln -sfv libtinfow.so /usr/lib/libtinfo.so
+ln -sfv libtinfow.so.5 /usr/lib/libtinfo.so.5
+ln -sfv libtinfow.a /usr/lib/libtinfo.a
 
 mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION
