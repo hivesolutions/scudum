@@ -14,3 +14,5 @@ fi
 
 rm -f get-pip.py && wget "https://bootstrap.pypa.io/get-pip.py"
 pypy get-pip.py $ARGS
+
+ln -sv ../lib/pypy/bin/pypy-pip /usr/bin/pip
