@@ -16,7 +16,7 @@
 
 do_start() {
     log_info_msg "Touching scudum running file (/etc/scudum/RUNNING)"
-    cat $(date +%Y%m%d%H%M%S) > /etc/scudum/RUNNING
+    echo $(date +%Y%m%d%H%M%S) > /etc/scudum/RUNNING
     log_success_msg2
     log_info_msg "Running scudum boot scripts (/etc/boot/*)"
     for file in /etc/boot/*; do
