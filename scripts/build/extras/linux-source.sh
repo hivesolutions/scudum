@@ -15,4 +15,4 @@ make && make modules_install INSTALL_MOD_PATH=modules_install
 cd ..
 
 mkdir -p $PREFIX/src
-mv linux-$VERSION $PREFIX/src/linux
+mv -v linux-$VERSION $PREFIX/src/linux

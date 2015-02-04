@@ -12,4 +12,4 @@ wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION"
 
 chmod +x docker-$VERSION
 mkdir -pv $PREFIX/bin
-mv docker-$VERSION $PREFIX/bin/docker
+mv -v docker-$VERSION $PREFIX/bin/docker
