@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "apr"
 
-wget "http://www.us.apache.org/dist/apr/apr-util-$VERSION.tar.gz"
+wget "http://archive.apache.org/dist/apr/apr-util-$VERSION.tar.gz"
 rm -rf apr-util-$VERSION && tar -zxf "apr-util-$VERSION.tar.gz"
 rm -f "apr-util-$VERSION.tar.gz"
 cd apr-util-$VERSION
