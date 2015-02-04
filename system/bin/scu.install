@@ -34,13 +34,17 @@ mkdir -p $BUILDER && cd $BUILDER
 for package in "$@"; do
     installed=$(cat $INSTALLED_FILE)
     package_base=$(echo "$package" | cut -f1 -d.)
-    is_installed = [[ "$installed" == *"$package_base "* ]];
-    if [ ! -e $EXTRAS_DIR/$package.sh ] && !is_installed; then
+    if [[ "$installed" == *"$package_base "* ]]; then
+        is_installed=1
+    else
+        is_installed=0
+    fi
+    if [ ! -e $EXTRAS_DIR/$package.sh ] &&\
+        [ "$is_installed" == "0" ]; then
         echo "$package: package not found"
         exit 1
     fi
-    installed=$(cat $INSTALLED_FILE)
-    if is_installed; then
+    if [ "$is_installed" == "1" ]; then
         if [ "$FORCE" == "1" ]; then
             $EXTRAS_DIR/$package.sh
         else
