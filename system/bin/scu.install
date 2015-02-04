@@ -32,13 +32,15 @@ fi
 mkdir -p $BUILDER && cd $BUILDER
 
 for package in "$@"; do
-    if [ ! -e $EXTRAS_DIR/$package.sh ]; then
+    installed=$(cat $INSTALLED_FILE)
+    package_base=$(echo "$package" | cut -f1 -d.)
+    is_installed = [[ "$installed" == *"$package_base "* ]];
+    if [ ! -e $EXTRAS_DIR/$package.sh ] && !is_installed; then
         echo "$package: package not found"
         exit 1
     fi
     installed=$(cat $INSTALLED_FILE)
-    package_base=$(echo "$package" | cut -f1 -d.)
-    if [[ "$installed" == *"$package_base "* ]]; then
+    if is_installed; then
         if [ "$FORCE" == "1" ]; then
             $EXTRAS_DIR/$package.sh
         else
