@@ -31,4 +31,4 @@ fi
 make install
 
 mv -v /usr/lib/libprocps.so.* /lib
-ln -sfv ../../lib/libprocps.so.1.1.0 /usr/lib/libprocps.so
+ln -svf ../../lib/libprocps.so.1.1.0 /usr/lib/libprocps.so

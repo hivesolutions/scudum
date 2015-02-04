@@ -25,8 +25,8 @@ make SHLIB_LIBS=-lncurses install
 mv -v /lib/lib{readline,history}.a /usr/lib
 
 rm -v /lib/lib{readline,history}.so
-ln -sfv ../../lib/libreadline.so.6 /usr/lib/libreadline.so
-ln -sfv ../../lib/libhistory.so.6 /usr/lib/libhistory.so
+ln -svf ../../lib/libreadline.so.6 /usr/lib/libreadline.so
+ln -svf ../../lib/libhistory.so.6 /usr/lib/libhistory.so
 
 mkdir -pv /usr/share/doc/readline-$VERSION
 install -v -m644 doc/*.{ps,pdf,html,dvi}\
