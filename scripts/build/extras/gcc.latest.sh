@@ -25,4 +25,4 @@ cd gcc-build
 make
 make install
 
-ln -sv gcc $PREFIX/bin/cc
+ln -svf gcc $PREFIX/bin/cc
