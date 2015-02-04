@@ -16,4 +16,4 @@ cd openssl-$VERSION
 ./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
 make && make install
 
-ln -sv $PREFIX/ssl /etc/ssl
+ln -svf $PREFIX/ssl /etc/ssl
