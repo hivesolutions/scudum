@@ -55,3 +55,14 @@ class Node(base.ArmorBase):
             name = "name"
         )
     )
+
+    @classmethod
+    def validate(cls):
+        return super(Node, cls).validate() + [
+            appier.not_null("name"),
+            appier.not_empty("name")
+        ]
+
+    @classmethod
+    def list_names(cls):
+        return ["name", "domain"]

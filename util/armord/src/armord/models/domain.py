@@ -37,6 +37,8 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
+import appier
+
 from . import base
 
 class Domain(base.ArmorBase):
@@ -45,3 +47,14 @@ class Domain(base.ArmorBase):
         index = True,
         default = True
     )
+
+    @classmethod
+    def validate(cls):
+        return super(Domain, cls).validate() + [
+            appier.not_null("name"),
+            appier.not_empty("name")
+        ]
+
+    @classmethod
+    def list_names(cls):
+        return ["name", "description"]
