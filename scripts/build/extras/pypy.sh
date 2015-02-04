@@ -21,7 +21,7 @@ python package.py --targetdir pypy-$VERSION.tar.bz2 --archive-name pypy --withou
 mv -v pypy-$VERSION.tar.bz2 $PREFIX/lib
 cd $PREFIX/lib
 
-rm -rvf pypy && tar -jxvf pypy-$VERSION.tar.bz2
+rm -rvf pypy && tar -jxf pypy-$VERSION.tar.bz2
 rm -vf pypy-$VERSION.tar.bz2
 
 ln -sv ../lib/pypy/bin/pypy $PREFIX/bin/pypy
