@@ -19,7 +19,7 @@ cp -v -R VERSION common eclipse epub extensions fo highlighting html\
     xhtml xhtml-1_1\
     $PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION
 
-ln -s VERSION $PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION/VERSION.xsl
+ln -sv VERSION $PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION/VERSION.xsl
 
 install -v -m644 -D README $PREFIX/share/doc/docbook-xsl-$VERSION/README.txt
 install -v -m644 RELEASE-NOTES* NEWS* $PREFIX/share/doc/docbook-xsl-$VERSION

@@ -26,7 +26,7 @@ cmake ..\
 
 make && make install
 
-ln -s ../mysql/bin/mysql $PREFIX/bin/mysql
+ln -sv ../mysql/bin/mysql $PREFIX/bin/mysql
 
 cd $PREFIX/mysql
 

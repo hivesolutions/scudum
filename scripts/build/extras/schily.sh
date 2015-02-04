@@ -13,9 +13,9 @@ cd schily-$VERSION
 
 make && make install PREFIX=$PREFIX
 
-ln -s ../schily/bin/smake $PREFIX/bin/smake
-ln -s ../schily/bin/mkisofs $PREFIX/bin/mkisofs
-ln -s ../schily/bin/isoinfo $PREFIX/bin/isoinfo
-ln -s ../schily/bin/isodump $PREFIX/bin/isodump
-ln -s ../schily/bin/isodebug $PREFIX/bin/isodebug
-ln -s ../schily/bin/cdrecord $PREFIX/bin/cdrecord
+ln -sv ../schily/bin/smake $PREFIX/bin/smake
+ln -sv ../schily/bin/mkisofs $PREFIX/bin/mkisofs
+ln -sv ../schily/bin/isoinfo $PREFIX/bin/isoinfo
+ln -sv ../schily/bin/isodump $PREFIX/bin/isodump
+ln -sv ../schily/bin/isodebug $PREFIX/bin/isodebug
+ln -sv ../schily/bin/cdrecord $PREFIX/bin/cdrecord
