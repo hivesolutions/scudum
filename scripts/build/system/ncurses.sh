@@ -11,6 +11,7 @@ cd ncurses-$VERSION
     --prefix=/usr\
     --mandir=/usr/share/man\
     --with-shared\
+    --with-termlib\
     --without-debug\
     --enable-pc-files\
     --enable-widec
