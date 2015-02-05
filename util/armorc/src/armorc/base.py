@@ -47,11 +47,18 @@ import armor
 
 class ArmorClient(object):
 
-    def __init__(self, data_path = "/data"):
+    def __init__(self, armor_path = "/armor", data_path = "/data"):
+        self.armor_path = armor_path
         self.data_path = data_path
         self.api = None
         self.hostname = None
         self.domain = None
+        self.state_path = None
+        self.ensure_paths()
+
+    def ensure_paths(self):
+        if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
+        if not os.path.exists(self.data_path): os.makedirs(self.data_path)
 
     def run_boot(self):
         api = self.get_api()
@@ -67,10 +74,15 @@ class ArmorClient(object):
         finally:
             shutil.rmtree(self.temp_path)
 
+    def run_halt(self):
+        pass
+
     def handle_domain(self):
         self.deploy_ssh()
         self.mount_cifs()
         self.clone_github()
+        self.deploy_system()
+        self.exec_boot()
 
     def deploy_ssh(self):
         print("Deploying SSH credentials ...")
@@ -92,7 +104,6 @@ class ArmorClient(object):
         if not cifs_username: return
         if not cifs_password: return
         print("Mounting CIFS share from '%s' into '%s'" % (cifs_path, self.data_path))
-        if not os.path.exists(self.data_path): os.makedirs(self.data_path)
         pipe = subprocess.Popen(
             [
                 "mount", "-t", "cifs", "-o",
@@ -119,9 +130,30 @@ class ArmorClient(object):
         git_path = os.path.join(self.temp_path, "git")
         host_path = os.path.join(git_path, self.hostname)
         if not os.path.exists(host_path): return
-        system_path = os.path.join(host_path, "system")
-        system_exits = os.path.exists(system_path)
-        if system_exits: self.copy_tree(system_path, "/")
+        self.state_path = os.path.join(self.armor_path, "state")
+        shutil.move(host_path, self.state_path)
+
+    def exec_boot(self):
+        if not self.state_path: return
+        boot_path = os.path.join(self.state_path, "boot")
+        if not os.path.exists(boot_path): return
+        print("Executing boot script")
+        pipe = subprocess.Popen([boot_path], shell = True)
+        pipe.wait()
+
+    def exec_halt(self):
+        if not self.state_path: return
+        halt_path = os.path.join(self.state_path, "halt")
+        if not os.path.exists(halt_path): return
+        print("Executing halt script")
+        pipe = subprocess.Popen([halt_path], shell = True)
+        pipe.wait()
+
+    def deploy_system(self):
+        if not self.state_path: return
+        system_path = os.path.join(self.state_path, "system")
+        if not os.path.exists(system_path): return
+        self.copy_tree(system_path, "/")
 
     def write_file(self, path, data, mode = None):
         dir_path = os.path.dirname(path)
