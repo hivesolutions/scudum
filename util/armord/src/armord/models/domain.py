@@ -71,8 +71,7 @@ class Domain(base.ArmorBase):
     )
 
     git_url = dict(
-        index = True,
-        meta = "url"
+        index = True
     )
 
     @classmethod
@@ -80,9 +79,7 @@ class Domain(base.ArmorBase):
         return super(Domain, cls).validate() + [
             appier.not_null("name"),
             appier.not_empty("name"),
-            appier.not_duplicate("name", cls._name()),
-
-            appier.is_url("git_url")
+            appier.not_duplicate("name", cls._name())
         ]
 
     @classmethod
