@@ -52,8 +52,8 @@ case "$2" in
         # loads the host name value from the current ip stats and then
         # uses it to set the hostname value for the current machine
         HOSTNAME=`getipstats | grep "host-name" | \
-            sed 's/ option host-name //' | \
-            sed 's/\;//'`
+            sed 's/ option host-name "//' | \
+            sed 's/\";//'`
         if [ "$HOSTNAME" != "" ]; then
             echo "$HOSTNAME" > /etc/hostname
         fi
