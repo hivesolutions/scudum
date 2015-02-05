@@ -10,7 +10,7 @@ depends() {
 rget() {
     result=1
     for url in "$@"; do
-        wget $url || result=$? || true
+        (wget $url && result=0) || result=1
         echo "sacou com $result"
         if [ "$result" == "0" ]; then
             echo "saiu aki1 $result"
