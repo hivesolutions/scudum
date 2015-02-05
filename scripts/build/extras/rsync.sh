@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 rget "http://samba.org/ftp/rsync/src/rsync-$VERSION.tar.gz"\
-    "http://ftp.heanet.ie/mirrors/samba/rsync/rsync-$VERSION.tar.gz"
+    "http://ftp.ntua.gr/mirror/rsync/rsync-$VERSION.tar.gz"
 rm -rf rsync-$VERSION && tar -zxf "rsync-$VERSION.tar.gz"
 rm -f "rsync-$VERSION.tar.gz"
 cd rsync-$VERSION
