@@ -37,35 +37,73 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
+import os
+import shutil
 import socket
+import tempfile
+import subprocess
 
 import armor
-
-from . import actions
 
 class ArmorClient(object):
 
     def __init__(self):
         self.api = None
+        self.hostname = None
+        self.domain = None
 
     def run_boot(self):
         api = self.get_api()
-        hostname, domain = self.get_domain()
-        domains = api.list_domains(name = domain)
-        if domains: self.handle_domain(domains[0])
+        self.hostname, self.domain = self.get_domain()
+        domains = api.list_domains(name = self.domain)
+        if not domains: return
+        self.domain_info = domains[0]
+        self.temp_path = tempfile.mkdtemp()
+        try:
+            os.chdir(self.temp_path)
+            self.handle_domain()
+        finally:
+            shutil.rmtree(self.temp_path)
 
-    def handle_domain(self, domain):
-        github_url = domain["github_url"]
-        cifs_host = domain["cifs_host"]
-        if github_url: actions.Actions.clone_github(github_url)
-        if cifs_host:
-            cifs_username = domain["cifs_username"]
-            cifs_password = domain["cifs_password"]
-            actions.Actions.mount_cifs(
-                cifs_host,
-                username = cifs_username,
-                password = cifs_password
-            )
+    def handle_domain(self):
+        self.deploy_ssh()
+        self.clone_github()
+        self.mount_cifs()
+
+    def deploy_ssh(self):
+        print("Deploying SSH credentials ...")
+        private_key = self.domain_info["private_key"]
+        public_key = self.domain_info["public_key"]
+        authorized_keys = self.domain_info["authorized_keys"]
+        if private_key:
+            self.write_file("/root/.ssh/id_rsa", private_key, mode = 0o600)
+        if public_key:
+            self.write_file("/root/.ssh/id_rsa.pub", public_key, mode = 0o644)
+        if authorized_keys:
+            self.write_file("/root/.ssh/authorized_keys", authorized_keys, mode = 0o600)
+
+    def clone_github(self):
+        git_url = self.domain_info["git_url"]
+        if not git_url: return
+        print("Cloning git repository '%s'" % self.git_url)
+        subprocess.call(["git", "clone", "--depth", "1", git_url, "git"])
+        git_path = os.path.join(self.temp_path, "git")
+        host_path = os.path.join(git_path, self.hostname)
+        if not os.path.exists(host_path): return
+
+    def mount_cifs(self):
+        cifs_host = self.domain_info["cifs_host"]
+        cifs_username = self.domain_info["cifs_username"]
+        cifs_password = self.domain_info["cifs_password"]
+
+    def write_file(self, path, data, mode = None):
+        dir_path = os.path.dirname(path)
+        if not os.path.exists(dir_path): os.makedirs(dir_path)
+        file = open(path, "wb")
+        try: file.write(data)
+        finally: file.close()
+        if not mode: return
+        os.chmod(path, mode)
 
     def get_domain(self):
         hostname = socket.gethostname()
