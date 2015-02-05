@@ -19,26 +19,23 @@
 # You should have received a copy of the GNU General Public License
 # along with Hive Armor. If not, see <http://www.gnu.org/licenses/>.
 
-def main():
-    #1 tenho de sacar um json com a especificacao
-    #3 tenho de passar todos os meus argumentos
+__version__ = "1.0.0"
+""" The version of the module """
 
-    pass
+__revision__ = "$LastChangedRevision$"
+""" The revision number of the module """
 
-def unpack(path):
-    """
-    Unpacks a scudum (.scu) based file into the current
-    file system installing it in the current environment.
+__date__ = "$LastChangedDate$"
+""" The last change date of the module """
 
-    The unpacking of the file should follow the pre-defined
-    specification in order for it to work.
+__copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
+""" The copyright for the module """
 
-    @type path: String
-    @param path: The path to the file that is meant to be
-    installed in the current system.
-    """
+__license__ = "GNU General Public License (GPL), Version 3"
+""" The license for the module """
 
-    pass
+from . import base
+from . import run
 
-if __name__ == "__main__":
-    main()
+from .base import ArmorClient
+from .run import main
