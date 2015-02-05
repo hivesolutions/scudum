@@ -11,7 +11,6 @@ cd ncurses-$VERSION
     --prefix=/usr\
     --mandir=/usr/share/man\
     --with-shared\
-    --with-termlib\
     --without-debug\
     --enable-pc-files\
     --enable-widec
@@ -33,21 +32,6 @@ echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -svf libncurses.so /usr/lib/libcurses.so
 ln -svf libncursesw.a /usr/lib/libcursesw.a
 ln -svf libncurses.a /usr/lib/libcurses.a
-ln -svf libtinfow.so /usr/lib/libtinfo.so
-ln -svf libtinfow.so.5 /usr/lib/libtinfo.so.5
-ln -svf libtinfow.a /usr/lib/libtinfo.a
 
 mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION
-
-make distclean
-
-./configure\
-    --prefix=/usr\
-    --with-shared\
-    --without-normal\
-    --without-debug\
-    --without-cxx-binding
-
-make sources libs
-cp -av lib/lib*.so.5* /usr/lib
