@@ -147,7 +147,7 @@ class ArmorClient(object):
         if not self.state_path: return
         script_path = os.path.join(self.state_path, name)
         if not os.path.exists(script_path): return
-        print("Executing %s script" % name)
+        print("Executing script '%s' ..." % name)
         pipe = subprocess.Popen([script_path], shell = True)
         pipe.wait()
 
