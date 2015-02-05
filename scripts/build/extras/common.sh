@@ -8,10 +8,8 @@ depends() {
 }
 
 rget() {
-    result=1
     for url in "$@"; do
         wget $url && return 0
     done
-    echo "saiu ali2 $result"
-    return $result
+    return 1
 }
