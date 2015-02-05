@@ -48,6 +48,18 @@ class Domain(base.ArmorBase):
         default = True
     )
 
+    private_key = dict(
+        meta = "longtext"
+    )
+
+    public_key = dict(
+        meta = "longtext"
+    )
+
+    authorized_keys = dict(
+        meta = "longtext"
+    )
+
     cifs_host = dict(
         index = True
     )
