@@ -81,6 +81,7 @@ class ArmorClient(object):
         self.deploy_ssh()
         self.mount_cifs()
         self.clone_github()
+        self.exec_build()
         self.deploy_system()
         self.exec_boot()
 
@@ -133,20 +134,21 @@ class ArmorClient(object):
         self.state_path = os.path.join(self.armor_path, "state")
         shutil.move(host_path, self.state_path)
 
+    def exec_build(self):
+        self.exec_script("build")
+
     def exec_boot(self):
-        if not self.state_path: return
-        boot_path = os.path.join(self.state_path, "boot")
-        if not os.path.exists(boot_path): return
-        print("Executing boot script")
-        pipe = subprocess.Popen([boot_path], shell = True)
-        pipe.wait()
+        self.exec_script("boot")
 
     def exec_halt(self):
+        self.exec_script("boot")
+
+    def exec_script(self, name = "boot"):
         if not self.state_path: return
-        halt_path = os.path.join(self.state_path, "halt")
-        if not os.path.exists(halt_path): return
-        print("Executing halt script")
-        pipe = subprocess.Popen([halt_path], shell = True)
+        script_path = os.path.join(self.state_path, name)
+        if not os.path.exists(script_path): return
+        print("Executing %s script" + name)
+        pipe = subprocess.Popen([script_path], shell = True)
         pipe.wait()
 
     def deploy_system(self):
