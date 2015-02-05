@@ -32,7 +32,7 @@ for lib in ncurses tinfo form panel menu ; do
 done
 
 rm -vf /usr/lib/libcursesw.so
-echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
+echo "INPUT(-lncursesw -ltinfow)" > /usr/lib/libcursesw.so
 ln -svf libncurses.so /usr/lib/libcurses.so
 ln -svf libncursesw.a /usr/lib/libcursesw.a
 ln -svf libncurses.a /usr/lib/libcurses.a
