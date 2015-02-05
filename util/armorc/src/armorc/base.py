@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from netius.common.util import hostname
 
 # Hive Armor
 # Copyright (c) 2008-2015 Hive Solutions Lda.
@@ -52,7 +51,10 @@ class ArmorClient(object):
     def run_boot(self):
         api = self.get_api()
         hostname, domain = self.get_domain()
-        domain = api.get_domain(domain)
+        domains = api.list_domains(name = domain)
+        if domains: self.handle_domain(domains[0])
+
+    def handle_domain(self, domain):
         github_url = domain["github_url"]
         cifs_host = domain["cifs_host"]
         if github_url: actions.Actions.clone_github(github_url)
