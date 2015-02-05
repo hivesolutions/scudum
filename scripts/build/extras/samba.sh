@@ -1,4 +1,4 @@
-VERSION=${VERSION-4.1.11}
+VERSION=${VERSION-4.1.16}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -9,7 +9,8 @@ source $DIR/common.sh
 depends "python"
 
 rget "http://ftp.samba.org/pub/samba/stable/samba-$VERSION.tar.gz"\
-    "http://ftp.heanet.ie/mirrors/samba/samba-$VERSION.tar.gz"
+    "http://ftp.heanet.ie/mirrors/samba/samba-$VERSION.tar.gz"\
+    "http://ftp.ntua.gr/mirror/samba/stable/samba-$VERSION.tar.gz"
 rm -rf samba-$VERSION && tar -zxf "samba-$VERSION.tar.gz"
 rm -f "samba-$VERSION.tar.gz"
 cd samba-$VERSION
