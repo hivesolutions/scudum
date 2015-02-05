@@ -94,8 +94,7 @@ class ArmorClient(object):
         )
         os.environ["GIT_SSH"] = "./ssh"
         pipe = subprocess.Popen(
-            ["git clone --depth 1 " + git_url + " git"],
-            shell = True
+            ["git", "clone", "--depth", "1", git_url, "git"]
         )
         pipe.wait()
         git_path = os.path.join(self.temp_path, "git")
