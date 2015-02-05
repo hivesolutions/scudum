@@ -1,11 +1,10 @@
 #!/bin/sh
 
-export HOME=${HOME-/root}
 export HOST=${HOST-0.0.0.0}
 export BASE_PATH=${BASE_PATH-/}
 
 set -e
 
-pip install netius --quiet --user
+HOME=/root pip install netius --quiet --user
 
 python -m netius.extra.file < /dev/null &> /dev/null &
