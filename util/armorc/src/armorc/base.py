@@ -87,8 +87,13 @@ class ArmorClient(object):
         git_url = self.domain_info["git_url"]
         if not git_url: return
         print("Cloning git repository '%s'" % git_url)
+        self.write_file(
+            "ssh",
+            "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $*",
+            mode = 0o700
+        )
         environ = dict(os.environ)
-        environ["GIT_SSH"] = "-o StrictHostKeyChecking=no"
+        environ["GIT_SSH"] = "./ssh"
         subprocess.Popen(
             ["git", "clone", "--depth", "1", git_url, "git"],
             env = environ
@@ -104,7 +109,8 @@ class ArmorClient(object):
 
     def write_file(self, path, data, mode = None):
         dir_path = os.path.dirname(path)
-        if not os.path.exists(dir_path): os.makedirs(dir_path)
+        dir_exists = dir_path == "" or os.path.exists(dir_path)
+        if not dir_exists: os.makedirs(dir_path)
         file = open(path, "wb")
         try: file.write(data)
         finally: file.close()
