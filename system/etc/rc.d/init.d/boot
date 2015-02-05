@@ -7,7 +7,7 @@
 # Required-Stop:
 # Should-Stop:
 # Default-Start:       2 3 4 5
-# Default-Stop:
+# Default-Stop:        0 6
 # Short-Description:   Runs the complete set of Scudum boot scripts.
 # Description:         Runs the complete set of Scudum boot scripts.
 ### END INIT INFO
