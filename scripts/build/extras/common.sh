@@ -8,12 +8,12 @@ depends() {
 }
 
 rget() {
-    set +e
+    result=1
     for url in "$@"; do
-        wget $url
+        wget $url || result=$? || true
         if "$?" == "0"; then
-            break
+            return $result
         fi
     done
-    set -e
+    return $result
 }
