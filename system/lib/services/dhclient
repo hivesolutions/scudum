@@ -56,8 +56,8 @@ case "$2" in
             sed 's/\";//'`
         if [ "$HOSTNAME" != "" ]; then
             hostname $HOSTNAME
-            echo "$HOSTNAME" > /etc/hostname
-            echo "127.0.0.1 $HOSTNAME" > /etc/hosts
+            echo "$(hostname)" > /etc/hostname
+            echo "127.0.0.1 $(hostname)" > /etc/hosts
         fi
 
         # prints the assigned settings if requested
