@@ -21,7 +21,10 @@ make && make install
 mv -v /usr/lib/libncursesw.so.5* /lib
 ln -svf ../../lib/libncursesw.so.5 /usr/lib/libncursesw.so
 
-for lib in ncurses form panel menu ; do
+mv -v /usr/lib/libtinfow.so.5* /lib
+ln -svf ../../lib/libtinfow.so.5 /usr/lib/libtinfow.so
+
+for lib in ncurses tinfo form panel menu ; do
     rm -vf /usr/lib/lib${lib}.so
     echo "INPUT(-l${lib}w)" > /usr/lib/lib${lib}.so
     ln -svf lib${lib}w.a /usr/lib/lib${lib}.a
@@ -33,9 +36,6 @@ echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -svf libncurses.so /usr/lib/libcurses.so
 ln -svf libncursesw.a /usr/lib/libcursesw.a
 ln -svf libncurses.a /usr/lib/libcurses.a
-ln -svf libtinfow.so /usr/lib/libtinfo.so
-ln -svf libtinfow.so.5 /usr/lib/libtinfo.so.5
-ln -svf libtinfow.a /usr/lib/libtinfo.a
 
 mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION
