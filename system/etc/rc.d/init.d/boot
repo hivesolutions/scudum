@@ -26,7 +26,7 @@ do_start() {
 }
 
 do_stop() {
-    log_info_msg "Running scudum halt scripts (/etc/boot/*)"
+    log_info_msg "Running scudum halt scripts (/etc/halt/*)"
     for file in /etc/halt/*; do
         $file
     done
