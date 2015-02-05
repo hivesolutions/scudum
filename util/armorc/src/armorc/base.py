@@ -53,7 +53,8 @@ class ArmorClient(object):
         self.api = None
         self.hostname = None
         self.domain = None
-        self.state_path = None
+        self.common_path = None
+        self.host_path = None
         self.ensure_paths()
 
     def ensure_paths(self):
@@ -82,7 +83,7 @@ class ArmorClient(object):
         self.mount_cifs()
         self.clone_github()
         self.exec_build()
-        self.deploy_system()
+        self.deploy_all()
         self.exec_boot()
 
     def deploy_ssh(self):
@@ -129,31 +130,44 @@ class ArmorClient(object):
         )
         pipe.wait()
         git_path = os.path.join(self.temp_path, "git")
+        common_path = os.path.join(git_path, "common")
+        if os.path.exists(common_path):
+            self.common_path = os.path.join(self.armor_path, "common")
+            shutil.move(common_path, self.common_path)
         host_path = os.path.join(git_path, self.hostname)
-        if not os.path.exists(host_path): return
-        self.state_path = os.path.join(self.armor_path, "state")
-        shutil.move(host_path, self.state_path)
+        if os.path.exists(host_path):
+            self.host_path = os.path.join(self.armor_path, "host")
+            shutil.move(host_path, self.host_path)
 
     def exec_build(self):
-        self.exec_script("build")
+        self.exec_script("build", common = True)
+        self.exec_script("build", common = False)
 
     def exec_boot(self):
-        self.exec_script("boot")
+        self.exec_script("boot", common = True)
+        self.exec_script("boot", common = False)
 
     def exec_halt(self):
-        self.exec_script("boot")
+        self.exec_script("halt", common = True)
+        self.exec_script("halt", common = False)
 
-    def exec_script(self, name = "boot"):
-        if not self.state_path: return
-        script_path = os.path.join(self.state_path, name)
+    def exec_script(self, name = "boot", common = False):
+        target_path = self.common_path if common else self.host_path
+        if not target_path: return
+        script_path = os.path.join(target_path, name)
         if not os.path.exists(script_path): return
         print("Executing script '%s' ..." % name)
         pipe = subprocess.Popen([script_path], shell = True)
         pipe.wait()
 
-    def deploy_system(self):
-        if not self.state_path: return
-        system_path = os.path.join(self.state_path, "system")
+    def deploy_all(self):
+        self.deploy_system(common = True)
+        self.deploy_system(common = False)
+
+    def deploy_system(self, common = False):
+        target_path = self.common_path if common else self.host_path
+        if not target_path: return
+        system_path = os.path.join(target_path, "system")
         if not os.path.exists(system_path): return
         self.copy_tree(system_path, "/")
 
