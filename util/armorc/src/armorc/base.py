@@ -86,7 +86,12 @@ class ArmorClient(object):
         git_url = self.domain_info["git_url"]
         if not git_url: return
         print("Cloning git repository '%s'" % git_url)
-        subprocess.call(["git", "clone", "--depth", "1", git_url, "git"])
+        environ = dict(os.environ)
+        environ["GIT_SSH"] = "-o StrictHostKeyChecking=no"
+        subprocess.Popen(
+            ["git", "clone", "--depth", "1", git_url, "git"],
+            env = environ
+        )
         git_path = os.path.join(self.temp_path, "git")
         host_path = os.path.join(git_path, self.hostname)
         if not os.path.exists(host_path): return
