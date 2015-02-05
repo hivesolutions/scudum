@@ -2,5 +2,4 @@
 
 set -e
 
-mkdir -p /mnt/builds
-mount -t cifs -o username=bot,password=anonymous //files.hive/builds /mnt/builds
+scudum mount
