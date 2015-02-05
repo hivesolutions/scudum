@@ -54,7 +54,9 @@ class Domain(base.ArmorBase):
 
     cifs_username = dict()
 
-    cifs_password = dict()
+    cifs_password = dict(
+        meta = "secret"
+    )
 
     github_url = dict(
         index = True
