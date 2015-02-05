@@ -20,7 +20,7 @@ do_start() {
     log_success_msg2
     log_info_msg "Running scudum boot scripts (/etc/boot/*)"
     for file in /etc/boot/*; do
-        $file
+        $file &>> /var/log/${file##*/}.log
     done
     log_success_msg2
 }
@@ -28,7 +28,7 @@ do_start() {
 do_stop() {
     log_info_msg "Running scudum halt scripts (/etc/halt/*)"
     for file in /etc/halt/*; do
-        $file
+        $file &>> /var/log/${file##*/}.log
     done
     log_success_msg2
 }
