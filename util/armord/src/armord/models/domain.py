@@ -60,7 +60,7 @@ class Domain(base.ArmorBase):
         meta = "longtext"
     )
 
-    cifs_host = dict(
+    cifs_path = dict(
         index = True
     )
 
