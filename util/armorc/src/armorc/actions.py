@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from netius.common.util import hostname
 
 # Hive Armor
 # Copyright (c) 2008-2015 Hive Solutions Lda.
