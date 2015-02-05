@@ -2,11 +2,10 @@
 
 set -e
 
-export PATH="/root/.local/bin:~/.local/sbin:$PATH"
 export ARMOR_BASE_URL=${ARMOR_BASE_URL-http://srio.hive:8080/api/}
 export ARMOR_USERNAME=${ARMOR_USERNAME-root}
 export ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
 
-HOME=/root pip install armorc --quiet --user
+pip install armorc --quiet
 
 armorc boot
