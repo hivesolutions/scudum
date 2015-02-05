@@ -11,6 +11,7 @@ rget() {
     result=1
     for url in "$@"; do
         wget $url || result=$? || true
+        echo "sacou com $result"
         if [ "$result" == "0" ]; then
             echo "saiu aki1 $result"
             return $result
