@@ -19,4 +19,4 @@ cd ncurses-$VERSION
 
 make
     
-cp -av lib/libtinfo*.so.5* /usr/lib
+cp -av lib/libtinfo* /usr/lib
