@@ -2,3 +2,7 @@
 *.debug
 
 *.shelve*
+
+/util/armorc/dist
+/util/armorc/build
+/util/armorc/src/armorc.egg-info
