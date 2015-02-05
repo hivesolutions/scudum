@@ -91,6 +91,7 @@ class ArmorClient(object):
         if not cifs_path: return
         if not cifs_username: return
         if not cifs_password: return
+        print("Mounting CIFS share from '%s' into '%s'" % (cifs_path, self.data))
         if not os.path.exists(self.data_path): os.makedirs(self.data_path)
         pipe = subprocess.Popen(
             [
