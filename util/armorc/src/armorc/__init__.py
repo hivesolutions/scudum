@@ -34,10 +34,8 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-from . import actions
 from . import base
 from . import run
 
-from .actions import Actions
 from .base import ArmorClient
 from .run import main
