@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from netius.common.util import hostname
 
 # Hive Armor
 # Copyright (c) 2008-2015 Hive Solutions Lda.
@@ -19,6 +20,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Hive Armor. If not, see <http://www.gnu.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,10 +38,12 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-from . import actions
-from . import base
-from . import run
+class Actions(object):
 
-from .actions import Actions
-from .base import ArmorClient
-from .run import main
+    @classmethod
+    def clone_github(cls, url):
+        pass
+
+    @classmethod
+    def mount_cifs(cls, host, username = None, password = None):
+        pass

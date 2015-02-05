@@ -42,6 +42,8 @@ import socket
 
 import armor
 
+from . import actions
+
 class ArmorClient(object):
 
     def __init__(self):
@@ -51,14 +53,25 @@ class ArmorClient(object):
         api = self.get_api()
         hostname, domain = self.get_domain()
         domain = api.get_domain(domain)
-        
+        github_url = domain["github_url"]
+        cifs_host = domain["cifs_host"]
+        if github_url: actions.Actions.clone_github(github_url)
+        if cifs_host:
+            cifs_username = domain["cifs_username"]
+            cifs_password = domain["cifs_password"]
+            actions.Actions.mount_cifs(
+                cifs_host,
+                username = cifs_username,
+                password = cifs_password
+            )
+
     def get_domain(self):
         hostname = socket.gethostname()
         parts = hostname.rsplit(".")
         if len(parts) > 1: domain = parts[1]
         else: domain = "local"
         return hostname, domain
-        
+
     def get_api(self):
         if self.api: return self.api
         self.api = armor.Api()

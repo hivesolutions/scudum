@@ -54,7 +54,7 @@ def main():
     # retrieves the set of extra arguments to be sent to the
     # command to be executed, (this may be dangerous)
     args = sys.argv[2:]
-    
+
     # creates the new client object that will be used to perform
     # the requested command, this is considered a temporary object
     client = armorc.ArmorClient()
