@@ -51,6 +51,10 @@ if [ -e boot ]; then
     cp -p boot $SCUDUM/etc/boot/$DISTRIB
 fi
 
+if [ -e halt ]; then
+    cp -p halt $SCUDUM/etc/halt/$DISTRIB
+fi
+
 if [ -e welcome ]; then
     cp -p welcome $SCUDUM/etc/welcome/$DISTRIB
 fi
