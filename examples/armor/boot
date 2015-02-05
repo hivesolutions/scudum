@@ -1,10 +1,10 @@
 #!/bin/sh
 
-set -e
-
 export ARMOR_BASE_URL=${ARMOR_BASE_URL-http://srio.hive:8080/api/}
 export ARMOR_USERNAME=${ARMOR_USERNAME-root}
 export ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
+
+set -e
 
 pip install armorc --quiet
 
