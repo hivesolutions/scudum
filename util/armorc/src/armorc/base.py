@@ -59,6 +59,7 @@ class ArmorClient(object):
         if not domains: return
         self.domain_info = domains[0]
         self.temp_path = tempfile.mkdtemp()
+        print("Changing directory into '%s'..." % self.temp_path)
         try:
             os.chdir(self.temp_path)
             self.handle_domain()
