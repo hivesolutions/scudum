@@ -100,6 +100,9 @@ class ArmorClient(object):
         git_path = os.path.join(self.temp_path, "git")
         host_path = os.path.join(git_path, self.hostname)
         if not os.path.exists(host_path): return
+        system_path = os.path.join(host_path, "system")
+        system_exits = os.path.exists(system_path)
+        if system_exits: self.copy_tree(system_path, "/")
 
     def mount_cifs(self):
         cifs_host = self.domain_info["cifs_host"]
@@ -115,6 +118,16 @@ class ArmorClient(object):
         finally: file.close()
         if not mode: return
         os.chmod(path, mode)
+
+    def copy_tree(self, source, destiny):
+        for source_dir, _dirs, files in os.walk(source):
+            destiny_dir = source_dir.replace(source, destiny)
+            if not os.path.exists(destiny_dir): os.mkdir(destiny_dir)
+            for _file in files:
+                source_file = os.path.join(source_dir, _file)
+                destiny_file = os.path.join(destiny_dir, _file)
+                if os.path.exists(destiny_file): os.remove(destiny_file)
+                shutil.copy2(source_file, destiny_dir)
 
     def get_domain(self):
         hostname = socket.gethostname()
