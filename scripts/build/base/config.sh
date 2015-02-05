@@ -54,7 +54,7 @@ export DISTRIB="generic"
 # variable that defines the complete set of extra packages
 # that are going to be installed when the extras script
 # execution is triggered (may be changed by others)
-export EXTRAS="sudo python lshw rsync iptables cifs-utils \
+export EXTRAS="sudo python pip lshw rsync iptables cifs-utils \
 ntfsprogs wireless-tools wpa-supplicant"
 
 # exports the flags theat define the deault optimization flags
