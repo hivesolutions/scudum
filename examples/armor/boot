@@ -2,11 +2,10 @@
 
 set -e
 
-HOME=${HOME-/root}
 ARMOR_BASE_URL=${ARMOR_BASE_URL-http://srio.hive:8080/api/}
 ARMOR_USERNAME=${ARMOR_USERNAME-root}
 ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
 
-pip install armorc --user
+pip install armorc --quiet
 
 armorc boot
