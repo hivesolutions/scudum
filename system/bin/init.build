@@ -49,6 +49,7 @@ ln -sf ../init.d/udev_retry /etc/rc.d/rcS.d/S50udev_retry
 ln -sf ../init.d/console /etc/rc.d/rcS.d/S70console
 ln -sf ../init.d/sysctl /etc/rc.d/rcS.d/S90sysctl
 
+ln -sf ../init.d/boot /etc/rc.d/rc0.d/K10boot
 ln -sf ../init.d/sshd /etc/rc.d/rc0.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc0.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc0.d/K90sysklogd
@@ -94,6 +95,7 @@ ln -sf ../init.d/rc.local /etc/rc.d/rc5.d/S35rc.local
 ln -sf ../init.d/splashe /etc/rc.d/rc5.d/S95splashe
 ln -sf ../init.d/welcome /etc/rc.d/rc5.d/S99welcome
 
+ln -sf ../init.d/boot /etc/rc.d/rc6.d/K10boot
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
