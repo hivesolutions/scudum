@@ -58,7 +58,7 @@ class Domain(base.ArmorBase):
         meta = "secret"
     )
 
-    github_url = dict(
+    git_url = dict(
         index = True,
         meta = "url"
     )
@@ -70,7 +70,7 @@ class Domain(base.ArmorBase):
             appier.not_empty("name"),
             appier.not_duplicate("name", cls._name()),
 
-            appier.is_url("github_url")
+            appier.is_url("git_url")
         ]
 
     @classmethod
