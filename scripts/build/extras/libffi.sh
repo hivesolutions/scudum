@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "ftp://sourceware.org/pub/libffi/libffi-$VERSION.tar.gz"
+rget "ftp://sourceware.org/pub/libffi/libffi-$VERSION.tar.gz"\
+    "http://www.mirrorservice.org/sites/sourceware.org/pub/libffi/$VERSION.tar.gz"
 rm -rf libffi-$VERSION && tar -zxf "libffi-$VERSION.tar.gz"
 rm -f "libffi-$VERSION.tar.gz"
 cd libffi-$VERSION
