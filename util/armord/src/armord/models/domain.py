@@ -59,7 +59,8 @@ class Domain(base.ArmorBase):
     )
 
     github_url = dict(
-        index = True
+        index = True,
+        meta = "url"
     )
 
     @classmethod
