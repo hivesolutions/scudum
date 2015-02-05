@@ -1,5 +1,6 @@
 #!/bin/sh
 
+HOME=${HOME-/root}
 HOST=${HOST-0.0.0.0}
 BASE_PATH=${BASE_PATH-/}
 
