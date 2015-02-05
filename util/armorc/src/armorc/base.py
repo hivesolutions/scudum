@@ -47,7 +47,8 @@ import armor
 
 class ArmorClient(object):
 
-    def __init__(self):
+    def __init__(self, data_path = "/data"):
+        self.data_path = data_path
         self.api = None
         self.hostname = None
         self.domain = None
@@ -68,8 +69,8 @@ class ArmorClient(object):
 
     def handle_domain(self):
         self.deploy_ssh()
-        self.clone_github()
         self.mount_cifs()
+        self.clone_github()
 
     def deploy_ssh(self):
         print("Deploying SSH credentials ...")
@@ -82,6 +83,23 @@ class ArmorClient(object):
             self.write_file("/root/.ssh/id_rsa.pub", public_key, mode = 0o644)
         if authorized_keys:
             self.write_file("/root/.ssh/authorized_keys", authorized_keys, mode = 0o600)
+
+    def mount_cifs(self):
+        cifs_path = self.domain_info["cifs_path"]
+        cifs_username = self.domain_info["cifs_username"]
+        cifs_password = self.domain_info["cifs_password"]
+        if not cifs_path: return
+        if not cifs_username: return
+        if not cifs_password: return
+        if not os.path.exists(self.data_path): os.makedirs(self.data_path)
+        pipe = subprocess.Popen(
+            [
+                "mount", "-t", "cifs", "-o",
+                "username=" + cifs_username + ",password=" + cifs_password,
+                cifs_path, self.data_path
+            ]
+        )
+        pipe.wait()
 
     def clone_github(self):
         git_url = self.domain_info["git_url"]
@@ -103,11 +121,6 @@ class ArmorClient(object):
         system_path = os.path.join(host_path, "system")
         system_exits = os.path.exists(system_path)
         if system_exits: self.copy_tree(system_path, "/")
-
-    def mount_cifs(self):
-        cifs_host = self.domain_info["cifs_host"]
-        cifs_username = self.domain_info["cifs_username"]
-        cifs_password = self.domain_info["cifs_password"]
 
     def write_file(self, path, data, mode = None):
         dir_path = os.path.dirname(path)
