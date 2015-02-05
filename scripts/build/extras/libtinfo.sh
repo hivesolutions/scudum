@@ -18,5 +18,5 @@ cd ncurses-$VERSION
     --enable-pc-files
 
 make
-    
+
 cp -av lib/libtinfo* $PREFIX/lib
