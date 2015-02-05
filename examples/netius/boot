@@ -6,6 +6,6 @@ BASE_PATH=${BASE_PATH-/}
 
 set -e
 
-pip install netius --quiet
+pip install netius --quiet --user
 
 HOST=$HOST BASE_PATH=$BASE_PATH python -m netius.extra.file < /dev/null &> /dev/null &
