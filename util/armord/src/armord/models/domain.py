@@ -48,12 +48,26 @@ class Domain(base.ArmorBase):
         default = True
     )
 
+    cifs_host = dict(
+        index = True
+    )
+
+    cifs_username = dict()
+
+    cifs_password = dict()
+
+    github_url = dict(
+        index = True
+    )
+
     @classmethod
     def validate(cls):
         return super(Domain, cls).validate() + [
             appier.not_null("name"),
             appier.not_empty("name"),
-            appier.not_duplicate("name", cls._name())
+            appier.not_duplicate("name", cls._name()),
+
+            appier.is_url("github_url")
         ]
 
     @classmethod
