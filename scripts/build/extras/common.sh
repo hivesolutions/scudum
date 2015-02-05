@@ -11,7 +11,7 @@ rget() {
     result=1
     for url in "$@"; do
         wget $url || result=$? || true
-        if "$?" == "0"; then
+        if "$result" == "0"; then
             return $result
         fi
     done
