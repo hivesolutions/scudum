@@ -8,10 +8,12 @@ depends() {
 }
 
 rget() {
+    set +e
     for url in "$@"; do
         wget $url
         if "$?" == "0"; then
             break
         fi
     done
+    set -e
 }
