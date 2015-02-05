@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export PATH="/root/.local/bin:~/.local/sbin:$PATH"
 export HOST=${HOST-0.0.0.0}
 export BASE_PATH=${BASE_PATH-/}
 
