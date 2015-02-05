@@ -19,4 +19,4 @@ cd ncurses-$VERSION
 
 make
     
-cp -av lib/libtinfo* /usr/lib
+cp -av lib/libtinfo* $PREFIX/lib
