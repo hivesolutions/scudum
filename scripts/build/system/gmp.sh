@@ -4,13 +4,17 @@ set -e +h
 
 export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -march=$SCUDUM_MARCH -mtune=generic"
 
+if [ "$SCUDUM_ARCH" == "x86_64" ]; then
+    args="--enable-fat"
+fi
+
 wget --no-check-certificate "https://gmplib.org/download/gmp/gmp-$VERSION.tar.xz"
 rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
 
-./configure --prefix=/usr --enable-cxx --enable-fat\
-    --docdir=/usr/share/doc/gmp-$VERSION
+./configure --prefix=/usr --enable-cxx\
+    --docdir=/usr/share/doc/gmp-$VERSION $args
 
 make
 
