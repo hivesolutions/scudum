@@ -55,7 +55,12 @@ class ArmorClient(object):
         self.domain = None
         self.common_path = None
         self.host_path = None
+        self.build_paths()
         self.ensure_paths()
+
+    def build_paths(self):
+        self.common_path = os.path.join(self.armor_path, "common")
+        self.host_path = os.path.join(self.armor_path, "host")
 
     def ensure_paths(self):
         if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
@@ -76,15 +81,21 @@ class ArmorClient(object):
             shutil.rmtree(self.temp_path)
 
     def run_halt(self):
-        pass
+        api = self.get_api()
+        self.hostname, self.domain = self.get_domain()
+        domains = api.list_domains(name = self.domain)
+        if not domains: return
 
-    def handle_domain(self):
+    def handle_boot(self):
         self.deploy_ssh()
         self.mount_cifs()
         self.clone_github()
         self.exec_build()
         self.deploy_all()
         self.exec_boot()
+
+    def handle_halt(self):
+        self.exec_halt()
 
     def deploy_ssh(self):
         print("Deploying SSH credentials ...")
@@ -131,13 +142,9 @@ class ArmorClient(object):
         pipe.wait()
         git_path = os.path.join(self.temp_path, "git")
         common_path = os.path.join(git_path, "common")
-        if os.path.exists(common_path):
-            self.common_path = os.path.join(self.armor_path, "common")
-            shutil.move(common_path, self.common_path)
+        if os.path.exists(common_path): shutil.move(common_path, self.common_path)
         host_path = os.path.join(git_path, self.hostname)
-        if os.path.exists(host_path):
-            self.host_path = os.path.join(self.armor_path, "host")
-            shutil.move(host_path, self.host_path)
+        if os.path.exists(host_path): shutil.move(host_path, self.host_path)
 
     def exec_build(self):
         self.exec_script("build", common = True)
