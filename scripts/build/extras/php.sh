@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+unset MAKEFLAGS
+
 export CFLAGS="$CFLAGS -fpic"
 
 wget "http://php.net/get/php-$VERSION.tar.gz/from/this/mirror" "--output-document=php-$VERSION.tar.gz"
