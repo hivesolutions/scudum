@@ -76,7 +76,7 @@ class ArmorClient(object):
         print("Changing directory into '%s'..." % self.temp_path)
         try:
             os.chdir(self.temp_path)
-            self.handle_domain()
+            self.handle_boot()
         finally:
             shutil.rmtree(self.temp_path)
 
@@ -85,6 +85,7 @@ class ArmorClient(object):
         self.hostname, self.domain = self.get_domain()
         domains = api.list_domains(name = self.domain)
         if not domains: return
+        self.handle_halt()
 
     def handle_boot(self):
         self.deploy_ssh()
