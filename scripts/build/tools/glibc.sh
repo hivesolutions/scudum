@@ -2,8 +2,6 @@ VERSION=${VERSION-2.20}
 
 set -e +h
 
-export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -march=$SCUDUM_MARCH -mtune=generic"
-
 wget "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"

@@ -3,8 +3,6 @@ VERSION_T=${VERSION_T-2014j}
 
 set -e +h
 
-export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -march=$SCUDUM_MARCH -mtune=generic"
-
 wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
 wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
