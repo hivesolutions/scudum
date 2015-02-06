@@ -97,6 +97,7 @@ class ArmorClient(object):
 
     def handle_halt(self):
         self.exec_halt()
+        self.unmount_cifs()
 
     def deploy_ssh(self):
         print("Deploying SSH credentials ...")
@@ -125,6 +126,17 @@ class ArmorClient(object):
                 cifs_path, self.data_path
             ]
         )
+        pipe.wait()
+
+    def unmount_cifs(self):
+        cifs_path = self.domain_info["cifs_path"]
+        cifs_username = self.domain_info["cifs_username"]
+        cifs_password = self.domain_info["cifs_password"]
+        if not cifs_path: return
+        if not cifs_username: return
+        if not cifs_password: return
+        print("Unmounting CIFS share from '%s'" % self.data_path)
+        pipe = subprocess.Popen(["umount", self.data_path])
         pipe.wait()
 
     def clone_github(self):
