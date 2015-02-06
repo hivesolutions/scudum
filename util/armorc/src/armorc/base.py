@@ -160,11 +160,12 @@ class ArmorClient(object):
         self.exec_script("halt", common = False)
 
     def exec_script(self, name = "boot", common = False):
+        target_s = "common" if common else "host"
         target_path = self.common_path if common else self.host_path
         if not target_path: return
         script_path = os.path.join(target_path, name)
         if not os.path.exists(script_path): return
-        print("Executing script '%s' ..." % name)
+        print("Executing script '%s:%s' ..." % (target_s, name))
         pipe = subprocess.Popen([script_path], shell = True)
         pipe.wait()
 
