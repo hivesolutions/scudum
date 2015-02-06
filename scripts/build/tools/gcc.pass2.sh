@@ -13,7 +13,7 @@ cd gcc-$VERSION
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-case `uname -m` in
+case $SCUDUM_ARCH in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
 esac
 

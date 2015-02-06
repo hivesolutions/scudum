@@ -11,7 +11,7 @@ rm -rf unzip$VERSION && tar -zxf "unzip$VERSION.tar.gz"
 rm -f "unzip$VERSION.tar.gz"
 cd unzip$VERSION
 
-case `uname -m` in
+case $SCUDUM_ARCH in
     i?86)
         sed -i -e 's/DASM_CRC"/DASM_CRC -DNO_LCHMOD"/' unix/Makefile
         make -f unix/Makefile linux

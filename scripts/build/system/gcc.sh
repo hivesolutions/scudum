@@ -7,7 +7,7 @@ rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
 
-case `uname -m` in
+case $SCUDUM_ARCH in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
 esac
 
