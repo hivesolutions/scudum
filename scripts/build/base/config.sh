@@ -36,7 +36,7 @@ export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 # issues with older cpu based computers, then defines if the
 # multiarch strategy should be used in glibc/gcc generation
 # the possible options are enable and disable
-export GCC_FLAVOUR=${GCC_FLAVOUR-normal}
+export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
 export GCC_MULTIARCH=${GCC_MULTIARCH-enable}
 
 # the test value that defines if the current build
