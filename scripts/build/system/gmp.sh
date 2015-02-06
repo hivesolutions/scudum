@@ -2,7 +2,7 @@ VERSION=${VERSION-6.0.0}
 
 set -e +h
 
-export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer"
+export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -march=$SCUDUM_MARCH -mtune=generic"
 
 wget --no-check-certificate "https://gmplib.org/download/gmp/gmp-$VERSION.tar.xz"
 rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
