@@ -85,6 +85,7 @@ class ArmorClient(object):
         self.hostname, self.domain = self.get_domain()
         domains = api.list_domains(name = self.domain)
         if not domains: return
+        self.domain_info = domains[0]
         self.handle_halt()
 
     def handle_boot(self):
