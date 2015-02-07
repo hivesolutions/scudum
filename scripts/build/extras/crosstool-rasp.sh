@@ -4,6 +4,8 @@ set -e +h
 
 source $DIR/common.sh
 
+unset LD_LIBRARY_PATH
+
 depends "crosstool-ng"
 
 mkdir crosstool-rasp
