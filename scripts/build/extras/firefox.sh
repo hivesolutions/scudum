@@ -51,7 +51,6 @@ ac_add_options --with-system-zlib
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
-test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
 make -f client.mk SHELL=/bin/bash && make -f client.mk install SHELL=/bin/bash INSTALL_SDK=
 
 mkdir -pv $PREFIX/lib/mozilla/plugins
