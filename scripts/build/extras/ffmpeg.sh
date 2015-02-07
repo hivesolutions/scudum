@@ -14,7 +14,7 @@ rm -f "ffmpeg-$VERSION.tar.bz2"
 cd ffmpeg-$VERSION
 
 ./configure\
-    --prefix=$PREFIX
+    --prefix=$PREFIX\
     --enable-gpl\
     --enable-version3\
     --enable-nonfree\
