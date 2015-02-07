@@ -13,5 +13,5 @@ rm -rf vlc-$VERSION && tar -Jxf "vlc-$VERSION.tar.xz"
 rm -f "vlc-$VERSION.tar.xz"
 cd vlc-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-lua
 make && make install
