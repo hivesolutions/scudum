@@ -13,5 +13,14 @@ rm -rf vlc-$VERSION && tar -Jxf "vlc-$VERSION.tar.xz"
 rm -f "vlc-$VERSION.tar.xz"
 cd vlc-$VERSION
 
-./configure --prefix=$PREFIX --enable-run-as-root --disable-lua
+./bootstrap
+
+sed "s:< 56:< 57:g" -i configure
+
+./configure --prefix=$PREFIX --enable-run-as-root
+
+sed -i 's/luaL_optint/(int)&eger/' modules/lua/libs/{net,osd,volume}.c
+sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/'
+    modules/lua/{demux,libs/{configuration,net,osd,playlist,stream,variables,volume}}.c
+
 make && make install
