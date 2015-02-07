@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-export CFLAGS="$CFLAGS -fPIC"
-
 depends "alsa" "ffmpeg" "liba52" "libgcrypt" "libmad" "lua" "x11"
 
 wget "http://download.videolan.org/vlc/$VERSION/vlc-$VERSION.tar.xz"
