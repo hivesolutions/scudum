@@ -2,8 +2,6 @@ VERSION=${VERSION-6.0.0}
 
 set -e +h
 
-export CFLAGS="$CFLAGS -O2 -pedantic -fomit-frame-pointer -march=$SCUDUM_MARCH -mtune=generic"
-
 if [ "$SCUDUM_ARCH" == "x86_64" ]; then
     args="--enable-fat"
 fi
