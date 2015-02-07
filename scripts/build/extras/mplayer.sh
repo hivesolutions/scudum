@@ -13,5 +13,5 @@ rm -rf mplayer-$VERSION && tar -Jxf "mplayer-$VERSION.tar.xz"
 rm -f "mplayer-$VERSION.tar.xz"
 cd mplayer-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-menu --enable-gui --enable-dynamic-plugins
 make && make install
