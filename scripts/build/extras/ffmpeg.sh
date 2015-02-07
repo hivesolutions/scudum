@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "yasm" "libass" "fdk-aac" "lame" "libtheora" "libvorbis" "libvpx" "x264"
+depends "yasm" "libass" "fdk-aac" "lame" "libtheora" "libvorbis" "libvpx" "x264" "libva"
 
 wget "http://ffmpeg.org/releases/ffmpeg-$VERSION.tar.bz2"
 rm -rf ffmpeg-$VERSION && tar -jxf "ffmpeg-$VERSION.tar.bz2"
