@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "yasm"
+depends "freetype" "freebidi"
 
 wget "https://github.com/libass/libass/releases/download/$VERSION/libass-$VERSION.tar.xz"
 rm -rf libass-$VERSION && tar -Jxf "libass-$VERSION.tar.xz"
