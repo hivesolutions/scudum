@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "alsa" "ffmpeg" "liba52" "libgcrypt" "libmad" "x11" "xdg-utils"
+depends "alsa" "ffmpeg" "liba52" "libgcrypt" "libmad" "lua-shared" "x11" "xdg-utils"
 
 wget "http://download.videolan.org/vlc/$VERSION/vlc-$VERSION.tar.xz"
 rm -rf vlc-$VERSION && tar -Jxf "vlc-$VERSION.tar.xz"
