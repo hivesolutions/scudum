@@ -6,6 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
+export CFLAGS="-Wno-unused-local-typedefs"
+export CXXFLAGS="-Wno-unused-local-typedefs"
+
 depends "libelf"
 
 wget "http://ltrace.org/ltrace_$VERSION.orig.tar.bz2"
