@@ -1,5 +1,5 @@
-VERSION=${VERSION-10.3.1}
-VERSION_L=${VERSION_L-10.3.1}
+VERSION=${VERSION-10.4.3}
+VERSION_L=${VERSION_L-10.4.3}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -13,9 +13,6 @@ wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION_L/MesaLib-$VERSION.tar.bz2"
 rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
-
-wget "http://www.linuxfromscratch.org/patches/blfs/svn/MesaLib-$VERSION-add_xdemos-1.patch"
-patch -Np1 -i MesaLib-$VERSION-add_xdemos-1.patch
 
 ./autogen.sh\
     --prefix=$PREFIX\
@@ -34,5 +31,3 @@ patch -Np1 -i MesaLib-$VERSION-add_xdemos-1.patch
     --with-gallium-drivers="nouveau,i915,ilo,svga,swrast"
 
 make && make install
-make -C xdemos DEMOS_PREFIX=$PREFIX &&\
-    make -C xdemos DEMOS_PREFIX=$PREFIX install
