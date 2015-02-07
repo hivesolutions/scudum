@@ -10,7 +10,6 @@ export PKG_CONFIG_PATH="~/.local/lib/pkgconfig:~/.local/share/pkgconfig:/opt/lib
 /pst/lib/pkgconfig:/pst/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:\
 /usr/share/pkgconfig:/lib/pkgconfig:/share/pkgconfig"
 export PERL5LIB="/opt/lib/perl5:/opt/lib/perl5/site_perl:/pst/lib/perl5:/pst/lib/perl5/site_perl"
-export MAKEPATHS=1
 export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
@@ -20,10 +19,10 @@ export LC_ALL="en_US.utf8"
 
 if [ -e /etc/scudum/OVERLAYFS ]; then
     export PREFIX=/usr
-    export MAKEPATHS=0
+    export MAKEPATHS=${MAKEPATHS-0}
 else
     export PREFIX=/opt
-    export MAKEPATHS=1
+    export MAKEPATHS=${MAKEPATHS-1}
 fi
 
 if [ "$MAKEPATHS" == "0" ]; then
