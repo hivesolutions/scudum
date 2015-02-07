@@ -56,7 +56,7 @@ mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
 SHELL=/bin/bash make -f client.mk
-SHELL=/bin/bash INSTALL_SDK= make -f client.mk install 
+SHELL=/bin/bash INSTALL_SDK= make -f client.mk install
 
 mkdir -pv $PREFIX/lib/mozilla/plugins
 ln -svf mozilla/plugins $PREFIX/lib/firefox-$VERSION
