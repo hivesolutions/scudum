@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs" "mesa"
+depends "xorg-libs"
 
 wget "http://people.freedesktop.org/~aplattner/vdpau/libvdpau-$VERSION.tar.gz"
 rm -rf libvdpau-$VERSION && tar -zxf "libvdpau-$VERSION.tar.gz"
