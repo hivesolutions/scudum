@@ -15,12 +15,12 @@ cd vlc-$VERSION
 
 ./bootstrap
 
-sed -i "s:< 56:< 57:g" configure
+sed "s:< 56:< 57:g" -i configure
 
 ./configure --prefix=$PREFIX --enable-run-as-root
 
 sed -i 's/luaL_optint/(int)&eger/' modules/lua/libs/{net,osd,volume}.c
-sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/'
+sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/'\
     modules/lua/{demux,libs/{configuration,net,osd,playlist,stream,variables,volume}}.c
 
 make && make install
