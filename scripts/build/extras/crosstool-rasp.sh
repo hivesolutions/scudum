@@ -18,7 +18,8 @@ CT_ARCH_FLOAT_HW=y
 CT_ARCH_arm=y
 CT_TARGET_VENDOR="rasp"
 CT_KERNEL_linux=y
-CT_CC_V_4_8_3=y
+CT_CC_V_4_9_1=y
+CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
 
