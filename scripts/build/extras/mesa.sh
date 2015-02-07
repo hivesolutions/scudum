@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xorg-libs" "libdrm" "python" "expat"
+depends "xorg-libs" "libdrm" "python" "expat" "libva" "libvdpau"
 
 wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/MesaLib-$VERSION.tar.bz2"
 rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
@@ -21,6 +21,7 @@ cd Mesa-$VERSION
     --enable-gles2\
     --enable-openvg\
     --enable-osmesa\
+    --enable-va\
     --enable-vdpau\
     --enable-xa\
     --enable-gbm\
