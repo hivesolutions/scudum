@@ -12,7 +12,7 @@ rm -rf lua-$VERSION && tar -zxf "lua-$VERSION.tar.gz"
 rm -f "lua-$VERSION.tar.gz"
 cd lua-$VERSION
 
-http://www.linuxfromscratch.org/patches/blfs/svn/lua-$VERSION-shared_library-1.patch
+wget http://www.linuxfromscratch.org/patches/blfs/svn/lua-$VERSION-shared_library-1.patch
 patch -Np1 -i lua-$VERSION-shared_library-1.patch
 
 make linux
