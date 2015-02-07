@@ -4,14 +4,14 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "crosstool-ng"
+
 unset LD_LIBRARY_PATH
 unset LIBRARY_PATH
 unset C_INCLUDE_PATH
 unset CPLUS_INCLUDE_PATH
 unset MANPATH
 unset PKG_CONFIG_PATH
-
-depends "crosstool-ng"
 
 mkdir crosstool-rasp
 

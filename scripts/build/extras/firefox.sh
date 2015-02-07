@@ -6,11 +6,11 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "alsa" "gtk+2" "zip" "unzip" "which" "sqlite3" "yasm" "dbus-glib" "gstreamer-plugins"
+
 if [ "$SHELL" == "" ]; then
     export SHELL="/bin/sh"
 fi
-
-depends "alsa" "gtk+2" "zip" "unzip" "which" "sqlite3" "yasm" "dbus-glib" "gstreamer-plugins"
 
 wget "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
 rm -rf mozilla-release && tar -jxf "firefox-$VERSION.source.tar.bz2"
