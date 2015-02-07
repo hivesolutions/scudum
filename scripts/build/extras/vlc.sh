@@ -15,7 +15,7 @@ cd vlc-$VERSION
 
 ./bootstrap
 
-sed -i configure "s:< 56:< 57:g" 
+sed -i "s:< 56:< 57:g" configure
 
 ./configure --prefix=$PREFIX --enable-run-as-root
 
