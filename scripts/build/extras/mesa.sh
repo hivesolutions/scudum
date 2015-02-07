@@ -1,5 +1,4 @@
 VERSION=${VERSION-10.3.1}
-VERSION_L=${VERSION_L-10.3.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -9,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs" "libdrm" "python" "expat"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION_L/MesaLib-$VERSION.tar.bz2"
+wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/MesaLib-$VERSION.tar.bz2"
 rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
@@ -22,6 +21,7 @@ cd Mesa-$VERSION
     --enable-gles2\
     --enable-openvg\
     --enable-osmesa\
+    --enable-vdpau\
     --enable-xa\
     --enable-gbm\
     --enable-gallium-egl\
