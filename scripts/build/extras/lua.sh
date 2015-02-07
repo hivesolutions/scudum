@@ -1,5 +1,4 @@
 VERSION=${VERSION-5.2.3}
-VERSION_L=${VERSION_L-5.2}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -14,7 +13,4 @@ rm -rf lua-$VERSION && tar -zxf "lua-$VERSION.tar.gz"
 rm -f "lua-$VERSION.tar.gz"
 cd lua-$VERSION
 
-make linux
-make linux install\
-    INSTALL_TOP=$PREFIX\
-    TO_LIB="liblua.so liblua.so.$VERSION_L liblua.so.$VERSION"
+make linux && make linux install INSTALL_TOP=$PREFIX
