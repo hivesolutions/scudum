@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+export CFLAGS="$CFLAGS -fPIC"
+
 wget "http://liba52.sourceforge.net/files/a52dec-$VERSION.tar.gz"
 rm -rf a52dec-$VERSION && tar -zxf "a52dec-$VERSION.tar.gz"
 rm -f "a52dec-$VERSION.tar.gz"
