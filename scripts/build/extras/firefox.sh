@@ -1,10 +1,14 @@
-VERSION=${VERSION-32.0.1}
+VERSION=${VERSION-35.0.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
 source $DIR/common.sh
+
+if [ "$SHELL" == "" ]; then
+    export SHELL="/bin/sh"
+fi
 
 depends "alsa" "gtk+2" "zip" "unzip" "which" "sqlite3" "yasm" "dbus-glib" "gstreamer-plugins"
 
