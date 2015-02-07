@@ -5,6 +5,7 @@ set -e +h
 source $DIR/common.sh
 
 unset LD_LIBRARY_PATH
+unset LIBRARY_PATH
 
 depends "crosstool-ng"
 
