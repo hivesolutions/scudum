@@ -12,9 +12,9 @@ export CXXFLAGS="-Wno-unused-local-typedefs"
 depends "libelf"
 
 wget "http://ltrace.org/ltrace_$VERSION.orig.tar.bz2"
-rm -rf ltrace_$VERSION && tar -jxf "ltrace_$VERSION.orig.tar.bz2"
+rm -rf ltrace-$VERSION && tar -jxf "ltrace_$VERSION.orig.tar.bz2"
 rm -f "ltrace_$VERSION.orig.tar.bz2"
-cd ltrace_$VERSION
+cd ltrace-$VERSION
 
 ./configure --prefix=$PREFIX
 make && make install
