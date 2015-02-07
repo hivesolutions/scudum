@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "yasm" "libtheora" "libvorbis" "libvpx"
+
 wget "http://ffmpeg.org/releases/ffmpeg-$VERSION.tar.bz2"
 rm -rf ffmpeg-$VERSION && tar -jxf "ffmpeg-$VERSION.tar.bz2"
 rm -f "ffmpeg-$VERSION.tar.bz2"
