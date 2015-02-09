@@ -13,5 +13,5 @@ rm -rf glu-$VERSION && tar -zxf "glu-$VERSION.tar.gz"
 rm -f "glu-$VERSION.tar.gz"
 cd glu-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-static
 make && make install
