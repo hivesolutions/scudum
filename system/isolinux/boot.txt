@@ -1,3 +1,4 @@
 1 - Scudum GNU/Linux, Linux Stable
 2 - Scudum GNU/Linux, Linux Stable (Safe)
 3 - Scudum GNU/Linux, Linux Stable (Debug)
+4 - Scudum GNU/Linux, Linux Stable (Vanilla)
