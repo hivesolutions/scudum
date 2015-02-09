@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "x11"
+depends "x11" "mesa"
 
 wget "http://downloads.sourceforge.net/glew/glew/glew-$VERSION.tgz"
 rm -rf glew-$VERSION && tar -zxf "glew-$VERSION.tgz"
