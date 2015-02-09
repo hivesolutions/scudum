@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "mesa"
-
 wget "http://www.freedesktop.org/software/vaapi/releases/libva/libva-$VERSION.tar.bz2"
 rm -rf libva-$VERSION && tar -jxf "libva-$VERSION.tar.bz2"
 rm -f "libva-$VERSION.tar.bz2"
