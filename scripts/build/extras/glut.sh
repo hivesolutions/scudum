@@ -1,4 +1,4 @@
-VERSION=${VERSION-7.9.2}
+VERSION=${VERSION-2.8.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -6,12 +6,12 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "mesa"
+depends "glu"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/glut/MesaGLUT-$VERSION.tar.gz"
-rm -rf MesaGLUT-$VERSION && tar -zxf "MesaGLUT-$VERSION.tar.gz"
-rm -f "MesaGLUT-$VERSION.tar.gz"
-cd MesaGLUT-$VERSION
+wget "http://downloads.sourceforge.net/freeglut/freeglut-$VERSION.tar.gz"
+rm -rf freeglut-$VERSION && tar -zxf "freeglut-$VERSION.tar.gz"
+rm -f "freeglut-$VERSION.tar.gz"
+cd freeglut-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-static
 make && make install
