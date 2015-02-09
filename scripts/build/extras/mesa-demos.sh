@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "mesa" "glew"
+depends "mesa" "glew" "glut"
 
 wget "ftp://ftp.freedesktop.org/pub/mesa/demos/$VERSION/mesa-demos-$VERSION.tar.gz"
 rm -rf mesa-demos-$VERSION && tar -zxf "mesa-demos-$VERSION.tar.gz"
