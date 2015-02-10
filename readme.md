@@ -103,7 +103,7 @@ by the proper boot loader can be achieved using the following command:
 To install a previously build kernel image (and modules) avoiding the rebuilding of the kernel
 one should be connected with the target repository and the issue:
 
-    VARIANT=default VERSION=basic kernel.install
+    VARIANT=default VERSION=current kernel.install
 
 ### Examples
 
