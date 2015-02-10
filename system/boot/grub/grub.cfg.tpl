@@ -8,10 +8,14 @@ menuentry "Scudum GNU/Linux, Linux Stable" {
     linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 quiet splash
 }
 
-menuentry "Scudum GNU/Linux, Linux Stable (Safe)" {
+menuentry "Scudum GNU/Linux, Linux Stable (Console)" {
     linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 nomodeset
 }
 
+menuentry "Scudum GNU/Linux, Linux Stable (Vanilla)" {
+    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw usb-storage.delay_use=0 nomodeset
+}
+
 menuentry "Scudum GNU/Linux, Linux Stable (Debug)" {
-    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw video=vesafb:mtrr:3,ywrap vga=791 usb-storage.delay_use=0 nomodeset loglevel=7
+    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw usb-storage.delay_use=0 nomodeset initcall_debug loglevel=7
 }
