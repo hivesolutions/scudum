@@ -26,8 +26,6 @@ autoreconf -f -i
     --enable-vdpau\
     --enable-xa\
     --enable-gbm\
-    --enable-gallium-egl\
-    --enable-gallium-gbm\
     --enable-glx-tls\
     --with-egl-platforms="drm,x11"\
     --with-gallium-drivers="nouveau,i915,ilo,svga,swrast"
