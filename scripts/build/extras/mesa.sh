@@ -13,7 +13,9 @@ rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
 
-./autogen.sh\
+autoreconf -f -i
+
+./configure\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
     --enable-texture-float\
