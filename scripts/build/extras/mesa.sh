@@ -19,7 +19,6 @@ cd Mesa-$VERSION
     --enable-texture-float\
     --enable-gles1\
     --enable-gles2\
-    --enable-openvg\
     --enable-osmesa\
     --enable-va\
     --enable-vdpau\
