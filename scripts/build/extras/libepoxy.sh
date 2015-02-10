@@ -13,5 +13,5 @@ rm -rf libepoxy-$VERSION && tar -zxf "libepoxy-$VERSION.tar.gz"
 rm -f "libepoxy-$VERSION.tar.gz"
 cd libepoxy-$VERSION
 
-./configure --prefix=$PREFIX
+./autogen.sh --prefix=$PREFIX
 make && make install
