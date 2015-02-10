@@ -24,7 +24,6 @@ autoreconf -f -i
     --enable-osmesa\
     --enable-va\
     --enable-vdpau\
-    --enable-omx\
     --enable-opencl\
     --enable-opencl-icd\
     --enable-xa\
