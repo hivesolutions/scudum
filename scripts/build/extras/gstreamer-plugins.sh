@@ -16,6 +16,8 @@ cd gst-plugins-base-$VERSION
 ./configure --prefix=$PREFIX
 make && make install
 
+cd ..
+
 wget "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-$VERSION.tar.xz"
 rm -rf gst-plugins-good-$VERSION && tar -Jxf "gst-plugins-good-$VERSION.tar.xz"
 rm -f "gst-plugins-good-$VERSION.tar.xz"

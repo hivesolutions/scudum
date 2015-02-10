@@ -17,6 +17,8 @@ mkdir -p m4 && autoreconf -f
 ./configure --prefix=$PREFIX
 make && make install
 
+cd ..
+
 wget http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-$VERSION.tar.bz2
 rm -rf libva-intel-driver-$VERSION && tar -jxf "libva-intel-driver-$VERSION.tar.bz2"
 rm -f "libva-intel-driver-$VERSION.tar.bz2"
