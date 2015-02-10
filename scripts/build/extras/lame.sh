@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "nasm"
 
-wget "http://downloads.sourceforge.net/lame/lame-$VERSION.tar.gz"
+rget "http://downloads.sourceforge.net/lame/lame-$VERSION.tar.gz"\
+    "http://fossies.org/linux/misc/lame-$VERSION.tar.gz"
 rm -rf lame-$VERSION && tar -zxf "lame-$VERSION.tar.gz"
 rm -f "lame-$VERSION.tar.gz"
 cd lame-$VERSION
