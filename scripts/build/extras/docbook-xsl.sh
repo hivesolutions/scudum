@@ -6,8 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "https://distfiles.macports.org/docbook-xsl/docbook-xsl-$VERSION.tar.bz2"\
-    "http://downloads.sourceforge.net/docbook/docbook-xsl-$VERSION.tar.bz2"
+rget "http://downloads.sourceforge.net/docbook/docbook-xsl-$VERSION.tar.bz2"\
+    "https://distfiles.macports.org/docbook-xsl/docbook-xsl-$VERSION.tar.bz2"
 rm -rf docbook-xsl-$VERSION && tar -jxf "docbook-xsl-$VERSION.tar.bz2"
 rm -f "docbook-xsl-$VERSION.tar.bz2"
 cd docbook-xsl-$VERSION
