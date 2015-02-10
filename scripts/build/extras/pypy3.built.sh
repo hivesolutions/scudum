@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "expat" "ffi" "libtinfo"
+depends "expat" "libffi" "libtinfo"
 
 wget "https://bitbucket.org/pypy/pypy/downloads/pypy3-$VERSION-linux64.tar.bz2"
 rm -rf pypy3-$VERSION-linux64 && tar -jxf "pypy3-$VERSION-linux64.tar.bz2"

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "python" "expat" "ffi"
+depends "python" "expat" "libffi"
 
 wget "https://bitbucket.org/pypy/pypy/downloads/pypy-$VERSION-src.tar.bz2"
 rm -rf pypy-$VERSION-src && tar -jxf "pypy-$VERSION-src.tar.bz2"
