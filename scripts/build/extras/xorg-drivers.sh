@@ -12,7 +12,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libevdev" "libva" "libxau" "xorg-server"
+depends "libevdev" "libva" "xorg-server"
 
 wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
 rm -rf xf86-input-evdev-$VERSION_EVDEV && tar -jxf "xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
