@@ -26,6 +26,7 @@ autoreconf -f -i
     --enable-vdpau\
     --enable-omx\
     --enable-opencl\
+    --enable-opencl-icd\
     --enable-xa\
     --enable-gbm\
     --enable-glx-tls\
