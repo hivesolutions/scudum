@@ -19,3 +19,7 @@ menuentry "Scudum GNU/Linux, Linux Stable (Vanilla)" {
 menuentry "Scudum GNU/Linux, Linux Stable (Debug)" {
     linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw usb-storage.delay_use=0 nomodeset initcall_debug loglevel=7
 }
+
+menuentry "Scudum GNU/Linux, Linux Stable (Debug Slow)" {
+    linux /vmlinuz init=/linuxrc load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=32768 root=/dev/ram rw usb-storage.delay_use=0 nomodeset initcall_debug loglevel=7 boot_delay=500
+}
