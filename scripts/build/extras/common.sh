@@ -9,7 +9,7 @@ depends() {
 
 rget() {
     for url in "$@"; do
-        wget $url && return 0
+        wget --tries=1 --timeout=20 $url && return 0
     done
     return 1
 }
