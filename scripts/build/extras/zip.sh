@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://downloads.sourceforge.net/infozip/zip$VERSION.tar.gz"
+rget "http://downloads.sourceforge.net/infozip/zip$VERSION.tar.gz"\
+    "http://fossies.org/linux/misc/zip$VERSION.tar.gz"
 rm -rf zip$VERSION && tar -zxf "zip$VERSION.tar.gz"
 rm -f "zip$VERSION.tar.gz"
 cd zip$VERSION
