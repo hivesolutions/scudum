@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "mesa"
+depends "mesa" "xorg-macros"
 
 wget "http://crux.nu/files/libepoxy-$VERSION.tar.gz"
 rm -rf libepoxy-$VERSION && tar -zxf "libepoxy-$VERSION.tar.gz"
