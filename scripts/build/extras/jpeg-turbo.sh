@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "nasm" "yasm"
 
-wget "http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"
+rget "http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"\
+    "http://ftp.cc.uoc.gr/mirrors/linux/lfs/LFS/conglomeration/libjpeg-turbo/libjpeg-turbo-$VERSIONtar.gz"
 rm -rf libjpeg-turbo-$VERSION && tar -zxf "libjpeg-turbo-$VERSION.tar.gz"
 rm -f "libjpeg-turbo-$VERSION.tar.gz"
 cd libjpeg-turbo-$VERSION
