@@ -13,6 +13,8 @@ rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
 rm -f "MesaLib-$VERSION.tar.bz2"
 cd Mesa-$VERSION
 
+autoreconf -f -i
+
 ./configure\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
@@ -22,6 +24,8 @@ cd Mesa-$VERSION
     --enable-osmesa\
     --enable-va\
     --enable-vdpau\
+    --enable-omx\
+    --enable-opencl\
     --enable-xa\
     --enable-gbm\
     --enable-glx-tls\
