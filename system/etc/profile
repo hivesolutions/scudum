@@ -9,6 +9,8 @@ export MANPATH="~/.local/man:/opt/man:/opt/share/man:/pst/man:/pst/share/man:/us
 export PKG_CONFIG_PATH="~/.local/lib/pkgconfig:~/.local/share/pkgconfig:/opt/lib/pkgconfig:/opt/share/pkgconfig:\
 /pst/lib/pkgconfig:/pst/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:\
 /usr/share/pkgconfig:/lib/pkgconfig:/share/pkgconfig"
+export ACLOCAL_PATH="~/.local/share/aclocal:/opt/share/aclocal:/pst/share/aclocal:/usr/local/share/aclocal:\
+/usr/share/aclocal:/share/aclocal"
 export PERL5LIB="/opt/lib/perl5:/opt/lib/perl5/site_perl:/pst/lib/perl5:/pst/lib/perl5/site_perl"
 export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
