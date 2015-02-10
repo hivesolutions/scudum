@@ -24,8 +24,6 @@ autoreconf -f -i
     --enable-osmesa\
     --enable-va\
     --enable-vdpau\
-    --enable-opencl\
-    --enable-opencl-icd\
     --enable-xa\
     --enable-gbm\
     --enable-glx-tls\
