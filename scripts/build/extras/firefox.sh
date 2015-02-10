@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "alsa" "gtk+2" "zip" "unzip" "which" "sqlite3" "yasm" "dbus-glib" "gstreamer-plugins"
+depends "alsa" "gtk+2" "zip" "unzip" "which" "sqlite3" "yasm" "dbus-glib" "gstreamer-plugins" "gstreamer-libav"
 
 if [ "$SHELL" == "" ]; then
     export SHELL="/bin/sh"
