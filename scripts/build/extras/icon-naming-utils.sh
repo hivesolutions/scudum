@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "http://tango.freedesktop.org/releases/icon-naming-utils-$VERSION.tar.bz2"
-rm -rf icon-naming-utils-$VERSION && tar -jxf "icon-naming-utils-$VERSION.tar.bz22"
+rm -rf icon-naming-utils-$VERSION && tar -jxf "icon-naming-utils-$VERSION.tar.bz2"
 rm -f "icon-naming-utils-$VERSION.tar.bz2"
 cd icon-naming-utils-$VERSION
 
