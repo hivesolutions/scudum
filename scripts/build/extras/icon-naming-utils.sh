@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "xml-parser"
+depends "xml-simple"
 
 wget "http://tango.freedesktop.org/releases/icon-naming-utils-$VERSION.tar.bz2"
 rm -rf icon-naming-utils-$VERSION && tar -jxf "icon-naming-utils-$VERSION.tar.bz2"
