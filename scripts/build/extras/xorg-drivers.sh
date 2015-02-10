@@ -3,7 +3,6 @@ VERSION_SYNAPTICS=${VERSION_SYNAPTICS-1.8.1}
 VERSION_VESA=${VERSION_VESA-2.3.3}
 VERSION_NOUVEAU=${VERSION_NOUVEAU-1.0.11}
 VERSION_INTEL=${VERSION_INTEL-2.99.917}
-VERSION_CIRRUS=${VERSION_CIRRUS-1.5.2}
 VERSION_VMWARE=${VERSION_VMWARE-13.1.0}
 VERSION_INTELVA=${VERSION_INTELVA-1.4.0}
 
@@ -59,16 +58,6 @@ wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-intel-$VE
 rm -rf xf86-video-intel-$VERSION_INTEL && tar -jxf "xf86-video-intel-$VERSION_INTEL.tar.bz2"
 rm -f "xf86-video-intel-$VERSION_INTEL.tar.bz2"
 cd xf86-video-intel-$VERSION_INTEL
-
-./configure --prefix=$PREFIX
-make && make install
-
-cd ..
-
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-cirrus-$VERSION_CIRRUS.tar.bz2"
-rm -rf xf86-video-cirrus-$VERSION_CIRRUS && tar -jxf "xf86-video-cirrus-$VERSION_CIRRUS.tar.bz2"
-rm -f "xf86-video-cirrus-$VERSION_CIRRUS.tar.bz2"
-cd xf86-video-cirrus-$VERSION_CIRRUS
 
 ./configure --prefix=$PREFIX
 make && make install
