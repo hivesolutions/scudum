@@ -11,5 +11,5 @@ rm -rf util-macros-$VERSION && tar -jxf "util-macros-$VERSION.tar.bz2"
 rm -f "util-macros-$VERSION.tar.bz2"
 cd util-macros-$VERSION
 
-./configure--prefix=$PREFIX
+./configure --prefix=$PREFIX
 make && make install
