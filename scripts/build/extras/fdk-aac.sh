@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "ftp://mirror.jmu.edu/.projects/blfs/svn/f/fdk-aac-0.1.3.tar.gz"
+wget "http://downloads.sourceforge.net/opencore-amr/fdk-aac-$VERSION.tar.gz"
 rm -rf fdk-aac-$VERSION && tar -zxf "fdk-aac-$VERSION.tar.gz"
 rm -f "fdk-aac-$VERSION.tar.gz"
 cd fdk-aac-$VERSION
