@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.3.1}
+VERSION=${VERSION-1.4.0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -9,7 +9,7 @@ source $DIR/common.sh
 depends "nasm" "yasm"
 
 rget "http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"\
-    "http://ftp.cc.uoc.gr/mirrors/linux/lfs/LFS/conglomeration/libjpeg-turbo/libjpeg-turbo-$VERSIONtar.gz"
+    "http://ftp.cc.uoc.gr/mirrors/linux/lfs/LFS/conglomeration/libjpeg-turbo/libjpeg-turbo-$VERSION.tar.gz"
 rm -rf libjpeg-turbo-$VERSION && tar -zxf "libjpeg-turbo-$VERSION.tar.gz"
 rm -f "libjpeg-turbo-$VERSION.tar.gz"
 cd libjpeg-turbo-$VERSION
