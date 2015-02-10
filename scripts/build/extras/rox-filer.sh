@@ -9,7 +9,7 @@ source $DIR/common.sh
 depends "libglade" "shared-mime-info"
 
 rget "http://downloads.sourceforge.net/rox/rox-filer-$VERSION.tar.bz2"\
-    "ftp://gentoo.mirror.ac.za/sourceforge/r/ro/rox/rox/$VERSION/rox-filer-$VERSION.tar.bz2"
+    "ftp://ftp.openbsd.cl/ports/distfiles/rox-filer-$VERSION.tar.bz2"
 rm -rf rox-filer-$VERSION && tar -jxf "rox-filer-$VERSION.tar.bz2"
 rm -f "rox-filer-$VERSION.tar.bz2"
 cd rox-filer-$VERSION
