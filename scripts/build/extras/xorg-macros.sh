@@ -12,4 +12,4 @@ rm -f "util-macros-$VERSION.tar.bz2"
 cd util-macros-$VERSION
 
 ./configure --prefix=$PREFIX
-make && make install
+make install
