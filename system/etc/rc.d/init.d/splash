@@ -14,16 +14,16 @@
 
 . /lib/lsb/init-functions
 
-SPLASH="0"
+SPLASH=0
 
 for ARGUMENT in $(cat /proc/cmdline); do
     case "${ARGUMENT}" in
         splash*)
-            SPLASH="1"
+            SPLASH=1
             ;;
 
         nosplash*)
-            SPLASH="0"
+            SPLASH=0
             ;;
     esac
 done
