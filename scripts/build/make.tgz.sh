@@ -3,7 +3,7 @@
 
 NAME=${NAME-scudum}
 BASE=${BASE-/mnt/builds}
-TARGET=${TARGET-$BASE/$NAME/pkg}
+TARGET=${TARGET-$BASE/$NAME/tgz}
 SCHEMA=${SCHEMA-transient}
 KVARIANT=${KVARIANT-default}
 CONFIG=${CONFIG-1}
@@ -30,7 +30,7 @@ if [ "$CONFIG" == "1" ]; then
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
-    echo "make.iso: scudum not configured, not possible to make PKG"
+    echo "make.iso: scudum not configured, not possible to make TGZ"
     exit 1
 fi
 
