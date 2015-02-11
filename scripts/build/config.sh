@@ -23,6 +23,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ "$BASE" == "/" ]; then
+    BASE=""
+fi
+
 if [ ! -e $SCUDUM ]; then
     echo "config: scudum is not installed, not possible to configure"
     exit 1
