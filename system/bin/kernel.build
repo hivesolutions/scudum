@@ -69,7 +69,7 @@ release=$(cat include/config/kernel.release)
 cd modules_install/lib
 rm -f modules/$release/build && rm -f modules/$release/source
 ln -s /opt/src/linux modules/$release/build
-tar -zcvf modules.tar.gz modules
+tar -zcvf modules.tar.gz modules firmware
 mv modules.tar.gz ../..
 cd ../..
 
