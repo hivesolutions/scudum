@@ -40,7 +40,7 @@ fi
 
 cd $SCUDUM
 
-tar -zcvf $FILE .
+tar -zcvf $CUR/$FILE .
 
 cd $CUR
 
