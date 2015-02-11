@@ -26,9 +26,13 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.iso}
     FILE_BASIC=${FILE_BASIC-$NAME-$VERSION.basic.iso}
+    FILE_LATEST=${FILE_LATEST-$NAME-latest.iso}
+    FILE_BASIC_LATEST=${FILE_BASIC_LATEST-$NAME-latest.basic.iso}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
     FILE_BASIC=${FILE_BASIC-$NAME-$DISTRIB-$VERSION.basic.iso}
+    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-latest.iso}
+    FILE_BASIC_LATEST=${FILE_BASIC_LATEST-$NAME-$DISTRIB-latest.basic.iso}
 fi
 
 if type apt-get &> /dev/null; then
@@ -100,6 +104,8 @@ fi
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
     if [ "$BASIC" == "1" ]; then mv -v $FILE_BASIC $TARGET; fi
+    ln -svf $FILE $TARGET/$FILE_LATEST
+    if [ "$BASIC" == "1" ]; then ln -svf $FILE_BASIC $TARGET/$FILE_BASIC_LATEST; fi
 fi
 
 rm -rv $SCUDUM/images
