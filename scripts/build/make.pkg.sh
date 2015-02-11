@@ -22,8 +22,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION}
+    FILE_LATEST=${FILE-$NAME-latest}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION}
+    FILE_LATEST=${FILE-$NAME-$DISTRIB-latest}
 fi
 
 if type apt-get &> /dev/null; then
@@ -74,6 +76,7 @@ fi
 if [ "$DEPLOY" == "1" ]; then
     rm -rf $TARGET/$FILE
     mkdir -pv $TARGET && mv -v $PKG_DIR $TARGET
+    ln -svf $FILE $TARGET/$FILE_LATEST
 fi
 
 rm -rv $SCUDUM/images
