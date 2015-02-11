@@ -11,4 +11,4 @@ rm -rf squashfs$VERSION && tar -zxf "squashfs$VERSION.tar.gz"
 rm -f "squashfs$VERSION.tar.gz"
 cd squashfs$VERSION/squashfs-tools
 
-make && make INSTALL_DIR=$PREFIX/bin install
+XZ_SUPPORT=1 make && make INSTALL_DIR=$PREFIX/bin install
