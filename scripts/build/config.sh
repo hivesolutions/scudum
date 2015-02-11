@@ -51,15 +51,15 @@ if [ -e system ]; then
     cp -rpv system/* $SCUDUM
 fi
 
-if [ -e boot ]; then
+if [ -e boot && -f boot ]; then
     cp -p boot $SCUDUM/etc/boot/$DISTRIB
 fi
 
-if [ -e halt ]; then
+if [ -e halt && -f halt ]; then
     cp -p halt $SCUDUM/etc/halt/$DISTRIB
 fi
 
-if [ -e welcome ]; then
+if [ -e welcome && -f welcome ]; then
     cp -p welcome $SCUDUM/etc/welcome/$DISTRIB
 fi
 
