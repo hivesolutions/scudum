@@ -20,8 +20,8 @@ LEVEL=1
 
 for ARGUMENT in $(cat /proc/cmdline); do
     case "${ARGUMENT}" in
-        initcall_debug*)
-            LEVEL=6
+        loglevel=*)
+            LEVEL=-1
             ;;
     esac
 done
@@ -29,8 +29,9 @@ done
 case "${1}" in
     start)
         # runs the dmesg operation so that the verbosity of the
-        # kernel logging to the console is changed accordingly
-        dmesg -n $LEVEL
+        # kernel logging to the console is changed accordingly,
+        # note that if the value is not set no level is set
+        if [ $LEVEL != "-1" ]; then dmesg -n $LEVEL; fi
         exit $?
         ;;
 
