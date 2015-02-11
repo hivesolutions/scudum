@@ -2,17 +2,14 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-scudum}
-LABEL=${LABEL-Scudum}
 BASE=${BASE-/mnt/builds}
-TARGET=${TARGET-$BASE/$NAME/iso}
+TARGET=${TARGET-$BASE/$NAME/pkg}
 SCHEMA=${SCHEMA-transient}
 KVARIANT=${KVARIANT-default}
-BASIC=${BASIC-1}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 SQUASH=${SQUASH-1}
-AUTORUN=${AUTORUN-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -24,17 +21,15 @@ source $DIR/base/config.sh
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
-    FILE=${FILE-$NAME-$VERSION.iso}
-    FILE_BASIC=${FILE_BASIC-$NAME-$VERSION.basic.iso}
+    FILE=${FILE-$NAME-$VERSION}
 else
-    FILE=${FILE-$NAME-$DISTRIB-$VERSION.iso}
-    FILE_BASIC=${FILE_BASIC-$NAME-$DISTRIB-$VERSION.basic.iso}
+    FILE=${FILE-$NAME-$DISTRIB-$VERSION}
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install genisoimage squashfs-tools
+    apt-get -y install squashfs-tools
 elif type scu &> /dev/null; then
-    env -u VERSION scu install cdrtools squashfs-tools
+    env -u VERSION scu install squashfs-tools
 else
     exit 1
 fi
@@ -44,7 +39,7 @@ if [ "$CONFIG" == "1" ]; then
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
-    echo "make.iso: scudum not configured, not possible to make ISO"
+    echo "make.iso: scudum not configured, not possible to make PKG"
     exit 1
 fi
 
@@ -61,36 +56,15 @@ tar -zcf images/etc.tar.gz etc
 
 cd $CUR
 
+PKG_DIR=$CUR/$FILE
+mkdir -pv $PKG_DIR
+
 if [ "$SQUASH" == "1" ]; then
-    ISO_DIR=/tmp/$NAME.iso.dir
     mksquashfs $(readlink -f $SCUDUM) $NAME.sqfs
-    mkdir -pv $ISO_DIR
-    cp -rp $SCUDUM/isolinux $ISO_DIR
-    mv -v $NAME.sqfs $ISO_DIR
+    cp -rp $SCUDUM/boot $PKG_DIR
+    mv -v $NAME.sqfs $PKG_DIR
 else
-    ISO_DIR=$SCUDUM
-fi
-
-if [ "$AUTORUN" == "1" ]; then
-    cp -v $SCUDUM/isolinux/autorun.inf $ISO_DIR
-    cp -v $SCUDUM/isolinux/scudum.ico $ISO_DIR
-fi
-
-mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
-    -b isolinux/isolinux.bin -c isolinux/boot.cat\
-    -no-emul-boot -boot-load-size 4 -boot-info-table\
-    -V $LABEL $ISO_DIR
-
-if [ "$BASIC" == "1" ]; then
-    mkisofs -o $FILE_BASIC\
-        -b isolinux/isolinux.bin -c isolinux/boot.cat\
-        -no-emul-boot -boot-load-size 4 -boot-info-table\
-        -V $LABEL $ISO_DIR
-fi
-
-if [ "$AUTORUN" == "1" ]; then
-    rm -v $ISO_DIR/autorun.inf
-    rm -v $ISO_DIR/scudum.ico
+    cp -rp $SCUDUM/* $PKG_DIR
 fi
 
 if [ "$SQUASH" == "1" ]; then
@@ -98,8 +72,7 @@ if [ "$SQUASH" == "1" ]; then
 fi
 
 if [ "$DEPLOY" == "1" ]; then
-    mkdir -pv $TARGET && mv -v $FILE $TARGET
-    if [ "$BASIC" == "1" ]; then mv -v $FILE_BASIC $TARGET; fi
+    mkdir -pv $TARGET && mv -v $PKG_DIR $TARGET
 fi
 
 rm -rv $SCUDUM/images
