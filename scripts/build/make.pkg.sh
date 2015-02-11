@@ -33,7 +33,9 @@ if [ "$CLEANUP" == "1" ]; then
     $DIR/cleanup.sh
 fi
 
-tar -zcvf $FILE $SCUDUM
+cd $SCUDUM
+
+tar -zcvf $FILE .
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
