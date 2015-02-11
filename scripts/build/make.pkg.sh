@@ -64,6 +64,7 @@ mkdir -pv $PKG_DIR
 if [ "$SQUASH" == "1" ]; then
     mksquashfs $(readlink -f $SCUDUM) $NAME.sqfs
     cp -rp $SCUDUM/boot $PKG_DIR
+    cp -rp $SCUDUM/isolinux $PKG_DIR
     mv -v $NAME.sqfs $PKG_DIR
 else
     cp -rp $SCUDUM/* $PKG_DIR
