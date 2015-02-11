@@ -18,8 +18,8 @@
 # used in the console output of the kernel log
 LEVEL=1
 
-for ARGUMENT in $(cat /proc/cmdline); do
-    case "${ARGUMENT}" in
+for argument in $(cat /proc/cmdline); do
+    case "${argument}" in
         loglevel=*)
             LEVEL=-1
             ;;

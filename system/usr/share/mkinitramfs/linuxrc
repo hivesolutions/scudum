@@ -1,8 +1,23 @@
 #!/bin/sh
 
+# sets the initial values for a series of configurations that
+# are goign to be used in the boot process
+QUIET=0
+
+# iterates over the complete set of arguments in the command
+# line string (kernel boot string) to try to find some options
+for argument in $(cat /proc/cmdline); do
+    case "${argument}" in
+        quiet*)
+            QUIET=1
+            ;;
+    esac
+done
+
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
 function echoi() {
+    if [ "$QUIET" == "1" ]; then return; fi
     echo "[initrd] $1"
 }
 
@@ -88,6 +103,11 @@ if [ "$mountdir" != "" ]; then
     cd $mountdir
 fi
 mkdir -p origin
+
+# sleeps for a while before trying to find the origin
+# device, this give the kernel some time to mount the
+# async block devices (eg: usb, mmc, etc)
+sleep 0.5
 
 # prints a message indicating the operation of finding
 # the origin device for loading

@@ -16,8 +16,8 @@
 
 SPLASH=0
 
-for ARGUMENT in $(cat /proc/cmdline); do
-    case "${ARGUMENT}" in
+for argument in $(cat /proc/cmdline); do
+    case "${argument}" in
         splash*)
             SPLASH=1
             ;;
