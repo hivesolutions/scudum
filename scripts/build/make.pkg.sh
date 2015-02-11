@@ -72,6 +72,7 @@ if [ "$SQUASH" == "1" ]; then
 fi
 
 if [ "$DEPLOY" == "1" ]; then
+    rm -rf $TARGET/$FILE
     mkdir -pv $TARGET && mv -v $PKG_DIR $TARGET
 fi
 
