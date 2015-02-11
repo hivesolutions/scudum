@@ -72,7 +72,7 @@ fi
 
 # in case the overlay fs mode is active must create
 # the target (unified) directory and change the target
-# root directory to it (print and info message)
+# root directory to it (prints an info message)
 if [ "$USE_OVERLAYFS" == "1" ]; then
     echoi "OverlayFS mode is enabled (read & write)"
     rootdir=/overlay
