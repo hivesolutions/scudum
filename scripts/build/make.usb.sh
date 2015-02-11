@@ -40,8 +40,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.usb.img}
+    FILE_LATEST=${FILE_LATEST-$NAME-latest.usb.img}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.usb.img}
+    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-latest.usb.img}
 fi
 
 if type apt-get &> /dev/null; then
@@ -127,6 +129,7 @@ fi
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
+    ln -svf $FILE $TARGET/$FILE_LATEST
 fi
 
 rm -rv $SCUDUM/images

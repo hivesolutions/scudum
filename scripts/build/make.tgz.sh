@@ -21,8 +21,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION.tar.gz}
+    FILE_LATEST=${FILE_LATEST-$NAME-latest.tar.gz}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION.tar.gz}
+    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-latest.tar.gz}
 fi
 
 if [ "$CONFIG" == "1" ]; then
@@ -46,4 +48,5 @@ cd $CUR
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
+    ln -svf $FILE $TARGET/$FILE_LATEST
 fi
