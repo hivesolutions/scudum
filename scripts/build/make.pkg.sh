@@ -18,7 +18,12 @@ set -e +h
 source $DIR/base/config.sh
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
-FILE=${FILE-$NAME-$VERSION.tar.gz}
+
+if [ "$DISTRIB" == "generic" ]; then
+    FILE=${FILE-$NAME-$VERSION.tar.gz}
+else
+    FILE=${FILE-$NAME-$DISTRIB-$VERSION.tar.gz}
+fi
 
 if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA KVARIANT=$KVARIANT $DIR/config.sh
@@ -36,6 +41,8 @@ fi
 cd $SCUDUM
 
 tar -zcvf $FILE .
+
+cd $CUR
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
