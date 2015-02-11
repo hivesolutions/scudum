@@ -22,10 +22,10 @@ DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION}
-    FILE_LATEST=${FILE-$NAME-latest}
+    FILE_LATEST=${FILE_LATEST-$NAME-latest}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION}
-    FILE_LATEST=${FILE-$NAME-$DISTRIB-latest}
+    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-latest}
 fi
 
 if type apt-get &> /dev/null; then
