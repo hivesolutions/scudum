@@ -24,7 +24,7 @@ set -e +h
 source $DIR/base/config.sh
 
 if [ "$BASE" == "/" ]; then
-    BASE=""
+    BASE="."
 fi
 
 if [ ! -e $SCUDUM ]; then
