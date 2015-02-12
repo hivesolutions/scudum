@@ -18,6 +18,7 @@ sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
 ./configure\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
+    --enable-efiemu\
     --disable-werror
 
 make && make install
