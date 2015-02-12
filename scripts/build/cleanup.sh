@@ -37,7 +37,6 @@ rm -rf $SCUDUM/images
 rm -rf $SCUDUM/extras
 rm -rf $SCUDUM/lost+found
 rm -rf $SCUDUM/boot/lost+found
-rm -f $SCUDUM/boot/grub/grub.cfg
 rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 find $SCUDUM -name "*.pyc" -delete
