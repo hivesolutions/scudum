@@ -38,7 +38,7 @@ fi
 if type apt-get &> /dev/null; then
     apt-get -y install genisoimage squashfs-tools
 elif type scu &> /dev/null; then
-    env -u VERSION scu install cdrtools squashfs-tools
+    env -u VERSION scu install cdrtools.latest squashfs-tools
 else
     exit 1
 fi
