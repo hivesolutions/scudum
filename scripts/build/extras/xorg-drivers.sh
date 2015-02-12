@@ -1,6 +1,7 @@
 VERSION_EVDEV=${VERSION_EVDEV-2.9.0}
 VERSION_SYNAPTICS=${VERSION_SYNAPTICS-1.8.1}
 VERSION_VESA=${VERSION_VESA-2.3.3}
+VERSION_FBDEV=${VERSION_FBDEV-0.4.4}
 VERSION_NOUVEAU=${VERSION_NOUVEAU-1.0.11}
 VERSION_INTEL=${VERSION_INTEL-2.99.917}
 VERSION_VMWARE=${VERSION_VMWARE-13.1.0}
@@ -41,6 +42,13 @@ cd xf86-video-vesa-$VERSION_VESA
 
 ./configure --prefix=$PREFIX
 make && make install
+
+cd ..
+
+wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
+rm -rf xf86-video-fbdev-$VERSION_FBDEV && tar -jxf "xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
+rm -f "xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
+cd xf86-video-fbdev-$VERSION_FBDEV
 
 cd ..
 
