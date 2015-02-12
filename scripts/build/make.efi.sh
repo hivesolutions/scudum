@@ -41,7 +41,7 @@ grub-mkimage\
     gzio echo true probe loadenv bitmap_scale font cat help ls png\
     jpeg tga test at_keyboard usb_keyboard
 
-mv $EFI_NAME $CUR/$EFI_NAME
+mv bootx64.efi $CUR
 cd $CUR
 
 dd if=/dev/zero of=$EFI_NAME bs=1K count=1440
