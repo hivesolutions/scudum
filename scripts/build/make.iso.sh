@@ -83,14 +83,15 @@ fi
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
     -b isolinux/isolinux.bin -c isolinux/boot.cat\
     -no-emul-boot -boot-load-size 4 -boot-info-table\
-    -V $LABEL $ISO_DIR
+    -eltorito-alt-boot -eltorito-platform 0xef\
+    -e isolinux/efiboot.img -V $LABEL $ISO_DIR
 
 if [ "$BASIC" == "1" ]; then
     mkisofs -o $FILE_BASIC\
         -b isolinux/isolinux.bin -c isolinux/boot.cat\
+        -no-emul-boot -boot-load-size 4 -boot-info-table\
         -eltorito-alt-boot -eltorito-platform 0xef\
-        -e images/efiboot.img -no-emul-boot -boot-load-size 4\
-        -boot-info-table -V $LABEL $ISO_DIR
+        -e isolinux/efiboot.img -V $LABEL $ISO_DIR
 fi
 
 if [ "$AUTORUN" == "1" ]; then
