@@ -107,7 +107,7 @@ mkdir -p origin
 # sleeps for a while before trying to find the origin
 # device, this gives the kernel some time to mount the
 # async block devices (eg: usb, mmc, etc)
-sleep 0.5
+sleep 1
 
 # prints a message indicating the operation of finding
 # the origin device for loading
