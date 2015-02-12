@@ -14,6 +14,7 @@ DEPLOY=${DEPLOY-0}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
 EFI=${EFI-1}
+EFI_COPY=${EFI_COPY-0}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -85,7 +86,9 @@ fi
 if [ "$EFI" == "1" ]; then
     $DIR/make.efi.sh
     mv efiboot.img $ISO_DIR/isolinux
-    cp -rp /usr/lib/grub/x86_64-efi $ISO_DIR/boot/grub
+    if [ "$EFI_COPY" == "1" ]; then
+        cp -rp /usr/lib/grub/x86_64-efi $ISO_DIR/boot/grub
+    fi
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
