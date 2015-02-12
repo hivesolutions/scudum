@@ -20,8 +20,6 @@ sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
     --sysconfdir=/etc\
     --with-platform=efi\
     --target=x86_64\
-    --enable-efiemu\
-    --enable-grub-emu-usb\
     --disable-werror
 
 make && make install
