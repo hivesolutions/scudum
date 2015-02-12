@@ -37,9 +37,9 @@ ln -sfn rc.d/init.d /etc/init.d
 ln -sf ../init.d/log /etc/rc.d/rcS.d/S00log
 ln -sf ../init.d/mountvirtfs /etc/rc.d/rcS.d/S00mountvirtfs
 ln -sf ../init.d/modules /etc/rc.d/rcS.d/S05modules
-ln -sf ../init.d/splash /etc/rc.d/rcS.d/S06splash
 ln -sf ../init.d/localnet /etc/rc.d/rcS.d/S08localnet
 ln -sf ../init.d/udev /etc/rc.d/rcS.d/S10udev
+ln -sf ../init.d/splash /etc/rc.d/rcS.d/S15splash
 ln -sf ../init.d/swap /etc/rc.d/rcS.d/S20swap
 ln -sf ../init.d/checkcd /etc/rc.d/rcS.d/S25checkcd
 ln -sf ../init.d/checkfs /etc/rc.d/rcS.d/S30checkfs
