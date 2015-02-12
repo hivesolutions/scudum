@@ -210,7 +210,6 @@ rm -rf ramdisk
 # copies the initramfs file to the various repositories
 # of information that are valid for booting, and then removes
 # the original file as it's not longer required
-rm -f /isolinux/$INITRAMFS_FILE && cp $INITRAMFS_FILE /isolinux/$INITRAMFS_FILE
 rm -f /boot/$INITRAMFS_FILE && cp $INITRAMFS_FILE /boot/$INITRAMFS_FILE
 rm -f /boot/syslinux/$INITRAMFS_FILE && cp $INITRAMFS_FILE /boot/syslinux/$INITRAMFS_FILE
 rm -f $INITRAMFS_FILE

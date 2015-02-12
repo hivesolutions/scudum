@@ -23,7 +23,6 @@ wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
 
 cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz
-cp -v $NAME-$VARIANT-$VERSION /isolinux/vmlinuz
 
 cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 
