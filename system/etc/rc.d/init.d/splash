@@ -18,11 +18,11 @@ SPLASH=0
 
 for argument in $(cat /proc/cmdline); do
     case "${argument}" in
-        splash*)
+        splash)
             SPLASH=1
             ;;
 
-        nosplash*)
+        nosplash)
             SPLASH=0
             ;;
     esac

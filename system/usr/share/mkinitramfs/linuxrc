@@ -39,11 +39,6 @@ mounted=0
 rootdir=/ram
 mountdir=/ram
 
-# prints a message marking the start of the linux
-# so that the end-user may know that interaction
-# is now enable (at least using keyboard)
-echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
-
 # mount the proc filesystem as it's required for
 # some of the operations in the linuxrc
 mount -t proc none /proc
@@ -52,11 +47,16 @@ mount -t proc none /proc
 # line string (kernel boot string) to try to find some options
 for argument in $(cat /proc/cmdline); do
     case "${argument}" in
-        quiet*)
+        quiet)
             QUIET=1
             ;;
     esac
 done
+
+# prints a message marking the start of the linux
+# so that the end-user may know that interaction
+# is now enable (at least using keyboard)
+echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
 
 # creates the directory to be used as the mount point
 # for the root file system (will be stored in ram)
