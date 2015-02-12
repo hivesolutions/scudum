@@ -81,17 +81,17 @@ if [ "$AUTORUN" == "1" ]; then
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
+    -no-emul-boot -boot-load-size 4 -boot-info-table\
     -b isolinux/isolinux.bin -c isolinux/isolinux.boot\
     -eltorito-alt-boot -no-emul-boot -eltorito-platform 0xEF\
-    -eltorito-boot isolinux/efiboot.img -boot-load-size 4\
-    -boot-info-table -V $LABEL $ISO_DIR
+    -eltorito-boot isolinux/efiboot.img -V $LABEL $ISO_DIR
 
 if [ "$BASIC" == "1" ]; then
     mkisofs -o $FILE_BASIC\
+        -no-emul-boot -boot-load-size 4 -boot-info-table\
         -b isolinux/isolinux.bin -c isolinux/isolinux.boot\
         -eltorito-alt-boot -no-emul-boot -eltorito-platform 0xEF\
-        -eltorito-boot isolinux/efiboot.img -boot-load-size 4\
-        -boot-info-table -V $LABEL $ISO_DIR
+        -eltorito-boot isolinux/efiboot.img -V $LABEL $ISO_DIR
 fi
 
 if [ "$AUTORUN" == "1" ]; then
