@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS scudum-tools syslinux cdrtools squashfs-tools dosfstools mtools kpartx"
+export EXTRAS="$EXTRAS scudum-tools syslinux cdrtools.latest squashfs-tools dosfstools mtools kpartx"
