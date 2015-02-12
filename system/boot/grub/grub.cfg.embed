@@ -1,4 +1,2 @@
 search --set=root --label SCUDUM
 set prefix=($root)/boot/grub
-echo $prefix
-sleep 3
