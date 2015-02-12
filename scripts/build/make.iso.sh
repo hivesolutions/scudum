@@ -85,6 +85,7 @@ fi
 if [ "$EFI" == "1" ]; then
     $DIR/make.efi.sh
     mv efiboot.img $ISO_DIR/isolinux
+    cp -rp /usr/lib/grub/x86_64-efi $ISO_DIR/boot/grub
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
