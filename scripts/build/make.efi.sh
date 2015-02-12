@@ -45,4 +45,4 @@ mkdir -pv $MOUNTPOINT/EFI/BOOT
 cp -pv bootx64.efi $MOUNTPOINT/EFI/BOOT
 rm -v bootx64.efi
 
-umount $MOUNTPOINT && rmdir -rv $MOUNTPOINT
+umount $MOUNTPOINT && rm -rf $MOUNTPOINT
