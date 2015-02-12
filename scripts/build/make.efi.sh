@@ -34,11 +34,11 @@ grub-mkimage\
     --prefix=/boot/grub\
     part_gpt part_msdos fat ntfs ext2 jfs hfs hfsplus iso9660 udf ufs1 ufs2\
     zfs chain linux boot appleldr ahci ehci ohci uhci configfile normal regexp\
-    minicmd reboot halt search search_fs_file search_fs_uuid\
-    search_label gfxterm gfxmenu efi_gop efi_uga efinet all_video\
-    loadbios gzio echo true probe loadenv bitmap_scale font cat help\
-    ls png jpeg tga test at_keyboard usb_keyboard tftp pata usbserial_ftdi\
-    usbms
+    minicmd reboot halt search search_fs_file search_fs_uuid search_label\
+    gfxterm gfxmenu efi_gop efi_uga efifwsetup efinet all_video loadbios gzio\
+    echo true probe loadenv bitmap_scale font cat help ls png jpeg tga test\
+    at_keyboard usb_keyboard tftp pata usbserial_ftdi usbms http hdparm lspci\
+    usbtest
 
 dd if=/dev/zero of=$EFI_NAME bs=1K count=1440
 mkdosfs -F 12 $EFI_NAME
