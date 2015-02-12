@@ -50,6 +50,9 @@ rm -rf xf86-video-fbdev-$VERSION_FBDEV && tar -jxf "xf86-video-fbdev-$VERSION_FB
 rm -f "xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
 cd xf86-video-fbdev-$VERSION_FBDEV
 
+./configure --prefix=$PREFIX
+make && make install
+
 cd ..
 
 wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
