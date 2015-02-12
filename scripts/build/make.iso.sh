@@ -13,6 +13,7 @@ CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 SQUASH=${SQUASH-1}
 AUTORUN=${AUTORUN-1}
+EFI=${EFI-1}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -78,6 +79,11 @@ fi
 if [ "$AUTORUN" == "1" ]; then
     cp -v $SCUDUM/isolinux/autorun.inf $ISO_DIR
     cp -v $SCUDUM/isolinux/scudum.ico $ISO_DIR
+fi
+
+if [ "$EFI" == "1" ]; then
+    $DIR/make.efi.sh
+    mv efiboot.img $ISO_DIR/isolinux
 fi
 
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
