@@ -32,7 +32,7 @@ if [ "$CONFIG" == "1" ]; then
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
-    echo "make.iso: scudum not configured, not possible to make TGZ"
+    echo "make.tgz: scudum not configured, not possible to make TGZ"
     exit 1
 fi
 

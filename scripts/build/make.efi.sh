@@ -17,6 +17,11 @@ else
     exit 1
 fi
 
+if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
+    echo "make.efi: scudum not configured, not possible to make EFI"
+    exit 1
+fi
+
 MOUNTPOINT=$(mktemp -d)
 
 grub-mkimage\
