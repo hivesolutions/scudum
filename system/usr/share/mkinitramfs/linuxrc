@@ -4,16 +4,6 @@
 # are goign to be used in the boot process
 QUIET=0
 
-# iterates over the complete set of arguments in the command
-# line string (kernel boot string) to try to find some options
-for argument in $(cat /proc/cmdline); do
-    case "${argument}" in
-        quiet*)
-            QUIET=1
-            ;;
-    esac
-done
-
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
 function echoi() {
@@ -57,6 +47,16 @@ echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
 # mount the proc filesystem as it's required for
 # some of the operations in the linuxrc
 mount -t proc none /proc
+
+# iterates over the complete set of arguments in the command
+# line string (kernel boot string) to try to find some options
+for argument in $(cat /proc/cmdline); do
+    case "${argument}" in
+        quiet*)
+            QUIET=1
+            ;;
+    esac
+done
 
 # creates the directory to be used as the mount point
 # for the root file system (will be stored in ram)
