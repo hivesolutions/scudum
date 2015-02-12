@@ -33,7 +33,7 @@ grub-mkimage\
     --compression=xz\
     --prefix=/boot/grub\
     part_gpt part_msdos fat ntfs ext2 jfs hfs hfsplus iso9660 udf ufs1 ufs2\
-    zfs chain linux boot appleldr ahci ohci configfile normal regexp\
+    zfs chain linux boot appleldr ahci ohci uhci configfile normal regexp\
     minicmd reboot halt search search_fs_file search_fs_uuid\
     search_label gfxterm gfxmenu efi_gop efi_uga efinet all_video\
     loadbios gzio echo true probe loadenv bitmap_scale font cat help\
