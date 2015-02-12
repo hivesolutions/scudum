@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 EFI_NAME=${EFI_NAME-efiboot.img}
-GRUB_CONFIG=${GRUB_CONFIG-/boot/grub/grub.cfg}
+GRUB_EMBED=${GRUB_EMBED-/boot/grub/grub.cfg.embed}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -31,7 +31,7 @@ cd $SCUDUM
 grub-mkimage\
     --format=x86_64-efi\
     --output=bootx64.efi\
-    --config=$GRUB_CONFIG\
+    --config=$GRUB_EMBED\
     --compression=xz\
     --prefix=/EFI/BOOT\
     part_gpt part_msdos fat ext2 hfs hfsplus iso9660 udf ufs1 ufs2\

@@ -1,0 +1,2 @@
+search --set=root --label SCUDUM
+set prefix=($root)/boot/grub
