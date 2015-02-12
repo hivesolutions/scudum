@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 NAME=${NAME-scudum}
-LABEL=${LABEL-Scudum}
+LABEL=${LABEL-SCUDUM}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/iso}
 SCHEMA=${SCHEMA-transient}
