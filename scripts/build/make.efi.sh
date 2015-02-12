@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 EFI_NAME=${EFI_NAME-efiboot.img}
-GRUB_CONFIG=${GRUB_CONFIG-boot/grub/grub.cfg}
+GRUB_CONFIG=${GRUB_CONFIG-/boot/grub/grub.cfg}
 
+CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
@@ -25,10 +26,12 @@ fi
 
 MOUNTPOINT=$(mktemp -d)
 
+cd $SCUDUM
+
 grub-mkimage\
     --format=x86_64-efi\
     --output=bootx64.efi\
-    --config=$SCUDUM/$GRUB_CONFIG\
+    --config=$GRUB_CONFIG\
     --compression=xz\
     --prefix=/EFI/BOOT\
     part_gpt part_msdos fat ext2 hfs hfsplus iso9660 udf ufs1 ufs2\
@@ -37,6 +40,9 @@ grub-mkimage\
     search_label gfxterm gfxmenu efi_gop efi_uga all_video loadbios\
     gzio echo true probe loadenv bitmap_scale font cat help ls png\
     jpeg tga test at_keyboard usb_keyboard
+
+mv $EFI_NAME $CUR/$EFI_NAME
+cd $CUR
 
 dd if=/dev/zero of=$EFI_NAME bs=1K count=1440
 mkdosfs -F 12 $EFI_NAME

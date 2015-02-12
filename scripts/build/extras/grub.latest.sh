@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.00}
+VERSION=${VERSION-2.02~beta2}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,12 +8,10 @@ source $DIR/common.sh
 
 unset CFLAGS
 
-wget "http://ftp.gnu.org/gnu/grub/grub-$VERSION.tar.gz"
+wget "http://alpha.gnu.org/gnu/grub/grub-$VERSION.tar.gz"
 rm -rf grub-$VERSION && tar -zxf "grub-$VERSION.tar.gz"
 rm -f "grub-$VERSION.tar.gz"
 cd grub-$VERSION
-
-sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
 
 ./configure\
     --prefix=$PREFIX\
