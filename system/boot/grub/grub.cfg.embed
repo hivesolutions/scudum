@@ -1,7 +1,7 @@
 insmod ata
 insmod fat
-insmod ext2
 insmod udf
+insmod ext2
 insmod iso9660
 
 search --set=root --label SCUDUM
