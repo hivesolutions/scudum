@@ -1,9 +1,3 @@
-insmod ata
-insmod fat
-insmod udf
-insmod ext2
-insmod usbms
-insmod iso9660
-
+sleep 5
 search --set=root --label SCUDUM
 set prefix=($root)/boot/grub
