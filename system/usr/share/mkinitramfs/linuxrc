@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # sets the initial values for a series of configurations that
-# are goign to be used in the boot process
+# are going to be used in the boot process
 QUIET=0
+PERSIST=0
 
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
@@ -38,6 +39,7 @@ mounted=0
 # may change due to the usage of the overlayfs strategy
 rootdir=/ram
 mountdir=/ram
+storagedir=/ram
 
 # mount the proc filesystem as it's required for
 # some of the operations in the linuxrc
@@ -49,6 +51,10 @@ for argument in $(cat /proc/cmdline); do
     case "${argument}" in
         quiet)
             QUIET=1
+            ;;
+
+        persist)
+            PERSIST=1
             ;;
     esac
 done
@@ -93,6 +99,13 @@ if [ "$USE_OVERLAYFS" == "1" ]; then
     rootdir=/overlay
     mountdir=
     mkdir -p $rootdir
+fi
+
+# in case the persist flag is set re-defined the storage
+# directory as the origin one, so that the origin device
+# is used to store the data in the overlay fs mode
+if [ "$PERSIST" == "1" ]; then
+    storagedir=$mountdir/origin
 fi
 
 # moves the current directory to the mount (target) one
@@ -176,9 +189,9 @@ fi
 # the final overlay file system using the source squash
 # file system for read and the ram based one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
-    mkdir -p /ram/root
-    mkdir -p /ram/work
-    mount -o lowerdir=/source,upperdir=/ram/root,workdir=/ram/work -t overlay overlayfs /overlay
+    mkdir -p $storagedir/root
+    mkdir -p $storagedir/work
+    mount -o lowerdir=/source,upperdir=$storagedir/root,workdir=$storagedir/work -t overlay overlayfs /overlay
 fi
 
 # changes the current path to the root of the base/target
