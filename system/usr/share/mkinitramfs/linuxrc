@@ -13,6 +13,12 @@ function echoi() {
     echo "[initrd] $1"
 }
 
+# declares the function to be used to warn information
+# these messages are considered critical for usage
+function warni() {
+    echo "[initrd] $1"
+}
+
 # updates the current path variabmle so that the proper
 # relations are used and the executables found
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin
@@ -168,6 +174,14 @@ if [ "$mounted" == "0" ]; then
         mount -o $mode -n $drive $mountdir/origin
         if [ "$?" == "0" ]; then mounted=1; fi
     done
+fi
+
+# verifies if the origin device mounted has been successful,
+# if that's not the case prints a warning message and then
+# returns the operation control to the calling proceess
+if [ "$mounted" == "0" ]; then
+    warni "Not possible to mount origin device, breaking boot"
+    exit 1
 fi
 
 # verifies if the squashfs file exists for the current
