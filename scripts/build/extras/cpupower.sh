@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.xz"
-rm -rf linux-$VERSION && tar -zxf "linux-$VERSION.tar.xz"
+rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION/tools/power/cpupower
 
