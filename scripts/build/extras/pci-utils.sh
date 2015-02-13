@@ -12,4 +12,4 @@ rm -f "pciutils-$VERSION.tar.xz"
 cd pciutils-$VERSION
 
 make PREFIX=$PREFIX SHARED=yes
-make PREFIX=$PREFIX SHARED=yes install 
+make PREFIX=$PREFIX SHARED=yes install install-lib
