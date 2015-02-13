@@ -11,5 +11,5 @@ rm -rf pciutils-$VERSION && tar -Jxf "pciutils-$VERSION.tar.xz"
 rm -f "pciutils-$VERSION.tar.xz"
 cd pciutils-$VERSION
 
-PREFIX=$PREFIX SHARED=yes make
-PREFIX=$PREFIX SHARED=yes make install
+make PREFIX=$PREFIX SHARED=yes
+make PREFIX=$PREFIX SHARED=yes install 
