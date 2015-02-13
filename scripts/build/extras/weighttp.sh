@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libev"
 
-rm -rf weighttp && git clone --depth 1 git://git.lighttpd.net/weighttp
+rm -rf weighttp && git clone --depth 1 "git://git.lighttpd.net/weighttp"
 cd weighttp
 
 ./waf configure

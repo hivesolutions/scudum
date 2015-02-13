@@ -39,7 +39,7 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     fi
 fi
 
-git clone --depth 1 https://github.com/hivesolutions/scudum.git $BASE/scudum.git
+git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
