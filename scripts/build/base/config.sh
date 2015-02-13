@@ -16,9 +16,9 @@ export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-linux-gnu}
 # to the currently defined date (to the day value)
 export VERSION=${VERSION-$(date +%Y%m%d)}
 
-# exports the generic target value for a pc based
+# exports the generic target value for an arch based
 # infra-structure may be used in final scudum build
-export PC_TARGET=${PC_TARGET-$SCUDUM_ARCH-pc-linux-gnu}
+export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-pc-linux-gnu}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
@@ -97,6 +97,18 @@ case "$GCC_FLAVOUR" in
         ;;
 esac
 
+case "$SCUDUM_ARCH" in
+    arm)
+        export PATH=/opt/$ARCH_TARGET/bin:$PATH
+        export CC="$ARCH_TARGET-gcc"
+        export CXX="$ARCH_TARGET-g++"
+        export AR="$ARCH_TARGET-ar rcu"
+        export RANLIB="$ARCH_TARGET-ranlib"
+        export CFLAGS="-I/opt/$ARCH_TARGET/include -L/opt/$ARCH_TARGET/lib\
+            -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib"
+        ;;
+esac
+
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
@@ -104,7 +116,7 @@ print_scudum() {
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "VERSION := $VERSION"
-    echo "PC_TARGET := $PC_TARGET"
+    echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "GCC_FLAVOUR := $GCC_FLAVOUR"
