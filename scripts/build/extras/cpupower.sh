@@ -13,4 +13,4 @@ rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION/tools/power/cpupower
 
-make && DESTDIR=$PRFEFIX make install
+make && make DESTDIR=$PRFEFIX install
