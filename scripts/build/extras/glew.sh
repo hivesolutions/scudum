@@ -13,4 +13,5 @@ rm -rf glew-$VERSION && tar -zxf "glew-$VERSION.tgz"
 rm -f "glew-$VERSION.tar.xz"
 cd glew-$VERSION
 
-make GLEW_PREFIX=$PREFIX GLEW_DEST=$PREFIX && make GLEW_PREFIX=$PREFIX GLEW_DEST=$PREFIX install
+make GLEW_PREFIX=$PREFIX GLEW_DEST=$PREFIX
+make GLEW_PREFIX=$PREFIX GLEW_DEST=$PREFIX install
