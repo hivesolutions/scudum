@@ -212,10 +212,20 @@ fi
 
 # in case the overlay fs mode is enabled must mount
 # the final overlay file system using the source squash
-# file system for read and the ram based one for write
+# file system for read and the ram/persist one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
-    mkdir -p $storagedir/root
-    mkdir -p $storagedir/work
+    # in case the persist mode is enabled and the cleanup flag
+    # is also set must remove any previously existing root and
+    # work directories, so that we allways start fresh
+    if [ "$PERSIST" == "1" ] && [ "$CLEANUP" == "1" ]; then
+        rm -rf $storagedir/root $storagedir/work
+    fi
+
+    # creates, or re-creates both the root and the work directories
+    # and then starts the overlay filesystem process with the base
+    # (write only directory) as the source and the created root and
+    # working (temporary file storage) directories
+    mkdir -p $storagedir/root $storagedir/work
     mount -o lowerdir=/source,upperdir=$storagedir/root,workdir=$storagedir/work -t overlay overlayfs /overlay
 fi
 
