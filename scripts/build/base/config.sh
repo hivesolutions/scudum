@@ -18,7 +18,7 @@ export VERSION=${VERSION-$(date +%Y%m%d)}
 
 # exports the generic target value for an arch based
 # infra-structure may be used in final scudum build
-export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-pc-linux-gnu}
+export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-unknown-linux-gnu}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
