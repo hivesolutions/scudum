@@ -4,6 +4,7 @@
 # are going to be used in the boot process
 QUIET=0
 PERSIST=0
+CLEANUP=0
 
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
@@ -12,7 +13,7 @@ function echoi() {
     echo "[initrd] $1"
 }
 
-# updates the current path variable so that the proper
+# updates the current path variabmle so that the proper
 # relations are used and the executables found
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
@@ -33,6 +34,11 @@ DEVICE_U=SCUDUM
 # sets the initial values for the various variables
 # to be used in the loader
 mounted=0
+
+# the mode that is going to be used to mount the origin
+# device, this is dependent on the kind of storage engine
+# to be used (persistent or transient)
+mode=ro
 
 # sets the default root and mount directories for
 # which the final pivot operation will be performed,
@@ -55,6 +61,10 @@ for argument in $(cat /proc/cmdline); do
 
         persist)
             PERSIST=1
+            ;;
+
+        cleanup)
+            CLEANUP=1
             ;;
     esac
 done
@@ -106,6 +116,7 @@ fi
 # is used to store the data in the overlay fs mode
 if [ "$PERSIST" == "1" ]; then
     storagedir=$mountdir/origin
+    mode=rw
 fi
 
 # moves the current directory to the mount (target) one
@@ -136,7 +147,7 @@ for i in {1..5}; do
     drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
     if [ "$drive" != "" ]; then
         echoi "Origin device located at $drive"
-        mount -o ro -n $drive $mountdir/origin
+        mount -o $mode -n $drive $mountdir/origin
         mounted=1
         break
     fi
@@ -154,7 +165,7 @@ if [ "$mounted" == "0" ]; then
     if [ "$?" == "0" ]; then mounted=1; fi
     for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
         if [ "$mounted" == "1" ]; then break; fi
-        mount -o ro -n $drive $mountdir/origin
+        mount -o $mode -n $drive $mountdir/origin
         if [ "$?" == "0" ]; then mounted=1; fi
     done
 fi
