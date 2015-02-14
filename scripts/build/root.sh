@@ -49,15 +49,21 @@ print_scudum
 print_scudum_tools
 sleep 10
 
+# verifies if the current kind of compilation is cross
+# based and if that's not the case (host is target) runs
+# the initial build scripts for the basic tools
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    $DIR/tools/binutils.pass1.sh
+    $DIR/tools/$GCC_BUILD_BINARY.pass1.sh
+    $DIR/tools/linux-headers.sh
+    $DIR/tools/glibc.sh
+    $DIR/tools/libstdc++.sh
+    $DIR/tools/binutils.pass2.sh
+    $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
+fi
+
 # runs the complete set of package specific scripts
 # in order to build their source code properly
-$DIR/tools/binutils.pass1.sh
-$DIR/tools/$GCC_BUILD_BINARY.pass1.sh
-$DIR/tools/linux-headers.sh
-$DIR/tools/glibc.sh
-$DIR/tools/libstdc++.sh
-$DIR/tools/binutils.pass2.sh
-$DIR/tools/$GCC_BUILD_BINARY.pass2.sh
 $DIR/tools/tcl.sh
 $DIR/tools/expect.sh
 $DIR/tools/dejagnu.sh
