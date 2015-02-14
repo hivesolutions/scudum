@@ -10,6 +10,10 @@ cd expect$VERSION
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 
+cat > confdefs.h << "EOF"
+#define SETPGRP_VOID 1
+EOF
+
 CC="" ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-tcl=$PREFIX/lib\
     --with-tclinclude=$PREFIX/include
 make && make SCRIPTS="" install
