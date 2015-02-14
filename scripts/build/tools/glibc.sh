@@ -14,6 +14,7 @@ cd glibc-build
 ../glibc-$VERSION/configure\
     --prefix=$PREFIX\
     --host=$SCUDUM_TARGET\
+    --target=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
     --$GCC_MULTIARCH-multi-arch\
