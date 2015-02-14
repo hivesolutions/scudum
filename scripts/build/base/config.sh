@@ -109,8 +109,6 @@ case "$GCC_FLAVOUR" in
         ;;
 esac
 
-
-
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
@@ -138,10 +136,4 @@ print_scudum() {
     echo "CXX := $CXX"
     echo "AR := $AR"
     echo "RANLIB := $RANLIB"
-}
-
-unset_cross() {
-    unset PATH CC CXX AR RANLIB
-    unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
-    unset CFLAGS CXXFLAGS
 }
