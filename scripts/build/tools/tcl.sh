@@ -2,7 +2,7 @@ VERSION=${VERSION-8.6.3}
 
 set -e +h
 
-export ac_cv_func_strtod=yes
+export tcl_cv_strtod_buggy=1
 
 wget "http://downloads.sourceforge.net/tcl/tcl$VERSION-src.tar.gz"
 rm -f "tcl$VERSION" && tar -zxf "tcl$VERSION-src.tar.gz"
