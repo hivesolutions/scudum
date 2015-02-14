@@ -121,6 +121,8 @@ print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
     echo "SCUDUM_ARCH := $SCUDUM_ARCH"
+    echo "SCUDUM_VENDOR := $SCUDUM_VENDOR"
+    echo "SCUDUM_SYSTEM := $SCUDUM_SYSTEM"
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "VERSION := $VERSION"
