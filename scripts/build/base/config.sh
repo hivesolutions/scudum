@@ -105,9 +105,9 @@ case "$SCUDUM_ARCH" in
         export AR="$ARCH_TARGET-ar rcu"
         export RANLIB="$ARCH_TARGET-ranlib"
         export CFLAGS="-I/opt/$ARCH_TARGET/include -L/opt/$ARCH_TARGET/lib\
-            -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib $CFLAGS"
+            -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib -DNO_SSE $CFLAGS"
         export CXXFLAGS="-I/opt/$ARCH_TARGET/include -L/opt/$ARCH_TARGET/lib\
-            -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib $CXXFLAGS"
+            -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib -DNO_SSE $CXXFLAGS"
         ;;
 esac
 
