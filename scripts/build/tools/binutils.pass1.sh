@@ -2,10 +2,6 @@ VERSION=${VERSION-2.25}
 
 set -e +h
 
-unset PATH CC CXX AR RANLIB
-unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
-unset CFLAGS CXXFLAGS
-
 wget "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
