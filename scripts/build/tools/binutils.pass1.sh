@@ -11,7 +11,7 @@ cd binutils-$VERSION
     --host=$ARCH_TARGET --target=$SCUDUM_TARGET --disable-nls --disable-werror
 
 make
-case $(uname -m) in
+case $SCUDUM_ARCH in
     x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
 esac
 make install
