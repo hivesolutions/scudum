@@ -104,6 +104,8 @@ case "$SCUDUM_ARCH" in
         export CXX="$ARCH_TARGET-g++"
         export AR="$ARCH_TARGET-ar rcu"
         export RANLIB="$ARCH_TARGET-ranlib"
+        export LD_LIBRARY_PATH="/opt/$ARCH_TARGET/lib:$LD_LIBRARY_PATH"
+        export LIBRARY_PATH="opt/$ARCH_TARGET/lib:$LIBRARY_PATH"
         export CFLAGS="-I/opt/$ARCH_TARGET/include -L/opt/$ARCH_TARGET/lib\
             -R/opt/$ARCH_TARGET/lib -R/opt/$ARCH_TARGET/lib -DNO_SSE $CFLAGS"
         export CXXFLAGS="-I/opt/$ARCH_TARGET/include -L/opt/$ARCH_TARGET/lib\
