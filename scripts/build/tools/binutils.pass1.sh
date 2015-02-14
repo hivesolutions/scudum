@@ -8,7 +8,7 @@ rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
 ./configure --prefix=$PREFIX --with-sysroot=$SCUDUM --with-lib-path=$PREFIX/lib\
-    --host=$ARCH_TARGET --target=$SCUDUM_TARGET --disable-nls --disable-werror
+    --host=$ARCH_TARGET --disable-nls --disable-werror
 
 echo "tobias!!!"
 
