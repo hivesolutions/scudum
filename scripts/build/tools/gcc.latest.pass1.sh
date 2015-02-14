@@ -5,6 +5,8 @@ VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e +h
 
+unset CC CXX AR RANLIB
+
 wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
@@ -42,7 +44,6 @@ rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 ../gcc-$VERSION/configure\
-    --host=$ARCH_TARGET\
     --target=$SCUDUM_TARGET\
     --prefix=$PREFIX\
     --with-sysroot=$SCUDUM\
