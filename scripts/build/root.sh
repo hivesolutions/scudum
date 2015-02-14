@@ -60,8 +60,6 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     $DIR/tools/libstdc++.sh
     $DIR/tools/binutils.pass2.sh
     $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
-else
-    $DIR/tools/cross.sh
 fi
 
 # runs the complete set of package specific scripts
