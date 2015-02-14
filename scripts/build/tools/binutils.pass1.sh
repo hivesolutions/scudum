@@ -10,8 +10,6 @@ cd binutils-$VERSION
 ./configure --prefix=$PREFIX --with-sysroot=$SCUDUM --with-lib-path=$PREFIX/lib\
     --host=$ARCH_TARGET --disable-nls --disable-werror
 
-echo "tobias!!!"
-
 make
 case $(uname -m) in
     x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
