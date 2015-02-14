@@ -102,7 +102,7 @@ case "$SCUDUM_ARCH" in
         export PATH="/opt/$ARCH_TARGET/bin:$PATH"
         export CC="$ARCH_TARGET-gcc"
         export CXX="$ARCH_TARGET-g++"
-        export AR="$ARCH_TARGET-ar rcu"
+        export AR="$ARCH_TARGET-ar"
         export RANLIB="$ARCH_TARGET-ranlib"
         export LD_LIBRARY_PATH="/opt/$ARCH_TARGET/lib:$LD_LIBRARY_PATH"
         export LIBRARY_PATH="/opt/$ARCH_TARGET/lib:$LIBRARY_PATH"
