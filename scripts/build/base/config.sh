@@ -99,7 +99,7 @@ esac
 
 case "$SCUDUM_ARCH" in
     arm)
-        export PATH=/opt/$ARCH_TARGET/bin:$PATH
+        export PATH="/opt/$ARCH_TARGET/bin:$PATH"
         export CC="$ARCH_TARGET-gcc"
         export CXX="$ARCH_TARGET-g++"
         export AR="$ARCH_TARGET-ar rcu"
