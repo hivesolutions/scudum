@@ -59,6 +59,16 @@ export DISTRIB="generic"
 export EXTRAS="sudo python lshw rsync iptables cifs-utils \
 ntfsprogs wireless-tools wpa-supplicant"
 
+# verifies the level of matching of the current target arch
+# and the hosting one and according to that defines the default
+# value to be used in the scudum cross (compilation) flag, note
+# that this value may allway be overriden by command line
+if [ "$SCUDUM_ARCH" != $(uname -m) ]; then
+    SCUDUM_CROSS=${SCUDUM_CROSS-1}
+else
+    SCUDUM_CROSS=${SCUDUM_CROSS-0}
+fi
+
 # exports the flags theat define the deault optimization flags
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
@@ -125,6 +135,7 @@ print_scudum() {
     echo "SCUDUM_SYSTEM := $SCUDUM_SYSTEM"
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
+    echo "SCUDUM_CROSS := $SCUDUM_CROSS"
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
@@ -139,4 +150,8 @@ print_scudum() {
     echo "EXTRAS := $EXTRAS"
     echo "CFLAGS := $CFLAGS"
     echo "CXXFLAGS := $CXXFLAGS"
+    echo "CC := $CC"
+    echo "CXX := $CXX"
+    echo "AR := $AR"
+    echo "RANLIB := $RANLIB"
 }
