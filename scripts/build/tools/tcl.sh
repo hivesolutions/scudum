@@ -8,7 +8,7 @@ rm -f "tcl$VERSION-src.tar.gz"
 cd tcl$VERSION
 
 cd unix
-tcl_cv_strtod_buggy=1 ./configure --host=$ARCH_TARGET --prefix=$PREFIX
+./configure --prefix=$PREFIX
 make && make install
 
 chmod -v u+w $PREFIX/lib/libtcl8.6.so

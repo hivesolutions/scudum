@@ -10,6 +10,6 @@ cd expect$VERSION
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 
-./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-tcl=$PREFIX/lib\
+./configure --prefix=$PREFIX --with-tcl=$PREFIX/lib\
     --with-tclinclude=$PREFIX/include
 make && make SCRIPTS="" install
