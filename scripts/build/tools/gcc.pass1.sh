@@ -42,6 +42,7 @@ rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 ../gcc-$VERSION/configure\
+    --host=$ARCH_TARGET\
     --target=$SCUDUM_TARGET\
     --prefix=$PREFIX\
     --with-sysroot=$SCUDUM\
