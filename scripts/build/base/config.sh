@@ -8,8 +8,10 @@ export PERSIST=${PERSIST-/pst}
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
+export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
 export SCUDUM_MARCH=${SCUDUM_ARCH//_/-}
-export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-linux-gnu}
+export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-$SCUDUM_SYSTEM}
 
 # exports the version string value for the current
 # distribution in building, the default value is set
@@ -18,7 +20,7 @@ export VERSION=${VERSION-$(date +%Y%m%d)}
 
 # exports the generic target value for an arch based
 # infra-structure may be used in final scudum build
-export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-unknown-linux-gnu}
+export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
