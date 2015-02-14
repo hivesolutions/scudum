@@ -67,7 +67,9 @@ fi
 # runs the complete set of package specific scripts
 # in order to build their source code properly
 $DIR/tools/tcl.sh
-$DIR/tools/expect.sh
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    $DIR/tools/expect.sh
+fi
 $DIR/tools/dejagnu.sh
 $DIR/tools/check.sh
 $DIR/tools/ncurses.sh
