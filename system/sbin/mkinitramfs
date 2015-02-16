@@ -18,6 +18,10 @@ copy() {
     fi
 }
 
+# intializes any of the control flags that will handle
+# and control the way the package is going to be created
+USE_FIRMWARE=${USE_FIRMWARE-0}
+
 if [ -z $1 ] ; then
     INITRAMFS_FILE=initrd.img
 else
@@ -88,8 +92,12 @@ for file in $(find /etc/udev/rules.d/ -type f) ; do
     cp $file $TEMP_DIR/etc/udev/rules.d
 done
 
-# installs any firmware present
-cp -a /lib/firmware $TEMP_DIR/lib
+# installs any firmware present, if the flag
+# that controls it's copy is set and defined,
+# note that this may be a large copy
+if [ "$USE_FIRMWARE" == "1" ]; then
+    cp -a /lib/firmware $TEMP_DIR/lib
+fi
 
 # copies the RAID configuration file if present
 if [ -f /etc/mdadm.conf ] ; then
