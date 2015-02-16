@@ -6,9 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "ftp://ftp.cn.debian.org/gentoo/distfiles/squashfs$VERSION.tar.gz"\
-    "http://downloads.sourceforge.net/squashfs/squashfs$VERSION.tar.gz"
-    
+wget "http://downloads.sourceforge.net/squashfs/squashfs$VERSION.tar.gz"
 rm -rf squashfs$VERSION && tar -zxf "squashfs$VERSION.tar.gz"
 rm -f "squashfs$VERSION.tar.gz"
 cd squashfs$VERSION/squashfs-tools
