@@ -20,7 +20,7 @@ copy() {
 
 # intializes any of the control flags that will handle
 # and control the way the package is going to be created
-USE_FIRMWARE=${USE_FIRMWARE-0}
+USE_FIRMWARE=${USE_FIRMWARE-1}
 
 if [ -z $1 ] ; then
     INITRAMFS_FILE=initrd.img
