@@ -7,5 +7,5 @@ rm -f "check-$VERSION" && tar -zxf "check-$VERSION.tar.gz"
 rm -f "check-$VERSION.tar.gz"
 cd check-$VERSION
 
-PKG_CONFIG= ./configure --host=$ARCH_TARGET --prefix=$PREFIX
+PKG_CONFIG= ./configure --prefix=$PREFIX
 make && make install

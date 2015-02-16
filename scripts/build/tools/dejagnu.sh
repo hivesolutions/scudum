@@ -7,5 +7,5 @@ rm -f "dejagnu-$VERSION" && tar -zxf "dejagnu-$VERSION.tar.gz"
 rm -f "dejagnu-$VERSION.tar.gz"
 cd dejagnu-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=$PREFIX
+./configure --prefix=$PREFIX
 make && make install
