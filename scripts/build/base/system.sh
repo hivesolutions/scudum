@@ -6,6 +6,7 @@
 set -e +h
 
 source /tools/repo/scripts/build/base/config.sh
+source /tools/repo/scripts/build/base/config.system.sh
 
 unset VERSION
 
