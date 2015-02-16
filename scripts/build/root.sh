@@ -52,7 +52,7 @@ sleep 10
 # verifies if the current kind of compilation is cross
 # based and if that's the case (host is not target) runs
 # the cross compilation specific scripts
-if [ "$SCUDUM_CROSS" == "0" ]; then
+if [ "$SCUDUM_CROSS" == "1" ]; then
     $DIR/tools/cross.sh
 fi
 
