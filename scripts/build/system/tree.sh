@@ -35,6 +35,7 @@ ln -svf /tools/bin/{bash,cat,echo,pwd,stty} /bin
 ln -svf /tools/bin/perl /usr/bin
 ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
 ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
+ln -svf /tools/lib/ld-linux-x86-64.so.2 /lib
 sed 's/tools/usr/' /tools/lib/libstdc++.la > /usr/lib/libstdc++.la
 ln -svf bash /bin/sh
 
