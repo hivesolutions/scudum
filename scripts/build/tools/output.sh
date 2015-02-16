@@ -1,6 +1,6 @@
 set -e +h
 
-cat > defconfig << "EOF"
+cat > $SCUDUM/tools/config << "EOF"
 export SCUDUM=$SCUDUM
 export SCUDUM_HOST=$SCUDUM_HOST
 export SCUDUM_ARCH=$SCUDUM_ARCH
