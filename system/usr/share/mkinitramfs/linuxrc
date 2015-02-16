@@ -206,7 +206,7 @@ fi
 # its usage is currently set, otherwise ignores it
 if [ "$USE_SWAP" == "1" ]; then
     echoi "Creating the swap area (for cache)"
-    dd if=/dev/zero of=swapspace bs=1k count=32768
+    dd if=/dev/zero of=swapspace bs=1k count=98304
     mkswap swapspace
 fi
 
