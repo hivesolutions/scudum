@@ -1,3 +1,3 @@
 set -e +h
 
-cp -rp /opt/$ARCH_TARGET/* $SCUDUM/tools
+cp -rpn /opt/$ARCH_TARGET/* $SCUDUM/tools
