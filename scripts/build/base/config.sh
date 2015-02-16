@@ -7,11 +7,13 @@ export PERSIST=${PERSIST-/pst}
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
+export SCUDUM_HOST=${SCUDUM_HOST-$(uname -m)}
 export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
 export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
 export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
+export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}
 export SCUDUM_MARCH=${SCUDUM_ARCH//_/-}
-export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_ARCH-scudum-$SCUDUM_SYSTEM}
+export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_HOST-scudum-$SCUDUM_SYSTEM_H}
 
 # exports the version string value for the current
 # distribution in building, the default value is set
