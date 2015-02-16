@@ -195,7 +195,6 @@ fi
 # these may be used at initram time so that extra dev
 # functionality is enabled and may be used
 if [ -n "$KERNEL_VERSION" ]; then
-
     cp /lib/modules/$KERNEL_VERSION/modules.{builtin,order}\
         $TEMP_DIR/lib/modules/$KERNEL_VERSION
 
