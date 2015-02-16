@@ -33,13 +33,26 @@ mkdir -pv /var/{opt,cache,lib/{misc,locate},local}
 
 ln -svf /tools/bin/{bash,cat,echo,pwd,stty} /bin
 ln -svf /tools/bin/perl /usr/bin
-ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
-ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
 ln -svf /tools/lib/ld-linux-x86-64.so.2 /lib
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ln -svf /tools/$ARCH_TARGET/lib/libgcc_s.so{,.1} /usr/lib
+    ln -svf /tools/$ARCH_TARGET/lib/libstdc++.so{,.6} /usr/lib
+else
+    ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
+    ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
+if
+
 sed 's/tools/usr/' /tools/lib/libstdc++.la > /usr/lib/libstdc++.la
 ln -svf bash /bin/sh
 
 touch /etc/mtab
+
+
+ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
+ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
+
+
 
 cat > /etc/passwd << "EOF"
 root:x:0:0:root:/root:/bin/bash
