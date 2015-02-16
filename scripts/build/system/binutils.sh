@@ -11,7 +11,7 @@ cd ..
 rm -rf binutils-build && mkdir binutils-build
 cd binutils-build
 
-../binutils-$VERSION/configure --prefix=/usr --enable-shared
+../binutils-$VERSION/configure --host=$ARCH_TARGET --prefix=/usr --enable-shared
 
 make tooldir=/usr
 test $TEST && make check
