@@ -12,9 +12,9 @@ set -e +h
 source $DIR/base/config.sh
 
 if type apt-get &> /dev/null; then
-    apt-get -y install grub
+    apt-get -y install grub dosfstools
 elif type scu &> /dev/null; then
-    env -u VERSION scu install grub.latest
+    env -u VERSION scu install grub.latest dosfstools
 else
     exit 1
 fi
