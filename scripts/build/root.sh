@@ -92,6 +92,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     $DIR/tools/cross.sh
 fi
 
+# run the output operation that "prints" the current configuration
+# into a plain file that it may be latter "sourced"
 $DIR/tools/output.sh
 
 # runs the strip operation on the complete set of tools
