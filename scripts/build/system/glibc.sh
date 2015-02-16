@@ -14,6 +14,7 @@ rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
 ../glibc-$VERSION/configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --disable-profile\
     --$GCC_MULTIARCH-multi-arch\
