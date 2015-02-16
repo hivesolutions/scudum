@@ -65,7 +65,7 @@ ntfsprogs wireless-tools wpa-supplicant"
 # and the hosting one and according to that defines the default
 # value to be used in the scudum cross (compilation) flag, note
 # that this value may allway be overriden by command line
-if [ "$SCUDUM_ARCH" != $(uname -m) ]; then
+if [ "$SCUDUM_ARCH" != "$SCUDUM_HOST" ]; then
     SCUDUM_CROSS=${SCUDUM_CROSS-1}
 else
     SCUDUM_CROSS=${SCUDUM_CROSS-0}
@@ -114,9 +114,11 @@ esac
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
+    echo "SCUDUM_HOST := $SCUDUM_HOST"
     echo "SCUDUM_ARCH := $SCUDUM_ARCH"
     echo "SCUDUM_VENDOR := $SCUDUM_VENDOR"
     echo "SCUDUM_SYSTEM := $SCUDUM_SYSTEM"
+    echo "SCUDUM_SYSTEM_H := $SCUDUM_SYSTEM_H"
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "SCUDUM_CROSS := $SCUDUM_CROSS"
