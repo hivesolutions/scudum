@@ -71,7 +71,7 @@ rm -f modules/$release/build && rm -f modules/$release/source
 ln -s /opt/src/linux modules/$release/build
 mkdir -p modules firmware
 wget "https://github.com/hivesolutions/scudum/raw/master/extras/firmware.tar.gz"
-tar -zxkvf firmware.tar.gz
+tar --skip-old-files -zxvf firmware.tar.gz
 tar -zcvf modules.tar.gz modules firmware
 mv modules.tar.gz ../..
 cd ../..
