@@ -13,13 +13,19 @@ cd ..
 rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    multiarch=
+else
+    multiarch="--$GCC_MULTIARCH-multi-arch"
+fi
+
 ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --disable-profile\
-    --$GCC_MULTIARCH-multi-arch\
     --enable-kernel=2.6.32\
-    --libexecdir=/usr/lib/glibc
+    --libexecdir=/usr/lib/glibc\
+    $multiarch
 
 make
 
@@ -87,22 +93,24 @@ rpc: files
 
 EOF
 
-tar -xf ../tzdata$VERSION_T.tar.gz
-rm -f ../tzdata$VERSION_T.tar.gz
+if [ "$SCUDUM_CROSS" == "0" ] ; then
+    tar -xf ../tzdata$VERSION_T.tar.gz
+    rm -f ../tzdata$VERSION_T.tar.gz
 
-ZONEINFO=/usr/share/zoneinfo
-mkdir -pv $ZONEINFO/{posix,right}
+    ZONEINFO=/usr/share/zoneinfo
+    mkdir -pv $ZONEINFO/{posix,right}
 
-for tz in etcetera southamerica northamerica europe africa antarctica\
-    asia australasia backward pacificnew systemv; do
-    zic -L /dev/null -d $ZONEINFO -y "sh yearistype.sh" ${tz}
-    zic -L /dev/null -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
-    zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}
-done
+    for tz in etcetera southamerica northamerica europe africa antarctica\
+        asia australasia backward pacificnew systemv; do
+        zic -L /dev/null -d $ZONEINFO -y "sh yearistype.sh" ${tz}
+        zic -L /dev/null -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
+        zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}
+    done
 
-cp -v zone.tab iso3166.tab $ZONEINFO
-zic -d $ZONEINFO -p America/New_York
-unset ZONEINFO
+    cp -v zone.tab iso3166.tab $ZONEINFO
+    zic -d $ZONEINFO -p America/New_York
+    unset ZONEINFO
+fi
 
 cat > /etc/ld.so.conf << "EOF"
 /usr/lib

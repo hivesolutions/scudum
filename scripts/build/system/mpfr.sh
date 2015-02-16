@@ -7,7 +7,7 @@ rm -rf mpfr-$VERSION && tar -Jxf "mpfr-$VERSION.tar.xz"
 rm -f "mpfr-$VERSION.tar.xz"
 cd mpfr-$VERSION
 
-./configure --prefix=/usr --enable-thread-safe\
+./configure --host=$ARCH_TARGET --prefix=/usr --enable-thread-safe\
     --docdir=/usr/share/doc/mpfr-$VERSION
 
 make
