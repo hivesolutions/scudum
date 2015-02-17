@@ -66,9 +66,9 @@ ntfsprogs wireless-tools wpa-supplicant"
 # value to be used in the scudum cross (compilation) flag, note
 # that this value may allway be overriden by command line
 if [ "$SCUDUM_ARCH" != "$SCUDUM_HOST" ]; then
-    SCUDUM_CROSS=${SCUDUM_CROSS-1}
+    export SCUDUM_CROSS=${SCUDUM_CROSS-1}
 else
-    SCUDUM_CROSS=${SCUDUM_CROSS-0}
+    export SCUDUM_CROSS=${SCUDUM_CROSS-0}
 fi
 
 # exports the flags theat define the deault optimization flags
