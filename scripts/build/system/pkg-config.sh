@@ -7,6 +7,8 @@ rm -rf pkg-config-$VERSION && tar -zxf "pkg-config-$VERSION.tar.gz"
 rm -f "pkg-config-$VERSION.tar.gz"
 cd pkg-config-$VERSION
 
+sed -i 's/as_fn_error ()/as_fn_error() { return 0 } old_as_fn_error ()/' glib/configure
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\

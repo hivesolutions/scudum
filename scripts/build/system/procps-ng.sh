@@ -2,12 +2,16 @@ VERSION=${VERSION-3.3.6}
 
 set -e +h
 
+export ac_cv_func_malloc_0_nonnull=yes
+export ac_cv_func_realloc_0_nonnull=yes
+
 wget --no-check-certificate "http://sourceforge.net/projects/procps-ng/files/Production/procps-ng-$VERSION.tar.xz"
 rm -rf procps-ng-$VERSION && tar -Jxf "procps-ng-$VERSION.tar.xz"
 rm -f "procps-ng-$VERSION.tar.xz"
 cd procps-ng-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --exec-prefix=\
     --libdir=/usr/lib\

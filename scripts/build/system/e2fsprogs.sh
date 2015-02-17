@@ -11,6 +11,7 @@ mkdir -v build
 cd build
 
 ../configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --with-root-prefix=""\
     --enable-elf-shlibs\
