@@ -7,7 +7,7 @@ rm -rf psmisc-$VERSION && tar -zxf "psmisc-$VERSION.tar.gz"
 rm -f "psmisc-$VERSION.tar.gz"
 cd psmisc-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make && make install
 
