@@ -18,6 +18,9 @@ rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
 ../gcc-$VERSION/configure\
+    --host=$ARCH_TARGET\
+    --target=$ARCH_TARGET\
+    --program-prefix=\
     --prefix=/usr\
     --libexecdir=/usr/lib\
     --enable-shared\

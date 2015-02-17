@@ -7,7 +7,7 @@ rm -rf sed-$VERSION && tar -jxf "sed-$VERSION.tar.bz2"
 rm -f "sed-$VERSION.tar.bz2"
 cd sed-$VERSION
 
-./configure --prefix=/usr --bindir=/bin\
+./configure --host=$ARCH_TARGET --prefix=/usr --bindir=/bin\
     --htmldir=/usr/share/doc/sed-$VERSION
 
 make
