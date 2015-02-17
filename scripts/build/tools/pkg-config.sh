@@ -8,7 +8,7 @@ rm -f "pkg-config-$VERSION.tar.gz"
 cd pkg-config-$VERSION
 
 ./configure\
-    --prefix=$PREFIX
+    --prefix=$PREFIX\
     --with-internal-glib\
     --disable-host-tool\
     --docdir=$PREFIX/share/doc/pkg-config-$VERSION
