@@ -79,6 +79,13 @@ if [ "$SET_CFLAGS" == "all" ]; then
     export CXXFLAGS="-O2 -march=$SCUDUM_MARCH -mtune=generic"
 fi
 
+# in case the cross compilation mode is active the gcc flavour
+# is forced to be normal, so that no compatibility issues arise
+# from bugs left by the gnu team (required to build)
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    export GCC_FLAVOUR="normal"
+fi
+
 # verifies if there's a local configuration file if there's
 # one runs it's source so that it may be used for other operations
 if [ -e config ]; then
