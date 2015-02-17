@@ -11,6 +11,7 @@ cd util-linux-$VERSION
 mkdir -pv /var/lib/hwclock
 
 ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime\
+    --host=$ARCH_TARGET\
     --docdir=/usr/share/doc/util-linux-2.25.2\
     --disable-chfn-chsh\
     --disable-login\
