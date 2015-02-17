@@ -82,6 +82,7 @@ $DIR/tools/tar.sh
 $DIR/tools/texinfo.sh
 $DIR/tools/xz.sh
 $DIR/tools/zlib.sh
+$DIR/tools/pkg-config.sh
 $DIR/tools/openssl.sh
 $DIR/tools/wget.sh
 
