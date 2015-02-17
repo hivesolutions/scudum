@@ -2,7 +2,7 @@ VERSION=${VERSION-4.8.4}
 
 set -e +h
 
-if [ "$VIRIATUM_CROSS" == "1" ]; then
+if [ "$SCUDUM_CROSS" == "1" ]; then
     export CFLAGS="$CFLAGS -fno-exceptions"
     export CXXFLAGS="$CXXFLAGS -fno-exceptions"
 fi
