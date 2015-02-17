@@ -2,6 +2,11 @@ VERSION=${VERSION-4.8.4}
 
 set -e +h
 
+if [ "$VIRIATUM_CROSS" == "1" ]; then
+    export CFLAGS="$CFLAGS -fno-exceptions"
+    export CXXFLAGS="$CXXFLAGS -fno-exceptions"
+fi
+
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
 rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
@@ -26,7 +31,6 @@ cd gcc-build
     --enable-shared\
     --enable-threads=posix\
     --enable-__cxa_atexit\
-    --enable-__cxa_throw_bad_array_new_length\
     --enable-clocale=gnu\
     --enable-languages=c,c++\
     --disable-multilib\
