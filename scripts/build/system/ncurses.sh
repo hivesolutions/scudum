@@ -8,6 +8,7 @@ rm -f "ncurses-$VERSION.tar.gz"
 cd ncurses-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --mandir=/usr/share/man\
     --with-shared\
