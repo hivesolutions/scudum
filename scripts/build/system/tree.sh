@@ -41,18 +41,12 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 else
     ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
     ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
-if
+fi
 
 sed 's/tools/usr/' /tools/lib/libstdc++.la > /usr/lib/libstdc++.la
 ln -svf bash /bin/sh
 
 touch /etc/mtab
-
-
-ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
-ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
-
-
 
 cat > /etc/passwd << "EOF"
 root:x:0:0:root:/root:/bin/bash
