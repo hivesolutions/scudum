@@ -16,7 +16,7 @@ sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 make -f Makefile-libbz2_so CC=$CC
 make CC=$CC clean
 
-make CC=$CC ibbz2.a bzip2 bzip2recover
+make CC=$CC libbz2.a bzip2 bzip2recover
 test $TEST && make CC=$CC test
 make CC=$CC PREFIX=/usr install
 

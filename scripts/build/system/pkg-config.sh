@@ -8,6 +8,7 @@ rm -f "pkg-config-$VERSION.tar.gz"
 cd pkg-config-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --with-internal-glib\
     --disable-host-tool\

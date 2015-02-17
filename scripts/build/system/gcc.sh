@@ -26,6 +26,7 @@ cd gcc-build
     --enable-shared\
     --enable-threads=posix\
     --enable-__cxa_atexit\
+    --enable-__cxa_throw_bad_array_new_length\
     --enable-clocale=gnu\
     --enable-languages=c,c++\
     --disable-multilib\
