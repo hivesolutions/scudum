@@ -13,11 +13,12 @@ patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
-make -f Makefile-libbz2_so
-make clean
+make -f Makefile-libbz2_so CC=$CC
+make CC=$CC clean
 
-make
-make PREFIX=/usr install
+make CC=$CC ibbz2.a bzip2 bzip2recover
+test $TEST && make CC=$CC test
+make CC=$CC PREFIX=/usr install
 
 cp -v bzip2-shared /bin/bzip2
 cp -av libbz2.so* /lib
