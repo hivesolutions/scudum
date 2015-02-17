@@ -1,11 +1,15 @@
+CC=${CC-gcc}
+
 set -e +h
 
-mv -v /tools/bin/{ld,ld-old}
-mv -v /tools/$(gcc -dumpmachine)/bin/{ld,ld-old}
-mv -v /tools/bin/{ld-new,ld}
-ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld
+if [ "SCUDUM_CROSS" == "0" ]; then
+    mv -v /tools/bin/{ld,ld-old}
+    mv -v /tools/$($CC -dumpmachine)/bin/{ld,ld-old}
+    mv -v /tools/bin/{ld-new,ld}
+    ln -sv /tools/bin/ld /tools/$($CC -dumpmachine)/bin/ld
+fi
 
-gcc -dumpspecs | sed -e 's@/tools@@g'\
+$CC -dumpspecs | sed -e 's@/tools@@g'\
     -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
     -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
-    `dirname $(gcc --print-libgcc-file-name)`/specs
+    `dirname $($CC --print-libgcc-file-name)`/specs
