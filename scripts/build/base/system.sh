@@ -26,11 +26,7 @@ cd sources
 /tools/repo/scripts/build/system/linux-headers.sh
 /tools/repo/scripts/build/system/man-pages.sh
 /tools/repo/scripts/build/system/glibc.sh
-
-if [ "$SCUDUM_CROSS" == "0" ]; then
-    /tools/repo/scripts/build/system/adjusting.sh
-fi
-
+/tools/repo/scripts/build/system/adjusting.sh
 /tools/repo/scripts/build/system/zlib.sh
 /tools/repo/scripts/build/system/file.sh
 /tools/repo/scripts/build/system/binutils.sh
