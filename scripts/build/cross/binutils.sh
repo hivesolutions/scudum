@@ -2,6 +2,10 @@ VERSION=${VERSION-2.25}
 
 set -e +h
 
+echo "CENAS!!!"
+echo "$GCC_BUILD_ARCH"
+sleep 10
+
 wget "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
