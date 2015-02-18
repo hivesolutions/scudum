@@ -90,7 +90,7 @@ $DIR/tools/wget.sh
 # based and if that's the case (host is not target) runs
 # the cross compilation specific scripts
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    $DIR/tools/cross.sh
+    $DIR/cross.sh
 fi
 
 # run the output operation that "prints" the current configuration

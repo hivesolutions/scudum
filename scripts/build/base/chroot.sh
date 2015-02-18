@@ -60,7 +60,7 @@ trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
 cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    TARGET_PATH=/tools/bin:/bin:/usr/bin:/sbin:/usr/sbin
+    TARGET_PATH=/cross/bin:/tools/bin:/bin:/usr/bin:/sbin:/usr/sbin
 else
     TARGET_PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin
 fi
