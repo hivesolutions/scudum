@@ -60,6 +60,3 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
-
-ln -sv $ARCH_TARGET-gcc $PREFIX_CROSS/bin/{cc,gcc}
-ln -sv $ARCH_TARGET-g++ $PREFIX_CROSS/bin/{cc++,g++}
