@@ -10,17 +10,12 @@ rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
 rm -f "gcc-$VERSION.tar.bz2"
 cd gcc-$VERSION
 
-wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
-tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
-mv mpfr-$VERSION_MPFR mpfr
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
+    `dirname $($SCUDUM_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
-tar -Jxf "gmp-$VERSION_GMP.tar.xz"
-mv gmp-$VERSION_GMP gmp
-
-wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
-tar -zxf "mpc-$VERSION_MPC.tar.gz"
-mv mpc-$VERSION_MPC mpc
+case $SCUDUM_ARCH in
+    i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
+esac
 
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
@@ -35,36 +30,40 @@ do
     touch $file.orig
 done
 
-sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure
+wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
+tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
+mv mpfr-$VERSION_MPFR mpfr
+
+wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
+tar -Jxf "gmp-$VERSION_GMP.tar.xz"
+mv gmp-$VERSION_GMP gmp
+
+wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
+tar -zxf "mpc-$VERSION_MPC.tar.gz"
+mv mpc-$VERSION_MPC mpc
 
 cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
-../gcc-$VERSION/configure\
+AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
-    --with-sysroot=$SCUDUM\
-    --with-newlib\
-    --without-headers\
     --with-local-prefix=$PREFIX_CROSS\
     --with-native-system-header-dir=$PREFIX_CROSS/include\
-    --disable-nls\
-    --disable-shared\
-    --disable-multilib\
-    --disable-decimal-float\
-    --disable-threads\
-    --disable-libatomic\
-    --disable-libgomp\
-    --disable-libitm\
-    --disable-libmudflap\
-    --disable-libquadmath\
-    --disable-libsanitizer\
-    --disable-libssp\
-    --disable-libstdc++-v3\
+    --enable-clocale=gnu\
+    --enable-shared\
+    --enable-threads=posix\
+    --enable-__cxa_atexit\
     --enable-languages=c,c++\
+    --disable-libstdcxx-pch\
+    --disable-multilib\
+    --disable-bootstrap\
+    --disable-libgomp\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
-ln -sv libgcc.a `$ARCH_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
+
+ln -sv $ARCH_TARGET-gcc $PREFIX_CROSS/bin/{cc,gcc}
+ln -sv $ARCH_TARGET-g++ $PREFIX_CROSS/bin/{cc++,g++}
