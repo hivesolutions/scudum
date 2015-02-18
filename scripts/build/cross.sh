@@ -1,4 +1,9 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
 set -e +h
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 if [ "$SCUDUM_CROSS_COPY" == "1" ]; then
     cp -rpn /opt/$ARCH_TARGET/* $SCUDUM/cross
