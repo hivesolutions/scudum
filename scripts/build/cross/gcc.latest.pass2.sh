@@ -41,9 +41,10 @@ cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
-AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ./gcc-$VERSION/configure\
+AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
+    --with-sysroot=$SCUDUM\
     --with-local-prefix=$PREFIX_CROSS\
     --with-native-system-header-dir=$PREFIX_CROSS/include\
     --enable-clocale=gnu\
