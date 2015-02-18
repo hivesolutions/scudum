@@ -53,7 +53,7 @@ sleep 10
 # based and if that's the case (host is not target) runs
 # the cross compilation specific scripts
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    $DIR/cross.sh
+    $DIR/base/cross.sh
 fi
 
 # runs the complete set of package specific scripts
