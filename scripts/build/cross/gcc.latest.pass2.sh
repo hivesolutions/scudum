@@ -41,6 +41,13 @@ cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
+extra=""
+[ "$GCC_BUILD_ARCH" != "" ] && extra="--with-arch=$GCC_BUILD_ARCH $extra"
+[ "$GCC_BUILD_CPU" != "" ] && extra="--with-cpu=$GCC_BUILD_CPU $extra"
+[ "$GCC_BUILD_TUNE" != "" ] && extra="--with-tune=$GCC_BUILD_TUNE $extra"
+[ "$GCC_BUILD_FPU" != "" ] && extra="--with-fpu=$GCC_BUILD_FPU $extra"
+[ "$GCC_BUILD_FLOAT" != "" ] && extra="--with-float=$GCC_BUILD_FLOAT $extra"
+
 AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
@@ -57,6 +64,7 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --disable-bootstrap\
     --disable-libgomp\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
-    --with-mpfr-lib=$(pwd)/mpfr/src/.libs
+    --with-mpfr-lib=$(pwd)/mpfr/src/.libs\
+    $extra
 
 make && make install

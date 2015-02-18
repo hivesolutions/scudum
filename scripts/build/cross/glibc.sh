@@ -11,7 +11,14 @@ cd ..
 rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
-../glibc-$VERSION/configure\
+extra=""
+[ "$GCC_BUILD_ARCH" != "" ] && extra="-march=$GCC_BUILD_ARCH $extra"
+[ "$GCC_BUILD_CPU" != "" ] && extra="-mcpu=$GCC_BUILD_CPU $extra"
+[ "$GCC_BUILD_TUNE" != "" ] && extra="-mtune=$GCC_BUILD_TUNE $extra"
+[ "$GCC_BUILD_FPU" != "" ] && extra="-mfpu=$GCC_BUILD_FPU $extra"
+[ "$GCC_BUILD_FLOAT" != "" ] && extra="-m$GCC_BUILD_FLOAT-float $extra"
+
+CFLAGS="$extra" ../glibc-$VERSION/configure\
     --prefix=$PREFIX_CROSS\
     --host=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
