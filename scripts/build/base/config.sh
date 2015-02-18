@@ -143,9 +143,9 @@ print_scudum() {
     echo "EXTRAS := $EXTRAS"
     echo "CFLAGS := $CFLAGS"
     echo "CXXFLAGS := $CXXFLAGS"
-    [ "$GCC_BUILD_ARCH" != "" ] && echo "GCC_BUILD_ARCH := $GCC_BUILD_ARCH"
-    [ "$GCC_BUILD_CPU" != "" ] && echo "GCC_BUILD_CPU := $GCC_BUILD_CPU"
-    [ "$GCC_BUILD_TUNE" != "" ] && echo "GCC_BUILD_TUNE := $GCC_BUILD_TUNE"
-    [ "$GCC_BUILD_FPU" != "" ] && echo "GCC_BUILD_FPU := $GCC_BUILD_FPU"
-    [ "$GCC_BUILD_FLOAT" != "" ] && echo "GCC_BUILD_FLOAT := $GCC_BUILD_FLOAT"
+    [ "$GCC_BUILD_ARCH" != "" ] && echo "GCC_BUILD_ARCH := $GCC_BUILD_ARCH" || true
+    [ "$GCC_BUILD_CPU" != "" ] && echo "GCC_BUILD_CPU := $GCC_BUILD_CPU" || true
+    [ "$GCC_BUILD_TUNE" != "" ] && echo "GCC_BUILD_TUNE := $GCC_BUILD_TUNE" || true
+    [ "$GCC_BUILD_FPU" != "" ] && echo "GCC_BUILD_FPU := $GCC_BUILD_FPU" || true
+    [ "$GCC_BUILD_FLOAT" != "" ] && echo "GCC_BUILD_FLOAT := $GCC_BUILD_FLOAT" || true
 }
