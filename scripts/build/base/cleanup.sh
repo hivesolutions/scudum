@@ -33,3 +33,10 @@ rm -rf $SCUDUM && mkdir -pv $SCUDUM
 # it as the root directory of the system
 rm -rf $SCUDUM/tools && mkdir -pv $SCUDUM/tools
 rm -rf /tools && ln -sv $SCUDUM/tools /
+
+# verifies if the current kind of build is cross based
+# if that's the case created the proper cross references
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -rf $SCUDUM/cross && mkdir -pv $SCUDUM/cross
+    rm -rf /cross && ln -sv $SCUDUM/cross /
+fi

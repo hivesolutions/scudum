@@ -49,6 +49,13 @@ print_scudum
 print_scudum_tools
 sleep 10
 
+# verifies if the current kind of compilation is cross
+# based and if that's the case (host is not target) runs
+# the cross compilation specific scripts
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    $DIR/cross.sh
+fi
+
 # runs the complete set of package specific scripts
 # in order to build their source code properly
 $DIR/tools/binutils.pass1.sh
@@ -86,13 +93,6 @@ $DIR/tools/pkg-config.sh
 $DIR/tools/openssl.sh
 $DIR/tools/wget.sh
 
-# verifies if the current kind of compilation is cross
-# based and if that's the case (host is not target) runs
-# the cross compilation specific scripts
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    $DIR/cross.sh
-fi
-
 # run the output operation that "prints" the current configuration
 # into a plain file that it may be latter "sourced"
 $DIR/tools/output.sh
@@ -107,6 +107,7 @@ $DIR/tools/strip.sh
 # deletes also the dynamic link reference in tools (not required)
 cd .. && rm -rf build
 rm -f /tools
+rm -f /cross
 
 # runs the sync command so that the current write operations are
 # flushed and further operations reflect the new system state,
