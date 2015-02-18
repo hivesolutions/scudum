@@ -11,7 +11,7 @@ cd ..
 rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
-extra=""
+extra="-O2"
 [ "$GCC_BUILD_ARCH" != "" ] && extra="-march=$GCC_BUILD_ARCH $extra"
 [ "$GCC_BUILD_CPU" != "" ] && extra="-mcpu=$GCC_BUILD_CPU $extra"
 [ "$GCC_BUILD_TUNE" != "" ] && extra="-mtune=$GCC_BUILD_TUNE $extra"
