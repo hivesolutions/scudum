@@ -17,8 +17,7 @@ case $SCUDUM_ARCH in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
 esac
 
-for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
-do
+for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h); do
     cp -uv $file{,.orig}
     sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g'\
         -e 's@/usr@/tools@g' $file.orig > $file
