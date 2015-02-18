@@ -7,7 +7,7 @@ rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
-./configure --prefix=$PREFIX --with-sysroot=$SCUDUM --with-lib-path=$PREFIX/lib\
+./configure --prefix=$PREFIX_CROSS --with-sysroot=$SCUDUM --with-lib-path=$PREFIX_CROSS/lib\
     --target=$SCUDUM_ARCH --disable-nls --disable-werror
 
 make
