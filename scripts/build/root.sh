@@ -117,7 +117,7 @@ hash -r && sync
 # updates the permissions of the tools directory and starts
 # the chroot operation in it so that a different execution
 # set is started from "now on" (as expected)
-chown -R root:root $SCUDUM/tools
+chown -R root:root  $SCUDUM/tools $SCUDUM/cross
 $DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
 
 # runs the final strip operation on the generated files so
