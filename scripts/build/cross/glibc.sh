@@ -29,4 +29,4 @@ CFLAGS="$extra" ../glibc-$VERSION/configure\
     libc_cv_ctors_header=yes\
     libc_cv_c_cleanup=yes
 
-make && make install
+make && make install_root=$PREFIX_CROSS/sysroot install
