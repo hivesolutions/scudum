@@ -1,4 +1,4 @@
-if [ "$SCUDUM-CROSS" == "1" ]; then
+if [ "$SCUDUM_CROSS" == "1" ]; then
     VERSION=${VERSION-4.1.4.2}
     EXTENSION=${EXTENSION-tar.gz}
 else
@@ -27,7 +27,7 @@ make && make install
 
 mv -v /usr/bin/passwd /bin
 
-if [ "$SCUDUM-CROSS" == "0" ];
+if [ "$SCUDUM_CROSS" == "0" ];
     pwconv
     grpconv
 fi
