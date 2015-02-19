@@ -9,7 +9,4 @@ cd linux-$VERSION
 
 make mrproper
 make ARCH=$SCUDUM_ARCH headers_check
-make ARCH=$SCUDUM_ARCH INSTALL_HDR_PATH=dest headers_install
-
-mkdir -p $PREFIX_CROSS/sysroot/usr/include
-cp -rv dest/include/* $PREFIX_CROSS/sysroot/usr/include
+make ARCH=$SCUDUM_ARCH INSTALL_HDR_PATH=$PREFIX_CROSS/sysroot/usr headers_install
