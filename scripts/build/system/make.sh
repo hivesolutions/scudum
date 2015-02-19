@@ -7,7 +7,7 @@ rm -rf make-$VERSION && tar -jxf "make-$VERSION.tar.bz2"
 rm -f "make-$VERSION.tar.bz2"
 cd make-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check
