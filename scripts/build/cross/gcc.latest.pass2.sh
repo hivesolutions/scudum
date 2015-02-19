@@ -52,9 +52,7 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
     --with-sysroot=$PREFIX_CROSS/sysroot\
-    --with-sysroot=$PREFIX_CROSS/sysroot\
-    --with-local-prefix=$PREFIX_CROSS\
-    --with-native-system-header-dir=$PREFIX_CROSS/include\
+    --with-local-prefix=$PREFIX_CROSS/sysroot\
     --enable-clocale=gnu\
     --enable-shared\
     --enable-threads=posix\

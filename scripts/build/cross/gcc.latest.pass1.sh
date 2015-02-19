@@ -53,8 +53,7 @@ extra=""
     --with-sysroot=$PREFIX_CROSS/sysroot\
     --with-newlib\
     --without-headers\
-    --with-local-prefix=$PREFIX_CROSS\
-    --with-native-system-header-dir=$PREFIX_CROSS/include\
+    --with-local-prefix=$PREFIX_CROSS/sysroot\
     --disable-nls\
     --disable-shared\
     --disable-multilib\

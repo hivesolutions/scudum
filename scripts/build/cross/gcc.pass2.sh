@@ -17,7 +17,6 @@ case $SCUDUM_ARCH in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
 esac
 
-
 for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h); do
     cp -uv $file{,.orig}
     sed -e 's@/lib\(64\)\?\(32\)\?/ld@/cross&@g'\
@@ -29,7 +28,6 @@ for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 #define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
     touch $file.orig
 done
-
 
 wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
@@ -58,9 +56,7 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
     --with-sysroot=$PREFIX_CROSS/sysroot\
-    --with-build-sysroot=$PREFIX_CROSS/sysroot\
-    --with-local-prefix=$PREFIX_CROSS\
-    --with-native-system-header-dir=$PREFIX_CROSS/include\
+    --with-local-prefix=$PREFIX_CROSS/sysroot\
     --enable-clocale=gnu\
     --enable-shared\
     --enable-threads=posix\
