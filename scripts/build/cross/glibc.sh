@@ -19,7 +19,7 @@ extra="-O2"
 [ "$GCC_BUILD_FLOAT" != "" ] && extra="-m$GCC_BUILD_FLOAT-float $extra" || true
 
 CFLAGS="$extra" ../glibc-$VERSION/configure\
-    --prefix=$PREFIX_CROSS\
+    --prefix=/usr\
     --host=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
