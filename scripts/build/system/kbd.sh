@@ -18,6 +18,6 @@ sed -i 's/resizecons.8 //' man/man8/Makefile.in
 ./configure --prefix=/usr --datadir=/lib/kbd\
     --disable-vlock
 
-make && make install
+make M4=/tools/bin/m4 && make install
 
 mv -v /usr/bin/{kbd_mode,loadkeys,openvt,setfont} /bin
