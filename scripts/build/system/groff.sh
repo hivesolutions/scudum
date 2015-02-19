@@ -7,7 +7,7 @@ rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"
 rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION
 
-PAGE=letter ./configure --prefix=/usr
+PAGE=letter ./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 mkdir -pv /usr/share/doc/groff-$VERSION/pdf
