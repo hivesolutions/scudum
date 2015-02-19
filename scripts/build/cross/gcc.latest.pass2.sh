@@ -13,18 +13,6 @@ cd gcc-$VERSION
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($ARCH_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h); do
-    cp -uv $file{,.orig}
-    sed -e 's@/lib\(64\)\?\(32\)\?/ld@/cross&@g'\
-        -e 's@/usr@/cross@g' $file.orig > $file
-    echo '
-#undef STANDARD_STARTFILE_PREFIX_1
-#undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_1 "/cross/lib/"
-#define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
-    touch $file.orig
-done
-
 wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
@@ -48,7 +36,7 @@ extra=""
 [ "$GCC_BUILD_FPU" != "" ] && extra="--with-fpu=$GCC_BUILD_FPU $extra" || true
 [ "$GCC_BUILD_FLOAT" != "" ] && extra="--with-float=$GCC_BUILD_FLOAT $extra" || true
 
-AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/lib" ../gcc-$VERSION/configure\
+AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/sysroot/lib" ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
     --with-sysroot=$PREFIX_CROSS/sysroot\
