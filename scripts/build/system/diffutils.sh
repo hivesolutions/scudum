@@ -7,7 +7,7 @@ rm -rf diffutils-$VERSION && tar -Jxf "diffutils-$VERSION.tar.xz"
 rm -f "diffutils-$VERSION.tar.xz"
 cd diffutils-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check

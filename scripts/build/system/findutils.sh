@@ -7,7 +7,8 @@ rm -rf findutils-$VERSION && tar -zxf "findutils-$VERSION.tar.gz"
 rm -f "findutils-$VERSION.tar.gz"
 cd findutils-$VERSION
 
-./configure\
+gl_cv_func_wcwidth_works=yes ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/lib/findutils\
     --localstatedir=/var/lib/locate
