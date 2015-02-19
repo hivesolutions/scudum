@@ -7,7 +7,7 @@ rm -rf automake-$VERSION && tar -Jxf "automake-$VERSION.tar.xz"
 rm -f "automake-$VERSION.tar.xz"
 cd automake-$VERSION
 
-./configure --prefix=/usr --docdir=/usr/share/doc/automake-$VERSION
+./configure --host=$ARCH_TARGET --prefix=/usr --docdir=/usr/share/doc/automake-$VERSION
 
 make
 test $TEST && make check
