@@ -8,6 +8,7 @@ rm -f "man-db-$VERSION.tar.xz"
 cd man-db-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/lib\
     --docdir=/usr/share/doc/man-db-$VERSION\

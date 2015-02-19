@@ -7,7 +7,7 @@ rm -rf atch-$VERSION && tar -Jxf "patch-$VERSION.tar.xz"
 rm -f  "patch-$VERSION.tar.xz"
 cd patch-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check
