@@ -40,8 +40,8 @@ ln -svf /tools/bin/perl /usr/bin
 ln -svf /tools/lib/ld-linux-x86-64.so.2 /lib
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ln -svf /cross/lib/libgcc_s.so{,.1} /usr/lib
-    ln -svf /cross/lib/libstdc++.so{,.6} /usr/lib
+    ln -svf /cross/$PREFIX_CROSS/lib/libgcc_s.so{,.1} /usr/lib
+    ln -svf /cross/$PREFIX_CROSS/lib/libstdc++.so{,.6} /usr/lib
 else
     ln -svf /tools/lib/libgcc_s.so{,.1} /usr/lib
     ln -svf /tools/lib/libstdc++.so{,.6} /usr/lib
