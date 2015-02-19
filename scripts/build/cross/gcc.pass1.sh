@@ -50,7 +50,7 @@ extra=""
 ../gcc-$VERSION/configure\
     --target=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
-    --with-sysroot=$SCUDUM\
+    --with-sysroot=$PREFIX_CROSS/sysroot\
     --with-newlib\
     --without-headers\
     --with-local-prefix=$PREFIX_CROSS\
