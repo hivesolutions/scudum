@@ -7,8 +7,13 @@ rm -rf sysklogd-$VERSION && tar -zxf "sysklogd-$VERSION.tar.gz"
 rm -f "sysklogd-$VERSION.tar.gz"
 cd sysklogd-$VERSION
 
-make
-make BINDIR=/sbin install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC CFLAGS="$CFLAGS"
+    make INSTALL="/tools/bin/install --strip-program=/cross/$ARCH_TARGET/bin/strip" BINDIR=/sbin install
+else
+    make
+    make BINDIR=/sbin install
+fi
 
 cat > /etc/syslog.conf << "EOF"
 auth,authpriv.* -/var/log/auth.log
