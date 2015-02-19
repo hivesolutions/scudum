@@ -9,6 +9,7 @@ cd tar-$VERSION
 
 FORCE_UNSAFE_CONFIGURE=1\
     ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --bindir=/bin\
     --libexecdir=/usr/sbin
