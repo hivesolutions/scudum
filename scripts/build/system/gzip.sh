@@ -7,7 +7,7 @@ rm -rf gzip-$VERSION && tar -Jxf "gzip-$VERSION.tar.xz"
 rm -f "gzip-$VERSION.tar.xz"
 cd gzip-$VERSION
 
-./configure --prefix=/usr --bindir=/bin
+./configure --host=$ARCH_TARGET --prefix=/usr --bindir=/bin
 
 make
 test $TEST && make check
