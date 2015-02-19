@@ -7,9 +7,19 @@ rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"
 rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    PAGE=letter CC=gcc CXX=g++ AR=ar RANLIB=ranlib CFLAGS="" CXXFLAGS="" LDFLAGS="" ./configure --prefix=/tools
+    make && make install
+fi
+
 PAGE=letter ./configure --host=$ARCH_TARGET --prefix=/usr
 
-make
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    GROFF_BIN_PATH=/tools/bin GROFFBIN=groff make
+else
+    make
+fi
+
 mkdir -pv /usr/share/doc/groff-$VERSION/pdf
 make install
 
