@@ -7,6 +7,11 @@ rm -rf coreutils-$VERSION && tar -Jxf "coreutils-$VERSION.tar.xz"
 rm -f "coreutils-$VERSION.tar.xz"
 cd coreutils-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    wget --no-check-certificate "http://patches.clfs.org/dev/coreutils-$VERSION-noman-1.patch"
+    patch -Np1 -i coreutils-$VERSION-noman-1.patch
+fi
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
@@ -33,6 +38,8 @@ mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm} /bin
 mv -v /usr/bin/{rmdir,stty,sync,true,uname,test,[} /bin
 mv -v /usr/bin/{head,sleep,nice} /bin
 mv -v /usr/bin/chroot /usr/sbin
-mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
 
-sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
+    sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8
+fi
