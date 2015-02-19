@@ -11,6 +11,7 @@ wget  --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/fl
 patch -Np1 -i flex-$VERSION-bison-2.6.1-1.patch
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --docdir=/usr/share/doc/flex-$VERSION
 

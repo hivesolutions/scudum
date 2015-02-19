@@ -8,6 +8,7 @@ rm -f "gettext-$VERSION.tar.gz"
 cd gettext-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --docdir=/usr/share/doc/gettext-$VERSION
 
