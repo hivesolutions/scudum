@@ -21,6 +21,7 @@ extra="-O2"
 CFLAGS="$extra" ../gcc-$VERSION/libstdc++-v3/configure\
     --host=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS\
+    --with-sysroot=$PREFIX_CROSS/sysroot\
     --disable-multilib\
     --disable-shared\
     --disable-nls\
