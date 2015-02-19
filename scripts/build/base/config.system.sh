@@ -9,5 +9,6 @@ case "$SCUDUM_ARCH" in
         export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
         export CFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
         export CXXFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
+        export LDFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
         ;;
 esac
