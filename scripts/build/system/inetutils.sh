@@ -10,6 +10,7 @@ cd inetutils-$VERSION
 echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/sbin\
     --localstatedir=/var\
