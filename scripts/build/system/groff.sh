@@ -10,12 +10,13 @@ cd groff-$VERSION
 if [ "$SCUDUM_CROSS" == "1" ]; then
     PAGE=letter CC=gcc CXX=g++ AR=ar RANLIB=ranlib CFLAGS="" CXXFLAGS="" LDFLAGS="" ./configure --prefix=/tools
     make && make install
+    make clean
 fi
 
 PAGE=letter ./configure --host=$ARCH_TARGET --prefix=/usr
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    GROFF_BIN_PATH=/tools/bin GROFFBIN=groff make
+    make GROFF_BIN_PATH=/tools/bin GROFFBIN=groff
 else
     make
 fi
