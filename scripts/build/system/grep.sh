@@ -7,7 +7,7 @@ rm -rf grep-$VERSION && tar -Jxf "grep-$VERSION.tar.xz"
 rm -f "grep-$VERSION.tar.xz"
 cd grep-$VERSION
 
-./configure --prefix=/usr --bindir=/bin
+./configure --host=$ARCH_TARGET --prefix=/usr --bindir=/bin
 
 make
 test $TEST && make check

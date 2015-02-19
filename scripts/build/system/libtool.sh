@@ -7,7 +7,7 @@ rm -rf libtool-$VERSION && tar -zxf "libtool-$VERSION.tar.gz"
 rm -f "libtool-$VERSION.tar.gz"
 cd libtool-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check
