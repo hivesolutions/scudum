@@ -8,6 +8,7 @@ rm -f "kmod-$VERSION.tar.xz"
 cd kmod-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --bindir=/bin\
     --libdir=/lib\

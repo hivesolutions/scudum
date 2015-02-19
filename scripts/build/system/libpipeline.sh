@@ -7,7 +7,7 @@ rm -rf libpipeline-$VERSION && tar -zxf "libpipeline-$VERSION.tar.gz"
 rm -f "libpipeline-$VERSION.tar.gz"
 cd libpipeline-$VERSION
 
-PKG_CONFIG_PATH=/tools/lib/pkgconfig ./configure --prefix=/usr
+PKG_CONFIG_PATH=/tools/lib/pkgconfig ./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check
