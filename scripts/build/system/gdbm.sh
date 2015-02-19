@@ -7,7 +7,7 @@ rm -rf gdbm-$VERSION && tar -zxf "gdbm-$VERSION.tar.gz"
 rm -f "gdbm-$VERSION.tar.gz"
 cd gdbm-$VERSION
 
-./configure --prefix=/usr --enable-libgdbm-compat
+./configure --host=$ARCH_TARGET --prefix=/usr --enable-libgdbm-compat
 
 make
 test $TEST && make check
