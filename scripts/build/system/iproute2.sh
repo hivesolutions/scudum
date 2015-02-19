@@ -1,4 +1,4 @@
-VERSION=${VERSION-3.8.0}
+VERSION=${VERSION-3.19.0}
 
 set -e +h
 
@@ -13,7 +13,12 @@ sed -i 's/arpd.8//' man/man8/Makefile
 
 sed -i 's/-Werror//' Makefile
 
-make DESTDIR=
-make DESTDIR=\
-    MANDIR=/usr/share/man\
-    DOCDIR=/usr/share/doc/iproute2-$VERSION install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC WFLAGS=$CFLAGS LEX=/tools/bin/flex YACC=/tools/bin/bison DESTDIR=
+    make CC=$CC WFLAGS=$CFLAGS DESTDIR= MANDIR=/usr/share/man\
+        DOCDIR=/usr/share/doc/iproute2-$VERSION install
+else
+    make DESTDIR=
+    make DESTDIR= MANDIR=/usr/share/man\
+        DOCDIR=/usr/share/doc/iproute2-$VERSION install
+fi
