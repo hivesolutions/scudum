@@ -7,7 +7,7 @@ rm -rf xz-$VERSION && tar -Jxf "xz-$VERSION.tar.xz"
 rm -f "xz-$VERSION.tar.xz"
 cd xz-$VERSION
 
-./configure --prefix=/usr --libdir=/lib\
+./configure --host=$ARCH_TARGET --prefix=/usr --libdir=/lib\
     --docdir=/usr/share/doc/xz-$VERSION
 
 make
