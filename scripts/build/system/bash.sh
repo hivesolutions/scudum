@@ -15,6 +15,7 @@ for index in $(seq -f "%03g" $PATCH_SEQ); do
 done
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --bindir=/bin\
     --htmldir=/usr/share/doc/bash-$VERSION\
