@@ -21,13 +21,13 @@ sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@'\
 
 sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 
-./configure --host=$ARCH_TARGET --sysconfdir=/etc
+ac_cv_func_setpgrp_void=yes ./configure --host=$ARCH_TARGET --sysconfdir=/etc
 
 make && make install
 
 mv -v /usr/bin/passwd /bin
 
-if [ "$SCUDUM_CROSS" == "0" ];
+if [ "$SCUDUM_CROSS" == "0" ]; then
     pwconv
     grpconv
 fi

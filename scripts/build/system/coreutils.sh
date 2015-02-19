@@ -8,6 +8,7 @@ rm -f "coreutils-$VERSION.tar.xz"
 cd coreutils-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/lib\
     --enable-no-install-program=kill,uptime
