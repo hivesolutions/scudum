@@ -7,7 +7,7 @@ rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION
 
-./configure --prefix=$PREFIX_CROSS --with-sysroot=$PREFIX_CROSS/sysroot --with-lib-path=$PREFIX_CROSS/lib\
+./configure --prefix=$PREFIX_CROSS --with-sysroot=$PREFIX_CROSS/sysroot\
     --target=$ARCH_TARGET --disable-nls --disable-werror
 
 make
