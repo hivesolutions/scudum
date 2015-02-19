@@ -7,7 +7,7 @@ rm -rf cd m4-$VERSION && tar -jxf "m4-$VERSION.tar.bz2"
 rm -f "m4-$VERSION.tar.bz2"
 cd m4-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 
