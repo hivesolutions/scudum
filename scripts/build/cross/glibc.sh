@@ -24,7 +24,7 @@ CFLAGS="$extra" ../glibc-$VERSION/configure\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
     --enable-kernel=2.6.32\
-    --with-headers=$PREFIX_CROSS/include\
+    --with-headers=$PREFIX_CROSS/sysroot/usr/include\
     libc_cv_forced_unwind=yes\
     libc_cv_ctors_header=yes\
     libc_cv_c_cleanup=yes
