@@ -7,7 +7,7 @@ rm -rf texinfo-$VERSION && tar -Jxf "texinfo-$VERSION.tar.xz"
 rm -f "texinfo-$VERSION.tar.xz"
 cd texinfo-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check
