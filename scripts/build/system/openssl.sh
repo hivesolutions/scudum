@@ -10,10 +10,11 @@ rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./config shared --prefix=/usr --openssldir=/usr/ssl
-else
     ./config shared --prefix=/usr --openssldir=/usr/ssl os/compiler:$ARCH_TARGET-
+else
+    ./config shared --prefix=/usr --openssldir=/usr/ssl
 fi
+
 make && make install
 
 ln -sv /usr/ssl /etc/ssl
