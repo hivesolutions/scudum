@@ -7,6 +7,10 @@ rm -rf wget-$VERSION && tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
-./configure --prefix=/usr --with-ssl=openssl
+./configure --host=$ARCH_TARGET --prefix=/usr --with-ssl=openssl
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    cd src
+fi
 
 make && make install
