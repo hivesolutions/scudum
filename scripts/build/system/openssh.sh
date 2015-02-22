@@ -10,10 +10,14 @@ cd openssh-$VERSION
 install -v -m700 -d /var/lib/sshd
 chown -v root:sys /var/lib/sshd
 
-groupadd -g 50 sshd
-useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    groupadd -g 50 sshd
+    useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
+fi
 
-./configure --prefix=/usr\
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=/usr\
     --sysconfdir=/etc/ssh\
     --with-md5-passwords\
     --with-privsep-path=/var/lib/sshd
