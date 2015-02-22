@@ -7,6 +7,6 @@ rm -rf cpio-$VERSION && tar -zxf "cpio-$VERSION.tar.gz"
 rm -f "cpio-$VERSION.tar.gz"
 cd cpio-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make && make install

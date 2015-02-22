@@ -7,6 +7,6 @@ rm -rf bc-$VERSION && tar -zxf "bc-$VERSION.tar.gz"
 rm -f "bc-$VERSION.tar.gz"
 cd bc-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make && make install
