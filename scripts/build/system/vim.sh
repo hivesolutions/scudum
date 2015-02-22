@@ -1,3 +1,5 @@
+[ "$SCUDUM_CROSS" == "1" ] && exit 0 || true
+
 VERSION=${VERSION-7.4}
 VERSION_L=${VERSION_L-74}
 
@@ -28,7 +30,7 @@ set nocompatible
 set backspace=2
 syntax on
 if (&term == "iterm") || (&term == "putty")
-  set background=dark
+    set background=dark
 endif
 
 EOF
