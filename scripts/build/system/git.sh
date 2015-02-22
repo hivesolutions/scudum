@@ -7,6 +7,8 @@ rm -rf git-$VERSION && tar -Jxf "git-$VERSION.tar.xz"
 rm -f "git-$VERSION.tar.xz"
 cd git-$VERSION
 
-./configure --prefix=/usr
+sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make && make install
