@@ -7,6 +7,6 @@ rm -rf curl-$VERSION && tar -zxf "curl-$VERSION.tar.gz"
 rm -f "curl-$VERSION.tar.gz"
 cd curl-$VERSION
 
-./configure --prefix=/usr --with-ca-bundle=/usr/ssl/ca-bundle.crt
+./configure --host=$ARCH_TARGET --prefix=/usr --with-ca-bundle=/usr/ssl/ca-bundle.crt
 
 make && make install
