@@ -7,7 +7,7 @@ rm -rf nano-$VERSION && tar -zxf "nano-$VERSION.tar.gz"
 rm -f "nano-$VERSION.tar.gz"
 cd nano-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make && make install
 
