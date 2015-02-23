@@ -13,12 +13,22 @@ patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
-make -f Makefile-libbz2_so CC=$CC
-make CC=$CC clean
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make -f Makefile-libbz2_so CC=$CC
+else
+    make -f Makefile-libbz2_so
+fi
 
-make CC=$CC libbz2.a bzip2 bzip2recover
-test $TEST && make CC=$CC test
-make CC=$CC PREFIX=/usr install
+make clean
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC libbz2.a bzip2 bzip2recover
+else
+    make libbz2.a bzip2 bzip2recover
+fi
+
+test $TEST && make test
+make PREFIX=/usr install
 
 cp -v bzip2-shared /bin/bzip2
 cp -av libbz2.so* /lib
