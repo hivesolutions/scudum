@@ -15,20 +15,19 @@ sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     make -f Makefile-libbz2_so CC=$CC
+    make CC=$CC clean
+
+    make CC=$CC libbz2.a bzip2 bzip2recover
+    test $TEST && make CC=$CC test
+    make CC=$CC PREFIX=/usr install
 else
     make -f Makefile-libbz2_so
-fi
+    make clean
 
-make clean
-
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC=$CC libbz2.a bzip2 bzip2recover
-else
     make libbz2.a bzip2 bzip2recover
+    test $TEST && make test
+    make PREFIX=/usr install
 fi
-
-test $TEST && make test
-make PREFIX=/usr install
 
 cp -v bzip2-shared /bin/bzip2
 cp -av libbz2.so* /lib
