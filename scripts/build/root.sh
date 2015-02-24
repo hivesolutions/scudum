@@ -92,6 +92,8 @@ $DIR/tools/zlib.sh
 $DIR/tools/pkg-config.sh
 $DIR/tools/openssl.sh
 $DIR/tools/wget.sh
+$DIR/tools/bison.sh
+$DIR/tools/flex.sh
 
 # run the output operation that "prints" the current configuration
 # into a plain file that it may be latter "sourced"
