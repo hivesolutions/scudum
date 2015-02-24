@@ -11,8 +11,6 @@ if mountpoint -q $PERSIST; then
     SCUDUM=$PERSIST/scudum
 fi
 
-echo "$SCUDUM/config"
-
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
