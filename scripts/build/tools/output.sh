@@ -1,17 +1,15 @@
 set -e +h
 
-base="export SCUDUM_HOST=$SCUDUM_HOST\n\
-export SCUDUM_ARCH=$SCUDUM_ARCH\n\
-export SCUDUM_VENDOR=$SCUDUM_VENDOR\n\
-export SCUDUM_SYSTEM=$SCUDUM_SYSTEM\n\
-export SCUDUM_SYSTEM_H=$SCUDUM_SYSTEM_H\n\
-export SCUDUM_MARCH=$SCUDUM_MARCH\n\
-export SCUDUM_TARGET=$SCUDUM_TARGET\n\
-export SCUDUM_CROSS=$SCUDUM_CROSS\n\
-export SCUDUM_CROSS_COPY=$SCUDUM_CROSS_COPY\n\
-export ARCH_TARGET=$ARCH_TARGET"
-
-echo -e $base > $SCUDUM/config
+echo "export SCUDUM_HOST=$SCUDUM_HOST" >> $SCUDUM/config
+echo "export SCUDUM_ARCH=$SCUDUM_ARCH" >> $SCUDUM/config
+echo "export SCUDUM_VENDOR=$SCUDUM_VENDOR" >> $SCUDUM/config
+echo "export SCUDUM_SYSTEM=$SCUDUM_SYSTEM" >> $SCUDUM/config
+echo "export SCUDUM_SYSTEM_H=$SCUDUM_SYSTEM_H" >> $SCUDUM/config
+echo "export SCUDUM_MARCH=$SCUDUM_MARCH" >> $SCUDUM/config
+echo "export SCUDUM_TARGET=$SCUDUM_TARGET" >> $SCUDUM/config
+echo "export SCUDUM_CROSS=$SCUDUM_CROSS" >> $SCUDUM/config
+echo "export SCUDUM_CROSS_COPY=$SCUDUM_CROSS_COPY" >> $SCUDUM/config
+echo "export ARCH_TARGET=$ARCH_TARGET" >> $SCUDUM/config
 
 [ "$GCC_BUILD_ARCH" != "" ] && echo "export GCC_BUILD_ARCH=$GCC_BUILD_ARCH" >> $SCUDUM/config || true
 [ "$GCC_BUILD_CPU" != "" ] && echo "export GCC_BUILD_CPU=$GCC_BUILD_CPU" >> $SCUDUM/config || true
