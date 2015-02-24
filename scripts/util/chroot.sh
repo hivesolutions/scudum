@@ -27,19 +27,25 @@ rm -f $SCUDUM/etc/resolv.conf
 echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    echo "CROSS COMPILE MODE"
+    TARGET_PATH=/cross/bin:/tools/bin:/bin:/usr/bin:/sbin:/usr/sbin
+    TARGET_SHELL=/tools/bin/bash
+    TARGET_ENV=/tools/bin/env
 else
-    chroot $SCUDUM /usr/bin/env -i\
-        HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
-        PATH=/bin:/usr/bin:/sbin:/usr/sbin\
-        /bin/bash $CHROOT_ARGS $@
-    result=$?
-
-    chroot $SCUDUM /usr/bin/env -i\
-        HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
-        PATH=/bin:/usr/bin:/sbin:/usr/sbin\
-        /bin/bash -c "/bin/umount -v -a"
+    TARGET_PATH=/bin:/usr/bin:/sbin:/usr/sbin
+    TARGET_SHELL=/bin/bash
+    TARGET_ENV=/usr/bin/env
 fi
+
+chroot $SCUDUM $TARGET_ENV -i\
+    HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
+    PATH="$TARGET_PATH"\
+    $TARGET_SHELL $CHROOT_ARGS $@
+result=$?
+
+chroot $SCUDUM $TARGET_ENV -i\
+    HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
+    PATH="$TARGET_PATH"\
+    $TARGET_SHELL -c "/bin/umount -v -a"
 
 SCUDUM=$SCUDUM $DIR/release.sh
 
