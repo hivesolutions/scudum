@@ -14,8 +14,8 @@ sed -i 's/arpd.8//' man/man8/Makefile
 sed -i 's/-Werror//' Makefile
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC=$CC WFLAGS=$CFLAGS M4=/tools/bin/m4 DESTDIR=
-    make CC=$CC WFLAGS=$CFLAGS DESTDIR= MANDIR=/usr/share/man\
+    make CC=$CC WFLAGS="$CFLAGS" M4=/tools/bin/m4 DESTDIR=
+    make CC=$CC WFLAGS="$CFLAGS" DESTDIR= MANDIR=/usr/share/man\
         DOCDIR=/usr/share/doc/iproute2-$VERSION install
 else
     make DESTDIR=
