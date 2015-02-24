@@ -7,7 +7,7 @@ rm -rf bison-$VERSION && tar -Jxf "bison-$VERSION.tar.xz"
 rm -f "bison-$VERSION.tar.xz"
 cd bison-$VERSION
 
-./configure --prefix=/usr
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 echo '#define YYENABLE_NLS 1' >> lib/config.h
 
