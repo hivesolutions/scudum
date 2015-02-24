@@ -15,7 +15,7 @@ sed -i -e '326 s/if/while/' src/loadkeys.analyze.l
 sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
 sed -i 's/resizecons.8 //' man/man8/Makefile.in
 
-./configure --prefix=/usr --datadir=/lib/kbd\
+./configure --host=$ARCH_TARGET --prefix=/usr --datadir=/lib/kbd\
     --disable-vlock
 
 make M4=/tools/bin/m4 && make install
