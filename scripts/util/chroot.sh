@@ -42,10 +42,12 @@ chroot $SCUDUM $TARGET_ENV -i\
     $TARGET_SHELL $CHROOT_ARGS $@
 result=$?
 
-chroot $SCUDUM $TARGET_ENV -i\
-    HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
-    PATH="$TARGET_PATH"\
-    $TARGET_SHELL -c "/bin/umount -v -a"
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    chroot $SCUDUM $TARGET_ENV -i\
+        HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
+        PATH="$TARGET_PATH"\
+        $TARGET_SHELL -c "/bin/umount -v -a"
+fi
 
 SCUDUM=$SCUDUM $DIR/release.sh
 
