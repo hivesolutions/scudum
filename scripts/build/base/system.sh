@@ -5,7 +5,7 @@
 # of the commands fails the execution is broken
 set -e +h
 
-source /tools/config
+source /config
 
 source /tools/repo/scripts/build/base/config.sh
 source /tools/repo/scripts/build/base/config.system.sh

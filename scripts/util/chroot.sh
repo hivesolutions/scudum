@@ -11,10 +11,10 @@ if mountpoint -q $PERSIST; then
     SCUDUM=$PERSIST/scudum
 fi
 
-echo "$SCUDUM/tools/config"
+echo "$SCUDUM/config"
 
-if [ -e $SCUDUM/tools/config ]; then
-    source $SCUDUM/tools/config
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
 fi
 
 mount -v --bind /dev $SCUDUM/dev
