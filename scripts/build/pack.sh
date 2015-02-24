@@ -38,6 +38,7 @@ cd $SCUDUM/tmp
 find . -delete
 
 rm -rf $SCUDUM/pst
+rm -rf $SCUDUM/opt
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
 rm -rf $SCUDUM/tools
