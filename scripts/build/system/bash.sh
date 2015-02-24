@@ -14,6 +14,11 @@ for index in $(seq -f "%03g" $PATCH_SEQ); do
     patch -Np0 -i bash$VERSION_L-$index
 done
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    cp -p /bin/bash /bin/bash.old
+    ln -sf bash.old /bin/sh
+fi
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
