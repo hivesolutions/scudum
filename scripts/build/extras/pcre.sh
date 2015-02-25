@@ -11,5 +11,5 @@ rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tar.gz"
 rm -f "pcre-$VERSION.tar.gz"
 cd pcre-$VERSION
 
-./configure --prefix=$PREFIX --enable-unicode-properties
+./configure --host=$ARCH_TARGET --prefix=$PREFIX --enable-unicode-properties
 make && make install
