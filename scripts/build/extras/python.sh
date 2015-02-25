@@ -20,7 +20,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib"\
     C_INCLUDE_PATH="/tools/include" ./configure
-    C_INCLUDE_PATH="/tools/include" make python Parser/pgen
+    C_INCLUDE_PATH="/tools/include" LD_LIBRARY_PATH="/tools/lib" make python Parser/pgen
     mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
 
