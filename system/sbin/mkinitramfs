@@ -51,8 +51,23 @@ for f in mdadm udevd udevadm; do
     if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
 done
 
+# initializes a new temporary file that will be used to store
+# the complete set of libraries that are considered dependencies
 unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 
+# creates the function that is responsible for the retrieval of
+# file dependencies and storage under the unsorted file for operation
+# the operation should be cross compilation ready
+unsort() {
+    if [ -e /cross/bin/cross-ldd ]; then
+        cross-ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f26 | sed "s/\[//" | sed "s/\]//" >> $unsorted
+    else
+        ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    fi
+}
+
+# initializes the global variables that refer the operations
+# that are going to be parts of the initird creation
 DATADIR=/usr/share/mkinitramfs
 INIT_IN=linuxrc
 
@@ -121,7 +136,7 @@ fi
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
 for f in $binfiles ; do
-    ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    unsort $f
     copy $f bin
 done
 
@@ -129,15 +144,16 @@ done
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
 for f in $sbinfiles ; do
-    ldd $(type -p $f) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    unsort $f
     copy $f sbin
 done
 
-# adds udevd libraries if not in /sbin
+# adds udevd libraries if not in /sbin, so that they may be used
+# to load extra drivers durring the initial boot sequence
 if [ -x /lib/udev/udevd ] ; then
-    ldd /lib/udev/udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    unsort /lib/udev/udevd
 elif [ -x /lib/systemd/systemd-udevd ] ; then
-    ldd /lib/systemd/systemd-udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+    unsort /lib/systemd/systemd-udevd
 fi
 
 # adds module symlinks if appropriate
