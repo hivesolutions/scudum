@@ -140,7 +140,8 @@ for f in $binfiles ; do
     copy $f bin
 done
 
-# adds lvm if present
+# adds lvm if present to the set of files that are considered
+# to be the system binaries (sbin)
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
 for f in $sbinfiles ; do
@@ -155,6 +156,10 @@ if [ -x /lib/udev/udevd ] ; then
 elif [ -x /lib/systemd/systemd-udevd ] ; then
     unsort /lib/systemd/systemd-udevd
 fi
+
+# creates some of the binaries symbolic links so that legacy
+# support is enabled for all the operations
+ln -s bash $TEMP_DIR/bin/sh
 
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
