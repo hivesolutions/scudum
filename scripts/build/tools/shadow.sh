@@ -8,6 +8,6 @@ rm -rf shadow-$VERSION && tar -xf "shadow-$VERSION.$EXTENSION"
 rm -f "shadow-$VERSION.$EXTENSION"
 cd shadow-$VERSION
 
-ac_cv_func_setpgrp_void=yes ./configure --prefix=$TOOLS
+./configure --prefix=$PREFIX
 
 make && make install
