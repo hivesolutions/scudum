@@ -5,9 +5,4 @@ EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
 
-echo "GRANDES CENAS"
-echo $SCUDUM_ARCH
-echo $CC
-echo "GRANDES CENAS END"
-
 scu.install $EXTRAS
