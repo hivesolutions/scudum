@@ -14,7 +14,7 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure
+    CC=gcc ./configure
     make python Parser/pgen
     mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
