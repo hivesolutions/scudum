@@ -11,7 +11,7 @@ cd util-linux-$VERSION
 mkdir -pv /var/lib/hwclock
 
 ./configure\
-    --prefix=$PREFIX~\
+    --prefix=$PREFIX\
     --disable-chfn-chsh\
     --disable-login\
     --disable-su\
