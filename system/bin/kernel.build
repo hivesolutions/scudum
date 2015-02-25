@@ -78,6 +78,8 @@ fi
 
 cd $NAME
 
+# in case the safe flag is set the proper cleanup of the
+# distribution is performed to avoid collisions/problems
 if [ "$SAFE" == "1" ]; then
     make mrproper
 fi
