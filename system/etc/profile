@@ -4,6 +4,8 @@ source /etc/colors
 if [ -e /config ]; then source /config; fi
 source $DIR/cross
 
+echo "CENAS"
+
 export PATH="~/.local/bin:~/.local/sbin:/opt/bin:/opt/sbin:/pst/bin:/pst/sbin:$PATH"
 export LD_LIBRARY_PATH="~/.local/lib:/opt/lib:/pst/lib:/usr/local/lib:/usr/lib:/lib"
 export LIBRARY_PATH="~/.local/lib:/opt/lib:/pst/lib:/usr/local/lib:/usr/lib:/lib"
