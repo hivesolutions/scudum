@@ -31,6 +31,14 @@ if [ "$MAKEPATHS" == "0" ]; then
     unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 fi
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
+if [ -e /config ]; then
+    source /config
+fi
+
+source $DIR/cross
+
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
 KVERSION=$(uname -r)
