@@ -13,5 +13,5 @@ rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
 rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared
+./configure --host=$ARCH_TARGET --build=$ARCH_TARGET --prefix=$PREFIX --enable-shared
 make && make install
