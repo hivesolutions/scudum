@@ -21,10 +21,6 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     exit 1
 fi
 
-rm -f /tools
-rm -rf $SCUDUM/tools
-rm -rf $SCUDUM/sources
-
 mountpoint -q $SCUDUM/mnt/builds && umount $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount $SCUDUM/proc
@@ -43,11 +39,11 @@ find . -delete
 
 rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
-rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
-rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/images
 rm -rf $SCUDUM/extras
+rm -rf $SCUDUM/source
+rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/lost+found
 rm -rf $SCUDUM/boot/lost+found
 rm -f $SCUDUM/boot/vmlinuz
