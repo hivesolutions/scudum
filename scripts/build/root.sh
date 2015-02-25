@@ -91,6 +91,7 @@ $DIR/tools/xz.sh
 $DIR/tools/zlib.sh
 $DIR/tools/pkg-config.sh
 $DIR/tools/util-linux.sh
+$DIR/tools/shadow.sh
 $DIR/tools/openssl.sh
 $DIR/tools/bison.sh
 $DIR/tools/flex.sh
