@@ -48,5 +48,5 @@ cd $SCUDUM
 # files and then unacks it into the current scudum location,
 # this location may then be used as a normal chroot environment
 wget "$REPO/$NAME-$ARCH-$VERSION.tar.gz"
-tar -zxf $NAME-$VERSION.tar.gz
-rm -v $NAME-$VERSION.tar.gz
+tar -zxf $NAME-$ARCH-$VERSION.tar.gz
+rm -v $NAME-$ARCH-$VERSION.tar.gz
