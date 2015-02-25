@@ -62,9 +62,10 @@ mkdir -p $BUILDER && cd $BUILDER
 if [ ! -d "$NAME" ]; then
     case "$SCUDUM_ARCH" in
         arm)
-            mkdir $NAME && cd $NAME
+            mkdir -p $NAME && cd $NAME
             git init
             git fetch --depth 1 https://github.com/raspberrypi/linux.git
+            cd ..
             ;;
         *)
             rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
