@@ -59,6 +59,7 @@ unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 # file dependencies and storage under the unsorted file for operation
 # the operation should be cross compilation ready
 unsort() {
+    echo $1
     if [ -e /cross/bin/cross-ldd ]; then
         cross-ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f26 | sed "s/\[//" | sed "s/\]//" >> $unsorted
     else
