@@ -79,9 +79,10 @@ mkdir -p $TEMP_DIR/etc/{modprobe.d,udev/rules.d}
 touch $TEMP_DIR/etc/modprobe.d/modprobe.conf
 ln -s lib $TEMP_DIR/lib64
 
-# creates necessary device nodes
+# creates necessary device nodes, that are going to be used
+# for some of the operation in the construction of intrd
 mknod -m 640 $TEMP_DIR/dev/console c 5 1
-mknod -m 664 $TEMP_DIR/dev/null    c 1 3
+mknod -m 664 $TEMP_DIR/dev/null c 1 3
 
 # installs the udev configuration files
 if [ -f /etc/udev/udev.conf ]; then
