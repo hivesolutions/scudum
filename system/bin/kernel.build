@@ -64,7 +64,7 @@ if [ ! -d "$NAME" ]; then
         arm)
             mkdir $NAME && cd $NAME
             git init
-            git fetch --depth 1 git://github.com/raspberrypi/linux.git
+            git fetch --depth 1 https://github.com/raspberrypi/linux.git
             ;;
         *)
             rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
