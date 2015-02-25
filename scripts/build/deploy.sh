@@ -19,7 +19,7 @@ if [ "$SCUDUM_ARCH" == "" ]; then
     FILE=${FILE-$NAME-$VERSION.tar.gz}
     LATEST=${LATEST-$NAME-latest.tar.gz}
 else
-    FILE=${FILE-$NAME-$VERSION-$SCUDUM_ARCH.tar.gz}
+    FILE=${FILE-$NAME-$SCUDUM_ARCH-$VERSION.tar.gz}
     LATEST=${LATEST-$NAME-$SCUDUM_ARCH-latest.tar.gz}
 fi
 
