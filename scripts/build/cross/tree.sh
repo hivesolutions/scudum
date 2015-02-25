@@ -1,5 +1,6 @@
 set -e +h
 
+mkdir -p $PREFIX_CROSS/bin
 mkdir -p $PREFIX_CROSS/lib
 mkdir -p $PREFIX_CROSS/sysroot
 mkdir -p $PREFIX_CROSS/sysroot/lib
@@ -16,3 +17,8 @@ ln -svf lib $PREFIX_CROSS/sysroot/usr/lib64
 ln -svf ../sysroot/lib $PREFIX_CROSS/$ARCH_TARGET/lib
 ln -svf lib $PREFIX_CROSS/$ARCH_TARGET/lib32
 ln -svf lib $PREFIX_CROSS/$ARCH_TARGET/lib64
+
+rm -f $PREFIX_CROSS/bin/cross-ldd
+echo '#!/bin/sh' >> $PREFIX_CROSS/bin/cross-ldd
+echo "$ARCH_PREFIX-readelf -d \$1 | grep \"Shared library\"" >> $PREFIX_CROSS/bin/cross-ldd
+chmod +x $PREFIX_CROSS/bin/cross-ldd 
