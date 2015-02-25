@@ -14,6 +14,7 @@ cd build
     --prefix=$PREFIX\
     --bindir=$PREFIX/bin\
     --sbindir=$PREFIX/sbin\
+    --libdir=$PREFIX/lib\
     --with-root-prefix=""\
     --enable-elf-shlibs\
     --disable-libblkid\
