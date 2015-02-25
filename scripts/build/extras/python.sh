@@ -14,6 +14,7 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
     CC=gcc\
     CFLAGS="-I/tools/include -L/tools/lib"\
     LDFLAGS="-I/tools/include -L/tools/lib"\
