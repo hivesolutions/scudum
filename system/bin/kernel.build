@@ -8,7 +8,6 @@ NAME_L=${NAME_L-kernel}
 MAJOR=${MAJOR-3.x}
 MINOR=${MINOR-3.19}
 VARIANT=${VARIANT-${1-default}}
-NAME=${NAME-linux-$MINOR}
 DATE=${DATE-$(date +%Y%m%d)}
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
@@ -27,22 +26,52 @@ LATEST_MODULES=$LATEST.modules.tar.gz
 
 set -e +h
 
+# verifies if the base configuration file exists an in
+# in case it does imports it so that the proper configuration
+# values are exported into the current execution context
+if [ -e /config ]; then
+    source /config
+fi
+
+# tries to detect the proper configuration file path by
+# verifying the existence of the config path, this strategy
+# allows for the usage of both paths for configuration
 if [ ! -e $CONFIG ]; then
     CONFIG=$FALLBACK
 fi
 
+# detects if the proper path where the kernel sources will
+# be installed by checking if a persistence path exists
 if mountpoint -q $PERSIST; then
     BUILDER=$PERSIST/ksources
 else
     BUILDER=$TARGET/ksources
 fi
 
+case "$SCUDUM_ARCH" in
+    arm)
+        NAME=${NAME-linux-rpi}
+        ;;
+    *)
+        NAME=${NAME-linux-$MINOR}
+        ;;
+esac
+
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
-    rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
-    rm -rf $NAME && tar -xvf $NAME.tar.xz
-    rm -f $NAME.tar.xz
+    case "$SCUDUM_ARCH" in
+        arm)
+            mkdir $NAME && cd $NAME
+            git init
+            git fetch --depth 1 git://github.com/raspberrypi/linux.git
+            ;;
+        *)
+            rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
+            rm -rf $NAME && tar -xvf $NAME.tar.xz
+            rm -f $NAME.tar.xz
+            ;;
+    esac
 else
     echo "kernel.build: skipping $NAME retrieval, already exists ..."
 fi
@@ -61,8 +90,14 @@ fi
 
 rm -rf modules_install && mkdir -p modules_install
 
-make -j $CONCURRENCY
-make modules_install INSTALL_MOD_PATH=modules_install
+if [ "$ARCH_TARGET" == "" ]; then
+    make -j $CONCURRENCY
+    make modules_install INSTALL_MOD_PATH=modules_install
+else
+    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make oldconfig
+    ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make -j $CONCURRENCY
+    ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make modules_install INSTALL_MOD_PATH=modules_install
+fi
 
 release=$(cat include/config/kernel.release)
 
@@ -99,7 +134,6 @@ else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
     cp -v arch/x86/boot/bzImage /boot/vmlinuz
-
     cp -v .config /boot/config
 
     rm -rf /lib/modules
