@@ -20,8 +20,11 @@ export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export PS1="\u@\h:\w# "
-export LANG="en_US.utf8"
-export LC_ALL="en_US.utf8"
+
+if [ "$(locale -a | grep -a en_US.utf8)" != "" ]; then
+    export LANG="en_US.utf8"
+    export LC_ALL="en_US.utf8"
+fi
 
 if [ -e /tools ]; then
     export PATH="/tools/bin:$PATH"
