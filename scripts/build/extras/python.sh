@@ -24,10 +24,14 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make python Parser/pgen
+    
+    mkdir binaries
     mv python python_for_build
+    mv python binaries
     mv Parser/pgen Parser/pgen_for_build
     make distclean
 
+    export PATH="binaries:$PATH"
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
