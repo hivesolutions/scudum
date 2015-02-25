@@ -27,7 +27,7 @@ rm -f $SCUDUM/etc/resolv.conf
 echo "nameserver 8.8.8.8" >> $SCUDUM/etc/resolv.conf
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    TARGET_PATH=/cross/bin:/tools/bin:/bin:/usr/bin:/sbin:/usr/sbin
+    TARGET_PATH=/cross/bin:/cross/sbin:/tools/bin:/tools/sbin:/bin:/usr/bin:/sbin:/usr/sbin
     TARGET_SHELL=/tools/bin/bash
     TARGET_ENV=/tools/bin/env
 else
