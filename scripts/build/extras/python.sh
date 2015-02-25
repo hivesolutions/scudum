@@ -14,7 +14,6 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
     CC=gcc\
     CFLAGS="-I/tools/include -L/tools/lib"\
     LDFLAGS="-I/tools/include -L/tools/lib"\
@@ -22,7 +21,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LIBRARY_PATH="/tools/lib"\
     C_INCLUDE_PATH="/tools/include"\
     CPLUS_INCLUDE_PATH="/tools/include" ./configure
-    make python Parser/pgen
+    C_INCLUDE_PATH="" CPLUS_INCLUDE_PATH="" make python Parser/pgen
     mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
 
