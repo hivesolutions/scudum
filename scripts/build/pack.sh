@@ -12,6 +12,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
+fi
+
 if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "Scudum already configured, not possible to pack"
     exit 1
@@ -41,7 +45,6 @@ rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
 rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
-rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/images
 rm -rf $SCUDUM/extras
@@ -51,6 +54,11 @@ rm -f $SCUDUM/boot/vmlinuz
 rm -f $SCUDUM/boot/initrd.img
 rm -f $SCUDUM/boot/grub/grub.cfg
 rm -f $SCUDUM/etc/ssh/ssh_host_*
+
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    rm -rf $SCUDUM/cross
+    rm -rf $SCUDUM/tools
+fi
 
 find $SCUDUM -name "*.pyc" -delete
 
