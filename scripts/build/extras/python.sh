@@ -26,6 +26,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LIBRARY_PATH="/tools/lib" make python Parser/pgen
     mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
+    make distclean
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
