@@ -23,6 +23,11 @@ export PS1="\u@\h:\w# "
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
 
+if [ -e /tools ]; then
+    export PATH="/tools/bin:$PATH"
+    export LIBRARY_PATH="/tools/lib:$LIBRARY_PATH"
+fi
+
 if [ -e /etc/scudum/OVERLAYFS ]; then
     export PREFIX=/usr
     export MAKEPATHS=${MAKEPATHS-0}
