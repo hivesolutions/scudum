@@ -13,5 +13,13 @@ rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
 rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
-./configure --host=$ARCH_TARGET --build=x86_64 --prefix=$PREFIX --enable-shared
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ac_cv_file__dev_ptmx=no\
+    ac_cv_file__dev_ptc=no\
+    ac_cv_have_long_long_format=yes\
+    ./configure --host=$ARCH_TARGET --build=x86_64 --prefix=$PREFIX --enable-shared --disable-ipv6
+else
+    ./configure --prefix=$PREFIX --enable-shared
+fi
+
 make && make install
