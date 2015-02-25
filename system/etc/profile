@@ -28,7 +28,7 @@ if [ -e /tools ]; then
     export LIBRARY_PATH="/tools/lib:$LIBRARY_PATH"
 fi
 
-if [ -e /etc/scudum/OVERLAYFS ]; then
+if [ -e /etc/scudum/OVERLAYFS ] || [ -w /usr ]; then
     export PREFIX=/usr
     export MAKEPATHS=${MAKEPATHS-0}
 else
