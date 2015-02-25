@@ -12,6 +12,8 @@ cd build
 
 ../configure\
     --prefix=$PREFIX\
+    --bindir=$PREFIX/bin\
+    --sbindir=$PREFIX/sbin\
     --with-root-prefix=""\
     --enable-elf-shlibs\
     --disable-libblkid\
