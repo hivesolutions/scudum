@@ -3,6 +3,7 @@
 
 NAME=${NAME-scudum}
 VERSION=${VERSION-latest}
+ARCH=${ARCH-x86_64}
 REPO=${REPO-http://hq.hive.pt:9999/builds/$NAME}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -46,6 +47,6 @@ cd $SCUDUM
 # retrieves the requested package containing the scudum root
 # files and then unacks it into the current scudum location,
 # this location may then be used as a normal chroot environment
-wget "$REPO/$NAME-$VERSION.tar.gz"
+wget "$REPO/$NAME-$ARCH-$VERSION.tar.gz"
 tar -zxf $NAME-$VERSION.tar.gz
 rm -v $NAME-$VERSION.tar.gz
