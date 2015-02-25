@@ -1,4 +1,10 @@
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 source /etc/colors
+
+if [ -e /config ]; then source /config; fi
+
+source $DIR/cross
 
 export PATH="~/.local/bin:~/.local/sbin:/opt/bin:/opt/sbin:/pst/bin:/pst/sbin:$PATH"
 export LD_LIBRARY_PATH="~/.local/lib:/opt/lib:/pst/lib:/usr/local/lib:/usr/lib:/lib"
@@ -30,14 +36,6 @@ fi
 if [ "$MAKEPATHS" == "0" ]; then
     unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 fi
-
-DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-
-if [ -e /config ]; then
-    source /config
-fi
-
-source $DIR/cross
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
