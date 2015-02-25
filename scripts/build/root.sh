@@ -94,6 +94,8 @@ $DIR/tools/openssl.sh
 $DIR/tools/wget.sh
 $DIR/tools/bison.sh
 $DIR/tools/flex.sh
+$DIR/tools/curl.sh
+$DIR/tools/git.sh
 
 # run the output operation that "prints" the current configuration
 # into a plain file that it may be latter "sourced"
