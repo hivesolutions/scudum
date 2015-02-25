@@ -11,5 +11,5 @@ rm -rf sudo-$VERSION && tar -zxf "sudo-$VERSION.tar.gz"
 rm -f "sudo-$VERSION.tar.gz"
 cd sudo-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
