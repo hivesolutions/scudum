@@ -19,9 +19,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LDFLAGS="-I/tools/include -L/tools/lib"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib"\
-    C_INCLUDE_PATH="/tools/include"\
-    CPLUS_INCLUDE_PATH="/tools/include" ./configure
-    C_INCLUDE_PATH="" CPLUS_INCLUDE_PATH="" make python Parser/pgen
+    C_INCLUDE_PATH="/tools/include" ./configure
+    C_INCLUDE_PATH="/tools/include" make python Parser/pgen
     mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
 
