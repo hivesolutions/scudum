@@ -17,5 +17,5 @@ rm -rf sqlite-autoconf-$VERSION && tar -zxf "sqlite-autoconf-$VERSION.tar.gz"
 rm -f "sqlite-autoconf-$VERSION.tar.gz"
 cd sqlite-autoconf-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
