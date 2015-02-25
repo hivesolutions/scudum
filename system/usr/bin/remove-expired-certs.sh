@@ -33,8 +33,8 @@ if [ $# -gt 0 ]; then
     DIR="$1"
 fi
 
-certs=$( find ${DIR} -type f -name "*.pem" -o -name "*.crt" )
-today=$( date +%Y%m%d )
+certs=$(find ${DIR} -type f -name "*.pem" -o -name "*.crt")
+today=$(date +%Y%m%d)
 
 for cert in $certs; do
     notafter=$( $OPENSSL x509 -enddate -in "${cert}" -noout )
