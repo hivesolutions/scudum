@@ -8,8 +8,6 @@ copy() {
     else
         file=$(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1)
     fi
-    
-    echo $file
 
     if [ -n $file ] ; then
         cp $file $TEMP_DIR/$2
@@ -202,11 +200,16 @@ fi
 # the unsorted (including duplicates) list is sorted
 # so that duplicated values/libraries are removed
 sort $unsorted | uniq | while read library ; do
+    echo "$library"
+
     if [[ "$library" != *".so"* ]] ||
         [ "$library" == "linux-vdso.so.1" ] ||
         [ "$library" == "linux-gate.so.1" ]; then
         continue
     fi
+    
+    echo "PASSOU!!!"
+    echo $library
 
     copy $library lib
 done
