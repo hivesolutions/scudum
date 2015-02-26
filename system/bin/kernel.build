@@ -20,9 +20,15 @@ if [ -e /config ]; then
     source /config
 fi
 
+# defines the proper (target) architecture for the building process
+# taking into account the requested one, then the configured on and
+# if all is not defined the pre-defined one (intel 64 bit)
+ARCH=${ARCH-${SCUDUM_ARCH-x86_64}}
+TARGET=${TARGET-${ARCH_TARGET-}}
+
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
-case "$SCUDUM_ARCH" in
+case "$ARCH" in
     arm)
         VARIANT=${VARIANT-${1-rpi}}
         MINOR=${MINOR-3.18}
@@ -65,7 +71,7 @@ else
     BUILDER=$TARGET/ksources
 fi
 
-case "$SCUDUM_ARCH" in
+case "$ARCH" in
     arm)
         NAME=${NAME-linux-rpi-$MINOR}
         ;;
@@ -79,7 +85,7 @@ esac
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
-    case "$SCUDUM_ARCH" in
+    case "$ARCH" in
         arm)
             rm -rf $NAME && git clone --depth 1 https://github.com/raspberrypi/linux.git $NAME
             ;;
@@ -113,8 +119,8 @@ if [ "$ARCH_TARGET" == "" ]; then
     make -j $CONCURRENCY
     make modules_install INSTALL_MOD_PATH=modules_install
 else
-    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make -j $CONCURRENCY
-    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$ARCH CROSS_COMPILE=$TARGET- make -j $CONCURRENCY
+    ARCH=$ARCH CROSS_COMPILE=$TARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
 release=$(cat include/config/kernel.release)
