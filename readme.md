@@ -42,8 +42,9 @@ build is controlled and does not compile using any (unwanted) optimization and r
 To be able to create a cross compilation based ARM build for the Raspberry Pi system you may change the way
 the root environment is created with:
 
-    SCUDUM_ARCH=arm SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi GCC_BUILD_ARCH=armv6zk \
-    GCC_BUILD_CPU=arm1176jzf-s GCC_BUILD_TUNE=arm1176jzf-s GCC_BUILD_FPU=vfp GCC_BUILD_FLOAT=hard scudum root
+    SCUDUM_ARCH=arm SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    GCC_BUILD_ARCH=armv6zk GCC_BUILD_CPU=arm1176jzf-s GCC_BUILD_TUNE=arm1176jzf-s \
+    GCC_BUILD_FPU=vfp GCC_BUILD_FLOAT=hard scudum root
 
 To deploy a new version of the Scudum ditribution to the repository a deploy operation must be performed,
 note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
