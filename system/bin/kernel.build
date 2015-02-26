@@ -57,6 +57,8 @@ case "$SCUDUM_ARCH" in
         ;;
 esac
 
+# ensures that the proper (kernel) builder directory exists
+# and changes the current directory into it for usage
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
