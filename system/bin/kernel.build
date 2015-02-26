@@ -113,7 +113,6 @@ if [ "$ARCH_TARGET" == "" ]; then
     make -j $CONCURRENCY
     make modules_install INSTALL_MOD_PATH=modules_install
 else
-    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make oldconfig
     ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make -j $CONCURRENCY
     ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
