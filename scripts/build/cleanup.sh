@@ -29,12 +29,13 @@ fi
 
 rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
-rm -rf $SCUDUM/source
 rm -rf $SCUDUM/extra
+rm -rf $SCUDUM/cross
 rm -rf $SCUDUM/tools
-rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/images
 rm -rf $SCUDUM/extras
+rm -rf $SCUDUM/source
+rm -rf $SCUDUM/sources
 rm -rf $SCUDUM/lost+found
 rm -rf $SCUDUM/boot/lost+found
 rm -f $SCUDUM/etc/ssh/ssh_host_*
