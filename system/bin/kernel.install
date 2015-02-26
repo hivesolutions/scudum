@@ -12,10 +12,7 @@ if [ -e /config ]; then
     source /config
 fi
 
-if [ "$REBUILD" == "1" ]; then
-    kernel.build
-    exit $?
-fi
+ARCH=${ARCH-${SCUDUM_ARCH-x86}}
 
 case "$ARCH" in
     arm)
@@ -25,6 +22,11 @@ case "$ARCH" in
         VARIANT=${VARIANT-${1-basic}}
         ;;
 esac
+
+if [ "$REBUILD" == "1" ]; then
+    kernel.build
+    exit $?
+fi
 
 echo "kernel.install: deploying kernel files"
 
