@@ -135,6 +135,10 @@ tar -zcvf modules.tar.gz modules firmware
 mv modules.tar.gz ../..
 cd ../..
 
+if [ -e arch/$ARCH/boot/zImage ]; then
+    mv arch/$ARCH/boot/zImage arch/$ARCH/boot/bzImage
+fi
+
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
