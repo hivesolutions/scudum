@@ -113,8 +113,8 @@ if [ "$ARCH_TARGET" == "" ]; then
     make -j $CONCURRENCY
     make modules_install INSTALL_MOD_PATH=modules_install
 else
-    ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make -j $CONCURRENCY
-    ARCH=arm CROSS_COMPILE=$ARCH_TARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make -j $CONCURRENCY
+    ARCH=$SCUDUM_ARCH CROSS_COMPILE=$ARCH_TARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
 release=$(cat include/config/kernel.release)
