@@ -94,6 +94,7 @@ $DIR/tools/util-linux.sh
 $DIR/tools/shadow.sh
 $DIR/tools/e2fsprogs.sh
 $DIR/tools/bc.sh
+$DIR/tools/kmod.sh
 $DIR/tools/openssl.sh
 $DIR/tools/bison.sh
 $DIR/tools/flex.sh
