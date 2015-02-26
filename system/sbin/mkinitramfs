@@ -44,9 +44,12 @@ binfiles="$binfiles egrep cut tar gzip touch"
 # have it in /sbin, take note of possible problems/issues
 if [ -x /bin/udevadm ] ; then binfiles="$binfiles udevadm"; fi
 
+# creates the initial set of files from the system binaries set
+# that are going to be copied into the initrd file
 sbinfiles="modprobe blkid switch_root pivot_root"
 
-# optional files and locations
+# optional files and locations, meaning that if they don't exist
+# there's no critical error to be raised (optional)
 for f in mdadm udevd udevadm; do
     if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
 done
