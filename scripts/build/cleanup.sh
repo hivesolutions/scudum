@@ -28,8 +28,8 @@ if [ -d $SCUDUM/tmp ]; then
 fi
 
 if [ -e $SCUDUM/bin/bash.old ]; then
-    ln -f bash $SCUDUM/bin/sh
-    rm $SCUDUM/bin/bash.old
+    ln -sf bash $SCUDUM/bin/sh
+    rm -f $SCUDUM/bin/bash.old
 fi
 
 rm -rf $SCUDUM/pst
