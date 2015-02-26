@@ -30,7 +30,7 @@ TARGET=${TARGET-${ARCH_TARGET-}}
 # so that the proper conditions are defined for target machines
 case "$ARCH" in
     arm)
-        VARIANT=${VARIANT-${1-rpi}}
+        VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-3.18}
         ;;
     *)
@@ -73,7 +73,7 @@ fi
 
 case "$ARCH" in
     arm)
-        NAME=${NAME-linux-rpi-$MINOR}
+        NAME=${NAME-linux-rasp-$MINOR}
         ;;
     *)
         NAME=${NAME-linux-$MINOR}
