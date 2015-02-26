@@ -8,8 +8,6 @@ copy() {
     else
         file=$(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1)
     fi
-    
-    echo $file
 
     if [ -n $file ] ; then
         cp $file $TEMP_DIR/$2
