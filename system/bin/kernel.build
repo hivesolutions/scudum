@@ -115,7 +115,7 @@ fi
 
 rm -rf modules_install && mkdir -p modules_install
 
-if [ "$ARCH_TARGET" == "" ]; then
+if [ "$TARGET" == "" ]; then
     make -j $CONCURRENCY
     make modules_install INSTALL_MOD_PATH=modules_install
 else
