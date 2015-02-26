@@ -116,8 +116,8 @@ fi
 rm -rf modules_install && mkdir -p modules_install
 
 if [ "$TARGET" == "" ]; then
-    make -j $CONCURRENCY
-    make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$ARCH make -j $CONCURRENCY
+    ARCH=$ARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     ARCH=$ARCH CROSS_COMPILE=$TARGET- make -j $CONCURRENCY
     ARCH=$ARCH CROSS_COMPILE=$TARGET- make modules_install INSTALL_MOD_PATH=modules_install
