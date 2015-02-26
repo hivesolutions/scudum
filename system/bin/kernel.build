@@ -22,8 +22,8 @@ fi
 
 # defines the proper (target) architecture for the building process
 # taking into account the requested one, then the configured on and
-# if all is not defined the pre-defined one (intel 64 bit)
-ARCH=${ARCH-${SCUDUM_ARCH-x86_64}}
+# if all is not defined the pre-defined one (intel)
+ARCH=${ARCH-${SCUDUM_ARCH-x86}}
 TARGET=${TARGET-${ARCH_TARGET-}}
 
 # switches over the selected/current scudum process architecture
@@ -138,7 +138,7 @@ cd ../..
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
-    cp -pv arch/x86/boot/bzImage $FILE
+    cp -pv arch/$ARCH/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
     cp -pv modules.tar.gz $FILE_MODULES
 
@@ -157,7 +157,7 @@ if [ "$DEPLOY" == "1" ]; then
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
-    cp -v arch/x86/boot/bzImage /boot/vmlinuz
+    cp -v arch/$ARCH/boot/bzImage /boot/vmlinuz
     cp -v .config /boot/config
 
     rm -rf /lib/modules
