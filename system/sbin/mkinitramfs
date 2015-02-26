@@ -6,7 +6,7 @@ copy() {
     if [ "$2" == "lib" ]; then
         file=$(PATH=/lib:/usr/lib type -p $1)
     else
-        file=$(type -p $1)
+        file=$(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1)
     fi
 
     if [ -n $file ] ; then
@@ -160,9 +160,9 @@ elif [ -x /lib/systemd/systemd-udevd ] ; then
     unsort /lib/systemd/systemd-udevd
 fi
 
-# creates some of the binaries executables so that legacy
-# support is enabled/ensured for all the operations
-cp -p $TEMP_DIR/bin/bash $TEMP_DIR/bin/sh
+# creates some of the binaries symbolic links so that legacy
+# support is enabled for all the operations
+ln -s bash $TEMP_DIR/bin/sh
 
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
