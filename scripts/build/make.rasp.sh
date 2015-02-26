@@ -114,8 +114,6 @@ cp -rp $IMG_DIR/* $MOUNT_DIR && sync
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-syslinux --directory $DIRECTORY --install $DEV_LOOP && sync
-
 kpartx -d $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
