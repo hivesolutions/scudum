@@ -6,7 +6,6 @@ LABEL=${LABEL-SCUDUM}
 PREFIX=${PREFIX-/usr}
 BASE=${BASE-/mnt/builds}
 TARGET=${TARGET-$BASE/$NAME/rasp}
-DIRECTORY=${DIRECTORY-/boot/syslinux}
 SCHEMA=${SCHEMA-transient}
 KVARIANT=${KVARIANT-basic}
 SIZE=${SIZE-1073741824}
@@ -47,9 +46,9 @@ else
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install syslinux squashfs-tools dosfstools mtools kpartx
+    apt-get -y install squashfs-tools dosfstools mtools kpartx
 elif type scu &> /dev/null; then
-    env -u VERSION scu install syslinux squashfs-tools dosfstools mtools kpartx
+    env -u VERSION scu install squashfs-tools dosfstools mtools kpartx
 else
     exit 1
 fi
@@ -95,8 +94,6 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
 sleep $SLEEP_TIME && sync
-
-dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
