@@ -8,6 +8,8 @@ copy() {
     else
         file=$(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1)
     fi
+    
+    echo $file
 
     if [ -n $file ] ; then
         cp $file $TEMP_DIR/$2
@@ -50,8 +52,8 @@ sbinfiles="modprobe blkid switch_root pivot_root"
 
 # optional files and locations, meaning that if they don't exist
 # there's no critical error to be raised (optional)
-for f in mdadm udevd udevadm; do
-    if [ -x /sbin/$f ] ; then sbinfiles="$sbinfiles $f"; fi
+for file in mdadm udevd udevadm; do
+    if [ -x /sbin/$file ] ; then sbinfiles="$sbinfiles $file"; fi
 done
 
 # initializes a new temporary file that will be used to store
@@ -138,18 +140,18 @@ fi
 
 # installs basic binaries, that may be used under the
 # the linux rc script for processing
-for f in $binfiles ; do
-    unsort $f
-    copy $f bin
+for file in $binfiles ; do
+    unsort $file
+    copy $file bin
 done
 
 # adds lvm if present to the set of files that are considered
 # to be the system binaries (sbin)
 if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
 
-for f in $sbinfiles ; do
-    unsort $f
-    copy $f sbin
+for file in $sbinfiles ; do
+    unsort $file
+    copy $file sbin
 done
 
 # adds udevd libraries if not in /sbin, so that they may be used
