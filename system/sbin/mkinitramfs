@@ -65,9 +65,9 @@ unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 # the operation should be cross compilation ready
 unsort() {
     if [ -e /cross/bin/cross-ldd ]; then
-        (cross-ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted) &> /dev/null
+        (cross-ldd $(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted) &> /dev/null
     else
-        ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+        ldd $(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     fi
 }
 
@@ -196,6 +196,8 @@ if  [ -x /sbin/lvm ] ; then
 
     cp -a /etc/lvm $TEMP_DIR/etc
 fi
+
+cat $unsorted
 
 # installs libraries into the proper directory
 # so that they may be used at runtime, note that
