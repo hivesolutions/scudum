@@ -6,7 +6,6 @@ TARGET=${TARGET-/opt}
 CONCURRENCY=${CONCURRENCY-$(nproc)}
 NAME_L=${NAME_L-kernel}
 MAJOR=${MAJOR-3.x}
-MINOR=${MINOR-3.19}
 DATE=${DATE-$(date +%Y%m%d)}
 SAFE=${SAFE-0}
 BUILD=${BUILD-1}
@@ -26,10 +25,11 @@ fi
 case "$SCUDUM_ARCH" in
     arm)
         VARIANT=${VARIANT-${1-rpi}}
-        MINOR=3.18
+        MINOR=${MINOR-3.18}
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
+        MINOR=${MINOR-3.19}
         ;;
 esac
 
@@ -67,7 +67,7 @@ fi
 
 case "$SCUDUM_ARCH" in
     arm)
-        NAME=${NAME-linux-rpi}
+        NAME=${NAME-linux-rpi-$MINOR}
         ;;
     *)
         NAME=${NAME-linux-$MINOR}
