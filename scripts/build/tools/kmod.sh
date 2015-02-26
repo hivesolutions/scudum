@@ -17,3 +17,9 @@ cd kmod-$VERSION
     --with-zlib
 
 make && make pkgconfigdir=$PREFIX/lib/pkgconfig install
+
+for target in depmod insmod lsmod modinfo modprobe rmmod; do
+    ln -sv ../bin/kmod $PREFIX/sbin/$target
+done
+
+ln -sv kmod $PREFIX/bin/lsmod
