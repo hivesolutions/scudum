@@ -7,22 +7,10 @@ CONCURRENCY=${CONCURRENCY-$(nproc)}
 NAME_L=${NAME_L-kernel}
 MAJOR=${MAJOR-3.x}
 MINOR=${MINOR-3.19}
-VARIANT=${VARIANT-${1-basic}}
 DATE=${DATE-$(date +%Y%m%d)}
-VERSION=${VERSION-$MINOR-$DATE}
-FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
-FILE_CONFIG=${FILE_CONFIG-$FILE.config}
-FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
-REPO=${REPO-/mnt/builds/$NAME_L}
-CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
-FALLBACK=${FALLBACK-/boot/config.$VARIANT}
 SAFE=${SAFE-0}
 BUILD=${BUILD-1}
 DEPLOY=${DEPLOY-0}
-
-LATEST=$NAME_L-$VARIANT-latest
-LATEST_CONFIG=$LATEST.config
-LATEST_MODULES=$LATEST.modules.tar.gz
 
 set -e +h
 
@@ -32,6 +20,35 @@ set -e +h
 if [ -e /config ]; then
     source /config
 fi
+
+# switches over the selected/current scudum process architecture
+# so that the proper conditions are defined for target machines
+case "$SCUDUM_ARCH" in
+    arm)
+        VARIANT=${VARIANT-${1-rpi}}
+        MINOR=3.18
+        ;;
+    *)
+        VARIANT=${VARIANT-${1-basic}}
+        ;;
+esac
+
+# updates the various global variables that are going to be
+# used in the construction so that they represent the proper
+# values according to the target architecture
+VERSION=${VERSION-$MINOR-$DATE}
+FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
+FILE_CONFIG=${FILE_CONFIG-$FILE.config}
+FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
+REPO=${REPO-/mnt/builds/$NAME_L}
+CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
+FALLBACK=${FALLBACK-/boot/config.$VARIANT}
+
+# updates the latest values, resulting from the constuction of
+# the previous naming, as expected by the defined rules
+LATEST=$NAME_L-$VARIANT-latest
+LATEST_CONFIG=$LATEST.config
+LATEST_MODULES=$LATEST.modules.tar.gz
 
 # tries to detect the proper configuration file path by
 # verifying the existence of the config path, this strategy
