@@ -130,6 +130,12 @@ To safely build the latest kernel version and deploy it use:
     hash -r
     MINOR=3.19 VARIANT=basic DEPLOY=1 kernel.build
 
+To build kernel for the Raspberry Pi, with the proper toolchain installed use:
+
+    scu install scudum-system
+    hash -r
+    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
+
 ## Armor
 
 The armor client is the responsible for the installation of the various elements associated
