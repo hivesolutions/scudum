@@ -27,6 +27,11 @@ if [ -d $SCUDUM/tmp ]; then
     find . -delete
 fi
 
+if [ -e $SCUDUM/bin/bash.old ]; then
+    ln -f bash $SCUDUM/bin/sh
+    rm $SCUDUM/bin/bash.old
+fi
+
 rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
 rm -rf $SCUDUM/extra
