@@ -202,16 +202,11 @@ cat $unsorted
 # the unsorted (including duplicates) list is sorted
 # so that duplicated values/libraries are removed
 sort $unsorted | uniq | while read library ; do
-    echo "$library"
-
     if [[ "$library" != *".so"* ]] ||
         [ "$library" == "linux-vdso.so.1" ] ||
         [ "$library" == "linux-gate.so.1" ]; then
         continue
     fi
-
-    echo "PASSOU!!!"
-    echo $library
 
     copy $library lib
 done
