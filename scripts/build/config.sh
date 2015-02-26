@@ -6,7 +6,6 @@ DEV_BOOT=${DEV_BOOT-/dev/null}
 DEV_SWAP=${DEV_SWAP-/dev/null}
 DEV_ROOT=${DEV_ROOT-/dev/null}
 SCHEMA=${SCHEMA-transient}
-KVARIANT=${KVARIANT-basic}
 BCERT=${BCERT-1}
 BEXTRAS=${BEXTRAS-1}
 BACCOUNT=${BACCOUNT-1}
@@ -22,6 +21,19 @@ CHROOT=$DIR/../util/chroot.sh
 set -e +h
 
 source $DIR/base/config.sh
+
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
+fi
+
+case "$ARCH" in
+    arm)
+        KVARIANT=${KVARIANT-rasp}
+        ;;
+    *)
+        KVARIANT=${KVARIANT-basic}
+        ;;
+esac
 
 if [ ! -e $SCUDUM ]; then
     echo "config: scudum is not installed, not possible to configure"
