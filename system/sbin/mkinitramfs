@@ -195,6 +195,8 @@ if  [ -x /sbin/lvm ] ; then
     cp -a /etc/lvm $TEMP_DIR/etc
 fi
 
+cat $unsorted
+
 # installs libraries into the proper directory
 # so that they may be used at runtime, note that
 # the unsorted (including duplicates) list is sorted
@@ -207,7 +209,7 @@ sort $unsorted | uniq | while read library ; do
         [ "$library" == "linux-gate.so.1" ]; then
         continue
     fi
-    
+
     echo "PASSOU!!!"
     echo $library
 
