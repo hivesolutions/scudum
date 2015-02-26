@@ -26,7 +26,7 @@ if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
 
-case "$ARCH" in
+case "$SCUDUM_ARCH" in
     arm)
         KVARIANT=${KVARIANT-rasp}
         ;;
