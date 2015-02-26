@@ -11,7 +11,7 @@ cd kmod-$VERSION
     --prefix=$PREFIX\
     --bindir=$PREFIX/bin\
     --libdir=$PREFIX/lib\
-    --sysconfdir=/etc\
+    --sysconfdir=$PREFIX/etc\
     --disable-manpages\
     --with-xz\
     --with-zlib
