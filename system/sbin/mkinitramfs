@@ -64,9 +64,6 @@ unsort() {
     else
         ldd $(type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     fi
-    echo $1
-    cat $unsorted
-    echo "-------------------------"
 }
 
 # initializes the global variables that refer the operations
