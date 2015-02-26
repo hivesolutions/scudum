@@ -160,9 +160,9 @@ elif [ -x /lib/systemd/systemd-udevd ] ; then
     unsort /lib/systemd/systemd-udevd
 fi
 
-# creates some of the binaries symbolic links so that legacy
-# support is enabled for all the operations
-ln -s bash $TEMP_DIR/bin/sh
+# creates some of the binaries executables so that legacy
+# support is enabled/ensured for all the operations
+cp -p bash $TEMP_DIR/bin/sh
 
 # adds module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /bin/kmod ] ; then
