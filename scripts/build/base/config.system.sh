@@ -1,3 +1,5 @@
+export PERL5LIB="/tools/lib/perl5:/tools/lib/perl5/site_perl"
+
 if [ "$SCUDUM_CROSS" == "1" ]; then
     case "$SCUDUM_ARCH" in
         arm)
@@ -8,9 +10,9 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export LD="$ARCH_TARGET-ld"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-            export CFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
-            export CXXFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
-            export LDFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -R/usr/lib -R/lib"
+            export CFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -D__ARM_PCS_VFP"
+            export CXXFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib -D__ARM_PCS_VFP"
+            export LDFLAGS="-I/usr/include -I/include -L/usr/lib -L/lib"
             ;;
     esac
 fi
