@@ -87,7 +87,7 @@ mkdir -p $BUILDER && cd $BUILDER
 if [ ! -d "$NAME" ]; then
     case "$ARCH" in
         arm)
-            rm -rf $NAME && git clone --depth 1 https://github.com/raspberrypi/linux.git $NAME
+            rm -rf $NAME && git clone -b rpi-$MINOR.y --depth 1 https://github.com/raspberrypi/linux.git $NAME
             ;;
         *)
             rm -f $NAME.tar.xz && wget https://www.kernel.org/pub/linux/kernel/v$MAJOR/$NAME.tar.xz
