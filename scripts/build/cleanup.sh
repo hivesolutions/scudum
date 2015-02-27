@@ -47,4 +47,6 @@ rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 find $SCUDUM -name "*.pyc" -delete
 
-find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
+fi
