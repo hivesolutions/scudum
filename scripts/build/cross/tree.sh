@@ -14,6 +14,7 @@ ln -svf lib $PREFIX_CROSS/sysroot/lib32
 ln -svf lib $PREFIX_CROSS/sysroot/lib64
 ln -svf lib $PREFIX_CROSS/sysroot/usr/lib32
 ln -svf lib $PREFIX_CROSS/sysroot/usr/lib64
+ln -svf ../sysroot/usr $PREFIX_CROSS/$ARCH_TARGET/usr
 ln -svf ../sysroot/lib $PREFIX_CROSS/$ARCH_TARGET/lib
 ln -svf lib $PREFIX_CROSS/$ARCH_TARGET/lib32
 ln -svf lib $PREFIX_CROSS/$ARCH_TARGET/lib64
