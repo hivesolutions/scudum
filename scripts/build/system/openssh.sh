@@ -15,6 +15,10 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
 fi
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    export LD=$CC
+fi
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
