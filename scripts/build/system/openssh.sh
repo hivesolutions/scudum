@@ -15,7 +15,11 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
 fi
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
+# in case the linker is defined it must be overrides
+# as the default linker (ld) is not compatible with the
+# build process, must instead use the default compiler
+# to be able to correctly process the operations
+if [ "$LD" != "" ] && [ "$CC" != "" ]; then
     export LD=$CC
 fi
 
