@@ -90,6 +90,10 @@ if [ "$AUTORUN" == "1" ]; then
     cp -v $SCUDUM/isolinux/scudum.ico $IMG_DIR
 fi
 
+cp -rpv $SCUDUM/rasp/* $IMG_DIR
+cp -pv $SCUDUM/boot/vmlinuz $IMG_DIR/kernel.img
+cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
+
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
