@@ -1,17 +1,32 @@
 [ "$SCUDUM_CROSS" == "1" ] && exit 0 || true
 
 VERSION=${VERSION-4.3.1}
+VERSION_BIND=${VERSION_BIND-9.9.5-P1}
 
 set -e +h
+
+export BUILD_CC=gcc
 
 wget --no-check-certificate "ftp://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
 rm -rf dhcp-$VERSION && tar -zxf "dhcp-$VERSION.tar.gz"
 rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
 
+cd bind/bind-$VERSION_BIND
+wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
+patch -Np0 -i bind-$VERSION_BIND-xcompile.patch
+sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+cd ../..
+
+wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
+patch -Np0 -i dhcp-$VERSION-xcompile.patch
+
+sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+
 CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
-    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure\
+    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"' $CFLAGS" ./configure\
+    --host=$ARCH_TARGET\
     --prefix=/usr\
     --sysconfdir=/etc/dhcp\
     --localstatedir=/var\
