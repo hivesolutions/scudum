@@ -7,6 +7,10 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
+fi
+
 mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
 mountpoint -q $SCUDUM/proc && umount -v $SCUDUM/proc
