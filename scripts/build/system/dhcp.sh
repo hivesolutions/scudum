@@ -3,23 +3,26 @@ VERSION_BIND=${VERSION_BIND-9.9.5-P1}
 
 set -e +h
 
-export BUILD_CC=gcc
-
 wget --no-check-certificate "ftp://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
 rm -rf dhcp-$VERSION && tar -zxf "dhcp-$VERSION.tar.gz"
 rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
 
-cd bind/bind-$VERSION_BIND
-wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
-patch -Np0 -i bind-$VERSION_BIND-xcompile.patch
-sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
-cd ../..
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    export BUILD_CC=gcc
 
-wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
-patch -Np0 -i dhcp-$VERSION-xcompile.patch
+    cd bind
+    tar -zxvf bind-$VERSION_BIND
+    cd bind-$VERSION_BIND
+    wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
+    patch -Np0 -i bind-$VERSION_BIND-xcompile.patch
+    sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+    cd ../..
 
-sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+    wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
+    patch -Np0 -i dhcp-$VERSION-xcompile.patch
+    sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
+fi
 
 CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
