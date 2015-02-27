@@ -12,7 +12,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     export BUILD_CC=gcc
 
     cd bind
-    tar -zxvf bind-$VERSION_BIND
+    tar -zxf bind-$VERSION_BIND
     cd bind-$VERSION_BIND
     wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
     patch -Np0 -i bind-$VERSION_BIND-xcompile.patch
