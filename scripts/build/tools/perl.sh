@@ -13,3 +13,5 @@ make
 cp -v perl cpan/podlators/pod2man $PREFIX/bin
 mkdir -pv $PREFIX/lib/perl5/$VERSION
 cp -Rv lib/* $PREFIX/lib/perl5/$VERSION
+mkdir -pv $PREFIX/lib/perl5/$VERSION/pod
+cp -Rv pod/* $PREFIX/lib/perl5/$VERSION/pod
