@@ -1,3 +1,5 @@
+source /config
+
 if [ "$SCUDUM_CROSS" == "1" ]; then
     strip=/cross/bin/$ARCH_TARGET-strip
 else
