@@ -1,5 +1,3 @@
-[ "$SCUDUM_CROSS" == "1" ] && exit 0 || true
-
 VERSION=${VERSION-4.3.1}
 VERSION_BIND=${VERSION_BIND-9.9.5-P1}
 
