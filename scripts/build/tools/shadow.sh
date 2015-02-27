@@ -1,3 +1,5 @@
+[ "$SCUDUM_CROSS" == "0" ] && exit 0 || true
+
 VERSION=${VERSION-4.2.1}
 EXTENSION=${EXTENSION-tar.xz}
 

@@ -1,3 +1,5 @@
+[ "$SCUDUM_CROSS" == "0" ] && exit 0 || true
+
 VERSION=${VERSION-2.25.2}
 VERSION_MAJOR=${VERSION_MAJOR-2.25}
 

@@ -1,3 +1,5 @@
+[ "$SCUDUM_CROSS" == "0" ] && exit 0 || true
+
 VERSION=${VERSION-2.3.0}
 
 set -e +h
