@@ -15,12 +15,12 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     tar -zxf bind.tar.gz
     cd bind-$VERSION_BIND
     wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
-    patch -Np0 -i bind-$VERSION_BIND-xcompile.patch
+    patch -Np1 -i bind-$VERSION_BIND-xcompile.patch
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
     cd ../..
 
     wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
-    patch -Np0 -i dhcp-$VERSION-xcompile.patch
+    patch -Np1 -i dhcp-$VERSION-xcompile.patch
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 fi
 
