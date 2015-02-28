@@ -30,7 +30,7 @@ USE_FIRMWARE=${USE_FIRMWARE-1}
 if [ "$USE_FIRMWARE" == "1" ]; then
     DISK_SIZE=${DISK_SIZE-131072}
 else
-    DISK_SIZE=${DISK_SIZE-32768}
+    DISK_SIZE=${DISK_SIZE-16384}
 fi
 
 # verifies if the (optional) kernel version argument has been
