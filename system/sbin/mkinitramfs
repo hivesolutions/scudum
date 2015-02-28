@@ -36,7 +36,7 @@ fi
 # verifies if the (optional) kernel version argument has been
 # provided and if that's the case stores it under the proper
 # variable so that it may be used latter for operations
-if [ "$1" != "" ] ; then
+if [ ! -z "$1" ] ; then
     KERNEL_VERSION=$1
 fi
 
