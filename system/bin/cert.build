@@ -6,7 +6,7 @@ SSLDIR=${SSLDIR-/usr/ssl}
 
 set -e +h
 
-if [ -e ${SSLDIR}/ca-bundle.crt ] && [ "$FORCE" != "1" ]; then
+if [ -e $SSLDIR/ca-bundle.crt ] && [ "$FORCE" != "1" ]; then
     exit 0
 fi
 
@@ -15,11 +15,11 @@ rm -f certdata.txt &&\
     make-ca.sh &&\
     remove-expired-certs.sh certs
 
-install -d ${SSLDIR}/certs &&\
-    cp -v certs/*.pem ${SSLDIR}/certs &&\
+install -d $SSLDIR/certs &&\
+    cp -v certs/*.pem $SSLDIR/certs &&\
     c_rehash &&\
-    install ca-bundle*.crt ${SSLDIR}/ca-bundle.crt &&\
-    ln -sfv ../ca-bundle.crt ${SSLDIR}/certs/ca-certificates.crt
+    install ca-bundle*.crt $SSLDIR/ca-bundle.crt &&\
+    ln -sfv ../ca-bundle.crt $SSLDIR/certs/ca-certificates.crt
 
 rm -r certs ca-bundle*
 rm -f certdata.txt
