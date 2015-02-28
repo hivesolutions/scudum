@@ -92,7 +92,7 @@ fi
 
 cp -rpv $SCUDUM/rasp/* $IMG_DIR
 cp -pv $SCUDUM/boot/vmlinuz $IMG_DIR/kernel.img
-cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
+cp -pv $SCUDUM/boot/initrd.basic.img $IMG_DIR/initrd.img
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
