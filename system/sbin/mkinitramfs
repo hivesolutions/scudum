@@ -17,6 +17,9 @@ copy() {
         exit 1
     fi
 }
+# tries to retrieve the proper naming to be used for default
+# labeling in the initrd file that is going to be created
+INITRAMFS_FILE=${INITRAMFS_FILE-initrd.img}
 
 # intializes any of the control flags that will handle
 # and control the way the package is going to be created
@@ -33,11 +36,8 @@ fi
 # verifies if the (optional) kernel version argument has been
 # provided and if that's the case stores it under the proper
 # variable so that it may be used latter for operations
-if [ -z $1 ] ; then
-    INITRAMFS_FILE=initrd.img
-else
+if [ "$1" != "" ] ; then
     KERNEL_VERSION=$1
-    INITRAMFS_FILE=initrd.img
 fi
 
 if [ -n "$KERNEL_VERSION" ] && [ ! -d "/lib/modules/$1" ] ; then
