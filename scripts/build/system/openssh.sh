@@ -30,7 +30,11 @@ fi
     --with-md5-passwords\
     --with-privsep-path=/var/lib/sshd
 
-make && make install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make && make STRIP_OPT="" install-nokeys
+else
+    make && make install
+fi
 
 install -v -m755 contrib/ssh-copy-id /usr/bin
 install -v -m644 contrib/ssh-copy-id.1 /usr/share/man/man1
