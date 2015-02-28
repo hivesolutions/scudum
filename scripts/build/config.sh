@@ -96,4 +96,4 @@ test $BEXTRAS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build
 test $BACCOUNT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build
 test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT
 test $BINIT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build
-test $BRAMFS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /sbin/mkinitramfs
+test $BRAMFS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build
