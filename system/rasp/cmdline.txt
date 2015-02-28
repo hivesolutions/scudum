@@ -1,1 +1,1 @@
-initrd=0x00f00000 init=/linuxrc initcall_debug loglevel=7 load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=131072 root=/dev/ram rw
+initrd=0x00f00000 init=/linuxrc initcall_debug loglevel=7 load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=16384 root=/dev/ram rw
