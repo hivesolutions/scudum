@@ -32,6 +32,7 @@ case "$ARCH" in
     arm)
         VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-3.18}
+        CFLAGS="$CFLAGS -mfloat-abi=soft"
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
