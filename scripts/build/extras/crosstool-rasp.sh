@@ -16,7 +16,6 @@ CT_PREFIX_DIR="/opt/${CT_TARGET}"
 CT_ARCH_FPU="vfp"
 CT_ARCH_FLOAT_HW=y
 CT_ARCH_arm=y
-CT_ARCH_SUFFIX="v6"
 CT_ARCH_ARCH="armv6zk"
 CT_ARCH_CPU="arm1176jzf-s"
 CT_ARCH_TUNE="arm1176jzf-s"
