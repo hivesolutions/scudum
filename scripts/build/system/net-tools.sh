@@ -11,7 +11,7 @@ wget --no-check-certificate http://www.linuxfromscratch.org/patches/blfs/7.5/net
 patch -Np1 -i net-tools-$VERSION-remove_dups-1.patch
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    yes "" | ./configure.sh config.status > /dev/null
+    yes "" | ./configure.sh config.in > /dev/null
     make CC=$CC LD=$LD && make install
 else
     yes "" | make config > /dev/null
