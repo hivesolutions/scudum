@@ -27,7 +27,7 @@ USE_FIRMWARE=${USE_FIRMWARE-1}
 
 # defines the proper size (in kilo-bytes) for the disk to be
 # created taking into account the current configuration
-if [ "USE_FIRMWARE" == "1" ]; then
+if [ "$USE_FIRMWARE" == "1" ]; then
     DISK_SIZE=${DISK_SIZE-131072}
 else
     DISK_SIZE=${DISK_SIZE-32768}
