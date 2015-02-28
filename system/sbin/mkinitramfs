@@ -22,6 +22,14 @@ copy() {
 # and control the way the package is going to be created
 USE_FIRMWARE=${USE_FIRMWARE-1}
 
+# defines the proper size (in kilo-bytes) for the disk to be
+# created taking into account the current configuration
+if [ "USE_FIRMWARE" == "1" ]; then
+    DISK_SIZE=${DISK_SIZE-131072}
+else
+    DISK_SIZE=${DISK_SIZE-32768}
+fi
+
 if [ -z $1 ] ; then
     INITRAMFS_FILE=initrd.img
 else
@@ -81,7 +89,7 @@ TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 # creates the ramdisk file and zeros it taking into
 # account the requested size (this is very important)
 rm -f ramdisk
-dd if=/dev/zero of=ramdisk bs=1k count=131072 &> /dev/null
+dd if=/dev/zero of=ramdisk bs=1k count=$DISK_SIZE &> /dev/null
 losetup /dev/loop1 ramdisk
 
 # creates the the ext2 based file system in the loop
