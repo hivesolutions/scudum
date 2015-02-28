@@ -30,6 +30,9 @@ else
     DISK_SIZE=${DISK_SIZE-32768}
 fi
 
+# verifies if the (optional) kernel version argument has been
+# provided and if that's the case stores it under the proper
+# variable so that it may be used latter for operations
 if [ -z $1 ] ; then
     INITRAMFS_FILE=initrd.img
 else
