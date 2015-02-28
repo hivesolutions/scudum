@@ -11,7 +11,7 @@ CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
 BKERNEL=${BKERNEL-0}
 BINIT=${BINIT-0}
-BRAMFS=${BRAMFS-0}
+BINITRD=${BINITRD-0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -30,7 +30,7 @@ fi
 apt-get -y install lxc-docker
 
 if [ "$CONFIG" == "1" ]; then
-    SCHEMA=$SCHEMA KVARIANT=$KVARIANT BKERNEL=$BKERNEL BINIT=$BINIT BRAMFS=$BRAMFS $DIR/config.sh
+    SCHEMA=$SCHEMA KVARIANT=$KVARIANT BKERNEL=$BKERNEL BINIT=$BINIT BINITRD=$BINITRD $DIR/config.sh
 fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then

@@ -11,7 +11,7 @@ BEXTRAS=${BEXTRAS-1}
 BACCOUNT=${BACCOUNT-1}
 BKERNEL=${BKERNEL-1}
 BINIT=${BINIT-1}
-BRAMFS=${BRAMFS-1}
+BINITRD=${BINITRD-1}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
 
 BASE=$(pwd)
@@ -96,4 +96,4 @@ test $BEXTRAS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build
 test $BACCOUNT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build
 test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT
 test $BINIT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build
-test $BRAMFS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build
+test $BINITRD == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build
