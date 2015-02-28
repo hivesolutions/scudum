@@ -14,6 +14,7 @@ BLOCK_SIZE=${BLOCK_SIZE-4096}
 HEADS=${HEADS-255}
 SECTORS=${SECTORS-63}
 BYTES_SECTOR=${BYTES_SECTOR-512}
+BASIC_INITRD=${BASIC_INITRD-1}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
@@ -92,7 +93,12 @@ fi
 
 cp -rpv $SCUDUM/rasp/* $IMG_DIR
 cp -pv $SCUDUM/boot/vmlinuz $IMG_DIR/kernel.img
-cp -pv $SCUDUM/boot/initrd.basic.img $IMG_DIR/initrd.img
+
+if [ "$BASIC_INITRD" == "1" ]; then
+    cp -pv $SCUDUM/boot/initrd.basic.img $IMG_DIR/initrd.img
+else
+    cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
+fi
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
