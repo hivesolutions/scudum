@@ -12,5 +12,10 @@ cd net-tools-$VERSION
 wget --no-check-certificate http://www.linuxfromscratch.org/patches/blfs/7.5/net-tools-$VERSION-remove_dups-1.patch
 patch -Np1 -i net-tools-$VERSION-remove_dups-1.patch
 
-yes "" | make config > /dev/null
-make && make install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    yes "" | ./configure.sh config.status > /dev/null
+    make CC=$CC LD=$LD && make install
+else
+    yes "" | make config > /dev/null
+    make && make install
+fi
