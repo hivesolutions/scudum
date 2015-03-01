@@ -5,6 +5,7 @@ if [ -e /etc/scudum/RUNNING ]; then
     if [ ! -z GCC_BUILD_TUNE ]; then export EFLAGS="$EFLAGS -mtune=$GCC_BUILD_TUNE"; fi
     if [ ! -z GCC_BUILD_FPU ]; then export EFLAGS="$EFLAGS -mfpu=$GCC_BUILD_FPU"; fi
     if [ ! -z GCC_BUILD_FLOAT ]; then export EFLAGS="$EFLAGS -mfloat-abi=$GCC_BUILD_FLOAT"; fi
+    if [ "$GCC_BUILD_FLOAT" == "hard" ]; then export EFLAGS="$EFLAGS -D__ARM_PCS_VFP"; fi
     export CFLAGS="$CFLAGS $EFLAGS"
     export CXXFLAGS="$CXXFLAGS $EFLAGS"
 else
