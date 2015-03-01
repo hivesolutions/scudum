@@ -1,4 +1,13 @@
-if [ ! -e /etc/scudum/RUNNING ]; then
+if [ -e /etc/scudum/RUNNING ]; then
+    export EFLAGS=""
+    if [ -d GCC_BUILD_ARCH ]; then export EFLAGS="$EFLAGS -march=$GCC_BUILD_ARCH"; fi
+    if [ -d GCC_BUILD_CPU ]; then export EFLAGS="$EFLAGS -mcpu=$GCC_BUILD_CPU"; fi
+    if [ -d GCC_BUILD_TUNE ]; then export EFLAGS="$EFLAGS -mtune=$GCC_BUILD_TUNE"; fi
+    if [ -d GCC_BUILD_FPU ]; then export EFLAGS="$EFLAGS --mfpu=$GCC_BUILD_FPU"; fi
+    if [ -d GCC_BUILD_FLOAT ]; then export EFLAGS="$EFLAGS --mfloat=$GCC_BUILD_FLOAT"; fi
+    export CFLAGS="$CFLAGS $EFLAGS"
+    export CXXFLAGS="$CXXFLAGS $EFLAGS"
+else
     case "$SCUDUM_ARCH" in
         arm)
             export CC="$ARCH_TARGET-gcc"
@@ -6,13 +15,6 @@ if [ ! -e /etc/scudum/RUNNING ]; then
             export AR="$ARCH_TARGET-ar"
             export RANLIB="$ARCH_TARGET-ranlib"
             export LD="$ARCH_TARGET-ld"
-            ;;
-    esac
-else
-    case "$SCUDUM_ARCH" in
-        arm)
-            export CFLAGS="-march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard"
-            export CXXFLAGS="-march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard"
             ;;
     esac
 fi
