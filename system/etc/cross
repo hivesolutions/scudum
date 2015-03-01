@@ -3,8 +3,8 @@ if [ -e /etc/scudum/RUNNING ]; then
     if [ ! -z GCC_BUILD_ARCH ]; then export EFLAGS="$EFLAGS -march=$GCC_BUILD_ARCH"; fi
     if [ ! -z GCC_BUILD_CPU ]; then export EFLAGS="$EFLAGS -mcpu=$GCC_BUILD_CPU"; fi
     if [ ! -z GCC_BUILD_TUNE ]; then export EFLAGS="$EFLAGS -mtune=$GCC_BUILD_TUNE"; fi
-    if [ ! -z GCC_BUILD_FPU ]; then export EFLAGS="$EFLAGS --mfpu=$GCC_BUILD_FPU"; fi
-    if [ ! -z GCC_BUILD_FLOAT ]; then export EFLAGS="$EFLAGS --mfloat=$GCC_BUILD_FLOAT"; fi
+    if [ ! -z GCC_BUILD_FPU ]; then export EFLAGS="$EFLAGS -mfpu=$GCC_BUILD_FPU"; fi
+    if [ ! -z GCC_BUILD_FLOAT ]; then export EFLAGS="$EFLAGS -mfloat=$GCC_BUILD_FLOAT"; fi
     export CFLAGS="$CFLAGS $EFLAGS"
     export CXXFLAGS="$CXXFLAGS $EFLAGS"
 else
