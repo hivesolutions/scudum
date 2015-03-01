@@ -46,3 +46,7 @@ ln -sv gcc /usr/bin/cc
 
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+
+if [ "$GCC_BUILD_FLOAT" == "hard" ]; then
+    ln -sv /usr/include/gnu/stubs-hard.h /usr/include/gnu/stubs-soft.h
+fi
