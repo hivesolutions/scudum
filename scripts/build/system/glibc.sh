@@ -129,3 +129,7 @@ include /etc/ld.so.conf.d/*.conf
 EOF
 
 mkdir -pv /etc/ld.so.conf.d
+
+if [ "$GCC_BUILD_FLOAT" == "hard" ]; then
+    ln -sv stubs-hard.h /usr/include/gnu/stubs-soft.h
+fi
