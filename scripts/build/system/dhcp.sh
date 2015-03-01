@@ -24,9 +24,9 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 fi
 
-CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
+CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
-    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"' $CFLAGS" ./configure\
+    -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --sysconfdir=/etc/dhcp\

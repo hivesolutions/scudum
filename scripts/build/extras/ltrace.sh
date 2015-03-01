@@ -8,8 +8,8 @@ source $DIR/common.sh
 
 depends "libelf"
 
-export CFLAGS="-Wno-unused-local-typedefs"
-export CXXFLAGS="-Wno-unused-local-typedefs"
+export CFLAGS="-O2 -Wno-unused-local-typedefs"
+export CXXFLAGS="-O2 -Wno-unused-local-typedefs"
 
 wget "http://ltrace.org/ltrace_$VERSION.orig.tar.bz2"
 rm -rf ltrace-$VERSION && tar -jxf "ltrace_$VERSION.orig.tar.bz2"
