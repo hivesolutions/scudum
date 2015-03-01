@@ -6,6 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
+if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 export CFLAGS="$CFLAGS -fPIC"
 
 rget "http://liba52.sourceforge.net/files/a52dec-$VERSION.tar.gz"\

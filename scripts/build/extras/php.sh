@@ -8,6 +8,7 @@ source $DIR/common.sh
 
 unset MAKEFLAGS
 
+if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 export CFLAGS="$CFLAGS -fpic"
 
 wget "http://php.net/get/php-$VERSION.tar.gz/from/this/mirror" "--output-document=php-$VERSION.tar.gz"
