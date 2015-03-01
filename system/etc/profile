@@ -1,7 +1,7 @@
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 source /etc/colors
-if [ -e /config ]; then source /config; fi
+if [ ! -e /etc/scudum/RUNNING ] && [ -e /config ]; then source /config; fi
 if [ "$SCUDUM_CROSS" == "1" ]; then source $DIR/cross; fi
 
 export PATH="~/.local/bin:~/.local/sbin:/opt/bin:/opt/sbin:/pst/bin:/pst/sbin:$PATH"

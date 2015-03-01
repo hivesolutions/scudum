@@ -8,4 +8,11 @@ if [ ! -e /etc/scudum/RUNNING ]; then
             export LD="$ARCH_TARGET-ld"
             ;;
     esac
+else
+    case "$SCUDUM_ARCH" in
+        arm)
+            export CFLAGS="-march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard"
+            export CXXFLAGS="-march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard"
+            ;;
+    esac
 fi
