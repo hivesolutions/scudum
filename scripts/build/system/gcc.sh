@@ -3,6 +3,8 @@ VERSION=${VERSION-4.8.4}
 set -e +h
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
+    if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
     export CFLAGS="$CFLAGS -fno-exceptions"
     export CXXFLAGS="$CXXFLAGS -fno-exceptions"
 fi
