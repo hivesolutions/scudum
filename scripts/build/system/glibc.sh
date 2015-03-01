@@ -15,19 +15,13 @@ cd ..
 rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    multiarch=
-else
-    multiarch="--$GCC_MULTIARCH-multi-arch"
-fi
-
 ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --disable-profile\
     --enable-kernel=2.6.32\
     --libexecdir=/usr/lib/glibc\
-    $multiarch
+    --$GCC_MULTIARCH-multi-arch
 
 make
 
