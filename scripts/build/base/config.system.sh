@@ -10,8 +10,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export LD="$ARCH_TARGET-ld"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-            export CFLAGS="-I/usr/include -I/include -D__ARM_PCS_VFP -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
-            export CXXFLAGS="-I/usr/include -I/include -D__ARM_PCS_VFP -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+            export CFLAGS="-O3 -I/usr/include -I/include -D__ARM_PCS_VFP -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+            export CXXFLAGS="-O3 -I/usr/include -I/include -D__ARM_PCS_VFP -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
             export LDFLAGS="-L/usr/lib -L/lib"
             ;;
     esac
