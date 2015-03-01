@@ -1,3 +1,5 @@
+if [ -e /etc/scudum/RUNNING ]; then exit 0; fi
+
 case "$SCUDUM_ARCH" in
     arm)
         export CC="$ARCH_TARGET-gcc"
