@@ -124,6 +124,10 @@ EOF
 
 mkdir -pv /etc/ld.so.conf.d
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/ldd
+fi
+
 if [ "$GCC_BUILD_FLOAT" == "hard" ]; then
     ln -sv stubs-hard.h /usr/include/gnu/stubs-soft.h
 fi
