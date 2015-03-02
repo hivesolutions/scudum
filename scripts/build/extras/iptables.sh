@@ -6,6 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
+export ac_cv_func_malloc_0_nonnull=yes
+export ac_cv_func_realloc_0_nonnull=yes
+
 wget "http://www.netfilter.org/projects/iptables/files/iptables-$VERSION.tar.bz2"
 rm -rf iptables-$VERSION && tar -jxf "iptables-$VERSION.tar.bz2"
 rm -f "iptables-$VERSION.tar.bz2"
