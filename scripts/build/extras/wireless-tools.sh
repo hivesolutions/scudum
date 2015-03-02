@@ -11,4 +11,8 @@ rm -rf wireless_tools.$VERSION && tar -zxf "wireless_tools.$VERSION.tar.gz"
 rm -f "wireless_tools.$VERSION.tar.gz"
 cd wireless_tools.$VERSION
 
-make && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
+else
+    make && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
+fi
