@@ -7,6 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
+if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1\
     -DSQLITE_ENABLE_COLUMN_METADATA=1\
     -DSQLITE_ENABLE_UNLOCK_NOTIFY=1\
