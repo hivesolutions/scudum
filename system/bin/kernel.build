@@ -23,7 +23,7 @@ fi
 # defines the proper (target) architecture for the building process
 # taking into account the requested one, then the configured on and
 # if all is not defined the pre-defined one (intel)
-ARCH=${ARCH-${SCUDUM_ARCH-x86}}
+ARCH=${ARCH-${SCUDUM_BARCH-x86}}
 TARGET=${TARGET-${ARCH_TARGET-}}
 
 # switches over the selected/current scudum process architecture

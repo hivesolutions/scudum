@@ -12,7 +12,7 @@ if [ -e /config ]; then
     source /config
 fi
 
-ARCH=${ARCH-${SCUDUM_ARCH-x86}}
+ARCH=${ARCH-${SCUDUM_BARCH-x86}}
 
 case "$ARCH" in
     arm*)

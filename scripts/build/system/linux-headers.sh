@@ -8,8 +8,8 @@ rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION
 
 make mrproper
-make ARCH=$SCUDUM_ARCH headers_check
-make ARCH=$SCUDUM_ARCH INSTALL_HDR_PATH=dest headers_install
+make ARCH=$SCUDUM_BARCH headers_check
+make ARCH=$SCUDUM_BARCH INSTALL_HDR_PATH=dest headers_install
 
 find dest/include \( -name .install -o -name ..install.cmd \) -delete
 cp -rv dest/include/* /usr/include

@@ -118,6 +118,18 @@ case "$GCC_FLAVOUR" in
         ;;
 esac
 
+# uses the base arch value and normalizes it so that the (base) arch
+# is more generalized (eg: arm6, arm7, arm8 are all considered arm)
+# this is usefull for operations where the general cpu description is
+# required instead of the more specific version of the cpu
+case "$SCUDUM_ARCH" in
+    arm*)
+        export SCUDUM_BARCH=arm
+    *)
+        export SCUDUM_BARCH=$SCUDUM_ARCH
+        ;;
+esac
+
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
@@ -129,6 +141,7 @@ print_scudum() {
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "SCUDUM_CROSS := $SCUDUM_CROSS"
+    echo "SCUDUM_BARCH := $SCUDUM_BARCH"
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
