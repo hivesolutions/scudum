@@ -17,9 +17,11 @@ ARCH=${ARCH-${SCUDUM_ARCH-x86}}
 case "$ARCH" in
     arm)
         VARIANT=${VARIANT-${1-rasp}}
+        KNAME=${KNAME-${2-vmlinuz}}
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
+        KNAME=${KNAME-${2-vmlinuz}}
         ;;
 esac
 
@@ -36,7 +38,7 @@ wget "$REPO/$NAME-$VARIANT-$VERSION"
 wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
 
-cp -v $NAME-$VARIANT-$VERSION /boot/vmlinuz
+cp -v $NAME-$VARIANT-$VERSION /boot/$KNAME
 
 cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 
