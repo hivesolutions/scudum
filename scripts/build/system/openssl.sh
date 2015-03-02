@@ -4,7 +4,9 @@ set -e +h
 
 unset MAKEFLAGS
 
+if [ -z "$CC" ]; then export CC="gcc"; fi
 if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
+export CC="$CC $CFLAGS"
 
 wget --no-check-certificate "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
@@ -17,6 +19,6 @@ else
     ./config shared --prefix=/usr --openssldir=/usr/ssl
 fi
 
-make CFLAGS="$CFLAGS" && make install
+make && make install
 
 ln -sv /usr/ssl /etc/ssl
