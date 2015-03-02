@@ -42,7 +42,12 @@ CFLAGS += -I/usr/include/libnl3
 EOF
 
 cd wpa_supplicant
-make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
+else
+    make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
+fi
 
 mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/share
