@@ -29,7 +29,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make python Parser/pgen sharedmods
     
-    cd ..
+    cd ../Python-$VERSION
 
     export PATH="../Python-$VERSION-build:$PATH"
     #cp -p python python_for_build
