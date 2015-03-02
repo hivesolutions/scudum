@@ -12,6 +12,7 @@ rm -f "libnl-$VERSION.tar.gz"
 cd libnl-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
     --disable-static
