@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.3.0}
+VERSION=${VERSION-2.3.1}
 
 set -e +h
 
@@ -9,6 +9,10 @@ cd git-$VERSION
 
 sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 
-./configure --host=$ARCH_TARGET --prefix=/usr
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ./configure --host=$ARCH_TARGET --prefix=/usr --with-perl=/tools/bin/perl
+else
+    ./configure --host=$ARCH_TARGET --prefix=/usr
+fi
 
 make && make install
