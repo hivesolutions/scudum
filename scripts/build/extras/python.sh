@@ -15,6 +15,7 @@ cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     CC=gcc\
+    CXX=g++\
     RANLIB=ranlib\
     CFLAGS="-I/tools/include"\
     LDFLAGS="-L/tools/lib"\
@@ -23,21 +24,20 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     C_INCLUDE_PATH="/tools/include" ./configure
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
-    LIBRARY_PATH="/tools/lib" make python Parser/pgen
+    LIBRARY_PATH="/tools/lib" make python Parser/pgen sharedmods
 
     export PATH="binaries:$PATH"
     mkdir binaries && cp -p python binaries
-    mv python python_for_build
-    mv Parser/pgen Parser/pgen_for_build
+    cp -p python python_for_build
+    cp -p Parser/pgen Parser/pgen_for_build
     make distclean
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
     ./configure --build=$SCUDUM_ARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
-    make BUILDPYTHON=python_for_build
-    make install
 else
     ./configure --prefix=$PREFIX --enable-shared
-    make && make install
 fi
+
+make && make install
