@@ -143,7 +143,8 @@ To build kernel for the Raspberry Pi, with the proper toolchain installed use:
     hash -r
     export CFLAGS="-O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp \
     -mfloat-abi=hard"
-    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
+    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi VARIANT=rasp2 \
+    DEPLOY=1 kernel.build
 
 For the Raspberry Pi 2 kernel build process some extra optimization flags may be used so
 that some more performance juice may be extraceted:
