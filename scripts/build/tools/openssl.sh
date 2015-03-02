@@ -1,10 +1,14 @@
 VERSION=${VERSION-1.0.1l}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
+
+source $DIR/../base/functions.sh
 
 unset MAKEFLAGS
 
-wget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
+rget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
