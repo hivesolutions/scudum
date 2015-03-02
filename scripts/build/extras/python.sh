@@ -30,10 +30,27 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make python Parser/pgen sharedmods
 
+    cp -p python python_for_build
+    cp -p Parser/pgen Parser/pgen_for_build
+
     cd ../Python-$VERSION
     export PATH="$PYTHON_BUILD_DIR:$PATH"
     cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen
     cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen_for_build
+
+    CC=gcc\
+    RANLIB=ranlib\
+    CFLAGS="-I/tools/include"\
+    LDFLAGS="-L/tools/lib"\
+    LD_LIBRARY_PATH="/tools/lib"\
+    LIBRARY_PATH="/tools/lib"\
+    C_INCLUDE_PATH="/tools/include" ./configure
+    C_INCLUDE_PATH="/tools/include"\
+    LD_LIBRARY_PATH="/tools/lib"\
+    LIBRARY_PATH="/tools/lib" make Parser/pgen
+    make distclean
+
+    cp -p Parser/pgen Parser/pgen_for_build
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
