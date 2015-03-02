@@ -12,5 +12,5 @@ rm -rf cifs-utils-$VERSION && tar -jxf "cifs-utils-$VERSION.tar.bz2"
 rm -f "cifs-utils-$VERSION.tar.bz2"
 cd cifs-utils-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
