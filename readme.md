@@ -42,7 +42,7 @@ build is controlled and does not compile using any (unwanted) optimization and r
 To be able to create a cross compilation based ARM build for the Raspberry Pi system you may change the way
 the root environment is created with:
 
-    SCUDUM_ARCH=arm SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
     GCC_BUILD_ARCH=armv6zk GCC_BUILD_CPU=arm1176jzf-s GCC_BUILD_TUNE=arm1176jzf-s \
     GCC_BUILD_FPU=vfp GCC_BUILD_FLOAT=hard scudum root
 
