@@ -26,3 +26,7 @@ make install
 
 ln -sv eqn /usr/bin/geqn
 ln -sv tbl /usr/bin/gtbl
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/afmtodit
+fi
