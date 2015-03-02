@@ -33,7 +33,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 
     export PATH="../Python-$VERSION-build:$PATH"
     #cp -p python python_for_build
-    cp -p for_build/Parser/pgen Parser/pgen_for_build
+    cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen_for_build
     #make distclean
 
     ac_cv_file__dev_ptmx=no\
