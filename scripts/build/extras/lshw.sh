@@ -11,4 +11,8 @@ rm -rf lshw-$VERSION && tar -zxf "lshw-$VERSION.tar.gz"
 rm -f "lshw-$VERSION.tar.gz"
 cd lshw-$VERSION
 
-make && make install PREFIX=$PREFIX
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" && make install PREFIX=$PREFIX
+else
+    make && make install PREFIX=$PREFIX
+fi
