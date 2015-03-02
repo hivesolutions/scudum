@@ -15,7 +15,6 @@ cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     CC=gcc\
-    CXX=g++\
     RANLIB=ranlib\
     CFLAGS="-I/tools/include"\
     LDFLAGS="-L/tools/lib"\
