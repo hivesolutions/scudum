@@ -30,7 +30,7 @@ if [ "$REBUILD" == "1" ]; then
     exit $?
 fi
 
-echo "kernel.install: deploying $VARIANT kernel files for $ARCH"
+echo "kernel.install: deploying $VARIANT kernel files with name $KNAME for $ARCH"
 
 rm -f $NAME-$VARIANT-$VERSION*
 
