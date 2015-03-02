@@ -95,6 +95,6 @@ test $BCERT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/cert.build
 test $BEXTRAS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build
 test $BACCOUNT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build
 test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT
-test $BKERNEL == "1" && test "$KVARIANT" == "rasp" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT2 vmlinuz7
+test $BKERNEL == "1" && test "$KVARIANT" == "rasp" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install "$KVARIANT"2 vmlinuz7
 test $BINIT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build
 test $BINITRD == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build
