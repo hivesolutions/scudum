@@ -14,7 +14,7 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    cp ../Python-$VERSION for_build
+    cp -rp ../Python-$VERSION for_build
     cd for_build
 
     CC=gcc\
