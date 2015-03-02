@@ -4,7 +4,7 @@ set -e +h
 
 unset MAKEFLAGS
 
-wget --no-check-certificate "http://mirrors.ibiblio.org/openssl/source/openssl-1.0.1l.tar.gz"
+wget --no-check-certificate "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
