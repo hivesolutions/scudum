@@ -4,15 +4,32 @@
 # (this allows for larger builds using volatile system)
 export PERSIST=${PERSIST-/pst}
 
+# tries to retrive the proper (cpu) architecture from the
+# current system in case it has not been provided by the
+# user through the command line options (as expected)
+export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
+
+# uses the base arch value and normalizes it so that the (base) arch
+# is more generalized (eg: arm6, arm7, arm8 are all considered arm)
+# this is usefull for operations where the general cpu description is
+# required instead of the more specific version of the cpu
+case "$SCUDUM_ARCH" in
+    arm*)
+        export SCUDUM_BARCH=arm
+        ;;
+    *)
+        export SCUDUM_BARCH=$SCUDUM_ARCH
+        ;;
+esac
+
 # exports a series of environment variables that
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_HOST=${SCUDUM_HOST-$(uname -m)}
-export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
 export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
 export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
 export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}
-export SCUDUM_MARCH=${SCUDUM_ARCH//_/-}
+export SCUDUM_MARCH=${SCUDUM_BARCH//_/-}
 export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_HOST-scudum-$SCUDUM_SYSTEM_H}
 
 # exports the version string value for the current
@@ -22,7 +39,7 @@ export VERSION=${VERSION-$(date +%Y%m%d)}
 
 # exports the generic target value for an arch based
 # infra-structure may be used in final scudum build
-export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_ARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
+export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
@@ -65,7 +82,7 @@ ntfsprogs wireless-tools wpa-supplicant"
 # and the hosting one and according to that defines the default
 # value to be used in the scudum cross (compilation) flag, note
 # that this value may allway be overriden by command line
-if [ "$SCUDUM_ARCH" != "$SCUDUM_HOST" ]; then
+if [ "$SCUDUM_BARCH" != "$SCUDUM_HOST" ]; then
     export SCUDUM_CROSS=${SCUDUM_CROSS-1}
 else
     export SCUDUM_CROSS=${SCUDUM_CROSS-0}
@@ -118,31 +135,18 @@ case "$GCC_FLAVOUR" in
         ;;
 esac
 
-# uses the base arch value and normalizes it so that the (base) arch
-# is more generalized (eg: arm6, arm7, arm8 are all considered arm)
-# this is usefull for operations where the general cpu description is
-# required instead of the more specific version of the cpu
-case "$SCUDUM_ARCH" in
-    arm*)
-        export SCUDUM_BARCH=arm
-        ;;
-    *)
-        export SCUDUM_BARCH=$SCUDUM_ARCH
-        ;;
-esac
-
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
     echo "SCUDUM_HOST := $SCUDUM_HOST"
     echo "SCUDUM_ARCH := $SCUDUM_ARCH"
+    echo "SCUDUM_BARCH := $SCUDUM_BARCH"
     echo "SCUDUM_VENDOR := $SCUDUM_VENDOR"
     echo "SCUDUM_SYSTEM := $SCUDUM_SYSTEM"
     echo "SCUDUM_SYSTEM_H := $SCUDUM_SYSTEM_H"
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "SCUDUM_CROSS := $SCUDUM_CROSS"
-    echo "SCUDUM_BARCH := $SCUDUM_BARCH"
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
