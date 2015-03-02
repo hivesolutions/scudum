@@ -21,7 +21,8 @@ cd perl-$VERSION
 echo "127.0.0.1 localhost" > /etc/hosts
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/which "$p" >&/dev/null/true/' cnf/configure_prog.sh
+    sed -i 's/which "$p" >&\/dev\/null/true/' cnf/configure_prog.sh
+    sed -i 's/which "$_force" >&\/dev\/null/true/' cnf/configure_prog.sh
     ./configure --target=$ARCH_TARGET --prefix=/usr
 else
     sh Configure -des -Dprefix=/usr\
