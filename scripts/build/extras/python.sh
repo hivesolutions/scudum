@@ -14,8 +14,9 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    cp -rp ../Python-$VERSION for_build
-    cd for_build
+    cd ..
+    cp -rp Python-$VERSION Python-$VERSION-build
+    cd Python-$VERSION-build
 
     CC=gcc\
     RANLIB=ranlib\
@@ -30,7 +31,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     
     cd ..
 
-    export PATH="for_build:$PATH"
+    export PATH="../Python-$VERSION-build:$PATH"
     #cp -p python python_for_build
     cp -p for_build/Parser/pgen Parser/pgen_for_build
     #make distclean
@@ -38,7 +39,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    PYTHON_FOR_BUILD=for_build/python\
+    PYTHON_FOR_BUILD=../Python-$VERSION-build/python\
     ./configure --build=$SCUDUM_ARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
 else
     ./configure --prefix=$PREFIX --enable-shared
