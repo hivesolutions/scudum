@@ -6,20 +6,22 @@ set -e +h
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    wget --no-check-certificate "https://raw.github.com/arsv/perl-cross/releases/perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
-    rm -rf perl-$VERSION-cross-$VERSION_CROSS.tar.gz && tar -zxf "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
-    rm -f "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
-fi
-
 wget --no-check-certificate "http://www.cpan.org/src/5.0/perl-$VERSION.tar.bz2"
 rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
 rm -f "perl-$VERSION.tar.bz2"
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    wget --no-check-certificate "https://raw.github.com/arsv/perl-cross/releases/perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
+    tar -zxf "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
+    rm -f "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
+fi
+
 cd perl-$VERSION
 
 echo "127.0.0.1 localhost" > /etc/hosts
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i 's/which "$p" >&/dev/null/true/' cnf/configure_prog.sh
     ./configure --target=$ARCH_TARGET --prefix=/usr
 else
     sh Configure -des -Dprefix=/usr\
