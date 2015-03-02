@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 unset MAKEFLAGS
 
-wget --no-check-certificate "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
+rget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
+    "http://mirrors.ibiblio.org/openssl/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
