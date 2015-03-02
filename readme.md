@@ -49,7 +49,7 @@ the root environment is created with:
 It's possible to optimize the building process for the Raspberry Pi 2 for that the cpu specific configuration
 must be changed, note that this is not backwards compatible:
 
-    SCUDUM_ARCH=arm SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_CPU=cortex-a7 GCC_BUILD_TUNE=cortex-a7 \
     GCC_BUILD_FPU=neon-vfpv4 GCC_BUILD_FLOAT=hard scudum root
 
