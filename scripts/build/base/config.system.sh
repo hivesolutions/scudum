@@ -1,4 +1,17 @@
+export EFLAGS=""
 export PERL5LIB="/tools/lib/perl5:/tools/lib/perl5/site_perl"
+if [ ! -z GCC_BUILD_ARCH ]; then export EFLAGS="$EFLAGS -march=$GCC_BUILD_ARCH"; fi
+if [ ! -z GCC_BUILD_CPU ]; then export EFLAGS="$EFLAGS -mcpu=$GCC_BUILD_CPU"; fi
+if [ ! -z GCC_BUILD_TUNE ]; then export EFLAGS="$EFLAGS -mtune=$GCC_BUILD_TUNE"; fi
+if [ ! -z GCC_BUILD_FPU ]; then export EFLAGS="$EFLAGS -mfpu=$GCC_BUILD_FPU"; fi
+if [ ! -z GCC_BUILD_FLOAT ]; then export EFLAGS="$EFLAGS -mfloat-abi=$GCC_BUILD_FLOAT"; fi
+if [ "$GCC_BUILD_FLOAT" == "hard" ]; then export EFLAGS="$EFLAGS -D__ARM_PCS_VFP"; fi
+if [ "$EFLAGS" != "" ]; then
+    if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
+    if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
+    export CFLAGS="$CFLAGS $EFLAGS"
+    export CXXFLAGS="$CXXFLAGS $EFLAGS"
+fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     case "$SCUDUM_ARCH" in
