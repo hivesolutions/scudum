@@ -141,6 +141,8 @@ To build kernel for the Raspberry Pi, with the proper toolchain installed use:
 
     scu install scudum-system
     hash -r
+    export CFLAGS="-O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s \
+    -mfpu=vfp -mfloat-abi=hard"
     ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
 
 ## Armor
