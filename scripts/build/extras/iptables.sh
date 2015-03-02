@@ -11,6 +11,6 @@ rm -rf iptables-$VERSION && tar -jxf "iptables-$VERSION.tar.bz2"
 rm -f "iptables-$VERSION.tar.bz2"
 cd iptables-$VERSION
 
-ac_cv_func_malloc_0_nonnull=yes ./configure --host=$ARCH_TARGET --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 
 make && make install
