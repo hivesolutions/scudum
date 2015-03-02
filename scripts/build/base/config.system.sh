@@ -1,6 +1,6 @@
 if [ "$SCUDUM_CROSS" == "1" ]; then
     case "$SCUDUM_ARCH" in
-        arm)
+        arm*)
             export CC="$ARCH_TARGET-gcc"
             export CXX="$ARCH_TARGET-g++"
             export AR="$ARCH_TARGET-ar"

@@ -29,7 +29,7 @@ TARGET=${TARGET-${ARCH_TARGET-}}
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
 case "$ARCH" in
-    arm)
+    arm*)
         VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-3.18}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
@@ -73,7 +73,7 @@ else
 fi
 
 case "$ARCH" in
-    arm)
+    arm*)
         NAME=${NAME-linux-rasp-$MINOR}
         ;;
     *)
@@ -87,7 +87,7 @@ mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
     case "$ARCH" in
-        arm)
+        arm*)
             rm -rf $NAME && git clone -b rpi-$MINOR.y --depth 1 https://github.com/raspberrypi/linux.git $NAME
             ;;
         *)

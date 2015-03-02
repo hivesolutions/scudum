@@ -15,7 +15,7 @@ fi
 ARCH=${ARCH-${SCUDUM_ARCH-x86}}
 
 case "$ARCH" in
-    arm)
+    arm*)
         VARIANT=${VARIANT-${1-rasp}}
         KNAME=${KNAME-${2-vmlinuz}}
         ;;
