@@ -145,6 +145,15 @@ To build kernel for the Raspberry Pi, with the proper toolchain installed use:
     -mfloat-abi=hard"
     ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
 
+For the Raspberry Pi 2 kernel build process some extra optimization flags may be used so
+that some more performance juice may be extraceted:
+
+    scu install scudum-system
+    hash -r
+    export CFLAGS="-O3 -march=armv7-a -mcpu=cortex-a7 -mtune=cortex-a7 -mfpu=vfpv4 \
+    -mfloat-abi=hard"
+    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
+
 ## Armor
 
 The armor client is the responsible for the installation of the various elements associated
