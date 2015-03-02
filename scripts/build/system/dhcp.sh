@@ -9,6 +9,7 @@ rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    unset CFLAGS
     export BUILD_CC=gcc
 
     cd bind
@@ -24,6 +25,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 fi
 
+if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
     -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure\
