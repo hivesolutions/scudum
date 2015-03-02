@@ -125,6 +125,7 @@ esac
 case "$SCUDUM_ARCH" in
     arm*)
         export SCUDUM_BARCH=arm
+        ;;
     *)
         export SCUDUM_BARCH=$SCUDUM_ARCH
         ;;
