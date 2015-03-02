@@ -28,7 +28,8 @@ else
         -Dman3dir=/usr/share/man/man3\
         -Dpager="/usr/bin/less -isR"\
         Duseshrplib
-    make
-    test $TEST && make -k test
-    make install
 fi
+
+make
+test $TEST && make -k test
+make install
