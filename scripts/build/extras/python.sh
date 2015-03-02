@@ -34,7 +34,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    ./configure --host=$ARCH_TARGET --build=x86_64 --prefix=$PREFIX --enable-shared --disable-ipv6
+    ./configure --build=$SCUDUM_ARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
 else
     ./configure --prefix=$PREFIX --enable-shared
 fi
