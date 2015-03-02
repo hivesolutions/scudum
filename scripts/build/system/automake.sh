@@ -12,7 +12,3 @@ cd automake-$VERSION
 make
 test $TEST && make check
 make install
-
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{aclocal,automake}
-fi

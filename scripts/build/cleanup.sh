@@ -54,3 +54,10 @@ find $SCUDUM -name "*.pyc" -delete
 if [ "$SCUDUM_CROSS" == "0" ]; then
     find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
 fi
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{aclocal,automake}
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/ldd
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{afmtodit,gropdf}
+fi
