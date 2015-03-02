@@ -12,5 +12,5 @@ rm -rf ntfsprogs-$VERSION && tar -zxf "ntfsprogs-$VERSION.tar.gz"
 rm -f "ntfsprogs-$VERSION.tar.gz"
 cd ntfsprogs-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
