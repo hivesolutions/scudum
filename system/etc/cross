@@ -8,6 +8,7 @@ if [ ! -e /etc/scudum/RUNNING ]; then
             export LD="$ARCH_TARGET-ld"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
+            export LDFLAGS="-L/usr/lib -L/lib"
             ;;
     esac
 fi
