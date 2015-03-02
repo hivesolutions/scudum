@@ -14,5 +14,5 @@ test $TEST && make check
 make install
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate}
+    sed -i 's/\/tools\/bin/\/usr\/bin/' /usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
 fi
