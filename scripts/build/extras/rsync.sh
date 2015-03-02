@@ -12,5 +12,5 @@ rm -rf rsync-$VERSION && tar -zxf "rsync-$VERSION.tar.gz"
 rm -f "rsync-$VERSION.tar.gz"
 cd rsync-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
