@@ -116,12 +116,16 @@ fi
 
 rm -rf modules_install && mkdir -p modules_install
 
+if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
+
+echo "kernel.build: making kernel using CFLAGS := $CFLAGS ..."
+
 if [ "$TARGET" == "" ]; then
-    ARCH=$ARCH make -j $CONCURRENCY
-    ARCH=$ARCH make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$ARCH CFLAGS=$CFLAGS make -j $CONCURRENCY
+    ARCH=$ARCH CFLAGS=$CFLAGS make modules_install INSTALL_MOD_PATH=modules_install
 else
-    ARCH=$ARCH CROSS_COMPILE=$TARGET- make -j $CONCURRENCY
-    ARCH=$ARCH CROSS_COMPILE=$TARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$ARCH CFLAGS=$CFLAGS CROSS_COMPILE=$TARGET- make -j $CONCURRENCY
+    ARCH=$ARCH CFLAGS=$CFLAGS CROSS_COMPILE=$TARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
 release=$(cat include/config/kernel.release)
