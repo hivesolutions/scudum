@@ -88,9 +88,9 @@ echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
 # constructs the proper output string, taking into
 # account if the current boot is silent or not
 if [ "$QUIET" == "1" ]; then
-    output="> /dev/null"
+    output="/dev/null"
 else
-    output=""
+    output="/dev/console"
 fi
 
 # creates the directory to be used as the mount point
@@ -303,9 +303,9 @@ echoi "Unpacking tar.gz files for /root /dev /etc to $rootdir"
 # these are the only writeable directories
 # and are pre-populates with he data contained
 # in the provided compressed files
-tar -zxf $mountdir/source/images/root.tar.gz $output
-tar -zxf $mountdir/source/images/dev.tar.gz $output
-tar -zxf $mountdir/source/images/etc.tar.gz $output
+tar -zxf $mountdir/source/images/root.tar.gz &> $output
+tar -zxf $mountdir/source/images/dev.tar.gz &> $output
+tar -zxf $mountdir/source/images/etc.tar.gz &> $output
 
 # verifies that the overlay fs feature is active and
 # touches the proper configuration file so that latter
