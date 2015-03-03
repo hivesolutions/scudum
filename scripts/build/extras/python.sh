@@ -65,11 +65,12 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    HOSTPYTHON="$PYTHON_BUILD_DIR/python"\
-    HOSTPGEN="$PYTHON_BUILD_DIR/Parser/pgen"\
+    HOSTPYTHON=$PYTHON_BUILD_DIR/python\
+    HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+    make HOSTPYTHON=$PYTHON_BUILD_DIR/python HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen
+    make install
 else
     ./configure --prefix=$PREFIX --enable-shared
+    make && make install
 fi
-
-make && make install
