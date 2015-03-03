@@ -28,7 +28,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     C_INCLUDE_PATH="/tools/include" ./configure
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
-    LIBRARY_PATH="/tools/lib" make python Parser/pgen sharedmods
+    LIBRARY_PATH="/tools/lib" make python Parser/pgen
 
 #    cp -p python python_for_build
     #cp -p Parser/pgen Parser/pgen_for_build
@@ -58,7 +58,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 #    make distclean
 
  #   PYTHON_WORK_DIR=$(pwd)
-    export PATH="$PYTHON_BUILD_DIR:$PATH"
+    #export PATH="$PYTHON_BUILD_DIR::$PATH"
 
     #cd ../Python-$VERSION-build
     
