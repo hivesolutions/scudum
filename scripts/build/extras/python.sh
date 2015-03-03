@@ -21,6 +21,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib"\
     C_INCLUDE_PATH="/tools/include" ./configure --prefix=/tools
+
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make && make install
@@ -29,8 +30,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cp -p Parser/pgen Parser/pgen_for_build
     make distclean
 
-    wget "https://raw.githubusercontent.com/hivesolutions/patches/master/python/Python-$VERSION-xcompile.patch"
-    patch -Np1 -i Python-$VERSION-xcompile.patch
+    sed -i 's/$(PYTHON_FOR_BUILD) -Wi/$(HOSTPYTHON) -Wi/g' MAkefile.pre.in
+    sed -i 's/$(PYTHON_FOR_BUILD) -m lib/$(HOSTPYTHON) -m lib/g' MAkefile.pre.in
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
