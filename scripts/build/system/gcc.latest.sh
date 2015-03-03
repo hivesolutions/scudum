@@ -18,6 +18,13 @@ cd ..
 rm -rf gcc-build && mkdir gcc-build
 cd gcc-build
 
+extra=""
+[ "$GCC_BUILD_ARCH" != "" ] && extra="--with-arch=$GCC_BUILD_ARCH $extra" || true
+[ "$GCC_BUILD_CPU" != "" ] && extra="--with-cpu=$GCC_BUILD_CPU $extra" || true
+[ "$GCC_BUILD_TUNE" != "" ] && extra="--with-tune=$GCC_BUILD_TUNE $extra" || true
+[ "$GCC_BUILD_FPU" != "" ] && extra="--with-fpu=$GCC_BUILD_FPU $extra" || true
+[ "$GCC_BUILD_FLOAT" != "" ] && extra="--with-float=$GCC_BUILD_FLOAT $extra" || true
+
 SED=sed ../gcc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --target=$ARCH_TARGET\
@@ -31,7 +38,8 @@ SED=sed ../gcc-$VERSION/configure\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
-    --with-system-zlib
+    --with-system-zlib\
+    $extra
 
 make
 test $TEST && make -k check
