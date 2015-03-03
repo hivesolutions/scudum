@@ -33,17 +33,21 @@ set -e +h
 
 source $DIR/base/config.sh
 
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
+fi
+
 echo "make.rasp: $HEADS heads, $SECTORS sectors, $BYTES_SECTOR bytes/sector"
 echo "make.rasp: $OFFSET ($OFFSET_SECTORS) offset"
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
-    FILE=${FILE-$NAME-$VERSION.rasp.img}
-    FILE_LATEST=${FILE_LATEST-$NAME-latest.rasp.img}
+    FILE=${FILE-$NAME-$SCUDUM_ARCH-$VERSION.rasp.img}
+    FILE_LATEST=${FILE_LATEST-$NAME-$SCUDUM_ARCH-latest.rasp.img}
 else
-    FILE=${FILE-$NAME-$DISTRIB-$VERSION.rasp.img}
-    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-latest.rasp.img}
+    FILE=${FILE-$NAME-$DISTRIB-$SCUDUM_ARCH-$VERSION.rasp.img}
+    FILE_LATEST=${FILE_LATEST-$NAME-$DISTRIB-$SCUDUM_ARCH-latest.rasp.img}
 fi
 
 if type apt-get &> /dev/null; then
@@ -60,6 +64,11 @@ fi
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "make.rasp: scudum not configured, not possible to make rasp"
+    exit 1
+fi
+
+if [ "$SCUDUM_BARCH" != "arm" ]; then
+    echo "make.rasp: scudum is not built for arm, not possible to make rasp"
     exit 1
 fi
 
