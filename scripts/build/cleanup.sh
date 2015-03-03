@@ -58,7 +58,7 @@ fi
 if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
     sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{aclocal,automake}
-    sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{ldd,c_rehash}
+    sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{ldd,c_rehash,git-cvsserver}
     sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{afmtodit,gropdf,pdfmom,mmroff}
     sed -i 's/\/tools\/bin/\/usr\/bin/' $SCUDUM/usr/bin/{xtrace,zgrep,updatedb,tzselect,sotruss,mtrace,mk_cmds}
 fi
