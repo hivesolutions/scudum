@@ -42,7 +42,7 @@ cp -v $NAME-$VARIANT-$VERSION /boot/$KNAME
 
 cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 
-rm -rf /lib/modules
+if [ "$KNAME" == "vmlinuz" ]; then rm -rf /lib/modules; fi
 tar -zxvf $NAME-$VARIANT-$VERSION.modules.tar.gz -C /lib
 
 rm -f $NAME-$VARIANT-$VERSION
