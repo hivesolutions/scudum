@@ -55,7 +55,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 
     PYTHON_WORK_DIR=$(pwd)
     export PATH="$PYTHON_BUILD_DIR/binaries:$PATH"
-    
+
     #cd ../Python-$VERSION-build
     
     ac_cv_file__dev_ptmx=no\
