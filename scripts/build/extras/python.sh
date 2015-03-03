@@ -51,8 +51,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make python Parser/pgen
 
-    mkdir binaries && cp -p python binaries
-    mv python python_for_build
+#    mkdir binaries && cp -p python binaries
+#    mv python python_for_build
     mv Parser/pgen Parser/pgen_for_build
     make distclean
 
