@@ -42,6 +42,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
     make HOSTPYTHON=$target_dir/bin/python
     make HOSTPYTHON=$target_dir/bin/python install
+
     rm -rf $target_dir
 else
     ./configure --prefix=$PREFIX --enable-shared
