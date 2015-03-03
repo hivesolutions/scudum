@@ -28,9 +28,6 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make && make install
-
-    cp -p python python_for_build
-    cp -p Parser/pgen Parser/pgen_for_build
     make distclean
 
     sed -i 's/$(PYTHON_FOR_BUILD) -Wi/$(HOSTPYTHON) -Wi/g' Makefile.pre.in
