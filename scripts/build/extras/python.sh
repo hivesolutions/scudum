@@ -30,16 +30,16 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib" make python Parser/pgen
 
-#    cp -p python python_for_build
-    #cp -p Parser/pgen Parser/pgen_for_build
+ #   cp -p python ../python_for_build
+ #   cp -p Parser/pgen Parser/pgen_for_build
 
     cd ../Python-$VERSION
     
     wget "https://raw.githubusercontent.com/hivesolutions/patches/master/python/Python-$VERSION-xcompile.patch"
     patch -Np1 -i Python-$VERSION-xcompile.patch
     
-    #cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen
-    #cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen_for_build
+    cp -p ../Python-$VERSION-build/python python_for_build
+    cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen_for_build
 
 #    CC=gcc\
 #    RANLIB=ranlib\
@@ -57,19 +57,19 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 #    mv Parser/pgen Parser/pgen_for_build
 #    make distclean
 
- #   PYTHON_WORK_DIR=$(pwd)
-    #export PATH="$PYTHON_BUILD_DIR::$PATH"
+    PYTHON_WORK_DIR=$(pwd)
+   # export PATH="$PYTHON_WORK_DIR:$PATH"
 
     #cd ../Python-$VERSION-build
     
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    HOSTPYTHON=$PYTHON_BUILD_DIR/python\
-    HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen\
+    HOSTPYTHON=$PYTHON_WORK_DIR/python_for_build\
+    HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
-    make HOSTPYTHON=$PYTHON_BUILD_DIR/python HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen
-    make HOSTPYTHON=$PYTHON_BUILD_DIR/python HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen install
+    make HOSTPYTHON=PYTHON_WORK_DIR/python_for_build HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build
+    make HOSTPYTHON=$PYTHON_WORK_DIR/python_for_build HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build install
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
