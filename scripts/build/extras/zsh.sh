@@ -12,7 +12,7 @@ rm -rf zsh-$VERSION && tar -jxf "zsh-$VERSION.tar.bz2"
 rm -f "zsh-$VERSION.tar.bz2"
 cd zsh-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
 
 cat > /root/.zshrc  << "EOF"
