@@ -71,7 +71,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
     PYTHON_FOR_BUILD=$PYTHON_WORK_DIR/python_for_build\
-    ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+    ./configure --build=$SCUDUM_BARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
     make && make install
 else
     ./configure --prefix=$PREFIX --enable-shared
