@@ -62,7 +62,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cp -p python python_for_build
     cp -p Parser/pgen Parser/pgen_for_build
     
-    make distclean
+    make clean && make distclean
     
     #wget "https://raw.githubusercontent.com/hivesolutions/patches/master/python/Python-$VERSION-xcompile.patch"
     #patch -Np1 -i Python-$VERSION-xcompile.patch
