@@ -54,7 +54,7 @@ rootdir=/ram
 mountdir=/ram
 storagedir=/ram
 
-# mount the proc and sys filesystems as they are required
+# mounts the proc and sys filesystems as they are required
 # for some of the operations in the linuxrc
 mkdir -p /proc /sys
 mount -t proc none /proc
