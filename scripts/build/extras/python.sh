@@ -57,7 +57,6 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    PYTHON_FOR_BUILD=$PYTHON_BUILD_DIR/python\
     ./configure --build=$SCUDUM_BARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
 else
     ./configure --prefix=$PREFIX --enable-shared
