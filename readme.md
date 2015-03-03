@@ -149,8 +149,7 @@ special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
     scu install scudum-system
     hash -r
-    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi VARIANT=rasp2 \
-    DEPLOY=1 kernel.build
+    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
 
 ## Armor
 

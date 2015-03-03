@@ -5,6 +5,7 @@
 QUIET=0
 PERSIST=0
 CLEANUP=0
+PERFORMANCE=0
 
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
@@ -53,9 +54,11 @@ rootdir=/ram
 mountdir=/ram
 storagedir=/ram
 
-# mount the proc filesystem as it's required for
-# some of the operations in the linuxrc
+# mounts the proc and sys filesystems as they are required
+# for some of the operations in the linuxrc
+mkdir -p /proc /sys
 mount -t proc none /proc
+mount -t sysfs none /sys
 
 # iterates over the complete set of arguments in the command
 # line string (kernel boot string) to try to find some options
@@ -72,6 +75,10 @@ for argument in $(cat /proc/cmdline); do
         cleanup)
             CLEANUP=1
             ;;
+
+        performance)
+            PERFORMANCE=1
+            ;;
     esac
 done
 
@@ -79,6 +86,14 @@ done
 # so that the end-user may know that interaction
 # is now enable (at least using keyboard)
 echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2015"
+
+# constructs the proper output string, taking into
+# account if the current boot is silent or not
+if [ "$QUIET" == "1" ]; then
+    output="/dev/null"
+else
+    output="/dev/console"
+fi
 
 # creates the directory to be used as the mount point
 # for the root file system (will be stored in ram)
@@ -178,7 +193,7 @@ fi
 
 # verifies if the origin device mounted has been successful,
 # if that's not the case prints a warning message and then
-# returns the operation control to the calling proceess
+# returns the operation control to the calling process
 if [ "$mounted" == "0" ]; then
     warni "Not possible to mount origin device, breaking boot"
     exit 1
@@ -256,6 +271,12 @@ if [ "$USE_OVERLAYFS" == "0" ]; then
     ln -s source/usr usr
 fi
 
+# in case the performance flag is set the proper governor strategy
+# is defined in the system filesystem, to control the environment
+if [ "$PERFORMANCE" == "1" ]; then
+    echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+fi
+
 # creates a symbolic link between the arch dependent directory
 # for libraries and the more generic one (legacy compatibility)
 ln -s lib lib64
@@ -284,9 +305,9 @@ echoi "Unpacking tar.gz files for /root /dev /etc to $rootdir"
 # these are the only writeable directories
 # and are pre-populates with he data contained
 # in the provided compressed files
-tar -zxf $mountdir/source/images/root.tar.gz
-tar -zxf $mountdir/source/images/dev.tar.gz
-tar -zxf $mountdir/source/images/etc.tar.gz
+tar -zxf $mountdir/source/images/root.tar.gz &> $output
+tar -zxf $mountdir/source/images/dev.tar.gz &> $output
+tar -zxf $mountdir/source/images/etc.tar.gz &> $output
 
 # verifies that the overlay fs feature is active and
 # touches the proper configuration file so that latter

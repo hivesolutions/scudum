@@ -14,10 +14,8 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    cd ..
-    cp -rp Python-$VERSION Python-$VERSION-build
-    cd Python-$VERSION-build
-    PYTHON_BUILD_DIR=$(pwd)
+    target_dir=$(mktemp -d)
+    export PATH="$target_dir/bin:$PATH"
 
     CC=gcc\
     RANLIB=ranlib\
@@ -25,42 +23,26 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     LDFLAGS="-L/tools/lib"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib"\
-    C_INCLUDE_PATH="/tools/include" ./configure
+    C_INCLUDE_PATH="/tools/include" ./configure --prefix=$target_dir
+
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
-    LIBRARY_PATH="/tools/lib" make python Parser/pgen sharedmods
-
-    cp -p python python_for_build
-    cp -p Parser/pgen Parser/pgen_for_build
-
-    cd ../Python-$VERSION
-    export PATH="$PYTHON_BUILD_DIR:$PATH"
-    cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen
-    cp -p ../Python-$VERSION-build/Parser/pgen Parser/pgen_for_build
-
-    CC=gcc\
-    RANLIB=ranlib\
-    CFLAGS="-I/tools/include"\
-    LDFLAGS="-L/tools/lib"\
-    LD_LIBRARY_PATH="/tools/lib"\
-    LIBRARY_PATH="/tools/lib"\
-    C_INCLUDE_PATH="/tools/include" ./configure
-    C_INCLUDE_PATH="/tools/include"\
-    LD_LIBRARY_PATH="/tools/lib"\
-    LIBRARY_PATH="/tools/lib" make python Parser/pgen
-
-    mkdir binaries && cp -p python binaries
-    mv python python_for_build
-    mv Parser/pgen Parser/pgen_for_build
+    LIBRARY_PATH="/tools/lib" make && make install
     make distclean
+
+    sed -i 's/$(PYTHON_FOR_BUILD) -Wi/$(HOSTPYTHON) -Wi/g' Makefile.pre.in
+    sed -i 's/$(PYTHON_FOR_BUILD) -m lib/$(HOSTPYTHON) -m lib/g' Makefile.pre.in
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    PYTHON_FOR_BUILD=$PYTHON_BUILD_DIR/python\
-    ./configure --build=$SCUDUM_BARCH --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+    ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+
+    make HOSTPYTHON=$target_dir/bin/python
+    make HOSTPYTHON=$target_dir/bin/python install
+
+    rm -rf $target_dir
 else
     ./configure --prefix=$PREFIX --enable-shared
+    make && make install
 fi
-
-make && make install

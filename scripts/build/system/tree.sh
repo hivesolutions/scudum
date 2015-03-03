@@ -21,8 +21,10 @@ for dir in /usr /usr/local; do
     ln -svf share/{man,doc,info} $dir
 done
 
-case $SCUDUM_HOST in
-    arm|x86_64) ln -svf lib /lib64 && ln -svf lib /usr/lib64 &&\
+case $SCUDUM_ARCH in
+    arm*|x86_64)
+        ln -svf lib /lib64
+        ln -svf lib /usr/lib64
         ln -svf lib /usr/local/lib64
         ;;
 esac

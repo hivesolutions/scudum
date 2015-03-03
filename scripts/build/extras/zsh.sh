@@ -6,12 +6,13 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.zsh.org/pub/old/zsh-$VERSION.tar.bz2"
+rget "http://downloads.sourceforge.net/zsh/zsh-$VERSION.tar.bz2"\
+    "http://www.zsh.org/pub/old/zsh-$VERSION.tar.bz2"
 rm -rf zsh-$VERSION && tar -jxf "zsh-$VERSION.tar.bz2"
 rm -f "zsh-$VERSION.tar.bz2"
 cd zsh-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
 
 cat > /root/.zshrc  << "EOF"
