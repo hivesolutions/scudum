@@ -43,7 +43,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 #    mv Parser/pgen Parser/pgen_for_build
 #    make distclean
 
-    PYTHON_WORK_DIR=$(pwd)
+    #PYTHON_WORK_DIR=$(pwd)
    # export PATH="$PYTHON_WORK_DIR:$PATH"
 
     #cd ../Python-$VERSION-build
