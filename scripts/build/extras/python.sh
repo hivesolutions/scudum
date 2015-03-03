@@ -14,13 +14,15 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    target_dir=$(mktemp -d)
+
     CC=gcc\
     RANLIB=ranlib\
     CFLAGS="-I/tools/include"\
     LDFLAGS="-L/tools/lib"\
     LD_LIBRARY_PATH="/tools/lib"\
     LIBRARY_PATH="/tools/lib"\
-    C_INCLUDE_PATH="/tools/include" ./configure --prefix=/tools
+    C_INCLUDE_PATH="/tools/include" ./configure --prefix=$target_dir
 
     C_INCLUDE_PATH="/tools/include"\
     LD_LIBRARY_PATH="/tools/lib"\
@@ -37,7 +39,10 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
-    make HOSTPYTHON=/tools/bin/python && make HOSTPYTHON=/tools/bin/python install
+    make HOSTPYTHON=$target_dir/bin/python
+    make HOSTPYTHON=$target_dir/bin/python install
+
+    rm -rf $target_dir
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
