@@ -62,15 +62,15 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cp -p python python_for_build
     cp -p Parser/pgen Parser/pgen_for_build
     make distclean
-    
-    #wget "https://raw.githubusercontent.com/hivesolutions/patches/master/python/Python-$VERSION-xcompile.patch"
-    #patch -Np1 -i Python-$VERSION-xcompile.patch
+
+    wget "https://raw.githubusercontent.com/hivesolutions/patches/master/python/Python-$VERSION-xcompile.patch"
+    patch -Np1 -i Python-$VERSION-xcompile.patch
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
-    make && make install
+    make HOSTPYTHON=/tools/bin/python && make install
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
