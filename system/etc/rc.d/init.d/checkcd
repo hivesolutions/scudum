@@ -54,6 +54,7 @@ case "${1}" in
         # no extra memory is leaked (releases extra memory)
         log_info_msg "Releasing unused memory from initrd..."
         umount /initrd/proc
+        umount /initrd/sys
         umount -l /initrd
         rm -rf /initrd
         evaluate_retval

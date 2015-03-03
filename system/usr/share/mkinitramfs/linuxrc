@@ -54,9 +54,11 @@ rootdir=/ram
 mountdir=/ram
 storagedir=/ram
 
-# mount the proc filesystem as it's required for
-# some of the operations in the linuxrc
+# mount the proc and sys filesystems as they are required
+# for some of the operations in the linuxrc
+mkdir -p /proc /sys
 mount -t proc none /proc
+mount -t sysfs none /sys
 
 # iterates over the complete set of arguments in the command
 # line string (kernel boot string) to try to find some options
@@ -251,7 +253,6 @@ cd $rootdir
 # some special operations are ready to be used/processed
 mkdir -p run sys proc
 mount -t proc none proc
-mount -t sysfs none sys
 
 # verifies if the overlay fs mode is active and if that's not
 # the case  starts the process of linking directories between
@@ -273,7 +274,7 @@ fi
 # in case the performance flag is set the proper governor strategy
 # is defined in the system filesystem, to control the environment
 if [ "$PERFORMANCE" == "1" ]; then
-    echo performance > sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 fi
 
 # creates a symbolic link between the arch dependent directory
