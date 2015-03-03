@@ -8,9 +8,10 @@ if [ ! -e /etc/scudum/RUNNING ]; then
             export LD="$ARCH_TARGET-ld"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-            export CFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
-            export CXXFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+            export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
             export LDFLAGS="-L/usr/lib -L/lib"
+            export CC="$CC $CROSSFLAGS"
+            export CXX="$CXX $CROSSFLAGS"
             ;;
     esac
 fi
@@ -24,8 +25,8 @@ if [ ! -z "$GCC_BUILD_FPU" ]; then export EFLAGS="$EFLAGS -mfpu=$GCC_BUILD_FPU";
 if [ ! -z "$GCC_BUILD_FLOAT" ]; then export EFLAGS="$EFLAGS -mfloat-abi=$GCC_BUILD_FLOAT"; fi
 if [ "$GCC_BUILD_FLOAT" == "hard" ]; then export EFLAGS="$EFLAGS -D__ARM_PCS_VFP"; fi
 if [ "$EFLAGS" != "" ]; then
-    if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
-    if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
-    export CFLAGS="$CFLAGS $EFLAGS"
-    export CXXFLAGS="$CXXFLAGS $EFLAGS"
+    if [ -z "$CC" ]; then export CC="gcc"; fi
+    if [ -z "$CXX" ]; then export CXX="g++"; fi
+    export CC="$CC $EFLAGS"
+    export CXX="$CXX $EFLAGS"
 fi
