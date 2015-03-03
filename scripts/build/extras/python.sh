@@ -30,8 +30,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cp -p Parser/pgen Parser/pgen_for_build
     make distclean
 
-    sed -i 's/$(PYTHON_FOR_BUILD) -Wi/$(HOSTPYTHON) -Wi/g' MAkefile.pre.in
-    sed -i 's/$(PYTHON_FOR_BUILD) -m lib/$(HOSTPYTHON) -m lib/g' MAkefile.pre.in
+    sed -i 's/$(PYTHON_FOR_BUILD) -Wi/$(HOSTPYTHON) -Wi/g' Makefile.pre.in
+    sed -i 's/$(PYTHON_FOR_BUILD) -m lib/$(HOSTPYTHON) -m lib/g' Makefile.pre.in
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
