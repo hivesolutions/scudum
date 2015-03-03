@@ -67,7 +67,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ac_cv_have_long_long_format=yes\
     HOSTPYTHON="$PYTHON_BUILD_DIR/python"\
     HOSTPGEN="$PYTHON_BUILD_DIR/Parser/pgen"\
-    ../Python-$VERSION/configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+    ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
 else
     ./configure --prefix=$PREFIX --enable-shared
 fi
