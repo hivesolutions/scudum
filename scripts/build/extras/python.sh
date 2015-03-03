@@ -14,40 +14,6 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-  #  cd ..
-  #  rm -rf Python-$VERSION-build && cp -rp Python-$VERSION Python-$VERSION-build
-  #  cd Python-$VERSION-build
-  #  PYTHON_BUILD_DIR=$(pwd)
-
-
- #   cp -p python ../python_for_build
- #   cp -p Parser/pgen Parser/pgen_for_build
-
-   # cd ../Python-$VERSION
-    
-
-
-#    CC=gcc\
-#    RANLIB=ranlib\
-#    CFLAGS="-I/tools/include"\
-#    LDFLAGS="-L/tools/lib"\
-#    LD_LIBRARY_PATH="/tools/lib"\
-#    LIBRARY_PATH="/tools/lib"\
-#    C_INCLUDE_PATH="/tools/include" ./configure
-#    C_INCLUDE_PATH="/tools/include"\
-#    LD_LIBRARY_PATH="/tools/lib"\
-#    LIBRARY_PATH="/tools/lib" make python Parser/pgen
-
-#    mkdir binaries && cp -p python binaries
-#    mv python python_for_build
-#    mv Parser/pgen Parser/pgen_for_build
-#    make distclean
-
-    #PYTHON_WORK_DIR=$(pwd)
-   # export PATH="$PYTHON_WORK_DIR:$PATH"
-
-    #cd ../Python-$VERSION-build
-
     CC=gcc\
     RANLIB=ranlib\
     CFLAGS="-I/tools/include"\
