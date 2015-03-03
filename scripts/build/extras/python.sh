@@ -58,7 +58,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 #    make distclean
 
  #   PYTHON_WORK_DIR=$(pwd)
-    export PATH="$PYTHON_BUILD_DIR/binaries:$PATH"
+    export PATH="$PYTHON_BUILD_DIR:$PATH"
 
     #cd ../Python-$VERSION-build
     
