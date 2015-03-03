@@ -51,6 +51,7 @@ case "${1}" in
 
         log_info_msg "Releasing unused memory from initrd..."
         umount /initrd/proc
+        umount /initrd/sys
         umount -l /initrd
         rm -rf /initrd
         evaluate_retval
