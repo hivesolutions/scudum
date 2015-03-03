@@ -251,6 +251,7 @@ cd $rootdir
 # some special operations are ready to be used/processed
 mkdir -p run sys proc
 mount -t proc none proc
+mount -t sysfs none sys
 
 # verifies if the overlay fs mode is active and if that's not
 # the case  starts the process of linking directories between
