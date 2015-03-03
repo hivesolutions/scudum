@@ -53,13 +53,15 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     mv Parser/pgen Parser/pgen_for_build
     make distclean
 
-    PYTHON_WORK_DIR=$(pwd)
-    export PATH="$PYTHON_WORK_DIR/binaries:$PATH"
+    #PYTHON_WORK_DIR=$(pwd)
+    #export PATH="$PYTHON_WORK_DIR/binaries:$PATH"
+    
+    cd ../Python-$VERSION-build
 
     ac_cv_file__dev_ptmx=no\
     ac_cv_file__dev_ptc=no\
     ac_cv_have_long_long_format=yes\
-    ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
+    ../Python-$VERSION/configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
 else
     ./configure --prefix=$PREFIX --enable-shared
 fi
