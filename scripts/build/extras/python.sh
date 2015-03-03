@@ -68,7 +68,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     HOSTPYTHON=$PYTHON_WORK_DIR/python_for_build\
     HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
-    make HOSTPYTHON=PYTHON_WORK_DIR/python_for_build HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build
+    make HOSTPYTHON=$PYTHON_WORK_DIR/python_for_build HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build
     make HOSTPYTHON=$PYTHON_WORK_DIR/python_for_build HOSTPGEN=$PYTHON_WORK_DIR/Parser/pgen_for_build install
 else
     ./configure --prefix=$PREFIX --enable-shared
