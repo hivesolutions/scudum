@@ -15,7 +15,7 @@ cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     cd ..
-    cp -rp Python-$VERSION Python-$VERSION-build
+    rm -rf Python-$VERSION-build && cp -rp Python-$VERSION Python-$VERSION-build
     cd Python-$VERSION-build
     PYTHON_BUILD_DIR=$(pwd)
 
