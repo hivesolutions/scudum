@@ -69,7 +69,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen\
     ./configure --build=$SCUDUM_HOST --host=$ARCH_TARGET --prefix=$PREFIX --enable-shared --disable-ipv6
     make HOSTPYTHON=$PYTHON_BUILD_DIR/python HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen
-    make install
+    make HOSTPYTHON=$PYTHON_BUILD_DIR/python HOSTPGEN=$PYTHON_BUILD_DIR/Parser/pgen install
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
