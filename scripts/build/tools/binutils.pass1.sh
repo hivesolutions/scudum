@@ -12,6 +12,6 @@ cd binutils-$VERSION
 
 make
 case $SCUDUM_HOST in
-    x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
+    arm*|x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
 esac
 make install
