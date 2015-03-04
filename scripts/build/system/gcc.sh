@@ -3,10 +3,10 @@ VERSION=${VERSION-4.8.4}
 set -e +h
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    if [ -z "$CC" ]; then export CC="gcc"; fi
-    if [ -z "$CXX" ]; then export CXX="g++"; fi
-    export CC="$CC -fno-exceptions"
-    export CXX="$CXX -fno-exceptions"
+    if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
+    if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
+    export CFLAGS="$CFLAGS -fno-exceptions"
+    export CXXFLAGS="$CXXFLAGS -fno-exceptions"
 fi
 
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
