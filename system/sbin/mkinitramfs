@@ -102,7 +102,8 @@ mkdir -p /mnt/loop1
 mount /dev/loop1 $TEMP_DIR
 rm -rf $TEMP_DIR/lost+found
 
-# creates base directory structure
+# creates base directory structure according to the pre-defined
+# rules of tree structures (ensures compatibility)
 mkdir -p $TEMP_DIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
 mkdir -p $TEMP_DIR/etc/{modprobe.d,udev/rules.d}
 touch $TEMP_DIR/etc/modprobe.d/modprobe.conf

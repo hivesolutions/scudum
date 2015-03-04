@@ -117,12 +117,10 @@ cat > /etc/ld.so.conf << "EOF"
 /usr/lib64
 /usr/local/lib64
 /opt/lib
-
 EOF
 
 cat >> /etc/ld.so.conf << "EOF"
 include /etc/ld.so.conf.d/*.conf
-
 EOF
 
 mkdir -pv /etc/ld.so.conf.d
