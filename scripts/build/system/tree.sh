@@ -21,6 +21,14 @@ for dir in /usr /usr/local; do
     ln -svf share/{man,doc,info} $dir
 done
 
+case $SCUDUM_ARCH in
+    arm*|x86_64)
+        ln -svf lib /lib64
+        ln -svf lib /usr/lib64
+        ln -svf lib /usr/local/lib64
+        ;;
+esac
+
 mkdir -pv /run/var
 mkdir -pv /var/{log,mail,spool}
 ln -svf /run /var/run
