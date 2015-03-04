@@ -15,3 +15,5 @@ make html
 test $TEST && make check
 make install
 make -C doc install-html
+
+ln -s /bin/sed /usr/bin/sed
