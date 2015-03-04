@@ -14,3 +14,4 @@ test $TEST && make check
 make install
 
 sed -i 's/func_warning "\\`$deplib'\'' seems to be moved"/true/' /usr/bin/libtool
+sed -i 's/func_warning "\\`$deplib'\'' seems to be moved"/true/' /usr/share/libtool/config/ltmain.sh
