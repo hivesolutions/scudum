@@ -24,8 +24,6 @@ done
 case $SCUDUM_ARCH in
     arm*|x86_64)
         ln -svf lib /lib64
-        ln -svf lib /usr/lib64
-        ln -svf lib /usr/local/lib64
         ;;
 esac
 
