@@ -56,6 +56,7 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
 fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{libtool,libtoolize}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{aclocal*,automake*}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{ldd,c_rehash,git-cvsserver}

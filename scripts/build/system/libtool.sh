@@ -12,8 +12,3 @@ cd libtool-$VERSION
 make
 test $TEST && make check
 make install
-
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/\/tools\/bin/\/bin/' /usr/bin/libtool
-    sed -i 's/\/tools\/bin/\/bin/' /usr/bin/libtoolize
-fi

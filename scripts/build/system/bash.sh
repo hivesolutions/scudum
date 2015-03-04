@@ -33,4 +33,4 @@ chown -Rv nobody .
 test $TEST && su nobody -s /bin/bash -c "PATH=$PATH make tests"
 make install
 
-ln -s /bin/bash /usr/bin/bash
+ln -sf /bin/bash /usr/bin/bash
