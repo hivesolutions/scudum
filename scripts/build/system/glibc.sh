@@ -114,8 +114,6 @@ fi
 cat > /etc/ld.so.conf << "EOF"
 /usr/lib
 /usr/local/lib
-/usr/lib64
-/usr/local/lib64
 /opt/lib
 EOF
 
