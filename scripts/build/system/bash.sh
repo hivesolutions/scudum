@@ -19,13 +19,31 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ln -sf bash.old /bin/sh
 fi
 
-ac_cv_rl_version=6.3 ./configure\
-    --host=$ARCH_TARGET\
-    --prefix=/usr\
-    --bindir=/bin\
-    --htmldir=/usr/share/doc/bash-$VERSION\
-    --without-bash-malloc\
-    --with-installed-readline
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ac_cv_rl_version=6.3\
+    bash_cv_sys_siglist=yes\
+    bash_cv_under_sys_siglist=yes\
+    bash_cv_wexitstatus_offset=8\
+    bash_cv_ulimit_maxfds=yes\
+    bash_cv_func_sigsetjmp=present\
+    bash_cv_job_control_missing=present\
+    bash_cv_sys_named_pipes=present\
+    ./configure\
+        --host=$ARCH_TARGET\
+        --prefix=/usr\
+        --bindir=/bin\
+        --htmldir=/usr/share/doc/bash-$VERSION\
+        --without-bash-malloc\
+        --with-installed-readline
+else
+    ./configure\
+        --host=$ARCH_TARGET\
+        --prefix=/usr\
+        --bindir=/bin\
+        --htmldir=/usr/share/doc/bash-$VERSION\
+        --without-bash-malloc\
+        --with-installed-readline
+fi
 
 make
 
