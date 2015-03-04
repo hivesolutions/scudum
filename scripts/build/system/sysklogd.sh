@@ -8,7 +8,7 @@ rm -f "sysklogd-$VERSION.tar.gz"
 cd sysklogd-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC=$CC CFLAGS="$CFLAGS"
+    make CC="$CC"
     make INSTALL="/tools/bin/install --strip-program=/cross/$ARCH_TARGET/bin/strip" BINDIR=/sbin install
 else
     make

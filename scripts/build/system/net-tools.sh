@@ -12,7 +12,7 @@ patch -Np1 -i net-tools-$VERSION-remove_dups-1.patch
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     yes "" | ./configure.sh config.in > /dev/null
-    make CC=$CC LD=$LD && make install
+    make CC="$CC" LD="$LD" && make install
 else
     yes "" | make config > /dev/null
     make && make install

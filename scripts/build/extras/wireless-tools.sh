@@ -12,7 +12,7 @@ rm -f "wireless_tools.$VERSION.tar.gz"
 cd wireless_tools.$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC=$CC && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
+    make CC="$CC" && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
 else
     make && make PREFIX=$PREFIX INSTALL_MAN=$PREFIX/share/man install
 fi

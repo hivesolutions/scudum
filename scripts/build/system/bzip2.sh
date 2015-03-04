@@ -14,12 +14,12 @@ sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make -f Makefile-libbz2_so CC=$CC
-    make CC=$CC clean
+    make -f Makefile-libbz2_so CC="$CC"
+    make clean
 
-    make CC=$CC libbz2.a bzip2 bzip2recover
-    test $TEST && make CC=$CC test
-    make CC=$CC PREFIX=/usr install
+    make CC="$CC" libbz2.a bzip2 bzip2recover
+    test $TEST && make CC="$CC" test
+    make PREFIX=/usr install
 else
     make -f Makefile-libbz2_so
     make clean

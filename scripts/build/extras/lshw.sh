@@ -12,7 +12,7 @@ rm -f "lshw-$VERSION.tar.gz"
 cd lshw-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CXX=$CXX RPM_OPT_FLAGS="$CXXFLAGS" && make install PREFIX=$PREFIX
+    make CXX="$CXX" && make install PREFIX=$PREFIX
 else
     make && make install PREFIX=$PREFIX
 fi

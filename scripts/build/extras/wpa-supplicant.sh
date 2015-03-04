@@ -44,7 +44,7 @@ EOF
 cd wpa_supplicant
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC=$CC BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
+    make CC="$CC" BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
 else
     make BINDIR=$PREFIX/bin LIBDIR=$PREFIX/lib C_INCLUDE_PATH=$C_INCLUDE_PATH:$PREFIX/include/libnl3
 fi
