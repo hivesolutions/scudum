@@ -14,7 +14,12 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    target_dir=$(mktemp -d)
+    if [ "$PYTHON_TEMP" == "1" ]; then
+        target_dir=$(mktemp -d)
+    else
+        target_dir=/tools
+    fi
+
     export PATH="$target_dir/bin:$PATH"
 
     CC=gcc\
