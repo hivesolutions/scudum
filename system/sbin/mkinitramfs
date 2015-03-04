@@ -102,11 +102,11 @@ mkdir -p /mnt/loop1
 mount /dev/loop1 $TEMP_DIR
 rm -rf $TEMP_DIR/lost+found
 
-# creates base directory structure
+# creates base directory structure, that is going to be
+# used for the initrd file (as defined by the standards)
 mkdir -p $TEMP_DIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
 mkdir -p $TEMP_DIR/etc/{modprobe.d,udev/rules.d}
 touch $TEMP_DIR/etc/modprobe.d/modprobe.conf
-ln -s lib $TEMP_DIR/lib64
 
 # creates necessary device nodes, that are going to be used
 # for some of the operation in the construction of intrd

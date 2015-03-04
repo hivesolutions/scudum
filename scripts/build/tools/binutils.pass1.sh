@@ -10,8 +10,4 @@ cd binutils-$VERSION
 ./configure --prefix=$PREFIX --with-sysroot=$SCUDUM --with-lib-path=$PREFIX/lib\
     --target=$SCUDUM_TARGET --disable-nls --disable-werror
 
-make
-case $SCUDUM_HOST in
-    x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
-esac
-make install
+make && make install

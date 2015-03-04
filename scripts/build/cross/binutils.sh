@@ -10,8 +10,4 @@ cd binutils-$VERSION
 ./configure --prefix=$PREFIX_CROSS --target=$ARCH_TARGET --with-sysroot=$PREFIX_CROSS/sysroot\
     --disable-nls --disable-werror
 
-make
-case $SCUDUM_ARCH in
-    arm*|x86_64) mkdir -v $PREFIX/lib && ln -sv lib $PREFIX/lib64 ;;
-esac
-make install
+make && make install
