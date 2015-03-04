@@ -43,7 +43,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     make HOSTPYTHON=$target_dir/bin/python
     make HOSTPYTHON=$target_dir/bin/python install
 
-    if [ "$PYTHON_TEMP" == "1" ]; rm -rf $target_dir; fi
+    if [ "$PYTHON_TEMP" == "1" ]; then rm -rf $target_dir; fi
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
