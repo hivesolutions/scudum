@@ -14,11 +14,8 @@ rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    if [ "$PYTHON_TEMP" == "1" ]; then
-        target_dir=$(mktemp -d)
-    else
-        target_dir=/tools
-    fi
+    if [ "$PYTHON_TEMP" == "1" ]; then target_dir=$(mktemp -d)
+    else target_dir=/tools; fi
 
     export PATH="$target_dir/bin:$PATH"
 
@@ -46,7 +43,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     make HOSTPYTHON=$target_dir/bin/python
     make HOSTPYTHON=$target_dir/bin/python install
 
-    rm -rf $target_dir
+    if [ "$PYTHON_TEMP" == "1" ]; rm -rf $target_dir; fi
 else
     ./configure --prefix=$PREFIX --enable-shared
     make && make install
