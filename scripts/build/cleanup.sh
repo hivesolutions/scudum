@@ -39,8 +39,6 @@ fi
 rm -rf $SCUDUM/pst
 rm -rf $SCUDUM/opt
 rm -rf $SCUDUM/extra
-rm -rf $SCUDUM/cross
-rm -rf $SCUDUM/tools
 rm -rf $SCUDUM/images
 rm -rf $SCUDUM/extras
 rm -rf $SCUDUM/source
@@ -51,9 +49,13 @@ rm -f $SCUDUM/etc/ssh/ssh_host_*
 
 find $SCUDUM -name "*.pyc" -delete
 
-if [ "$SCUDUM_CROSS" == "0" ]; then
-    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    strip=$SCUDUM/cross/bin/$ARCH_TARGET-strip
+else
+    strip=strip
 fi
+
+find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
@@ -63,3 +65,6 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{afmtodit,gropdf,pdfmom,mmroff}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{xtrace,zgrep,updatedb,tzselect,sotruss,mtrace,mk_cmds}
 fi
+
+rm -rf $SCUDUM/cross
+rm -rf $SCUDUM/tools

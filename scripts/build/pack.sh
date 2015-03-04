@@ -51,20 +51,22 @@ rm -f $SCUDUM/boot/initrd.img
 rm -f $SCUDUM/boot/grub/grub.cfg
 rm -f $SCUDUM/etc/ssh/ssh_host_*
 
+find $SCUDUM -name "*.pyc" -delete
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    strip=$SCUDUM/cross/bin/$ARCH_TARGET-strip
+else
+    strip=strip
+fi
+
+find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
+
 if [ "$SCUDUM_CROSS" == "0" ]; then
     rm -rf $SCUDUM/cross
     rm -rf $SCUDUM/tools
-fi
-
-find $SCUDUM -name "*.pyc" -delete
-
-if [ "$SCUDUM_CROSS" == "0" ]; then
-    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec strip --strip-debug "{}" ";" || true
 fi
 
 cd $SCUDUM
 
 rm -f $BASE/$FILE
 tar -zcvf $BASE/$FILE *
-
-cd $BASE
