@@ -15,7 +15,7 @@ for index in $(seq -f "%03g" $PATCH_SEQ); do
 done
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    cp -p /bin/bash /bin/bash.old
+    test ! -e /bin/bash.old && cp -p /bin/bash /bin/bash.old || true
     ln -sf bash.old /bin/sh
 fi
 
