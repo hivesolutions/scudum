@@ -19,7 +19,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ln -sf bash.old /bin/sh
 fi
 
-./configure\
+ac_cv_rl_version=6.0 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --bindir=/bin\
