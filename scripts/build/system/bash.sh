@@ -29,6 +29,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     bash_cv_job_control_missing=present\
     bash_cv_sys_named_pipes=present\
     bash_cv_getcwd_malloc=yes\
+    bash_cv_printf_a_format=yes\
+    bash_cv_unusable_rtsigs=no\
     ./configure\
         --host=$ARCH_TARGET\
         --prefix=/usr\

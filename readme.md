@@ -53,6 +53,13 @@ must be changed, note that this is not backwards compatible:
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
     GCC_BUILD_FLOAT=hard scudum root
 
+To be able to run only the system building (without repeating the cross toolchain and the base toochain process) 
+yo can use the following command:
+
+    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
+    GCC_BUILD_FLOAT=hard BUILD_CLEAN=0 BUILD_ROOT=0 BUILD_CROSS=0 BUILD_TIMEOUT=1 scudum root
+
 To deploy a new version of the Scudum ditribution to the repository a deploy operation must be performed,
 note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
 using the `TARGET` variable:
