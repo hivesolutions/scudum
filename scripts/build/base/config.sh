@@ -75,7 +75,7 @@ export DISTRIB="generic"
 # variable that defines the complete set of extra packages
 # that are going to be installed when the extras script
 # execution is triggered (may be changed by others)
-export EXTRAS="sudo python lshw rsync iptables cifs-utils \
+export EXTRAS="sudo ntp python lshw rsync iptables cifs-utils \
 ntfsprogs wireless-tools wpa-supplicant"
 
 # verifies the level of matching of the current target arch
