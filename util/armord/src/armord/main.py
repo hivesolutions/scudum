@@ -55,6 +55,10 @@ class ArmordApp(appier.WebApp):
         self.libs = "current"
         self.login_redirect = "base.index"
 
+def main():
+    app = ArmordApp()
+    app.serve()
+
 if __name__ == "__main__":
     app = ArmordApp()
     app.serve()
