@@ -20,6 +20,9 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     PYTHON_LIB=/usr/lib/python$PYTHON_VERSION/site-packages
     PYTHON_TOOLS_LIB=/tools/lib/python$PYTHON_VERSION/site-packages
 
+    rm -rf $PYTHON_LIB/setuptools*
+    rm -rf $PYTHON_LIB/pip*
+
     mv $PYTHON_TOOLS_LIB/setuptools* $PYTHON_LIB
     mv $PYTHON_TOOLS_LIB/pip* $PYTHON_LIB
 
