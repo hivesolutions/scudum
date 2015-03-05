@@ -51,6 +51,7 @@ ln -sf ../init.d/sysctl /etc/rc.d/rcS.d/S90sysctl
 
 ln -sf ../init.d/boot /etc/rc.d/rc0.d/K10boot
 ln -sf ../init.d/sshd /etc/rc.d/rc0.d/K30sshd
+ln -sf ../init.d/setclock /etc/rc.d/rc0.d/K40setclock
 ln -sf ../init.d/network /etc/rc.d/rc0.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc0.d/K90sysklogd
 ln -sf ../init.d/sendsignals /etc/rc.d/rc0.d/S60sendsignals
@@ -73,6 +74,7 @@ ln -sf ../init.d/sysklogd /etc/rc.d/rc2.d/K90sysklogd
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc3.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc3.d/S20network
+ln -sf ../init.d/setclock /etc/rc.d/rc3.d/S25setclock
 ln -sf ../init.d/sshd /etc/rc.d/rc3.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc3.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc3.d/S35rc.local
@@ -81,6 +83,7 @@ ln -sf ../init.d/welcome /etc/rc.d/rc3.d/S99welcome
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc4.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc4.d/S20network
+ln -sf ../init.d/setclock /etc/rc.d/rc4.d/S25setclock
 ln -sf ../init.d/sshd /etc/rc.d/rc4.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc4.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc4.d/S35rc.local
@@ -89,6 +92,7 @@ ln -sf ../init.d/welcome /etc/rc.d/rc4.d/S99welcome
 
 ln -sf ../init.d/sysklogd /etc/rc.d/rc5.d/S10sysklogd
 ln -sf ../init.d/network /etc/rc.d/rc5.d/S20network
+ln -sf ../init.d/setclock /etc/rc.d/rc5.d/S25setclock
 ln -sf ../init.d/sshd /etc/rc.d/rc5.d/S30sshd
 ln -sf ../init.d/boot /etc/rc.d/rc5.d/S35boot
 ln -sf ../init.d/rc.local /etc/rc.d/rc5.d/S35rc.local
@@ -97,6 +101,7 @@ ln -sf ../init.d/welcome /etc/rc.d/rc5.d/S99welcome
 
 ln -sf ../init.d/boot /etc/rc.d/rc6.d/K10boot
 ln -sf ../init.d/sshd /etc/rc.d/rc6.d/K30sshd
+ln -sf ../init.d/setclock /etc/rc.d/rc6.d/K40setclock
 ln -sf ../init.d/network /etc/rc.d/rc6.d/K80network
 ln -sf ../init.d/sysklogd /etc/rc.d/rc6.d/K90sysklogd
 ln -sf ../init.d/sendsignals /etc/rc.d/rc6.d/S60sendsignals
