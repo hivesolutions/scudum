@@ -40,4 +40,4 @@ from . import main
 
 from .controllers import *
 from .models import *
-from .main import app
+from .main import ArmordApp
