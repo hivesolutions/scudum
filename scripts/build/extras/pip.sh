@@ -27,7 +27,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     rm -rf $PYTHON_LIB/pip* && mv $PYTHON_TOOLS_LIB/pip* $PYTHON_LIB
 
     mv /tools/bin/pip{,2*} /usr/bin
-    mv /tools/bin/easy_install{,2*} /usr/bin
+    mv /tools/bin/easy_install{,-2*} /usr/bin
 
     sed -i 's/\/tools\/bin/\/usr\/bin/g' /usr/bin/pip{,2*}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' /usr/bin/easy_install{,2*}
