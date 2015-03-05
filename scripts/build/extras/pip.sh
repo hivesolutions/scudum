@@ -24,4 +24,6 @@ else
     ARGS="--user"
 fi
 
-python setup.py install $ARGS
+echo "python setup.py install $ARGS"
+
+python setup.py install ${ARGS}
