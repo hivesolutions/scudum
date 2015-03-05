@@ -71,6 +71,7 @@ setuptools.setup(
     },
     install_requires = [
         "appier",
+        "appier_extras",
         "jinja2"
     ],
     entry_points = {
