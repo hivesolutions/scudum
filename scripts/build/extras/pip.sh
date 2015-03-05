@@ -19,5 +19,5 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     PYTHON_VERSION=$(python -c "import sys;t='{v[0]}.{v[1]}'.format(v=list(sys.version_info[:2]));sys.stdout.write(t)";)
     PYTHON_LIB=/usr/lib/python$PYTHON_VERSION/site-packages
     export PYTHONPATH=$PYTHON_LIB
-    pip install pip --target $PYTHON_LIB --install-option='--prefix=/usr' --verbose
+    pip install pip --install-option "--prefix=/usr" --install-option "--install-lib=$PYTHON_LIB" --verbose
 fi
