@@ -17,6 +17,16 @@
 
 [ -r /etc/sysconfig/clock ] && . /etc/sysconfig/clock
 
+NTP=0
+
+for argument in $(cat /proc/cmdline); do
+    case "${argument}" in
+        ntp)
+            NTP=1
+            ;;
+    esac
+done
+
 case "${UTC}" in
     yes|true|1)
         CLOCKPARAMS="${CLOCKPARAMS} --utc"
@@ -25,18 +35,25 @@ case "${UTC}" in
     no|false|0)
         CLOCKPARAMS="${CLOCKPARAMS} --localtime"
         ;;
-
 esac
 
 case ${1} in
     start)
-        hwclock --hctosys ${CLOCKPARAMS} > /dev/null
+        if [ "$NTP" == "1" ] && [ -e /usr/bin/ntpdate ]; then
+            log_info_msg "Setting hardware clock, using NTP (pool.ntp.org)..."
+            ntpdate pool.ntp.org
+            evaluate_retval
+        else
+            hwclock --hctosys ${CLOCKPARAMS} > /dev/null
+        fi
         ;;
 
     stop)
-        log_info_msg "Setting hardware clock..."
-        hwclock --systohc ${CLOCKPARAMS} > /dev/null
-        evaluate_retval
+        if [ "$NTP" == "0" ]; then
+            log_info_msg "Setting hardware clock..."
+            hwclock --systohc ${CLOCKPARAMS} > /dev/null
+            evaluate_retval
+        fi
         ;;
 
     *)
