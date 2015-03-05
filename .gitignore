@@ -6,3 +6,7 @@
 /util/armorc/dist
 /util/armorc/build
 /util/armorc/src/armorc.egg-info
+
+/util/armord/dist
+/util/armord/build
+/util/armord/src/armord.egg-info

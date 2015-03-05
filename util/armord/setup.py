@@ -42,7 +42,7 @@ import setuptools
 
 setuptools.setup(
     name = "armord",
-    version = "0.1.0",
+    version = "0.1.1",
     author = "Hive Solutions Lda.",
     author_email = "development@hive.pt",
     description = "Armor Daemon",
@@ -51,7 +51,9 @@ setuptools.setup(
     url = "http://scudum.hive.pt",
     zip_safe = False,
     packages = [
-        "armord"
+        "armord",
+        "armord.controllers",
+        "armord.models"
     ],
     package_dir = {
         "" : os.path.normpath("src")
