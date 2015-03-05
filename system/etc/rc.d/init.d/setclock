@@ -41,7 +41,7 @@ case ${1} in
     start)
         if [ "$NTP" == "1" ] && [ -e /usr/bin/ntpdate ]; then
             log_info_msg "Setting hardware clock, using NTP (pool.ntp.org)..."
-            ntpdate pool.ntp.org
+            ntpdate pool.ntp.org > /dev/null
             evaluate_retval
         else
             hwclock --hctosys ${CLOCKPARAMS} > /dev/null
