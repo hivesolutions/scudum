@@ -17,7 +17,6 @@ export ACLOCAL_PATH="~/.local/share/aclocal:/opt/share/aclocal:/pst/share/acloca
 /usr/share/aclocal:/share/aclocal"
 export PERL5LIB="/opt/lib/perl5:/opt/lib/perl5/site_perl:/pst/lib/perl5:/pst/lib/perl5/site_perl"
 export MAKEFLAGS="-j $(nproc)"
-export LIBTOOLFLAGS="--no-warn"
 export LS_COLORS="ow=01;90:di=01;90"
 export TERM=linux
 export PS1="\u@\h:\w# "
