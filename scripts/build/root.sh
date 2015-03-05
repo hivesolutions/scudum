@@ -18,10 +18,6 @@ cd build
 # that are going to be performed in the next steps
 $DIR/base/deps.sh
 
-# runs the cleanup operation, this should remove any
-# previous installation of scudum from the file system
-if [ "$BUILD_CLEAN" == "1" ]; then $DIR/base/cleanup.sh; fi
-
 # loads the complete set of environment variables
 # that are going to be used in the build process
 source $DIR/base/config.sh
@@ -48,6 +44,10 @@ umask 022
 print_scudum
 print_scudum_tools
 sleep $BUILD_TIMEOUT
+
+# runs the cleanup operation, this should remove any
+# previous installation of scudum from the file system
+if [ "$BUILD_CLEAN" == "1" ]; then $DIR/base/cleanup.sh; fi
 
 # verifies if the current kind of compilation is cross
 # based and if that's the case (host is not target) runs
