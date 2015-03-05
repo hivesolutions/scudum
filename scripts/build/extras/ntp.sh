@@ -12,5 +12,5 @@ rm -rf ntp-$VERSION && tar -zxf "ntp-$VERSION.tar.gz"
 rm -f "ntp-$VERSION.tar.gz"
 cd ntp-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
