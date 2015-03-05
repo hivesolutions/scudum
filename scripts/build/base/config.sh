@@ -45,6 +45,13 @@ export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 # a root user may configure all the packages
 export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
 
+# exports the various build oriented values that are going
+# to be used to control the build prcess (the typical build
+# process does not require any change to these values)
+export BUILD_TOOLS=${BUILD_TOOLS-1}
+export BUILD_CROSS=${BUILD_CROSS-1}
+export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
+
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
 # should be enough to take advantage of the various cores,
@@ -150,6 +157,9 @@ print_scudum() {
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
+    echo "BUILD_TOOLS := $BUILD_TOOLS"
+    echo "BUILD_CROSS := $BUILD_CROSS"
+    echo "BUILD_TIMEOUT := $BUILD_TIMEOUT"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "GCC_FLAVOUR := $GCC_FLAVOUR"
     echo "GCC_MULTIARCH := $GCC_MULTIARCH"

@@ -16,7 +16,7 @@ unset VERSION
 # that is going to be used in the system building operation
 # and then sleeps for some time to display this information
 print_scudum
-sleep 10
+sleep $BUILD_TIMEOUT
 
 /tools/repo/scripts/build/system/tree.sh
 

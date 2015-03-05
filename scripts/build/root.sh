@@ -47,7 +47,7 @@ umask 022
 # then sleeps for some time (allows reading)
 print_scudum
 print_scudum_tools
-sleep 10
+sleep $BUILD_TIMEOUT
 
 # verifies if the current kind of compilation is cross
 # based and if that's the case (host is not target) runs
