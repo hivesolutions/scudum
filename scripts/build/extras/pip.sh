@@ -16,7 +16,7 @@ cd pip-6.0.8
 if [ "$PREFIX" == "/usr" ]; then
     if [ "$SCUDUM_CROSS" == "1" ]; then
         PYTHON_VERSION=$(python -c "import sys;t='{v[0]}.{v[1]}'.format(v=list(sys.version_info[:2]));sys.stdout.write(t)";)
-        ARGS="–-install-scripts=/usr/bin --install-purelib=/usr/lib/python$PYTHON_VERSION/site-packages"
+        ARGS="--install-scripts=/usr/bin --install-purelib=/usr/lib/python$PYTHON_VERSION/site-packages"
     else
         ARGS=""
     fi
