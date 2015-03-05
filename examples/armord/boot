@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export ARMOR_SERVER=${ARMOR_SERVER-netius}
+export ARMOR_HOST=${ARMOR_HOST-0.0.0.0}
+export ARMOR_PORT=${ARMOR_PORT-8080}
+export ARMOR_SESSION=${ARMOR_SESSION-memory}
+export MONGOHQ_URL=${MONGOHQ_URL-mongodb://root:root@db}
+export REDISTOGO_URL=${REDISTOGO_URL-redis://root:root@db}
+
+set -e
+
+pip install netius redis armord --quiet
+
+SERVER=$ARMOR_SERVER HOST=$ARMOR_HOST PORT=$ARMOR_PORT SESSION=$ARMOR_SESSION armord
