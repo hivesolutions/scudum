@@ -45,7 +45,7 @@ setuptools.setup(
     version = "0.1.20",
     author = "Hive Solutions Lda.",
     author_email = "development@hive.pt",
-    description = "Armor API",
+    description = "Armor Client",
     license = "GNU General Public License (GPL), Version 3",
     keywords = "armor client",
     url = "http://scudum.hive.pt",
