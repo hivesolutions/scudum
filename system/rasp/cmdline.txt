@@ -1,1 +1,1 @@
-initrd=0x00f00000 init=/linuxrc load_ramdisk=1 ramdisk_size=16384 root=/dev/ram rw quiet persist cleanup ntp performance 
+initrd=0x00f00000 init=/linuxrc load_ramdisk=1 ramdisk_size=16384 root=/dev/ram rw quiet ntp performance 
