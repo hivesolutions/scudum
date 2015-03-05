@@ -61,7 +61,9 @@ fi
 
 find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
 
-if [ "$SCUDUM_CROSS" == "0" ]; then
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -rf $SCUDUM/tools/repo
+else
     rm -rf $SCUDUM/cross
     rm -rf $SCUDUM/tools
 fi
