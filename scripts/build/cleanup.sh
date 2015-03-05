@@ -23,7 +23,7 @@ sync
 
 if [ -d $SCUDUM/root ]; then
     cd $SCUDUM/root
-    find . ! -name ".bashrc" -delete
+    find . ! -name ".bashrc" ! -name ".nanorc" -delete
 fi
 
 if [ -d $SCUDUM/tmp ]; then
