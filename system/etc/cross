@@ -28,8 +28,3 @@ if [ "$EFLAGS" != "" ]; then
     export CC="$CC $EFLAGS"
     export CXX="$CXX $EFLAGS"
 fi
-
-if [ -e /tools ]; then
-    export PATH="/tools/bin:$PATH"
-    export LIBRARY_PATH="/tools/lib:$LIBRARY_PATH"
-fi
