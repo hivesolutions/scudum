@@ -16,6 +16,7 @@ rm -f get-pip.py && wget "https://bootstrap.pypa.io/get-pip.py"
 python get-pip.py $ARGS
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -rf /tools/bin/pip{,2*}
     PYTHON_VERSION=$(python -c "import sys;t='{v[0]}.{v[1]}'.format(v=list(sys.version_info[:2]));sys.stdout.write(t)";)
     PYTHON_LIB=/usr/lib/python$PYTHON_VERSION/site-packages
     export PYTHONPATH=$PYTHON_LIB
