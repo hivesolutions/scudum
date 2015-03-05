@@ -19,6 +19,6 @@ make && make install
 ln -sv nano /usr/bin/pico
 
 for file in /usr/share/nano/*.nanorc; do
-    sed -i 's/\\\</\\\b/g' $file
-    sed -i 's/\\\>/\\\b/g' $file
+    sed -i 's/\\</\\b/g' $file
+    sed -i 's/\\>/\\b/g' $file
 done
