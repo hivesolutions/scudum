@@ -68,5 +68,3 @@ fi
 
 rm -rf $SCUDUM/cross
 rm -rf $SCUDUM/tools
-
-mv $SCUDUM/config /etc/viriatum/CONFIG
