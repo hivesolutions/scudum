@@ -58,7 +58,7 @@ fi
 
 # verifies if the current build process is meant to build the
 # various tools (base toolchain) and then acts accordingly
-if [ "$$BUILD_TOOLS" == "1" ]; then
+if [ "$BUILD_TOOLS" == "1" ]; then
     # runs the complete set of package specific scripts
     # in order to build their source code properly
     $DIR/tools/binutils.pass1.sh
