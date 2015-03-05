@@ -47,7 +47,9 @@ sleep $BUILD_TIMEOUT
 
 # runs the cleanup operation, this should remove any
 # previous installation of scudum from the file system
-if [ "$BUILD_CLEAN" == "1" ]; then $DIR/base/cleanup.sh; fi
+if [ "$BUILD_CLEAN" == "1" ]; then
+    $DIR/base/cleanup.sh;
+fi
 
 # verifies if the current kind of compilation is cross
 # based and if that's the case (host is not target) runs
