@@ -26,11 +26,6 @@ if [ "$(locale -a | grep -a en_US.utf8)" != "" ]; then
     export LC_ALL="en_US.utf8"
 fi
 
-if [ -e /tools ]; then
-    export PATH="/tools/bin:$PATH"
-    export LIBRARY_PATH="/tools/lib:$LIBRARY_PATH"
-fi
-
 if [ -e /etc/scudum/OVERLAYFS ] || [ -w /usr ]; then
     export PREFIX=/usr
     export MAKEPATHS=${MAKEPATHS-0}
