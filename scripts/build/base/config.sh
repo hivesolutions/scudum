@@ -48,6 +48,7 @@ export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
 # exports the various build oriented values that are going
 # to be used to control the build prcess (the typical build
 # process does not require any change to these values)
+export BUILD_CLEAN=${BUILD_CLEAN-1}
 export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
 export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
@@ -157,6 +158,7 @@ print_scudum() {
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
+    echo "BUILD_CLEAN := $BUILD_CLEAN"
     echo "BUILD_TOOLS := $BUILD_TOOLS"
     echo "BUILD_CROSS := $BUILD_CROSS"
     echo "BUILD_TIMEOUT := $BUILD_TIMEOUT"

@@ -20,7 +20,7 @@ $DIR/base/deps.sh
 
 # runs the cleanup operation, this should remove any
 # previous installation of scudum from the file system
-$DIR/base/cleanup.sh
+if [ "$BUILD_CLEAN" == "1"]; then $DIR/base/cleanup.sh; fi
 
 # loads the complete set of environment variables
 # that are going to be used in the build process
@@ -52,64 +52,68 @@ sleep $BUILD_TIMEOUT
 # verifies if the current kind of compilation is cross
 # based and if that's the case (host is not target) runs
 # the cross compilation specific scripts
-if [ "$SCUDUM_CROSS" == "1" ]; then
+if [ "$SCUDUM_CROSS" == "1" ] && [ "$BUILD_CROSS" == "1" ]; then
     $DIR/base/cross.sh
 fi
 
-# runs the complete set of package specific scripts
-# in order to build their source code properly
-$DIR/tools/binutils.pass1.sh
-$DIR/tools/$GCC_BUILD_BINARY.pass1.sh
-$DIR/tools/linux-headers.sh
-$DIR/tools/glibc.sh
-$DIR/tools/libstdc++.sh
-$DIR/tools/binutils.pass2.sh
-$DIR/tools/$GCC_BUILD_BINARY.pass2.sh
-$DIR/tools/tcl.sh
-$DIR/tools/expect.sh
-$DIR/tools/dejagnu.sh
-$DIR/tools/check.sh
-$DIR/tools/ncurses.sh
-$DIR/tools/bash.sh
-$DIR/tools/bzip2.sh
-$DIR/tools/coreutils.sh
-$DIR/tools/diffutils.sh
-$DIR/tools/file.sh
-$DIR/tools/findutils.sh
-$DIR/tools/gawk.sh
-$DIR/tools/gettext.sh
-$DIR/tools/grep.sh
-$DIR/tools/gzip.sh
-$DIR/tools/m4.sh
-$DIR/tools/make.sh
-$DIR/tools/patch.sh
-$DIR/tools/perl.sh
-$DIR/tools/sed.sh
-$DIR/tools/tar.sh
-$DIR/tools/texinfo.sh
-$DIR/tools/xz.sh
-$DIR/tools/zlib.sh
-$DIR/tools/pkg-config.sh
-$DIR/tools/util-linux.sh
-$DIR/tools/shadow.sh
-$DIR/tools/e2fsprogs.sh
-$DIR/tools/bc.sh
-$DIR/tools/kmod.sh
-$DIR/tools/openssl.sh
-$DIR/tools/bison.sh
-$DIR/tools/flex.sh
-$DIR/tools/curl.sh
-$DIR/tools/git.sh
-$DIR/tools/wget.sh
+# verifies if the current build process is meant to build the
+# various tools (base toolchain) and then acts accordingly
+if [ "$$BUILD_TOOLS" == "1"]; then
+    # runs the complete set of package specific scripts
+    # in order to build their source code properly
+    $DIR/tools/binutils.pass1.sh
+    $DIR/tools/$GCC_BUILD_BINARY.pass1.sh
+    $DIR/tools/linux-headers.sh
+    $DIR/tools/glibc.sh
+    $DIR/tools/libstdc++.sh
+    $DIR/tools/binutils.pass2.sh
+    $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
+    $DIR/tools/tcl.sh
+    $DIR/tools/expect.sh
+    $DIR/tools/dejagnu.sh
+    $DIR/tools/check.sh
+    $DIR/tools/ncurses.sh
+    $DIR/tools/bash.sh
+    $DIR/tools/bzip2.sh
+    $DIR/tools/coreutils.sh
+    $DIR/tools/diffutils.sh
+    $DIR/tools/file.sh
+    $DIR/tools/findutils.sh
+    $DIR/tools/gawk.sh
+    $DIR/tools/gettext.sh
+    $DIR/tools/grep.sh
+    $DIR/tools/gzip.sh
+    $DIR/tools/m4.sh
+    $DIR/tools/make.sh
+    $DIR/tools/patch.sh
+    $DIR/tools/perl.sh
+    $DIR/tools/sed.sh
+    $DIR/tools/tar.sh
+    $DIR/tools/texinfo.sh
+    $DIR/tools/xz.sh
+    $DIR/tools/zlib.sh
+    $DIR/tools/pkg-config.sh
+    $DIR/tools/util-linux.sh
+    $DIR/tools/shadow.sh
+    $DIR/tools/e2fsprogs.sh
+    $DIR/tools/bc.sh
+    $DIR/tools/kmod.sh
+    $DIR/tools/openssl.sh
+    $DIR/tools/bison.sh
+    $DIR/tools/flex.sh
+    $DIR/tools/curl.sh
+    $DIR/tools/git.sh
+    $DIR/tools/wget.sh
+
+    # runs the strip operation on the complete set of tools
+    # so that some disk space is spared by removing the debug
+    # and the unneeded symbols from the libraries
+    $DIR/tools/strip.sh
+fi
 
 # run the output operation that "prints" the current configuration
 # into a plain file that it may be latter "sourced"
 $DIR/tools/output.sh
-
-# runs the strip operation on the complete set of tools
-# so that some disk space is spared by removing the debug
-# and the unneeded symbols from the libraries
-$DIR/tools/strip.sh
 
 # removes the directory where the building process has been done
 # so that no extra files leak to the final building stages, then
