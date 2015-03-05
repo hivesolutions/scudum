@@ -17,7 +17,7 @@ if [ "$PREFIX" == "/usr" ]; then
     if [ "$SCUDUM_CROSS" == "1" ]; then
         PYTHON_VERSION=$(python -c "import sys;t='{v[0]}.{v[1]}'.format(v=list(sys.version_info[:2]));sys.stdout.write(t)";)
         PYTHON_LIB="/usr/lib/python$PYTHON_VERSION/site-packages"
-        ARGS="--target $PYTHON_LIB --install-option=\"--install-scripts=/usr/bin\" --install-option=\"--install-purelib=$PYTHON_LIB\""
+        ARGS="--target $PYTHON_LIB --install-option=\"--prefix=/usr\" --install-option=\"--install-scripts=/usr/bin\" --install-option=\"--install-purelib=$PYTHON_LIB\""
     else
         ARGS=""
     fi
@@ -26,6 +26,6 @@ else
 fi
 
 rm -f get-pip.py && wget "https://bootstrap.pypa.io/get-pip.py"
-python get-pip.py $ARGS
+python get-pip.py $ARGS --verbose
 
 #python setup.py install $ARGS
