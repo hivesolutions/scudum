@@ -89,7 +89,6 @@ protocols: files
 services: files
 ethers: files
 rpc: files
-
 EOF
 
 if [ "$SCUDUM_CROSS" == "0" ] ; then
