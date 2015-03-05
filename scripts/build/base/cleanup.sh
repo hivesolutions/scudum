@@ -6,10 +6,6 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 # commands fails the execution is stopped
 set -e +h
 
-# loads the currently defined configuration so that
-# some of the required variables become available
-source $DIR/config.sh
-
 # runs the unmount operation for the complete set
 # of devices associated with scudum (as expected)
 mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
