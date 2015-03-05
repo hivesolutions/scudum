@@ -40,10 +40,12 @@ esac
 
 case ${1} in
     start)
-        if [ "$NTP" == "1" ] && [ -e /usr/bin/ntpdate ]; then
-            log_info_msg "Setting hardware clock, using NTP (${NTP_SERVER})..."
-            ntpdate -s ${NTP_SERVER}
-            evaluate_retval
+        if [ "$NTP" == "1" ]; then
+            if [ -e /usr/bin/ntpdate ]; then
+                log_info_msg "Setting hardware clock, using NTP (${NTP_SERVER})..."
+                ntpdate -s ${NTP_SERVER}
+                evaluate_retval
+            fi
         else
             hwclock --hctosys ${CLOCKPARAMS} > /dev/null
         fi
