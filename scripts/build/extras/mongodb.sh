@@ -14,4 +14,4 @@ rm -f "mongodb-src-r$VERSION.tar.gz"
 cd mongodb-src-r$VERSION
 
 scons core tools --ssl
-scons install --prefix=$PREFIX
+scons install --prefix=$PREFIX -j $(nproc)
