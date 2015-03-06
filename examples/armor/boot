@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export ARMOR_BASE_URL=${ARMOR_BASE_URL-http://armor.hive:8080/api/}
+export ARMOR_BASE_URL=${ARMOR_BASE_URL-http://armor:8080/api/}
 export ARMOR_USERNAME=${ARMOR_USERNAME-root}
 export ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
 
