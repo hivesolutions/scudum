@@ -156,9 +156,9 @@ class ArmorClient(object):
         pipe.wait()
         git_path = os.path.join(self.temp_path, "git")
         common_path = os.path.join(git_path, "common")
-        if os.path.exists(common_path): shutil.move(common_path, self.common_path)
+        if os.path.exists(common_path): self.move_tree(common_path, self.common_path)
         host_path = os.path.join(git_path, self.hostname)
-        if os.path.exists(host_path): shutil.move(host_path, self.host_path)
+        if os.path.exists(host_path): self.move_tree(host_path, self.host_path)
 
     def exec_build(self):
         self.exec_script("build", common = True)
@@ -212,6 +212,10 @@ class ArmorClient(object):
                 destiny_file = os.path.join(destiny_dir, _file)
                 if os.path.exists(destiny_file): os.remove(destiny_file)
                 shutil.copy2(source_file, destiny_dir)
+
+    def move_tree(self, source, destiny, replace = True):
+        if os.path.exists(destiny) and replace: shutil.rmtree(destiny)
+        shutil.move(source, destiny)
 
     def get_domain(self):
         hostname = socket.gethostname()
