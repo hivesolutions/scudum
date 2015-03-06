@@ -47,9 +47,10 @@ import armor
 
 class ArmorClient(object):
 
-    def __init__(self, armor_path = "/armor", data_path = "/data"):
+    def __init__(self, armor_path = "/armor", data_path = "/data", exec_path = "/var/armor"):
         self.armor_path = armor_path
         self.data_path = data_path
+        self.exec_path = exec_path
         self.api = None
         self.hostname = None
         self.domain = None
@@ -65,6 +66,7 @@ class ArmorClient(object):
     def ensure_paths(self):
         if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
         if not os.path.exists(self.data_path): os.makedirs(self.data_path)
+        if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
 
     def run_boot(self):
         api = self.get_api()
@@ -185,15 +187,20 @@ class ArmorClient(object):
         self.exec_script("halt", common = True)
         self.exec_script("halt", common = False)
 
-    def exec_script(self, name = "boot", common = False):
+    def exec_script(self, name = "boot", common = False, chdir = True):
         target_s = "common" if common else "host"
         target_path = self.common_path if common else self.host_path
         if not target_path: return
         script_path = os.path.join(target_path, name)
         if not os.path.exists(script_path): return
         print("Executing script '%s:%s' ..." % (target_s, name))
-        pipe = subprocess.Popen([script_path], shell = True)
-        pipe.wait()
+        cwd = os.getcwd()
+        os.chdir(self.exec_path)
+        try:
+            pipe = subprocess.Popen([script_path], shell = True)
+            pipe.wait()
+        finally:
+            os.chdir(cwd)
 
     def write_file(self, path, data, mode = None):
         dir_path = os.path.dirname(path)
