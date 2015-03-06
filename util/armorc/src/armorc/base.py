@@ -94,6 +94,7 @@ class ArmorClient(object):
         self.clone_github()
         self.deploy_all()
         self.exec_build()
+        self.deploy_all()
         self.exec_boot()
 
     def handle_halt(self):
@@ -204,14 +205,14 @@ class ArmorClient(object):
         if not mode: return
         os.chmod(path, mode)
 
-    def copy_tree(self, source, destiny):
+    def copy_tree(self, source, destiny, replace = True):
         for source_dir, _dirs, files in os.walk(source):
             destiny_dir = source_dir.replace(source, destiny)
             if not os.path.exists(destiny_dir): os.mkdir(destiny_dir)
             for _file in files:
                 source_file = os.path.join(source_dir, _file)
                 destiny_file = os.path.join(destiny_dir, _file)
-                if os.path.exists(destiny_file): os.remove(destiny_file)
+                if os.path.exists(destiny_file) and replace: os.remove(destiny_file)
                 shutil.copy2(source_file, destiny_dir)
 
     def move_tree(self, source, destiny, replace = True):
