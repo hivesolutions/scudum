@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$VERSION.tgz"
+rget "http://hq.hive.pt/builds/other/mongodb/mongodb-linux-x86_64-$VERSION.tgz"\
+    "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$VERSION.tgz"
 rm -rf mongodb-linux-x86_64-$VERSION && tar -zxf "mongodb-linux-x86_64-$VERSION.tgz"
 rm -f "mongodb-linux-x86_64-$VERSION.tgz"
 cd mongodb-linux-x86_64-$VERSION
