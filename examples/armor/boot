@@ -6,6 +6,8 @@ export ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
 
 set -e
 
+source /etc/environ
+
 pip install armorc --quiet
 
 armorc boot
