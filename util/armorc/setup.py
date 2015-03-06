@@ -42,7 +42,7 @@ import setuptools
 
 setuptools.setup(
     name = "armorc",
-    version = "0.1.24",
+    version = "0.1.25",
     author = "Hive Solutions Lda.",
     author_email = "development@hive.pt",
     description = "Armor Client",
