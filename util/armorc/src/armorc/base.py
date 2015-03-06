@@ -147,11 +147,11 @@ class ArmorClient(object):
         if not git_url: return
         print("Cloning git repository '%s'" % git_url)
         self.write_file(
-            "ssh",
+            "/bin/ssh-insecure",
             "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $*",
             mode = 0o700
         )
-        os.environ["GIT_SSH"] = "./ssh"
+        os.environ["GIT_SSH"] = "ssh-insecure"
         pipe = subprocess.Popen(
             ["git", "clone", "--depth", "1", git_url, "git"]
         )
