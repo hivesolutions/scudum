@@ -4,7 +4,7 @@
 NAME=${NAME-scudum}
 VERSION=${VERSION-latest}
 ARCH=${ARCH-x86_64}
-REPO=${REPO-http://hq.hive.pt:9999/builds/$NAME}
+REPO=${REPO-http://hq.hive.pt/builds/$NAME}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
