@@ -92,8 +92,8 @@ class ArmorClient(object):
         self.deploy_ssh()
         self.mount_cifs()
         self.clone_github()
-        self.exec_build()
         self.deploy_all()
+        self.exec_build()
         self.exec_boot()
 
     def handle_halt(self):
@@ -160,6 +160,17 @@ class ArmorClient(object):
         host_path = os.path.join(git_path, self.hostname)
         if os.path.exists(host_path): self.move_tree(host_path, self.host_path)
 
+    def deploy_all(self):
+        self.deploy_system(common = True)
+        self.deploy_system(common = False)
+
+    def deploy_system(self, common = False):
+        target_path = self.common_path if common else self.host_path
+        if not target_path: return
+        system_path = os.path.join(target_path, "system")
+        if not os.path.exists(system_path): return
+        self.copy_tree(system_path, "/")
+
     def exec_build(self):
         self.exec_script("build", common = True)
         self.exec_script("build", common = False)
@@ -181,17 +192,6 @@ class ArmorClient(object):
         print("Executing script '%s:%s' ..." % (target_s, name))
         pipe = subprocess.Popen([script_path], shell = True)
         pipe.wait()
-
-    def deploy_all(self):
-        self.deploy_system(common = True)
-        self.deploy_system(common = False)
-
-    def deploy_system(self, common = False):
-        target_path = self.common_path if common else self.host_path
-        if not target_path: return
-        system_path = os.path.join(target_path, "system")
-        if not os.path.exists(system_path): return
-        self.copy_tree(system_path, "/")
 
     def write_file(self, path, data, mode = None):
         dir_path = os.path.dirname(path)
