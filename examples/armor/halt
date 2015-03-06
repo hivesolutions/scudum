@@ -6,4 +6,6 @@ export ARMOR_PASSWORD=${ARMOR_PASSWORD-root}
 
 set -e
 
+source /etc/environ
+
 armorc halt
