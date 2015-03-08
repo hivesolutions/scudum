@@ -69,8 +69,8 @@ class ArmorClient(object):
         if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
 
     def cleanup_paths(self):
-        if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
-        if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
+        if os.path.exists(self.armor_path): shutil.rmtree(self.armor_path)
+        if os.path.exists(self.exec_path): shutil.rmtree(self.exec_path)
         self.ensure_paths()
 
     def run_boot(self):
