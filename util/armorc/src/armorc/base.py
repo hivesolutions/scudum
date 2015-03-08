@@ -68,6 +68,11 @@ class ArmorClient(object):
         if not os.path.exists(self.data_path): os.makedirs(self.data_path)
         if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
 
+    def cleanup_paths(self):
+        if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
+        if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
+        self.ensure_paths()
+
     def run_boot(self):
         api = self.get_api()
         self.hostname, self.domain = self.get_domain()
@@ -93,6 +98,7 @@ class ArmorClient(object):
         self.run_reboot()
 
     def handle_boot(self):
+        self.cleanup_paths()
         self.deploy_ssh()
         self.mount_cifs()
         self.clone_github()
