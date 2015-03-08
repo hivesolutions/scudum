@@ -90,6 +90,13 @@ class ArmorClient(object):
         self.domain_info = domains[0]
         self.handle_halt()
 
+    def run_reboot(self):
+        self.run_halt()
+        self.run_boot()
+
+    def run_restart(self):
+        self.run_reboot()
+
     def handle_boot(self):
         self.deploy_ssh()
         self.mount_cifs()
