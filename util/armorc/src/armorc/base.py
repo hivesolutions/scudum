@@ -83,11 +83,6 @@ class ArmorClient(object):
             shutil.rmtree(self.temp_path)
 
     def run_halt(self):
-        api = self.get_api()
-        self.hostname, self.domain = self.get_domain()
-        domains = api.list_domains(name = self.domain)
-        if not domains: return
-        self.domain_info = domains[0]
         self.handle_halt()
 
     def run_reboot(self):
@@ -140,12 +135,6 @@ class ArmorClient(object):
         pipe.wait()
 
     def unmount_cifs(self):
-        cifs_path = self.domain_info["cifs_path"]
-        cifs_username = self.domain_info["cifs_username"]
-        cifs_password = self.domain_info["cifs_password"]
-        if not cifs_path: return
-        if not cifs_username: return
-        if not cifs_password: return
         if not os.path.ismount(self.data_path): return
         print("Unmounting CIFS share from '%s'" % self.data_path)
         pipe = subprocess.Popen(["umount", self.data_path])
