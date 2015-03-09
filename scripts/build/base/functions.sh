@@ -13,7 +13,7 @@ rget() {
 
 rgeti() {
     for url in "$@"; do
-        (wget --no-check-certificate --tries=1 --timeout=20 $url && return 0) || true
+        wget --no-check-certificate --tries=1 --timeout=20 $url && return 0
     done
     return 1
 }
