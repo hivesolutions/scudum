@@ -26,7 +26,15 @@ cmake ..\
 
 make && make install
 
-ln -sv ../mysql/bin/mysql $PREFIX/bin/mysql
+for file in $PREFIX/mysql/bin/mysql*; do
+    base=$(basename $file)
+    ln -sv ../mysql/bin/$base $PREFIX/bin/$base
+done
+
+for file in $PREFIX/mysql/lib/libmysql*; do
+    base=$(basename $file)
+    ln -sv ../mysql/lib/$base $PREFIX/lib/$base
+done
 
 cd $PREFIX/mysql
 

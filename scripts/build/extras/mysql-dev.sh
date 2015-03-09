@@ -16,10 +16,20 @@ cd mysql-$VERSION
 mkdir -pv build && cd build
 
 cmake ..\
-    -DCMAKE_INSTALL_PREFIX=$PREFIX/mysql\
+    -DCMAKE_INSTALL_PREFIX=$PREFIX\
     -DWITH_UNIT_TESTS=OFF\
     -DWITHOUT_SERVER=ON\
     -DCMAKE_CXX_FLAGS="-w -fpermissive"\
     -DCMAKE_C_FLAGS="-w -fpermissive"
 
 make && make install
+
+for file in $PREFIX/mysql/bin/mysql*; do
+    base=$(basename $file)
+    ln -sv ../mysql/bin/$base $PREFIX/bin/$base
+done
+
+for file in $PREFIX/mysql/lib/libmysql*; do
+    base=$(basename $file)
+    ln -sv ../mysql/lib/$base $PREFIX/lib/$base
+done
