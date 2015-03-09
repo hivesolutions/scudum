@@ -16,7 +16,7 @@ cd mysql-$VERSION
 mkdir -pv build && cd build
 
 cmake ..\
-    -DCMAKE_INSTALL_PREFIX=$PREFIX\
+    -DCMAKE_INSTALL_PREFIX=$PREFIX/mysql\
     -DWITH_UNIT_TESTS=OFF\
     -DWITHOUT_SERVER=ON\
     -DCMAKE_CXX_FLAGS="-w -fpermissive"\
