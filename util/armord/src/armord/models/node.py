@@ -44,7 +44,7 @@ from . import domain
 
 class Node(base.ArmorBase):
 
-    name = dict(
+    name = appier.field(
         index = True,
         default = True
     )
