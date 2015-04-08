@@ -43,34 +43,34 @@ from . import base
 
 class Domain(base.ArmorBase):
 
-    name = dict(
+    name = appier.field(
         index = True,
         default = True
     )
 
-    private_key = dict(
+    private_key = appier.field(
         meta = "longtext"
     )
 
-    public_key = dict(
+    public_key = appier.field(
         meta = "longtext"
     )
 
-    authorized_keys = dict(
+    authorized_keys = appier.field(
         meta = "longtext"
     )
 
-    cifs_path = dict(
+    cifs_path = appier.field(
         index = True
     )
 
-    cifs_username = dict()
+    cifs_username = appier.field()
 
-    cifs_password = dict(
+    cifs_password = appier.field(
         meta = "secret"
     )
 
-    git_url = dict(
+    git_url = appier.field(
         index = True
     )
 

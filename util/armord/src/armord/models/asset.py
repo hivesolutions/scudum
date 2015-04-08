@@ -44,20 +44,20 @@ from . import node
 
 class Asset(base.ArmorBase):
 
-    name = dict(
+    name = appier.field(
         index = True,
         default = True
     )
 
-    path = dict(
+    path = appier.field(
         index = True
     )
 
-    owner = dict(
+    owner = appier.field(
         index = True
     )
 
-    permissions = dict(
+    permissions = appier.field(
         type = int
     )
 
