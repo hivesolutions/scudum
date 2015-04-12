@@ -23,12 +23,12 @@ fi
 # defines the proper (target) architecture for the building process
 # taking into account the requested one, then the configured on and
 # if all is not defined the pre-defined one (intel)
-ARCH=${ARCH-${SCUDUM_BARCH-x86}}
+KARCH=${KARCH-${SCUDUM_BARCH-x86}}
 KTARGET=${KTARGET-}
 
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
-case "$ARCH" in
+case "$KARCH" in
     arm*)
         VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-3.18}
@@ -72,7 +72,7 @@ else
     BUILDER=$TARGET/ksources
 fi
 
-case "$ARCH" in
+case "$KARCH" in
     arm*)
         NAME=${NAME-linux-rasp-$MINOR}
         ;;
@@ -86,7 +86,7 @@ esac
 mkdir -p $BUILDER && cd $BUILDER
 
 if [ ! -d "$NAME" ]; then
-    case "$ARCH" in
+    case "$KARCH" in
         arm*)
             rm -rf $NAME && git clone -b rpi-$MINOR.y --depth 1 https://github.com/raspberrypi/linux.git $NAME
             ;;
@@ -120,12 +120,12 @@ echo "kernel.build: starting the kernel make process ..."
 
 if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
-    ARCH=$ARCH make -j $CONCURRENCY
-    ARCH=$ARCH make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$KARCH make -j $CONCURRENCY
+    ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
-    ARCH=$ARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
-    ARCH=$ARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
 release=$(cat include/config/kernel.release)
@@ -140,14 +140,14 @@ tar -zcvf modules.tar.gz modules firmware
 mv modules.tar.gz ../..
 cd ../..
 
-if [ -e arch/$ARCH/boot/zImage ]; then
-    mv arch/$ARCH/boot/zImage arch/$ARCH/boot/bzImage
+if [ -e arch/$KARCH/boot/zImage ]; then
+    mv arch/$KARCH/boot/zImage arch/$KARCH/boot/bzImage
 fi
 
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
-    cp -pv arch/$ARCH/boot/bzImage $FILE
+    cp -pv arch/$KARCH/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
     cp -pv modules.tar.gz $FILE_MODULES
 
@@ -166,7 +166,7 @@ if [ "$DEPLOY" == "1" ]; then
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
-    cp -v arch/$ARCH/boot/bzImage /boot/vmlinuz
+    cp -v arch/$KARCH/boot/bzImage /boot/vmlinuz
     cp -v .config /boot/config
 
     rm -rf /lib/modules
