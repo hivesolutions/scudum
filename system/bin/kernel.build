@@ -119,9 +119,11 @@ rm -rf modules_install && mkdir -p modules_install
 echo "kernel.build: starting the kernel make process ..."
 
 if [ "$KTARGET" == "" ]; then
+    echo "kernel.build: using general/default target for the building ..."
     ARCH=$ARCH make -j $CONCURRENCY
     ARCH=$ARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
+    echo "kernel.build: using '$KTARGET' target for the building ..."
     ARCH=$ARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
     ARCH=$ARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
