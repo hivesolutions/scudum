@@ -154,9 +154,9 @@ To safely build the latest kernel version and deploy it use:
 To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
 special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
-    scu install scudum-system
+    scu install scudum-system crosstool-rasp
     hash -r
-    ARCH=arm TARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
+    KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
 
 ## Armor
 
