@@ -36,7 +36,7 @@ case "$ARCH" in
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
-        MINOR=${MINOR-3.19}
+        MINOR=${MINOR-3.19.3}
         ;;
 esac
 
