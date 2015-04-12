@@ -24,7 +24,7 @@ fi
 # taking into account the requested one, then the configured on and
 # if all is not defined the pre-defined one (intel)
 ARCH=${ARCH-${SCUDUM_BARCH-x86}}
-TARGET=${TARGET-${ARCH_TARGET-}}
+KTARGET=${KTARGET-${ARCH_TARGET-}}
 
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
@@ -118,12 +118,12 @@ rm -rf modules_install && mkdir -p modules_install
 
 echo "kernel.build: starting the kernel make process ..."
 
-if [ "$TARGET" == "" ]; then
+if [ "$KTARGET" == "" ]; then
     ARCH=$ARCH make -j $CONCURRENCY
     ARCH=$ARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
-    ARCH=$ARCH CROSS_COMPILE=$TARGET- make -j $CONCURRENCY
-    ARCH=$ARCH CROSS_COMPILE=$TARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$ARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
+    ARCH=$ARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
 release=$(cat include/config/kernel.release)
