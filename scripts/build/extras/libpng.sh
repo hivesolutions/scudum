@@ -6,8 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/delegates/libpng-$VERSION.tar.gz"\
-    "http://downloads.sourceforge.net/libpng/libpng-$VERSION.tar.gz"\
+rget "http://downloads.sourceforge.net/libpng/libpng-$VERSION.tar.gz"\
+    "http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/delegates/libpng-$VERSION.tar.gz"\
     "http://download.openpkg.org/components/cache/png/libpng-$VERSION.tar.gz"
 rm -rf libpng-$VERSION && tar -zxf "libpng-$VERSION.tar.gz"
 rm -f "libpng-$VERSION.tar.gz"
