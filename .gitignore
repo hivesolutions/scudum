@@ -3,6 +3,8 @@
 
 *.shelve*
 
+.DS_Store
+
 /util/armorc/dist
 /util/armorc/build
 /util/armorc/src/armorc.egg-info
