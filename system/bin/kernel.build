@@ -5,7 +5,7 @@ PERSIST=${PERSIST-/pst}
 TARGET=${TARGET-/opt}
 CONCURRENCY=${CONCURRENCY-$(nproc)}
 NAME_L=${NAME_L-kernel}
-MAJOR=${MAJOR-3.x}
+MAJOR=${MAJOR-4.x}
 DATE=${DATE-$(date +%Y%m%d)}
 SAFE=${SAFE-0}
 BUILD=${BUILD-1}
@@ -36,7 +36,7 @@ case "$KARCH" in
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
-        MINOR=${MINOR-3.19.3}
+        MINOR=${MINOR-4.1.6}
         ;;
 esac
 

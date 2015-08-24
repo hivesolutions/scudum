@@ -1,4 +1,5 @@
-VERSION=${VERSION-3.19.3}
+VERSION=${VERSION-4.1.6}
+VERSION_L=${VERSION_L-4.x}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,7 +9,7 @@ source $DIR/common.sh
 
 depends "pci-utils"
 
-wget "https://www.kernel.org/pub/linux/kernel/v3.x/linux-$VERSION.tar.xz"
+wget "https://www.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"
 rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION/tools/power/cpupower
