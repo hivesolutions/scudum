@@ -51,6 +51,7 @@ Set the proper build version to be used for `uname`.
 
 ```
 CONFIG_LOCALVERSION=".scudum.rasp.arm"
+CONFIG_LOCALVERSION=".scudum.rasp2.armv7"
 ```
 
 Change the (default hostname) value of the machine to the Scudum value:
