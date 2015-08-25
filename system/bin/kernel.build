@@ -33,6 +33,14 @@ case "$KARCH" in
         VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-4.1}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
+        case "$VARIANT" in
+            rasp)
+                KFLAGS="bcmrpi_defconfig $KFLAGS"
+                ;;
+            rasp2)
+                KFLAGS="bcm2709_defconfig $KFLAGS"
+                ;;
+        esac
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
@@ -124,7 +132,7 @@ if [ "$KTARGET" == "" ]; then
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
-    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
