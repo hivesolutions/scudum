@@ -33,14 +33,6 @@ case "$KARCH" in
         VARIANT=${VARIANT-${1-rasp}}
         MINOR=${MINOR-4.1}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
-        case "$VARIANT" in
-            rasp)
-                KCONFIG="bcmrpi_defconfig"
-                ;;
-            rasp2)
-                KCONFIG="bcm2709_defconfig"
-                ;;
-        esac
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
@@ -116,15 +108,7 @@ if [ "$SAFE" == "1" ]; then
     make mrproper
 fi
 
-# verifies if the kernel configuration variable is empty
-# if that's the case a scudum related configuaration file
-# is going to be copued, otherwise the kernel tree file is
-# going to be used (legacy infra-structure)
-if [ -e $KCONFIG ]; then
-    cp -v $CONFIG .config  
-else
-    ARCH=$KARCH make $KCONFIG
-fi
+cp -v $CONFIG .config  
 
 if [ "$BUILD" != "1" ]; then
     exit 0
