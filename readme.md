@@ -145,6 +145,15 @@ and then start building the image under the proper context directory.
     KVARIANT=basic DEPLOY=1 scudum make.iso
     cd ../../.. && rm -rf scudum
 
+To build a Raspberry Pi 2 version of the armor example one should use:
+
+    git clone --depth 1 https://github.com/hivesolutions/scudum.git
+    cd scudum/examples/docker
+    scu install scudum-tools cifs-utils
+    ARCH=arm7 scudum install && scudum mount
+    KVARIANT=rasp2 DEPLOY=1 scudum make.usb
+    cd ../../.. && rm -rf scudum
+
 To safely build the latest kernel version and deploy it use:
 
     scu install scudum-system
