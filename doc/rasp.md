@@ -21,7 +21,7 @@ CONFIG_EXT3_FS_POSIX_ACL=y
 CONFIG_EXT3_FS_SECURITY=y
 ```
 
-Then add support for CRAMFS, SquashFS and OverlayFS with:
+Then add support for CRAMFS, SquashFS with the following configuration parameters.
 
 ```
 CONFIG_CRAMFS=y
@@ -39,6 +39,10 @@ CONFIG_SQUASHFS_XZ=y
 # CONFIG_SQUASHFS_4K_DEVBLK_SIZE is not set
 # CONFIG_SQUASHFS_EMBEDDED is not set
 CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE=3
+```
 
+Add the required support for OverlayFS for extra flexibility:
+
+```
 CONFIG_OVERLAY_FS=y
 ```
