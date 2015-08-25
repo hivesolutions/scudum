@@ -35,10 +35,10 @@ case "$KARCH" in
         CFLAGS="$CFLAGS -mfloat-abi=soft"
         case "$VARIANT" in
             rasp)
-                KFLAGS="bcmrpi_defconfig $KFLAGS"
+                KFLAGS="bcmrpi_defconfig"
                 ;;
             rasp2)
-                KFLAGS="bcm2709_defconfig $KFLAGS"
+                KFLAGS="bcm2709_defconfig"
                 ;;
         esac
         ;;
@@ -128,7 +128,7 @@ echo "kernel.build: starting the kernel make process ..."
 
 if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
-    ARCH=$KARCH make -j $CONCURRENCY
+    ARCH=$KARCH make $KFLAGS -j $CONCURRENCY
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
