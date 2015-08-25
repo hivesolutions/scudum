@@ -119,7 +119,7 @@ fi
 if [ -e $KCONFIG ]; then
     cp -v $CONFIG .config  
 else
-    make $KCONFIG
+    ARCH=$KARCH make $KCONFIG
 fi
 
 if [ "$BUILD" != "1" ]; then
@@ -129,10 +129,6 @@ fi
 rm -rf modules_install && mkdir -p modules_install
 
 echo "kernel.build: starting the kernel make process ..."
-
-
-
-echo "ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY"
 
 if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
