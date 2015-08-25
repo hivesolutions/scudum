@@ -46,3 +46,15 @@ Add the required support for OverlayFS for extra flexibility:
 ```
 CONFIG_OVERLAY_FS=y
 ```
+
+Set the proper build version to be used for `uname`.
+
+```
+CONFIG_LOCALVERSION=".scudum.rasp.arm"
+```
+
+Change the (default hostname) value of the machine to the Scudum value:
+
+```
+CONFIG_DEFAULT_HOSTNAME="scudum"`
+```
