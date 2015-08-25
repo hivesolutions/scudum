@@ -116,6 +116,10 @@ if [ "$SAFE" == "1" ]; then
     make mrproper
 fi
 
+# verifies if the kernel configuration variable is empty
+# if that's the case a scudum related configuaration file
+# is going to be copued, otherwise the kernel tree file is
+# going to be used (legacy infra-structure)
 if [ -e $KCONFIG ]; then
     cp -v $CONFIG .config  
 else
