@@ -21,7 +21,7 @@ CONFIG_EXT3_FS_POSIX_ACL=y
 CONFIG_EXT3_FS_SECURITY=y
 ```
 
-Then add support for CRAMFS, SquashFS with the following configuration parameters.
+Then add support for CRAMFS and SquashFS with the following configuration parameters.
 
 ```
 CONFIG_CRAMFS=y
