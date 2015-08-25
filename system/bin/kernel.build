@@ -35,10 +35,10 @@ case "$KARCH" in
         CFLAGS="$CFLAGS -mfloat-abi=soft"
         case "$VARIANT" in
             rasp)
-                KFLAGS="bcmrpi_defconfig"
+                KCONFIG="bcmrpi_defconfig"
                 ;;
             rasp2)
-                KFLAGS="bcm2709_defconfig"
+                KCONFIG="bcm2709_defconfig"
                 ;;
         esac
         ;;
@@ -116,7 +116,11 @@ if [ "$SAFE" == "1" ]; then
     make mrproper
 fi
 
-cp -v $CONFIG .config
+if [ -e $KCONFIG ]; then
+    cp -v $CONFIG .config  
+else
+    make $KCONFIG
+fi
 
 if [ "$BUILD" != "1" ]; then
     exit 0
@@ -125,6 +129,9 @@ fi
 rm -rf modules_install && mkdir -p modules_install
 
 echo "kernel.build: starting the kernel make process ..."
+
+
+
 echo "ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY"
 
 if [ "$KTARGET" == "" ]; then
@@ -133,7 +140,7 @@ if [ "$KTARGET" == "" ]; then
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
-    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
