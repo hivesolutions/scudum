@@ -126,6 +126,11 @@ one should be connected with the target repository and the issue:
 
     VARIANT=large VERSION=current kernel.install
 
+### Raspberry Pi
+
+For more information regarding build or configuration of Scudum for raspberry pi
+please refer to the [proper](doc/rasp.md) documentation.
+
 ### Examples
 
 To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
