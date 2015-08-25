@@ -169,7 +169,7 @@ special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
 ### Raspberry Pi
 
-For more information regarding build or configuration of Scudum for raspberry pi
+For more information regarding build or configuration of Scudum for Raspberry Pi
 please refer to the [proper documentation](doc/rasp.md).
 
 ## Armor
