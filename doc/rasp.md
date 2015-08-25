@@ -7,7 +7,7 @@ To be able to create a proper configuration file for the Raspberry Pi use the `b
 
 These files may be found in the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
 
-Then add the following set of configuration lines so that proper ext2 and ext3 support is available.
+Then add the following set of configuration lines so that proper EXT2 and EXT3 support is available.
 
 ```
 CONFIG_EXT2_FS=y
