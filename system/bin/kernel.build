@@ -125,6 +125,7 @@ fi
 rm -rf modules_install && mkdir -p modules_install
 
 echo "kernel.build: starting the kernel make process ..."
+echo "ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY"
 
 if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
