@@ -21,20 +21,16 @@ source $DIR/base/config.sh
 
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
-echo "coiso"
-
 if [ "$DISTRIB" == "generic" ]; then
     FILE=${FILE-$NAME-$VERSION}
 else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION}
 fi
 
-echo "coiso2"
-
 if type apt-get &> /dev/null; then
     apt-get -y install lxc-docker
 elif type scu &> /dev/null; then
-    env -u VERSION scu docker
+    env -u VERSION scu install docker
 else
     exit 1
 fi
