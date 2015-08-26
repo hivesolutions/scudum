@@ -27,7 +27,13 @@ else
     FILE=${FILE-$NAME-$DISTRIB-$VERSION}
 fi
 
-apt-get -y install lxc-docker
+if type apt-get &> /dev/null; then
+    apt-get -y install lxc-docker
+elif type scu &> /dev/null; then
+    env -u VERSION scu docker
+else
+    exit 1
+fi
 
 if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA KVARIANT=$KVARIANT BKERNEL=$BKERNEL BINIT=$BINIT BINITRD=$BINITRD $DIR/config.sh
