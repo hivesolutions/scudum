@@ -135,11 +135,11 @@ case "$GCC_FLAVOUR" in
         ;;
     normal)
         export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.4"
+        export GCC_BUILD_VERSION="4.8.5"
         ;;
     *)
         export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.4"
+        export GCC_BUILD_VERSION="4.8.5"
         ;;
 esac
 
