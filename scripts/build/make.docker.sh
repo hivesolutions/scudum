@@ -35,13 +35,9 @@ else
     exit 1
 fi
 
-echo "cenas1"
-
 if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA KVARIANT=$KVARIANT BKERNEL=$BKERNEL BINIT=$BINIT BINITRD=$BINITRD $DIR/config.sh
 fi
-
-echo "cenas2"
 
 if [ ! -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "make.docker: scudum not configured, not possible to make docker"
