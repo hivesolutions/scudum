@@ -151,7 +151,7 @@ To build a Raspberry Pi 2 version of the armor example one should use:
     cd scudum/examples/docker
     scu install scudum-tools cifs-utils
     ARCH=arm7 scudum install && scudum mount
-    KVARIANT=rasp2 DEPLOY=1 scudum make.usb
+    KVARIANT=rasp2 DEPLOY=1 scudum make.rasp
     cd ../../.. && rm -rf scudum
 
 To safely build the latest kernel version and deploy it use:
