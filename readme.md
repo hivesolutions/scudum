@@ -234,10 +234,7 @@ Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs
 * Light version of the kernel (less file systems)
 * Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
 * Suport for PXE serving
-* Support for scu files
-* Convert stuff into raspberry pi
- * [link 1](http://akanto.wordpress.com/2012/09/25/cross-compiling-kernel-for-raspberry-pi-on-fedora-17-part-1)
- * [link 2](http://wiki.gentoo.org/wiki/Raspberry_Pi)
+* Support for SCU files
 
 ## References
 
