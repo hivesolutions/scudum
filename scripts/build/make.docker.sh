@@ -35,8 +35,6 @@ else
     exit 1
 fi
 
-echo "coiso3"
-
 if [ "$CONFIG" == "1" ]; then
     SCHEMA=$SCHEMA KVARIANT=$KVARIANT BKERNEL=$BKERNEL BINIT=$BINIT BINITRD=$BINITRD $DIR/config.sh
 fi
