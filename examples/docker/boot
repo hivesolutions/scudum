@@ -2,4 +2,4 @@
 
 set -e
 
-cgroupfs.mount && docker daemon < /dev/null &> /dev/null &
+cgroupfs.mount && docker daemon -s vfs < /dev/null &> /dev/null &
