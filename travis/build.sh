@@ -3,7 +3,7 @@
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
-BASE=$DIR/..
-PATH=$PATH:$BASE/scudum/scripts
+export BASE=$DIR/..
+export PATH=$PATH:$BASE/scripts
 
-scudum deploy
+scudum install
