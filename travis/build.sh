@@ -3,7 +3,6 @@
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
-export BASE=$DIR/..
-export PATH=$PATH:$BASE/scripts
+BASE=$DIR/..
 
-sudo scudum install
+sudo $BASE/scripts/scudum install
