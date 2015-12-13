@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "unzip"
 
-wget "https://github.com/esnet/iperf/archive/$VERSION.zip"
+wget "https://github.com/esnet/iperf/archive/$VERSION.zip" -O "iperf-$VERSION.zip"
 rm -rf iperf-$VERSION && unzip "iperf-$VERSION.zip"
 rm -f "iperf-$VERSION.zip"
 cd iperf-$VERSION
