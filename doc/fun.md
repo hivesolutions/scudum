@@ -1,6 +1,6 @@
 # Fun Stuff
 
-Random set of fun scripts to enjoy the Scudum experience.
+Random set of fun scripts to enjoy the Scudum experience as explore it.
 
 ## IPerf
 
