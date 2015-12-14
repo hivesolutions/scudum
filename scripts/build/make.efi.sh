@@ -30,7 +30,7 @@ grub-mkimage\
     --format=x86_64-efi\
     --output=bootx64.efi\
     --config=$SCUDUM/$GRUB_EMBED\
-    --compression=xz\
+    --compression=auto\
     --prefix=/EFI/BOOT\
     part_gpt part_msdos fat ext2 ntfs hfs hfsplus iso9660 udf ufs1 ufs2\
     zfs chain linux boot appleldr scsi ahci ehci configfile normal regexp\
