@@ -1,5 +1,7 @@
 # Fun Stuff
 
+Random set of fun scripts to enjoy the Scudum experience.
+
 ## IPerf
 
 ```
