@@ -91,7 +91,7 @@ if [ "$EFI" == "1" ]; then
     if [ "$EFI_COPY" == "1" ]; then
         cp -rp /usr/lib/grub/x86_64-efi $ISO_DIR/boot/grub
     fi
-    if [ "$isotool" == "mkisofs" ];
+    if [ "$isotool" == "mkisofs" ]; then
         efi_extra="-eltorito-platform 0xef -eltorito-boot isolinux/efiboot.img"
     else
         efi_extra="-eltorito-boot isolinux/efiboot.img"
