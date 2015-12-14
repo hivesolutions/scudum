@@ -96,7 +96,6 @@ if [ "$EFI" == "1" ]; then
     else
         efi_extra="-eltorito-boot isolinux/efiboot.img"
     fi
-fi
 else
     efi_extra=""
 fi
