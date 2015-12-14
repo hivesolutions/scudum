@@ -13,8 +13,10 @@ source $DIR/base/config.sh
 
 if type apt-get &> /dev/null; then
     apt-get -y install grub-common dosfstools
+    compression=none
 elif type scu &> /dev/null; then
     env -u VERSION scu install grub.latest dosfstools
+    compression=xz
 else
     exit 1
 fi
@@ -30,7 +32,7 @@ grub-mkimage\
     --format=x86_64-efi\
     --output=bootx64.efi\
     --config=$SCUDUM/$GRUB_EMBED\
-    --compression=auto\
+    --compression=$compression\
     --prefix=/EFI/BOOT\
     part_gpt part_msdos fat ext2 ntfs hfs hfsplus iso9660 udf ufs1 ufs2\
     zfs chain linux boot appleldr scsi ahci ehci configfile normal regexp\
