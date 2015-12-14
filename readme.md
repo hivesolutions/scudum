@@ -240,3 +240,11 @@ Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs
 
 * http://coreos.com
 * http://www.stockwith.uklinux.net/hints
+
+## License
+
+Appier is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
+
+## Build Automation
+
+[![Build Status](https://travis-ci.org/hivesolutions/scudum.svg?branch=master)](https://travis-ci.org/hivesolutions/scudum)
