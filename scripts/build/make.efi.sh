@@ -12,7 +12,7 @@ set -e +h
 source $DIR/base/config.sh
 
 if type apt-get &> /dev/null; then
-    apt-get -y install grub-common dosfstools
+    apt-get -y install grub-efi-amd64-bin dosfstools
     compression=none
 elif type scu &> /dev/null; then
     env -u VERSION scu install grub.latest dosfstools
