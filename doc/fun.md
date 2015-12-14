@@ -13,3 +13,13 @@ iperf3 -c host.domain
 ```
 scu install htop
 ```
+
+## Docker
+
+```
+scu install docker
+cgroupfs.mount
+docker daemon -s overlay -g /pst/lib/docker < /dev/null &> /dev/null &
+docker pull ubuntu
+docker run -i -t ubuntu /bin/bash
+```
