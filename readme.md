@@ -6,8 +6,8 @@ Custom linux distribution that aims at providing an easy to use system for
 [Viriatum](https://github.com/hivesolutions/viriatum) / [Automium](https://github.com/hivesolutions/automium) /
 [Tiberium](https://github.com/hivesolutions/tiberium).
 
-There are a series of [scripts](scripts/util) that aim at providing a simple to use toolchain for
-scudum customization.
+There are a series of utility [scripts](scripts/util) that aim at providing a simple to use
+toolchain for scudum customization.
 
 The distribution is meant to provide a simple raw system that should be configured from
 configuration servers that are discoverable using auto-discover techniques (Zeroconf, etc).
