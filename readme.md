@@ -243,7 +243,7 @@ Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs
 
 ## License
 
-Appier is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
+Scudum is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
 
 ## Build Automation
 
