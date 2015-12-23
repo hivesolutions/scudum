@@ -12,7 +12,7 @@ rm -rf libmad-$VERSION && tar -zxf "libmad-$VERSION.tar.gz"
 rm -f "libmad-$VERSION.tar.gz"
 cd libmad-$VERSION
 
-wget "http://www.linuxfromscratch.org/patches/blfs/svn/libmad-$VERSION-fixes-1.patch"
+wget "http://archive.hive.pt/files/lfs/patches/libmad-$VERSION-fixes-1.patch"
 patch -Np1 -i libmad-$VERSION-fixes-1.patch
 
 ./configure --prefix=$PREFIX --disable-static
