@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-source $DIR/common.s
+source $DIR/common.sh
 
 wget "http://downloads.sourceforge.net/libtirpc/libtirpc-$VERSION.tar.gz"
 rm -rf libtirpc-$VERSION && tar -zxf "libtirpc-$VERSION.tar.gz"
