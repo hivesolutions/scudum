@@ -22,6 +22,10 @@ so that replacing them is easy and cheap (without human intervention).
 docker run -i -t -v /mnt/builds:/mnt/builds --rm --privileged hivesolutions/scudum
 ```
 
+```bash
+docker run -v /mnt/builds:/mnt/builds --rm --privileged hivesolutions/scudum &> /dev/null
+```
+
 ### Environment
 
 The currently recomended environments are Ubuntu 14.04+ or Scudum itself configured for building.
