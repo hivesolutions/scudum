@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 MAINTAINER Hive Solutions
 
+VOLUME /mnt/builds
+
 ADD . /builder
 
 WORKDIR /build
