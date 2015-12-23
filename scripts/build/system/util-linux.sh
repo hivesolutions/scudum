@@ -1,5 +1,5 @@
-VERSION=${VERSION-2.25.2}
-VERSION_MAJOR=${VERSION_MAJOR-2.25}
+VERSION=${VERSION-2.27.1}
+VERSION_MAJOR=${VERSION_MAJOR-2.27}
 
 set -e +h
 
@@ -15,6 +15,7 @@ mkdir -pv /var/lib/hwclock
     --docdir=/usr/share/doc/util-linux-2.25.2\
     --disable-chfn-chsh\
     --disable-login\
+    --disable-nologin\
     --disable-su\
     --disable-setpriv\
     --disable-runuser\
