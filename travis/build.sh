@@ -8,5 +8,5 @@ BASE=$DIR/..
 set -e +h
 
 sudo apt-get update
-sudo $BASE/scripts/scudum root
+sudo $BASE/scripts/scudum install
 sudo $BASE/scripts/scudum make.iso
