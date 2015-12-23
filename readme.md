@@ -19,11 +19,11 @@ so that replacing them is easy and cheap (without human intervention).
 ### Docker
 
 ```bash
-docker run -i -t -v /mnt/builds:/mnt/builds --privileged hivesolutions/scudum
+docker run --privileged -i -t -v /mnt/builds:/mnt/builds hivesolutions/scudum
 ```
 
 ```bash
-docker run -d -v /mnt/builds:/mnt/builds --privileged hivesolutions/scudum
+docker run --name omni --privileged -d -v /mnt/builds:/mnt/builds hivesolutions/scudum
 ```
 
 ### Environment
