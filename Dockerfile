@@ -3,6 +3,4 @@ MAINTAINER Hive Solutions
 
 ADD . /scudum
 
-RUN apt-get update
-
-CMD /scudum/scripts/scudum root
+CMD apt-get update && /scudum/scripts/scudum root
