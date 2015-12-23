@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://downloads.sourceforge.net/libtirpc/libtirpc-$VERSION.tar.gz"
-rm -rf libtirpc-$VERSION && tar -zxf "libtirpc-$VERSION.tar.gz"
-rm -f "libtirpc-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/libtirpc/libtirpc-$VERSION.tar.bz2"
+rm -rf libtirpc-$VERSION && tar -jxf "libtirpc-$VERSION.tar.bz2"
+rm -f "libtirpc-$VERSION.tar.bz2"
 cd libtirpc-$VERSION
 
 ./configure --prefix=$PREFIX
