@@ -17,7 +17,8 @@ cd nfs-utils-$VERSION
     --prefix=$PREFIX\
     --without-tcp-wrappers\
     --disable-nfsv4\
-    --disable-gss
+    --disable-gss\
+    --disable-ipv6
 
 make && make install
 chmod u+w,go+r /sbin/mount.nfs
