@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 MAINTAINER Hive Solutions
 
-ADD . /scudum
+ADD . /builder
 
-CMD apt-get update && /scudum/scripts/scudum root
+CMD apt-get update && /builder/scripts/scudum root
