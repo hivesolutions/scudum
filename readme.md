@@ -16,6 +16,12 @@ so that replacing them is easy and cheap (without human intervention).
 
 ## Usage
 
+### Docker
+
+```bash
+docker run -i -t --privileged hivesolutions/scudum
+```
+
 ### Environment
 
 The currently recomended environments are Ubuntu 14.04+ or Scudum itself configured for building.
