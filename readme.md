@@ -23,7 +23,7 @@ docker run -i -t -v /mnt/builds:/mnt/builds --privileged hivesolutions/scudum
 ```
 
 ```bash
-docker run -v /mnt/builds:/mnt/builds --privileged hivesolutions/scudum &> /dev/null
+docker run -d -v /mnt/builds:/mnt/builds --privileged hivesolutions/scudum &> /dev/null
 ```
 
 ### Environment
