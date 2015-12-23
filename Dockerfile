@@ -5,4 +5,6 @@ ADD . /builder
 
 WORKDIR /build
 
-CMD apt-get update && /builder/scripts/scudum root
+RUN cd /build && make install
+
+CMD apt-get update && scudum root
