@@ -12,7 +12,7 @@ rm -rf sgml-common-$VERSION && tar -zxf "sgml-common-$VERSION.tgz"
 rm -f "sgml-common-$VERSION.tgz"
 cd sgml-common-$VERSION
 
-wget "http://www.linuxfromscratch.org/patches/blfs/systemd/sgml-common-$VERSION-manpage-1.patch"
+wget "http://archive.hive.pt/files/lfs/patches/sgml-common-$VERSION-manpage-1.patch"
 patch -Np1 -i sgml-common-$VERSION-manpage-1.patch
 
 autoreconf -f -i

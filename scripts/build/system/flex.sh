@@ -7,7 +7,7 @@ rm -rf flex-$VERSION && tar -jxf "flex-$VERSION.tar.bz2"
 rm -f "flex-$VERSION.tar.bz2"
 cd flex-$VERSION
 
-wget  --no-check-certificate "http://www.linuxfromscratch.org/patches/lfs/7.3/flex-$VERSION-bison-2.6.1-1.patch"
+wget --no-check-certificate "http://archive.hive.pt/files/lfs/patches/flex-$VERSION-bison-2.6.1-1.patch"
 patch -Np1 -i flex-$VERSION-bison-2.6.1-1.patch
 
 ./configure\
