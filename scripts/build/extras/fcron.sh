@@ -13,8 +13,10 @@ cd fcron-$VERSION
 
 ./configure\
     --prefix=$PREFIX\
+    --sysconfdir=/etc\
+    --localstatedir=/var\
     --without-sendmail\
     --with-boot-install=no\
     --with-systemdsystemunitdir=no
 
-make && make install
+make && y | make install
