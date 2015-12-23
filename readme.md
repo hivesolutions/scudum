@@ -23,7 +23,7 @@ docker run --privileged -i -t -v /mnt/builds:/mnt/builds hivesolutions/scudum
 ```
 
 ```bash
-docker run --name omni --privileged -d -v /mnt/builds:/mnt/builds hivesolutions/scudum
+docker run --name scudum --privileged -d -v /mnt/builds:/mnt/builds hivesolutions/scudum
 ```
 
 ### Environment
