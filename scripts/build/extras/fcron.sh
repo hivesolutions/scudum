@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "http://fcron.free.fr/archives/fcron-$VERSION.src.tar.gz"
-rm -rf fcron-$VERSION && tar -jxf "fcron-$VERSION.src.tar.gz"
+rm -rf fcron-$VERSION && tar -zxf "fcron-$VERSION.src.tar.gz"
 rm -f "fcron-$VERSION.src.tar.gz"
 cd fcron-$VERSION
 
