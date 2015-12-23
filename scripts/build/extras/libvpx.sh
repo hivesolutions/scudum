@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "yasm"
 
-wget "http://anduin.linuxfromscratch.org/sources/other/libvpx-v$VERSION.tar.xz"
+wget "http://archive.hive.pt/files/lfs/libvpx-v$VERSION.tar.xz"
 rm -rf libvpx-v$VERSION && tar -Jxf "libvpx-v$VERSION.tar.xz"
 rm -f "libvpx-v$VERSION.tar.xz"
 cd libvpx-v$VERSION

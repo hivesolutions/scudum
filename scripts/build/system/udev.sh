@@ -7,7 +7,7 @@ wget --no-check-certificate "http://www.freedesktop.org/software/systemd/systemd
 rm -rf systemd-$VERSION && tar -Jxf "systemd-$VERSION.tar.xz"
 cd systemd-$VERSION
 
-wget --no-check-certificate "http://archive.hive.pt/extra/files/udev-lfs-$VERSION_L.tar.bz2"
+wget --no-check-certificate "http://archive.hive.pt/files/lfs/udev-lfs-$VERSION_L.tar.bz2"
 rm -rf udev-lfs-$VERSION_L && tar -jxf udev-lfs-$VERSION_L.tar.bz2
 rm -f udev-lfs-$VERSION_L.tar.bz2
 
