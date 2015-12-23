@@ -20,3 +20,4 @@ cd nfs-utils-$VERSION
     --disable-gss
 
 make && make install
+chmod u+w,go+r /sbin/mount.nfs
