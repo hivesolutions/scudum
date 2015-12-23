@@ -6,6 +6,6 @@ ADD . /builder
 WORKDIR /build
 
 RUN apt-get update && apt-get install -y -q make
-RUN cd /build && make install
+RUN cd /builder && make install
 
 CMD apt-get update && scudum root
