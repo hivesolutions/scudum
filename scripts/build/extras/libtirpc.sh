@@ -11,5 +11,5 @@ rm -rf libtirpc-$VERSION && tar -jxf "libtirpc-$VERSION.tar.bz2"
 rm -f "libtirpc-$VERSION.tar.bz2"
 cd libtirpc-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-static --disable-gssapi
 make && make install
