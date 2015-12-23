@@ -19,7 +19,7 @@ so that replacing them is easy and cheap (without human intervention).
 ### Docker
 
 ```bash
-docker run -i -t --privileged hivesolutions/scudum
+docker run -i -t -v /mnt/builds:/mnt/builds --rm --privileged hivesolutions/scudum
 ```
 
 ### Environment
