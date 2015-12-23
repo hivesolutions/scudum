@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "libpng"
 
-rget "http://download.savannah.gnu.org/releases/freetype/freetype-$VERSION.tar.gz"\
+rget "http://downloads.sourceforge.net/freetype2/freetype-$VERSION.tar.gz"\
+    "http://download.savannah.gnu.org/releases/freetype/freetype-$VERSION.tar.gz"\
     "http://mirrors.zerg.biz/nongnu/freetype/freetype-$VERSION.tar.gz"
 rm -rf freetype-$VERSION && tar -zxf "freetype-$VERSION.tar.gz"
 rm -f "freetype-$VERSION.tar.gz"
