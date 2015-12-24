@@ -11,5 +11,5 @@ rm -rf libnfsidmap-$VERSION && tar -jxf "libnfsidmap-$VERSION.tar.bz2"
 rm -f "libnfsidmap-$VERSION.tar.bz2"
 cd libnfsidmap-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --sysconfdir=/etc
 make && make install
