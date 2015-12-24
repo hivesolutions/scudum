@@ -15,6 +15,7 @@ cd nfs-utils-$VERSION
 
 ./configure\
     --prefix=$PREFIX\
+    --sysconfdir=/etc\
     --without-tcp-wrappers\
     --disable-gss\
     --disable-ipv6
