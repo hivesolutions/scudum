@@ -13,5 +13,10 @@ rm -rf logrotate-$VERSION && tar -zxf "logrotate-$VERSION.tar.gz"
 rm -f "logrotate-$VERSION.tar.gz"
 cd logrotate-$VERSION
 
-./autogen.sh && ./configure --prefix=$PREFIX
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ./autogen.sh && ./configure --host=$ARCH_TARGET --prefix=$PREFIX
+else
+    ./autogen.sh && ./configure --prefix=$PREFIX
+fi
+
 make && make install
