@@ -84,7 +84,7 @@ export DISTRIB="generic"
 # that are going to be installed when the extras script
 # execution is triggered (may be changed by others)
 export EXTRAS="sudo ntp python lshw rsync iptables fcron \
-logrotate cifs-utils ntfsprogs  wireless-tools wpa-supplicant"
+logrotate cifs-utils ntfsprogs wireless-tools wpa-supplicant"
 
 # verifies the level of matching of the current target arch
 # and the hosting one and according to that defines the default
