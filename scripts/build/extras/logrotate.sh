@@ -13,5 +13,5 @@ rm -rf logrotate-$VERSION && tar -zxf "logrotate-$VERSION.tar.gz"
 rm -f "logrotate-$VERSION.tar.gz"
 cd logrotate-$VERSION
 
-./configure --prefix=$PREFIX
+./autogen.sh && ./configure --prefix=$PREFIX
 make && make install
