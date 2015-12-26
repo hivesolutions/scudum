@@ -12,6 +12,7 @@ rm -f "fcron-$VERSION.src.tar.gz"
 cd fcron-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --sysconfdir=/etc\
     --localstatedir=/var\
