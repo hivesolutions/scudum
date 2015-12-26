@@ -11,25 +11,13 @@ rm -rf fcron-$VERSION && tar -zxf "fcron-$VERSION.src.tar.gz"
 rm -f "fcron-$VERSION.src.tar.gz"
 cd fcron-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure\
-        --host=$ARCH_TARGET\
-        --prefix=$PREFIX\
-        --sysconfdir=/etc\
-        --localstatedir=/var\
-        --without-sendmail\
-        --with-editor=vi\
-        --with-boot-install=no\
-        --with-systemdsystemunitdir=no
-else
-    ./configure\
-        --host=$ARCH_TARGET\
-        --prefix=$PREFIX\
-        --sysconfdir=/etc\
-        --localstatedir=/var\
-        --without-sendmail\
-        --with-boot-install=no\
-        --with-systemdsystemunitdir=no
-fi
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=$PREFIX\
+    --sysconfdir=/etc\
+    --localstatedir=/var\
+    --without-sendmail\
+    --with-boot-install=no\
+    --with-systemdsystemunitdir=no
 
 make && y | make install
