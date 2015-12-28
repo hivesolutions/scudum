@@ -13,5 +13,5 @@ rm -rf rsnapshot-$VERSION && tar -zxf "rsnapshot-$VERSION.tar.gz"
 rm -f "rsnapshot-$VERSION.tar.gz"
 cd rsnapshot-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --sysconfdir=/etc
 make && make install
