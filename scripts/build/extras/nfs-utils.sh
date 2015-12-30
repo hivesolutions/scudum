@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libtirpc" "libevent" "libnfsidmap" "lvm2" 
+depends "libtirpc" "libevent" "libnfsidmap" "lvm2"
 
 wget "http://downloads.sourceforge.net/nfs/nfs-utils-$VERSION.tar.bz2"
 rm -rf nfs-utils-$VERSION && tar -jxf "nfs-utils-$VERSION.tar.bz2"
