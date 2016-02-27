@@ -124,17 +124,15 @@ As an alternative you may only remove the `MBR` from it as it's a faster operati
 
     dd if=/dev/zero of=/dev/sdb bs=446 count=1
 
-### Kernel building
+### Raspberry Pi
 
-Building a kernel version and deploying it to the proper directories so that it can be used
-by the proper boot loader can be achieved using the following command:
+For more information regarding build or configuration of Scudum for Raspberry Pi
+please refer to the [proper documentation](doc/rasp.md).
 
-    MINOR=4.4.3 VARIANT=basic DEPLOY=1 kernel.build
+### Kernel
 
-To install a previously build kernel image (and modules) avoiding the rebuilding of the kernel
-one should be connected with the target repository and the issue:
-
-    VARIANT=large VERSION=current kernel.install
+For more information regarding kernel issues, building and installation
+please refer to the [proper documentation](doc/kernel.md).
 
 ### Examples
 
@@ -176,11 +174,6 @@ special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
     scu install scudum-system crosstool-rasp
     hash -r
     KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
-
-### Raspberry Pi
-
-For more information regarding build or configuration of Scudum for Raspberry Pi
-please refer to the [proper documentation](doc/rasp.md).
 
 ## Armor
 
