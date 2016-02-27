@@ -124,7 +124,8 @@ if [ "$KTARGET" == "" ]; then
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
-    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make alldefconfig modules_prepare
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_prepare
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make alldefconfig
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
