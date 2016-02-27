@@ -15,7 +15,7 @@ one should be connected with the target repository and the issue:
 Special versions of the kernel exist for the ARM process environment specially for usage under
 the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
 
-    scu install scudum-system crosstool-rasp
+    scu install crosstool-rasp
     KARCH=arm \
     KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi \
     VARIANT=rasp1 \
