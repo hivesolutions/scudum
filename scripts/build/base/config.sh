@@ -131,7 +131,7 @@ fi
 case "$GCC_FLAVOUR" in
     latest)
         export GCC_BUILD_BINARY="gcc.latest"
-        export GCC_BUILD_VERSION="4.9.3"
+        export GCC_BUILD_VERSION="5.3.0"
         ;;
     normal)
         export GCC_BUILD_BINARY="gcc"
