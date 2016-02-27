@@ -11,7 +11,7 @@ depends "gperf" "which"
 wget "http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-$VERSION.tar.bz2"
 rm -rf crosstool-ng-$VERSION && tar -jxf "crosstool-ng-$VERSION.tar.bz2"
 rm -f "crosstool-ng-$VERSION.tar.bz2"
-cd crosstool-ng-$VERSION
+cd crosstool-ng
 
 ./configure --prefix=$PREFIX
 make && make install
