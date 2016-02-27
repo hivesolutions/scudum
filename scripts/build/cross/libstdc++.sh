@@ -22,7 +22,6 @@ CFLAGS="$extra" ../gcc-$VERSION/libstdc++-v3/configure\
     --host=$ARCH_TARGET\
     --prefix=$PREFIX_CROSS/sysroot\
     --disable-multilib\
-    --disable-shared\
     --disable-nls\
     --disable-libstdcxx-threads\
     --disable-libstdcxx-pch\
