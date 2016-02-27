@@ -129,6 +129,11 @@ As an alternative you may only remove the `MBR` from it as it's a faster operati
 For more information regarding build or configuration of Scudum for Raspberry Pi
 please refer to the [proper documentation](doc/rasp.md).
 
+### Kernel
+
+For more information regarding kernel issues, building and installation
+please refer to the [proper documentation](doc/kernel.md).
+
 ### Examples
 
 To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
