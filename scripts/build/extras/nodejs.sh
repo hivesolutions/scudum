@@ -11,5 +11,5 @@ rm -rf node-v$VERSION && tar -zxf "node-v$VERSION.tar.gz"
 rm -f "node-v$VERSION.tar.gz"
 cd node-v$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --without-snapshot
 make && make install
