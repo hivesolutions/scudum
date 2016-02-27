@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "gperf" "which"
+depends "gperf" "which" "help2man"
 
 wget "http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-$VERSION.tar.bz2"
 rm -rf crosstool-ng-$VERSION && tar -jxf "crosstool-ng-$VERSION.tar.bz2"
