@@ -14,12 +14,13 @@
 
 case "${1}" in
     start)
-        # starts all network interfaces
-        for file in /etc/sysconfig/ifconfig.*
-        do
+        # iterates over the complete set of interface configuration
+        # files to start their respective configuration
+        for file in /etc/sysconfig/ifconfig.*; do
             interface=${file##*/ifconfig.}
 
-            # skips if $file is * (because nothing was found)
+            # in case the current interface is the wildcard character
+            # no expansion was performed (skips iteration)
             if [ "${interface}" = "*" ]; then
                 continue
             fi
@@ -29,17 +30,16 @@ case "${1}" in
         ;;
 
     stop)
-        # reverses the list
+        # reverses the list so that the iteration for the stop
+        # operation is performed in reverse order
         net_files=""
         for file in  /etc/sysconfig/ifconfig.*; do
             net_files="${file} ${net_files}"
         done
 
-        # stops all network interfaces
         for file in ${net_files}; do
             interface=${file##*/ifconfig.}
 
-            # skips if $file is * (because nothing was found)
             if [ "${interface}" = "*" ]; then
                 continue
             fi
