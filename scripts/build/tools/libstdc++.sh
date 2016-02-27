@@ -15,7 +15,6 @@ cd gcc-build
     --host=$SCUDUM_TARGET\
     --prefix=$PREFIX\
     --disable-multilib\
-    --disable-shared\
     --disable-nls\
     --disable-libstdcxx-threads\
     --disable-libstdcxx-pch\
