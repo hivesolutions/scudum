@@ -59,3 +59,9 @@ Change the (default hostname) value of the machine to the Scudum value:
 ```
 CONFIG_DEFAULT_HOSTNAME="scudum"`
 ```
+
+### Notes
+
+By using the `make alldefconfig` all the remaining configuration lines not defined in the configuration
+file are going to be populated with their respective default values. Check [this document](https://www.kernel.org/doc/makehelp.txt)
+for more information regarding `make` configuration options.
