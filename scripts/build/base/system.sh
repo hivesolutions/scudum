@@ -77,7 +77,8 @@ cd sources
 /tools/repo/scripts/build/system/sysvinit.sh
 /tools/repo/scripts/build/system/tar.sh
 /tools/repo/scripts/build/system/texinfo.sh
-/tools/repo/scripts/build/system/udev.sh
+/tools/repo/scripts/build/system/gperf.sh
+/tools/repo/scripts/build/system/eudev.sh
 /tools/repo/scripts/build/system/bc.sh
 /tools/repo/scripts/build/system/cpio.sh
 /tools/repo/scripts/build/system/vim.sh
