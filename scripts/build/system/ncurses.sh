@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.9}
+VERSION=${VERSION-6.0}
 
 set -e +h
 
@@ -18,8 +18,8 @@ cd ncurses-$VERSION
 
 make && make install
 
-mv -v /usr/lib/libncursesw.so.5* /lib
-ln -svf ../../lib/libncursesw.so.5 /usr/lib/libncursesw.so
+mv -v /usr/lib/libncursesw.so.6* /lib
+ln -svf ../../lib/libncursesw.so.6 /usr/lib/libncursesw.so
 
 for lib in ncurses form panel menu ; do
     rm -vf /usr/lib/lib${lib}.so
