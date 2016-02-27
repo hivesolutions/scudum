@@ -21,7 +21,7 @@ CT_ARCH_CPU="arm1176jzf-s"
 CT_ARCH_TUNE="arm1176jzf-s"
 CT_TARGET_VENDOR="rasp"
 CT_KERNEL_linux=y
-CC_GCC_V_5_2_0=y
+CT_CC_GCC_V_5_2_0=y
 CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
