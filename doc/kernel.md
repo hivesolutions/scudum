@@ -22,6 +22,8 @@ the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
     DEPLOY=1 \
     kernel.build
 
+To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
+
 ## Upgrading
 
 The upgrading operation may be a complex one as it involves changing the configuration files 
