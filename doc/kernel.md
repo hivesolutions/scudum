@@ -12,6 +12,16 @@ one should be connected with the target repository and the issue:
 
     VARIANT=large VERSION=current kernel.install
 
+Special versions of the kernel exist for the ARM process environment specially for usage under
+the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
+
+    scu install scudum-system crosstool-rasp
+    KARCH=arm \
+    KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi \
+    VARIANT=rasp1 \
+    DEPLOY=1 \
+    kernel.build
+
 ## Upgrading
 
 The upgrading operation may be a complex one as it involves changing the configuration files 
