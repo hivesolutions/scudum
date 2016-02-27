@@ -7,10 +7,6 @@ To be able to create a proper configuration file for the Raspberry Pi use the `b
 
 These files may be found in the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
 
-Note that by using the `make alldefconfig` all the remaining configuration lines not defined in the configuration
-file are going to be populated with their respective default values. Check [this document](https://www.kernel.org/doc/makehelp.txt)
-for more information regarding `make` configuration options.
-
 Then add the following set of configuration lines so that proper EXT2 and EXT3 support is available.
 
 ```
@@ -63,3 +59,9 @@ Change the (default hostname) value of the machine to the Scudum value:
 ```
 CONFIG_DEFAULT_HOSTNAME="scudum"`
 ```
+
+### Notes
+
+By using the `make alldefconfig` all the remaining configuration lines not defined in the configuration
+file are going to be populated with their respective default values. Check [this document](https://www.kernel.org/doc/makehelp.txt)
+for more information regarding `make` configuration options.
