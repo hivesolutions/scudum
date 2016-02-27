@@ -70,7 +70,6 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/libstdc++.sh
     $DIR/tools/binutils.pass2.sh
     $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
-    $DIR/tools/zlib.sh
     $DIR/tools/tcl.sh
     $DIR/tools/expect.sh
     $DIR/tools/dejagnu.sh
@@ -94,6 +93,7 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/tar.sh
     $DIR/tools/texinfo.sh
     $DIR/tools/xz.sh
+    $DIR/tools/zlib.sh
     $DIR/tools/pkg-config.sh
     $DIR/tools/util-linux.sh
     $DIR/tools/shadow.sh
