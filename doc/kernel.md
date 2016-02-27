@@ -17,7 +17,7 @@ the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
 
     scu install crosstool-rasp
     KARCH=arm \
-    KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi \
+    KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf \
     VARIANT=rasp \
     DEPLOY=1 \
     kernel.build

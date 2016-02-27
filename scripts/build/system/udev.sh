@@ -13,7 +13,7 @@ rm -f udev-lfs-$VERSION_L.tar.bz2
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     SHELL="/bin/sh"
-    VB="arm-rasp-linux-gnueabi-"
+    VB="arm-rasp-linux-gnueabihf-"
     OPTIONS="$LDFLAGS -O2 -pipe -ffast-math -fno-common -fdiagnostics-show-option -fno-strict-aliasing -ffunction-sections -fdata-sections -fPIC -std=gnu99"
     LDFLAGS2="$LDFLAGS -pthread -lrt -Wl,--as-needed -Wl,--gc-sections -Wl,--no-undefined -lblkid -lkmod -lz -llzma -luuid"
     make -f udev-lfs-$VERSION_L/Makefile.lfs SHELL="$SHELL" VB="$VB" OPTIONS="$OPTIONS" LDFLAGS2="$LDFLAGS2"

@@ -52,21 +52,21 @@ build is controlled and does not compile using any (unwanted) optimization and r
 To be able to create a cross compilation based ARM build for the Raspberry Pi system you may change the way
 the root environment is created with:
 
-    SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
     GCC_BUILD_ARCH=armv6zk GCC_BUILD_TUNE=arm1176jzf-s GCC_BUILD_FPU=vfp \
     GCC_BUILD_FLOAT=hard scudum root
 
 It's possible to optimize the building process for the Raspberry Pi 2 for that the cpu specific configuration
 must be changed, note that this is not backwards compatible:
 
-    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
     GCC_BUILD_FLOAT=hard scudum root
 
 To be able to run only the system building (without repeating the cross toolchain and the base toochain process)
 yo can use the following command:
 
-    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabi \
+    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
     GCC_BUILD_FLOAT=hard BUILD_CLEAN=0 BUILD_ROOT=0 BUILD_CROSS=0 BUILD_TIMEOUT=1 scudum root
 
@@ -173,7 +173,7 @@ special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
     scu install scudum-system crosstool-rasp
     hash -r
-    KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabi/bin/arm-rasp-linux-gnueabi DEPLOY=1 kernel.build
+    KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf DEPLOY=1 kernel.build
 
 ## Armor
 
