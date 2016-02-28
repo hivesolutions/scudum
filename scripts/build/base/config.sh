@@ -46,8 +46,9 @@ export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
 
 # exports the various build oriented values that are going
-# to be used to control the build prcess (the typical build
+# to be used to control the build process (the typical build
 # process does not require any change to these values)
+export BUILD_SAFE=${BUILD_SAFE-1}
 export BUILD_CLEAN=${BUILD_CLEAN-1}
 export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
@@ -107,7 +108,7 @@ fi
 # in case the cross compilation mode is active the gcc flavour
 # is forced to be normal, so that no compatibility issues arise
 # from bugs left by the gnu team (required to build)
-if [ "$SCUDUM_CROSS" == "1" ]; then
+if [ "$SCUDUM_CROSS" == "1" ] && [ "$BUILD_SAFE" == "1" ]; then
     export GCC_FLAVOUR="normal"
 fi
 
@@ -158,6 +159,7 @@ print_scudum() {
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
+    echo "BUILD_SAFE := $BUILD_SAFE"
     echo "BUILD_CLEAN := $BUILD_CLEAN"
     echo "BUILD_TOOLS := $BUILD_TOOLS"
     echo "BUILD_CROSS := $BUILD_CROSS"
