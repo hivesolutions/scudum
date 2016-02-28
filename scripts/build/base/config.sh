@@ -48,7 +48,7 @@ export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
 # exports the various build oriented values that are going
 # to be used to control the build process (the typical build
 # process does not require any change to these values)
-export BUILD_SAFE=${BUILD_SAFE-1}
+export BUILD_SAFE=${BUILD_SAFE-0}
 export BUILD_CLEAN=${BUILD_CLEAN-1}
 export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
