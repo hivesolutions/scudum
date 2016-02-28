@@ -74,9 +74,9 @@ if [ "$SCUDUM_CROSS" == "0" ] ; then
     localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
     localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
     localedef -i zh_CN -f GB18030 zh_CN.GB18030
-fi
 
-make localedata/install-locales
+    make localedata/install-locales
+fi
 
 cat > /etc/nsswitch.conf << "EOF"
 passwd: files
