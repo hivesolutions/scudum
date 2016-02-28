@@ -7,5 +7,5 @@ rm -rf gperf-$VERSION && tar -zxf "gperf-$VERSION.tar.gz"
 rm -f "gperf-$VERSION.tar.gz"
 cd gperf-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --target=$ARCH_TARGET
 make && make install
