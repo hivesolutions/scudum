@@ -1,4 +1,5 @@
-#!/bin/bash 
+#!/bin/bash
+# -*- coding: utf-8 -*-
 
 RELEASE="1.0"
 USAGE="Usage: $0 [ -hV ] [--help] [--version] interface"
