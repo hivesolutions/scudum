@@ -11,6 +11,6 @@ set -e
 
 source /etc/environ
 
-pip install armorc --quiet
+pip install --quiet armorc
 
 armorc boot

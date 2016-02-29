@@ -6,6 +6,6 @@ export BASE_PATH=${BASE_PATH-/}
 
 set -e
 
-pip install netius --quiet
+pip install --quiet netius
 
 python -m netius.extra.file < /dev/null &> /dev/null &

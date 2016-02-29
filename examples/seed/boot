@@ -5,6 +5,4 @@ set -e
 
 source /etc/environ
 
-pip install netius redis armord --quiet
-
-SERVER=$ARMOR_SERVER HOST=$ARMOR_HOST PORT=$ARMOR_PORT SESSION=$ARMOR_SESSION armord < /dev/null &> /var/log/armord.out.log &
+pip install --quiet netius redis
