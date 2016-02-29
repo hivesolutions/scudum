@@ -11,5 +11,5 @@ rm -rf bind-$VERSION && tar -zxf "bind-$VERSION.tar.gz"
 rm -f "bind-$VERSION.tar.gz"
 cd bind-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
