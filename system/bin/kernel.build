@@ -31,7 +31,7 @@ KTARGET=${KTARGET-}
 case "$KARCH" in
     arm*)
         VARIANT=${VARIANT-${1-rasp}}
-        MINOR=${MINOR-4.4}
+        MINOR=${MINOR-4.3}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
         ;;
     *)
