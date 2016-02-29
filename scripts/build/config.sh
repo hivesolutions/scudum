@@ -91,10 +91,10 @@ case $SCHEMA in
         ;;
 esac
 
-test $BCERT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/cert.build || true
-test $BEXTRAS == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build || true
-test $BACCOUNT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build || true
-test $BKERNEL == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT || true
-test $BKERNEL == "1" && test "$KVARIANT" == "rasp" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install "$KVARIANT"2 vmlinuz7 || true
-test $BINIT == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build || true
-test $BINITRD == "1" && CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build || true
+if [ $BCERT == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/cert.build; fi
+if [ $BEXTRAS == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT bin/scu.build; fi
+if [ $BACCOUNT == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build; fi
+if [ $BKERNEL == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT; fi
+if [ $BKERNEL == "1" ] && [ "$KVARIANT" == "rasp" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install "$KVARIANT"2 vmlinuz7; fi
+if [ $BINIT == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build; fi
+if [ $BINITRD == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build; fi
