@@ -9,11 +9,18 @@ cd eudev-$VERSION
 
 sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
 
-cat > config.cache << "EOF"
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    cat > config.cache << "EOF"
 HAVE_BLKID=1
 BLKID_LIBS="-lblkid"
 BLKID_CFLAGS="-I/tools/include"
 EOF
+else
+    cat > config.cache << "EOF"
+HAVE_BLKID=1
+BLKID_LIBS="-lblkid"
+EOF
+fi
 
 ./configure\
     --host=$ARCH_TARGET\
@@ -29,10 +36,8 @@ EOF
     --enable-manpages\
     --enable-hwdb\
     --disable-introspection\
-    --disable-gudev\
     --disable-static\
-    --config-cache\
-    --disable-gtk-doc-html
+    --config-cache
 
 LIBRARY_PATH=/tools/lib make
 
