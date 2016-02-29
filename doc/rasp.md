@@ -41,6 +41,13 @@ CONFIG_SQUASHFS_XZ=y
 CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE=3
 ```
 
+Ensure that the Initrd support is available:
+
+```
+CONFIG_BLK_DEV_INITRD=y
+CONFIG_INITRAMFS_SOURCE=""
+```
+
 Add the required support for OverlayFS for extra flexibility:
 
 ```
