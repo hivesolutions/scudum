@@ -26,4 +26,4 @@ To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
 
 ## Upgrading
 
-The upgrading operation may be a complex one as it involves changing the configuration files 
+The upgrading operation may be a complex one as it involves changing the configuration files
