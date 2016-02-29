@@ -1,4 +1,5 @@
 #!/bin/sh
+# -*- coding: utf-8 -*-
 
 export ARMOR_BASE_URL=${ARMOR_BASE_URL-http://armor:8080/api/}
 export ARMOR_USERNAME=${ARMOR_USERNAME-root}
