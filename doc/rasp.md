@@ -79,5 +79,5 @@ device itself as the branch only exists as a placeholder for future versions.
 
 By using the `make olddefconfig` all the remaining/new configuration lines not defined in the configuration
 file are going to be populated with their respective default values according to the defined `ARCH`.
-Check [this document](https://www.kernel.org/doc/makehelp.txt) for more information regarding `make`
+Check [this document](https://www.kernel.org/doc/makehelp.txt) for more information regarding kernel `make`
 configuration options/parameters.
