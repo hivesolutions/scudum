@@ -69,15 +69,15 @@ CONFIG_DEFAULT_HOSTNAME="scudum"
 
 ### Updating
 
-The process of updating a rpy kernel configuration file should **allways** start with the copy of the
-base `*_defconfig` file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
+The process of updating a rpy kernel configuration files should **always** start with the copy of the
+corresponding base `*_defconfig` file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
 
 Try to avoid using the non master version of the kernel as most of the times they do not work under the
-device itself.
+device itself as the branch only exists as a placeholder for future versions.
 
 ### Notes
 
 By using the `make olddefconfig` all the remaining/new configuration lines not defined in the configuration
 file are going to be populated with their respective default values according to the defined `ARCH`.
-Check [this document](https://www.kernel.org/doc/makehelp.txt) for more information regarding `make`
+Check [this document](https://www.kernel.org/doc/makehelp.txt) for more information regarding kernel `make`
 configuration options/parameters.
