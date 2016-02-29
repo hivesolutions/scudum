@@ -36,7 +36,7 @@ case "${1}" in
 
         # starts the udev daemon to continually watch for, and act on,
         # uevents, this should populate and load many device drivers
-        /lib/udev/udevd --daemon
+        /sbin/udevd --daemon
 
         # traverses /sys in order to "coldplug" devices that have
         # already been discovered
