@@ -67,6 +67,11 @@ Change the (default hostname) value of the machine to the Scudum value:
 CONFIG_DEFAULT_HOSTNAME="scudum"
 ```
 
+### Updating
+
+The process of updating a rpy kernel configuration file should **allways** start with the copy of the
+base *_defconfig file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
+
 ### Notes
 
 By using the `make olddefconfig` all the remaining/new configuration lines not defined in the configuration
