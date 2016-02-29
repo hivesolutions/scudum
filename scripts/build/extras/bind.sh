@@ -12,7 +12,7 @@ rm -f "bind-$VERSION.tar.gz"
 cd bind-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure\
+    BUILD_CC=gcc ./configure\
         --host=$ARCH_TARGET\
         --prefix=$PREFIX\
         --with-randomdev=no\
