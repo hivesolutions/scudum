@@ -5,8 +5,15 @@ set -e
 
 source /etc/environ
 
+git clone --depth 1 https://github.com/hivesolutions/config
+mkdir -p /etc/dhcp && mv config /etc/dhcp
+ln -s /etc/dhcp/config/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
+touch /var/lib/dhcp/dhcpd.leases
+
+dhcpd -cf /etc/dhcp/dhcpd.conf
+
 git clone --depth 1 https://github.com/hivesolutions/dns_registers
-mkdir-p /etc/bind && mv dns_registers /etc/bind
+mkdir -p /etc/bind && mv dns_registers /etc/bind
 ln -s /etc/bind/dns_registers/configuration/named.conf /etc/bind/named.conf
 echo "include \"/etc/bind/dns_registers/configuration/bemisc.com.conf\";" >> /etc/bind/named.conf
 echo "include \"/etc/bind/dns_registers/configuration/hive.conf\";" >> /etc/bind/named.conf
