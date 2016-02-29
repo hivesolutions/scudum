@@ -5,7 +5,7 @@
 To be able to create a proper configuration file for the Raspberry Pi use the `bcmrpi_defconfig` for rasp1 and
 `bcm2709_defconfig` for the rasp2 version of the machine.
 
-These files may be found in the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
+These files may be found in the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/arch/arm/configs).
 
 Then add the following set of configuration lines so that proper EXT2 and EXT3 support is available.
 
@@ -71,6 +71,9 @@ CONFIG_DEFAULT_HOSTNAME="scudum"
 
 The process of updating a rpy kernel configuration file should **allways** start with the copy of the
 base `*_defconfig` file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
+
+Try to avoid using the non master version of the kernel as most of the times they do not work under the
+device itself.
 
 ### Notes
 
