@@ -16,7 +16,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --host=$ARCH_TARGET\
         --prefix=$PREFIX\
         --with-randomdev=no\
-        --with-ecdsa
+        --with-ecdsa\
+        --with-gost
     make && make install
 else
     ./configure --prefix=$PREFIX
