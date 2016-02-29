@@ -23,7 +23,6 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     rm -rf $PYTHON_LIB/pkg_resources* && mv $PYTHON_TOOLS_LIB/pkg_resources* $PYTHON_LIB
     rm -rf $PYTHON_LIB/easy_install* && mv $PYTHON_TOOLS_LIB/easy_install* $PYTHON_LIB
     rm -rf $PYTHON_LIB/setuptools* && mv $PYTHON_TOOLS_LIB/setuptools* $PYTHON_LIB
-    rm -rf $PYTHON_LIB/_markerlib* && mv $PYTHON_TOOLS_LIB/_markerlib* $PYTHON_LIB
     rm -rf $PYTHON_LIB/pip* && mv $PYTHON_TOOLS_LIB/pip* $PYTHON_LIB
 
     mv /tools/bin/pip{,2*} /usr/bin
