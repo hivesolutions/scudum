@@ -70,7 +70,7 @@ CONFIG_DEFAULT_HOSTNAME="scudum"
 ### Updating
 
 The process of updating a rpy kernel configuration file should **allways** start with the copy of the
-base *_defconfig file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
+base `*_defconfig` file from the [Raspberry Pi Kernel repository](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/configs).
 
 ### Notes
 
