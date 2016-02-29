@@ -20,6 +20,7 @@ copy() {
         exit 1
     fi
 }
+
 # tries to retrieve the proper naming to be used for default
 # labeling in the initrd file that is going to be created
 INITRAMFS_FILE=${INITRAMFS_FILE-initrd.img}
