@@ -12,7 +12,11 @@ rm -f "bind-$VERSION.tar.gz"
 cd bind-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-randomdev=no
+    ./configure\
+        --host=$ARCH_TARGET\
+        --prefix=$PREFIX\
+        --with-randomdev=no\
+        --with-ecdsa
     make && make install
 else
     ./configure --prefix=$PREFIX
