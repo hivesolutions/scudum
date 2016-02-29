@@ -57,7 +57,7 @@ CONFIG_LOCALVERSION=".scudum.rasp2.arm"
 Change the (default hostname) value of the machine to the Scudum value:
 
 ```
-CONFIG_DEFAULT_HOSTNAME="scudum"`
+CONFIG_DEFAULT_HOSTNAME="scudum"
 ```
 
 ### Notes
