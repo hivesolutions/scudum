@@ -1,4 +1,5 @@
 #!/bin/sh
+# -*- coding: utf-8 -*-
 
 up() {
     if ip link show $1 > /dev/null 2>&1; then
