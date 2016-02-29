@@ -11,5 +11,10 @@ rm -rf bind-$VERSION && tar -zxf "bind-$VERSION.tar.gz"
 rm -f "bind-$VERSION.tar.gz"
 cd bind-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=$PREFIX
-make && make install
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-randomdev=no
+    make && make install
+else
+    ./configure --prefix=$PREFIX
+    make && make install
+fi
