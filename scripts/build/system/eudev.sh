@@ -13,12 +13,12 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cat > config.cache << "EOF"
 HAVE_BLKID=1
 BLKID_LIBS="-lblkid"
-BLKID_CFLAGS="-I/tools/include"
 EOF
 else
     cat > config.cache << "EOF"
 HAVE_BLKID=1
 BLKID_LIBS="-lblkid"
+BLKID_CFLAGS="-I/tools/include"
 EOF
 fi
 
