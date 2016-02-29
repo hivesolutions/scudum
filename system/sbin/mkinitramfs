@@ -1,4 +1,7 @@
 #!/bin/bash
+# -*- coding: utf-8 -*-
+
+set -e +h
 
 copy() {
     local file
