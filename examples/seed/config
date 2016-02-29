@@ -1,1 +1,1 @@
-export EXTRAS="$EXTRAS bind"
+export EXTRAS="$EXTRAS bind pip"
