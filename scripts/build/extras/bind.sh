@@ -22,7 +22,10 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --with-gost
     make && make install
 else
-    ./configure --prefix=$PREFIX --sysconfdir=/etc
+    ./configure\
+        --prefix=$PREFIX\
+        --sysconfdir=/etc\
+        --localstatedir=/var
     make && make install
 fi
 
