@@ -48,8 +48,8 @@ for package in $(grep -v '^#' ../xorg-protocol.md5 | awk '{print $2}'); do
     packagedir=${package%.tar.bz2}
     tar -xf $package
     pushd $packagedir
-    ./configure $XORG_CONFIG
-    make install
+        ./configure $XORG_CONFIG
+        make install
     popd
     rm -rf $packagedir
 done

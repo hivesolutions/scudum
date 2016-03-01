@@ -19,8 +19,8 @@ sed -i "s:g_strdup(getenv(\"APP_DIR\")):\"$PREFIX/share/rox\":" src/main.c
 
 mkdir build
 pushd build
-../src/configure --prefix=$PREFIX LIBS="-lm -ldl"
-make
+    ../src/configure --prefix=$PREFIX LIBS="-lm -ldl"
+    make
 popd
 
 mkdir -p $PREFIX/share/rox

@@ -56,19 +56,19 @@ for package in $(grep -v '^#' ../xorg-libs.md5 | awk '{print $2}'); do
     packagedir=${package%.tar.bz2}
     tar -xf $package
     pushd $packagedir
-    case $packagedir in
-        libXfont-[0-9]*)
-            ./configure $XORG_CONFIG --disable-devel-docs
-            ;;
-        libXt-[0-9]*)
-            ./configure $XORG_CONFIG\
-                --with-appdefaultdir=/etc/X11/app-defaults
-            ;;
-        *)
-            ./configure $XORG_CONFIG
-            ;;
-    esac
-    make && make install
+        case $packagedir in
+            libXfont-[0-9]*)
+                ./configure $XORG_CONFIG --disable-devel-docs
+                ;;
+            libXt-[0-9]*)
+                ./configure $XORG_CONFIG\
+                    --with-appdefaultdir=/etc/X11/app-defaults
+                ;;
+            *)
+                ./configure $XORG_CONFIG
+                ;;
+        esac
+        make && make install
     popd
     rm -rf $packagedir
     /sbin/ldconfig
