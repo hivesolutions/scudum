@@ -15,7 +15,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     BUILD_CC=gcc ./configure\
         --host=$ARCH_TARGET\
         --prefix=$PREFIX\
-        --sysconfdir=/etc\
+        --sysconfdir=/etc/bind\
         --localstatedir=/var\
         --with-randomdev=no\
         --with-ecdsa\
@@ -24,7 +24,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 else
     ./configure\
         --prefix=$PREFIX\
-        --sysconfdir=/etc\
+        --sysconfdir=/etc/bind\
         --localstatedir=/var
     make && make install
 fi

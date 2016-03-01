@@ -15,10 +15,10 @@ mkdir -p /var/lib/dhcpd && touch /var/lib/dhcpd/dhcpd.leases
 cd /etc/dhcp && dhcpd -cf /etc/dhcp/dhcpd.conf
 
 git clone --depth 1 https://github.com/hivesolutions/dns_registers
-mkdir -p /etc && mv dns_registers /etc
-ln -s /etc/dns_registers/configuration/named.conf /etc/named.conf
-echo "include \"/etc/dns_registers/configuration/bemisc.com.conf\";" >> /etc/named.conf
-echo "include \"/etc/dns_registers/configuration/hive.conf\";" >> /etc/named.conf
-echo "include \"/etc/dns_registers/configuration/root.conf\";" >> /etc/named.conf
+mkdir -p /etc/bind && mv dns_registers /etc/bind
+ln -s /etc/bind/dns_registers/configuration/named.conf /etc/bind/named.conf
+echo "include \"/etc/bind/dns_registers/configuration/bemisc.com.conf\";" >> /etc/bind/named.conf
+echo "include \"/etc/bind/dns_registers/configuration/hive.conf\";" >> /etc/bind/named.conf
+echo "include \"/etc/bind/dns_registers/configuration/root.conf\";" >> /etc/bind/named.conf
 
 named
