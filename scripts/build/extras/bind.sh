@@ -16,6 +16,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --host=$ARCH_TARGET\
         --prefix=$PREFIX\
         --sysconfdir=/etc\
+        --localstatedir=/var\
         --with-randomdev=no\
         --with-ecdsa\
         --with-gost
