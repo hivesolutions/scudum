@@ -25,3 +25,5 @@ else
     ./configure --prefix=$PREFIX --sysconfdir=/etc
     make && make install
 fi
+
+mkdir -p /var/bind
