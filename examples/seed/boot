@@ -22,3 +22,6 @@ mkdir -p /var/lib/dhcpd && touch /var/lib/dhcpd/dhcpd.leases
 pushd /etc/dhcp
     dhcpd -cf /etc/dhcp/dhcpd.conf
 popd
+
+echo "nameserver 127.0.0.1\nsearch hive" > /etc/resolv.conf
+search hive
