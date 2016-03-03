@@ -1,0 +1,10 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+
+export DATA_TARGET=${DATA_TARGET-/mnt/data}
+
+set -e
+
+source /etc/environ
+
+umount $DATA_TARGET
