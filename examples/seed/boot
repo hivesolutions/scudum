@@ -10,7 +10,6 @@ cd /tmp
 git clone --depth 1 https://github.com/hivesolutions/dns_registers
 mkdir -p /etc/bind && mv dns_registers /etc/bind
 ln -s /etc/bind/dns_registers/configuration/named.conf /etc/bind/named.conf
-echo "include \"/etc/bind/dns_registers/configuration/bemisc.com.conf\";" >> /etc/bind/named.conf
 echo "include \"/etc/bind/dns_registers/configuration/hive.conf\";" >> /etc/bind/named.conf
 named
 
