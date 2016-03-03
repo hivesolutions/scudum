@@ -72,7 +72,8 @@ setuptools.setup(
     install_requires = [
         "appier",
         "appier_extras",
-        "jinja2"
+        "jinja2",
+        "pymongo"
     ],
     entry_points = {
         "console_scripts" : [
