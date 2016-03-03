@@ -1,7 +1,7 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
-export DATA_TARGET=${DATA_TARGET-/mnt/data}
+export DATA_TARGET=${DATA_TARGET-/data}
 
 set -e
 
