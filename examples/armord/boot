@@ -1,10 +1,10 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
-export DATA_ORIGIN=${ORIGIN-//files.hive/data}
-export DATA_TARGET=${TARGET-/mnt/data}
+export DATA_ORIGIN=${DATA_ORIGIN-//files.hive/data}
+export DATA_TARGET=${DATA_TARGET-/mnt/data}
 export DATA_USERNAME=${DATA_USERNAME-bot_admin}
-export DATA_PASSWORD=${DATA_USERNAME-anonymous}
+export DATA_PASSWORD=${DATA_PASSWORD-anonymous}
 export ARMOR_SERVER=${ARMOR_SERVER-netius}
 export ARMOR_HOST=${ARMOR_HOST-0.0.0.0}
 export ARMOR_PORT=${ARMOR_PORT-8080}
