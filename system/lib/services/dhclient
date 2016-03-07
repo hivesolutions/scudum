@@ -57,7 +57,7 @@ case "$2" in
         if [ "$HOSTNAME" != "" ]; then
             hostname $HOSTNAME
             echo "$(hostname)" > /etc/hostname
-            echo "127.0.0.1 $(hostname)" > /etc/hosts
+            echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
         fi
 
         # prints the assigned settings if requested
