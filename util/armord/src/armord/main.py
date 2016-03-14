@@ -42,13 +42,14 @@ import appier_extras
 
 class ArmordApp(appier.WebApp):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         appier.WebApp.__init__(
             self,
             name = "armord",
             parts = (
                 appier_extras.AdminPart,
-            )
+            ),
+            *args, **kwargs
         )
         self.theme = "modern"
         self.style = "romantic"
