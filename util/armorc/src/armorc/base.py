@@ -134,7 +134,7 @@ class ArmorClient(object):
         pipe = subprocess.Popen(
             [
                 "mount", "-t", "cifs", "-o",
-                "nosetuids,noperm,username=" + cifs_username + ",password=" + cifs_password,
+                "nosetuids,noperm,noacl,username=" + cifs_username + ",password=" + cifs_password,
                 cifs_path, self.data_path
             ]
         )
