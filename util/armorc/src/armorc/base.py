@@ -47,9 +47,16 @@ import armor
 
 class ArmorClient(object):
 
-    def __init__(self, armor_path = "/armor", data_path = "/data", exec_path = "/var/armor"):
+    def __init__(
+        self,
+        armor_path = "/armor",
+        data_path = "/data",
+        owner_path = "/owner",
+        exec_path = "/var/armor"
+    ):
         self.armor_path = armor_path
         self.data_path = data_path
+        self.owner_path = owner_path
         self.exec_path = exec_path
         self.api = None
         self.hostname = None
@@ -66,6 +73,7 @@ class ArmorClient(object):
     def ensure_paths(self):
         if not os.path.exists(self.armor_path): os.makedirs(self.armor_path)
         if not os.path.exists(self.data_path): os.makedirs(self.data_path)
+        if not os.path.exists(self.owner_path): os.makedirs(self.owner_path)
         if not os.path.exists(self.exec_path): os.makedirs(self.exec_path)
 
     def cleanup_paths(self):
@@ -101,6 +109,7 @@ class ArmorClient(object):
         self.cleanup_paths()
         self.deploy_ssh()
         self.mount_cifs()
+        self.mount_cifs_owner()
         self.clone_github()
         self.deploy_all()
         self.exec_build()
@@ -110,6 +119,7 @@ class ArmorClient(object):
     def handle_halt(self):
         self.exec_halt()
         self.unmount_cifs()
+        self.unmount_cifs_owner()
 
     def deploy_ssh(self):
         print("Deploying SSH credentials ...")
@@ -140,10 +150,37 @@ class ArmorClient(object):
         )
         pipe.wait()
 
+    def mount_cifs_owner(self):
+        cifs_path = self.domain_info["cifs_path"]
+        cifs_username = self.domain_info["cifs_username"]
+        cifs_password = self.domain_info["cifs_password"]
+        if not cifs_path: return
+        if not cifs_username: return
+        if not cifs_password: return
+        print("Mounting CIFS share (owner) from '%s' into '%s'" % (cifs_path, self.owner_path))
+        pipe = subprocess.Popen(
+            [
+                "mount", "-t", "cifs", "-o",
+                "nosetuids,noperm,noacl,dir_mode=0700,file_mode=0700,username=" + cifs_username + ",password=" + cifs_password,
+                cifs_path, self.owner_path
+            ]
+        )
+        pipe.wait()
+
     def unmount_cifs(self):
         if not os.path.ismount(self.data_path): return
         print("Unmounting CIFS share from '%s'" % self.data_path)
         pipe = subprocess.Popen(["umount", self.data_path])
+        pipe.wait()
+        pipe = subprocess.Popen(["umount", self.data_path + ".owner"])
+        pipe.wait()
+
+    def unmount_cifs_owner(self):
+        if not os.path.ismount(self.owner_path): return
+        print("Unmounting CIFS share (owner) from '%s'" % self.owner_path)
+        pipe = subprocess.Popen(["umount", self.owner_path])
+        pipe.wait()
+        pipe = subprocess.Popen(["umount", self.owner_path + ".owner"])
         pipe.wait()
 
     def clone_github(self):
