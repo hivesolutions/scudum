@@ -8,8 +8,9 @@ source $DIR/common.sh
 
 depends "iptables"
 
-wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION"
+wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.tgz"
 
-chmod +x docker-$VERSION
+tar -zxf "docker-$VERSION.tgz"
+chmod +x docker*
 mkdir -pv $PREFIX/bin
-mv -v docker-$VERSION $PREFIX/bin/docker
+mv -v docker* $PREFIX/bin
