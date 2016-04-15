@@ -11,6 +11,7 @@ depends "iptables"
 wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.tgz"
 
 tar -zxf "docker-$VERSION.tgz"
-chmod +x docker*
+rm -f "docker-$VERSION.tgz"
+chmod +x docker/docker*
 mkdir -pv $PREFIX/bin
-mv -v docker* $PREFIX/bin
+mv -v docker/docker* $PREFIX/bin
