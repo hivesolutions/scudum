@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.carisma.slowglass.com/~tgr/libnl/files/libnl-$VERSION.tar.gz"
+rget "http://www.carisma.slowglass.com/~tgr/libnl/files/libnl-$VERSION.tar.gz"\
+    "http://sources.openelec.tv/mirror/libnl/libnl-$VERSION.tar.gz"
 rm -rf libnl-$VERSION && tar -zxf "libnl-$VERSION.tar.gz"
 rm -f "libnl-$VERSION.tar.gz"
 cd libnl-$VERSION
