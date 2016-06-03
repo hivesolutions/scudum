@@ -3279,8 +3279,8 @@ CONFIG_IRQ_BYPASS_MANAGER=y
 #
 # Virtio drivers
 #
-# CONFIG_VIRTIO_PCI is not set
-# CONFIG_VIRTIO_MMIO is not set
+CONFIG_VIRTIO_PCI=y
+CONFIG_VIRTIO_MMIO=y
 
 #
 # Microsoft Hyper-V guest support
