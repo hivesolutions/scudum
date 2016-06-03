@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.1.2}
+VERSION=${VERSION-2.5.1}
 TARGET_LIST=${TARGET_LIST-x86_64-softmmu,x86_64-linux-user}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
