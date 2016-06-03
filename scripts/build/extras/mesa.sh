@@ -8,10 +8,10 @@ source $DIR/common.sh
 
 depends "xorg-libs" "libdrm" "python" "expat" "libva" "libvdpau"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/MesaLib-$VERSION.tar.bz2"
-rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
-rm -f "MesaLib-$VERSION.tar.bz2"
-cd Mesa-$VERSION
+wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/mesa-$VERSION.tar.bz2"
+rm -rf mesa-$VERSION && tar -jxf "mesa-$VERSION.tar.bz2"
+rm -f "mesa-$VERSION.tar.bz2"
+cd mesa-$VERSION
 
 autoreconf -f -i
 
