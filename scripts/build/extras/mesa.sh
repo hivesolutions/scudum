@@ -1,4 +1,4 @@
-VERSION=${VERSION-10.4.4}
+VERSION=${VERSION-11.2.2}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,10 +8,10 @@ source $DIR/common.sh
 
 depends "xorg-libs" "libdrm" "python" "expat" "libva" "libvdpau"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/MesaLib-$VERSION.tar.bz2"
-rm -rf Mesa-$VERSION && tar -jxf "MesaLib-$VERSION.tar.bz2"
-rm -f "MesaLib-$VERSION.tar.bz2"
-cd Mesa-$VERSION
+wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/mesa-$VERSION.tar.gz"
+rm -rf mesa-$VERSION && tar -zxf "mesa-$VERSION.tar.gz"
+rm -f "mesa-$VERSION.tar.gz"
+cd mesa-$VERSION
 
 autoreconf -f -i
 
