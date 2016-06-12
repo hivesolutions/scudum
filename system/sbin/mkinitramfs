@@ -141,7 +141,8 @@ if [ -f /etc/mdadm.conf ] ; then
 fi
 
 # installs the init file that will be used for the initial
-# loading stage of the linux kernel
+# loading stage of the linux kernel, notice the exeuction
+# permissions required for proper initial execution
 install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/linuxrc
 
 if [ -n "$KERNEL_VERSION" ] ; then
