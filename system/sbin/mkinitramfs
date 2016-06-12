@@ -86,8 +86,9 @@ unsort() {
 
 # initializes the global variables that refer the operations
 # that are going to be parts of the initird creation
-DATADIR=/usr/share/mkinitramfs
-INIT_IN=linuxrc
+DATADIR=${DATADIR-/usr/share/mkinitramfs}
+INIT_IN=${INIT_IN-linuxrc}
+INIT_OUT=${INIT_OUT-linuxrc}
 
 # creates a temporrary working directory, where the
 # files will be stored for the creation of the image
@@ -143,7 +144,7 @@ fi
 # installs the init file that will be used for the initial
 # loading stage of the linux kernel, notice the exeuction
 # permissions required for proper initial execution
-install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/linuxrc
+install -m0755 $DATADIR/$INIT_IN $TEMP_DIR/$INIT_OUT
 
 if [ -n "$KERNEL_VERSION" ] ; then
     if [ -x /bin/kmod ] ; then
