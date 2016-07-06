@@ -18,7 +18,7 @@ rm -rvf pypy && tar -jxf pypy-$VERSION-linux_x86_64-portable.tar.bz2
 mv pypy-$VERSION-linux_x86_64-portable pypy
 rm -vf pypy-$VERSION-linux_x86_64-portable.tar.bz2
 
-ln -svf $PREFIX/lib/libbz2.so $PREFIX/lib/libbz2.so.1
-ln -svf $PREFIX/lib/libncursesw.so $PREFIX/lib/libncurses.so.5
+ln -svf libbz2.so $PREFIX/lib/libbz2.so.1
+ln -svf libncursesw.so $PREFIX/lib/libncurses.so.5
 
 ln -svf ../lib/pypy/bin/pypy $PREFIX/bin/pypy
