@@ -8,14 +8,14 @@ source $DIR/common.sh
 
 depends "expat" "libffi" "libtinfo"
 
-wget "https://bitbucket.org/pypy/pypy/downloads/pypy3-v$VERSION-linux64.tar.bz2"
-rm -rf pypy3-v$VERSION-linux64 && tar -jxf "pypy3-v$VERSION-linux64.tar.bz2"
+wget "https://bitbucket.org/pypy/pypy/downloads/pypy3.3-v$VERSION-linux64.tar.bz2"
+rm -rf pypy3.3-v$VERSION-linux64 && tar -jxf "pypy3.3-v$VERSION-linux64.tar.bz2"
 
-mv -v pypy3-v$VERSION-linux64.tar.bz2 $PREFIX/lib
+mv -v pypy3.3-v$VERSION-linux64.tar.bz2 $PREFIX/lib
 cd $PREFIX/lib
 
-rm -rvf pypy3 && tar -jxf pypy3-v$VERSION-linux64.tar.bz2
-mv pypy3-v$VERSION-linux64 pypy3
-rm -vf pypy3-v$VERSION-linux64.tar.bz2
+rm -rvf pypy3.3 && tar -jxf pypy3.3-v$VERSION-linux64.tar.bz2
+mv pypy3.3-v$VERSION-linux64 pypy3.3
+rm -vf pypy3.3-v$VERSION-linux64.tar.bz2
 
-ln -sv ../lib/pypy3/bin/pypy3 $PREFIX/bin/pypy3
+ln -sv ../lib/pypy3.3/bin/pypy3.3 $PREFIX/bin/pypy3.3
