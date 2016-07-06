@@ -14,6 +14,8 @@ export MAKEFLAGS="-j $(nproc)"
 export LS_COLORS="ow=01;90:di=01;90"
 export PS1="\u@\h:\w# "
 
+export TERM=${TERM-linux}
+
 if [ "$(locale -a | grep -a en_US.utf8)" != "" ]; then
     export LANG="en_US.utf8"
     export LC_ALL="en_US.utf8"
