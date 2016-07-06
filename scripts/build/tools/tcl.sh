@@ -13,4 +13,4 @@ make && make install
 
 chmod -v u+w $PREFIX/lib/libtcl8.6.so
 make install-private-headers
-ln -sv tclsh8.6 $PREFIX/bin/tclsh
+ln -svf tclsh8.6 $PREFIX/bin/tclsh

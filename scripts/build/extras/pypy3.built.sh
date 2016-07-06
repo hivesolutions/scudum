@@ -18,4 +18,4 @@ rm -rvf pypy3.3 && tar -jxf pypy3.3-v$VERSION-linux64.tar.bz2
 mv pypy3.3-v$VERSION-linux64 pypy3.3
 rm -vf pypy3.3-v$VERSION-linux64.tar.bz2
 
-ln -sv ../lib/pypy3.3/bin/pypy3.3 $PREFIX/bin/pypy3.3
+ln -svf ../lib/pypy3.3/bin/pypy3.3 $PREFIX/bin/pypy3.3

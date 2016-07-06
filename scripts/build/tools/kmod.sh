@@ -21,7 +21,7 @@ cd kmod-$VERSION
 make && make pkgconfigdir=$PREFIX/lib/pkgconfig install
 
 for target in depmod insmod lsmod modinfo modprobe rmmod; do
-    ln -sv ../bin/kmod $PREFIX/sbin/$target
+    ln -svf ../bin/kmod $PREFIX/sbin/$target
 done
 
-ln -sv kmod $PREFIX/bin/lsmod
+ln -svf kmod $PREFIX/bin/lsmod

@@ -24,4 +24,4 @@ cd $PREFIX/lib
 rm -rvf pypy && tar -jxf pypy2-v$VERSION.tar.bz2
 rm -vf pypy2-v$VERSION.tar.bz2
 
-ln -sv ../lib/pypy/bin/pypy $PREFIX/bin/pypy
+ln -svf ../lib/pypy/bin/pypy $PREFIX/bin/pypy

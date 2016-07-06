@@ -28,12 +28,12 @@ make && make install
 
 for file in $PREFIX/mysql/bin/mysql*; do
     base=$(basename $file)
-    ln -sv ../mysql/bin/$base $PREFIX/bin/$base
+    ln -svf ../mysql/bin/$base $PREFIX/bin/$base
 done
 
 for file in $PREFIX/mysql/lib/libmysql*; do
     base=$(basename $file)
-    ln -sv ../mysql/lib/$base $PREFIX/lib/$base
+    ln -svf ../mysql/lib/$base $PREFIX/lib/$base
 done
 
 cd $PREFIX/mysql

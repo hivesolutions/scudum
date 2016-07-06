@@ -6,7 +6,7 @@ if [ "SCUDUM_CROSS" == "0" ]; then
     mv -v /tools/bin/{ld,ld-old}
     mv -v /tools/$($CC -dumpmachine)/bin/{ld,ld-old}
     mv -v /tools/bin/{ld-new,ld}
-    ln -sv /tools/bin/ld /tools/$($CC -dumpmachine)/bin/ld
+    ln -svf /tools/bin/ld /tools/$($CC -dumpmachine)/bin/ld
 fi
 
 $CC -dumpspecs | sed -e 's@/tools@@g'\

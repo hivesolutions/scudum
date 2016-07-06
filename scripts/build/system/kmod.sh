@@ -22,7 +22,7 @@ test $TEST && make check
 make pkgconfigdir=/usr/lib/pkgconfig install
 
 for target in depmod insmod modinfo modprobe rmmod; do
-    ln -sv ../bin/kmod /sbin/$target
+    ln -svf ../bin/kmod /sbin/$target
 done
 
-ln -sv kmod /bin/lsmod
+ln -svf kmod /bin/lsmod

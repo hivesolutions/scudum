@@ -59,4 +59,4 @@ CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM
 
 make && make install
 
-ln -sv gcc $PREFIX/bin/cc
+ln -svf gcc $PREFIX/bin/cc

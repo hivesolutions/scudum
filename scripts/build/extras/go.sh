@@ -17,5 +17,5 @@ sed -i 's/if pwd != d {/if false {/' pkg/os/os_test.go
 
 mkdir -pv $PREFIX/bin
 
-ln -sv ../go/bin/go $PREFIX/bin/go
-ln -sv ../go/bin/gofmt $PREFIX/bin/gofmt
+ln -svf ../go/bin/go $PREFIX/bin/go
+ln -svf ../go/bin/gofmt $PREFIX/bin/gofmt
