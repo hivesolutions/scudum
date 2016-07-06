@@ -9,7 +9,7 @@ source $DIR/common.sh
 depends "expat" "libffi" "libtinfo"
 
 wget "https://bitbucket.org/squeaky/portable-pypy/downloads/pypy3.3-$VERSION-linux_x86_64-portable.tar.bz2"
-rm -rf pypy3.3-$VERSION-linux_x86_64-portable.tar.bz2 && tar -jxf "pypy3.3-$VERSION-linux_x86_64-portable.tar.bz2"
+rm -rf pypy3.3-$VERSION-linux_x86_64-portable && tar -jxf "pypy3.3-$VERSION-linux_x86_64-portable.tar.bz2"
 
 mv -v pypy3.3-$VERSION-linux_x86_64-portable.tar.bz2 $PREFIX/lib
 cd $PREFIX/lib
