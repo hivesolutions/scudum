@@ -45,8 +45,8 @@ make
 test $TEST && make -k check
 make install
 
-ln -sv ../usr/bin/cpp /lib
-ln -sv gcc /usr/bin/cc
+ln -svf ../usr/bin/cpp /lib
+ln -svf gcc /usr/bin/cc
 
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib

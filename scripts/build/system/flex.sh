@@ -19,7 +19,7 @@ make
 test $TEST && make check
 make install
 
-ln -sv libfl.a /usr/lib/libl.a
+ln -svf libfl.a /usr/lib/libl.a
 cat > /usr/bin/lex << "EOF"
 #!/bin/sh
 

@@ -63,4 +63,4 @@ extra=""
     $extra
 
 make && make install
-ln -sv libgcc.a `$ARCH_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
+ln -svf libgcc.a `$ARCH_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`

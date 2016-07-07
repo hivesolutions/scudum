@@ -24,5 +24,5 @@ fi
 mkdir -pv /usr/share/doc/groff-$VERSION/pdf
 make install
 
-ln -sv eqn /usr/bin/geqn
-ln -sv tbl /usr/bin/gtbl
+ln -svf eqn /usr/bin/geqn
+ln -svf tbl /usr/bin/gtbl

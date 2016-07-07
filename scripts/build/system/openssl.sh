@@ -29,4 +29,4 @@ fi
 
 make && make install
 
-ln -sv /usr/ssl /etc/ssl
+ln -svf /usr/ssl /etc/ssl

@@ -30,4 +30,4 @@ mv -fv $FILE $TARGET
 
 cd $TARGET
 rm -fv $LATEST
-ln -sv $FILE $LATEST
+ln -svf $FILE $LATEST

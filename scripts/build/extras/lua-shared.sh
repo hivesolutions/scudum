@@ -17,5 +17,5 @@ patch -Np1 -i lua-$VERSION-shared_library-1.patch
 
 make linux && make linux install INSTALL_TOP=$PREFIX TO_LIB="liblua.so"
 
-ln -sv liblua.so $PREFIX/lib/liblua.so.$VERSION_L
-ln -sv liblua.so $PREFIX/lib/liblua.so.$VERSION
+ln -svf liblua.so $PREFIX/lib/liblua.so.$VERSION_L
+ln -svf liblua.so $PREFIX/lib/liblua.so.$VERSION

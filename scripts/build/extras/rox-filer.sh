@@ -31,16 +31,16 @@ cp -v  ROX-Filer $PREFIX/bin/rox
 chown -Rv root:root $PREFIX/bin/rox $PREFIX/share/rox
 
 cd $PREFIX/share/rox/ROX/MIME
-ln -sv text-x-{diff,patch}.png
-ln -sv application-x-font-{afm,type1}.png
-ln -sv application-xml{,-dtd}.png
-ln -sv application-xml{,-external-parsed-entity}.png
-ln -sv application-{,rdf+}xml.png
-ln -sv application-x{ml,-xbel}.png
-ln -sv application-{x-shell,java}script.png
-ln -sv application-x-{bzip,xz}-compressed-tar.png
-ln -sv application-x-{bzip,lzma}-compressed-tar.png
-ln -sv application-x-{bzip-compressed-tar,lzo}.pn
-ln -sv application-x-{bzip,xz}.png
-ln -sv application-x-{gzip,lzma}.png
-ln -sv application-{msword,rtf}.png
+ln -svf text-x-{diff,patch}.png
+ln -svf application-x-font-{afm,type1}.png
+ln -svf application-xml{,-dtd}.png
+ln -svf application-xml{,-external-parsed-entity}.png
+ln -svf application-{,rdf+}xml.png
+ln -svf application-x{ml,-xbel}.png
+ln -svf application-{x-shell,java}script.png
+ln -svf application-x-{bzip,xz}-compressed-tar.png
+ln -svf application-x-{bzip,lzma}-compressed-tar.png
+ln -svf application-x-{bzip-compressed-tar,lzo}.pn
+ln -svf application-x-{bzip,xz}.png
+ln -svf application-x-{gzip,lzma}.png
+ln -svf application-{msword,rtf}.png

@@ -66,4 +66,4 @@ cd gcc-build
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
-ln -sv libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
+ln -svf libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`

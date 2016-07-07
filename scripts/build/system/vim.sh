@@ -18,12 +18,12 @@ make
 test $TEST && make test
 make install
 
-ln -sv vim /usr/bin/vi
+ln -svf vim /usr/bin/vi
 for L in  /usr/share/man/{,*/}man1/vim.1; do
-    ln -sv vim.1 $(dirname $L)/vi.1
+    ln -svf vim.1 $(dirname $L)/vi.1
 done
 
-ln -sv ../vim/vim$VERSION_L/doc /usr/share/doc/vim-$VERSION
+ln -svf ../vim/vim$VERSION_L/doc /usr/share/doc/vim-$VERSION
 
 cat > /etc/vimrc << "EOF"
 set nocompatible
