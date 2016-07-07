@@ -17,4 +17,4 @@ done
 ./configure --prefix=$PREFIX --without-bash-malloc
 make && make install
 
-ln -sv bash $PREFIX/bin/sh
+ln -svf bash $PREFIX/bin/sh
