@@ -15,7 +15,7 @@ rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
 ./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
-make depend && make install
+make depend && make && make install
 
 rm -rf $PREFIX/ssl/certs
 ln -svf /usr/ssl/certs $PREFIX/ssl/certs

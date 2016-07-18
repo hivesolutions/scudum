@@ -27,6 +27,6 @@ else
     ./config shared --prefix=/usr --openssldir=/usr/ssl
 fi
 
-make depend && make install
+make depend && make && make install
 
 ln -svf /usr/ssl /etc/ssl
