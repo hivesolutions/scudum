@@ -28,6 +28,7 @@ fi
     --prefix=/usr\
     --sysconfdir=/etc/ssh\
     --with-md5-passwords\
+    --with-ssl-dir=/usr/ssl\
     --with-privsep-path=/var/lib/sshd
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
