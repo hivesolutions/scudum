@@ -11,5 +11,6 @@ rm -rf CUnit-$VERSION && tar -jxf "CUnit-$VERSION.tar.bz2"
 rm -f "CUnit-$VERSION.tar.bz2"
 cd CUnit-$VERSION
 
+autoreconf -f -i
 ./configure --prefix=$PREFIX
 make && make install
