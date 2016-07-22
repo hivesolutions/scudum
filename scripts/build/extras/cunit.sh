@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://downloads.sourceforge.net/CUnit/CUnit-$VERSION.tar.bz2"
+wget "http://downloads.sourceforge.net/cunit/CUnit-$VERSION.tar.bz2"
 rm -rf CUnit-$VERSION && tar -jxf "CUnit-$VERSION.tar.bz2"
 rm -f "CUnit-$VERSION.tar.bz2"
 cd CUnit-$VERSION
