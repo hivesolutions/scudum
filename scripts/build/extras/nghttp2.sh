@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "python" "jansson" "cunit" "libxml2" "libev" "libevent"
+depends "python" "jansson" "cunit" "libxml2" "libev"
 
 wget "https://github.com/nghttp2/nghttp2/releases/download/v$VERSION/nghttp2-$VERSION.tar.gz"
 rm -rf nghttp2-$VERSION && tar -zxf "nghttp2-$VERSION.tar.gz"
