@@ -22,8 +22,10 @@ rm -f "go$VERSION.src.tar.gz"
 rm -rf $PREFIX/go && mv go $PREFIX
 
 pushd $PREFIX/go/src
-    ./make.bash
+    GOROOT_BOOTSTRAP=$PREFIX/go_legacy ./make.bash
 popd
+
+rm -rf $PREFIX/go_legacy
 
 mkdir -pv $PREFIX/bin
 
