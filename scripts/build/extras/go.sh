@@ -9,7 +9,7 @@ source $DIR/common.sh
 wget "https://storage.googleapis.com/golang/go$VERSION.src.tar.gz"
 rm -rf go && tar -zxf "go$VERSION.src.tar.gz"
 rm -f "go$VERSION.src.tar.gz"
-mv go $PREFIX && cd $PREFIX/go/src
+rm -rf $PREFIX/go && mv go $PREFIX && cd $PREFIX/go/src
 
 ./all.bash
 
