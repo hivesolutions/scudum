@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.0.2d}
+VERSION=${VERSION-1.0.2h}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-unset MAKEFLAGS
+unset MAKEFLAGS TEST
 
 rget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
     "http://mirrors.ibiblio.org/openssl/source/openssl-$VERSION.tar.gz"

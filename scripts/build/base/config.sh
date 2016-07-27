@@ -77,7 +77,7 @@ export TEST=${TEST-}
 # c and c++ compiler flags should be defined statically
 export SET_CFLAGS=${SET_CFLAGS-basic}
 
-# name of the current distribution of sucudum, the default
+# name of the current distribution of scudum, the default
 # value should be generic as no custom deployment is done
 export DISTRIB="generic"
 

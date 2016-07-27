@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-unset MAKEFLAGS
+unset MAKEFLAGS TEST
 
 rgeti "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
     "http://mirrors.ibiblio.org/openssl/source/openssl-$VERSION.tar.gz"
