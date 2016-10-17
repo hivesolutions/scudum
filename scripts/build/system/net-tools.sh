@@ -14,3 +14,5 @@ else
     yes "" | make config > /dev/null
     make && make install
 fi
+
+mv -v /bin/ifconfig /sbin
