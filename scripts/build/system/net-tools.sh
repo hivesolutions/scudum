@@ -8,10 +8,10 @@ rm -f "net-tools-$VERSION.tar.gz"
 cd net-tools-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure.sh config.in > /dev/null
+    yes "" | ./configure.sh config.in > /dev/null
     make CC="$CC" LD="$LD" && make install
 else
-    make config > /dev/null
+    yes "" | make config > /dev/null
     make && make install
 fi
 
