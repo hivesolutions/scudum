@@ -23,4 +23,4 @@ make
 test $TEST && make check
 make install
 mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
-mv -v /usr/bin/ifconfig /sbin
+rm -v /usr/bin/ifconfig
