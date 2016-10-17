@@ -7,7 +7,7 @@ rm -rf net-tools-$VERSION && tar -zxf "net-tools-$VERSION.tar.gz"
 rm -f "net-tools-$VERSION.tar.gz"
 cd net-tools-$VERSION
 
-sed -i '/#include <netinet\/ip.h>/d' iptunnel.c
+sed -i '/#include <netinet\/ip.h>/c\#include <linux\/ip.h>' iptunnel.c
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     yes "" | ./configure.sh config.in > /dev/null
