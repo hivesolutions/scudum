@@ -1,0 +1,9 @@
+NAME="Scudum"
+VERSION="1.0.0 LTS"
+ID=scudum
+ID_LIKE=scudum
+PRETTY_NAME="Scudum"
+VERSION_ID="1.0.0"
+HOME_URL="http://scudum.hive.pt/"
+SUPPORT_URL="http://scudum.hive.pt/"
+BUG_REPORT_URL="http://scudum.hive.pt/"
