@@ -103,6 +103,10 @@ fi
 
 dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
+if [ -e $PREFIX/lib/syslinux/mbr ]; then
+    rm -f $PREFIX/lib/syslinux/mbr.bin
+fi
+
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
