@@ -96,6 +96,11 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
 sleep $SLEEP_TIME && sync
 
+if [ -e $PREFIX/lib/syslinux/mbr ]; then
+    rm -f $PREFIX/lib/syslinux/mbr.bin
+    ln -s $PREFIX/lib/syslinux/mbr/mbr.bin $PREFIX/lib/syslinux/mbr.bin
+fi
+
 dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
