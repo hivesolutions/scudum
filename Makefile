@@ -10,6 +10,7 @@ install-system: install
 	rm -rf $(prefix)/scudum/system && cp -rp system $(prefix)/scudum
 	rm -f $(prefix)/bin/kernel.build && ln -s $(prefix)/scudum/system/bin/kernel.build $(prefix)/bin/kernel.build
 	rm -f $(prefix)/bin/kernel.install && ln -s $(prefix)/scudum/system/bin/kernel.install $(prefix)/bin/kernel.install
+	rm -f $(prefix)/boot && ln -s $(prefix)/scudum/boot $(prefix)/boot
 
 uninstall:
 	rm -rf $(prefix)/scudum/scripts
