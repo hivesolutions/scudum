@@ -72,6 +72,8 @@ else
     BUILDER=$TARGET/ksources
 fi
 
+# switches on the target architecture so that if a scpecial
+# architecture is used the name of the kernel is changed
 case "$KARCH" in
     arm*)
         NAME=${NAME-linux-rasp-$MINOR}
