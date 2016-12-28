@@ -110,6 +110,8 @@ fi
 
 cp -v $CONFIG .config  
 
+# in case there's no build flag set (just download) returns
+# the control flow immediately (nothing to be done)
 if [ "$BUILD" != "1" ]; then
     exit 0
 fi
@@ -145,6 +147,8 @@ tar -zcvf modules.tar.gz modules firmware
 mv modules.tar.gz ../..
 cd ../..
 
+# verifies if the xz version of the image exists and if that's
+# the case renames it to the "old" naming of the same file (gzip)
 if [ -e arch/$KARCH/boot/zImage ]; then
     mv arch/$KARCH/boot/zImage arch/$KARCH/boot/bzImage
 fi
