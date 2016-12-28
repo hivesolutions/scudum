@@ -114,6 +114,8 @@ if [ "$BUILD" != "1" ]; then
     exit 0
 fi
 
+# ensures that the target directories for deployment
+# of the modules are removed and then ensucre creation
 rm -rf modules_install && mkdir -p modules_install
 
 echo "kernel.build: starting the kernel make process ..."
