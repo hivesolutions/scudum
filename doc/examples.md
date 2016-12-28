@@ -22,6 +22,6 @@
 
     VARIANT=basic DEPLOY=1 kernel.build
 
-#### Build the basic version of the 4.8.2 kernel and deploy
+#### Build the basic version of the 4.8.15 kernel and deploy
 
-    MINOR=4.8.2 VARIANT=basic DEPLOY=1 kernel.build
+    MINOR=4.8.15 VARIANT=basic DEPLOY=1 kernel.build
