@@ -121,11 +121,13 @@ echo "kernel.build: starting the kernel make process ..."
 if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
     ARCH=$KARCH make $KFLAGS -j $CONCURRENCY
+    echo "kernel.build: building modules (modules_install) ..."
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j olddefconfig
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make -j $CONCURRENCY
+    echo "kernel.build: building modules (modules_install) ..."
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
