@@ -63,3 +63,5 @@ def main():
 if __name__ == "__main__":
     app = ArmordApp()
     app.serve()
+else:
+    __path__ = []
