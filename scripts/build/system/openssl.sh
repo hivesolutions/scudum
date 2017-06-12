@@ -17,7 +17,7 @@ cd openssl-$VERSION
 if [ "$SCUDUM_CROSS" == "1" ]; then
     case "$SCUDUM_ARCH" in
         arm*)
-            ./Configure linux-armv4 shared --prefix=/usr --openssldir=/usr/ssl
+            ./Configure linux-generic32 shared --prefix=/usr --openssldir=/usr/ssl
             ;;
         *)
             ./config shared --prefix=/usr --openssldir=/usr/ssl os/compiler:$ARCH_TARGET-gcc
