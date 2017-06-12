@@ -8,7 +8,7 @@ rm -f "coreutils-$VERSION.tar.xz"
 cd coreutils-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    wget --no-check-certificate "http://patches.clfs.org/dev/coreutils-$VERSION-noman-1.patch"
+    wget --no-check-certificate "https://archive.hive.pt/files/lfs/patches/coreutils-$VERSION-noman-1.patch"
     patch -Np1 -i coreutils-$VERSION-noman-1.patch
 fi
 
