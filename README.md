@@ -64,7 +64,7 @@ must be changed, note that this is not backwards compatible:
     GCC_BUILD_FLOAT=hard scudum root
 
 To be able to run only the system building (without repeating the cross toolchain and the base toochain process)
-yo can use the following command:
+you can use the following command:
 
     SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
