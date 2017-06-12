@@ -1,2 +1,1 @@
-ramfsfile=initrd.img
-ramfsaddr=0x00f00000
+initramfs initrd.img
