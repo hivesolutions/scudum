@@ -18,15 +18,16 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     case "$SCUDUM_ARCH" in
         arm*)
             ./Configure linux-generic32 shared --prefix=/usr --openssldir=/usr/ssl
+            make && make install
             ;;
         *)
             ./config shared --prefix=/usr --openssldir=/usr/ssl os/compiler:$ARCH_TARGET-gcc
+            make depend && make && make install
             ;;
     esac
 else
     ./config shared --prefix=/usr --openssldir=/usr/ssl
+    make depend && make && make install
 fi
-
-make depend && make && make install
 
 ln -svf /usr/ssl /etc/ssl
