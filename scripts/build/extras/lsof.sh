@@ -11,7 +11,7 @@ rm -rf lsof_$VERSION && tar -jxf "lsof_$VERSION.tar.bz2"
 rm -f "lsof_$VERSION.tar.bz2"
 cd lsof_$VERSION
 
-tar -xf lsof_${VERSION}_src.tar 
+tar -xf lsof_${VERSION}_src.tar
 cd lsof_${VERSION}_src
 
 ./Configure -n linux
