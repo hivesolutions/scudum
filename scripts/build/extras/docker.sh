@@ -1,4 +1,4 @@
-VERSION=${VERSION-latest}
+VERSION=${VERSION-17.06.0-ce}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "iptables"
 
-wget "https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.tgz"
+wget "https://download.docker.com/linux/static/stable/x86_64/docker-$VERSION.tgz"
 
 tar -zxf "docker-$VERSION.tgz"
 rm -f "docker-$VERSION.tgz"
