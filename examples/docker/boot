@@ -4,7 +4,7 @@
 set -e
 
 if mountpoint -q /pst; then
-    cgroupfs.mount && docker daemon -s overlay -g /pst/lib/docker < /dev/null &> /dev/null &
+    cgroupfs.mount && dockerd -s overlay -g /pst/lib/docker < /dev/null &> /dev/null &
 else
-    cgroupfs.mount && docker daemon -s vfs < /dev/null &> /dev/null &
+    cgroupfs.mount && dockerd -s vfs < /dev/null &> /dev/null &
 fi
