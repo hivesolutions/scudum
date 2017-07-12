@@ -22,6 +22,6 @@
 
     VARIANT=basic DEPLOY=1 kernel.build
 
-#### Build the basic version of the 4.11.4 kernel and deploy
+#### Build the basic version of the 4.11.9 kernel and deploy
 
-    MINOR=4.11.4 VARIANT=basic DEPLOY=1 kernel.build
+    MINOR=4.11.9 VARIANT=basic DEPLOY=1 kernel.build
