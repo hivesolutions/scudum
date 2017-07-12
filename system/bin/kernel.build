@@ -26,6 +26,18 @@ fi
 KARCH=${KARCH-${SCUDUM_BARCH-x86}}
 KTARGET=${KTARGET-}
 
+# verifies if the major version value is not properly defined and if
+# that's the case unset it (to use the default value)
+if [ "$MAJOR" == "" ]; then
+    unset MAJOR
+fi
+
+# verifies if the minor version value is not properly defined and if
+# that's the case unset it (to use the default value)
+if [ "$MINOR" == "" ]; then
+    unset MINOR
+fi
+
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
 case "$KARCH" in
