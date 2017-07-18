@@ -5,9 +5,9 @@ VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e +h
 
-wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
-rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
-rm -f "gcc-$VERSION.tar.bz2"
+wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
+rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
+rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION
 
 wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
