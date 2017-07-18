@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.4.0}
+VERSION=${VERSION-6.4.0}
 
 set -e +h
 
@@ -28,13 +28,7 @@ extra=""
 SED=sed ../gcc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --target=$ARCH_TARGET\
-    --program-prefix=\
     --prefix=/usr\
-    --libexecdir=/usr/lib\
-    --enable-shared\
-    --enable-threads=posix\
-    --enable-__cxa_atexit\
-    --enable-clocale=gnu\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
