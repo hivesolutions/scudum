@@ -2,9 +2,9 @@ VERSION=${VERSION-$GCC_BUILD_VERSION}
 
 set -e +h
 
-wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.bz2"
-rm -rf gcc-$VERSION && tar -jxf "gcc-$VERSION.tar.bz2"
-rm -f "gcc-$VERSION.tar.bz2"
+wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
+rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
+rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION
 
 cd ..
