@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget -4 "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
+wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
 rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
 rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION
