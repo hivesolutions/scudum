@@ -1,5 +1,5 @@
 VERSION=${VERSION-2.22}
-VERSION_T=${VERSION_T-2014j}
+VERSION_T=${VERSION_T-2017b}
 
 set -e +h
 
@@ -8,7 +8,7 @@ unset CFLAGS CXXFLAGS
 if [ "$CROSSCC" != "" ]; then export CC="$CROSSCC"; fi
 if [ "$CROSSCXX" != "" ]; then export CXX="$CROSSCXX"; fi
 
-wget --no-check-certificate "http://www.iana.org//time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
+wget --no-check-certificate "http://www.iana.org/time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
 wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
