@@ -43,6 +43,7 @@ cd gcc-build
 ../gcc-$VERSION/configure\
     --target=$SCUDUM_TARGET\
     --prefix=$PREFIX\
+    --with-glibc-version=2.11\
     --with-sysroot=$SCUDUM\
     --with-newlib\
     --without-headers\
