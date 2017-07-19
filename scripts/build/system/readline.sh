@@ -18,10 +18,14 @@ sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
 sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 
-./configure --host=$ARCH_TARGET --prefix=/usr --libdir=/lib
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=/usr\
+    --libdir=/lib\
+    --disable-static
 
-make SHLIB_LIBS=-lncurses
-make SHLIB_LIBS=-lncurses install
+make SHLIB_LIBS="-L/tools/lib -lncurses"
+make SHLIB_LIBS="-L/tools/lib -lncurses" install
 
 mv -v /lib/lib{readline,history}.a /usr/lib
 
