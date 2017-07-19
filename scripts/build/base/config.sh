@@ -11,7 +11,7 @@ export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
 
 # uses the base arch value and normalizes it so that the (base) arch
 # is more generalized (eg: arm6, arm7, arm8 are all considered arm)
-# this is usefull for operations where the general cpu description is
+# this is useful for operations where the general cpu description is
 # required instead of the more specific version of the cpu
 case "$SCUDUM_ARCH" in
     arm*)
