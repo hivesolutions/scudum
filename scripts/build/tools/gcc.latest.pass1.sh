@@ -6,7 +6,7 @@ VERSION_MPC=${VERSION_MPC-1.0.3}
 set -e +h
 
 wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
-rm -rf "gcc-$VERSION" && tar -zxf "gcc-$VERSION.tar.gz"
+rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
 rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION
 
