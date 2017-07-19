@@ -24,3 +24,6 @@ cd glibc-build
     libc_cv_c_cleanup=yes
 
 make && make install
+
+echo "int main(){}" > dummy.c && $SCUDUM_TARGET-gcc dummy.c
+readelf -l a.out && ./a.out && rm -v dummy.c a.out
