@@ -97,7 +97,7 @@ else
     export SCUDUM_CROSS=${SCUDUM_CROSS-0}
 fi
 
-# exports the flags theat define the deault optimization flags
+# exports the flags that define the default optimization flags
 # for both the base c compiler and the c++ compiler so that the
 # resulting build is generic enough for proper handling
 if [ "$SET_CFLAGS" == "all" ]; then

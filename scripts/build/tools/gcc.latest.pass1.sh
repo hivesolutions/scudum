@@ -34,7 +34,11 @@ for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
     touch $file.orig
 done
 
-sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure
+case $SCUDUM_HOST in
+    x86_64)
+        sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+    ;;
+esac
 
 cd ..
 rm -rf gcc-build && mkdir gcc-build
@@ -66,4 +70,3 @@ cd gcc-build
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
 make && make install
-ln -svf libgcc.a `$SCUDUM_TARGET-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
