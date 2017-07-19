@@ -1,13 +1,16 @@
-VERSION=${VERSION-4.2.2}
+VERSION=${VERSION-4.4}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.bz2"
-rm -rf sed-$VERSION && tar -jxf "sed-$VERSION.tar.bz2"
-rm -f "sed-$VERSION.tar.bz2"
+wget --no-check-certificate "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.xz"
+rm -rf "sed-$VERSION" && tar -Jxf "sed-$VERSION.tar.xz"
+rm -f "sed-$VERSION.tar.xz"
 cd sed-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=/usr --bindir=/bin\
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=/usr\
+    --bindir=/bin\
     --htmldir=/usr/share/doc/sed-$VERSION
 
 make

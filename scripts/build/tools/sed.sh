@@ -1,10 +1,10 @@
-VERSION=${VERSION-4.2.2}
+VERSION=${VERSION-4.4}
 
 set -e +h
 
-wget "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.bz2"
-rm -rf "sed-$VERSION" && tar -jxf "sed-$VERSION.tar.bz2"
-rm -f "sed-$VERSION.tar.bz2"
+wget "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.xz"
+rm -rf "sed-$VERSION" && tar -Jxf "sed-$VERSION.tar.xz"
+rm -f "sed-$VERSION.tar.xz"
 cd sed-$VERSION
 
 ./configure --prefix=$PREFIX
