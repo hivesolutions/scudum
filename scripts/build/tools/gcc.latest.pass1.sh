@@ -55,14 +55,11 @@ cd gcc-build
     --disable-threads\
     --disable-libatomic\
     --disable-libgomp\
-    --disable-libitm\
-    --disable-libmudflap\
+    --disable-libmpx\
     --disable-libquadmath\
-    --disable-libsanitizer\
     --disable-libssp\
     --disable-libvtv\
-    --disable-libcilkrts\
-    --disable-libstdc++-v3\
+    --disable-libstdcxx\
     --enable-languages=c,c++\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
