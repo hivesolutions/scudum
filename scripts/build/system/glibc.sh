@@ -23,6 +23,7 @@ cd glibc-build
     --prefix=/usr\
     --enable-kernel=2.6.32\
     --enable-obsolete-rpc\
+    --disable-werror\
     --libexecdir=/usr/lib/glibc\
     --$GCC_MULTIARCH-multi-arch
 
