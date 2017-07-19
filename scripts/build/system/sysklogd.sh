@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.5}
+VERSION=${VERSION-1.5.1}
 
 set -e +h
 
@@ -6,6 +6,9 @@ wget --no-check-certificate "http://www.infodrom.org/projects/sysklogd/download/
 rm -rf sysklogd-$VERSION && tar -zxf "sysklogd-$VERSION.tar.gz"
 rm -f "sysklogd-$VERSION.tar.gz"
 cd sysklogd-$VERSION
+
+sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
+sed -i 's/union wait/int/' syslogd.c
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     make CC="$CC"
