@@ -11,6 +11,7 @@ cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 
 ./configure\
+	--target=$ARCH_TARGET\
     --prefix=$PREFIX\
     --with-tcl=$PREFIX/lib\
     --with-tclinclude=$PREFIX/include
