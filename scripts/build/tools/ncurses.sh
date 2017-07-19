@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.9}
+VERSION=${VERSION-6.0}
 
 set -e +h
 
@@ -10,8 +10,12 @@ cd ncurses-$VERSION
 wget "http://archive.hive.pt/files/lfs/patches/ncurses-$VERSION-gcc_5-1.patch"
 patch -Np1 -i ncurses-$VERSION-gcc_5-1.patch
 
-./configure --prefix=$PREFIX --with-shared\
-    --without-debug --without-ada --enable-widec\
+./configure\
+    --prefix=$PREFIX\
+    --with-shared\
+    --without-debug\
+    --without-ada\
+    --enable-widec\
     --enable-overwrite
 
 make && make install
