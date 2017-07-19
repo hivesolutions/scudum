@@ -1,6 +1,6 @@
 [ "$SCUDUM_CROSS" == "0" ] && exit 0 || true
 
-VERSION=${VERSION-2.7}
+VERSION=${VERSION-3.0.4}
 
 set -e +h
 
@@ -10,7 +10,5 @@ rm -f "bison-$VERSION.tar.xz"
 cd bison-$VERSION
 
 ./configure --prefix=$PREFIX
-
-echo '#define YYENABLE_NLS 1' >> lib/config.h
 
 make && make install

@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.7}
+VERSION=${VERSION-3.0.4}
 
 set -e +h
 
@@ -8,8 +8,6 @@ rm -f "bison-$VERSION.tar.xz"
 cd bison-$VERSION
 
 ./configure --host=$ARCH_TARGET --prefix=/usr
-
-echo '#define YYENABLE_NLS 1' >> lib/config.h
 
 make
 test $TEST && make check
