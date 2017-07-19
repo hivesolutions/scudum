@@ -54,6 +54,11 @@ export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
 export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 
+# exports the uname system that defines the name of the
+# vendor to be used by gcc and binutils compilation, by
+# default this value is the same as the vendor
+export UNAME_SYSTEM={UNAME_SYSTEM-$SCUDUM_VENDOR}
+
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
 # should be enough to take advantage of the various cores,
@@ -164,6 +169,7 @@ print_scudum() {
     echo "BUILD_TOOLS := $BUILD_TOOLS"
     echo "BUILD_CROSS := $BUILD_CROSS"
     echo "BUILD_TIMEOUT := $BUILD_TIMEOUT"
+    echo "UNAME_SYSTEM := $UNAME_SYSTEM"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "GCC_FLAVOUR := $GCC_FLAVOUR"
     echo "GCC_MULTIARCH := $GCC_MULTIARCH"
