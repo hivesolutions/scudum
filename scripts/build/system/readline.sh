@@ -1,6 +1,6 @@
-VERSION=${VERSION-6.3}
-VERSION_L=${VERSION_L-63}
-PATCH_SEQ=${PATCH_SEQ-1 8}
+VERSION=${VERSION-7.0}
+VERSION_L=${VERSION_L-70}
+PATCH_SEQ=${PATCH_SEQ-1 3}
 
 set -e +h
 
@@ -26,8 +26,8 @@ make SHLIB_LIBS=-lncurses install
 mv -v /lib/lib{readline,history}.a /usr/lib
 
 rm -v /lib/lib{readline,history}.so
-ln -svf ../../lib/libreadline.so.6 /usr/lib/libreadline.so
-ln -svf ../../lib/libhistory.so.6 /usr/lib/libhistory.so
+ln -svf ../../lib/libreadline.so.7 /usr/lib/libreadline.so
+ln -svf ../../lib/libhistory.so.7 /usr/lib/libhistory.so
 
 mkdir -pv /usr/share/doc/readline-$VERSION
 install -v -m644 doc/*.{ps,pdf,html,dvi}\
