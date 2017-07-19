@@ -16,7 +16,6 @@ done
 
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
-sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 
 ./configure\
     --host=$ARCH_TARGET\
@@ -34,5 +33,4 @@ ln -svf ../../lib/libreadline.so.7 /usr/lib/libreadline.so
 ln -svf ../../lib/libhistory.so.7 /usr/lib/libhistory.so
 
 mkdir -pv /usr/share/doc/readline-$VERSION
-install -v -m644 doc/*.{ps,pdf,html,dvi}\
-    /usr/share/doc/readline-$VERSION
+install -v -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-$VERSION
