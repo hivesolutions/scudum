@@ -57,7 +57,7 @@ export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 # exports the uname system that defines the name of the
 # vendor to be used by gcc and binutils compilation, by
 # default this value is the same as the vendor
-export UNAME_SYSTEM={UNAME_SYSTEM-$SCUDUM_VENDOR}
+export UNAME_SYSTEM=${UNAME_SYSTEM-$SCUDUM_VENDOR}
 
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
