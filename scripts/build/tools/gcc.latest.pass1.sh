@@ -22,7 +22,7 @@ wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
 tar -zxf "mpc-$VERSION_MPC.tar.gz"
 mv mpc-$VERSION_MPC mpc
 
-for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h); do
+for file in gcc/config/{linux,i386/linux{,64}}.h; do
     cp -uv $file{,.orig}
     sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g'\
         -e 's@/usr@/tools@g' $file.orig > $file
