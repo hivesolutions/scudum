@@ -24,7 +24,7 @@ source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
 # removes a series of variables from the current environment
-# so that no issues occur in the instalation of the various
+# so that no issues occur in the installation of the various
 # parts of the root infra-structure and system
 unset VERSION
 unset LIBRARY_PATH
