@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.4.17}
+VERSION=${VERSION-1.4.18}
 
 set -e +h
 
@@ -10,7 +10,5 @@ cd m4-$VERSION
 ./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
-
-sed -i -e '41s/ENOENT/& || errno == EINVAL/' tests/test-readlink.h
 test $TEST && make check
 make install
