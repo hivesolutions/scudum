@@ -20,8 +20,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --libdir=/lib\
-    --disable-static
+    --libdir=/lib
 
 make SHLIB_LIBS="-L/tools/lib -lncurses"
 make SHLIB_LIBS="-L/tools/lib -lncurses" install
