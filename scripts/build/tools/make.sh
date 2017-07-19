@@ -7,5 +7,5 @@ rm -rf make-$VERSION && tar -jxf "make-$VERSION.tar.bz2"
 rm -f "make-$VERSION.tar.bz2"
 cd make-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --without-guile
 make && make install
