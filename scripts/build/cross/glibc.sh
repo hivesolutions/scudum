@@ -23,7 +23,6 @@ CFLAGS="$extra" ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
-    --enable-obsolete-rpc\
     --enable-kernel=2.6.32\
     --with-headers=$PREFIX_CROSS/sysroot/usr/include\
     libc_cv_forced_unwind=yes\

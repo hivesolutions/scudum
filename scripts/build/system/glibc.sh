@@ -22,7 +22,6 @@ cd glibc-build
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --disable-profile\
-    --enable-obsolete-rpc\
     --enable-kernel=2.6.32\
     --libexecdir=/usr/lib/glibc\
     --$GCC_MULTIARCH-multi-arch

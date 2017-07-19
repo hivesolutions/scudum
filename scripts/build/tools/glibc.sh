@@ -17,7 +17,6 @@ cd glibc-build
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --disable-profile\
     --$GCC_MULTIARCH-multi-arch\
-    --enable-obsolete-rpc\
     --enable-kernel=2.6.32\
     --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
