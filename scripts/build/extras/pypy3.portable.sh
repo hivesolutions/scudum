@@ -19,6 +19,6 @@ mv pypy3.3-$VERSION-linux_x86_64-portable pypy3.3
 rm -vf pypy3.3-$VERSION-linux_x86_64-portable
 
 ln -svf libbz2.so $PREFIX/lib/libbz2.so.1
-ln -svf libncursesw.so $PREFIX/lib/libncurses.so.5
+ln -svf libncursesw.so $PREFIX/lib/libncurses.so.6
 
 ln -svf ../lib/pypy3.3/bin/pypy3.3 $PREFIX/bin/pypy3

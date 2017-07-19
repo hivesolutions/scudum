@@ -1,4 +1,4 @@
-VERSION=${VERSION-0.18.2}
+VERSION=${VERSION-0.19.8.1}
 
 set -e +h
 
@@ -10,6 +10,7 @@ cd gettext-$VERSION
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
+    --disable-static\
     --docdir=/usr/share/doc/gettext-$VERSION
 
 make
