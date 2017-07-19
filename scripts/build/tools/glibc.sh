@@ -20,7 +20,6 @@ cd glibc-build
     --enable-kernel=2.6.32\
     --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
-    libc_cv_ctors_header=yes\
     libc_cv_c_cleanup=yes
 
 make && make install

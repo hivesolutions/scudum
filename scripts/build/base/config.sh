@@ -61,16 +61,16 @@ export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 # create some problems in compilation of some packages
 export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 
-# the flavour to be used for gcc (eg: normal vs latest) note
-# that using the latest version make create some compatability
+# the flavor to be used for gcc (eg: normal vs latest) note
+# that using the latest version may create some compatibility
 # issues with older cpu based computers, then defines if the
 # multiarch strategy should be used in glibc/gcc generation
 # the possible options are enable and disable
 export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
-export GCC_MULTIARCH=${GCC_MULTIARCH-enable}
+export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
 
 # the test value that defines if the current build
-# should be done with unit tests runnig (more time)
+# should be done with unit tests running (more time)
 export TEST=${TEST-}
 
 # the flag value that is going to be used to control if the
