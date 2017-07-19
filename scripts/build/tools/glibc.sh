@@ -15,7 +15,6 @@ cd glibc-build
     --prefix=$PREFIX\
     --host=$SCUDUM_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
-    --disable-profile\
     --$GCC_MULTIARCH-multi-arch\
     --enable-kernel=2.6.32\
     --with-headers=$PREFIX/include\
