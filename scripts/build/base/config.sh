@@ -26,11 +26,38 @@ esac
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_HOST=${SCUDUM_HOST-$(uname -m)}
-export SCUDUM_VENDOR=${SCUDUM_VENDOR-default}
 export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
 export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}
 export SCUDUM_MARCH=${SCUDUM_BARCH//_/-}
 export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_HOST-scudum-$SCUDUM_SYSTEM_H}
+
+# the flavor to be used for gcc (eg: normal vs latest) note
+# that using the latest version may create some compatibility
+# issues with older cpu based computers, then defines if the
+# multiarch strategy should be used in glibc/gcc generation
+# the possible options are enable and disable
+export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
+export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
+
+# verifies the target gcc flavour and uses this value to construct
+# the proper naming convention for the binary to be built for gcc
+case "$GCC_FLAVOUR" in
+    latest)
+        export GCC_BUILD_BINARY="gcc.latest"
+        export GCC_BUILD_VERSION="7.1.0"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-pc}
+        ;;
+    normal)
+        export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.5"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+        ;;
+    *)
+        export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.5"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+        ;;
+esac
 
 # exports the version string value for the current
 # distribution in building, the default value is set
@@ -54,25 +81,12 @@ export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
 export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 
-# exports the uname system that defines the name of the
-# vendor to be used by gcc and binutils compilation, by
-# default this value is the same as the vendor
-export UNAME_SYSTEM=${UNAME_SYSTEM-$SCUDUM_VENDOR}
-
 # exports the flag that defines the level of parallelism
 # for the compilation of the various elements, this vaçue
 # should be enough to take advantage of the various cores,
 # this flag should also be used carefully as it is know to
 # create some problems in compilation of some packages
 export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
-
-# the flavor to be used for gcc (eg: normal vs latest) note
-# that using the latest version may create some compatibility
-# issues with older cpu based computers, then defines if the
-# multiarch strategy should be used in glibc/gcc generation
-# the possible options are enable and disable
-export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
-export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
 
 # the test value that defines if the current build
 # should be done with unit tests running (more time)
@@ -132,23 +146,6 @@ if [ -e $PERSIST ] && mountpoint -q $PERSIST; then
     export SCUDUM=$PERSIST/scudum
 fi
 
-# verifies the target gcc flavour and uses this value to construct
-# the proper naming convention for the binary to be built for gcc
-case "$GCC_FLAVOUR" in
-    latest)
-        export GCC_BUILD_BINARY="gcc.latest"
-        export GCC_BUILD_VERSION="7.1.0"
-        ;;
-    normal)
-        export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.5"
-        ;;
-    *)
-        export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.5"
-        ;;
-esac
-
 print_scudum() {
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
@@ -161,6 +158,10 @@ print_scudum() {
     echo "SCUDUM_MARCH := $SCUDUM_MARCH"
     echo "SCUDUM_TARGET := $SCUDUM_TARGET"
     echo "SCUDUM_CROSS := $SCUDUM_CROSS"
+    echo "GCC_FLAVOUR := $GCC_FLAVOUR"
+    echo "GCC_MULTIARCH := $GCC_MULTIARCH"
+    echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
+    echo "GCC_BUILD_VERSION := $GCC_BUILD_VERSION"
     echo "VERSION := $VERSION"
     echo "ARCH_TARGET := $ARCH_TARGET"
     echo "FORCE_UNSAFE_CONFIGURE := $FORCE_UNSAFE_CONFIGURE"
@@ -169,12 +170,7 @@ print_scudum() {
     echo "BUILD_TOOLS := $BUILD_TOOLS"
     echo "BUILD_CROSS := $BUILD_CROSS"
     echo "BUILD_TIMEOUT := $BUILD_TIMEOUT"
-    echo "UNAME_SYSTEM := $UNAME_SYSTEM"
     echo "MAKEFLAGS := $MAKEFLAGS"
-    echo "GCC_FLAVOUR := $GCC_FLAVOUR"
-    echo "GCC_MULTIARCH := $GCC_MULTIARCH"
-    echo "GCC_BUILD_BINARY := $GCC_BUILD_BINARY"
-    echo "GCC_BUILD_VERSION := $GCC_BUILD_VERSION"
     echo "TEST := $TEST"
     echo "SET_CFLAGS := $SET_CFLAGS"
     echo "DISTRIB := $DISTRIB"
