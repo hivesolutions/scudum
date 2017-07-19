@@ -26,7 +26,7 @@ esac
 # are going to be used through the build process
 export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_HOST=${SCUDUM_HOST-$(uname -m)}
-export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+export SCUDUM_VENDOR=${SCUDUM_VENDOR-default}
 export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
 export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}
 export SCUDUM_MARCH=${SCUDUM_BARCH//_/-}

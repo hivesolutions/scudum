@@ -9,6 +9,7 @@ cd binutils-$VERSION
 
 CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ./configure\
     --prefix=$PREFIX\
+    --target=$ARCH_TARGET\
     --disable-nls\
     --disable-werror\
     --with-lib-path=$PREFIX/lib\
