@@ -11,7 +11,11 @@ rm -rf nano-$VERSION && tar -zxf "nano-$VERSION.tar.gz"
 rm -f "nano-$VERSION.tar.gz"
 cd nano-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=/usr --enable-utf8
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=/usr\
+    --sysconfdir=/etc\
+    --enable-utf8
 
 make && make install
 
