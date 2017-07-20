@@ -10,7 +10,8 @@ cd wget-$VERSION
 ./configure --host=$ARCH_TARGET --prefix=/usr --with-ssl=openssl
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    cd src
+    rm -rf doc/*
+    echo -e "all:\ninstall:" > doc/Makefile
 fi
 
 make && make install
