@@ -8,9 +8,9 @@ source $DIR/common.sh
 
 depends "popt"
 
-wget "https://ftp.osuosl.org/pub/blfs/conglomeration/logrotate/logrotate-$VERSION.tar.gz"
-rm -rf logrotate-$VERSION && tar -zxf "logrotate-$VERSION.tar.gz"
-rm -f "logrotate-$VERSION.tar.gz"
+wget "https://ftp.osuosl.org/pub/blfs/conglomeration/logrotate/logrotate-$VERSION.tar.xz"
+rm -rf logrotate-$VERSION && tar -Jxf "logrotate-$VERSION.tar.xz"
+rm -f "logrotate-$VERSION.tar.xz"
 cd logrotate-$VERSION
 
 ./autogen.sh && ./configure --host=$ARCH_TARGET --prefix=$PREFIX
