@@ -2,9 +2,9 @@ VERSION=${VERSION-2.6.4}
 
 set -e +h
 
-wget --no-check-certificate "http://downloads.sourceforge.net/flex/flex-$VERSION.tar.bz2"
-rm -rf flex-$VERSION && tar -jxf "flex-$VERSION.tar.bz2"
-rm -f "flex-$VERSION.tar.bz2"
+wget --no-check-certificate "https://github.com/westes/flex/releases/download/v$VERSION/flex-$VERSION.tar.gz"
+rm -rf flex-$VERSION && tar -zxf "flex-$VERSION.tar.gz"
+rm -f "flex-$VERSION.tar.gz"
 cd flex-$VERSION
 
 ./configure\
