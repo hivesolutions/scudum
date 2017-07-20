@@ -1,4 +1,4 @@
-VERSION=${VERSION-7.2p2}
+VERSION=${VERSION-7.5p1}
 
 set -e +h
 
@@ -15,7 +15,7 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     useradd -c "sshd PrivSep" -d /var/lib/sshd -g sshd -s /bin/false -u 50 sshd
 fi
 
-# in case the linker is defined it must be overrides
+# in case the linker is defined it must be overriden
 # as the default linker (ld) is not compatible with the
 # build process, must instead use the default compiler
 # to be able to correctly process the operations
