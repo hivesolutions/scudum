@@ -177,6 +177,17 @@ print_scudum() {
     echo "EXTRAS := $EXTRAS"
     echo "CFLAGS := $CFLAGS"
     echo "CXXFLAGS := $CXXFLAGS"
+    [ "$CC" != "" ] && echo "CC := $CC" || true
+    [ "$CXX" != "" ] && echo "CXX := $CXX" || true
+    [ "$AR" != "" ] && echo "AR := $AR" || true
+    [ "$RANLIB" != "" ] && echo "RANLIB := $RANLIB" || true
+    [ "$LD" != "" ] && echo "LD := $LD" || true
+    [ "$CROSSCC" != "" ] && echo "CROSSCC := $CROSSCC" || true
+    [ "$CROSSCXX" != "" ] && echo "CROSSCXX := $CROSSCXX" || true
+    [ "$LD_LIBRARY_PATH" != "" ] && echo "LD_LIBRARY_PATH := $LD_LIBRARY_PATH" || true
+    [ "$PKG_CONFIG_PATH" != "" ] && echo "PKG_CONFIG_PATH := $PKG_CONFIG_PATH" || true
+    [ "$CROSSFLAGS" != "" ] && echo "CROSSFLAGS := $CROSSFLAGS" || true
+    [ "$LDFLAGS" != "" ] && echo "LDFLAGS := $LDFLAGS" || true
     [ "$GCC_BUILD_ARCH" != "" ] && echo "GCC_BUILD_ARCH := $GCC_BUILD_ARCH" || true
     [ "$GCC_BUILD_CPU" != "" ] && echo "GCC_BUILD_CPU := $GCC_BUILD_CPU" || true
     [ "$GCC_BUILD_TUNE" != "" ] && echo "GCC_BUILD_TUNE := $GCC_BUILD_TUNE" || true
