@@ -54,5 +54,8 @@ make install
 ln -svf ../usr/bin/cpp /lib
 ln -svf gcc /usr/bin/cc
 
+echo "int main(){}" > dummy.c && cc dummy.c -v -Wl,--verbose &> dummy.log
+readelf -l a.out | grep ": /lib" && ./a.out && rm -v dummy.c a.out
+
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
