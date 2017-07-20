@@ -21,11 +21,11 @@ cd glibc-build
 CC="gcc -isystem /usr/lib/gcc/$ARCH_TARGET/$GCC_BUILD_VERSION/include -isystem /usr/include" ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
+    --libexecdir=/usr/lib/glibc\
     --enable-kernel=2.6.32\
     --enable-obsolete-rpc\
     --enable-stack-protector=strong\
     --disable-werror\
-    --libexecdir=/usr/lib/glibc\
     --$GCC_MULTIARCH-multi-arch
 
 make
