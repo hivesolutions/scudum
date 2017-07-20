@@ -17,6 +17,8 @@ make
 make html
 test $TEST && make check
 make install
-make -C doc install-html
+
+install -d -m755 /usr/share/doc/sed-$VERSION
+install -m644 doc/sed.html /usr/share/doc/sed-$VERSION
 
 ln -s /bin/sed /usr/bin/sed
