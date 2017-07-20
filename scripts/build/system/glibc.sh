@@ -18,11 +18,12 @@ cd ..
 rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
-../glibc-$VERSION/configure\
+CC="gcc -isystem /usr/lib/gcc/$ARCH_TARGET/$GCC_BUILD_VERSION/include -isystem /usr/include" ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --enable-kernel=2.6.32\
     --enable-obsolete-rpc\
+    --enable-stack-protector=strong\
     --disable-werror\
     --libexecdir=/usr/lib/glibc\
     --$GCC_MULTIARCH-multi-arch
@@ -35,6 +36,7 @@ if [ $TEST ]; then
 fi
 
 touch /etc/ld.so.conf
+
 make install
 
 # installs the configuration file and runtime directory
