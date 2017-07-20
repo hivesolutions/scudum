@@ -16,4 +16,4 @@ make
 test $TEST && make check
 make install
 
-chmod -v 755 /usr/bin/lex
+ln -svf flex /usr/bin/lex

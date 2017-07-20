@@ -1,4 +1,4 @@
-VERSION=${VERSION-3.1.5}
+VERSION=${VERSION-3.2.2}
 
 set -e +h
 
@@ -8,6 +8,7 @@ rm -f "eudev-$VERSION.tar.gz"
 cd eudev-$VERSION
 
 sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
+sed -i '/keyboard_lookup_key/d' src/udev/udev-builtin-keyboard.c
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     cat > config.cache << "EOF"
