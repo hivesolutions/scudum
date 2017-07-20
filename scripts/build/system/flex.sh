@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.5.37}
+VERSION=${VERSION-2.6.4}
 
 set -e +h
 
@@ -6,9 +6,6 @@ wget --no-check-certificate "http://downloads.sourceforge.net/flex/flex-$VERSION
 rm -rf flex-$VERSION && tar -jxf "flex-$VERSION.tar.bz2"
 rm -f "flex-$VERSION.tar.bz2"
 cd flex-$VERSION
-
-wget --no-check-certificate "http://archive.hive.pt/files/lfs/patches/flex-$VERSION-bison-2.6.1-1.patch"
-patch -Np1 -i flex-$VERSION-bison-2.6.1-1.patch
 
 ./configure\
     --host=$ARCH_TARGET\
@@ -19,11 +16,4 @@ make
 test $TEST && make check
 make install
 
-ln -svf libfl.a /usr/lib/libl.a
-cat > /usr/bin/lex << "EOF"
-#!/bin/sh
-
-exec /usr/bin/flex -l "$@"
-
-EOF
 chmod -v 755 /usr/bin/lex
