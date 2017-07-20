@@ -19,8 +19,10 @@ rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
 ln -svf ld-linux.so.2 /lib/ld-lsb.so.3
-ln -svf ../lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
-ln -svf ../lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
+
+if [ "$SCUDUM_ARCH" == "x86_64" ]; then
+    ln -svf ld-linux-x86-64.so.2 /lib/ld-lsb-x86-64.so.3
+fi
 
 CC="gcc -isystem /usr/lib/gcc/$ARCH_TARGET/$GCC_BUILD_VERSION/include -isystem /usr/include" ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
