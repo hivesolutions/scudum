@@ -2,13 +2,6 @@ VERSION=${VERSION-7.1.0}
 
 set -e +h
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
-    if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
-    export CFLAGS="$CFLAGS -fno-exceptions"
-    export CXXFLAGS="$CXXFLAGS -fno-exceptions"
-fi
-
 wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
 rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
 rm -f "gcc-$VERSION.tar.gz"
