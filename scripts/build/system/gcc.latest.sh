@@ -42,5 +42,8 @@ make install
 ln -svf ../usr/bin/cpp /lib
 ln -svf gcc /usr/bin/cc
 
+install -v -dm755 /usr/lib/bfd-plugins
+ln -sfv ../../libexec/gcc/$ARCH_TARGET/$VERSION/liblto_plugin.so /usr/lib/bfd-plugins/
+
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
