@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM hivesolutions/ubuntu:rolling
 MAINTAINER Hive Solutions
 
 VOLUME /mnt/builds
