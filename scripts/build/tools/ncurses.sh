@@ -7,7 +7,7 @@ rm -rf ncurses-$VERSION && tar -zxf "ncurses-$VERSION.tar.gz"
 rm -f "ncurses-$VERSION.tar.gz"
 cd ncurses-$VERSION
 
-./configure\
+CPPFLAGS="-P" ./configure\
     --prefix=$PREFIX\
     --with-shared\
     --without-debug\
