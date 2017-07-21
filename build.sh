@@ -10,7 +10,7 @@ set -e +h
 apt-get update
 
 if [ "$LINUX_X64" == "1" ]; then
-    SET_CFLAGS=all GCC_FLAVOUR=latest scudum root && scudum deploy
+    GCC_FLAVOUR=latest scudum root && scudum deploy
 fi
 
 if [ "$RASP_ARM6" == "1" ]; then
