@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 LINUX_X64=${LINUX_X64-1}
-RASP_ARM6=${RASP_ARM6-1}
-RASP_ARM7=${RASP_ARM7-1}
+RASP_ARM6=${RASP_ARM6-0}
+RASP_ARM7=${RASP_ARM7-0}
 
 set -e +h
 
