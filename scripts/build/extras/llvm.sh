@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "cmake"
+
 wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.xz"
 rm -rf llvm-$VERSION && tar -Jxf "llvm-$VERSION.src.tar.xz"
 rm -f "llvm-$VERSION.src.tar.xz"
@@ -19,15 +21,15 @@ wget "http://llvm.org/releases/$VERSION/compiler-rt-$VERSION.src.tar.xz"
 tar -Jxf "compiler-rt-$VERSION.src.tar.xz" -C projects
 mv projects/compiler-rt-$VERSION.src projects/compiler-rt
 
-CC=gcc CXX=g++ ./configure\
-    --prefix=$PREFIX\
-    --sysconfdir=/etc\
-    --enable-optimized\
-    --enable-shared\
-    --disable-assertions
+mkdir -v build
+cd build
+
+CC=gcc CXX=g++ cmake\
+    -DCMAKE_INSTALL_PREFIX=$PREFIX\
+    -DLLVM_ENABLE_FFI=ON\
+    -DCMAKE_BUILD_TYPE=Release\
+    -DLLVM_BUILD_LLVM_DYLIB=ON\
+    -DLLVM_TARGETS_TO_BUILD="host;AMDGPU"\
+    -Wno-dev ..
 
 make && make install
-
-for file in $PREFIX/lib/lib{clang,LLVM,LTO}*.a; do
-    test -f $file && chmod -v 644 $file
-done
