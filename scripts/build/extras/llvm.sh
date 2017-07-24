@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "cmake"
+depends "cmake" "libffi"
 
 wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.xz"
 rm -rf llvm-$VERSION && tar -Jxf "llvm-$VERSION.src.tar.xz"
