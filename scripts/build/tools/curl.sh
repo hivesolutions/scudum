@@ -9,6 +9,8 @@ rm -rf curl-$VERSION && tar -zxf "curl-$VERSION.tar.gz"
 rm -f "curl-$VERSION.tar.gz"
 cd curl-$VERSION
 
-./configure --prefix=$PREFIX --with-ca-bundle=/usr/ssl/ca-bundle.crt
+sed -i -e 's/$SHELL $CONFIG_STATUS $ac_config_status_args/echo "1"/g' configure
+./configure --prefix=$PREFIX --with-ca-bundle=/usr/ssl/ca-bundle.crt || true
+bash ./config.status
 
 make && make install
