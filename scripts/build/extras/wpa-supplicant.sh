@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.3}
+VERSION=${VERSION-2.5}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libnl"
 
-wget "http://hostap.epitest.fi/releases/wpa_supplicant-$VERSION.tar.gz"
+wget "http://sources.openelec.tv/mirror/wpa_supplicant/wpa_supplicant-$VERSION.tar.gz"
 rm -rf wpa_supplicant-$VERSION && tar -zxf "wpa_supplicant-$VERSION.tar.gz"
 rm -f "wpa_supplicant-$VERSION.tar.gz"
 cd wpa_supplicant-$VERSION
