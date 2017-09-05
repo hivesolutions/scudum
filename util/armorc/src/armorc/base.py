@@ -274,5 +274,5 @@ class ArmorClient(object):
 
     def get_api(self):
         if self.api: return self.api
-        self.api = armor.Api()
+        self.api = armor.API()
         return self.api
