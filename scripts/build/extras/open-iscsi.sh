@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "open-isns"
 
-wget "https://github.com/open-iscsi/open-iscsi/archive/$VERSION5.tar.gz"
+wget "https://github.com/open-iscsi/open-iscsi/archive/$VERSION.tar.gz"
 rm -rf open-iscsi-$VERSION && tar -zxf "$VERSION.tar.gz"
 rm -f "$VERSION.tar.gz"
 cd open-iscsi-$VERSION
