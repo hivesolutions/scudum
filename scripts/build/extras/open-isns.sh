@@ -12,4 +12,4 @@ rm -f "v$VERSION.tar.gz"
 cd open-isns-$VERSION
 
 ./configure --prefix=$PREFIX
-make && make install
+make && make install && make install_hdrs && make install_lib
