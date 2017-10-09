@@ -1,5 +1,5 @@
 FROM hivesolutions/ubuntu:rolling
-MAINTAINER Hive Solutions
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 VOLUME /mnt/builds
 
