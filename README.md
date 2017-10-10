@@ -166,7 +166,7 @@ To safely build the latest kernel version and deploy it use:
 
     scu install scudum-system
     hash -r
-    MINOR=4.11.9 VARIANT=basic DEPLOY=1 kernel.build
+    MINOR=4.13.5 VARIANT=basic DEPLOY=1 kernel.build
 
 To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
 special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
