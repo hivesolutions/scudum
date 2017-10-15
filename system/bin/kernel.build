@@ -151,6 +151,8 @@ else
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
 fi
 
+# retrieves the full and canonical name of the current
+# kernel release that has been built
 release=$(cat include/config/kernel.release)
 
 # changes the current directory to the modules one so that
