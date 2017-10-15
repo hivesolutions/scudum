@@ -59,6 +59,7 @@ VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
+FILE_SOURCE=${FILE_SOURCE-$FILE.source.tar.gz}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
 FALLBACK=${FALLBACK-/boot/config.$VARIANT}
@@ -68,6 +69,7 @@ FALLBACK=${FALLBACK-/boot/config.$VARIANT}
 LATEST=$NAME_L-$VARIANT-latest
 LATEST_CONFIG=$LATEST.config
 LATEST_MODULES=$LATEST.modules.tar.gz
+LATEST_SOURCE=$LATEST.source.tar.gz
 
 # tries to detect the proper configuration file path by
 # verifying the existence of the config path, this strategy
@@ -151,7 +153,13 @@ fi
 
 release=$(cat include/config/kernel.release)
 
+# changes the current directory to the modules one so that
+# it's possible to compress the complete set of modules and
+# update some of the directory links to the standard ones
+# (eg: modules build pointing to standard kenel source)
 cd modules_install/lib
+tar -zcvf source.tar.gz source
+mv source.tar.gz ../..
 rm -f modules/$release/build && rm -f modules/$release/source
 ln -s /opt/src/linux modules/$release/build
 mkdir -p modules firmware
@@ -173,19 +181,23 @@ if [ "$DEPLOY" == "1" ]; then
     cp -pv arch/$KARCH/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
     cp -pv modules.tar.gz $FILE_MODULES
+    cp -pv source.tar.gz $FILE_SOURCE
 
     mkdir -pv $REPO
     mv -fv $FILE $REPO
     mv -fv $FILE_CONFIG $REPO
     mv -fv $FILE_MODULES $REPO
+    mv -fv $FILE_SOURCE $REPO
 
     cd $REPO
     rm -fv $LATEST
     rm -fv $LATEST_CONFIG
     rm -fv $LATEST_MODULES
+    rm -fv $LATEST_SOURCE
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
     ln -sv $FILE_MODULES $LATEST_MODULES
+    ln -sv $FILE_SOURCE $LATEST_SOURCE
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
@@ -194,4 +206,7 @@ else
 
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib
+
+    rm -rf /lib/source
+    tar -zxvf source.tar.gz -C /lib
 fi
