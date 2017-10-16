@@ -139,7 +139,9 @@ if [ "$SAFE" == "1" ]; then
     make mrproper
 fi
 
-cp -v $CONFIG .config  
+# copies the base configuration file into the default and
+# target location for the configuration for kernel building
+cp -v $CONFIG .config
 
 # in case there's no build flag set (just download) returns
 # the control flow immediately (nothing to be done)
