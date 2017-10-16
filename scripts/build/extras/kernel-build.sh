@@ -14,6 +14,7 @@ rm -rf linux-$MINOR && tar -zxf "kernel-$VERSION.source.tar.gz"
 rm -f "kernel-$VERSION.source.tar.gz"
 
 mkdir -p $PREFIX/linux
+rm -rf $PREFIX/linux
 cp -rp linux-$MINOR $PREFIX/linux
 
 mkdir -p /opt/src
