@@ -59,6 +59,7 @@ VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
+FILE_SOURCE=${FILE_SOURCE-$FILE.source.tar.gz}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
 FALLBACK=${FALLBACK-/boot/config.$VARIANT}
@@ -68,6 +69,7 @@ FALLBACK=${FALLBACK-/boot/config.$VARIANT}
 LATEST=$NAME_L-$VARIANT-latest
 LATEST_CONFIG=$LATEST.config
 LATEST_MODULES=$LATEST.modules.tar.gz
+LATEST_SOURCE=$LATEST.source.tar.gz
 
 # tries to detect the proper configuration file path by
 # verifying the existence of the config path, this strategy
@@ -157,15 +159,16 @@ release=$(cat include/config/kernel.release)
 # it's possible to compress the complete set of modules and
 # update some of the directory links to the standard ones
 # (eg: modules build pointing to standard kenel source)
-cd modules_install/lib
-rm -f modules/$release/build && rm -f modules/$release/source
-ln -s /opt/src/linux modules/$release/build
-mkdir -p modules firmware
-wget "https://github.com/hivesolutions/patches/raw/master/firmware/firmware.tar.gz"
-tar --skip-old-files -zxvf firmware.tar.gz
-tar -zcvf modules.tar.gz modules firmware
-mv modules.tar.gz ../..
-cd ../..
+pushd modules_install/lib
+    rm -f modules/$release/build && rm -f modules/$release/source
+    ln -s /opt/src/linux modules/$release/build
+    mkdir -p modules firmware
+    wget "https://github.com/hivesolutions/patches/raw/master/firmware/firmware.tar.gz"
+    tar --skip-old-files -zxvf firmware.tar.gz
+    tar -zcvf modules.tar.gz modules firmware
+    mv modules.tar.gz ../..
+popd
+rm -rf modules_install
 
 # verifies if the xz version of the image exists and if that's
 # the case renames it to the "old" naming of the same file (gzip)
@@ -176,22 +179,49 @@ fi
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
+    # copies the complete set of files that are considere
+    # to be part of the base kernel structure into their
+    # base file paths and naming (as expected)
     cp -pv arch/$KARCH/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
     cp -pv modules.tar.gz $FILE_MODULES
 
+    # creates the target repository directory (if required)
+    # and moves the complete set of files that describe the
+    # kernel base structure
     mkdir -pv $REPO
     mv -fv $FILE $REPO
     mv -fv $FILE_CONFIG $REPO
     mv -fv $FILE_MODULES $REPO
 
+    # runs the cleanup to make the source directory canonical
+    # and ready for external module building
+    make clean
+
+    # removes the files that are no longer necessary and that
+    # are not considered to be part of the source
+    rm -fv modules.tar.gz
+
+    # creates the the source compressed file that can latter
+    # be used for the building of external modules
+    pushd ..
+        tar -zcvf source.tar.gz $NAME
+        mv -fv source.tar.gz $NAME
+    popd
+    cp -pv source.tar.gz $FILE_SOURCE
+    mv -fv $FILE_SOURCE $REPO
+
+    # changes the current directory to the repository one and
+    # runs the re-linking of the latest files
     cd $REPO
     rm -fv $LATEST
     rm -fv $LATEST_CONFIG
     rm -fv $LATEST_MODULES
+    rm -fv $LATEST_SOURCE
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
     ln -sv $FILE_MODULES $LATEST_MODULES
+    ln -sv $FILE_SOURCE $LATEST_SOURCE
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
@@ -200,4 +230,6 @@ else
 
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib
+
+    rm -fv modules.tar.gz
 fi
