@@ -124,6 +124,8 @@ cd $NAME
 # configuration values for the kernel being built
 cat > info << EOF
 KNAME=$NAME_L
+KMINOR=$MINOR
+KDATE=$DATE
 KVERSION=$VERSION
 KVARIANT=$VARIANT
 KSUFFIX=$VARIANT-$VERSION
