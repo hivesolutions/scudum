@@ -12,6 +12,7 @@ source $DIR/common.sh
 wget "https://builds.stage.hive.pt/kernel/kernel-$VERSION.source.tar.gz"
 rm -rf linux-$MINOR && tar -zxf "kernel-$VERSION.source.tar.gz"
 rm -f "kernel-$VERSION.source.tar.gz"
+
 mkdir -p $PREFIX/linux
 cp -rp linux-$MINOR $PREFIX/linux
 
