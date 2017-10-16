@@ -216,7 +216,7 @@ if [ "$DEPLOY" == "1" ]; then
 
     # removes the files that are no longer necessary and that
     # are not considered to be part of the source
-    rn -fv info
+    rm -fv info
     rm -fv modules.tar.gz
 
     # creates the the source compressed file that can latter
