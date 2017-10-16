@@ -122,7 +122,7 @@ cd $NAME
 
 # creates the information file that is going to hold all of the
 # configuration values for the kernel being built
-cat > info << "EOF"
+cat > info << EOF
 KNAME=$NAME_L
 KVERSION=$VERSION
 KVARIANT=$VARIANT
