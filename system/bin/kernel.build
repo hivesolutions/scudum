@@ -58,9 +58,9 @@ esac
 VERSION=${VERSION-$MINOR-$DATE}
 FILE=${FILE-$NAME_L-$VARIANT-$VERSION}
 FILE_CONFIG=${FILE_CONFIG-$FILE.config}
+FILE_INFO=${FILE_INFO-$FILE.info}
 FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
 FILE_SOURCE=${FILE_SOURCE-$FILE.source.tar.gz}
-FILE_INFO=${FILE_INFO-$FILE.info.sh}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
 FALLBACK=${FALLBACK-/boot/config.$VARIANT}
@@ -69,9 +69,9 @@ FALLBACK=${FALLBACK-/boot/config.$VARIANT}
 # the previous naming, as expected by the defined rules
 LATEST=$NAME_L-$VARIANT-latest
 LATEST_CONFIG=$LATEST.config
+LATEST_INFO=$LATEST.info
 LATEST_MODULES=$LATEST.modules.tar.gz
 LATEST_SOURCE=$LATEST.source.tar.gz
-LATEST_INFO=$LATEST.info.sh
 
 # tries to detect the proper configuration file path by
 # verifying the existence of the config path, this strategy
@@ -119,6 +119,18 @@ else
 fi
 
 cd $NAME
+
+# creates the information file that is going to hold all of the
+# configuration values for the kernel being built
+cat > info << "EOF"
+KNAME=$NAME_L
+KVERSION=$VERSION
+KVARIANT=$VARIANT
+KFILE=$FILE
+KFILE_MODULES=$FILE_MODULES
+KFILE_SOURCE=$FILE_SOURCE
+KFILE_INFO=$FILE_INFO
+EOF
 
 # in case the safe flag is set the proper cleanup of the
 # distribution is performed to avoid collisions/problems
@@ -178,18 +190,6 @@ if [ -e arch/$KARCH/boot/zImage ]; then
     mv arch/$KARCH/boot/zImage arch/$KARCH/boot/bzImage
 fi
 
-# creates the version config file that is going to old all of the
-# confifuration value for the kernel being built
-cat > info.sh << "EOF"
-KNAME=$NAME_L
-KVERSION=$VERSION
-KVARIANT=$VARIANT
-KFILE=$FILE
-KFILE_MODULES=$FILE_MODULES
-KFILE_SOURCE=$FILE_SOURCE
-KFILE_INFO=$FILE_INFO
-EOF
-
 if [ "$DEPLOY" == "1" ]; then
     echo "kernel.build: deploying '$VARIANT' kernel into $REPO ..."
 
@@ -198,8 +198,8 @@ if [ "$DEPLOY" == "1" ]; then
     # base file paths and naming (as expected)
     cp -pv arch/$KARCH/boot/bzImage $FILE
     cp -pv .config $FILE_CONFIG
+    cp -pv info $FILE_INFO
     cp -pv modules.tar.gz $FILE_MODULES
-    cp -pv info.sh $FILE_INFO
 
     # creates the target repository directory (if required)
     # and moves the complete set of files that describe the
@@ -207,8 +207,8 @@ if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $REPO
     mv -fv $FILE $REPO
     mv -fv $FILE_CONFIG $REPO
-    mv -fv $FILE_MODULES $REPO
     mv -fv $FILE_INFO $REPO
+    mv -fv $FILE_MODULES $REPO
 
     # runs the cleanup to make the source directory canonical
     # and ready for external module building
@@ -216,8 +216,8 @@ if [ "$DEPLOY" == "1" ]; then
 
     # removes the files that are no longer necessary and that
     # are not considered to be part of the source
+    rn -fv info
     rm -fv modules.tar.gz
-    rn -fv info.sh
 
     # creates the the source compressed file that can latter
     # be used for the building of external modules
@@ -233,23 +233,24 @@ if [ "$DEPLOY" == "1" ]; then
     cd $REPO
     rm -fv $LATEST
     rm -fv $LATEST_CONFIG
+    rm -fv $LATEST_INFO
     rm -fv $LATEST_MODULES
     rm -fv $LATEST_SOURCE
-    rm -fv $LATEST_INFO
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
+    ln -sv $FILE_INFO $LATEST_INFO
     ln -sv $FILE_MODULES $LATEST_MODULES
     ln -sv $FILE_SOURCE $LATEST_SOURCE
-    ln -sv $FILE_INFO $LATEST_INFO
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
     cp -v arch/$KARCH/boot/bzImage /boot/vmlinuz
     cp -v .config /boot/config
+    cp -v info /etc/scudum/KERNEL
 
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib
 
+    rm -fv info
     rm -fv modules.tar.gz
-    rm -fv info.sh
 fi
