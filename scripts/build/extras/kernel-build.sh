@@ -18,4 +18,4 @@ cp -rp linux-$MINOR $PREFIX/linux
 
 mkdir -p /opt/src
 rm -rf /opt/linux && rm -rf /opt/src/linux
-ln -s /opt/src/linux $PREFIX/linux/linux-$MINOR
+ln -s $PREFIX/linux/linux-$MINOR /opt/src/linux
