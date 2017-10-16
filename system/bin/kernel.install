@@ -37,6 +37,7 @@ rm -f $NAME-$VARIANT-$VERSION*
 wget "$REPO/$NAME-$VARIANT-$VERSION"
 wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
+wget "$REPO/$NAME-$VARIANT-$VERSION.info.sh"
 
 cp -v $NAME-$VARIANT-$VERSION /boot/$KNAME
 
@@ -45,6 +46,9 @@ cp -v $NAME-$VARIANT-$VERSION.config /boot/config
 if [ "$KNAME" == "vmlinuz" ]; then rm -rf /lib/modules; fi
 tar -zxvf $NAME-$VARIANT-$VERSION.modules.tar.gz -C /lib
 
+cp -v $NAME-$VARIANT-$VERSION.info.sh /etc/scudum/KERNEL
+
 rm -f $NAME-$VARIANT-$VERSION
 rm -f $NAME-$VARIANT-$VERSION.config
 rm -f $NAME-$VARIANT-$VERSION.modules.tar.gz
+rm -f $NAME-$VARIANT-$VERSION.info.sh
