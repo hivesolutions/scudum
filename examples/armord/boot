@@ -16,7 +16,7 @@ set -e
 
 source /etc/environ
 
-mkdir -p $DATA_TARGET && mount -t cifs -o username=$DATA_USERNAME,password=$DATA_PASSWORD $DATA_ORIGIN $DATA_TARGET
+mkdir -p $DATA_TARGET && mount -t cifs -o vers=1.0,username=$DATA_USERNAME,password=$DATA_PASSWORD $DATA_ORIGIN $DATA_TARGET
 
 pip install --quiet netius tinydb armord
 
