@@ -16,4 +16,4 @@ if mountpoint -q $TARGET; then
     umount $TARGET
 fi
 
-mkdir -p $TARGET && mount -t cifs -o mfsymlinks,username=$USERNAME,password=$PASSWORD $ORIGIN $TARGET
+mkdir -p $TARGET && mount -t cifs -o vers=1.0,username=$USERNAME,password=$PASSWORD $ORIGIN $TARGET
