@@ -13,9 +13,9 @@ rm -f "jdk-${VERSION_L}_linux-x64_bin.tar.gz"
 
 rm -rf $PREFIX/jdk-$VERSION_L && mv jdk-$VERSION_L $PREFIX
 
-ln -svf $PREFIX/jdk-$VERSION_L/bin/java $VERSION_L/bin/java
-ln -svf $PREFIX/jdk-$VERSION_L/bin/javac $VERSION_L/bin/javac
-ln -svf $PREFIX/jdk-$VERSION_L/bin/keytool $VERSION_L/bin/keytool
+ln -svf $PREFIX/jdk-$VERSION_L/bin/java $PREFIX/bin/java
+ln -svf $PREFIX/jdk-$VERSION_L/bin/javac $PREFIX/bin/javac
+ln -svf $PREFIX/jdk-$VERSION_L/bin/keytool $PREFIX/bin/keytool
 
 for file in /usr/ssl/certs/*.pem; do
     keytool -import -noprompt -file $file -alias $file -cacerts -storepass changeit
