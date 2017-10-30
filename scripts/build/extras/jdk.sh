@@ -25,4 +25,3 @@ mkdir -p /etc/ssl/certs/java
 ln -svf $PREFIX/jdk-$VERSION_L/lib/security/cacerts /etc/ssl/certs/java/cacerts
 
 echo "export JAVA_HOME=$PREFIX/jdk-$VERSION_L" > /etc/env/jdk.env
-source /etc/env/jdk.env
