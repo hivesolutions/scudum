@@ -14,4 +14,4 @@ rm -f "gradle-$VERSION-bin.zip"
 
 mv gradle-$VERSION $PREFIX
 
-ln -s $PREFIX/gradle-$VERSION/bin/gradle $PREFIX/bin/gradle
+ln -svf $PREFIX/gradle-$VERSION/bin/gradle $PREFIX/bin/gradle

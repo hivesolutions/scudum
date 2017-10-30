@@ -12,5 +12,5 @@ rm -f "openjdk-${VERSION}_linux-x64_bin.tar.gz"
 
 mv jdk-$VERSION $PREFIX
 
-ln -s $PREFIX/jdk-$VERSION/bin/java $PREFIX/bin/java
-ln -s $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
+ln -svf $PREFIX/jdk-$VERSION/bin/java $PREFIX/bin/java
+ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
