@@ -8,9 +8,9 @@ source $DIR/common.sh
 
 depends "openjdk" "unzip"
 
-wget "https://services.gradle.org/distributions/gradle-$VERSION-all.zip"
-rm -rf gradle-$VERSION && unzip "gradle-$VERSION-all.zip"
-rm -f "gradle-$VERSION-all.zip"
+wget "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"
+rm -rf gradle-$VERSION && unzip "gradle-$VERSION-bin.zip"
+rm -f "gradle-$VERSION-bin.zip"
 
 mv gradle-$VERSION $PREFIX
 
