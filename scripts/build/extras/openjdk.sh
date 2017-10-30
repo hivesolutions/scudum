@@ -14,3 +14,4 @@ mv jdk-$VERSION $PREFIX
 
 ln -svf $PREFIX/jdk-$VERSION/bin/java $PREFIX/bin/java
 ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
+ln -svf $PREFIX/jdk-$VERSION/bin/keytool $PREFIX/bin/keytool
