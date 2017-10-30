@@ -15,3 +15,9 @@ rm -rf $PREFIX/jdk-$VERSION && mv jdk-$VERSION $PREFIX
 ln -svf $PREFIX/jdk-$VERSION/bin/java $PREFIX/bin/java
 ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
 ln -svf $PREFIX/jdk-$VERSION/bin/keytool $PREFIX/bin/keytool
+
+for file in /usr/ssl/certs/*.pem; do
+    openssl x509 -in $file -inform pem -out temp.der -outform der
+    keytool -importcert -alias local-CA -keystore $PREFIX/jdk-$VERSION/lib/security/cacerts -file temp.der
+    rm -f temp.der
+done
