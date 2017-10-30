@@ -17,6 +17,5 @@ ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
 ln -svf $PREFIX/jdk-$VERSION/bin/keytool $PREFIX/bin/keytool
 
 for file in /usr/ssl/certs/*.pem; do
-    keytool -import -noprompt -file $file -alias $file -keystore $PREFIX/jdk-$VERSION/lib/security/cacerts -storepass changeit
-    rm -f temp.der
+    keytool -import -noprompt -file $file -alias $file -cacerts -storepass changeit
 done
