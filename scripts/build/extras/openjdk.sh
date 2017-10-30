@@ -10,7 +10,7 @@ wget "http://download.java.net/java/GA/jdk9/$VERSION/binaries/openjdk-${VERSION}
 rm -rf jdk-$VERSION && tar -zxf "openjdk-${VERSION}_linux-x64_bin.tar.gz"
 rm -f "openjdk-${VERSION}_linux-x64_bin.tar.gz"
 
-mv jdk-$VERSION $PREFIX
+rm -rf $PREFIX/jdk-$VERSION && mv jdk-$VERSION $PREFIX
 
 ln -svf $PREFIX/jdk-$VERSION/bin/java $PREFIX/bin/java
 ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
