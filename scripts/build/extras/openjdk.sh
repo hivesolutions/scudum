@@ -17,7 +17,7 @@ ln -svf $PREFIX/jdk-$VERSION/bin/javac $PREFIX/bin/javac
 ln -svf $PREFIX/jdk-$VERSION/bin/keytool $PREFIX/bin/keytool
 
 for file in /usr/ssl/certs/*.pem; do
-    openssl x509 -in $file -inform pem -out temp.der -outform der
-    keytool -importcert -file temp.der -cacerts -keypass changeit
+    #openssl x509 -in $file -inform pem -out temp.der -outform der
+    keytool -import -noprompt -file $file -alias $file -keystore $PREFIX/jdk-$VERSION/lib/security/cacerts -storepass changeit
     rm -f temp.der
 done
