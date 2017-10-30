@@ -18,6 +18,6 @@ ln -svf $PREFIX/jdk-$VERSION/bin/keytool $PREFIX/bin/keytool
 
 for file in /usr/ssl/certs/*.pem; do
     openssl x509 -in $file -inform pem -out temp.der -outform der
-    keytool -importcert -alias local-CA -file temp.der -cacerts
+    keytool -importcert -file temp.der -cacerts
     rm -f temp.der
 done
