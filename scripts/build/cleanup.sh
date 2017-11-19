@@ -58,7 +58,7 @@ else
 fi
 
 if [ "$CLEANUP_SILENT" == "1" ]; then
-    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true 2> /dev/null
+    (find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true) > /dev/null 2>&
 else
     find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
 fi
