@@ -1,6 +1,8 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+CLEANUP_SILENT=${CLEANUP_SILENT-1}
+
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
@@ -55,7 +57,11 @@ else
     strip=strip
 fi
 
-find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
+if [ "$CLEANUP_SILENT" == "1" ]; then
+    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true 2> /dev/null
+else
+    find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
+fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
