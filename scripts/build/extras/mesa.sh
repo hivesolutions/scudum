@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs" "libdrm" "python" "expat" "libva" "libvdpau"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/$VERSION/mesa-$VERSION.tar.gz"
+wget "ftp://ftp.freedesktop.org/pub/mesa/mesa-$VERSION.tar.gz"
 rm -rf mesa-$VERSION && tar -zxf "mesa-$VERSION.tar.gz"
 rm -f "mesa-$VERSION.tar.gz"
 cd mesa-$VERSION
