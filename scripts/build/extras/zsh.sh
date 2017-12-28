@@ -22,6 +22,4 @@ promptinit
 prompt walters
 EOF
 
-ln -svf $PREFIX/bin/zsh /bin/zsh
-
-echo "/bin/zsh" >> /etc/shells
+echo "$PREFIX/bin/zsh" >> /etc/shells

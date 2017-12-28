@@ -14,6 +14,4 @@ cd fish-$VERSION
 ./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
 
-ln -svf $PREFIX/bin/fish /bin/fish
-
-echo "/bin/fish" >> /etc/shells
+echo "$PREFIX/bin/fish" >> /etc/shells
