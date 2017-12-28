@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://storage.googleapis.com/golang/go$VERSION_LEGACY.src.tar.gz"
+wget "https://storage.googleapis.com/golang/go$VERSION_LEGACY.tar.gz"
 rm -rf go && tar -zxf "go$VERSION_LEGACY.src.tar.gz"
 rm -f "go$VERSION_LEGACY.src.tar.gz"
 rm -rf $PREFIX/go_legacy && mv go go_legacy && mv go_legacy $PREFIX
