@@ -56,3 +56,6 @@ make install
 
 ln -svf /bin/sh /usr/bin/sh
 ln -svf /bin/bash /usr/bin/bash
+
+echo "/bin/sh" >> /etc/shells
+echo "/bin/bash" >> /etc/shells

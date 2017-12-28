@@ -21,3 +21,7 @@ compinit
 promptinit
 prompt walters
 EOF
+
+ln -svf /bin/zsh $PREFIX/bin/zsh
+
+echo "/bin/zsh" >> /etc/shells
