@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "xorg-applications"
 
-wget "ftp://invisible-island.net/xterm/xterm-$VERSION.tgz"
+rget "https://invisible-mirror.net/archives/xterm/xterm-$VERSION.tgz"\
+    "ftp://invisible-island.net/xterm/xterm-$VERSION.tgz"
 rm -rf xterm-$VERSION && tar -zxf "xterm-$VERSION.tgz"
 rm -f "xterm-$VERSION.tgz"
 cd xterm-$VERSION
