@@ -28,6 +28,6 @@ autoreconf -f -i
     --enable-gbm\
     --enable-glx-tls\
     --with-egl-platforms="drm,x11"\
-    --with-gallium-drivers="nouveau,i915,radeonsi,freedreno,r300,r600,svga,swrast"
+    --with-gallium-drivers="nouveau,i915,radeonsi,freedreno,r300,r600,virgl,svga,swrast"
 
 make && make install
