@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.11}
+VERSION=${VERSION-2.11.0}
 TARGET_LIST=${TARGET_LIST-x86_64-softmmu,x86_64-linux-user}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib" "python" "x11"
 
-wget "http://wiki.qemu.org/download/qemu-$VERSION.tar.bz2"
+wget "https://download.qemu.org/qemu-$VERSION.tar.bz2"
 rm -rf qemu-$VERSION && tar -jxf "qemu-$VERSION.tar.bz2"
 rm -f "qemu-$VERSION.tar.bz2"
 cd qemu-$VERSION
