@@ -18,6 +18,7 @@ cat > config.toml << "EOF"
 [install]
 prefix = "/usr"
 [rust]
+channel = "stable"
 [target.x86_64-unknown-linux-gnu]
 [dist]
 EOF
