@@ -16,11 +16,12 @@ cat > config.toml << "EOF"
 [llvm]
 [build]
 [install]
-prefix = "/usr"
+prefix = "$PREFIX"
 [rust]
 channel = "stable"
 [target.x86_64-unknown-linux-gnu]
 [dist]
 EOF
+sed -i "s|\$PREFIX|$PREFIX|g" config.toml
 
 ./x.py build && ./x.py install
