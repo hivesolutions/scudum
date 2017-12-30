@@ -8,9 +8,8 @@ source $DIR/common.sh
 
 depends "python" "cmake"
 
-wget "https://github.com/rust-lang/rust/archive/$VERSION.tar.gz"
-rm -rf rust-$VERSION && tar -zxf "$VERSION.tar.gz"
-rm -f "$VERSION.tar.gz"
-cd rust-$VERSION
+git clone https://github.com/rust-lang/rust.git
+cd rust
+git checkout $VERSION
 
 ./x.py build && ./x.py install
