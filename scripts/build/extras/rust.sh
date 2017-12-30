@@ -12,4 +12,14 @@ git clone https://github.com/rust-lang/rust.git
 cd rust
 git checkout $VERSION
 
+cat > config.toml << "EOF"
+[llvm]
+[build]
+[install]
+prefix = "/usr"
+[rust]
+[target.x86_64-unknown-linux-gnu]
+[dist]
+EOF
+
 ./x.py build && ./x.py install
