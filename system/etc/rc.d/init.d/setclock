@@ -18,7 +18,10 @@
 [ -r /etc/sysconfig/clock ] && . /etc/sysconfig/clock
 
 NTP=0
-NTP_SERVER=pool.ntp.org
+NTP_FIRST_SERVER=pool.ntp.org
+NTP_SECOND_SERVER=time.google.com
+NTP_RETRIES=10
+NTP_SLEEP=5
 
 for argument in $(cat /proc/cmdline); do
     case "${argument}" in
@@ -42,8 +45,19 @@ case ${1} in
     start)
         if [ "$NTP" == "1" ]; then
             if [ -e /usr/bin/ntpdate ]; then
-                log_info_msg "Setting hardware clock, using NTP (${NTP_SERVER})..."
-                ntpdate -s ${NTP_SERVER}
+                log_info_msg "Setting hardware clock, using NTP (${NTP_FIRST_SERVER}, ${NTP_SECOND_SERVER})..."
+                n=0
+                until [ $n -ge $NTP_RETRIES ]; do
+                    ntpdate -s ${NTP_FIRST_SERVER}
+                    if [ $? -eq 0 ]; then
+                        break
+                    fi
+                    ntpdate -s ${NTP_SECOND_SERVER}
+                    if [ $? -eq 0 ]; then
+                        break
+                    fi
+                    sleep ${NTP_SLEEP}
+                done
                 evaluate_retval
             fi
         else
