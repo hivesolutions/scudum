@@ -47,17 +47,27 @@ case ${1} in
             if [ -e /usr/bin/ntpdate ]; then
                 log_info_msg "Setting hardware clock, using NTP (${NTP_FIRST_SERVER}, ${NTP_SECOND_SERVER})..."
                 n=0
-                until [ $n -ge $NTP_RETRIES ]; do
+                executed=0
+                while [ true ]; do
+                    if [ $n -eq $NTP_RETRIES ]; then
+                        break
+                    fi
                     ntpdate -s ${NTP_FIRST_SERVER}
                     if [ $? -eq 0 ]; then
+                        executed=1
                         break
                     fi
                     ntpdate -s ${NTP_SECOND_SERVER}
                     if [ $? -eq 0 ]; then
+                        executed=1
                         break
                     fi
                     sleep ${NTP_SLEEP}
+                    let n+=1
                 done
+                if [ $executed -eq 0 ]; then
+                    false
+                fi
                 evaluate_retval
             fi
         else
