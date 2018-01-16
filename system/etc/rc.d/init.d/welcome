@@ -24,7 +24,7 @@ PROCESS_COUNT=$(ps --ppid 2 -p 2 --deselect -o user | wc -l)
 case "${1}" in
     start)
         echo -e "Linux "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
-        echo -e "Copyright Hive Solutions Lda. 2008-2017"
+        echo -e "Copyright Hive Solutions Lda. 2008-2018"
         echo -e ""
         echo -e "  IP address: $ADDRESS"
         echo -e "  Processes: $PROCESS_COUNT"
