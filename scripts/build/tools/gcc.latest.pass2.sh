@@ -1,7 +1,7 @@
 VERSION=${VERSION-7.1.0}
 VERSION_MPFR=${VERSION_MPFR-3.1.5}
 VERSION_GMP=${VERSION_GMP-6.1.2}
-VERSION_MPC=${VERSION_MPC-1.0.3}
+VERSION_MPC=${VERSION_MPC-1.1.0}
 
 set -e +h
 
@@ -33,7 +33,7 @@ wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 
-wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
+wget "https://ftp.gnu.org/gnu/mpc/mpc-$VERSION_MPC.tar.gz"
 tar -zxf "mpc-$VERSION_MPC.tar.gz"
 mv mpc-$VERSION_MPC mpc
 
