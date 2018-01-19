@@ -21,7 +21,7 @@ wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 
-wget "https://ftp.gnu.org/gnu/mpc/mpc-$VERSION_MPC.tar.gz"
+wget "http://ftp.gnu.org/gnu/mpc/mpc-$VERSION_MPC.tar.gz"
 tar -zxf "mpc-$VERSION_MPC.tar.gz"
 mv mpc-$VERSION_MPC mpc
 
