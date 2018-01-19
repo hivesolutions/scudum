@@ -44,7 +44,7 @@ export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
 case "$GCC_FLAVOUR" in
     latest)
         export GCC_BUILD_BINARY="gcc.latest"
-        export GCC_BUILD_VERSION="7.1.0"
+        export GCC_BUILD_VERSION="7.2.0"
         export SCUDUM_VENDOR=${SCUDUM_VENDOR-pc}
         ;;
     normal)
