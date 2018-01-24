@@ -1,4 +1,4 @@
-VERSION=${VERSION-0.8.0}
+VERSION=${VERSION-0.8.5}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,9 +8,9 @@ source $DIR/common.sh
 
 depends "libpcap"
 
-wget "http://downloads.sourceforge.net/nethogs/nethogs-$VERSION.tar.gz"
-rm -rf nethogs && tar -zxf "nethogs-$VERSION.tar.gz"
-rm -f "nethogs-$VERSION.tar.gz"
+wget "https://github.com/raboof/nethogs/archive/v$VERSION.tar.gz"
+rm -rf nethogs && tar -zxf "v$VERSION.tar.gz"
+rm -f "v$VERSION.tar.gz"
 cd nethogs
 
 make && make DESTDIR=$PREFIX install
