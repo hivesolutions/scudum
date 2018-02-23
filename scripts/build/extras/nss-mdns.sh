@@ -13,11 +13,11 @@ rm -rf nss-mdns-$VERSION && tar -zxf "nss-mdns-$VERSION.tar.gz"
 rm -f "nss-mdns-$VERSION.tar.gz"
 cd nss-mdns-$VERSION
 
-./configure --prefix=$PREFIX
+./configure
 
 make && make install
 
-sed -i 's/hosts: files dns/hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4/' configure
+sed -i 's/hosts: files dns/hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4/' /etc/nsswitch.conf
 
 cat > /etc/mdns.allow << "EOF"
 # /etc/mdns.allow
