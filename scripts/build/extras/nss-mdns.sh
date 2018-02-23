@@ -17,6 +17,8 @@ cd nss-mdns-$VERSION
 
 make && make install
 
+sed -i 's/hosts: files dns/hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4/' configure
+
 cat > /etc/mdns.allow << "EOF"
 # /etc/mdns.allow
 *
