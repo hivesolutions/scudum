@@ -131,6 +131,10 @@ if [ "$SCUDUM_CROSS" == "1" ] && [ "$BUILD_SAFE" == "1" ]; then
     export GCC_FLAVOUR="normal"
 fi
 
+# in case the cross compilation mode is not active (normal compilation)
+# some extra packages are added to the list of standard packages
+export EXTRAS="$EXTRAS mdns"
+
 # verifies if there's a local configuration file if there's
 # one runs it's source so that it may be used for other operations
 if [ -e config ]; then
