@@ -8,9 +8,9 @@ source $DIR/common.sh
 
 depends "intltool" "glib" "libdaemon"
 
-wget "https://github.com/lathiat/avahi/archive/v$VERSION.tar.gz"
-rm -rf avahi-$VERSION && tar -zxf "v$VERSION.tar.gz"
-rm -f "v$VERSION.tar.gz"
+wget "https://github.com/lathiat/avahi/releases/download/v$VERSION/avahi-$VERSION.tar.gz"
+rm -rf avahi-$VERSION && tar -zxf "avahi-$VERSION.tar.gz"
+rm -f "avahi-$VERSION.tar.gz"
 cd avahi-$VERSION
 
 ./configure\
