@@ -16,3 +16,8 @@ cd nss-mdns-$VERSION
 ./configure --prefix=$PREFIX
 
 make && make install
+
+cat > /etc/mdns.allow << "EOF"
+# /etc/mdns.allow
+*
+EOF
