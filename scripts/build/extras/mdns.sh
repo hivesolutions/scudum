@@ -4,7 +4,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "nss-mdns" "avahi"
+depends "avahi" "nss-mdns"
 
 /usr/sbin/avahi-daemon -D
 
