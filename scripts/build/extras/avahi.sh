@@ -24,3 +24,5 @@ cd avahi-$VERSION
     --disable-pygobject
 
 make && make install
+
+useradd avahi
