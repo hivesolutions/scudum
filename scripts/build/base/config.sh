@@ -109,7 +109,7 @@ cifs-utils ntfsprogs wireless-tools wpa-supplicant"
 # verifies the level of matching of the current target arch
 # and the hosting one and according to that defines the default
 # value to be used in the scudum cross (compilation) flag, note
-# that this value may allway be overriden by command line
+# that this value may always be overriden by command line
 if [ "$SCUDUM_BARCH" != "$SCUDUM_HOST" ]; then
     export SCUDUM_CROSS=${SCUDUM_CROSS-1}
 else
