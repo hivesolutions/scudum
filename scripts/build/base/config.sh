@@ -133,7 +133,7 @@ fi
 
 # in case the cross compilation mode is not active (normal compilation)
 # some extra packages are added to the list of standard packages
-#export EXTRAS="$EXTRAS mdns"
+export EXTRAS="$EXTRAS avahi nss-mdns"
 
 # verifies if there's a local configuration file if there's
 # one runs it's source so that it may be used for other operations
