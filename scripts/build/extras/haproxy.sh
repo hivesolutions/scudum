@@ -12,4 +12,4 @@ rm -rf haproxy-$VERSION && tar -zxf "haproxy-$VERSION.tar.gz"
 rm -f "haproxy-$VERSION.tar.gz"
 cd haproxy-$VERSION
 
-make TARGET=generic && make install
+make TARGET=generic && make install PREFIX=$PREFIX
