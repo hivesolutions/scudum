@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 wget "https://github.com/BurntSushi/xsv/releases/download/$VERSION/xsv-$VERSION-x86_64-unknown-linux-musl.tar.gz"
-rm -rf xsv && tar -Jxf "xsv-$VERSION-x86_64-unknown-linux-musl.tar.gz"
+rm -rf xsv && tar -zxf "xsv-$VERSION-x86_64-unknown-linux-musl.tar.gz"
 rm -f "xsv-$VERSION-x86_64-unknown-linux-musl.tar.gz"
 
 mv xsv $PREFIX/bin
