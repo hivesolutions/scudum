@@ -12,7 +12,7 @@ rm -rf zsh-$VERSION && tar -zxf "zsh-$VERSION.tar.gz"
 rm -f "zsh-$VERSION.tar.gz"
 cd zsh-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-tcsetpgrp
 make && make install
 
 cat > /root/.zshrc  << "EOF"
