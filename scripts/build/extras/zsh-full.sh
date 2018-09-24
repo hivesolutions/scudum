@@ -9,4 +9,4 @@ source $DIR/common.sh
 depends "zsh"
 
 curl -L http://install.ohmyz.sh | sh
-sed -i 's/ZSH_THEME=".*"/ZSH_THEME="mh"/g' /root/.zshrc
+sed -i 's/ZSH_THEME=".*"/ZSH_THEME="pygmalion"/g' /root/.zshrc
