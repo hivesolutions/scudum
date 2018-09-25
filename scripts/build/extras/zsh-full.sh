@@ -18,7 +18,6 @@ EOF
 cat > /etc/profile.zsh  << "EOF"
 source /etc/colors
 source /config
-source /etc/environ
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
