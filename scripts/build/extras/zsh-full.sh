@@ -10,7 +10,9 @@ depends "zsh"
 
 curl -L http://install.ohmyz.sh | sh
 sed -i 's/ZSH_THEME=".*"/ZSH_THEME="pygmalion"/g' /root/.zshrc
-sed -i 's/ == / = /g' /etc/environ
+
+rm -f /etc/environ.zsh && cp -p /etc/environ /etc/environ.zsh
+sed -i 's/ == / = /g' /etc/environ.zsh
 
 cat >> /root/.zshrc  << "EOF"
 source /etc/profile.zsh
@@ -20,7 +22,7 @@ cat > /etc/profile.zsh  << "EOF"
 source /etc/colors
 source /config
 
-source /etc/environ
+source /etc/environ.zsh
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
