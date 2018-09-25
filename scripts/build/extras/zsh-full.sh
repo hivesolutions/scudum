@@ -15,9 +15,16 @@ cat >> /root/.zshrc  << "EOF"
 source /etc/profile.zsh
 EOF
 
+cat >> /etc/environ.zsh  << "EOF"
+#!/bin/sh
+source /etc/environ
+EOF
+
 cat > /etc/profile.zsh  << "EOF"
 source /etc/colors
 source /config
+
+source /etc/environ.zsh
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
