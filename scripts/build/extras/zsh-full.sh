@@ -46,8 +46,8 @@ done
 alias "ls=ls --color=auto"
 echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
 echo -e ""
-echo -e " * System uptime:      $UPTIME_S"
 echo -e " * Running Processes:  $PROCESSES"
+echo -e " * System uptime:      $UPTIME_S"
 echo -e " * IP addresses:       $IP4_ADDR and $IP6_ADDR"
 echo -e ""
 
