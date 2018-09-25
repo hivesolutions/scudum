@@ -37,7 +37,7 @@ UPTIME_DAYS=$((${UPTIME}/86400))
 UPTIME_S=$(printf "%d days, %02dh %02dm %02ds" "$UPTIME_DAYS" "$UPTIME_HOURS" "$UPTIME_MINS" "$UPTIME_SECS")
 PROCESSES=$(ps ax | wc -l | tr -d " ")
 IP4_ADDR=$(ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/)
-IP6_ADDR=$(wget -q -O - http://icanhazip.com/ | tail)
+IP6_ADDR=$(ip -6 a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/)
 
 for file in /etc/env/*.env; do
     source $file
@@ -46,9 +46,9 @@ done
 alias "ls=ls --color=auto"
 echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
 echo -e ""
-echo -e " * System uptime:     $UPTIME_S"
-echo -e " * Running Processes: $PROCESSES"
-echo -e " * IP addresses:      $IP4_ADDR and $IP6_ADDR"
+echo -e " * System uptime:      $UPTIME_S"
+echo -e " * Running Processes:  $PROCESSES"
+echo -e " * IP addresses:       $IP4_ADDR and $IP6_ADDR"
 echo -e ""
 
 unset DISTRIB VERSION KVERSION SVERSION UPTIME UPTIME_SECS UPTIME_MINS UPTIME_HOURS UPTIME_DAYS UPTIME_S PROCESSES IP4_ADDR IP6_ADDR
