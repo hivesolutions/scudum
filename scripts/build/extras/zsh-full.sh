@@ -28,10 +28,6 @@ bindkey "\eOd" emacs-backward-word
 bindkey "\ee[C" forward-word
 bindkey "\ee[D" backward-word
 bindkey "^H" backward-delete-word
-autoload -U compinit promptinit
-compinit
-promptinit
-prompt walters
 source /etc/profile.zsh
 EOF
 
