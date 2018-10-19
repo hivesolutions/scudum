@@ -164,14 +164,14 @@ To build a Raspberry Pi 2 version of the armor example one should use:
 
 To safely build the latest kernel version and deploy it use:
 
-    scu install scudum-system
+    scu install scudum-system libelf
     hash -r
     MINOR=4.18.15 VARIANT=basic DEPLOY=1 kernel.build
 
 To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
 special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
-    scu install scudum-system crosstool-rasp
+    scu install scudum-system libelf crosstool-rasp
     hash -r
     KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf DEPLOY=1 kernel.build
 
