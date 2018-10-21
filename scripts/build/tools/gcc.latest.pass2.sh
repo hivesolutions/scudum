@@ -50,6 +50,7 @@ CC=$SCUDUM_TARGET-gcc CXX=$SCUDUM_TARGET-g++ AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM
     --disable-multilib\
     --disable-bootstrap\
     --disable-libgomp\
+    --disable-libsanitizer\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
 
