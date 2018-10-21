@@ -31,33 +31,13 @@ export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}
 export SCUDUM_MARCH=${SCUDUM_BARCH//_/-}
 export SCUDUM_TARGET=${SCUDUM_TARGET-$SCUDUM_HOST-scudum-$SCUDUM_SYSTEM_H}
 
-# the flavor to be used for gcc (eg: normal vs latest) note
+# the flavor to be used for GCC (eg: normal vs latest) note
 # that using the latest version may create some compatibility
 # issues with older cpu based computers, then defines if the
-# multiarch strategy should be used in glibc/gcc generation
+# multiarch strategy should be used in glibc/GCC generation
 # the possible options are enable and disable
 export GCC_FLAVOUR=${GCC_FLAVOUR-latest}
 export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
-
-# verifies the target gcc flavour and uses this value to construct
-# the proper naming convention for the binary to be built for gcc
-case "$GCC_FLAVOUR" in
-    latest)
-        export GCC_BUILD_BINARY="gcc.latest"
-        export GCC_BUILD_VERSION="7.3.0"
-        export SCUDUM_VENDOR=${SCUDUM_VENDOR-pc}
-        ;;
-    normal)
-        export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.5"
-        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
-        ;;
-    *)
-        export GCC_BUILD_BINARY="gcc"
-        export GCC_BUILD_VERSION="4.8.5"
-        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
-        ;;
-esac
 
 # exports the version string value for the current
 # distribution in building, the default value is set
@@ -124,12 +104,32 @@ if [ "$SET_CFLAGS" == "all" ]; then
     export CXXFLAGS="-O2 -march=$SCUDUM_MARCH -mtune=generic"
 fi
 
-# in case the cross compilation mode is active the gcc flavour
+# in case the cross compilation mode is active the GCC flavour
 # is forced to be normal, so that no compatibility issues arise
 # from bugs left by the gnu team (required to build)
 if [ "$SCUDUM_CROSS" == "1" ] && [ "$BUILD_SAFE" == "1" ]; then
     export GCC_FLAVOUR="normal"
 fi
+
+# verifies the target GCC flavour and uses this value to construct
+# the proper naming convention for the binary to be built for GCC
+case "$GCC_FLAVOUR" in
+    latest)
+        export GCC_BUILD_BINARY="gcc.latest"
+        export GCC_BUILD_VERSION="7.3.0"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-pc}
+        ;;
+    normal)
+        export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.5"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+        ;;
+    *)
+        export GCC_BUILD_BINARY="gcc"
+        export GCC_BUILD_VERSION="4.8.5"
+        export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
+        ;;
+esac
 
 # in case the cross compilation mode is not active (normal compilation)
 # some extra packages are added to the list of standard packages
