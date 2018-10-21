@@ -50,6 +50,7 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/sysroot/lib" ../gcc-$VERSION/configure\
     --disable-multilib\
     --disable-bootstrap\
     --disable-libgomp\
+    --disable-libsanitizer\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs\
     $extra
