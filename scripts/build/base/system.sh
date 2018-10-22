@@ -5,8 +5,13 @@
 # of the commands fails the execution is broken
 set -e +h
 
+# sources the current system's configuration, that should
+# have been created upon the root initialization process
+# durint the output shell operation
 source /config
 
+# sources the base configuration files including the one
+# refering to system dependent variables
 source /tools/repo/scripts/build/base/config.sh
 source /tools/repo/scripts/build/base/config.system.sh
 
@@ -34,6 +39,11 @@ cd sources
 /tools/repo/scripts/build/system/mpfr.sh
 /tools/repo/scripts/build/system/mpc.sh
 /tools/repo/scripts/build/system/$GCC_BUILD_BINARY.sh
+
+# runs the sourcing of the sysroot configuration file
+# responsible for the change of the sysroot
+source /tools/repo/scripts/build/base/config.sysroot.sh
+
 /tools/repo/scripts/build/system/sed.sh
 /tools/repo/scripts/build/system/bzip2.sh
 /tools/repo/scripts/build/system/pkg-config.sh
