@@ -44,10 +44,6 @@ export GCC_MULTIARCH=${GCC_MULTIARCH-disable}
 # to the currently defined date (to the day value)
 export VERSION=${VERSION-$(date +%Y%m%d)}
 
-# exports the generic target value for an arch based
-# infra-structure may be used in final scudum build
-export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
-
 # exports the unsafe configuration flag so that
 # a root user may configure all the packages
 export FORCE_UNSAFE_CONFIGURE=${FORCE_UNSAFE_CONFIGURE-1}
@@ -130,6 +126,10 @@ case "$GCC_FLAVOUR" in
         export SCUDUM_VENDOR=${SCUDUM_VENDOR-unknown}
         ;;
 esac
+
+# exports the generic target value for an arch based
+# infra-structure may be used in final scudum build
+export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 
 # in case the cross compilation mode is not active (normal compilation)
 # some extra packages are added to the list of standard packages
