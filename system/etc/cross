@@ -25,8 +25,6 @@ if [ "$GCC_BUILD_FLOAT" == "hard" ]; then export EFLAGS="$EFLAGS -D__ARM_PCS_VFP
 if [ "$EFLAGS" != "" ]; then
     if [ -z "$CC" ]; then export CC="gcc"; fi
     if [ -z "$CXX" ]; then export CXX="g++"; fi
-    if [ -z "$CCLD" ]; then export CCLD="gcc"; fi
     export CC="$CC $EFLAGS"
     export CXX="$CXX $EFLAGS"
-    export CCLD="$CCLD $EFLAGS"
 fi
