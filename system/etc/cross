@@ -7,7 +7,7 @@ case "$SCUDUM_ARCH" in
         export LD="$ARCH_TARGET-ld"
         export LD_LIBRARY_PATH="/usr/lib:/lib"
         export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-        export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+        export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib --sysroot=/"
         export LDFLAGS="-L/usr/lib -L/lib"
         export CC="$CC $CROSSFLAGS"
         export CXX="$CXX $CROSSFLAGS"
@@ -25,6 +25,8 @@ if [ "$GCC_BUILD_FLOAT" == "hard" ]; then export EFLAGS="$EFLAGS -D__ARM_PCS_VFP
 if [ "$EFLAGS" != "" ]; then
     if [ -z "$CC" ]; then export CC="gcc"; fi
     if [ -z "$CXX" ]; then export CXX="g++"; fi
+    if [ -z "$CCLD" ]; then export CCLD="gcc"; fi
     export CC="$CC $EFLAGS"
     export CXX="$CXX $EFLAGS"
+    export CCLD="$CCLD $EFLAGS"
 fi
