@@ -8,8 +8,8 @@ rm -f "iproute2-$VERSION.tar.xz"
 cd iproute2-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC="$CC" HOSTCC="gcc" ARCH=arm  M4=/tools/bin/m4 DESTDIR=
-    make CC="$CC" HOSTCC="gcc" DESTDIR= MANDIR=/usr/share/man\
+    make CC="$CC" HOSTCC=gcc M4=/tools/bin/m4 DESTDIR=
+    make CC="$CC" HOSTCC=gcc DESTDIR= MANDIR=/usr/share/man\
         DOCDIR=/usr/share/doc/iproute2-$VERSION install
 else
     make DESTDIR=
