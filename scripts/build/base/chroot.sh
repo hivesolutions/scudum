@@ -57,7 +57,10 @@ fi
 
 trap "SCUDUM=$SCUDUM $DIR/release.sh" SIGINT SIGTERM
 
-cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
+if [ ! -e $SCUDUM/tools/repo ]; then
+    echo "chroot: copying base scudum repository into tools"
+    cp -rp $(readlink -f "$DIR/../../../../scudum") $SCUDUM/tools/repo
+fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     TARGET_PATH=/cross/bin:/cross/sbin:/tools/bin:/tools/sbin:/bin:/usr/bin:/sbin:/usr/sbin
