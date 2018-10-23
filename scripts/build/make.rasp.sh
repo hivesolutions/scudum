@@ -125,11 +125,12 @@ DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
 
 if [ "$DEV_MOUNT_REAL" != "" ]; then
     DEV_MOUNT=$DEV_MOUNT_REAL
+    DEV_LOOP_BASE=$(echo $DEV_MOUNT_REAL | awk "{print $3}")
 else
     DEV_MOUNT=$DEV_MOUNT_PREVIEW
+    DEV_LOOP_BASE=$(echo $DEV_MOUNT_PREVIEW | awk "{print $1}")
 fi
 
-DEV_LOOP_BASE=$(echo $DEV_MOUNT | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 sync
