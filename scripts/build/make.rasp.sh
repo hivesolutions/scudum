@@ -123,7 +123,7 @@ sleep $SLEEP_TIME && sync
 DEV_MOUNT_PREVIEW=$(kpartx -l $FILE)
 DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
 
-if [ "DEV_MOUNT_REAL" != "" ]; then
+if [ "$DEV_MOUNT_REAL" != "" ]; then
     DEV_MOUNT=$DEV_MOUNT_REAL
 else
     DEV_MOUNT=$DEV_MOUNT_PREVIEW
