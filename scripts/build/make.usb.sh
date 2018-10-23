@@ -91,6 +91,8 @@ if [ "$AUTORUN" == "1" ]; then
     cp -v $SCUDUM/isolinux/scudum.ico $IMG_DIR
 fi
 
+echo "make.usb: intializing $FILE with $BLOCK_COUNT blocks of size $BLOCK_SIZE ($SIZE bytes)"
+
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
@@ -100,6 +102,8 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
     rm -f $PREFIX/lib/syslinux/mbr.bin
     ln -s $PREFIX/lib/syslinux/mbr/mbr.bin $PREFIX/lib/syslinux/mbr.bin
 fi
+
+echo "make.usb: intializing $FILE with mbr.bin"
 
 dd if=$PREFIX/lib/syslinux/mbr.bin of=$FILE conv=notrunc bs=440 count=1 && sync
 

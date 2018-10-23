@@ -113,6 +113,8 @@ else
     cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
 fi
 
+echo "make.rasp: intializing $FILE with $BLOCK_COUNT blocks of size $BLOCK_SIZE ($SIZE bytes)"
+
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
@@ -121,7 +123,7 @@ sleep $SLEEP_TIME && sync
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-kpartx -a -s -f $FILE && sync
+kpartx -v -a -s -f $FILE && sync
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync
@@ -134,7 +136,7 @@ cp -rp $IMG_DIR/* $MOUNT_DIR && sync
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-kpartx -d $FILE && sync
+kpartx -v -d $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
