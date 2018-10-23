@@ -1,5 +1,6 @@
 set -e +h
 
+echo "export SCUDUM_DATE=$(date +%Y%m%d)" >> $SCUDUM/config
 echo "export SCUDUM_HOST=$SCUDUM_HOST" >> $SCUDUM/config
 echo "export SCUDUM_ARCH=$SCUDUM_ARCH" >> $SCUDUM/config
 echo "export SCUDUM_BARCH=$SCUDUM_BARCH" >> $SCUDUM/config
