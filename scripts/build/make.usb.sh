@@ -111,14 +111,21 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
     rm -f $PREFIX/lib/syslinux/mbr.bin
 fi
 
-DEV_MOUNT=$(kpartx -l $FILE)
+DEV_MOUNT_PREVIEW=$(kpartx -l $FILE)
+DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
+
+if [ "DEV_MOUNT_REAL" != "" ]; then
+    DEV_MOUNT=$DEV_MOUNT_REAL
+else
+    DEV_MOUNT=$DEV_MOUNT_PREVIEW
+fi
+
 DEV_LOOP_BASE=$(echo $DEV_MOUNT | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-echo "make.usb: 'kpartx -l' executed with result '$DEV_MOUNT'"
+sync
 
-kpartx -v -a -s -f $FILE && sync
-
+echo "make.usb: kpartx executed with result '$DEV_MOUNT'"
 echo "make.usb: mounted $IMAGE on mappper partition $DEV_LOOP"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync

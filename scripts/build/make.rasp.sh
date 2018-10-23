@@ -120,14 +120,21 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
 sleep $SLEEP_TIME && sync
 
-DEV_MOUNT=$(kpartx -l $FILE)
+DEV_MOUNT_PREVIEW=$(kpartx -l $FILE)
+DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
+
+if [ "DEV_MOUNT_REAL" != "" ]; then
+    DEV_MOUNT=$DEV_MOUNT_REAL
+else
+    DEV_MOUNT=$DEV_MOUNT_PREVIEW
+fi
+
 DEV_LOOP_BASE=$(echo $DEV_MOUNT | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-echo "make.usb: 'kpartx -l' executed with result '$DEV_MOUNT'"
+sync
 
-kpartx -v -a -s -f $FILE && sync
-
+echo "make.rasp: kpartx executed with result '$DEV_MOUNT'"
 echo "make.rasp: mounted $IMAGE on mappper partition $DEV_LOOP"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
