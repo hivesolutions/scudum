@@ -111,7 +111,7 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
     rm -f $PREFIX/lib/syslinux/mbr.bin
 fi
 
-DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
+DEV_LOOP_BASE=$(kpartx -l $FILE | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 kpartx -v -a -s -f $FILE && sync
