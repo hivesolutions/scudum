@@ -1,6 +1,6 @@
 set -e +h
 
-# export the build data information so that the root file system
+# exports the build data information so that the root file system
 # version (using the date) may be exposed to the final system user
 echo "export SCUDUM_DATE=$(date +%Y%m%d)" >> $SCUDUM/config
 
