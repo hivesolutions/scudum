@@ -110,7 +110,7 @@ fi
 DEV_LOOP_BASE=$(kpartx -l $FILE | sed -n 1p | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-kpartx -a -s -f $FILE && sync
+kpartx -v -a -s -f $FILE && sync
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync
@@ -125,7 +125,7 @@ rm -rf $MOUNT_DIR
 
 syslinux --directory $DIRECTORY --install $DEV_LOOP && sync
 
-kpartx -d $FILE && sync
+kpartx -v -d $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
