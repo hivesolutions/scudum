@@ -114,10 +114,11 @@ fi
 DEV_LOOP_BASE=$(kpartx -l $FILE | cut -f 1 -d " ")
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
+kpartx -l $FILE #@todo remove this
+
 kpartx -v -a -s -f $FILE && sync
 
-ls -la /dev
-ls -la /dev/mapper
+echo "make.usb: mounted partition on mappper /dev/mapper/$DEV_LOOP_BASE"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync
