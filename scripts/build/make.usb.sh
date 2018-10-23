@@ -117,8 +117,6 @@ DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 echo "make.usb: 'kpartx -l' executed with result '$DEV_MOUNT'"
 
-kpartx -l $FILE #@todo remove this
-
 kpartx -v -a -s -f $FILE && sync
 
 echo "make.usb: mounted $IMAGE on mappper partition $DEV_LOOP"
