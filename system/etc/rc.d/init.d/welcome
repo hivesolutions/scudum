@@ -19,7 +19,7 @@ VERSION=$(cat /etc/scudum/VERSION)
 ROOTFS=$(cat /etc/scudum/ROOTFS)
 KVERSION=$(uname -r)
 SVERSION=$DISTRIB-$VERSION
-ADDRESS=$(ifconfig | sed -n "s/.*inet \([0-9.]\+\)\s.*/\1/p" | grep -v "127.0.0.1")
+ADDRESS=$(ifconfig | sed -n "s/.*inet \([0-9.]\+\)\s.*/\1/p" | grep -v "127.0.0.1" | tr "\n" " ")
 PROCESS_COUNT=$(ps --ppid 2 -p 2 --deselect -o user | wc -l)
 
 case "${1}" in
