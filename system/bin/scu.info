@@ -3,12 +3,12 @@
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
-ROOTFS_VERSION=$(cat /etc/scudum/ROOTFS_VERSION)
+ROOTFS=$(cat /etc/scudum/ROOTFS)
 KVERSION=$(uname -r)
 SVERSION=$DISTRIB-$VERSION
 EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
 
-echo -e "Scudum $SVERSION (rootfs $ROOTFS_VERSION) (GNU/Linux $KVERSION)"
+echo -e "Scudum $SVERSION (RootFS $ROOTFS) (GNU/Linux $KVERSION)"
 echo $EXTRAS
