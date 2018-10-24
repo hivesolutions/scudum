@@ -72,6 +72,7 @@ if [ -e welcome ] && [ -f welcome ]; then
 fi
 
 echo $VERSION > $SCUDUM/etc/scudum/VERSION
+echo $SCUDUM_VERSION > $SCUDUM/etc/scudum/ROOTFS_VERSION
 echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
 echo $EXTRAS > $SCUDUM/etc/scudum/CONFIGURED
 

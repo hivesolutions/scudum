@@ -8,6 +8,7 @@ source $DIR/environ
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
+ROOTFS_VERSION=$(cat /etc/scudum/ROOTFS_VERSION)
 KVERSION=$(uname -r)
 SVERSION=$DISTRIB-$VERSION
 
@@ -16,6 +17,6 @@ for file in /etc/env/*.env; do
 done
 
 alias "ls=ls --color=auto"
-echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
+echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (rootfs $ROOTFS_VERSION) (GNU/Linux $KVERSION)"
 
 unset DISTRIB VERSION KVERSION SVERSION
