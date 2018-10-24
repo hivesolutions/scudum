@@ -39,7 +39,6 @@ source /etc/environ.zsh
 
 DISTRIB=$(cat /etc/scudum/DISTRIB)
 VERSION=$(cat /etc/scudum/VERSION)
-ROOTFS=$(cat /etc/scudum/ROOTFS)
 KVERSION=$(uname -r)
 SVERSION=$DISTRIB-$VERSION
 
@@ -58,7 +57,7 @@ for file in /etc/env/*.env; do
 done
 
 alias "ls=ls --color=auto"
-echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (RootFS $ROOTFS) (GNU/Linux $KVERSION)"
+echo -e "Welcome to "$COLOR_GREEN"Scudum"$COLOR_RESET" $SVERSION (GNU/Linux $KVERSION)"
 echo -e ""
 echo -e " * Running Processes:  $PROCESSES"
 echo -e " * System uptime:      $UPTIME_S"
