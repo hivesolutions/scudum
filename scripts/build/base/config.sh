@@ -202,3 +202,5 @@ print_scudum() {
     [ "$GCC_BUILD_FPU" != "" ] && echo "GCC_BUILD_FPU := $GCC_BUILD_FPU" || true
     [ "$GCC_BUILD_FLOAT" != "" ] && echo "GCC_BUILD_FLOAT := $GCC_BUILD_FLOAT" || true
 }
+
+print_scudum
