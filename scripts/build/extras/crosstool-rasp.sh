@@ -29,9 +29,9 @@ CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
 
-mkdir patches
+mkdir -p patches/gcc/6.3.0
 
-cat > patches/gcc-6.3.0_fixup.patch << "EOF"
+cat > patches/gcc/6.3.0/gcc-6.3.0_fixup.patch << "EOF"
 --- a/gcc/ubsan.c
 +++ b/gcc/ubsan.c
 @@ -1471,7 +1471,7 @@ ubsan_use_new_style_p (location_t loc)
