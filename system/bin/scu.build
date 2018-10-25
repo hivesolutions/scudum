@@ -5,4 +5,6 @@ EXTRAS=$(cat /etc/scudum/CONFIGURED)
 
 set -e +h
 
+echo "scu: installing packages $EXTRAS"
+
 scu.install $EXTRAS
