@@ -137,8 +137,8 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     export EXTRAS="$EXTRAS avahi nss-mdns"
 fi
 
-# verifies if there's a local configuration file if there's
-# one runs it's source so that it may be used for other operations
+# verifies if there's a local configuration file if there's one runs
+# its source so that it may be used for other operations
 if [ -e config ]; then
     DISTRIB=${PWD##*/}
     source config
