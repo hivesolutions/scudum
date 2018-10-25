@@ -26,4 +26,9 @@ To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
 
 ## Upgrading
 
-The upgrading operation may be a complex one as it involves changing the configuration files
+The upgrading operation may be a complex one as it involves changing the configuration files.
+
+## (Proprietary) Firmware
+
+In order to use some of the drivers in the proper way custom and proprietary firmware may be required
+the best way to update this same package is to use the pre-compiled Ubuntu packages [here](https://packages.ubuntu.com/bionic/linux-firmware).
