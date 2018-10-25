@@ -27,9 +27,9 @@ CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
 
-mkdir patches
+mkdir patches.local
 
-cat > patches/gcc-6.3.0_fixup.patch << "EOF"
+cat > patches.local/gcc-6.3.0_fixup.patch << "EOF"
 --- a/gcc/ubsan.c
 +++ b/gcc/ubsan.c
 @@ -1471,7 +1471,7 @@ ubsan_use_new_style_p (location_t loc)
@@ -42,5 +42,5 @@ cat > patches/gcc-6.3.0_fixup.patch << "EOF"
      return false;
 EOF
 
-ct-ng defconfig
-CT_ALLOW_BUILD_AS_ROOT_SURE=1 ct-ng build
+CT_TOP_DIR="$(pwd)" ct-ng defconfig
+CT_ALLOW_BUILD_AS_ROOT_SURE=1 CT_TOP_DIR="$(pwd)" ct-ng build
