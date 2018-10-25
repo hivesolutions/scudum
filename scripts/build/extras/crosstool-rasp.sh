@@ -9,7 +9,8 @@ depends "crosstool-ng"
 unset LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH\
     MANPATH PKG_CONFIG_PATH
 
-mkdir crosstool-rasp
+rm -rf crosstool-rasp && mkdir crosstool-rasp
+cd crosstool-rasp
 
 cat > defconfig << "EOF"
 CT_PREFIX_DIR="/opt/${CT_TARGET}"
@@ -26,7 +27,9 @@ CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
 
-cat > gcc6.patch << "EOF"
+mkdir patches
+
+cat > patches/gcc-6.3.0_fixup.patch << "EOF"
 --- a/gcc/ubsan.c
 +++ b/gcc/ubsan.c
 @@ -1471,7 +1471,7 @@ ubsan_use_new_style_p (location_t loc)
