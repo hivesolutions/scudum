@@ -21,7 +21,7 @@ extra=""
 SED=sed ../gcc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --target=$ARCH_TARGET\
-    --prefix=$PREFIX\
+    --prefix=/usr\
     --enable-languages=c,c++\
     --disable-multilib\
     --disable-bootstrap\
@@ -32,14 +32,14 @@ make
 test $TEST && make -k check
 make install
 
-ln -svf ..$PREFIX/bin/cpp /lib
-ln -svf gcc $PREFIX/bin/cc
+ln -svf ../usr/bin/cpp /lib
+ln -svf gcc /usr/bin/cc
 
-install -v -dm755 $PREFIX/lib/bfd-plugins
-ln -sfv ../../libexec/gcc/$ARCH_TARGET/$VERSION/liblto_plugin.so $PREFIX/lib/bfd-plugins/liblto_plugin.so
+install -v -dm755 /usr/lib/bfd-plugins
+ln -sfv ../../libexec/gcc/$ARCH_TARGET/$VERSION/liblto_plugin.so /usr/lib/bfd-plugins/liblto_plugin.so
 
 echo "int main(){}" > dummy.c && cc dummy.c -v -Wl,--verbose &> dummy.log
 readelf -l a.out | grep ": /lib" && ./a.out && rm -v dummy.c a.out
 
-mkdir -pv $PREFIX/share/gdb/auto-load$PREFIX/lib
-mv -v $PREFIX/lib/*gdb.py $PREFIX/share/gdb/auto-load$PREFIX/lib
+mkdir -pv /usr/share/gdb/auto-load/usr/lib
+mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
