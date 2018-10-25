@@ -15,6 +15,7 @@ cd crosstool-rasp
 cat > defconfig << "EOF"
 CT_PREFIX_DIR="/opt/${CT_TARGET}"
 CT_PATCH_BUNDLED_LOCAL=y
+CT_LOCAL_PATCH_DIR="${CT_TOP_DIR}/patches"
 CT_ARCH_FPU="vfp"
 CT_ARCH_FLOAT_HW=y
 CT_ARCH_arm=y
@@ -28,9 +29,9 @@ CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
 EOF
 
-mkdir patches.local
+mkdir patches
 
-cat > patches.local/gcc-6.3.0_fixup.patch << "EOF"
+cat > patches/gcc-6.3.0_fixup.patch << "EOF"
 --- a/gcc/ubsan.c
 +++ b/gcc/ubsan.c
 @@ -1471,7 +1471,7 @@ ubsan_use_new_style_p (location_t loc)
