@@ -57,6 +57,8 @@ git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.g
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
+# in case the system directory exists in the base scudum tools then copies
+# it into the root directory of the scudum installation (base code)
 if [ -e system ]; then
     cp -rpv system/* $SCUDUM
 fi
