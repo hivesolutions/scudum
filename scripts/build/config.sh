@@ -51,6 +51,8 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     fi
 fi
 
+# clones the current scudum distribution to obtain the latest
+# version of its scripts that are going to be included with this builf
 git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
@@ -71,6 +73,8 @@ if [ -e welcome ] && [ -f welcome ]; then
     cp -p welcome $SCUDUM/etc/welcome/$DISTRIB
 fi
 
+# creates the scudum specific files that contain
+# a series of snapshot information on this build
 echo $VERSION > $SCUDUM/etc/scudum/VERSION
 echo $SCUDUM_DATE > $SCUDUM/etc/scudum/ROOTFS
 echo $DISTRIB > $SCUDUM/etc/scudum/DISTRIB
