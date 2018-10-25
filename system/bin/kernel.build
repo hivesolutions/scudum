@@ -52,6 +52,17 @@ case "$KARCH" in
         ;;
 esac
 
+# selects the variant specific options for the kernel configuration
+# this should include for instance the firmware file selection
+case "$VARIANT" in
+    rasp*)
+        FIRMWARE_FILE=${FIRWARE_FILE-firmware.rasp.tar.xz}
+        ;;
+    *)
+        FIRMWARE_FILE=${FIRWARE_FILE-firmware.tar.xz}
+        ;;
+esac
+
 # updates the various global variables that are going to be
 # used in the construction so that they represent the proper
 # values according to the target architecture
@@ -182,8 +193,8 @@ pushd modules_install/lib
     rm -f modules/$release/build && rm -f modules/$release/source
     ln -s /opt/src/linux modules/$release/build
     mkdir -p modules firmware
-    wget "https://github.com/hivesolutions/patches/raw/master/firmware/firmware.tar.xz"
-    tar --skip-old-files -Jxvf firmware.tar.xz
+    wget "https://github.com/hivesolutions/patches/raw/master/firmware/$FIRMWARE_FILE"
+    tar --skip-old-files -Jxvf $FIRMWARE_FILE
     tar -zcvf modules.tar.gz modules firmware
     mv modules.tar.gz ../..
 popd
