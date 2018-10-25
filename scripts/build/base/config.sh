@@ -26,6 +26,14 @@ esac
 # scudum deployment to be used
 export SCUDUM=${SCUDUM-/scudum}
 
+# verifies if the persist directory/mountpoint exists and if that's
+# the current situation then changes the current scudum directory
+# reference to the persist one so that it's possible to spare some
+# extra memory, by using secondary storage to store the installation
+if [ -e $PERSIST ] && mountpoint -q $PERSIST; then
+    export SCUDUM=$PERSIST/scudum
+fi
+
 # verifies if there's a concrete snapshot based
 # configuration for the current installation and
 # if that's the case sources it
@@ -152,14 +160,6 @@ fi
 if [ -e config ]; then
     DISTRIB=${PWD##*/}
     source config
-fi
-
-# verifies if the persist directory/mountpoint exists and if that's
-# the current situation then changes the current scudum directory
-# reference to the persist one so that it's possible to spare some
-# extra memory, by using secondary storage to store the installation
-if [ -e $PERSIST ] && mountpoint -q $PERSIST; then
-    export SCUDUM=$PERSIST/scudum
 fi
 
 print_scudum() {
