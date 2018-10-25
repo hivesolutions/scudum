@@ -37,6 +37,7 @@ fi
 # verifies if there's a concrete snapshot based configuration for
 # the current installation and if that's the case sources it, so that
 # all of the architecture and concrete installation variables are exposed
+# and may override the default ones defined in this file
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
