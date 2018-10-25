@@ -21,9 +21,10 @@ CT_ARCH_CPU="arm1176jzf-s"
 CT_ARCH_TUNE="arm1176jzf-s"
 CT_TARGET_VENDOR="rasp"
 CT_KERNEL_linux=y
+CT_BINUTILS_V_2_27=y
 CT_GCC_V_6_4_0=y
-CT_LIBC_glibc=y
 CT_CC_LANG_CXX=y
+CT_LIBC_glibc=y
 EOF
 
 ct-ng defconfig
