@@ -14,6 +14,7 @@ cd crosstool-rasp
 
 cat > defconfig << "EOF"
 CT_PREFIX_DIR="/opt/${CT_TARGET}"
+CT_PATCH_BUNDLED_LOCAL=y
 CT_ARCH_FPU="vfp"
 CT_ARCH_FLOAT_HW=y
 CT_ARCH_arm=y
