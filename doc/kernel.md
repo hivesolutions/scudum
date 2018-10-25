@@ -35,3 +35,5 @@ update these same package is to use the pre-compiled Ubuntu packages [here](http
 
 The newly created firmware package should be placed [here](https://github.com/hivesolutions/patches/tree/master/firmware). Whenever
 a new package is created a merged with the previous one should be done.
+
+The Raspberry Pi should have a special (smaller) firmware package retrieved from the Raspbian image file from the [download website](https://www.raspberrypi.org/downloads/raspbian/).
