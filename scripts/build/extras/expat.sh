@@ -12,5 +12,5 @@ rm -rf expat-$VERSION && tar -jxf "expat-$VERSION.tar.bz2"
 rm -f "expat-$VERSION.tar.bz2"
 cd expat-$VERSION
 
-./configure --prefix=$PREFIX --disable-static
+./configure --host=$ARCH_TARGET  --prefix=$PREFIX --disable-static
 make && make install
