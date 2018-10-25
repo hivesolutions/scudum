@@ -30,5 +30,8 @@ The upgrading operation may be a complex one as it involves changing the configu
 
 ## (Proprietary) Firmware
 
-In order to use some of the drivers in the proper way custom and proprietary firmware may be required
-the best way to update this same package is to use the pre-compiled Ubuntu packages [here](https://packages.ubuntu.com/bionic/linux-firmware).
+In order to use some of the drivers custom and proprietary firmware may be required. The best way to
+update these same package is to use the pre-compiled Ubuntu packages [here](https://packages.ubuntu.com/bionic/linux-firmware).
+
+The newly created firmware package should be placed [here](https://github.com/hivesolutions/patches/tree/master/firmware). Whenever
+a new package is created a merged with the previous one should be done.
