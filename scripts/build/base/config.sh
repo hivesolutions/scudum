@@ -34,9 +34,9 @@ if [ -e $PERSIST ] && mountpoint -q $PERSIST; then
     export SCUDUM=$PERSIST/scudum
 fi
 
-# verifies if there's a concrete snapshot based
-# configuration for the current installation and
-# if that's the case sources it
+# verifies if there's a concrete snapshot based configuration for
+# the current installation and if that's the case sources it, so that
+# all of the architecture and concrete installation variables are exposed
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
