@@ -9,6 +9,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export CROSSCC="$ARCH_TARGET-gcc"
             export CROSSCXX="$ARCH_TARGET-g++"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
+            export C_INCLUDE_PATH="/usr/include:/include"
+            export CPLUS_INCLUDE_PATH="/usr/include:/include"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
             export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
             export LDFLAGS="-L/usr/lib -L/lib"
