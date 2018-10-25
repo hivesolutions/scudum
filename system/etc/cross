@@ -9,7 +9,7 @@ case "$SCUDUM_ARCH" in
         export C_INCLUDE_PATH="/usr/include:/include"
         export CPLUS_INCLUDE_PATH="/usr/include:/include"
         export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-        export CROSSFLAGS="--sysroot=/ -I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+        export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
         export LDFLAGS="-L/usr/lib -L/lib"
         export CC="$CC $CROSSFLAGS"
         export CXX="$CXX $CROSSFLAGS"
