@@ -20,11 +20,11 @@ CHROOT=$DIR/../util/chroot.sh
 
 set -e +h
 
-source $DIR/base/config.sh
-
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
+
+source $DIR/base/config.sh
 
 case "$SCUDUM_ARCH" in
     arm*)

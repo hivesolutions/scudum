@@ -31,11 +31,11 @@ MOUNT_DIR=/tmp/$NAME.mount
 
 set -e +h
 
-source $DIR/base/config.sh
-
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
+
+source $DIR/base/config.sh
 
 echo "make.rasp: $HEADS heads, $SECTORS sectors, $BYTES_SECTOR bytes/sector"
 echo "make.rasp: $OFFSET ($OFFSET_SECTORS) offset"
