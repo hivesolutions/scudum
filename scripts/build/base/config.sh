@@ -22,9 +22,19 @@ case "$SCUDUM_ARCH" in
         ;;
 esac
 
+# determines the base directory for the current
+# scudum deployment to be used
+export SCUDUM=${SCUDUM-/scudum}
+
+# verifies if there's a concrete snapshot based
+# configuration for the current installation and
+# if that's the case sources it
+if [ -e $SCUDUM/config ]; then
+    source $SCUDUM/config
+fi
+
 # exports a series of environment variables that
 # are going to be used through the build process
-export SCUDUM=${SCUDUM-/scudum}
 export SCUDUM_HOST=${SCUDUM_HOST-$(uname -m)}
 export SCUDUM_SYSTEM=${SCUDUM_SYSTEM-linux-gnu}
 export SCUDUM_SYSTEM_H=${SCUDUM_SYSTEM_H-linux-gnu}

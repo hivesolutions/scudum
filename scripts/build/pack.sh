@@ -10,11 +10,11 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
+source $DIR/base/config.sh
+
 if [ -e $SCUDUM/config ]; then
     source $SCUDUM/config
 fi
-
-source $DIR/base/config.sh
 
 if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     echo "Scudum already configured, not possible to pack"
