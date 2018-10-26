@@ -27,7 +27,7 @@ INITRAMFS_FILE=${INITRAMFS_FILE-initrd.img}
 
 # intializes any of the control flags that will handle
 # and control the way the package is going to be created
-USE_FIRMWARE=${USE_FIRMWARE-1}
+USE_FIRMWARE=${USE_FIRMWARE-0}
 
 # defines the proper size (in kilo-bytes) for the disk to be
 # created taking into account the current configuration

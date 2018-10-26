@@ -8,3 +8,4 @@ set -e +h
 
 if [ "$BUILD_NORMAL" == "1" ]; then mkinitramfs; fi
 if [ "$BUILD_BASIC" == "1" ]; then USE_FIRMWARE=0 INITRAMFS_FILE="initrd.basic.img" mkinitramfs; fi
+if [ "$BUILD_BASIC" == "1" ]; then USE_FIRMWARE=1 INITRAMFS_FILE="initrd.large.img" mkinitramfs; fi
