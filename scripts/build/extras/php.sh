@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.5.38}
+VERSION=${VERSION-5.6.38}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -17,7 +17,6 @@ rm -f "php-$VERSION.tar.gz"
 cd php-$VERSION
 
 ./configure\
-    --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --enable-embed=static\
     --disable-libxml\
