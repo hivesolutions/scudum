@@ -92,9 +92,9 @@ if [ "$EFI" == "1" ]; then
         cp -rp /usr/lib/grub/x86_64-efi $ISO_DIR/boot/grub
     fi
     if [ "$isotool" == "mkisofs" ]; then
-        efi_extra="-eltorito-platform 0xef -eltorito-boot isolinux/efiboot.img"
+        efi_extra="-eltorito-platform 0xef -eltorito-alt-boot -eltorito-boot isolinux/efiboot.img"
     else
-        efi_extra="-eltorito-boot isolinux/efiboot.img"
+        efi_extra="-eltorito-alt-boot -eltorito-boot isolinux/efiboot.img"
     fi
 else
     efi_extra=""
@@ -103,13 +103,13 @@ fi
 mkisofs -r -J -R -U -joliet -joliet-long -o $FILE\
     -no-emul-boot -boot-load-size 4 -boot-info-table\
     -b isolinux/isolinux.bin -c isolinux/isolinux.boot\
-    -eltorito-alt-boot -no-emul-boot $efi_extra -V $LABEL $ISO_DIR
+    $efi_extra -V $LABEL $ISO_DIR
 
 if [ "$BASIC" == "1" ]; then
     mkisofs -o $FILE_BASIC\
         -no-emul-boot -boot-load-size 4 -boot-info-table\
         -b isolinux/isolinux.bin -c isolinux/isolinux.boot\
-        -eltorito-alt-boot -no-emul-boot $efi_extra -V $LABEL $ISO_DIR
+        $efi_extra -V $LABEL $ISO_DIR
 fi
 
 if [ "$AUTORUN" == "1" ]; then
