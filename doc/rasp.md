@@ -6,6 +6,8 @@ The (custom) Raspberry Pi firmware located at `/system/rasp` should be updated f
 
 The update should be done taking into account that the Linux Kernel is going to be compiled and should not be part of the `/system/rasp` filesystem. Other files should also not be considered as part of the Scudum distribution.
 
+A good explanation of the working in the boot loading process for each of these files can be found in [Embedded Linux - RPi Software](https://elinux.org/RPi_Software) page.
+
 ## Kernel configuration file
 
 To be able to create a proper configuration file for the Raspberry Pi use the `bcmrpi_defconfig` for rasp1 and
