@@ -1,5 +1,9 @@
 # Raspberry Pi Configuration
 
+## Firmware
+
+The firmware located at /system/rasp should be updated from time to time by using the [Raspberry Pi Firmware repository](https://github.com/raspberrypi/firmware/tree/master/boot) as reference.
+
 ## Kernel configuration file
 
 To be able to create a proper configuration file for the Raspberry Pi use the `bcmrpi_defconfig` for rasp1 and
