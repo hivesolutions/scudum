@@ -16,7 +16,7 @@ if type apt-get &> /dev/null; then
     compression=none
 elif type scu &> /dev/null; then
     env -u VERSION scu install grub.latest dosfstools
-    compression=xz
+    compression=none
 else
     exit 1
 fi
