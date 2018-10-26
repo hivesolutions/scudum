@@ -112,7 +112,7 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
 fi
 
 DEV_LOOP_DEVICE=$(losetup -f)
-DEV_LOOP_BASE=$DEV_LOOP_DEVICEp1
+DEV_LOOP_BASE=${DEV_LOOP_DEVICE}p1
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
 kpartx -v -a -s -f $FILE && sync
