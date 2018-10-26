@@ -17,6 +17,7 @@ rm -f "php-$VERSION.tar.gz"
 cd php-$VERSION
 
 ./configure\
+    --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --enable-embed=static\
     --disable-libxml\
