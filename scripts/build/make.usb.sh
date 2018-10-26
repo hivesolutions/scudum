@@ -134,7 +134,7 @@ rm -rf $MOUNT_DIR
 
 syslinux --directory $DIRECTORY --install $DEV_LOOP && sync
 
-kpartx -v -d $FILE && sync
+kpartx -v -d -s $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf

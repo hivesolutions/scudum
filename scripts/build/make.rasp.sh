@@ -144,7 +144,7 @@ cp -rp $IMG_DIR/* $MOUNT_DIR && sync
 umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
-kpartx -v -d $FILE && sync
+kpartx -v -d -s $FILE && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
