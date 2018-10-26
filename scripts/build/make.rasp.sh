@@ -123,7 +123,7 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
 sleep $SLEEP_TIME && sync
 
-DEV_MOUNT_PREVIEW=$(kpartx -l $FILE) && kpartx -d $FILE > /dev/null 2>&1
+DEV_MOUNT_PREVIEW=$(kpartx -l $FILE) && kpartx -d $FILE > /dev/null 2>&1 && sync
 DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
 
 if [ "$DEV_MOUNT_REAL" != "" ]; then
