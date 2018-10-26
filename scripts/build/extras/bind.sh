@@ -17,6 +17,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --prefix=$PREFIX\
         --sysconfdir=/etc/bind\
         --localstatedir=/var\
+        --disable-linux-caps\
         --with-randomdev=no\
         --with-ecdsa=yes\
         --with-eddsa=yes\
