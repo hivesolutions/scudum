@@ -111,7 +111,7 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
     rm -f $PREFIX/lib/syslinux/mbr.bin
 fi
 
-DEV_MOUNT_PREVIEW=$(kpartx -l $FILE)
+DEV_MOUNT_PREVIEW=$(kpartx -l $FILE) && kpartx -v -d $FILE > /dev/null 2>&1
 DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
 
 if [ "$DEV_MOUNT_REAL" != "" ]; then
@@ -123,7 +123,6 @@ else
 fi
 
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
-DEV_LOOP_ROOT=/dev/${DEV_LOOP_BASE:0:-2}
 
 sync
 
@@ -144,8 +143,6 @@ rm -rf $MOUNT_DIR
 syslinux --directory $DIRECTORY --install $DEV_LOOP && sync
 
 kpartx -v -d $FILE && sync
-kpartx -v -d $DEV_LOOP_ROOT > /dev/null 2>&1 && sync || true
-losetup -d $DEV_LOOP_ROOT > /dev/null 2>&1 && sync || true
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
