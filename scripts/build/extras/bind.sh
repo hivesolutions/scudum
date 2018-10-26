@@ -19,6 +19,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --localstatedir=/var\
         --with-randomdev=no\
         --with-ecdsa=yes\
+        --with-eddsa=yes\
         --with-gost=yes
     make && make install
 else
