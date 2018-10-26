@@ -112,14 +112,14 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
 fi
 
 DEV_LOOP_DEVICE=$(losetup -f)
-DEV_LOOP=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
-DEV_LOOP_BASE=${DEV_LOOP}p1
-DEV_LOOP=/dev/mapper$DEV_LOOP_BASE
+DEV_LOOP_NAME=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
+DEV_LOOP_PART=${DEV_LOOP_NAME}p1
+DEV_LOOP=/dev/mapper$DEV_LOOP_PART
 
 kpartx -v -a -s -f $FILE && sync
 
-echo "make.rasp: kpartx executed with result '$DEV_LOOP_BASE'"
-echo "make.rasp: mounted $IMAGE on mappper partition $DEV_LOOP ($DEV_LOOP_DEVICE)"
+echo "make.usb: kpartx executed with result '$DEV_LOOP_PART'"
+echo "make.usb: mounted $IMAGE on mappper partition $DEV_LOOP ($DEV_LOOP_DEVICE)"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync

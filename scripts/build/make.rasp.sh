@@ -124,13 +124,13 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 sleep $SLEEP_TIME && sync
 
 DEV_LOOP_DEVICE=$(losetup -f)
-DEV_LOOP=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
-DEV_LOOP_BASE=${DEV_LOOP}p1
-DEV_LOOP=/dev/mapper$DEV_LOOP_BASE
+DEV_LOOP_NAME=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
+DEV_LOOP_PART=${DEV_LOOP_NAME}p1
+DEV_LOOP=/dev/mapper$DEV_LOOP_PART
 
 kpartx -v -a -s -f $FILE && sync
 
-echo "make.rasp: kpartx executed with result '$DEV_LOOP_BASE'"
+echo "make.rasp: kpartx executed with result '$DEV_LOOP_PART'"
 echo "make.rasp: mounted $IMAGE on mappper partition $DEV_LOOP ($DEV_LOOP_DEVICE)"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
