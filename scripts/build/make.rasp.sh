@@ -124,8 +124,9 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 sleep $SLEEP_TIME && sync
 
 DEV_LOOP_DEVICE=$(losetup -f)
-DEV_LOOP_BASE=${DEV_LOOP_DEVICE}p1
-DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
+DEV_LOOP=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
+DEV_LOOP_BASE=${DEV_LOOP}p1
+DEV_LOOP=/dev/mapper$DEV_LOOP_BASE
 
 kpartx -v -a -s -f $FILE && sync
 
