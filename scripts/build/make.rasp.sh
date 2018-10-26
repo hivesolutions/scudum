@@ -15,6 +15,7 @@ HEADS=${HEADS-255}
 SECTORS=${SECTORS-63}
 BYTES_SECTOR=${BYTES_SECTOR-512}
 BASIC_INITRD=${BASIC_INITRD-1}
+BASIC_INITRD=${LARGE_INITRD-0}
 CONFIG=${CONFIG-1}
 CLEANUP=${CLEANUP-1}
 DEPLOY=${DEPLOY-0}
@@ -109,6 +110,8 @@ fi
 
 if [ "$BASIC_INITRD" == "1" ]; then
     cp -pv $SCUDUM/boot/initrd.basic.img $IMG_DIR/initrd.img
+elif [ "$LARGE_INITRD" == "1" ]; then
+    cp -pv $SCUDUM/boot/initrd.large.img $IMG_DIR/initrd.img
 else
     cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
 fi
