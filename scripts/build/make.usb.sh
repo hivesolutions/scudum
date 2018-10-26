@@ -114,7 +114,7 @@ fi
 DEV_LOOP_DEVICE=$(losetup -f)
 DEV_LOOP_NAME=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
 DEV_LOOP_PART=${DEV_LOOP_NAME}p1
-DEV_LOOP=/dev/mapper$DEV_LOOP_PART
+DEV_LOOP=/dev/mapper/$DEV_LOOP_PART
 
 kpartx -v -a -s -f $FILE && sync
 
