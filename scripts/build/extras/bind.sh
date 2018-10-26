@@ -27,7 +27,8 @@ else
     ./configure\
         --prefix=$PREFIX\
         --sysconfdir=/etc/bind\
-        --localstatedir=/var
+        --localstatedir=/var\
+        --disable-linux-caps\
     make && make install
 fi
 
