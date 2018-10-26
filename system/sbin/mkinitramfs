@@ -98,14 +98,15 @@ TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 # account the requested size (this is very important)
 rm -f ramdisk
 dd if=/dev/zero of=ramdisk bs=1k count=$DISK_SIZE &> /dev/null
-losetup -d /dev/loop1 > /dev/null 2>&1 || true
-losetup /dev/loop1 ramdisk
+LOOP_DEVICE=$(losetup -f)
+losetup -d $LOOP_DEVICE > /dev/null 2>&1 || true
+losetup $LOOP_DEVICE ramdisk
 
 # creates the the ext2 based file system in the loop
 # device and then mounts it under the temporary directory
-mke2fs -j /dev/loop1 &> /dev/null
+mke2fs -j $LOOP_DEVICE &> /dev/null
 mkdir -p /mnt/loop1
-mount /dev/loop1 $TEMP_DIR
+mount $LOOP_DEVICE $TEMP_DIR
 rm -rf $TEMP_DIR/lost+found
 
 # creates base directory structure according to the pre-defined
@@ -250,7 +251,7 @@ fi
 # it removing then the directory reference
 sync
 umount $TEMP_DIR
-losetup -d /dev/loop1
+losetup -d $LOOP_DEVICE
 rm -rf $TEMP_DIR
 
 # runs the compression of the ramdisk into the init
