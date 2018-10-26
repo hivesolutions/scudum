@@ -90,7 +90,7 @@ DATADIR=${DATADIR-/usr/share/mkinitramfs}
 INIT_IN=${INIT_IN-linuxrc}
 INIT_OUT=${INIT_OUT-linuxrc}
 
-# creates a temporrary working directory, where the
+# creates a temporary working directory, where the
 # files will be stored for the creation of the image
 TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 

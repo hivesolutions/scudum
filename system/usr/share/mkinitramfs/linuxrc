@@ -96,17 +96,17 @@ else
 fi
 
 # creates the directory to be used as the mount point
-# for the root file system (will be stored in ram)
+# for the root file system (will be stored in RAM)
 mkdir -p ram
 
-# makes the ram file system storage in case the
-# current mode is set to ram
+# makes the RAM file system storage in case the
+# current mode is set to RAM
 if [ "$USE_RAMFS" == "1" ]; then
     dd if=/dev/zero of=/dev/ram1 bs=1k count=262144;
     mke2fs -q /dev/ram1
 fi
 
-# mounts the apropriate ram storage according to
+# mounts the apropriate RAM storage according to
 # the currently set configuration
 if [ "$USE_RAMFS" == "1" ]; then
     mount /dev/ram1 /ram
@@ -227,7 +227,7 @@ fi
 
 # in case the overlay fs mode is enabled must mount
 # the final overlay file system using the source squash
-# file system for read and the ram/persist one for write
+# file system for read and the RAM/persist one for write
 if [ "$USE_OVERLAYFS" == "1" ]; then
     # in case the persist mode is enabled and the cleanup flag
     # is also set must remove any previously existing root and
@@ -256,7 +256,7 @@ mount -t proc none proc
 
 # verifies if the overlay fs mode is active and if that's not
 # the case  starts the process of linking directories between
-# the source and the target ram based operative system
+# the source and the target RAM based operative system
 if [ "$USE_OVERLAYFS" == "0" ]; then
     # prints a message about the symbolic linking of the various
     # directories as part of the legacy operation
