@@ -111,23 +111,14 @@ if [ -e $PREFIX/lib/syslinux/mbr ]; then
     rm -f $PREFIX/lib/syslinux/mbr.bin
 fi
 
-DEV_MOUNT_PREVIEW=$(kpartx -l $FILE) && kpartx -d $FILE > /dev/null 2>&1 && sync
-DEV_MOUNT_REAL=$(kpartx -v -a -s -f $FILE)
-
-if [ "$DEV_MOUNT_REAL" != "" ]; then
-    DEV_MOUNT=$DEV_MOUNT_REAL
-    DEV_LOOP_BASE=$(echo $DEV_MOUNT_REAL | awk '{print $3}')
-else
-    DEV_MOUNT=$DEV_MOUNT_PREVIEW
-    DEV_LOOP_BASE=$(echo $DEV_MOUNT_PREVIEW | awk '{print $1}')
-fi
-
+DEV_LOOP_DEVICE=$(losetup -f)
+DEV_LOOP_BASE=$DEV_LOOP_DEVICEp1
 DEV_LOOP=/dev/mapper/$DEV_LOOP_BASE
 
-sync
+kpartx -v -a -s -f $FILE && sync
 
-echo "make.usb: kpartx executed with result '$DEV_MOUNT'"
-echo "make.usb: mounted $IMAGE on mappper partition $DEV_LOOP"
+echo "make.rasp: kpartx executed with result '$DEV_LOOP_BASE'"
+echo "make.rasp: mounted $IMAGE on mappper partition $DEV_LOOP ($DEV_LOOP_DEVICE)"
 
 mkfs.vfat -h $OFFSET_SECTORS -F 32 -I -n $LABEL $DEV_LOOP && sync
 MTOOLS_SKIP_CHECK=1 mlabel -i $DEV_LOOP ::$LABEL && sync
