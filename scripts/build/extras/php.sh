@@ -6,8 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-unset MAKEFLAGS
-
 if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 export CFLAGS="$CFLAGS -fpic"
 
