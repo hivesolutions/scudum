@@ -6,6 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
+unset MAKEFLAGS
+
 if [ "$VERSION" == "latest" ]; then
     rm -rf lshw && git clone --depth 1 "https://github.com/lyonel/lshw.git"
     cd lshw
@@ -16,9 +18,8 @@ else
     cd lshw-$VERSION
 fi
 
-rm -rf docs
-
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -rf docs
     make CXX="$CXX" && make install PREFIX=$PREFIX
 else
     make && make install PREFIX=$PREFIX
