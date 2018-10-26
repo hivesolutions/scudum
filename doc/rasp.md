@@ -2,9 +2,9 @@
 
 ## Firmware
 
-The (custom) Raspberry Pi firmware located at `/system/rasp` should be updated from time to time by using the [Raspberry Pi Firmware repository](https://github.com/raspberrypi/firmware/tree/master/boot) as reference.
+The (custom) Raspberry Pi firmware located at `/system/rasp` should be updated from time to time by using the [Raspberry Pi Firmware repository](https://github.com/raspberrypi/firmware/tree/master/boot) as the reference.
 
-The update should be done taking into account that the the Linux Kernel is going to be compiled and should not be part of the `/system/rasp` filesystem. Other files should also not be considered as part of the Scudum distribution.
+The update should be done taking into account that the Linux Kernel is going to be compiled and should not be part of the `/system/rasp` filesystem. Other files should also not be considered as part of the Scudum distribution.
 
 ## Kernel configuration file
 
