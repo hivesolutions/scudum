@@ -145,6 +145,8 @@ umount -v $MOUNT_DIR && sync
 rm -rf $MOUNT_DIR
 
 kpartx -v -d -s $FILE && sync
+kpartx -v -d -s $DEV_LOOP_DEVICE > /dev/null 2>&1 && sync
+losetup -d $DEV_LOOP_DEVICE > /dev/null 2>&1 && sync
 
 if [ "$AUTORUN" == "1" ]; then
     rm -v $IMG_DIR/autorun.inf
