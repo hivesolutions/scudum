@@ -136,7 +136,8 @@ if [ "$USE_FIRMWARE" == "1" ]; then
     cp -a /lib/firmware $TEMP_DIR/lib
 fi
 
-# copies the RAID configuration file if present
+# copies the RAID configuration file if present, may be
+# relevant for a RAID based boot operation
 if [ -f /etc/mdadm.conf ] ; then
     cp /etc/mdadm.conf $TEMP_DIR/etc
 fi
