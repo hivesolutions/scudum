@@ -18,8 +18,8 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --sysconfdir=/etc/bind\
         --localstatedir=/var\
         --with-randomdev=no\
-        --with-ecdsa\
-        --with-gost
+        --with-ecdsa=yes\
+        --with-gost=yes
     make && make install
 else
     ./configure\
