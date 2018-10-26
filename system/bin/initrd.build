@@ -3,9 +3,10 @@
 
 BUILD_NORMAL=${BUILD_NORMAL-1}
 BUILD_BASIC=${BUILD_BASIC-1}
+BUILD_LARGE=${BUILD_LARGE-0}
 
 set -e +h
 
 if [ "$BUILD_NORMAL" == "1" ]; then mkinitramfs; fi
 if [ "$BUILD_BASIC" == "1" ]; then USE_FIRMWARE=0 INITRAMFS_FILE="initrd.basic.img" mkinitramfs; fi
-if [ "$BUILD_BASIC" == "1" ]; then USE_FIRMWARE=1 INITRAMFS_FILE="initrd.large.img" mkinitramfs; fi
+if [ "$BUILD_LARGE" == "1" ]; then USE_FIRMWARE=1 INITRAMFS_FILE="initrd.large.img" mkinitramfs; fi
