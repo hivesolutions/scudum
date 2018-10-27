@@ -1,5 +1,7 @@
 VERSION=${VERSION-7.9}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
 source $DIR/common.sh
