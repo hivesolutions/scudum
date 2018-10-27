@@ -7,9 +7,9 @@ set -e +h
 source $DIR/common.sh
 
 wget "http://cdn.openbsd.org/pub/OpenBSD/OpenSSH/openssh-$VERSION.tar.gz"
-rm -rf openssh-$VERSION && tar -zxf "openssh-$VERSION.tar.gz"
+rm -rf ssh && tar -zxf "openssh-$VERSION.tar.gz"
 rm -f "openssh-$VERSION.tar.gz"
-cd openssh-$VERSION
+cd ssh
 
 install -v -m700 -d /var/lib/sshd
 chown -v root:sys /var/lib/sshd
