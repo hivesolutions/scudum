@@ -16,7 +16,7 @@ chown -v root:sys /var/lib/sshd
 
 ./configure\
     --host=$ARCH_TARGET\
-    --prefix=/usr\
+    --prefix=$PREFIX\
     --sysconfdir=/etc/ssh\
     --with-md5-passwords\
     --with-privsep-path=/var/lib/sshd
@@ -27,7 +27,7 @@ else
     make && make install
 fi
 
-install -v -m755 contrib/ssh-copy-id /usr/bin
-install -v -m644 contrib/ssh-copy-id.1 /usr/share/man/man1
-install -v -m755 -d /usr/share/doc/openssh-$VERSION
-install -v -m644 INSTALL LICENCE OVERVIEW README* /usr/share/doc/openssh-$VERSION
+install -v -m755 contrib/ssh-copy-id $PREFIX/bin
+install -v -m644 contrib/ssh-copy-id.1 $PREFIX/share/man/man1
+install -v -m755 -d $PREFIX/share/doc/openssh-$VERSION
+install -v -m644 INSTALL LICENCE OVERVIEW README* $PREFIX/share/doc/openssh-$VERSION
