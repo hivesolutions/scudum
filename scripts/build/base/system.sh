@@ -7,7 +7,7 @@ set -e +h
 
 # sources the current system's configuration, that should
 # have been created upon the root initialization process
-# durint the output shell operation
+# during the output shell operation
 source /config
 
 # sources the base configuration files including the one
