@@ -6,8 +6,6 @@ case "$SCUDUM_ARCH" in
         export RANLIB="$ARCH_TARGET-ranlib"
         export LD="$ARCH_TARGET-ld"
         export LD_LIBRARY_PATH="/usr/lib:/lib"
-        export C_INCLUDE_PATH="/usr/include:/include"
-        export CPLUS_INCLUDE_PATH="/usr/include:/include"
         export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
         export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
         export LDFLAGS="-L/usr/lib -L/lib"

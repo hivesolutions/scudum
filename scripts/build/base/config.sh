@@ -202,8 +202,6 @@ print_scudum() {
     [ "$CROSSCC" != "" ] && echo "CROSSCC := $CROSSCC" || true
     [ "$CROSSCXX" != "" ] && echo "CROSSCXX := $CROSSCXX" || true
     [ "$LD_LIBRARY_PATH" != "" ] && echo "LD_LIBRARY_PATH := $LD_LIBRARY_PATH" || true
-    [ "$C_INCLUDE_PATH" != "" ] && echo "C_INCLUDE_PATH := $C_INCLUDE_PATH" || true
-    [ "$CPLUS_INCLUDE_PATH" != "" ] && echo "CPLUS_INCLUDE_PATH := $CPLUS_INCLUDE_PATH" || true
     [ "$PKG_CONFIG_PATH" != "" ] && echo "PKG_CONFIG_PATH := $PKG_CONFIG_PATH" || true
     [ "$CROSSFLAGS" != "" ] && echo "CROSSFLAGS := $CROSSFLAGS" || true
     [ "$LDFLAGS" != "" ] && echo "LDFLAGS := $LDFLAGS" || true
