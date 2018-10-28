@@ -49,7 +49,6 @@ EOF
 
 cat > /etc/profile.zsh  << "EOF"
 source /etc/colors
-source /config
 
 source /etc/environ.zsh
 
