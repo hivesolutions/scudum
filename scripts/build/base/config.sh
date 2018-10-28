@@ -39,6 +39,7 @@ fi
 # all of the architecture and concrete installation variables are exposed
 # and may override the default ones defined in this file
 if [ -e $SCUDUM/config ]; then
+    echo "config: sourcing '$SCUDUM/config'"
     source $SCUDUM/config
 fi
 
@@ -159,6 +160,7 @@ fi
 # verifies if there's a local configuration file if there's one runs
 # its source so that it may be used for other operations
 if [ -e config ]; then
+    echo "config: sourcing 'config'"
     DISTRIB=${PWD##*/}
     source config
 fi
