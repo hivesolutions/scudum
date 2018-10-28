@@ -114,10 +114,6 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/strip.sh
 fi
 
-# run the output operation that "prints" the current configuration
-# into a plain file that it may be latter "sourced"
-$DIR/tools/output.sh
-
 # removes the directory where the building process has been done
 # so that no extra files leak to the final building stages, then
 # deletes also the dynamic link reference in tools (not required)
@@ -140,3 +136,8 @@ $DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
 # runs the final strip operation on the generated files so
 # that some of the size for the files is spared
 $DIR/base/chroot.sh /tools/repo/scripts/build/system/strip.sh
+
+# run the output operation that "prints" the current configuration
+# into a plain file that it may be latter "sourced" to obtain the
+# original setting of the root configuration
+$DIR/tools/output.sh
