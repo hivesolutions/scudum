@@ -13,7 +13,7 @@ rm -f "perl-$VERSION.tar.gz"
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     wget --no-check-certificate "https://github.com/arsv/perl-cross/releases/download/$VERSION_CROSS/perl-cross-$VERSION_CROSS.tar.gz"
-    tar -zxf "perl-cross-$VERSION_CROSS.tar.gz"
+    tar -zxf "perl-cross-$VERSION_CROSS.tar.gz" -C perl-$VERSION --strip-components=1
     rm -f "perl-cross-$VERSION_CROSS.tar.gz"
 fi
 
