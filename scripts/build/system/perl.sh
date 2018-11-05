@@ -22,14 +22,14 @@ cd perl-$VERSION
 echo "127.0.0.1 localhost" > /etc/hosts
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure --target=$ARCH_TARGET --prefix=/usr
+    ./configure --target=$ARCH_TARGET --prefix=/usr -Duseshrplib
 else
     sh Configure -des -Dprefix=/usr\
         -Dvendorprefix=/usr\
         -Dman1dir=/usr/share/man/man1\
         -Dman3dir=/usr/share/man/man3\
         -Dpager="/usr/bin/less -isR"\
-        Duseshrplib
+        -Duseshrplib
 fi
 
 make
