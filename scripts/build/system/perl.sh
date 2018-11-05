@@ -22,7 +22,8 @@ cd perl-$VERSION
 echo "127.0.0.1 localhost" > /etc/hosts
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ./configure --target=$ARCH_TARGET --prefix=/usr -Duseshrplib
+    CC="$ARCH_TARGET-gcc" CFLAGS="$EFLAGS"\
+        ./configure --target=$ARCH_TARGET --prefix=/usr -Duseshrplib
 else
     sh Configure -des -Dprefix=/usr\
         -Dvendorprefix=/usr\
