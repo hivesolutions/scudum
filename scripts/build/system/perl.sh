@@ -1,6 +1,6 @@
 VERSION=${VERSION-5.28.0}
 VERSION_MAJOR=${VERSION_MAJOR-5.0}
-VERSION_CROSS=${VERSION_CROSS-0.9.5}
+VERSION_CROSS=${VERSION_CROSS-1.2}
 
 set -e +h
 
@@ -12,9 +12,9 @@ rm -rf perl-$VERSION && tar -zxf "perl-$VERSION.tar.gz"
 rm -f "perl-$VERSION.tar.gz"
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    wget --no-check-certificate "https://raw.github.com/arsv/perl-cross/releases/perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
-    tar -zxf "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
-    rm -f "perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
+    wget --no-check-certificate "https://github.com/arsv/perl-cross/releases/download/$VERSION_CROSS/perl-cross-$VERSION_CROSS.tar.gz"
+    tar -zxf "perl-cross-$VERSION_CROSS.tar.gz"
+    rm -f "perl-cross-$VERSION_CROSS.tar.gz"
 fi
 
 cd perl-$VERSION
@@ -22,8 +22,6 @@ cd perl-$VERSION
 echo "127.0.0.1 localhost" > /etc/hosts
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/which "$p" >&\/dev\/null/true/' cnf/configure_prog.sh
-    sed -i 's/which "$_force" >&\/dev\/null/true/' cnf/configure_prog.sh
     ./configure --target=$ARCH_TARGET --prefix=/usr
 else
     sh Configure -des -Dprefix=/usr\
