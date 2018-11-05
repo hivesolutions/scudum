@@ -1,4 +1,5 @@
 VERSION=${VERSION-5.20.2}
+VERSION_MAJOR=${VERSION_MAJOR-5.0}
 VERSION_CROSS=${VERSION_CROSS-0.9.5}
 
 set -e +h
@@ -6,7 +7,7 @@ set -e +h
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
-wget --no-check-certificate "http://www.cpan.org/src/5.0/perl-$VERSION.tar.bz2"
+wget --no-check-certificate "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.bz2"
 rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
 rm -f "perl-$VERSION.tar.bz2"
 
