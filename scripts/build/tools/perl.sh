@@ -3,9 +3,9 @@ VERSION_MAJOR=${VERSION_MAJOR-5.0}
 
 set -e +h
 
-wget "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.bz2"
-rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
-rm -f "perl-$VERSION.tar.bz2"
+wget "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.gz"
+rm -rf perl-$VERSION && tar -zxf "perl-$VERSION.tar.gz"
+rm -f "perl-$VERSION.tar.gz"
 cd perl-$VERSION
 
 sh Configure -des -Dprefix=$PREFIX -Dlibs=-lm

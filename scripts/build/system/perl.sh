@@ -7,9 +7,9 @@ set -e +h
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
-wget --no-check-certificate "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.bz2"
-rm -rf perl-$VERSION && tar -jxf "perl-$VERSION.tar.bz2"
-rm -f "perl-$VERSION.tar.bz2"
+wget --no-check-certificate "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.gz"
+rm -rf perl-$VERSION && tar -zxf "perl-$VERSION.tar.gz"
+rm -f "perl-$VERSION.tar.gz"
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     wget --no-check-certificate "https://raw.github.com/arsv/perl-cross/releases/perl-$VERSION-cross-$VERSION_CROSS.tar.gz"
