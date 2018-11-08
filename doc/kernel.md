@@ -30,6 +30,14 @@ The upgrading operation may be a complex one as it involves changing the configu
 
 For some of the files (eg: `large` and `basic`) it might be interesting to use the Ubuntu config files stored in `/boot/config-xxx-generic` as a reference in the construction of them. For that install Ubuntu in a VM and then use **Ukuu** to upgrade the kernel to desired version.
 
+For the Ubuntu configuration to work under Scudum environment these extra directives must be included:
+
+``
+CONFIG_BLK_DEV_RAM=y
+``
+
+Other than these the basic ones refered in the [Rasp documentation](rasp.md#kernel-configuration-file) should also be included.
+
 ## (Proprietary) Firmware
 
 In order to use some of the drivers custom and proprietary firmware may be required. The best way to
