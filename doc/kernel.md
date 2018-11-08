@@ -32,9 +32,9 @@ For some of the files (eg: `large` and `basic`) it might be interesting to use t
 
 For the Ubuntu configuration to work under Scudum environment these extra directives must be included:
 
-``
+```
 CONFIG_BLK_DEV_RAM=y
-``
+```
 
 Other than these the basic ones refered in the [Rasp documentation](rasp.md#kernel-configuration-file) should also be included.
 
