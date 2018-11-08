@@ -7,6 +7,8 @@ set -e +h
 
 source $DIR/common.sh
 
+depends "json-c"
+
 wget "https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$VERSION/syslog-ng-$VERSION.tar.gz"
 rm -rf syslog-ng-$VERSION && tar -zxf "syslog-ng-$VERSION.tar.gz"
 rm -f "syslog-ng-$VERSION.tar.gz"
