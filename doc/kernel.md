@@ -28,7 +28,7 @@ To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
 
 The upgrading operation may be a complex one as it involves changing the configuration files.
 
-For some of the files (eg: `large` and `basic`) it might be interesting to use the Ubuntu config files stored in `/boot/config-xxx` as a reference in the construction of them. For that install Ubuntu in a VM and then use **Ukuu** to upgrade the kernel to desired version.
+For some of the files (eg: `large` and `basic`) it might be interesting to use the Ubuntu config files stored in `/boot/config-xxx-generic` as a reference in the construction of them. For that install Ubuntu in a VM and then use **Ukuu** to upgrade the kernel to desired version.
 
 ## (Proprietary) Firmware
 
