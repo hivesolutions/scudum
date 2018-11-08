@@ -14,7 +14,7 @@ cd syslog-ng-$VERSION
 
 wget "https://s3.amazonaws.com/json-c_releases/releases/json-c-$VERSION_JSON_C.tar.gz"
 tar -zxf "json-c-$VERSION_JSON_C.tar.gz"
-mv json-c-$VERSION_JSON_C jsonc
+mv json-c-$VERSION_JSON_C lib/jsonc
 
 ./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
