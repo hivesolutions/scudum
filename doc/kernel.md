@@ -34,6 +34,9 @@ For the Ubuntu configuration to work under Scudum environment these extra direct
 
 ```
 CONFIG_BLK_DEV_RAM=y
+CONFIG_USB_STORAGE=y
+CONFIG_ISO9660_FS=y
+CONFIG_UDF_FS=y
 ```
 
 Other than these the basic ones refered in the [Rasp documentation](rasp.md#kernel-configuration-file) should also be included.
