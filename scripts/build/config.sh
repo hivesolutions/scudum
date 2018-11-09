@@ -55,7 +55,7 @@ fi
 # of its scripts that are going to be included with this build, notice
 # that there's some sanitization of the contents
 git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
-rm -rf $BASE/scudum.git/system/**/.cignore
+find $BASE/scudum.git/system -name .cignore -delete
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
