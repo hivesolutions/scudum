@@ -1,4 +1,4 @@
-VERSION=${VERSION-3.2.2}
+VERSION=${VERSION-3.2.7}
 
 set -e +h
 
@@ -6,9 +6,6 @@ wget --no-check-certificate "http://dev.gentoo.org/~blueness/eudev/eudev-$VERSIO
 rm -rf eudev-$VERSION && tar -zxf "eudev-$VERSION.tar.gz"
 rm -f "eudev-$VERSION.tar.gz"
 cd eudev-$VERSION
-
-sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
-sed -i '/keyboard_lookup_key/d' src/udev/udev-builtin-keyboard.c
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     cat > config.cache << "EOF"
@@ -33,10 +30,7 @@ fi
     --libexecdir=/lib\
     --with-rootprefix=\
     --with-rootlibdir=/lib\
-    --enable-split-usr\
     --enable-manpages\
-    --enable-hwdb\
-    --disable-introspection\
     --disable-static\
     --config-cache
 
