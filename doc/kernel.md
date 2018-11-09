@@ -42,6 +42,7 @@ CONFIG_UDF_FS=y
 CONFIG_SATA_AHCI=y
 CONFIG_NLS_ASCII=y
 CONFIG_NLS_ISO8859_1=y
+CONFIG_NLS_UTF8=y
 ```
 
 Other than these the basic ones refered in the [Raspberry Pi Configuration](rasp.md#kernel-configuration-file) should also be included.
