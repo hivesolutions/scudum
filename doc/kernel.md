@@ -37,6 +37,11 @@ For the Ubuntu configuration to work under Scudum environment these extra direct
 ```
 CONFIG_BLK_DEV_RAM=y
 CONFIG_USB_STORAGE=y
+```
+
+Ensuring that proper CD-ROM and HD support is granted these lines should be added:
+
+```
 CONFIG_ISO9660_FS=y
 CONFIG_UDF_FS=y
 CONFIG_SATA_AHCI=y
