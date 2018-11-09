@@ -56,6 +56,7 @@ fi
 # that there's some sanitization of the contents
 git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
 find $BASE/scudum.git/system -name .cignore -delete
+find $BASE/scudum.git/system -name .gitignore -delete
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
