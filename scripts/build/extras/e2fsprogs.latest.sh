@@ -12,7 +12,7 @@ cd e2fsprogs-$VERSION
 mkdir -v build
 cd build
 
-CFLAGS="$CFLAGS -luuid" LDFLAGS="$LDFLAGS -luuid" ../configure\
+../configure\
     --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --with-root-prefix=""\
