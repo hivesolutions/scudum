@@ -51,9 +51,11 @@ if [ -e $SCUDUM/etc/scudum/CONFIGURED ]; then
     fi
 fi
 
-# clones the current scudum distribution to obtain the latest
-# version of its scripts that are going to be included with this builf
+# clones the current scudum distribution to obtain the latest version
+# of its scripts that are going to be included with this build, notice
+# that there's some sanitization of the contents
 git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
+rm -rf $BASE/scudum.git/system/**/.cignore
 cp -rpv $BASE/scudum.git/system/* $SCUDUM
 rm -rf $BASE/scudum.git
 
