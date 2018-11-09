@@ -13,4 +13,4 @@ rm -rf lm-sensors-$VERSION && tar -zxf "V$VERSION.tar.gz"
 rm -f "V$VERSION.tar.gz"
 cd lm-sensors-$VERSION
 
-make PREFIX=$PREFIX && make install PREFIX=$PREFIX 
+make PREFIX=$PREFIX && make install PREFIX=$PREFIX
