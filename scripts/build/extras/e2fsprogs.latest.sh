@@ -1,8 +1,10 @@
 VERSION=${VERSION-1.44.4}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
-wget --no-check-certificate "http://downloads.sourceforge.net/e2fsprogs/e2fsprogs-$VERSION.tar.gz"
+wget "http://downloads.sourceforge.net/e2fsprogs/e2fsprogs-$VERSION.tar.gz"
 rm -rf e2fsprogs-$VERSION && tar -zxf "e2fsprogs-$VERSION.tar.gz"
 rm -f "e2fsprogs-$VERSION.tar.gz"
 cd e2fsprogs-$VERSION
@@ -12,7 +14,7 @@ cd build
 
 CFLAGS="$CFLAGS -luuid" LDFLAGS="$LDFLAGS -luuid" ../configure\
     --host=$ARCH_TARGET\
-    --prefix=/usr\
+    --prefix=$PREFIX\
     --with-root-prefix=""\
     --enable-elf-shlibs\
     --disable-libblkid\
@@ -21,10 +23,9 @@ CFLAGS="$CFLAGS -luuid" LDFLAGS="$LDFLAGS -luuid" ../configure\
     --disable-fsck
 
 make
-test $TEST && make check
 make install
 make install-libs
 
-chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
-gunzip -v /usr/share/info/libext2fs.info.gz
-install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
+chmod -v u+w $PREFIX/lib/{libcom_err,libe2p,libext2fs,libss}.a
+gunzip -v $PREFIX/share/info/libext2fs.info.gz
+install-info --dir-file=$PREFIX/share/info/dir $PREFIX/share/info/libext2fs.info
