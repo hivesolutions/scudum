@@ -37,6 +37,7 @@ CONFIG_BLK_DEV_RAM=y
 CONFIG_USB_STORAGE=y
 CONFIG_ISO9660_FS=y
 CONFIG_UDF_FS=y
+CONFIG_SATA_AHCI=m
 ```
 
 Other than these the basic ones refered in the [Raspberry Pi Configuration](rasp.md#kernel-configuration-file) should also be included.
