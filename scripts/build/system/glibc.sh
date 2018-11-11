@@ -1,5 +1,5 @@
-VERSION=${VERSION-2.27}
-VERSION_T=${VERSION_T-2017b}
+VERSION=${VERSION-2.28}
+VERSION_T=${VERSION_T-2018g}
 
 set -e +h
 
@@ -26,7 +26,7 @@ cd glibc-build
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/lib/glibc\
-    --enable-kernel=2.6.32\
+    --enable-kernel=3.2\
     --enable-obsolete-rpc\
     --enable-stack-protector=strong\
     --disable-werror\

@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.27}
+VERSION=${VERSION-2.28}
 
 set -e +h
 
@@ -22,7 +22,7 @@ CFLAGS="$extra" ../glibc-$VERSION/configure\
     --prefix=/usr\
     --host=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
-    --enable-kernel=2.6.32\
+    --enable-kernel=3.2\
     --with-headers=$PREFIX_CROSS/sysroot/usr/include\
     libc_cv_forced_unwind=yes\
     libc_cv_c_cleanup=yes

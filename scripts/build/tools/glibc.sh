@@ -1,4 +1,4 @@
-VERSION=${VERSION-2.27}
+VERSION=${VERSION-2.28}
 
 set -e +h
 
@@ -16,7 +16,7 @@ cd glibc-build
     --host=$SCUDUM_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --$GCC_MULTIARCH-multi-arch\
-    --enable-kernel=2.6.32\
+    --enable-kernel=3.2\
     --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
     libc_cv_c_cleanup=yes
