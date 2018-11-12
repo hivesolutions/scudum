@@ -19,4 +19,9 @@ if [ "$SCUDUM_CROSS" == "0" ]; the
         -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
         -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
         `dirname $($CC --print-libgcc-file-name)`/specs
+else
+    $CC -dumpspecs | sed -e 's@/cross@@g'\
+        -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
+        -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
+        `dirname $($CC --print-libgcc-file-name)`/specs
 fi
