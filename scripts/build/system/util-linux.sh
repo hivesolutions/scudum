@@ -1,5 +1,5 @@
-VERSION=${VERSION-2.27.1}
-VERSION_MAJOR=${VERSION_MAJOR-2.27}
+VERSION=${VERSION-2.33}
+VERSION_MAJOR=${VERSION_MAJOR-2.33}
 
 set -e +h
 
@@ -12,7 +12,7 @@ mkdir -pv /var/lib/hwclock
 
 ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime\
     --host=$ARCH_TARGET\
-    --docdir=/usr/share/doc/util-linux-2.25.2\
+    --docdir=/usr/share/doc/util-linux-$VERSION\
     --disable-chfn-chsh\
     --disable-login\
     --disable-nologin\
