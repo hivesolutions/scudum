@@ -15,7 +15,7 @@ fi
 # runs a series of replace operations that will make sure that
 # the /tools directory is present in the compiler paths, notice
 # that for cross compilation the /cross directory is used instead
-if [ "$SCUDUM_CROSS" == "0" ]; the
+if [ "$SCUDUM_CROSS" == "0" ]; then
     $CC -dumpspecs | sed -e 's@/tools@@g'\
         -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
         -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
