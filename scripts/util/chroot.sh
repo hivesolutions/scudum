@@ -43,10 +43,12 @@ chroot $SCUDUM $TARGET_ENV -i\
 result=$?
 
 if [ "$SCUDUM_CROSS" == "0" ]; then
+    echo "chroot: going to unmount filesystems, inside chroot"
     chroot $SCUDUM $TARGET_ENV -i\
         HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
         PATH="$TARGET_PATH"\
         $TARGET_SHELL -c "/bin/umount -v -a"
+    echo "chroot: finished unmounting filesystems, inside chroot"
 fi
 
 SCUDUM=$SCUDUM $DIR/release.sh
