@@ -29,11 +29,10 @@ case "${1}" in
         touch /etc/mtab
 
         mount -f / || failed=1
+        mount -f /proc || failed=1
         mount -f /sys || failed=1
         mount -f /run || failed=1
         mount -f /dev || failed=1
-
-        mount -f /proc > /dev/null 2>&1 || failed=0
 
         (exit ${failed})
         evaluate_retval
