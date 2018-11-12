@@ -6,3 +6,5 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             ;;
     esac
 fi
+
+export PREFIX="/usr"
