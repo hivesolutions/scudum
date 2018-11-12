@@ -12,7 +12,6 @@ mkdir -pv /var/lib/hwclock
 
 ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime\
     --host=$ARCH_TARGET\
-    --prefix=/usr\
     --docdir=/usr/share/doc/util-linux-$VERSION\
     --disable-chfn-chsh\
     --disable-login\
