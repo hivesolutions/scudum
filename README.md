@@ -48,6 +48,7 @@ To start the Scudum build process building the latest version of GCC and setting
 build is controlled and does not compile using any (unwanted) optimization and runnnig as a background task use:
 
     SET_CFLAGS=all GCC_FLAVOUR=latest scudum root < /dev/null &> /pst/scudum.log &
+    disown %1
 
 To be able to create a cross compilation based ARM build for the Raspberry Pi system you may change the way
 the root environment is created with:
