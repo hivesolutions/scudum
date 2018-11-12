@@ -1,6 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+SAFE=${SAFE-0}
 PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
@@ -42,7 +43,7 @@ chroot $SCUDUM $TARGET_ENV -i\
     $TARGET_SHELL $CHROOT_ARGS $@
 result=$?
 
-if [ "$SCUDUM_CROSS" == "0" ]; then
+if [ "$SCUDUM_CROSS" == "0" ] && [ "$SAFE" == "1" ]; then
     echo "chroot: going to unmount filesystems, inside chroot"
     chroot $SCUDUM $TARGET_ENV -i\
         HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
