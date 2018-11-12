@@ -51,6 +51,8 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     echo "chroot: finished unmounting filesystems, inside chroot"
 fi
 
+echo "chroot: going to run the release operation"
+
 SCUDUM=$SCUDUM $DIR/release.sh
 
 exit $result
