@@ -20,4 +20,4 @@ mountpoint -q $SCUDUM/proc && umount -v $FLAGS $SCUDUM/proc
 mountpoint -q $SCUDUM/dev/pts && umount -v $FLAGS $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $FLAGS $SCUDUM/dev
 
-echo "release: finished releasing pensing filesystems"
+echo "release: finished releasing mounted filesystems"
