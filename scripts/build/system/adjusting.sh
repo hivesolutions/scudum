@@ -14,7 +14,9 @@ fi
 
 # runs a series of replace operations that will make sure that
 # the /tools directory is present in the compiler paths
-$CC -dumpspecs | sed -e 's@/tools@@g'\
-    -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
-    -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
-    `dirname $($CC --print-libgcc-file-name)`/specs
+if [ "$SCUDUM_CROSS" == "0" ]; the
+    $CC -dumpspecs | sed -e 's@/tools@@g'\
+        -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}'\
+        -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >\
+        `dirname $($CC --print-libgcc-file-name)`/specs
+fi
