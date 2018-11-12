@@ -38,7 +38,7 @@ case "${1}" in
         evaluate_retval
 
         log_info_msg "Mounting remaining file systems..."
-        mount -a -O no_netdev > /dev/null
+        mount -a -O no_netdev -t noproc > /dev/null
         evaluate_retval
         exit $failed
         ;;
