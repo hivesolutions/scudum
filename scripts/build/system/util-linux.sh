@@ -24,4 +24,4 @@ mkdir -pv /var/lib/hwclock
     --without-systemd\
     --without-systemdsystemunitdir
 
-make && make install
+make NCURSES_CFLAGS="" && make install
