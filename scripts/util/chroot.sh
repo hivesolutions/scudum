@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-SAFE=${SAFE-0}
+SAFE=${SAFE-1}
 PERSIST=${PERSIST-/pst}
 SCUDUM=${SCUDUM-/scudum}
 CHROOT_ARGS=${CHROOT_ARGS---login +h}
@@ -48,7 +48,7 @@ if [ "$SCUDUM_CROSS" == "0" ] && [ "$SAFE" == "1" ]; then
     chroot $SCUDUM $TARGET_ENV -i\
         HOME=/root TERM="$TERM" PS1="\u:\w\$ "\
         PATH="$TARGET_PATH"\
-        $TARGET_SHELL -c "/bin/umount -v -a" > /dev/null 2>&1
+        $TARGET_SHELL -c "/bin/umount -v -a -t notmpfs,nosysfs,nodevtmpfs,noproc"
     echo "chroot: finished unmounting filesystems, inside chroot"
 fi
 
