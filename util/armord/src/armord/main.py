@@ -51,9 +51,6 @@ class ArmordApp(appier.WebApp):
             ),
             *args, **kwargs
         )
-        self.theme = "modern"
-        self.style = "romantic"
-        self.libs = "current"
         self.login_redirect = "base.index"
 
 def main():
