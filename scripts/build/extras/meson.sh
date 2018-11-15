@@ -6,6 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "python3"
+depends "python3" "ninja"
 
 pip3 install --quiet "meson==$VERSION"
