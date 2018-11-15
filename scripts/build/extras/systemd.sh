@@ -19,5 +19,5 @@ else
 fi
 
 mkdir -p build && cd build
-meson --prefix=$PREFIX --sysconfdir=/etc --localstatedir=/var -Dblkid=true ..
+meson --prefix=$PREFIX ..
 ninja && ninja install
