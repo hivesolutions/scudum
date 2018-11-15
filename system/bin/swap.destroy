@@ -1,0 +1,14 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+SIZE=${SIZE-8GB}
+PERSIST=${PERSIST-/pst}
+
+set -e +h
+
+if ! mountpoint -q $PERSIST; then
+    exit 1
+fi
+
+swapoff -a
+rm -f $PERSIST/swapfile
