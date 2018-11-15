@@ -11,5 +11,4 @@ rm -rf libcap-$VERSION && tar -zxf "libcap-$VERSION.tar.gz"
 rm -f "libcap-$VERSION.tar.gz"
 cd libcap-$VERSION
 
-./configure --prefix=$PREFIX
 make && make install
