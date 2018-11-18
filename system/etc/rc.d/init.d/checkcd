@@ -14,9 +14,9 @@
 
 . /lib/lsb/init-functions
 
-# ammount of time that is going to be spent in the boot
+# amount of time that is going to be spent in the boot
 # process to wait for the devices to become available,
-# note that usb devices are asynchronous in loading
+# note that USB devices are asynchronous in loading
 SLEEP=0
 
 # the name of the volume label that is going to be used
