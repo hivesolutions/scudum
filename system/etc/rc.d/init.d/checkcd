@@ -44,7 +44,7 @@ case "${1}" in
             cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
         for device in $storage; do
             if [ "$CHECKFS" != "0" ]; then
-                e2fsck -f  -y /dev/$device
+                e2fsck -f -y /dev/$device > /var/log/e2fsck.log 2>&1
             fi
             mkdir -p pst && mount /dev/$device pst
             break
