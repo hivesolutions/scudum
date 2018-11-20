@@ -19,6 +19,10 @@
 # note that USB devices are asynchronous in loading
 SLEEP=0
 
+# if the filesystems should be checked before they are
+# mounted in the associated structure
+CHECKFS=1
+
 # the name of the volume label that is going to be used
 # for finding the persistent storage devices
 STORAGE=PSTSCU
@@ -39,6 +43,9 @@ case "${1}" in
         storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
             cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
         for device in $storage; do
+            if [ "$CHECKFS" != "0" ]; then
+                e2fsck -f  -y /dev/$device
+            fi
             mkdir -p pst && mount /dev/$device pst
             break
         done
