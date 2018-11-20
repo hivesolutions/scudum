@@ -89,7 +89,7 @@ export MAKEFLAGS=${MAKEFLAGS--j $(nproc)}
 export TEST=${TEST-}
 
 # the flag value that is going to be used to control if the
-# c and c++ compiler flags should be defined statically
+# C and C++ compiler flags should be defined statically
 export SET_CFLAGS=${SET_CFLAGS-basic}
 
 # name of the current distribution of scudum, the default
@@ -113,7 +113,7 @@ else
 fi
 
 # exports the flags that define the default optimization flags
-# for both the base c compiler and the c++ compiler so that the
+# for both the base C compiler and the C++ compiler so that the
 # resulting build is generic enough for proper handling
 if [ "$SET_CFLAGS" == "all" ]; then
     export CFLAGS="-O2 -march=$SCUDUM_MARCH -mtune=generic"
