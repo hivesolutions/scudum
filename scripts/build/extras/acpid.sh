@@ -11,5 +11,5 @@ rm -rf acpid-$VERSION && tar -Jxf "acpid-$VERSION.tar.xz"
 rm -f "acpid-$VERSION.tar.xz"
 cd acpid-$VERSION
 
-./configure --prefix=$PREFIX
+./configure --host=$ARCH_TARGET --prefix=$PREFIX
 make && make install
