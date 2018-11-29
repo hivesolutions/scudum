@@ -99,8 +99,8 @@ export DISTRIB="generic"
 # variable that defines the complete set of extra packages
 # that are going to be installed when the extras script
 # execution is triggered (may be changed by others)
-export EXTRAS="sudo ntp python lshw rsync iptables acpid \
-logrotate cifs-utils ntfsprogs wireless-tools wpa-supplicant"
+export EXTRAS="sudo ntp python lshw rsync iptables logrotate \
+cifs-utils ntfsprogs wireless-tools wpa-supplicant"
 
 # verifies the level of matching of the current target arch
 # and the hosting one and according to that defines the default
@@ -154,7 +154,7 @@ export ARCH_TARGET=${ARCH_TARGET-$SCUDUM_BARCH-$SCUDUM_VENDOR-$SCUDUM_SYSTEM}
 # in case the cross compilation mode is not active (normal compilation)
 # some extra packages are added to the list of standard packages
 if [ "$SCUDUM_CROSS" == "0" ]; then
-    export EXTRAS="$EXTRAS avahi nss-mdns"
+    export EXTRAS="$EXTRAS acpid avahi nss-mdns"
 fi
 
 # verifies if there's a local (context) configuration file if there's one
