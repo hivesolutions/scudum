@@ -13,7 +13,7 @@ cd gcc-$VERSION
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >\
     `dirname $($ARCH_TARGET-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
-wget "http://www.mpfr.org/mpfr-$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"
+wget "https://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
