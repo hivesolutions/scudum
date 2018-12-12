@@ -17,7 +17,7 @@ case $SCUDUM_ARCH in
     i?86) sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in ;;
 esac
 
-wget "https://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
+wget "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 

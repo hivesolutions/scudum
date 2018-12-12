@@ -25,7 +25,7 @@ for file in $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
     touch $file.orig
 done
 
-wget "https://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
+wget "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
