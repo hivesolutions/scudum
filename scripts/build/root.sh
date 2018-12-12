@@ -105,8 +105,8 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/flex.sh
     $DIR/tools/curl.sh
     $DIR/tools/git.sh
-    $DIR/tools/wget.sh
     $DIR/tools/gperf.sh
+    $DIR/tools/wget.sh
 
     # runs the strip operation on the complete set of tools
     # so that some disk space is spared by removing the debug
