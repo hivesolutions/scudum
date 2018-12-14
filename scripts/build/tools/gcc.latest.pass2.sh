@@ -29,7 +29,7 @@ wget "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
-wget "https://gmplib.org/download/gmp/gmp-$VERSION_GMP.tar.xz"
+wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 

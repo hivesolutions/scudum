@@ -6,7 +6,7 @@ if [ "$SCUDUM_ARCH" == "x86_64" ]; then
     args="--enable-fat"
 fi
 
-wget --no-check-certificate "https://gmplib.org/download/gmp/gmp-$VERSION.tar.xz"
+wget --no-check-certificate "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION.tar.xz"
 rm -rf gmp-$VERSION && tar -Jxf "gmp-$VERSION.tar.xz"
 rm -f "gmp-$VERSION.tar.xz"
 cd gmp-$VERSION
