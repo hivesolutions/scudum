@@ -13,7 +13,7 @@ Infra-structure for distributed/remote configuration of a grid of nodes.
 
 * Provide the required files and data on node's request
 * Offers an authentication mechanism that is considered secure, only legit nodes get data
-* Supports a way of brodcasting itself through UDP broadcasting/multicasting (self configuration)
+* Supports a way of broadcasting itself through UDP broadcasting/multicasting (self configuration)
 * Offers a JSON REST based API
 * Based on Python's [Appier Framework](http://appier.hive.pt)
 
