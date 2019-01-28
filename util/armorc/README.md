@@ -1,6 +1,6 @@
 # ![Armor](res/logo.png)
 
-Infra-structure for ditributed/remote configuration of a grid of nodes.
+Infra-structure for distributed/remote configuration of a grid of nodes.
 
 ## Concepts
 
