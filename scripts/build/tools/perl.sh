@@ -5,8 +5,6 @@ set -e +h
 
 wget "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.gz"
 
-
-
 rm -rf perl-$VERSION && tar -zxf "perl-$VERSION.tar.gz"
 rm -f "perl-$VERSION.tar.gz"
 cd perl-$VERSION
