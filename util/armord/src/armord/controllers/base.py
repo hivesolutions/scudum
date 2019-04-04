@@ -43,7 +43,7 @@ class BaseController(appier.Controller):
 
     @appier.route("/", "GET")
     @appier.route("/index", "GET")
-    @appier.ensure("base")
+    @appier.ensure(token = "base")
     def index(self):
         return self.template(
             "index.html.tpl",
@@ -51,7 +51,7 @@ class BaseController(appier.Controller):
         )
 
     @appier.route("/about", "GET")
-    @appier.ensure("base")
+    @appier.ensure(token = "base")
     def about(self):
         return self.template(
             "about.html.tpl",
