@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://downloads.sourceforge.net/zsh/zsh-$VERSION.tar.gz"\
-    "http://www.zsh.org/pub/old/zsh-$VERSION.tar.gz"
-rm -rf zsh-$VERSION && tar -zxf "zsh-$VERSION.tar.gz"
+rget "http://downloads.sourceforge.net/zsh/zsh-$VERSION.tar.xz"\
+    "http://www.zsh.org/pub/old/zsh-$VERSION.tar.xz"
+rm -rf zsh-$VERSION && tar -Jxf "zsh-$VERSION.tar.gz"
 rm -f "zsh-$VERSION.tar.gz"
 cd zsh-$VERSION
 
