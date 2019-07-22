@@ -52,3 +52,5 @@ prompt walters
 EOF
 
 echo "$PREFIX/bin/zsh" >> /etc/shells
+
+chsh -s "$PREFIX/bin/zsh"
