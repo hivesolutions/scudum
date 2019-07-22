@@ -8,8 +8,8 @@ source $DIR/common.sh
 
 rget "http://downloads.sourceforge.net/zsh/zsh-$VERSION.tar.xz"\
     "http://www.zsh.org/pub/old/zsh-$VERSION.tar.xz"
-rm -rf zsh-$VERSION && tar -Jxf "zsh-$VERSION.tar.gz"
-rm -f "zsh-$VERSION.tar.gz"
+rm -rf zsh-$VERSION && tar -Jxf "zsh-$VERSION.tar.xz"
+rm -f "zsh-$VERSION.tar.xz"
 cd zsh-$VERSION
 
 ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-tcsetpgrp
