@@ -28,7 +28,7 @@ docker run --name scudum --privileged -d -v /mnt/builds:/mnt/builds hivesolution
 
 ### Environment
 
-The currently recomended environments are Ubuntu 14.04+ or Scudum itself configured for building.
+The currently recommended environments are Ubuntu 14.04+ or Scudum itself configured for building.
 
 ### Installation
 
@@ -71,7 +71,7 @@ you can use the following command:
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
     GCC_BUILD_FLOAT=hard BUILD_CLEAN=0 BUILD_ROOT=0 BUILD_CROSS=0 BUILD_TIMEOUT=1 scudum root
 
-To deploy a new version of the Scudum ditribution to the repository a deploy operation must be performed,
+To deploy a new version of the Scudum distribution to the repository a deploy operation must be performed,
 note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
 using the `TARGET` variable:
 
