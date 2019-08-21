@@ -1,4 +1,5 @@
-VERSION=${VERSION-12.8.1}
+VERSION=${VERSION-12.9.0}
+SNAPSHOT=${SNAPSHOT-0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -13,5 +14,9 @@ rm -rf node-v$VERSION && tar -zxf "node-v$VERSION.tar.gz"
 rm -f "node-v$VERSION.tar.gz"
 cd node-v$VERSION
 
-./configure --prefix=$PREFIX --without-snapshot
+if [ "$SNAPSHOT" == "1" ]; then
+    ./configure --prefix=$PREFIX --without-snapshot
+else
+    ./configure --prefix=$PREFIX
+fi
 make && make install
