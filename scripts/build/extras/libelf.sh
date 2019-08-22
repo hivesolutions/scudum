@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.mr511.de/software/libelf-$VERSION.tar.gz"
+rget "http://www.mr511.de/software/libelf-$VERSION.tar.gz"\
+    "http://fossies.org/linux/misc/old/libelf-$VERSION.tar.gz"
 rm -rf libelf-$VERSION && tar -zxf "libelf-$VERSION.tar.gz"
 rm -f "libelf-$VERSION.tar.gz"
 cd libelf-$VERSION
