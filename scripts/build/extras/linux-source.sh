@@ -1,5 +1,5 @@
 VERSION=${VERSION-5.2.9}
-VERSION_L=${VERSION_L-4.x}
+VERSION_L=${VERSION_L-5.x}
 
 set -e +h
 
