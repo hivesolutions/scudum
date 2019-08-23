@@ -5,7 +5,7 @@
 Building a kernel version and deploying it to the proper directories so that it can be used
 by the proper boot loader can be achieved using the following command:
 
-    MINOR=5.2.9 VARIANT=basic DEPLOY=1 kernel.build
+    MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
 
 To install a previously build kernel image (and modules) avoiding the rebuilding of the kernel
 one should be connected with the target repository and the issue:
