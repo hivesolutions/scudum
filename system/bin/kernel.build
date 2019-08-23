@@ -43,7 +43,7 @@ case "$KARCH" in
     arm*)
         VARIANT=${VARIANT-${1-rasp}}
         MAJOR=${MAJOR-4.x}
-        MINOR=${MINOR-4.14}
+        MINOR=${MINOR-4.19}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
         ;;
     *)
