@@ -1,0 +1,26 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+
+set -e
+
+source /etc/environ
+
+cd /tmp
+
+rm -rf dns_registers && git clone --depth 1 https://github.com/hivesolutions/dns_registers
+mkdir -p /etc/bind && rm -rf /etc/bind/dns_registers && mv dns_registers /etc/bind
+rm -f /etc/bind/named.conf && ln -s /etc/bind/dns_registers/configuration/named.conf /etc/bind/named.conf
+echo "include \"/etc/bind/dns_registers/configuration/hive.conf\";" >> /etc/bind/named.conf
+killall -s SIGTERM named > /dev/null 2>&1 || true
+named
+
+rm -rf config && git clone --depth 1 https://github.com/hivesolutions/config
+mkdir -p /etc/dhcp && rm -rf /etc/dhcp/config && mv config /etc/dhcp
+rm -f /etc/dhcp/dhcpd.conf && ln -s /etc/dhcp/config/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
+mkdir -p /var/lib/dhcpd && touch /var/lib/dhcpd/dhcpd.leases
+pushd /etc/dhcp
+    killall -s SIGTERM dhcpd > /dev/null 2>&1 || true
+    dhcpd -cf /etc/dhcp/dhcpd.conf
+popd
+
+echo -e "nameserver 127.0.0.1\nsearch hive" > /etc/resolv.conf
