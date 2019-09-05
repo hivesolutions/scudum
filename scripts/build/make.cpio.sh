@@ -59,7 +59,7 @@ tar -zcf images/etc.tar.gz etc
 cd $CUR
 
 if [ "$SQUASH" == "1" ]; then
-    CPIO_DIR=/tmp/$NAME.iso.dir
+    CPIO_DIR=/tmp/$NAME.cpio.dir
     mksquashfs $(readlink -f $SCUDUM) $NAME.sqfs
     mkdir -pv $CPIO_DIR
     cp -rp $SCUDUM/boot $CPIO_DIR
