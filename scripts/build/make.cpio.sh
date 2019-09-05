@@ -72,7 +72,7 @@ fi
 
 cd $CPIO_DIR
 
-find . -depth -print | cpio -ocvB | gzip -c > cd $CUR/$FILE
+find . -depth -print | cpio -ocvB | gzip -c > $CUR/$FILE
 
 cd $CUR
 
