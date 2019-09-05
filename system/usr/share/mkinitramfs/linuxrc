@@ -6,6 +6,7 @@ QUIET=0
 PERSIST=0
 CLEANUP=0
 PERFORMANCE=0
+NOMOUNT=0
 
 # declares the function to be used to echo information
 # inside the initrd area, allows easier debug
@@ -20,7 +21,7 @@ function warni() {
     echo "[initrd] $1"
 }
 
-# updates the current path variabmle so that the proper
+# updates the current path variable so that the proper
 # relations are used and the executables found
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
@@ -141,62 +142,78 @@ if [ "$PERSIST" == "1" ]; then
 fi
 
 # moves the current directory to the mount (target) one
-# and creates the (origin) cdrom mount point, note that
-# in case the mount directory is the root one no changing
-# of directory occurs as it's not required (creates issues)
+# and creates the (origin) source device (CD, USB, etc.)
+# mount point, note that  in case the mount directory is the
+# root one no changing of directory occurs as it's not 
+# equired (creates issues)
 if [ "$mountdir" != "" ]; then
     cd $mountdir
 fi
 mkdir -p origin
 
-# sleeps for a while before trying to find the origin
-# device, this gives the kernel some time to mount the
-# async block devices (eg: usb, mmc, etc)
-sleep 1
-
-# prints a message indicating the operation of finding
-# the origin device for loading
-echoi "Finding origin device location..."
-
-# iterates over "some time" to try to find the proper
-# device for the scudum, in a normal situation this
-# operation should succeed
-for i in {1..5}; do
-    # retreives the name of the device that is named
-    # scudum (this is considered) the primary mounting
-    # strategy for the scudum origin
-    drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
-    if [ "$drive" != "" ]; then
-        echoi "Origin device located at $drive"
-        mount -o $mode -n $drive $mountdir/origin
-        mounted=1
-        break
-    fi
-    echoi "Trying again in 3 seconds..."
-    sleep 3
-done
-
-# uses the current cdrom to mount the origin for
-# the system loading, the cdrom is considered the
-# first fallback for the process, then after that
-# tries to mount all of the scsi discs available
-if [ "$mounted" == "0" ]; then
-    echoi "Origin device not located using fallback"
-    mount -t iso9660 -o ro -n /dev/sr0 $mountdir/origin
-    if [ "$?" == "0" ]; then mounted=1; fi
-    for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
-        if [ "$mounted" == "1" ]; then break; fi
-        mount -o $mode -n $drive $mountdir/origin
-        if [ "$?" == "0" ]; then mounted=1; fi
-    done
+# in case we're able to "see" the squash file immediately then
+# this is a sign that we have everything needed there's no need
+# to mount the "external device"
+if [ -f $mountdir/scudum.sqfs ] || [ -f $mountdir/scudum.sqfs ]; then
+    NOMOUNT=1
 fi
 
-# verifies if the origin device mounted has been successful,
-# if that's not the case prints a warning message and then
-# returns the operation control to the calling process
-if [ "$mounted" == "0" ]; then
-    warni "Not possible to mount origin device, breaking boot"
-    exit 1
+if [ "$NOMOUNT" == "1" ]; then
+    # creates a symbolic link between the root of our 
+    # file system and the so called origin directory
+    # that should contain the contents from the external
+    # device (does not exist in this case)
+    ln -s . $mountdir/origin
+else
+    # sleeps for a while before trying to find the origin
+    # device, this gives the kernel some time to mount the
+    # async block devices (eg: usb, mmc, etc)
+    sleep 1
+
+    # prints a message indicating the operation of finding
+    # the origin device for loading
+    echoi "Finding origin device location..."
+
+    # iterates over "some time" to try to find the proper
+    # device for the scudum, in a normal situation this
+    # operation should succeed
+    for i in {1..5}; do
+        # retreives the name of the device that is named
+        # scudum (this is considered) the primary mounting
+        # strategy for the scudum origin
+        drive=$(blkid | egrep "($DEVICE|$DEVICE_U)" | cut -d : -f 1)
+        if [ "$drive" != "" ]; then
+            echoi "Origin device located at $drive"
+            mount -o $mode -n $drive $mountdir/origin
+            mounted=1
+            break
+        fi
+        echoi "Trying again in 3 seconds..."
+        sleep 3
+    done
+
+    # uses the current cdrom to mount the origin for
+    # the system loading, the cdrom is considered the
+    # first fallback for the process, then after that
+    # tries to mount all of the scsi discs available
+    if [ "$mounted" == "0" ]; then
+        echoi "Origin device not located using fallback"
+        mount -t iso9660 -o ro -n /dev/sr0 $mountdir/origin
+        if [ "$?" == "0" ]; then mounted=1; fi
+        for drive in /dev/{sdj1,sdi1,sdh1,sdg1,sdf1,sde1,sdd1,sdc1,sdb1,sda1}; do
+            if [ "$mounted" == "1" ]; then break; fi
+            mount -o $mode -n $drive $mountdir/origin
+            if [ "$?" == "0" ]; then mounted=1; fi
+        done
+    fi
+
+    # verifies if the origin device mounted has been successful,
+    # if that's not the case prints a warning message and then
+    # returns the operation control to the calling process
+    if [ "$mounted" == "0" ]; then
+        warni "Not possible to mount origin device, breaking boot"
+        exit 1
+    fi
 fi
 
 # verifies if the squashfs file exists for the current
