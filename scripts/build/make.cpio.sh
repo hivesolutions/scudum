@@ -76,6 +76,10 @@ find . -depth -print | cpio -ocvB | gzip -c > cd $CUR/$FILE
 
 cd $CUR
 
+if [ "$SQUASH" == "1" ]; then
+    rm -rf $CPIO_DIR
+fi
+
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
     ln -svf $FILE $TARGET/$FILE_LATEST
