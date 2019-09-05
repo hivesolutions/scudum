@@ -70,7 +70,11 @@ else
     CPIO_DIR=$SCUDUM
 fi
 
-find $CPIO_DIR -depth -print | cpio -ocvB | gzip -c > $FILE
+cd $CPIO_DIR
+
+find . -depth -print | cpio -ocvB | gzip -c > cd $CUR/$FILE
+
+cd $CUR
 
 if [ "$DEPLOY" == "1" ]; then
     mkdir -pv $TARGET && mv -v $FILE $TARGET
