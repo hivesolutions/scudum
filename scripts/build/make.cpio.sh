@@ -62,10 +62,11 @@ if [ "$SQUASH" == "1" ]; then
     CPIO_DIR=/tmp/$NAME.cpio.dir
     mksquashfs $(readlink -f $SCUDUM) $NAME.sqfs
     mkdir -pv $CPIO_DIR
+    mkdir -pv $CPIO_DIR/sbin
     cp -rp $SCUDUM/boot $CPIO_DIR
     cp -rp $SCUDUM/isolinux $CPIO_DIR
     cp -p $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR
-    cp -p $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR/init
+    cp -p $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR/sbin/init
     mv -v $NAME.sqfs $CPIO_DIR
 else
     CPIO_DIR=$SCUDUM
