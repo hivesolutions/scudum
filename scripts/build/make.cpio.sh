@@ -64,7 +64,8 @@ if [ "$SQUASH" == "1" ]; then
     mkdir -pv $CPIO_DIR
     cp -rp $SCUDUM/boot $CPIO_DIR
     cp -rp $SCUDUM/isolinux $CPIO_DIR
-    cp -rp $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR
+    cp -p $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR
+    cp -p $SCUDUM/usr/share/mkinitramfs/linuxrc $CPIO_DIR/init
     mv -v $NAME.sqfs $CPIO_DIR
 else
     CPIO_DIR=$SCUDUM
