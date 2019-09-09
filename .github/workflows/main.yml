@@ -7,4 +7,5 @@ jobs:
     container: ubuntu:latest
     steps:
       - uses: actions/checkout@v1
+      - run: apt install sudo
       - run: ./travis/build.sh
