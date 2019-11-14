@@ -40,7 +40,7 @@ case "${1}" in
         evaluate_retval
 
         # prints a small message about the mounting of the persistent
-        # storage operation, notice that in case the chechfs flag is set
+        # storage operation, notice that in case the checkfs flag is set
         # the device is checked for consistency
         log_info_msg "Mounting persistent storage (/pst)..."
         storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
