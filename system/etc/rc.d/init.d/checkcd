@@ -35,6 +35,8 @@ case "${1}" in
             evaluate_retval
         fi
 
+        # prints a small log message about the creation of the
+        # temporary directory for witting (/tmp)
         log_info_msg "Making /tmp world writeable (1777)..."
         chmod 1777 /tmp
         evaluate_retval
