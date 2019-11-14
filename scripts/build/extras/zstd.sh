@@ -11,4 +11,4 @@ rm -rf zstd-$VERSION && tar -zxf "zstd-$VERSION.tar.gz"
 rm -f "zstd-$VERSION.tar.gz"
 cd zstd-$VERSION
 
-make && make install PREFIX==$PREFIX
+make && make install PREFIX=$PREFIX
