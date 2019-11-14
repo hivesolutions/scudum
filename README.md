@@ -45,7 +45,7 @@ base tools and the base system infra-structure is required, to start the process
     scudum root
 
 To start the Scudum build process building the latest version of GCC and setting the strict CFLAGS so that the
-build is controlled and does not compile using any (unwanted) optimization and runnnig as a background task use:
+build is controlled and does not compile using any (unwanted) optimization and running as a background task use:
 
     SET_CFLAGS=all GCC_FLAVOUR=latest scudum root < /dev/null &> /pst/scudum.log &
     disown %1
@@ -64,7 +64,7 @@ must be changed, note that this is not backwards compatible:
     GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
     GCC_BUILD_FLOAT=hard scudum root
 
-To be able to run only the system building (without repeating the cross toolchain and the base toochain process)
+To be able to run only the system building (without repeating the cross toolchain and the base toolchain process)
 you can use the following command:
 
     SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
@@ -91,7 +91,7 @@ loader use the following command taking note that the disk contents should be lo
 
     scudum make.iso
 
-To crate a filesystem image able to be used inside a USB pend drive (configured with SYSLINUX) use the folowing
+To crate a filesystem image able to be used inside a USB pend drive (configured with SYSLINUX) use the following
 command:
 
     scudum make.usb
