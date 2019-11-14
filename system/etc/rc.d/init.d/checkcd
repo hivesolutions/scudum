@@ -39,7 +39,10 @@ case "${1}" in
         chmod 1777 /tmp
         evaluate_retval
 
-        log_info_msg "Mounting persistent storage..."
+        # prints a small message about the mounting of the persistent
+        # storage operation, notice that in case the chechfs flag is set
+        # the device is checked for consistency
+        log_info_msg "Mounting persistent storage (/pst)..."
         storage=$(lsblk --pairs -o NAME,LABEL | grep "LABEL=\"$STORAGE\"" |\
             cut -d \  -f 1 | cut -b 7- | cut -d \" -f 1)
         for device in $storage; do
