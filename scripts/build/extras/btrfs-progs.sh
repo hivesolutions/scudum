@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "attr" "lzo" "zstd" "acl" "asciidoc" "xmlto"
+depends "attr" "zstd" "acl"
 
 wget "https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VERSION.tar.gz"
 rm -rf btrfs-progs-v$VERSION && tar -zxf "btrfs-progs-v$VERSION.tar.gz"
