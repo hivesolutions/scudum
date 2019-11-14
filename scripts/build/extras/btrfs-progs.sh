@@ -13,4 +13,5 @@ rm -rf btrfs-progs-v$VERSION && tar -zxf "btrfs-progs-v$VERSION.tar.gz"
 rm -f "btrfs-progs-v$VERSION.tar.gz"
 cd btrfs-progs-v$VERSION
 
+./autogen.sh --prefix=$PREFIX
 make && make install prefix=$PREFIX
