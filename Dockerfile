@@ -9,6 +9,7 @@ ADD . /builder
 
 WORKDIR /build
 
+RUN rm -rf /builder/.git
 RUN apt-get update && apt-get install -y -q make
 RUN cd /builder && make install
 
