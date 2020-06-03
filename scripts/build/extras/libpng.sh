@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://downloads.sourceforge.net/project/libpng/libpng-$VERSION.tar.gz?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/libpng/libpng-$VERSION.tar.gz?use_mirror=netcologne"\
     "http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/delegates/libpng-$VERSION.tar.gz"\
     "http://download.openpkg.org/components/cache/png/libpng-$VERSION.tar.gz"
 rm -rf libpng-$VERSION && tar -zxf "libpng-$VERSION.tar.gz"
