@@ -2,7 +2,7 @@ VERSION=${VERSION-7.61.1}
 
 set -e +h
 
-wget --no-check-certificate "http://curl.haxx.se/download/curl-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://curl.haxx.se/download/curl-$VERSION.tar.gz"
 rm -rf curl-$VERSION && tar -zxf "curl-$VERSION.tar.gz"
 rm -f "curl-$VERSION.tar.gz"
 cd curl-$VERSION

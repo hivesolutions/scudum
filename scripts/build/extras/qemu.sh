@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib" "python" "x11"
 
-wget "https://download.qemu.org/qemu-$VERSION.tar.bz2"
+wget --content-disposition "https://download.qemu.org/qemu-$VERSION.tar.bz2"
 rm -rf qemu-$VERSION && tar -jxf "qemu-$VERSION.tar.bz2"
 rm -f "qemu-$VERSION.tar.bz2"
 cd qemu-$VERSION

@@ -8,7 +8,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://ftp.gnu.org/gnu/bash/bash-$VERSION.tar.gz"
+wget --content-disposition "http://ftp.gnu.org/gnu/bash/bash-$VERSION.tar.gz"
 rm -rf bash-$VERSION && tar -zxf "bash-$VERSION.tar.gz"
 rm -f "bash-$VERSION.tar.gz"
 cd bash-$VERSION

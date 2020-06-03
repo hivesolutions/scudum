@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.cmake.org/files/v$VERSION_L/cmake-$VERSION.tar.gz"
+wget --content-disposition "http://www.cmake.org/files/v$VERSION_L/cmake-$VERSION.tar.gz"
 rm -rf cmake-$VERSION && tar -zxf "cmake-$VERSION.tar.gz"
 rm -f "cmake-$VERSION.tar.gz"
 cd cmake-$VERSION

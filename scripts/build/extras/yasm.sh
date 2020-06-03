@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python"
 
-wget "http://www.tortall.net/projects/yasm/releases/yasm-$VERSION.tar.gz"
+wget --content-disposition "http://www.tortall.net/projects/yasm/releases/yasm-$VERSION.tar.gz"
 rm -rf yasm-$VERSION && tar -zxf "yasm-$VERSION.tar.gz"
 rm -f "yasm-$VERSION.tar.gz"
 cd yasm-$VERSION

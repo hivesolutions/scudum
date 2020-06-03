@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://github.com/open-iscsi/open-isns/archive/v$VERSION.tar.gz"
+wget --content-disposition "https://github.com/open-iscsi/open-isns/archive/v$VERSION.tar.gz"
 rm -rf open-isns-$VERSION && tar -zxf "v$VERSION.tar.gz"
 rm -f "v$VERSION.tar.gz"
 cd open-isns-$VERSION

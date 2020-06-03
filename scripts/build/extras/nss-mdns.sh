@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "avahi" "glib"
 
-wget "https://github.com/lathiat/nss-mdns/releases/download/v$VERSION/nss-mdns-$VERSION.tar.gz"
+wget --content-disposition "https://github.com/lathiat/nss-mdns/releases/download/v$VERSION/nss-mdns-$VERSION.tar.gz"
 rm -rf nss-mdns-$VERSION && tar -zxf "nss-mdns-$VERSION.tar.gz"
 rm -f "nss-mdns-$VERSION.tar.gz"
 cd nss-mdns-$VERSION

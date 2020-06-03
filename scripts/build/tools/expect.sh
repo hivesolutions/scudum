@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-rget "http://netcologne.dl.sourceforge.net/project/expect/expect$VERSION.tar.gz"\
+rget "http://download.sourceforge.net/project/expect/expect$VERSION.tar.gz?use_mirror=netcologne"\
    "http://sources.buildroot.net/expect/expect$VERSION.tar.gz"
 rm -rf expect$VERSION && tar -zxf "expect$VERSION.tar.gz"
 rm -f "expect$VERSION.tar.gz"

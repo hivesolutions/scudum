@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "which"
 
-wget "http://nodejs.org/dist/v$VERSION/node-v$VERSION.tar.gz"
+wget --content-disposition "http://nodejs.org/dist/v$VERSION/node-v$VERSION.tar.gz"
 rm -rf node-v$VERSION && tar -zxf "node-v$VERSION.tar.gz"
 rm -f "node-v$VERSION.tar.gz"
 cd node-v$VERSION

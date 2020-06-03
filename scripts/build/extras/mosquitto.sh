@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "c-ares"
 
-wget "http://mosquitto.org/files/source/mosquitto-$VERSION.tar.gz"
+wget --content-disposition "http://mosquitto.org/files/source/mosquitto-$VERSION.tar.gz"
 rm -rf mosquitto-$VERSION && tar -zxf "mosquitto-$VERSION.tar.gz"
 rm -f "mosquitto-$VERSION.tar.gz"
 cd mosquitto-$VERSION

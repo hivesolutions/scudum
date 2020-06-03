@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-$VERSION.tar.gz"
+wget --content-disposition "https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-$VERSION.tar.gz"
 rm -rf tftp-hpa-$VERSION && tar -zxf "tftp-hpa-$VERSION.tar.gz"
 rm -f "tftp-hpa-$VERSION.tar.gz"
 cd tftp-hpa-$VERSION

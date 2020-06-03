@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "dbus" "glib" "xorg-libs"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/$VERSION_L/at-spi2-core-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/$VERSION_L/at-spi2-core-$VERSION.tar.xz"
 rm -rf at-spi2-core-$VERSION && tar -Jxf "at-spi2-core-$VERSION.tar.xz"
 rm -f "at-spi2-core-$VERSION.tar.xz"
 cd at-spi2-core-$VERSION

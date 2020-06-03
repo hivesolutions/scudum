@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "at-spi2-atk" "gdk-pixbuf" "pango"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/gtk+/$VERSION_L/gtk+-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/gtk+/$VERSION_L/gtk+-$VERSION.tar.xz"
 rm -rf gtk+-$VERSION && tar -Jxf "gtk+-$VERSION.tar.xz"
 rm -f "gtk+-$VERSION.tar.xz"
 cd gtk+-$VERSION

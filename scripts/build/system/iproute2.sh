@@ -2,7 +2,7 @@ VERSION=${VERSION-4.18.0}
 
 set -e +h
 
-wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$VERSION.tar.xz"
 rm -rf iproute2-$VERSION && tar -Jxf "iproute2-$VERSION.tar.xz"
 rm -f "iproute2-$VERSION.tar.xz"
 cd iproute2-$VERSION

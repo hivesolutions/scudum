@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "unzip sgml-common"
 
-wget "http://www.docbook.org/sgml/$VERSION/docbook-$VERSION.zip"
+wget --content-disposition "http://www.docbook.org/sgml/$VERSION/docbook-$VERSION.zip"
 rm -rf docbook-$VERSION && unzip "docbook-$VERSION.zip" -d docbook-$VERSION
 rm -f "docbook-$VERSION.zip"
 cd docbook-$VERSION

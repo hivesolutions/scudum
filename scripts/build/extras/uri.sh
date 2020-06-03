@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "expat"
 
-wget "http://www.cpan.org/authors/id/E/ET/ETHER/URI-$VERSION.tar.gz"
+wget --content-disposition "http://www.cpan.org/authors/id/E/ET/ETHER/URI-$VERSION.tar.gz"
 rm -rf URI-$VERSION && tar -zxf "URI-$VERSION.tar.gz"
 rm -f "URI-$VERSION.tar.gz"
 cd URI-$VERSION

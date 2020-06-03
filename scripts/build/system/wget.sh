@@ -2,7 +2,7 @@ VERSION=${VERSION-1.19.5}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/wget/wget-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/wget/wget-$VERSION.tar.gz"
 rm -rf wget-$VERSION && tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION

@@ -12,7 +12,7 @@ if [ "$SHELL" == "" ]; then
     export SHELL="/bin/sh"
 fi
 
-wget "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
+wget --content-disposition "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$VERSION/source/firefox-$VERSION.source.tar.bz2"
 rm -rf mozilla-release && tar -jxf "firefox-$VERSION.source.tar.bz2"
 rm -f "firefox-$VERSION.source.tar.bz2"
 cd mozilla-release

@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "atkmm" "gtk+2" "pangomm"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/gtkmm/$VERSION_L/gtkmm-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/gtkmm/$VERSION_L/gtkmm-$VERSION.tar.xz"
 rm -rf gtkmm-$VERSION && tar -Jxf "gtkmm-$VERSION.tar.xz"
 rm -f "gtkmm-$VERSION.tar.xz"
 cd gtkmm-$VERSION

@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "libwnck" "libxfce4ui" "libxfce4util" "startup-notification"
 
-wget "http://archive.xfce.org/src/xfce/xfwm4/$VERSION_L/xfwm4-$VERSION.tar.bz2"
+wget --content-disposition "http://archive.xfce.org/src/xfce/xfwm4/$VERSION_L/xfwm4-$VERSION.tar.bz2"
 rm -rf xfwm4-$VERSION && tar -jxf "xfwm4-$VERSION.tar.bz2"
 rm -f "xfwm4-$VERSION.tar.bz2"
 cd xfwm4-$VERSION

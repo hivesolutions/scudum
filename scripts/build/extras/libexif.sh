@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/libexif/libexif-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/libexif/libexif-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf libexif-$VERSION && tar -zxf "libexif-$VERSION.tar.gz"
 rm -f "libexif-$VERSION.tar.gz"
 cd libexif-$VERSION

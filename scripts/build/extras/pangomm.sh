@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "cairomm" "glibmm" "pango"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/pangomm/$VERSION_L/pangomm-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/pangomm/$VERSION_L/pangomm-$VERSION.tar.xz"
 rm -rf pangomm-$VERSION && tar -Jxf "pangomm-$VERSION.tar.xz"
 rm -f "pangomm-$VERSION.tar.xz"
 cd pangomm-$VERSION

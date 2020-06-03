@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libxau" "xcb-proto"
 
-wget "http://xcb.freedesktop.org/dist/libxcb-$VERSION.tar.bz2"
+wget --content-disposition "http://xcb.freedesktop.org/dist/libxcb-$VERSION.tar.bz2"
 rm -rf libxcb-$VERSION && tar -jxf "libxcb-$VERSION.tar.bz2"
 rm -f "libxcb-$VERSION.tar.bz2"
 cd libxcb-$VERSION

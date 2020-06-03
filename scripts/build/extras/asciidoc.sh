@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python"
 
-wget "http://netcologne.dl.sourceforge.net/project/asciidoc/asciidoc-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/asciidoc/asciidoc-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf asciidoc-$VERSION && tar -zxf "asciidoc-$VERSION.tar.gz"
 rm -f "asciidoc-$VERSION.tar.gz"
 cd asciidoc-$VERSION

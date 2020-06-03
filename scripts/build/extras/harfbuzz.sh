@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "cairo" "freetype" "glib"
 
-wget "http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-$VERSION.tar.bz2"
+wget --content-disposition "http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-$VERSION.tar.bz2"
 rm -rf harfbuzz-$VERSION && tar -jxf "harfbuzz-$VERSION.tar.bz2"
 rm -f "harfbuzz-$VERSION.tar.bz2"
 cd harfbuzz-$VERSION

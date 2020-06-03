@@ -4,7 +4,7 @@ PATCH_SEQ=${PATCH_SEQ-1 3}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/readline/readline-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/readline/readline-$VERSION.tar.gz"
 rm -rf readline-$VERSION && tar -zxf "readline-$VERSION.tar.gz"
 rm -f "readline-$VERSION.tar.gz"
 cd readline-$VERSION

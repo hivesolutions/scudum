@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://sourceware.org/elfutils/ftp/$VERSION/elfutils-$VERSION.tar.bz2"
+wget --content-disposition "https://sourceware.org/elfutils/ftp/$VERSION/elfutils-$VERSION.tar.bz2"
 rm -rf elfutils-$VERSION && tar -jxf "elfutils-$VERSION.tar.bz2"
 rm -f "elfutils-$VERSION.tar.bz2"
 cd elfutils-$VERSION

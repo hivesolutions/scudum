@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.lua.org/ftp/lua-$VERSION.tar.gz"
+wget --content-disposition "http://www.lua.org/ftp/lua-$VERSION.tar.gz"
 rm -rf lua-$VERSION && tar -zxf "lua-$VERSION.tar.gz"
 rm -f "lua-$VERSION.tar.gz"
 cd lua-$VERSION

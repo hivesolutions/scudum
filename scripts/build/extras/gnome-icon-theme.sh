@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "gtk+2" "hicolor-icon-theme" "icon-naming-utils"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/gnome-icon-theme/$VERSION_L/gnome-icon-theme-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/gnome-icon-theme/$VERSION_L/gnome-icon-theme-$VERSION.tar.xz"
 rm -rf gnome-icon-theme-$VERSION && tar -Jxf "gnome-icon-theme-$VERSION.tar.xz"
 rm -f "gnome-icon-theme-$VERSION.tar.xz"
 cd gnome-icon-theme-$VERSION

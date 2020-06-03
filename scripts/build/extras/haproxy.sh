@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "pcre"
 
-wget "http://www.haproxy.org/download/$VERSION_L/src/haproxy-$VERSION.tar.gz"
+wget --content-disposition "http://www.haproxy.org/download/$VERSION_L/src/haproxy-$VERSION.tar.gz"
 rm -rf haproxy-$VERSION && tar -zxf "haproxy-$VERSION.tar.gz"
 rm -f "haproxy-$VERSION.tar.gz"
 cd haproxy-$VERSION

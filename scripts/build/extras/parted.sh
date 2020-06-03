@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "lvm2"
 
-wget "http://ftp.gnu.org/gnu/parted/parted-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnu.org/gnu/parted/parted-$VERSION.tar.xz"
 rm -rf parted-$VERSION && tar -Jxf "parted-$VERSION.tar.xz"
 rm -f "parted-$VERSION.tar.xz"
 cd parted-$VERSION

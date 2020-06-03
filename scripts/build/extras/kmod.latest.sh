@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
+wget --content-disposition "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
 rm -rf kmod-$VERSION && tar -Jxf "kmod-$VERSION.tar.xz"
 rm -f "kmod-$VERSION.tar.xz"
 cd kmod-$VERSION

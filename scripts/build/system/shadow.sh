@@ -8,7 +8,7 @@ fi
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.osuosl.org/pub/blfs/conglomeration/shadow/shadow-$VERSION.$EXTENSION"
+wget --no-check-certificate --content-disposition "http://ftp.osuosl.org/pub/blfs/conglomeration/shadow/shadow-$VERSION.$EXTENSION"
 rm -rf shadow-$VERSION && tar -xf "shadow-$VERSION.$EXTENSION"
 rm -f "shadow-$VERSION.$EXTENSION"
 cd shadow-$VERSION

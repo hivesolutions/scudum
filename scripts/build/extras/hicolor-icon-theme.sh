@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-$VERSION.tar.gz"
+wget --content-disposition "http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-$VERSION.tar.gz"
 rm -rf hicolor-icon-theme-$VERSION && tar -zxf "hicolor-icon-theme-$VERSION.tar.gz"
 rm -f "hicolor-icon-theme-$VERSION.tar.gz"
 cd hicolor-icon-theme-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 unset CFLAGS
 
-wget "http://alpha.gnu.org/gnu/grub/grub-$VERSION.tar.gz"
+wget --content-disposition "http://alpha.gnu.org/gnu/grub/grub-$VERSION.tar.gz"
 rm -rf grub-$VERSION && tar -zxf "grub-$VERSION.tar.gz"
 rm -f "grub-$VERSION.tar.gz"
 cd grub-$VERSION

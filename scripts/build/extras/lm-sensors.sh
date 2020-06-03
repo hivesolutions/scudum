@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "which"
 
-wget "https://github.com/lm-sensors/lm-sensors/archive/V$VERSION.tar.gz"
+wget --content-disposition "https://github.com/lm-sensors/lm-sensors/archive/V$VERSION.tar.gz"
 rm -rf lm-sensors-$VERSION && tar -zxf "V$VERSION.tar.gz"
 rm -f "V$VERSION.tar.gz"
 cd lm-sensors-$VERSION

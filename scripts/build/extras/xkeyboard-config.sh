@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "intltool" "xorg-libs"
 
-wget "http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-$VERSION.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-$VERSION.tar.bz2"
 rm -rf xkeyboard-config-$VERSION && tar -jxf "xkeyboard-config-$VERSION.tar.bz2"
 rm -f "xkeyboard-config-$VERSION.tar.bz2"
 cd xkeyboard-config-$VERSION

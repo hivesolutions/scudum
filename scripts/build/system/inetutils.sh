@@ -2,7 +2,7 @@ VERSION=${VERSION-1.9.4}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
 rm -rf inetutils-$VERSION && tar -zxf "inetutils-$VERSION.tar.gz"
 rm -f "inetutils-$VERSION.tar.gz"
 cd inetutils-$VERSION

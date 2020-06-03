@@ -2,7 +2,7 @@ VERSION=${VERSION-1.9}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/gzip/gzip-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/gzip/gzip-$VERSION.tar.xz"
 rm -rf gzip-$VERSION && tar -Jxf "gzip-$VERSION.tar.xz"
 rm -f "gzip-$VERSION.tar.xz"
 cd gzip-$VERSION

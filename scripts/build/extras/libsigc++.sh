@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://ftp.gnome.org/pub/gnome/sources/libsigc++/$VERSION_L/libsigc++-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/libsigc++/$VERSION_L/libsigc++-$VERSION.tar.xz"
 rm -rf libsigc++-$VERSION && tar -Jxf "libsigc++-$VERSION.tar.xz"
 rm -f "libsigc++-$VERSION.tar.xz"
 cd libsigc++-$VERSION

@@ -28,7 +28,7 @@ mountpoint -q $SCUDUM/dev/pts && umount -v $SCUDUM/dev/pts
 mountpoint -q $SCUDUM/dev && umount -v $SCUDUM/dev
 
 # runs the synchronization operation so that all the pending
-# input/ouput operations are properly flushed (avoids errors)
+# input/output operations are properly flushed (avoids errors)
 sync
 
 # removes the tools symbolic link from the current system
@@ -45,8 +45,8 @@ rm -rf $SCUDUM && mkdir $SCUDUM
 cd $SCUDUM
 
 # retrieves the requested package containing the scudum root
-# files and then unacks it into the current scudum location,
+# files and then unpacks it into the current scudum location,
 # this location may then be used as a normal chroot environment
-wget "$REPO/$NAME-$ARCH-$VERSION.tar.gz"
+wget --content-disposition "$REPO/$NAME-$ARCH-$VERSION.tar.gz"
 tar -zxf $NAME-$ARCH-$VERSION.tar.gz
 rm -v $NAME-$ARCH-$VERSION.tar.gz

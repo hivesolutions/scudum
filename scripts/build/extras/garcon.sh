@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "libxfce4util" "gtk+2"
 
-wget "http://archive.xfce.org/src/xfce/garcon/$VERSION_L/garcon-$VERSION.tar.bz2"
+wget --content-disposition "http://archive.xfce.org/src/xfce/garcon/$VERSION_L/garcon-$VERSION.tar.bz2"
 rm -rf garcon-$VERSION && tar -jxf "garcon-$VERSION.tar.bz2"
 rm -f "garcon-$VERSION.tar.bz2"
 cd garcon-$VERSION

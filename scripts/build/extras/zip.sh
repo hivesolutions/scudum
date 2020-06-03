@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://netcologne.dl.sourceforge.net/project/infozip/zip$VERSION.tar.gz"\
+rget "http://download.sourceforge.net/project/infozip/zip$VERSION.tar.gz?use_mirror=netcologne"\
     "http://fossies.org/linux/misc/zip$VERSION.tar.gz"
 rm -rf zip$VERSION && tar -zxf "zip$VERSION.tar.gz"
 rm -f "zip$VERSION.tar.gz"

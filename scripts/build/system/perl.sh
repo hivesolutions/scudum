@@ -7,12 +7,12 @@ set -e +h
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
-wget --no-check-certificate "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://www.cpan.org/src/$VERSION_MAJOR/perl-$VERSION.tar.gz"
 rm -rf perl-$VERSION && tar -zxf "perl-$VERSION.tar.gz"
 rm -f "perl-$VERSION.tar.gz"
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    wget --no-check-certificate "https://github.com/arsv/perl-cross/releases/download/$VERSION_CROSS/perl-cross-$VERSION_CROSS.tar.gz"
+    wget --no-check-certificate --content-disposition "https://github.com/arsv/perl-cross/releases/download/$VERSION_CROSS/perl-cross-$VERSION_CROSS.tar.gz"
     tar -zxf "perl-cross-$VERSION_CROSS.tar.gz" -C perl-$VERSION --strip-components=1
     rm -f "perl-cross-$VERSION_CROSS.tar.gz"
 fi

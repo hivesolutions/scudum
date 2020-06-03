@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib" "libsigc++"
 
-wget "ftp://ftp.gnome.org/pub/gnome/sources/glibmm/$VERSION_L/glibmm-$VERSION.tar.xz"
+wget --content-disposition "ftp://ftp.gnome.org/pub/gnome/sources/glibmm/$VERSION_L/glibmm-$VERSION.tar.xz"
 rm -rf glibmm-$VERSION && tar -Jxf "glibmm-$VERSION.tar.xz"
 rm -f "glibmm-$VERSION.tar.xz"
 cd glibmm-$VERSION

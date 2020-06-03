@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://download.osgeo.org/libtiff/tiff-$VERSION.tar.gz"
+wget --content-disposition "http://download.osgeo.org/libtiff/tiff-$VERSION.tar.gz"
 rm -rf tiff-$VERSION && tar -zxf "tiff-$VERSION.tar.gz"
 rm -f "tiff-$VERSION.tar.gz"
 cd tiff-$VERSION

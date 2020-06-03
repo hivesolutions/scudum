@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://github.com/facebook/zstd/releases/download/v$VERSION/zstd-$VERSION.tar.gz"
+wget --content-disposition "https://github.com/facebook/zstd/releases/download/v$VERSION/zstd-$VERSION.tar.gz"
 rm -rf zstd-$VERSION && tar -zxf "zstd-$VERSION.tar.gz"
 rm -f "zstd-$VERSION.tar.gz"
 cd zstd-$VERSION

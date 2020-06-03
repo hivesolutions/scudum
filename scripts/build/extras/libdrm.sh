@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs" "pthread-stubs"
 
-wget "http://dri.freedesktop.org/libdrm/libdrm-$VERSION.tar.bz2"
+wget --content-disposition "http://dri.freedesktop.org/libdrm/libdrm-$VERSION.tar.bz2"
 rm -rf libdrm-$VERSION && tar -jxf "libdrm-$VERSION.tar.bz2"
 rm -f "libdrm-$VERSION.tar.bz2"
 cd libdrm-$VERSION

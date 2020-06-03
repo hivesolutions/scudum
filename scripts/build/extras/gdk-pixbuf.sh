@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib" "libpng" "tiff" "jpeg-turbo"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/$VERSION_L/gdk-pixbuf-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/$VERSION_L/gdk-pixbuf-$VERSION.tar.xz"
 rm -rf gdk-pixbuf-$VERSION && tar -Jxf "gdk-pixbuf-$VERSION.tar.xz"
 rm -f "gdk-pixbuf-$VERSION.tar.xz"
 cd gdk-pixbuf-$VERSION

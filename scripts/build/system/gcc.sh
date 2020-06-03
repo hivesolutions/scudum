@@ -9,7 +9,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     export CXXFLAGS="$CXXFLAGS -fno-exceptions"
 fi
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
 rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
 rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION

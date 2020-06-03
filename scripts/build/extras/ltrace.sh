@@ -13,7 +13,7 @@ if [ -z "$CXXFLAGS" ]; then export CXXFLAGS="-O2"; fi
 export CFLAGS="$CFLAGS -Wno-unused-local-typedefs"
 export CXXFLAGS="$CXXFLAGS -Wno-unused-local-typedefs"
 
-wget "http://ltrace.org/ltrace_$VERSION.orig.tar.bz2"
+wget --content-disposition "http://ltrace.org/ltrace_$VERSION.orig.tar.bz2"
 rm -rf ltrace-$VERSION && tar -jxf "ltrace_$VERSION.orig.tar.bz2"
 rm -f "ltrace_$VERSION.orig.tar.bz2"
 cd ltrace-$VERSION

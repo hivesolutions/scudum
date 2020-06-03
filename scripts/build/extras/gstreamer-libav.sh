@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "gstreamer-plugins" "yasm"
 
-wget "http://gstreamer.freedesktop.org/src/gst-libav/gst-libav-$VERSION.tar.xz"
+wget --content-disposition "http://gstreamer.freedesktop.org/src/gst-libav/gst-libav-$VERSION.tar.xz"
 rm -rf gst-libav-$VERSION && tar -Jxf "gst-libav-$VERSION.tar.xz"
 rm -f "gst-libav-$VERSION.tar.xz"
 cd gst-libav-$VERSION

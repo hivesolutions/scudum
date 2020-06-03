@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xmlto" "lynx" "xorg-applications"
 
-wget "http://people.freedesktop.org/~rdieter/xdg-utils/xdg-utils-$VERSION.tar.gz"
+wget --content-disposition "http://people.freedesktop.org/~rdieter/xdg-utils/xdg-utils-$VERSION.tar.gz"
 rm -rf xdg-utils-$VERSION && tar -zxf "xdg-utils-$VERSION.tar.gz"
 rm -f "xdg-utils-$VERSION.tar.gz"
 cd xdg-utils-$VERSION

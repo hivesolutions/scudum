@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://cache.ruby-lang.org/pub/ruby/$VERSION_L/ruby-$VERSION.tar.gz"
+wget --content-disposition "http://cache.ruby-lang.org/pub/ruby/$VERSION_L/ruby-$VERSION.tar.gz"
 rm -rf ruby-$VERSION && tar -zxf "ruby-$VERSION.tar.gz"
 rm -f "ruby-$VERSION.tar.gz"
 cd ruby-$VERSION

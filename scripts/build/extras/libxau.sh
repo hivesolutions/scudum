@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://xorg.freedesktop.org/releases/individual/lib/libXau-$VERSION.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/releases/individual/lib/libXau-$VERSION.tar.bz2"
 rm -rf libXau-$VERSION && tar -jxf "libXau-$VERSION.tar.bz2"
 rm -f "libXau-$VERSION.tar.bz2"
 cd libXau-$VERSION

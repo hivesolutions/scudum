@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "gtk+2"
 
-wget "http://netcologne.dl.sourceforge.net/project/lxde/lxde-icon-theme-$VERSION.tar.xz"
+wget --content-disposition "http://download.sourceforge.net/project/lxde/lxde-icon-theme-$VERSION.tar.xz?use_mirror=netcologne"
 rm -rf xde-icon-theme-$VERSION && tar -Jxf "lxde-icon-theme-$VERSION.tar.xz"
 rm -f "lxde-icon-theme-$VERSION.tar.xz"
 cd lxde-icon-theme-$VERSION

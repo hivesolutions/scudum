@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://podgorny.cz/uptimed/releases/uptimed-$VERSION.tar.bz2"
+wget --content-disposition "http://podgorny.cz/uptimed/releases/uptimed-$VERSION.tar.bz2"
 rm -rf uptimed-$VERSION && tar -jxf "uptimed-$VERSION.tar.bz2"
 rm -f "uptimed-$VERSION.tar.bz2"
 cd uptimed-$VERSION

@@ -5,7 +5,7 @@ VERSION_MAJOR=${VERSION_MAJOR-2.33}
 
 set -e +h
 
-wget "http://www.kernel.org/pub/linux/utils/util-linux/v$VERSION_MAJOR/util-linux-$VERSION.tar.xz"
+wget --content-disposition "http://www.kernel.org/pub/linux/utils/util-linux/v$VERSION_MAJOR/util-linux-$VERSION.tar.xz"
 rm -rf util-linux-$VERSION && tar -Jxf "util-linux-$VERSION.tar.xz"
 rm -f "util-linux-$VERSION.tar.xz"
 cd util-linux-$VERSION

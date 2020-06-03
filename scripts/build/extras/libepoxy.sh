@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "mesa" "xorg-macros"
 
-wget "http://crux.nu/files/libepoxy-$VERSION.tar.gz"
+wget --content-disposition "http://crux.nu/files/libepoxy-$VERSION.tar.gz"
 rm -rf libepoxy-$VERSION && tar -zxf "libepoxy-$VERSION.tar.gz"
 rm -f "libepoxy-$VERSION.tar.gz"
 cd libepoxy-$VERSION

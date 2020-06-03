@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://download.savannah.gnu.org/releases/attr/attr-$VERSION.src.tar.gz"
+wget --content-disposition "http://download.savannah.gnu.org/releases/attr/attr-$VERSION.src.tar.gz"
 rm -rf attr-$VERSION && tar -zxf "attr-$VERSION.src.tar.gz"
 rm -f "attr-$VERSION.src.tar.gz"
 cd attr-$VERSION

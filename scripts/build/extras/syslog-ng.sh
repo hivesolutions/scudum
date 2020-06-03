@@ -9,12 +9,12 @@ source $DIR/common.sh
 
 depends "json-c"
 
-wget "https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$VERSION/syslog-ng-$VERSION.tar.gz"
+wget --content-disposition "https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$VERSION/syslog-ng-$VERSION.tar.gz"
 rm -rf syslog-ng-$VERSION && tar -zxf "syslog-ng-$VERSION.tar.gz"
 rm -f "syslog-ng-$VERSION.tar.gz"
 cd syslog-ng-$VERSION
 
-wget "https://s3.amazonaws.com/json-c_releases/releases/json-c-$VERSION_JSON_C.tar.gz"
+wget --content-disposition "https://s3.amazonaws.com/json-c_releases/releases/json-c-$VERSION_JSON_C.tar.gz"
 tar -zxf "json-c-$VERSION_JSON_C.tar.gz"
 mv json-c-$VERSION_JSON_C lib/jsonc
 

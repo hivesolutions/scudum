@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "mesa" "glew" "glut"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/demos/$VERSION/mesa-demos-$VERSION.tar.gz"
+wget --content-disposition "ftp://ftp.freedesktop.org/pub/mesa/demos/$VERSION/mesa-demos-$VERSION.tar.gz"
 rm -rf mesa-demos-$VERSION && tar -zxf "mesa-demos-$VERSION.tar.gz"
 rm -f "mesa-demos-$VERSION.tar.gz"
 cd mesa-demos-$VERSION

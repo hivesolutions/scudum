@@ -10,7 +10,7 @@ depends "nasm" "upx" "which"
 
 unset MAKEFLAGS
 
-wget "https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-$VERSION.tar.xz"
+wget --content-disposition "https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-$VERSION.tar.xz"
 rm -rf syslinux-$VERSION && tar -Jxf "syslinux-$VERSION.tar.xz"
 rm -f "syslinux-$VERSION.tar.xz"
 cd syslinux-$VERSION

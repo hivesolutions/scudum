@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libogg"
 
-wget "http://downloads.xiph.org/releases/vorbis/libvorbis-$VERSION.tar.xz"
+wget --content-disposition "http://downloads.xiph.org/releases/vorbis/libvorbis-$VERSION.tar.xz"
 rm -rf libvorbis-$VERSION && tar -Jxf "libvorbis-$VERSION.tar.xz"
 rm -f "libvorbis-$VERSION.tar.xz"
 cd libvorbis-$VERSION

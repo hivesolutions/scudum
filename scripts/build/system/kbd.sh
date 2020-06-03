@@ -2,12 +2,12 @@ VERSION=${VERSION-1.15.5}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.altlinux.org/pub/people/legion/kbd/kbd-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.altlinux.org/pub/people/legion/kbd/kbd-$VERSION.tar.gz"
 rm -rf kbd-$VERSION && tar -zxf "kbd-$VERSION.tar.gz"
 rm -f "kbd-$VERSION.tar.gz"
 cd kbd-$VERSION
 
-wget --no-check-certificate "http://archive.hive.pt/files/lfs/patches/kbd-$VERSION-backspace-1.patch"
+wget --no-check-certificate --content-disposition "http://archive.hive.pt/files/lfs/patches/kbd-$VERSION-backspace-1.patch"
 patch -Np1 -i kbd-$VERSION-backspace-1.patch
 
 sed -i -e '326 s/if/while/' src/loadkeys.analyze.l

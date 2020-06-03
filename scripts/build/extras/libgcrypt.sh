@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libgpg-error"
 
-wget "ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-$VERSION.tar.bz2"
+wget --content-disposition "ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-$VERSION.tar.bz2"
 rm -rf libgcrypt-$VERSION && tar -jxf "libgcrypt-$VERSION.tar.bz2"
 rm -f "libgcrypt-$VERSION.tar.bz2"
 cd libgcrypt-$VERSION

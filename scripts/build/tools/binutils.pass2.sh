@@ -2,7 +2,7 @@ VERSION=${VERSION-2.31.1}
 
 set -e +h
 
-wget "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
+wget --content-disposition "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
 rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
 rm -f "binutils-$VERSION.tar.bz2"
 cd binutils-$VERSION

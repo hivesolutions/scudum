@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libtirpc" "libevent" "libnfsidmap" "lvm2"
 
-wget "http://netcologne.dl.sourceforge.net/project/nfs/nfs-utils-$VERSION.tar.bz2"
+wget --content-disposition "http://download.sourceforge.net/project/nfs/nfs-utils-$VERSION.tar.bz2?use_mirror=netcologne"
 rm -rf nfs-utils-$VERSION && tar -jxf "nfs-utils-$VERSION.tar.bz2"
 rm -f "nfs-utils-$VERSION.tar.bz2"
 cd nfs-utils-$VERSION

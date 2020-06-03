@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://s3.amazonaws.com/json-c_releases/releases/json-c-$VERSION.tar.gz"
+wget --content-disposition "https://s3.amazonaws.com/json-c_releases/releases/json-c-$VERSION.tar.gz"
 rm -rf json-c-$VERSION && tar -zxf "json-c-$VERSION.tar.gz"
 rm -f "json-c-$VERSION.tar.gz"
 cd json-c-$VERSION

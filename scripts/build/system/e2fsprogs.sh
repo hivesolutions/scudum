@@ -2,7 +2,7 @@ VERSION=${VERSION-1.44.4}
 
 set -e +h
 
-wget --no-check-certificate "http://netcologne.dl.sourceforge.net/project/e2fsprogs/e2fsprogs-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://download.sourceforge.net/project/e2fsprogs/e2fsprogs-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf e2fsprogs-$VERSION && tar -zxf "e2fsprogs-$VERSION.tar.gz"
 rm -f "e2fsprogs-$VERSION.tar.gz"
 cd e2fsprogs-$VERSION

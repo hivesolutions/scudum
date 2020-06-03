@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "atk" "glibmm"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/atkmm/$VERSION_L/atkmm-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/atkmm/$VERSION_L/atkmm-$VERSION.tar.xz"
 rm -rf atkmm-$VERSION && tar -Jxf "atkmm-$VERSION.tar.xz"
 rm -f "atkmm-$VERSION.tar.xz"
 cd atkmm-$VERSION

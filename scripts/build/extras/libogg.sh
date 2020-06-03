@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://downloads.xiph.org/releases/ogg/libogg-$VERSION.tar.xz"
+wget --content-disposition "http://downloads.xiph.org/releases/ogg/libogg-$VERSION.tar.xz"
 rm -rf libogg-$VERSION && tar -Jxf "libogg-$VERSION.tar.xz"
 rm -f "libogg-$VERSION.tar.xz"
 cd libogg-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "expat"
 
-wget "http://cpan.org/authors/id/G/GR/GRANTM/XML-Simple-$VERSION.tar.gz"
+wget --content-disposition "http://cpan.org/authors/id/G/GR/GRANTM/XML-Simple-$VERSION.tar.gz"
 rm -rf XML-Simple-$VERSION && tar -zxf "XML-Simple-$VERSION.tar.gz"
 rm -f "XML-Simple-$VERSION.tar.gz"
 cd XML-Simple-$VERSION

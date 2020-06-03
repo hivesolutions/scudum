@@ -2,7 +2,7 @@ VERSION=${VERSION-7.9p1}
 
 set -e +h
 
-wget --no-check-certificate "http://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VERSION.tar.gz"
 rm -rf openssh-$VERSION && tar -zxf "openssh-$VERSION.tar.gz"
 rm -f "openssh-$VERSION.tar.gz"
 cd openssh-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "attr"
 
-wget "http://download.savannah.gnu.org/releases/acl/acl-$VERSION.src.tar.gz"
+wget --content-disposition "http://download.savannah.gnu.org/releases/acl/acl-$VERSION.src.tar.gz"
 rm -rf acl-$VERSION && tar -zxf "acl-$VERSION.src.tar.gz"
 rm -f "acl-$VERSION.src.tar.gz"
 cd acl-$VERSION

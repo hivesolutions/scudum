@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "yasm" "gtk+2" "libvdpau"
 
-wget "http://archive.hive.pt/files/lfs/mplayer-$VERSION.tar.xz"
+wget --content-disposition "http://archive.hive.pt/files/lfs/mplayer-$VERSION.tar.xz"
 rm -rf mplayer-$VERSION && tar -Jxf "mplayer-$VERSION.tar.xz"
 rm -f "mplayer-$VERSION.tar.xz"
 cd mplayer-$VERSION

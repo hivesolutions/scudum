@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/libtirpc/libtirpc-$VERSION.tar.bz2"
+wget --content-disposition "http://download.sourceforge.net/project/libtirpc/libtirpc-$VERSION.tar.bz2?use_mirror=netcologne"
 rm -rf libtirpc-$VERSION && tar -jxf "libtirpc-$VERSION.tar.bz2"
 rm -f "libtirpc-$VERSION.tar.bz2"
 cd libtirpc-$VERSION

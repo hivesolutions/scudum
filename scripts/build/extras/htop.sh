@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python"
 
-wget "http://hisham.hm/htop/releases/$VERSION/htop-$VERSION.tar.gz"
+wget --content-disposition "http://hisham.hm/htop/releases/$VERSION/htop-$VERSION.tar.gz"
 rm -rf htop-$VERSION && tar -zxf "htop-$VERSION.tar.gz"
 rm -f "htop-$VERSION.tar.gz"
 cd htop-$VERSION

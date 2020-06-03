@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "unzip"
 
-wget "http://www.docbook.org/xml/$VERSION/docbook-xml-$VERSION.zip"
+wget --content-disposition "http://www.docbook.org/xml/$VERSION/docbook-xml-$VERSION.zip"
 rm -rf docbook-xml-$VERSION && unzip "docbook-xml-$VERSION.zip" -d docbook-xml-$VERSION
 rm -f "docbook-xml-$VERSION.zip"
 cd docbook-xml-$VERSION

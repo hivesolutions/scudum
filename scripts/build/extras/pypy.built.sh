@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "expat" "libffi" "libtinfo"
 
-wget "https://bitbucket.org/pypy/pypy/downloads/pypy2-v$VERSION-linux64.tar.bz2"
+wget --content-disposition "https://bitbucket.org/pypy/pypy/downloads/pypy2-v$VERSION-linux64.tar.bz2"
 rm -rf pypy2-v$VERSION-linux64 && tar -jxf "pypy2-v$VERSION-linux64.tar.bz2"
 
 mv -v pypy2-v$VERSION-linux64.tar.bz2 $PREFIX/lib

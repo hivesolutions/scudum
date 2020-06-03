@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "dbus-glib" "libxfce4util"
 
-wget "http://archive.xfce.org/src/xfce/xfconf/$VERSION_L/xfconf-$VERSION.tar.bz2"
+wget --content-disposition "http://archive.xfce.org/src/xfce/xfconf/$VERSION_L/xfconf-$VERSION.tar.bz2"
 rm -rf xfconf-$VERSION && tar -jxf "xfconf-$VERSION.tar.bz2"
 rm -f "xfconf-$VERSION.tar.bz2"
 cd xfconf-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "pixman" "libdrm" "libepoxy" "dbus" "mesa" "xkeyboard-config" "xorg-applications" "xorg-fonts"
 
-wget "http://xorg.freedesktop.org/archive/individual/xserver/xorg-server-$VERSION.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/xserver/xorg-server-$VERSION.tar.bz2"
 rm -rf xorg-server-$VERSION && tar -jxf "xorg-server-$VERSION.tar.bz2"
 rm -f "xorg-server-$VERSION.tar.bz2"
 cd xorg-server-$VERSION

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://ftp.gnu.org/gnu/help2man/help2man-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnu.org/gnu/help2man/help2man-$VERSION.tar.xz"
 rm -rf help2man-$VERSION && tar -Jxf "help2man-$VERSION.tar.xz"
 rm -f "help2man-$VERSION.tar.gz"
 cd help2man-$VERSION

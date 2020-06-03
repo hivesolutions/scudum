@@ -2,12 +2,12 @@ VERSION=${VERSION-1.0.6}
 
 set -e +h
 
-wget --no-check-certificate "http://netcologne.dl.sourceforge.net/project/bzip2/bzip2-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://download.sourceforge.net/project/bzip2/bzip2-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf bzip2-$VERSION && tar -zxf "bzip2-$VERSION.tar.gz"
 rm -f "bzip2-$VERSION.tar.gz"
 cd bzip2-$VERSION
 
-wget --no-check-certificate "http://archive.hive.pt/files/lfs/patches/bzip2-$VERSION-install_docs-1.patch"
+wget --no-check-certificate --content-disposition "http://archive.hive.pt/files/lfs/patches/bzip2-$VERSION-install_docs-1.patch"
 patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile

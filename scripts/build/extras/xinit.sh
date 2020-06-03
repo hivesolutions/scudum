@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-server" "xorg-drivers" "xterm" "xclock" "twm"
 
-wget "http://xorg.freedesktop.org/releases/individual/app/xinit-$VERSION.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/releases/individual/app/xinit-$VERSION.tar.bz2"
 rm -rf xinit-$VERSION && tar -jxf "xinit-$VERSION.tar.bz2"
 rm -f "xinit-$VERSION.tar.bz2"
 cd xinit-$VERSION

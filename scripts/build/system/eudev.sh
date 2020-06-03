@@ -2,7 +2,7 @@ VERSION=${VERSION-3.2.7}
 
 set -e +h
 
-wget --no-check-certificate "http://dev.gentoo.org/~blueness/eudev/eudev-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://dev.gentoo.org/~blueness/eudev/eudev-$VERSION.tar.gz"
 rm -rf eudev-$VERSION && tar -zxf "eudev-$VERSION.tar.gz"
 rm -f "eudev-$VERSION.tar.gz"
 cd eudev-$VERSION

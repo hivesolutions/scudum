@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://alsa.cybermirror.org/lib/alsa-lib-$VERSION.tar.bz2"
+wget --content-disposition "http://alsa.cybermirror.org/lib/alsa-lib-$VERSION.tar.bz2"
 rm -rf alsa-lib-$VERSION && tar -jxf "alsa-lib-$VERSION.tar.bz2"
 rm -f "alsa-lib-$VERSION.tar.bz2"
 cd alsa-lib-$VERSION

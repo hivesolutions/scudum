@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/cdrtools/cdrtools-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/cdrtools/cdrtools-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf cdrtools-$VERSION && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "iptables"
 
-wget "https://download.docker.com/linux/static/stable/x86_64/docker-$VERSION.tgz"
+wget --content-disposition "https://download.docker.com/linux/static/stable/x86_64/docker-$VERSION.tgz"
 
 tar -zxf "docker-$VERSION.tgz"
 rm -f "docker-$VERSION.tgz"

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/schilytools/schily-$VERSION.tar.bz2"
+wget --content-disposition "http://download.sourceforge.net/project/schilytools/schily-$VERSION.tar.bz2?use_mirror=netcologne"
 rm -rf schily-$VERSION && tar -jxf "schily-$VERSION.tar.bz2"
 rm -f "schily-$VERSION.tar.bz2"
 cd schily-$VERSION

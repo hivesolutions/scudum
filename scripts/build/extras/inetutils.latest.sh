@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
+wget --content-disposition "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
 rm -rf inetutils-$VERSION && tar -zxf "inetutils-$VERSION.tar.gz"
 rm -f "inetutils-$VERSION.tar.gz"
 cd inetutils-$VERSION

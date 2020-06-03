@@ -2,7 +2,7 @@ VERSION=${VERSION-0.28}
 
 set -e +h
 
-wget --no-check-certificate "http://pkgconfig.freedesktop.org/releases/pkg-config-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://pkgconfig.freedesktop.org/releases/pkg-config-$VERSION.tar.gz"
 rm -rf pkg-config-$VERSION && tar -zxf "pkg-config-$VERSION.tar.gz"
 rm -f "pkg-config-$VERSION.tar.gz"
 cd pkg-config-$VERSION

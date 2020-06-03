@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/hdparm/hdparm-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/hdparm/hdparm-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf hdparm-$VERSION && tar -zxf "hdparm-$VERSION.tar.gz"
 rm -f "hdparm-$VERSION.tar.gz"
 cd hdparm-$VERSION

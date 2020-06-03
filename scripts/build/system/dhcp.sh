@@ -3,7 +3,7 @@ VERSION_BIND=${VERSION_BIND-9.9.5-P1}
 
 set -e +h
 
-wget --no-check-certificate "ftp://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "ftp://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
 rm -rf dhcp-$VERSION && tar -zxf "dhcp-$VERSION.tar.gz"
 rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
@@ -15,12 +15,12 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     cd bind
     tar -zxf bind.tar.gz
     cd bind-$VERSION_BIND
-    wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
+    wget --no-check-certificate --content-disposition "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/bind-$VERSION_BIND-xcompile.patch"
     patch -Np1 -i bind-$VERSION_BIND-xcompile.patch
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
     cd ../..
 
-    wget --no-check-certificate "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
+    wget --no-check-certificate --content-disposition "https://raw.githubusercontent.com/hivesolutions/patches/master/dhcp/dhcp-$VERSION-xcompile.patch"
     patch -Np1 -i dhcp-$VERSION-xcompile.patch
     sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' configure
 fi

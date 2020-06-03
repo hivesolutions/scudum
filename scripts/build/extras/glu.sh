@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "mesa"
 
-wget "ftp://ftp.freedesktop.org/pub/mesa/glu/glu-$VERSION.tar.gz"
+wget --content-disposition "ftp://ftp.freedesktop.org/pub/mesa/glu/glu-$VERSION.tar.gz"
 rm -rf glu-$VERSION && tar -zxf "glu-$VERSION.tar.gz"
 rm -f "glu-$VERSION.tar.gz"
 cd glu-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "attr" "lzo" "zstd" "acl" "asciidoc" "xmlto" "python3"
 
-wget "https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VERSION.tar.gz"
+wget --content-disposition "https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VERSION.tar.gz"
 rm -rf btrfs-progs-v$VERSION && tar -zxf "btrfs-progs-v$VERSION.tar.gz"
 rm -f "btrfs-progs-v$VERSION.tar.gz"
 cd btrfs-progs-v$VERSION

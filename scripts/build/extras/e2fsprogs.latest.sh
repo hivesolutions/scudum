@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget "http://netcologne.dl.sourceforge.net/project/e2fsprogs/e2fsprogs-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/e2fsprogs/e2fsprogs-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf e2fsprogs-$VERSION && tar -zxf "e2fsprogs-$VERSION.tar.gz"
 rm -f "e2fsprogs-$VERSION.tar.gz"
 cd e2fsprogs-$VERSION

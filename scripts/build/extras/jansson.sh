@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.digip.org/jansson/releases/jansson-$VERSION.tar.gz"
+wget --content-disposition "http://www.digip.org/jansson/releases/jansson-$VERSION.tar.gz"
 rm -rf jansson-$VERSION && tar -zxf "jansson-$VERSION.tar.gz"
 rm -f "jansson-$VERSION.tar.gz"
 cd jansson-$VERSION

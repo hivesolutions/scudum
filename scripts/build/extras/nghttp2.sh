@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python" "jansson" "cunit" "libxml2" "libev" "libevent" "c-ares"
 
-wget "https://github.com/nghttp2/nghttp2/releases/download/v$VERSION/nghttp2-$VERSION.tar.gz"
+wget --content-disposition "https://github.com/nghttp2/nghttp2/releases/download/v$VERSION/nghttp2-$VERSION.tar.gz"
 rm -rf nghttp2-$VERSION && tar -zxf "nghttp2-$VERSION.tar.gz"
 rm -f "nghttp2-$VERSION.tar.gz"
 cd nghttp2-$VERSION

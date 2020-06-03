@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "freetype" "libxml2"
 
-wget "http://www.freedesktop.org/software/fontconfig/release/fontconfig-$VERSION.tar.bz2"
+wget --content-disposition "http://www.freedesktop.org/software/fontconfig/release/fontconfig-$VERSION.tar.bz2"
 rm -rf fontconfig-$VERSION && tar -jxf "fontconfig-$VERSION.tar.bz2"
 rm -f "fontconfig-$VERSION.tar.bz2"
 cd fontconfig-$VERSION

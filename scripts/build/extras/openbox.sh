@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-applications" "pango" "imlib2"
 
-wget "http://openbox.org/dist/openbox/openbox-$VERSION.tar.gz"
+wget --content-disposition "http://openbox.org/dist/openbox/openbox-$VERSION.tar.gz"
 rm -rf openbox-$VERSION && tar -zxf "openbox-$VERSION.tar.gz"
 rm -f "openbox-$VERSION.tar.gz"
 cd openbox-$VERSION

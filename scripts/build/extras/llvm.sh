@@ -8,16 +8,16 @@ source $DIR/common.sh
 
 depends "cmake" "libffi"
 
-wget "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.xz"
+wget --content-disposition "http://llvm.org/releases/$VERSION/llvm-$VERSION.src.tar.xz"
 rm -rf llvm-$VERSION && tar -Jxf "llvm-$VERSION.src.tar.xz"
 rm -f "llvm-$VERSION.src.tar.xz"
 cd llvm-$VERSION.src
 
-wget "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.xz"
+wget --content-disposition "http://llvm.org/releases/$VERSION/cfe-$VERSION.src.tar.xz"
 tar -Jxf "cfe-$VERSION.src.tar.xz" -C tools
 mv tools/cfe-$VERSION.src tools/clang
 
-wget "http://llvm.org/releases/$VERSION/compiler-rt-$VERSION.src.tar.xz"
+wget --content-disposition "http://llvm.org/releases/$VERSION/compiler-rt-$VERSION.src.tar.xz"
 tar -Jxf "compiler-rt-$VERSION.src.tar.xz" -C projects
 mv projects/compiler-rt-$VERSION.src projects/compiler-rt
 

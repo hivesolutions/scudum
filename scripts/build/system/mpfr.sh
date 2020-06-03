@@ -2,7 +2,7 @@ VERSION=${VERSION-3.1.5}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION.tar.xz"
 rm -rf mpfr-$VERSION && tar -Jxf "mpfr-$VERSION.tar.xz"
 rm -f "mpfr-$VERSION.tar.xz"
 cd mpfr-$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "openjdk" "unzip"
 
-wget "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"
+wget --content-disposition "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"
 rm -rf gradle-$VERSION && unzip "gradle-$VERSION-bin.zip"
 rm -f "gradle-$VERSION-bin.zip"
 

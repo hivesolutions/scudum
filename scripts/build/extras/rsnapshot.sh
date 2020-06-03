@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "rsync"
 
-wget "http://rsnapshot.org/downloads/rsnapshot-$VERSION.tar.gz"
+wget --content-disposition "http://rsnapshot.org/downloads/rsnapshot-$VERSION.tar.gz"
 rm -rf rsnapshot-$VERSION && tar -zxf "rsnapshot-$VERSION.tar.gz"
 rm -f "rsnapshot-$VERSION.tar.gz"
 cd rsnapshot-$VERSION

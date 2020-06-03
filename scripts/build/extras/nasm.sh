@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.nasm.us/pub/nasm/releasebuilds/$VERSION/nasm-$VERSION.tar.xz"
+wget --content-disposition "http://www.nasm.us/pub/nasm/releasebuilds/$VERSION/nasm-$VERSION.tar.xz"
 rm -rf nasm-$VERSION && tar -Jxf "nasm-$VERSION.tar.xz"
 rm -f "nasm-$VERSION.tar.xz"
 cd nasm-$VERSION

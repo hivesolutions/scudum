@@ -4,7 +4,7 @@ set -e +h
 
 unset MAKEFLAGS
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/groff/groff-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/groff/groff-$VERSION.tar.gz"
 rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"
 rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION

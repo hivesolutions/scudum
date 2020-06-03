@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://ftp.pcre.org/pub/pcre/pcre-$VERSION.tar.gz"
+wget --content-disposition "https://ftp.pcre.org/pub/pcre/pcre-$VERSION.tar.gz"
 rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tar.gz"
 rm -f "pcre-$VERSION.tar.gz"
 cd pcre-$VERSION

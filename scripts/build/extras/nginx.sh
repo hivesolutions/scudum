@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://nginx.org/download/nginx-$VERSION.tar.gz"
+wget --content-disposition "http://nginx.org/download/nginx-$VERSION.tar.gz"
 rm -rf nginx-$VERSION && tar -zxf "nginx-$VERSION.tar.gz"
 rm -f "nginx-$VERSION.tar.gz"
 cd nginx-$VERSION

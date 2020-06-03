@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "expat"
 
-wget "http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$VERSION.tar.gz"
+wget --content-disposition "http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$VERSION.tar.gz"
 rm -rf XML-Parser-$VERSION && tar -zxf "XML-Parser-$VERSION.tar.gz"
 rm -f "XML-Parser-$VERSION.tar.gz"
 cd XML-Parser-$VERSION

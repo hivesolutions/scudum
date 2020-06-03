@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "https://nmap.org/dist/nmap-$VERSION.tar.bz2"
+wget --content-disposition "https://nmap.org/dist/nmap-$VERSION.tar.bz2"
 rm -rf nmap-$VERSION && tar -jxf "nmap-$VERSION.tar.bz2"
 rm -f "nmap-$VERSION.tar.bz2"
 cd nmap-$VERSION

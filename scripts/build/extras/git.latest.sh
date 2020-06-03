@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --no-check-certificate "https://www.kernel.org/pub/software/scm/git/git-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "https://www.kernel.org/pub/software/scm/git/git-$VERSION.tar.xz"
 rm -rf git-$VERSION && tar -Jxf "git-$VERSION.tar.xz"
 rm -f "git-$VERSION.tar.xz"
 cd git-$VERSION

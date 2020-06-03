@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/gnu-efi/gnu-efi_$VERSION.orig.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/gnu-efi/gnu-efi_$VERSION.orig.tar.gz?use_mirror=netcologne"
 rm -rf gnu-efi-$VERSION_L && tar -zxf "gnu-efi_$VERSION.orig.tar.gz"
 rm -f "gnu-efi_$VERSION.orig.tar.gz"
 cd gnu-efi-$VERSION_L

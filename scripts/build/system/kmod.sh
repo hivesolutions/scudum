@@ -2,7 +2,7 @@ VERSION=${VERSION-25}
 
 set -e +h
 
-wget --no-check-certificate "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
 rm -rf kmod-$VERSION && tar -Jxf "kmod-$VERSION.tar.xz"
 rm -f "kmod-$VERSION.tar.xz"
 cd kmod-$VERSION

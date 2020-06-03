@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libogg"
 
-wget "http://downloads.xiph.org/releases/theora/libtheora-$VERSION.tar.xz"
+wget --content-disposition "http://downloads.xiph.org/releases/theora/libtheora-$VERSION.tar.xz"
 rm -rf libtheora-$VERSION && tar -Jxf "libtheora-$VERSION.tar.xz"
 rm -f "libtheora-$VERSION.tar.xz"
 cd libtheora-$VERSION

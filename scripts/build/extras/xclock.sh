@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-applications"
 
-wget "http://xorg.freedesktop.org/releases/individual/app/xclock-$VERSION.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/releases/individual/app/xclock-$VERSION.tar.bz2"
 rm -rf xclock-$VERSION && tar -jxf "xclock-$VERSION.tar.bz2"
 rm -f "xclock-$VERSION.tar.bz2"
 cd xclock-$VERSION

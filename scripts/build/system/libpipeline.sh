@@ -2,7 +2,7 @@ VERSION=${VERSION-1.5.0}
 
 set -e +h
 
-wget --no-check-certificate "http://download.savannah.gnu.org/releases/libpipeline/libpipeline-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://download.savannah.gnu.org/releases/libpipeline/libpipeline-$VERSION.tar.gz"
 rm -rf libpipeline-$VERSION && tar -zxf "libpipeline-$VERSION.tar.gz"
 rm -f "libpipeline-$VERSION.tar.gz"
 cd libpipeline-$VERSION

@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "glib"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/atk/$VERSION_L/atk-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/atk/$VERSION_L/atk-$VERSION.tar.xz"
 rm -rf atk-$VERSION && tar -Jxf "atk-$VERSION.tar.xz"
 rm -f "atk-$VERSION.tar.xz"
 cd atk-$VERSION

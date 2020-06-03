@@ -2,7 +2,7 @@ VERSION=${VERSION-4.6.0}
 
 set -e +h
 
-wget --no-check-certificate "http://ftp.gnu.org/gnu/findutils/findutils-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/findutils/findutils-$VERSION.tar.gz"
 rm -rf findutils-$VERSION && tar -zxf "findutils-$VERSION.tar.gz"
 rm -f "findutils-$VERSION.tar.gz"
 cd findutils-$VERSION

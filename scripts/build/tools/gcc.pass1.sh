@@ -5,20 +5,20 @@ VERSION_MPC=${VERSION_MPC-1.0.2}
 
 set -e +h
 
-wget "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
+wget --content-disposition "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
 rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
 rm -f "gcc-$VERSION.tar.gz"
 cd gcc-$VERSION
 
-wget "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
+wget --content-disposition "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
-wget "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
+wget --content-disposition "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 
-wget "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
+wget --content-disposition "http://www.multiprecision.org/mpc/download/mpc-$VERSION_MPC.tar.gz"
 tar -zxf "mpc-$VERSION_MPC.tar.gz"
 mv mpc-$VERSION_MPC mpc
 

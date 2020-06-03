@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "expat"
 
-wget "http://dbus.freedesktop.org/releases/dbus/dbus-$VERSION.tar.gz"
+wget --content-disposition "http://dbus.freedesktop.org/releases/dbus/dbus-$VERSION.tar.gz"
 rm -rf dbus-$VERSION && tar -zxf "dbus-$VERSION.tar.gz"
 rm -f "dbus-$VERSION.tar.gz"
 cd dbus-$VERSION

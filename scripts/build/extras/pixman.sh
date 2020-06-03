@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://cairographics.org/releases/pixman-$VERSION.tar.gz"
+wget --content-disposition "http://cairographics.org/releases/pixman-$VERSION.tar.gz"
 rm -rf pixman-$VERSION && tar -zxf "pixman-$VERSION.tar.gz"
 rm -f "pixman-$VERSION.tar.gz"
 cd pixman-$VERSION

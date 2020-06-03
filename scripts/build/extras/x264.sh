@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "yasm"
 
-wget "http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$VERSION.tar.bz2"
+wget --content-disposition "http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$VERSION.tar.bz2"
 rm -rf x264-snapshot-$VERSION && tar -jxf "x264-snapshot-$VERSION.tar.bz2"
 rm -f "x264-snapshot-$VERSION.tar.bz2"
 cd x264-snapshot-$VERSION

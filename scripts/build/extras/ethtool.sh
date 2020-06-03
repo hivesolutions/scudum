@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/gkernel/ethtool-$VERSION.tar.gz"
+wget --content-disposition "http://download.sourceforge.net/project/gkernel/ethtool-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf ethtool-$VERSION && tar -zxf "ethtool-$VERSION.tar.gz"
 rm -f "ethtool-$VERSION.tar.gz"
 cd ethtool-$VERSION

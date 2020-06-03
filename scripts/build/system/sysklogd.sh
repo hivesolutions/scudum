@@ -2,7 +2,7 @@ VERSION=${VERSION-1.5.1}
 
 set -e +h
 
-wget --no-check-certificate "http://www.infodrom.org/projects/sysklogd/download/sysklogd-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "http://www.infodrom.org/projects/sysklogd/download/sysklogd-$VERSION.tar.gz"
 rm -rf sysklogd-$VERSION && tar -zxf "sysklogd-$VERSION.tar.gz"
 rm -f "sysklogd-$VERSION.tar.gz"
 cd sysklogd-$VERSION

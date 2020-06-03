@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python" "expat" "libffi"
 
-wget "https://bitbucket.org/pypy/pypy/downloads/pypy2-v$VERSION-src.tar.bz2"
+wget --content-disposition "https://bitbucket.org/pypy/pypy/downloads/pypy2-v$VERSION-src.tar.bz2"
 rm -rf pypy2-v$VERSION-src && tar -jxf "pypy2-v$VERSION-src.tar.bz2"
 rm -f "pypy2-v$VERSION-src.tar.bz2"
 cd pypy2-v$VERSION-src

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "apr" "apr-util"
 
-wget "http://archive.apache.org/dist/httpd/httpd-$VERSION.tar.gz"
+wget --content-disposition "http://archive.apache.org/dist/httpd/httpd-$VERSION.tar.gz"
 rm -rf httpd-$VERSION && tar -zxf "httpd-$VERSION.tar.gz"
 rm -f "httpd-$VERSION.tar.gz"
 cd httpd-$VERSION

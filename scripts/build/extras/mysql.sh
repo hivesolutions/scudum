@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "cmake"
 
-wget "http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-$VERSION.tar.gz"
+wget --content-disposition "http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-$VERSION.tar.gz"
 rm -rf mysql-$VERSION && tar -zxf "mysql-$VERSION.tar.gz"
 rm -f "mysql-$VERSION.tar.gz"
 cd mysql-$VERSION

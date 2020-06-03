@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "libffi" "python" "pcre"
 
-wget "http://ftp.gnome.org/pub/gnome/sources/glib/$VERSION_L/glib-$VERSION.tar.xz"
+wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/glib/$VERSION_L/glib-$VERSION.tar.xz"
 rm -rf glib-$VERSION && tar -Jxf "glib-$VERSION.tar.xz"
 rm -f "glib-$VERSION.tar.xz"
 cd glib-$VERSION

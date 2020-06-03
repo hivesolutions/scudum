@@ -9,7 +9,7 @@ source $DIR/common.sh
 
 depends "libxfce4ui" "libxfce4util" "uri"
 
-wget "http://archive.xfce.org/src/xfce/exo/$VERSION_L/exo-$VERSION.tar.bz2"
+wget --content-disposition "http://archive.xfce.org/src/xfce/exo/$VERSION_L/exo-$VERSION.tar.bz2"
 rm -rf exo-$VERSION && tar -jxf "exo-$VERSION.tar.bz2"
 rm -f "exo-$VERSION.tar.bz2"
 cd exo-$VERSION

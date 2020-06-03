@@ -15,7 +15,7 @@ source $DIR/common.sh
 
 depends "libevdev" "libva" "xorg-server"
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
 rm -rf xf86-input-evdev-$VERSION_EVDEV && tar -jxf "xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
 rm -f "xf86-input-evdev-$VERSION_EVDEV.tar.bz2"
 cd xf86-input-evdev-$VERSION_EVDEV
@@ -25,7 +25,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-input-synaptics-$VERSION_SYNAPTICS.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-input-synaptics-$VERSION_SYNAPTICS.tar.bz2"
 rm -rf xf86-input-synaptics-$VERSION_SYNAPTICS && tar -jxf "xf86-input-synaptics-$VERSION_SYNAPTICS.tar.bz2"
 rm -f "xf86-input-synaptics-$VERSION_SYNAPTICS.tar.bz2"
 cd xf86-input-synaptics-$VERSION_SYNAPTICS
@@ -35,7 +35,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vesa-$VERSION_VESA.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vesa-$VERSION_VESA.tar.bz2"
 rm -rf xf86-video-vesa-$VERSION_VESA && tar -jxf "xf86-video-vesa-$VERSION_VESA.tar.bz2"
 rm -f "xf86-video-vesa-$VERSION_VESA.tar.bz2"
 cd xf86-video-vesa-$VERSION_VESA
@@ -45,7 +45,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
 rm -rf xf86-video-fbdev-$VERSION_FBDEV && tar -jxf "xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
 rm -f "xf86-video-fbdev-$VERSION_FBDEV.tar.bz2"
 cd xf86-video-fbdev-$VERSION_FBDEV
@@ -55,7 +55,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
 rm -rf xf86-video-nouveau-$VERSION_NOUVEAU && tar -jxf "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
 rm -f "xf86-video-nouveau-$VERSION_NOUVEAU.tar.bz2"
 cd xf86-video-nouveau-$VERSION_NOUVEAU
@@ -65,7 +65,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-intel-$VERSION_INTEL.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-intel-$VERSION_INTEL.tar.bz2"
 rm -rf xf86-video-intel-$VERSION_INTEL && tar -jxf "xf86-video-intel-$VERSION_INTEL.tar.bz2"
 rm -f "xf86-video-intel-$VERSION_INTEL.tar.bz2"
 cd xf86-video-intel-$VERSION_INTEL
@@ -75,7 +75,7 @@ make && make install
 
 cd ..
 
-wget "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
+wget --content-disposition "http://xorg.freedesktop.org/archive/individual/driver/xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
 rm -rf xf86-video-vmware-$VERSION_VMWARE && tar -jxf "xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
 rm -f "xf86-video-vmware-$VERSION_VMWARE.tar.bz2"
 cd xf86-video-vmware-$VERSION_VMWARE
@@ -85,7 +85,7 @@ make && make install
 
 cd ..
 
-wget "http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-$VERSION_INTELVA.tar.bz2"
+wget --content-disposition "http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-$VERSION_INTELVA.tar.bz2"
 rm -rf libva-intel-driver-$VERSION_INTELVA && tar -jxf "libva-intel-driver-$VERSION_INTELVA.tar.bz2"
 rm -f "libva-intel-driver-$VERSION_INTELVA.tar.bz2"
 cd libva-intel-driver-$VERSION_INTELVA

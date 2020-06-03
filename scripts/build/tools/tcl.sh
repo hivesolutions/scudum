@@ -2,7 +2,7 @@ VERSION=${VERSION-8.6.8}
 
 set -e +h
 
-wget "http://netcologne.dl.sourceforge.net/project/tcl/tcl-core$VERSION-src.tar.gz"
+wget --content-disposition "https://download.sourceforge.net/project/tcl/Tcl/$VERSION/tcl$VERSION-src.tar.gz?use_mirror=netcologne"
 rm -rf tcl$VERSION && tar -zxf "tcl-core$VERSION-src.tar.gz"
 rm -f "tcl-core$VERSION-src.tar.gz"
 cd tcl$VERSION

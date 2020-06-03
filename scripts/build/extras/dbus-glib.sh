@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "dbus" "glib"
 
-wget "http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-$VERSION.tar.gz"
+wget --content-disposition "http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-$VERSION.tar.gz"
 rm -rf dbus-glib-$VERSION && tar -zxf "dbus-glib-$VERSION.tar.gz"
 rm -f "dbus-glib-$VERSION.tar.gz"
 cd dbus-glib-$VERSION

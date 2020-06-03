@@ -2,7 +2,7 @@ VERSION=${VERSION-6.0}
 
 set -e +h
 
-wget --no-check-certificate "ftp://ftp.gnu.org/gnu/ncurses/ncurses-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "ftp://ftp.gnu.org/gnu/ncurses/ncurses-$VERSION.tar.gz"
 rm -rf ncurses-$VERSION && tar -zxf "ncurses-$VERSION.tar.gz"
 rm -f "ncurses-$VERSION.tar.gz"
 cd ncurses-$VERSION

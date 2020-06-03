@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libevent" "gtk+3"
 
-wget "https://transmission.cachefly.net/transmission-$VERSION.tar.xz"
+wget --content-disposition "https://transmission.cachefly.net/transmission-$VERSION.tar.xz"
 rm -rf transmission-$VERSION && tar -Jxf "transmission-$VERSION.tar.xz"
 rm -f "transmission-$VERSION.tar.xz"
 cd transmission-$VERSION

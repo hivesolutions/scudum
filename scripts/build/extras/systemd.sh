@@ -12,7 +12,7 @@ if [ "$VERSION" == "latest" ]; then
     rm -rf systemd && git clone --depth 1 "https://github.com/systemd/systemd.git"
     cd systemd
 else
-    wget "https://github.com/systemd/systemd/archive/v$VERSION.tar.gz"
+    wget --content-disposition "https://github.com/systemd/systemd/archive/v$VERSION.tar.gz"
     rm -rf systemd-$VERSION && tar -zxf "v$VERSION.tar.gz"
     rm -f "v$VERSION.tar.gz"
     cd systemd-$VERSION

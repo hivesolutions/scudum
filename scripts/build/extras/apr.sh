@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://archive.apache.org/dist/apr/apr-$VERSION.tar.gz"
+wget --content-disposition "http://archive.apache.org/dist/apr/apr-$VERSION.tar.gz"
 rm -rf apr-$VERSION && tar -zxf "apr-$VERSION.tar.gz"
 rm -f "apr-$VERSION.tar.gz"
 cd apr-$VERSION

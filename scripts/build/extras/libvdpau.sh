@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs"
 
-wget "http://people.freedesktop.org/~aplattner/vdpau/libvdpau-$VERSION.tar.gz"
+wget --content-disposition "http://people.freedesktop.org/~aplattner/vdpau/libvdpau-$VERSION.tar.gz"
 rm -rf libvdpau-$VERSION && tar -zxf "libvdpau-$VERSION.tar.gz"
 rm -f "libvdpau-$VERSION.tar.gz"
 cd libvdpau-$VERSION

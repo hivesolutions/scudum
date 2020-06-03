@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://www.oberhumer.com/opensource/ucl/download/ucl-$VERSION.tar.gz"
+wget --content-disposition "http://www.oberhumer.com/opensource/ucl/download/ucl-$VERSION.tar.gz"
 rm -rf ucl-$VERSION && tar -zxf "ucl-$VERSION.tar.gz"
 rm -f "ucl-$VERSION.tar.gz"
 cd ucl-$VERSION

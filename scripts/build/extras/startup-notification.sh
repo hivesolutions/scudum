@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "xorg-libs" "xcb-util"
 
-wget "http://www.freedesktop.org/software/startup-notification/releases/startup-notification-$VERSION.tar.gz"
+wget --content-disposition "http://www.freedesktop.org/software/startup-notification/releases/startup-notification-$VERSION.tar.gz"
 rm -rf startup-notification-$VERSION && tar -zxf "startup-notification-$VERSION.tar.gz"
 rm -f "startup-notification-$VERSION.tar.gz"
 cd startup-notification-$VERSION

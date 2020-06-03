@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://netcologne.dl.sourceforge.net/project/re-alpine/re-alpine-$VERSION.tar.bz2"
+     https://phoenixnap.dl.sourceforge.net/project/re-alpine/re-alpine-2.02.tar.bz2
+wget --content-disposition "http://download.sourceforge.net/project/re-alpine/re-alpine-$VERSION.tar.bz2?use_mirror=netcologne"
 rm -rf re-alpine-$VERSION && tar -jxf "re-alpine-$VERSION.tar.bz2"
 rm -f "re-alpine-$VERSION.tar.bz2"
 cd re-alpine-$VERSION

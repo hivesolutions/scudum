@@ -12,8 +12,8 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     export CC="gcc -isystem /usr/lib/gcc/$ARCH_TARGET/$GCC_BUILD_VERSION/include -isystem /usr/include"
 fi
 
-wget --no-check-certificate "http://www.iana.org/time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
-wget --no-check-certificate "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
+wget --no-check-certificate --content-disposition "http://www.iana.org/time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
+wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
 cd glibc-$VERSION

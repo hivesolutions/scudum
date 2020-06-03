@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libnl"
 
-wget "https://w1.fi/releases/wpa_supplicant-$VERSION.tar.gz"
+wget --content-disposition "https://w1.fi/releases/wpa_supplicant-$VERSION.tar.gz"
 rm -rf wpa_supplicant-$VERSION && tar -zxf "wpa_supplicant-$VERSION.tar.gz"
 rm -f "wpa_supplicant-$VERSION.tar.gz"
 cd wpa_supplicant-$VERSION
