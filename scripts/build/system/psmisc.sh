@@ -5,7 +5,7 @@ set -e +h
 export ac_cv_func_malloc_0_nonnull=yes
 export ac_cv_func_realloc_0_nonnull=yes
 
-wget --no-check-certificate "http://downloads.sourceforge.net/psmisc/psmisc-$VERSION.tar.xz"
+wget --no-check-certificate "http://netcologne.dl.sourceforge.net/project/psmisc/psmisc-$VERSION.tar.xz"
 rm -rf psmisc-$VERSION && tar -Jxf "psmisc-$VERSION.tar.xz"
 rm -f "psmisc-$VERSION.tar.xz"
 cd psmisc-$VERSION

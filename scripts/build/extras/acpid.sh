@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget "http://downloads.sourceforge.net/acpid2/acpid-$VERSION.tar.xz"
+wget "http://netcologne.dl.sourceforge.net/project/acpid2/acpid-$VERSION.tar.xz"
 rm -rf acpid-$VERSION && tar -Jxf "acpid-$VERSION.tar.xz"
 rm -f "acpid-$VERSION.tar.xz"
 cd acpid-$VERSION

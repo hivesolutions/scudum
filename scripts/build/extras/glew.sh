@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "x11" "mesa" "glu"
 
-wget "http://downloads.sourceforge.net/glew/glew/glew-$VERSION.tgz"
+wget "http://netcologne.dl.sourceforge.net/project/glew/glew/glew-$VERSION.tgz"
 rm -rf glew-$VERSION && tar -zxf "glew-$VERSION.tgz"
 rm -f "glew-$VERSION.tar.xz"
 cd glew-$VERSION

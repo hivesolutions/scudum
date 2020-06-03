@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://downloads.sourceforge.net/docbook/docbook-xsl-$VERSION.tar.bz2"\
+rget "http://netcologne.dl.sourceforge.net/project/docbook/docbook-xsl-$VERSION.tar.bz2"\
     "https://distfiles.macports.org/docbook-xsl/docbook-xsl-$VERSION.tar.bz2"
 rm -rf docbook-xsl-$VERSION && tar -jxf "docbook-xsl-$VERSION.tar.bz2"
 rm -f "docbook-xsl-$VERSION.tar.bz2"
@@ -31,18 +31,18 @@ if [ ! -f /etc/xml/catalog ]; then
 fi
 
 xmlcatalog --noout --add "rewriteSystem"\
-    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
+    "http://docbook.sourceforge.net/project/release/xsl/$VERSION"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteURI"\
-    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
+    "http://docbook.sourceforge.net/project/release/xsl/$VERSION"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteSystem"\
-    "http://docbook.sourceforge.net/release/xsl/current"\
+    "http://docbook.sourceforge.net/project/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteURI"\
-    "http://docbook.sourceforge.net/release/xsl/current"\
+    "http://docbook.sourceforge.net/project/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook

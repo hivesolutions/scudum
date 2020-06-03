@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "parted" "gtkmm"
 
-wget "http://downloads.sourceforge.net/gparted/gparted-$VERSION.tar.bz2"
+wget "http://netcologne.dl.sourceforge.net/project/gparted/gparted-$VERSION.tar.bz2"
 rm -rf gparted-$VERSION && tar -jxf "gparted-$VERSION.tar.bz2"
 rm -f "gparted-$VERSION.tar.bz2"
 cd gparted-$VERSION

@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-rget "http://sourceforge.net/projects/check/files/check/$VERSION/check-$VERSION.tar.gz"\
+rget "http://netcologne.dl.sourceforge.net/project/check/check/$VERSION/check-$VERSION.tar.gz"\
     "https://ftp.osuosl.org/pub/blfs/conglomeration/check/check-$VERSION.tar.gz"
 rm -rf check-$VERSION && tar -zxf "check-$VERSION.tar.gz"
 rm -f "check-$VERSION.tar.gz"
