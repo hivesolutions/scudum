@@ -2,6 +2,8 @@ VERSION=${VERSION-5.45.4}
 
 set -e +h
 
+source $DIR/../base/functions.sh
+
 rget "http://downloads.sourceforge.net/expect/expect$VERSION.tar.gz"\
    "http://sources.buildroot.net/expect/expect$VERSION.tar.gz"
 rm -rf expect$VERSION && tar -zxf "expect$VERSION.tar.gz"
