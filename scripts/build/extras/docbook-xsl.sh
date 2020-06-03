@@ -31,18 +31,18 @@ if [ ! -f /etc/xml/catalog ]; then
 fi
 
 xmlcatalog --noout --add "rewriteSystem"\
-    "http://docbook.sourceforge.net/project/release/xsl/$VERSION"\
+    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteURI"\
-    "http://docbook.sourceforge.net/project/release/xsl/$VERSION"\
+    "http://docbook.sourceforge.net/release/xsl/$VERSION"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteSystem"\
-    "http://docbook.sourceforge.net/project/release/xsl/current"\
+    "http://docbook.sourceforge.net/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
 xmlcatalog --noout --add "rewriteURI"\
-    "http://docbook.sourceforge.net/project/release/xsl/current"\
+    "http://docbook.sourceforge.net/release/xsl/current"\
     "$PREFIX/share/xml/docbook/xsl-stylesheets-$VERSION"\
     /etc/xml/docbook
