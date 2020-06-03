@@ -7,7 +7,7 @@ set -e +h
 source $DIR/common.sh
 
 rget "http://archive.hive.pt/files/lfs/ntfsprogs-$VERSION.tar.gz"\
-    "http://download.sourceforge.net/project/linux-ntfs/ntfsprogs-$VERSION.tar.gz?use_mirror=netcologne"
+    "http://downloads.sourceforge.net/project/linux-ntfs/ntfsprogs-$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf ntfsprogs-$VERSION && tar -zxf "ntfsprogs-$VERSION.tar.gz"
 rm -f "ntfsprogs-$VERSION.tar.gz"
 cd ntfsprogs-$VERSION

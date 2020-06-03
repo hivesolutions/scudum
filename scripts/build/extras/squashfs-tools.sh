@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://download.sourceforge.net/project/squashfs/squashfs$VERSION.tar.gz?use_mirror=netcologne"
+wget --content-disposition "http://downloads.sourceforge.net/project/squashfs/squashfs$VERSION.tar.gz?use_mirror=netcologne"
 rm -rf squashfs$VERSION && tar -zxf "squashfs$VERSION.tar.gz"
 rm -f "squashfs$VERSION.tar.gz"
 cd squashfs$VERSION/squashfs-tools

@@ -9,7 +9,7 @@ source $DIR/../base/functions.sh
 export ac_cv_func_malloc_0_nonnull=yes
 export ac_cv_func_realloc_0_nonnull=yes
 
-rgeti "http://download.sourceforge.net/project/procps-ng/Production/procps-ng-$VERSION.tar.xz?use_mirror=netcologne"\
+rgeti "http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-$VERSION.tar.xz?use_mirror=netcologne"\
     "https://qa.debian.org/watch/sf.php/procps-ng/procps-ng-$VERSION.tar.xz"
 rm -rf procps-ng-$VERSION && tar -Jxf "procps-ng-$VERSION.tar.xz"
 rm -f "procps-ng-$VERSION.tar.xz"

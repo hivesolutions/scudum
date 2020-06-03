@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libglade" "shared-mime-info"
 
-rget "http://download.sourceforge.net/project/rox/rox-filer-$VERSION.tar.bz2?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/project/rox/rox-filer-$VERSION.tar.bz2?use_mirror=netcologne"\
     "ftp://ftp.openbsd.cl/ports/distfiles/rox-filer-$VERSION.tar.bz2"
 rm -rf rox-filer-$VERSION && tar -jxf "rox-filer-$VERSION.tar.bz2"
 rm -f "rox-filer-$VERSION.tar.bz2"

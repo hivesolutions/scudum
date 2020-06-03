@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://download.sourceforge.net/project/zsh/zsh-$VERSION.tar.xz?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/project/zsh/zsh-$VERSION.tar.xz?use_mirror=netcologne"\
     "http://www.zsh.org/pub/old/zsh-$VERSION.tar.xz"
 rm -rf zsh-$VERSION && tar -Jxf "zsh-$VERSION.tar.xz"
 rm -f "zsh-$VERSION.tar.xz"

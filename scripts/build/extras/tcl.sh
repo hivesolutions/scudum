@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://download.sourceforge.net/project/tcl/tcl$VERSION-src.tar.gz?use_mirror=netcologne"
+wget --content-disposition "http://downloads.sourceforge.net/project/tcl/tcl$VERSION-src.tar.gz?use_mirror=netcologne"
 rm -rf tcl$VERSION && tar -zxf "tcl$VERSION-src.tar.gz"
 rm -f "tcl$VERSION-src.tar.gz"
 cd tcl$VERSION

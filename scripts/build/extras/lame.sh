@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "nasm"
 
-rget "http://download.sourceforge.net/project/lame/lame-$VERSION.tar.gz?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/project/lame/lame-$VERSION.tar.gz?use_mirror=netcologne"\
     "http://fossies.org/linux/misc/lame-$VERSION.tar.gz"
 rm -rf lame-$VERSION && tar -zxf "lame-$VERSION.tar.gz"
 rm -f "lame-$VERSION.tar.gz"

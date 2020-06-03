@@ -5,8 +5,8 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 set -e +h
 
 source $DIR/common.sh
-
-rget "http://downloads.sourceforge.net/infozip/unzip$VERSION.tar.gz"\
+ 
+rget "http://downloads.sourceforge.net/infozip/unzip$VERSION.tar.gz?use_mirror=netcologne"\
     "http://fossies.org/linux/misc/unzip$VERSION.tar.gz"
 rm -rf unzip$VERSION && tar -zxf "unzip$VERSION.tar.gz"
 rm -f "unzip$VERSION.tar.gz"

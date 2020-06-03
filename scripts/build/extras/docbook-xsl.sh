@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://download.sourceforge.net/project/docbook/docbook-xsl-$VERSION.tar.bz2?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/project/docbook/docbook-xsl-$VERSION.tar.bz2?use_mirror=netcologne"\
     "https://distfiles.macports.org/docbook-xsl/docbook-xsl-$VERSION.tar.bz2"
 rm -rf docbook-xsl-$VERSION && tar -jxf "docbook-xsl-$VERSION.tar.bz2"
 rm -f "docbook-xsl-$VERSION.tar.bz2"
