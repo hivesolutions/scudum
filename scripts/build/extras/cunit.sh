@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/cunit/CUnit-$VERSION.tar.bz2?use_mirror=netcologne"
+wget --content-disposition "http://downloads.sourceforge.net/cunit/CUnit-$VERSION.tar.bz2?use_mirror=astuteinternet"
 rm -rf CUnit-$VERSION && tar -jxf "CUnit-$VERSION.tar.bz2"
 rm -f "CUnit-$VERSION.tar.bz2"
 cd CUnit-$VERSION

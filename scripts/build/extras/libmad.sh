@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://downloads.sourceforge.net/mad/libmad-$VERSION.tar.gz?use_mirror=netcologne"\
+rget "http://downloads.sourceforge.net/mad/libmad-$VERSION.tar.gz?use_mirror=astuteinternet"\
     "ftp://ftp.be.netbsd.org/pub/pkgsrc/distfiles/libmad-$VERSION.tar.gz"
 rm -rf libmad-$VERSION && tar -zxf "libmad-$VERSION.tar.gz"
 rm -f "libmad-$VERSION.tar.gz"
