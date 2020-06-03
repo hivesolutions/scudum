@@ -2,7 +2,7 @@ VERSION=${VERSION-8.6.8}
 
 set -e +h
 
-wget --content-disposition "https://downloads.sourceforge.net/tcl/Tcl/$VERSION/tcl$VERSION-src.tar.gz?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/tcl/tcl$VERSION-src.tar.gz?use_mirror=ayera"
 rm -rf tcl$VERSION && tar -zxf "tcl-core$VERSION-src.tar.gz"
 rm -f "tcl-core$VERSION-src.tar.gz"
 cd tcl$VERSION
