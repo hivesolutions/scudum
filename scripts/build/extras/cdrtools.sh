@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/cdrtools/cdrtools-$VERSION.tar.gz?use_mirror=astuteinternet"
+wget --content-disposition "http://downloads.sourceforge.net/cdrtools/cdrtools-$VERSION.tar.gz?use_mirror=ayera"
 rm -rf cdrtools-$VERSION && tar -zxf "cdrtools-$VERSION.tar.gz"
 rm -f "cdrtools-$VERSION.tar.gz"
 cd cdrtools-$VERSION

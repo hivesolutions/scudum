@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "x11" "mesa" "glu"
 
-wget --content-disposition "http://downloads.sourceforge.net/glew/glew/glew-$VERSION.tgz?use_mirror=astuteinternet"
+wget --content-disposition "http://downloads.sourceforge.net/glew/glew/glew-$VERSION.tgz?use_mirror=ayera"
 rm -rf glew-$VERSION && tar -zxf "glew-$VERSION.tgz"
 rm -f "glew-$VERSION.tar.xz"
 cd glew-$VERSION

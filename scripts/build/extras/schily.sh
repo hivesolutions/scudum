@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/schilytools/schily-$VERSION.tar.bz2?use_mirror=astuteinternet"
+wget --content-disposition "http://downloads.sourceforge.net/schilytools/schily-$VERSION.tar.bz2?use_mirror=ayera"
 rm -rf schily-$VERSION && tar -jxf "schily-$VERSION.tar.bz2"
 rm -f "schily-$VERSION.tar.bz2"
 cd schily-$VERSION
