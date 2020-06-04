@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/libtirpc/libtirpc-$VERSION.tar.bz2?use_mirror=versaweb"
+wget --content-disposition "http://downloads.sourceforge.net/libtirpc/libtirpc-$VERSION.tar.bz2?use_mirror=netix"
 rm -rf libtirpc-$VERSION && tar -jxf "libtirpc-$VERSION.tar.bz2"
 rm -f "libtirpc-$VERSION.tar.bz2"
 cd libtirpc-$VERSION

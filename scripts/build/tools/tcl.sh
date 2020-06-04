@@ -2,7 +2,7 @@ VERSION=${VERSION-8.6.8}
 
 set -e +h
 
-wget --content-disposition "http://downloads.sourceforge.net/tcl/tcl-core$VERSION-src.tar.gz?use_mirror=versaweb"
+wget --content-disposition "http://downloads.sourceforge.net/tcl/tcl-core$VERSION-src.tar.gz?use_mirror=netix"
 rm -rf tcl$VERSION && tar -zxf "tcl-core$VERSION-src.tar.gz"
 rm -f "tcl-core$VERSION-src.tar.gz"
 cd tcl$VERSION

@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python"
 
-wget --content-disposition "http://downloads.sourceforge.net/asciidoc/asciidoc-$VERSION.tar.gz?use_mirror=versaweb"
+wget --content-disposition "http://downloads.sourceforge.net/asciidoc/asciidoc-$VERSION.tar.gz?use_mirror=netix"
 rm -rf asciidoc-$VERSION && tar -zxf "asciidoc-$VERSION.tar.gz"
 rm -f "asciidoc-$VERSION.tar.gz"
 cd asciidoc-$VERSION
