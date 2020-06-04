@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/opencore-amr/fdk-aac-$VERSION.tar.gz?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/opencore-amr/fdk-aac-$VERSION.tar.gz?use_mirror=versaweb"
 rm -rf fdk-aac-$VERSION && tar -zxf "fdk-aac-$VERSION.tar.gz"
 rm -f "fdk-aac-$VERSION.tar.gz"
 cd fdk-aac-$VERSION

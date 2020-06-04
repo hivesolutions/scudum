@@ -9,7 +9,7 @@ source $DIR/common.sh
 rm -rf bootinfoscript-$VERSION && mkdir -p bootinfoscript-$VERSION
 cd bootinfoscript-$VERSION
 
-wget --content-disposition "http://downloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz?use_mirror=versaweb"
 tar -zxf "bootinfoscript-$VERSION.tar.gz"
 rm -f "bootinfoscript-$VERSION.tar.xz"
 

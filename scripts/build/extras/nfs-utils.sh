@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "libtirpc" "libevent" "libnfsidmap" "lvm2"
 
-wget --content-disposition "http://downloads.sourceforge.net/nfs/nfs-utils-$VERSION.tar.bz2?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/nfs/nfs-utils-$VERSION.tar.bz2?use_mirror=versaweb"
 rm -rf nfs-utils-$VERSION && tar -jxf "nfs-utils-$VERSION.tar.bz2"
 rm -f "nfs-utils-$VERSION.tar.bz2"
 cd nfs-utils-$VERSION

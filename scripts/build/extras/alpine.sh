@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/re-alpine/re-alpine-$VERSION.tar.bz2?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/re-alpine/re-alpine-$VERSION.tar.bz2?use_mirror=versaweb"
 rm -rf re-alpine-$VERSION && tar -jxf "re-alpine-$VERSION.tar.bz2"
 rm -f "re-alpine-$VERSION.tar.bz2"
 cd re-alpine-$VERSION

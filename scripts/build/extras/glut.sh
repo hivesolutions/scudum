@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "glu"
 
-wget --content-disposition "http://downloads.sourceforge.net/freeglut/freeglut-$VERSION.tar.gz?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/freeglut/freeglut-$VERSION.tar.gz?use_mirror=versaweb"
 rm -rf freeglut-$VERSION && tar -zxf "freeglut-$VERSION.tar.gz"
 rm -f "freeglut-$VERSION.tar.gz"
 cd freeglut-$VERSION

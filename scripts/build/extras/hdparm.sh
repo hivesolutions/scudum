@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/hdparm/hdparm-$VERSION.tar.gz?use_mirror=ayera"
+wget --content-disposition "http://downloads.sourceforge.net/hdparm/hdparm-$VERSION.tar.gz?use_mirror=versaweb"
 rm -rf hdparm-$VERSION && tar -zxf "hdparm-$VERSION.tar.gz"
 rm -f "hdparm-$VERSION.tar.gz"
 cd hdparm-$VERSION
