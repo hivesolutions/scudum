@@ -35,95 +35,129 @@ The currently recommended environments are Ubuntu 14.04+ or Scudum itself config
 In order to install the Scudum development tools, to be able to use the commands described in
 the next section (examples) use:
 
-    make install
+```bash
+make install
+```
 
 ### Reference
 
 Building the Scudum root/base/development environment, a (very) long process of compilation of both the bootstrap
 base tools and the base system infra-structure is required, to start the process use:
 
-    scudum root
+```bash
+scudum root
+```
 
 To start the Scudum build process building the latest version of GCC and setting the strict CFLAGS so that the
 build is controlled and does not compile using any (unwanted) optimization and running as a background task use:
 
-    SET_CFLAGS=all GCC_FLAVOUR=latest scudum root < /dev/null &> /pst/scudum.log &
-    disown %1
+```bash
+SET_CFLAGS=all GCC_FLAVOUR=latest scudum root < /dev/null &> /pst/scudum.log &
+disown %1
+```
 
 To be able to create a cross compilation based ARM build for the Raspberry Pi system you may change the way
 the root environment is created with:
 
-    SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
-    GCC_BUILD_ARCH=armv6zk GCC_BUILD_TUNE=arm1176jzf-s GCC_BUILD_FPU=vfp \
-    GCC_BUILD_FLOAT=hard scudum root
+```bash
+SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
+GCC_BUILD_ARCH=armv6zk GCC_BUILD_TUNE=arm1176jzf-s GCC_BUILD_FPU=vfp \
+GCC_BUILD_FLOAT=hard scudum root
+```
 
 It's possible to optimize the building process for the Raspberry Pi 2 for that the cpu specific configuration
 must be changed, note that this is not backwards compatible:
 
-    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
-    GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
-    GCC_BUILD_FLOAT=hard scudum root
+```bash
+SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
+GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
+GCC_BUILD_FLOAT=hard scudum root
+```
 
 To be able to run only the system building (without repeating the cross toolchain and the base toolchain process)
 you can use the following command:
 
-    SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
-    GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
-    GCC_BUILD_FLOAT=hard BUILD_CLEAN=0 BUILD_ROOT=0 BUILD_CROSS=0 BUILD_TIMEOUT=1 scudum root
+```bash
+SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
+GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
+GCC_BUILD_FLOAT=hard BUILD_CLEAN=0 BUILD_ROOT=0 BUILD_CROSS=0 BUILD_TIMEOUT=1 scudum root
+```
 
 To deploy a new version of the Scudum distribution to the repository a deploy operation must be performed,
 note that the deployment is going to use the `/mnt/builds/scudum` path by default but may be changed
 using the `TARGET` variable:
 
-    scudum deploy
+```bash
+scudum deploy
+```
 
 To install the latest available Scudum root/base/development environment a connection to the Internet must
 exist and the following command should be executed:
 
-    scudum install
+```bash
+scudum install
+```
 
 To enter into the current Scudum development environment (root) deployed in the current machine use:
 
-    scudum chroot
+```bash
+scudum chroot
+```
 
 To create an ISO image of the Scudum distribution running using the [ISOLINUX](http://www.syslinux.org) boot
 loader use the following command taking note that the disk contents should be located at `/scudum`:
 
-    scudum make.iso
+```bash
+scudum make.iso
+```
 
 To crate a filesystem image able to be used inside a USB pend drive (configured with SYSLINUX) use the following
 command:
 
-    scudum make.usb
+```bash
+scudum make.usb
+```
 
 To be able to re-create a new Scudum deployment (into `/scudum`) and then build a new ISO from it (all of the operations)
 use the following command (note that this operation may take some time):
 
-    scudum all
+```bash
+scudum all
+```
 
 In order to create a Virtual Box compatible image (VDI) issue the command:
 
-    DEV_NAME=/dev/sdb make.vdi.sh
+```bash
+DEV_NAME=/dev/sdb make.vdi.sh
+```
 
 In order to work (change the scudum base system) you need to deploy the latest version into a local drive
 (typically `/dev/sdb`) in order to do that use:
 
-    DEV_NAME=/dev/sdb VERSION=latest install.dev.sh
+```bash
+DEV_NAME=/dev/sdb VERSION=latest install.dev.sh
+```
 
 Please be aware that `/dev/sdb` drive will be completely erased during this operation.
 
 To create an `img` file of an hard drive and then install it on a device use (experimental):
 
-    install.img.sh && sleep 10 && dd if=scudum.img of=/dev/sdb bs=1M
+```bash
+install.img.sh && sleep 10 && dd if=scudum.img of=/dev/sdb bs=1M
+```
 
 To restore the hard drive to the original (empty) state run the following command, note that this will
 remove the scudum files from it.
 
-    dd if=/dev/zero of=/dev/sdb bs=4096
+```bash
+dd if=/dev/zero of=/dev/sdb bs=4096
+```
 
 As an alternative you may only remove the `MBR` from it as it's a faster operation.
 
-    dd if=/dev/zero of=/dev/sdb bs=446 count=1
+```bash
+dd if=/dev/zero of=/dev/sdb bs=446 count=1
+```
 
 ### Raspberry Pi
 
@@ -140,41 +174,51 @@ please refer to the [proper documentation](doc/kernel.md).
 To build a DVD ISO image of the latest Scudum system image, the basic kernel image and modules
 and then deploy it to the repository one should issue.
 
-    scu install scudum-tools cifs-utils
-    scudum install && scudum mount
-    KVARIANT=basic DEPLOY=1 scudum make.iso
+```bash
+scu install scudum-tools cifs-utils
+scudum install && scudum mount
+KVARIANT=basic DEPLOY=1 scudum make.iso
+```
 
 To build a specialized version of Scudum (eg: docker) one should first clone the repository
 and then start building the image under the proper context directory.
 
-    git clone --depth 1 https://github.com/hivesolutions/scudum.git
-    cd scudum/examples/docker
-    scu install scudum-tools cifs-utils
-    scudum install && scudum mount
-    KVARIANT=basic DEPLOY=1 scudum make.iso
-    cd ../../.. && rm -rf scudum
+```bash
+git clone --depth 1 https://github.com/hivesolutions/scudum.git
+cd scudum/examples/docker
+scu install scudum-tools cifs-utils
+scudum install && scudum mount
+KVARIANT=basic DEPLOY=1 scudum make.iso
+cd ../../.. && rm -rf scudum
+```
 
 To build a Raspberry Pi 2 version of the armor example one should use:
 
-    git clone --depth 1 https://github.com/hivesolutions/scudum.git
-    cd scudum/examples/docker
-    scu install scudum-tools cifs-utils
-    ARCH=arm7 scudum install && scudum mount
-    KVARIANT=rasp2 DEPLOY=1 scudum make.rasp
-    cd ../../.. && rm -rf scudum
+```bash
+git clone --depth 1 https://github.com/hivesolutions/scudum.git
+cd scudum/examples/docker
+scu install scudum-tools cifs-utils
+ARCH=arm7 scudum install && scudum mount
+KVARIANT=rasp2 DEPLOY=1 scudum make.rasp
+cd ../../.. && rm -rf scudum
+```
 
 To safely build the latest kernel version and deploy it use:
 
-    scu install scudum-system elfutils
-    hash -r
-    MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```bash
+scu install scudum-system elfutils
+hash -r
+MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```
 
 To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
 special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 
-    scu install scudum-system elfutils crosstool-rasp
-    hash -r
-    KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf DEPLOY=1 kernel.build
+```bash
+scu install scudum-system elfutils crosstool-rasp
+hash -r
+KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf DEPLOY=1 kernel.build
+```
 
 ## Armor
 
@@ -208,42 +252,48 @@ As a quick start a simple one time configuration may be used with the following 
 start the daemon for the wireless support and then run the DHCP client to obtain IP based information
 that will be used to configure the interface.
 
-    wpa_supplicant -B -i wlan0 -c <(wpa_passphrase YOUR_SSID YOUR_PASSPHRASE)
-    dhclient wlan0
+```bash
+wpa_supplicant -B -i wlan0 -c <(wpa_passphrase YOUR_SSID YOUR_PASSPHRASE)
+dhclient wlan0
+```
 
 To be able to configure a wireless network interface using a more "persistent" approach one must
 created/edit a configuration file for wireless interface under a location (eg: `/etc/wlan0.conf`):
 
-    ctrl_interface=/run/wpa_supplicant
-    update_config=1
-    fast_reauth=1
-    ap_scan=1
-    network={
-        ssid="YOUR_SSID"
-        psk="YOUR_PASSPHRASE"
-    }
+```text
+ctrl_interface=/run/wpa_supplicant
+update_config=1
+fast_reauth=1
+ap_scan=1
+network={
+    ssid="YOUR_SSID"
+    psk="YOUR_PASSPHRASE"
+}
+```
 
 Then to start the interface run the following commands to start wpa supplicant and then start the
 dhclient to request DHCP based information.
 
-    wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
-    dhclient wlan0
+```bash
+wpa_supplicant -B -i wlan0 -c /etc/wlan0.conf
+dhclient wlan0
+```
 
 ### Links
 
-Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
+Initramfs on LFS [http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html](http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html)
 
 ## TODO
 
 * Light version of the kernel (less file systems)
-* Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
+* Optimization on RAM usage at boot post script on boot ([http://www.stockwith.uklinux.net/hints/](http://www.stockwith.uklinux.net/hints/))
 * Support for PXE serving
 * Support for SCU files
 
 ## References
 
-* http://coreos.com
-* http://www.stockwith.uklinux.net/hints
+* [http://coreos.com](http://coreos.com)
+* [http://www.stockwith.uklinux.net/hints](http://www.stockwith.uklinux.net/hints)
 
 ## License
 
