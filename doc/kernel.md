@@ -50,7 +50,7 @@ CONFIG_NLS_ISO8859_1=y
 CONFIG_NLS_UTF8=y
 ```
 
-Other than these the basic ones refered in the [Raspberry Pi Configuration](rasp.md#kernel-configuration-file) should also be included.
+Other than these the basic ones referred in the [Raspberry Pi Configuration](rasp.md#kernel-configuration-file) should also be included.
 
 ## (Proprietary) Firmware
 
