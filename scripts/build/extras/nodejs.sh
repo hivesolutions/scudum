@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "which"
+depends "which" "python3"
 
 wget --content-disposition "http://nodejs.org/dist/v$VERSION/node-v$VERSION.tar.gz"
 rm -rf node-v$VERSION && tar -zxf "node-v$VERSION.tar.gz"
