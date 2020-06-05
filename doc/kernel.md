@@ -6,7 +6,7 @@ Building a kernel version and deploying it to the proper directories so that it 
 by the proper boot loader can be achieved using the following command:
 
 ```bash
-MAJOR=4.x MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+MAJOR=5.x MINOR=5.4.44 VARIANT=basic DEPLOY=1 kernel.build
 ```
 
 To install a previously build kernel image (and modules) avoiding the rebuilding of the kernel
