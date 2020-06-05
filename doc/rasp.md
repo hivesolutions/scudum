@@ -31,7 +31,7 @@ CONFIG_EXT3_FS_SECURITY=y
 
 Then add support for CRAMFS and SquashFS with the following configuration parameters.
 
-```
+```text
 CONFIG_CRAMFS=y
 CONFIG_SQUASHFS=y
 CONFIG_SQUASHFS_FILE_CACHE=y
@@ -51,28 +51,34 @@ CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE=3
 
 Ensure that the Initrd support is available:
 
-```
+```text
 CONFIG_BLK_DEV_INITRD=y
 CONFIG_INITRAMFS_SOURCE=""
 ```
 
 Add the required support for OverlayFS for extra flexibility:
 
-```
+```text
 CONFIG_OVERLAY_FS=y
 ```
 
 Set the proper build version to be used for `uname`.
 
-```
+```text
 CONFIG_LOCALVERSION=".scudum.rasp.arm"
 CONFIG_LOCALVERSION=".scudum.rasp2.arm"
 ```
 
 Change the (default hostname) value of the machine to the Scudum value:
 
-```
+```text
 CONFIG_DEFAULT_HOSTNAME="scudum"
+```
+
+Disable the LZ4 compression support
+
+```text
+CONFIG_HAVE_KERNEL_LZ4=n
 ```
 
 ### Updating
