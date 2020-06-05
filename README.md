@@ -293,7 +293,6 @@ Initramfs on LFS [http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramf
 ## References
 
 * [http://coreos.com](http://coreos.com)
-* [http://www.stockwith.uklinux.net/hints](http://www.stockwith.uklinux.net/hints)
 
 ## License
 
