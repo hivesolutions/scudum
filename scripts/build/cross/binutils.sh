@@ -12,7 +12,8 @@ cd binutils-$VERSION
     --target=$ARCH_TARGET\
     --with-sysroot=$PREFIX_CROSS/sysroot\
     --disable-nls\
-    --disable-werror
+    --disable-werror\
+    --disable-multilib
 
 make
 case $SCUDUM_ARCH in

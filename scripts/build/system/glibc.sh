@@ -30,6 +30,7 @@ cd glibc-build
     --enable-obsolete-rpc\
     --enable-stack-protector=strong\
     --disable-werror\
+    --disable-multilib\
     --$GCC_MULTIARCH-multi-arch
 
 make

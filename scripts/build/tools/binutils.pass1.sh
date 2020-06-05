@@ -13,7 +13,8 @@ cd binutils-$VERSION
     --with-lib-path=$PREFIX/lib\
     --target=$SCUDUM_TARGET\
     --disable-nls\
-    --disable-werror
+    --disable-werror\
+    --disable-multilib
 
 make
 case $SCUDUM_HOST in

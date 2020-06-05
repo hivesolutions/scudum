@@ -17,6 +17,7 @@ cd glibc-build
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --$GCC_MULTIARCH-multi-arch\
     --enable-kernel=3.2\
+    --disable-multilib\
     --with-headers=$PREFIX/include\
     libc_cv_forced_unwind=yes\
     libc_cv_c_cleanup=yes

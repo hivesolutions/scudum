@@ -11,7 +11,7 @@ set -e +h
 source /config
 
 # sources the base configuration files including the one
-# refering to system dependent variables
+# referring to system dependent variables
 source /tools/repo/scripts/build/base/config.sh
 source /tools/repo/scripts/build/base/config.system.sh
 

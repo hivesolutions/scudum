@@ -23,6 +23,7 @@ CFLAGS="$extra" ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
     --build=$(../glibc-$VERSION/scripts/config.guess)\
     --enable-kernel=3.2\
+    --disable-multilib\
     --with-headers=$PREFIX_CROSS/sysroot/usr/include\
     libc_cv_forced_unwind=yes\
     libc_cv_c_cleanup=yes

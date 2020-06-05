@@ -11,6 +11,7 @@ CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ./config
     --prefix=$PREFIX\
     --disable-nls\
     --disable-werror\
+    --disable-multilib\
     --with-lib-path=$PREFIX/lib\
     --with-sysroot
 

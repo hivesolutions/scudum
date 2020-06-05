@@ -19,6 +19,7 @@ cd binutils-build
     --enable-plugins\
     --enable-shared\
     --disable-werror\
+    --disable-multilib\
     --with-system-zlib
 
 make tooldir=/usr
