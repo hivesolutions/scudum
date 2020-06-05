@@ -18,8 +18,9 @@ else
     cd lshw-$VERSION
 fi
 
+rm -rf docs
+
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    rm -rf docs
     make CXX="$CXX" && make install PREFIX=$PREFIX
 else
     make && make install PREFIX=$PREFIX
