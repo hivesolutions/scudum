@@ -75,7 +75,7 @@ Change the (default hostname) value of the machine to the Scudum value:
 CONFIG_DEFAULT_HOSTNAME="scudum"
 ```
 
-Disable the LZ4 compression support
+Disable the LZ4 compression support, as it would require extra tools:
 
 ```text
 CONFIG_HAVE_KERNEL_LZ4=n
