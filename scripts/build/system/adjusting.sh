@@ -2,9 +2,9 @@ CC=${CC-gcc}
 
 set -e +h
 
-# in case the current environnment is not one of cross compilation
+# in case the current environnement is not one of cross compilation
 # then some of the /tools binaries are going to be moved to the
-# architecture specific directorios (to be compile compliant)
+# architecture specific directories (to be compile compliant)
 if [ "$SCUDUM_CROSS" == "0" ]; then
     mv -v /tools/bin/{ld,ld-old}
     mv -v /tools/$ARCH_TARGET/bin/{ld,ld-old}
