@@ -13,7 +13,7 @@ else
 fi
 
 rm -f get-pip.py && wget --content-disposition "https://bootstrap.pypa.io/get-pip.py"
-python get-pip.py $ARGS "pip<20"
+python get-pip.py $ARGS
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     PYTHON_VERSION=$(python -c "import sys;t='{v[0]}.{v[1]}'.format(v=list(sys.version_info[:2]));sys.stdout.write(t)";)
