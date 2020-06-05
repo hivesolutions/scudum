@@ -78,7 +78,8 @@ CONFIG_DEFAULT_HOSTNAME="scudum"
 Disable the LZ4 compression support, as it would require extra tools:
 
 ```text
-CONFIG_HAVE_KERNEL_LZ4=n
+# CONFIG_HAVE_KERNEL_LZ4 is not set
+# CONFIG_KERNEL_LZ4 is not set
 ```
 
 ### Updating
