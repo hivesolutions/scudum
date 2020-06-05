@@ -181,7 +181,7 @@ special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
 The armor client is the responsible for the installation of the various elements associated
 with the instance that is booting.
 
-The retrieval of the configuration should be done using a variaty of conditions that should
+The retrieval of the configuration should be done using a variety of conditions that should
 include MAC address, IP address and credentials. Such credentials should be stored in secondary
 storage as part of the node configuration.
 
@@ -237,7 +237,7 @@ Initramfs on LFS http://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs
 
 * Light version of the kernel (less file systems)
 * Optimization on RAM usage at boot post script on boot (http://www.stockwith.uklinux.net/hints/)
-* Suport for PXE serving
+* Support for PXE serving
 * Support for SCU files
 
 ## References
