@@ -5,22 +5,28 @@
 Building a kernel version and deploying it to the proper directories so that it can be used
 by the proper boot loader can be achieved using the following command:
 
-    MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```bash
+MAJOR=4.x MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```
 
 To install a previously build kernel image (and modules) avoiding the rebuilding of the kernel
 one should be connected with the target repository and the issue:
 
-    VARIANT=large VERSION=latest kernel.install
+```bash
+VARIANT=large VERSION=latest kernel.install
+```
 
 Special versions of the kernel exist for the ARM process environment specially for usage under
 the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
 
-    scu install crosstool-rasp
-    KARCH=arm \
-    KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf \
-    VARIANT=rasp \
-    DEPLOY=1 \
-    kernel.build
+```bash
+scu install crosstool-rasp
+KARCH=arm \
+KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf \
+VARIANT=rasp \
+DEPLOY=1 \
+kernel.build
+```
 
 To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
 
@@ -34,14 +40,14 @@ It may also be interesting to "port" the blacklisted modules from the Ubuntu dis
 
 For the Ubuntu configuration to work under Scudum environment these extra directives must be included:
 
-```
+```text
 CONFIG_BLK_DEV_RAM=y
 CONFIG_USB_STORAGE=y
 ```
 
 Ensuring that proper CD-ROM and HD support is granted these lines should be added:
 
-```
+```text
 CONFIG_ISO9660_FS=y
 CONFIG_UDF_FS=y
 CONFIG_SATA_AHCI=y

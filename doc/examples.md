@@ -4,24 +4,34 @@
 
 ### Basics
 
-##### Mounting the repository share
+#### Mounting the repository share
 
-    scudum mount
+```bash
+scudum mount
+```
 
-##### Building and deploying to repository
+#### Building and deploying to repository
 
-    DEPLOY=1 scudum make.usb
+```bash
+DEPLOY=1 scudum make.usb
+```
 
-##### Using the basic kernel version
+#### Using the basic kernel version
 
-    KVARIANT=basic scudum make.usb
+```bash
+KVARIANT=basic scudum make.usb
+```
 
 ### Kernel
 
-##### Build the basic version of the kernel and deploy
+#### Build the basic version of the kernel and deploy
 
-    VARIANT=basic DEPLOY=1 kernel.build
+```bash
+VARIANT=basic DEPLOY=1 kernel.build
+```
 
 #### Build the basic version of the 4.19.67 kernel and deploy
 
-    MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```bash
+MAJOR=4.x MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+```

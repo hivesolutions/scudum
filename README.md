@@ -208,7 +208,7 @@ To safely build the latest kernel version and deploy it use:
 ```bash
 scu install scudum-system elfutils
 hash -r
-MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
+MAJOR=4.x MINOR=4.19.67 VARIANT=basic DEPLOY=1 kernel.build
 ```
 
 To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
