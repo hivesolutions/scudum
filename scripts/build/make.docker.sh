@@ -22,13 +22,13 @@ source $DIR/base/config.sh
 DISTRIB=${DISTRIB-$(cat $SCUDUM/etc/scudum/DISTRIB)}
 
 if [ "$DISTRIB" == "generic" ]; then
-    FILE=${FILE-$NAME-$VERSION}
+    FILE=${FILE-$NAME:$VERSION}
 else
-    FILE=${FILE-$NAME-$DISTRIB-$VERSION}
+    FILE=${FILE-$NAME:$DISTRIB-$VERSION}
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install lxc-docker
+    apt-get -y install docker-ce
 elif type scu &> /dev/null; then
     env -u VERSION scu install docker
 else
