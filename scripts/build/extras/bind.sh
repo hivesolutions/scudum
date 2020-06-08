@@ -21,14 +21,16 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
         --with-randomdev=no\
         --with-ecdsa=yes\
         --with-eddsa=yes\
-        --with-gost=yes
+        --with-gost=yes\
+        --without-python
     make && make install
 else
     ./configure\
         --prefix=$PREFIX\
         --sysconfdir=/etc/bind\
         --localstatedir=/var\
-        --disable-linux-caps
+        --disable-linux-caps\
+        --without-python
     make && make install
 fi
 
