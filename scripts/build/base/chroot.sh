@@ -24,7 +24,7 @@ test ! -e $SCUDUM/dev/null &&\
     mknod -m 666 $SCUDUM/dev/null c 1 3
 
 # verifies each of the special filesystems for
-# mounting and in case they are mounted umounts
+# mounting and in case they are mounted unmounts
 # them avoiding a duplicate re-mounting
 mountpoint -q $SCUDUM/mnt/builds && umount -v $SCUDUM/mnt/builds
 mountpoint -q $SCUDUM/sys && umount -v $SCUDUM/sys
