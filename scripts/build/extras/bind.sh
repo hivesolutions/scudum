@@ -6,9 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "https://ftp.isc.org/isc/bind9/$VERSION/bind-$VERSION.tar.gz"
-rm -rf bind-$VERSION && tar -zxf "bind-$VERSION.tar.gz"
-rm -f "bind-$VERSION.tar.gz"
+wget --content-disposition "https://ftp.isc.org/isc/bind9/$VERSION/bind-$VERSION.tar.xz"
+rm -rf bind-$VERSION && tar -Jxf "bind-$VERSION.tar.xz"
+rm -f "bind-$VERSION.tar.xz"
 cd bind-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
