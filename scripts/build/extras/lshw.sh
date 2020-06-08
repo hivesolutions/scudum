@@ -20,6 +20,8 @@ fi
 
 rm -rf docs
 
+sed -i 's/$(PACKAGENAME) $(PACKAGENAME).1 $(DATAFILES)/$(PACKAGENAME) $(DATAFILES)/g' src/Makefile
+
 if [ "$SCUDUM_CROSS" == "1" ]; then
     make CXX="$CXX" && make install PREFIX=$PREFIX
 else
