@@ -10,6 +10,11 @@ rm -rf dhcp-$VERSION && tar -zxf "dhcp-$VERSION.tar.gz"
 rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    unset CFLAGS
+    export BUILD_CC=gcc
+fi
+
 if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
 CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
