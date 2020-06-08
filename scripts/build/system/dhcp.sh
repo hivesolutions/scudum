@@ -1,5 +1,4 @@
 VERSION=${VERSION-4.4.2}
-VERSION_BIND=${VERSION_BIND-9.9.5-P1}
 
 set -e +h
 
