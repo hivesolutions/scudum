@@ -14,5 +14,3 @@ cd libffi-$VERSION
 
 ./configure --prefix=$PREFIX --disable-static
 make && make install
-
-cp -v $PREFIX/lib/libffi-$VERSION/include/* $PREFIX/include
