@@ -6,7 +6,6 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "python3" "ninja" "libffi"
+depends "python3" "ninja"
 
-pip3 install --upgrade pip
 pip3 install --quiet "meson==$VERSION"
