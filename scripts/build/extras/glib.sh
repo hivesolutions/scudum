@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libffi" "python" "pcre" "meson"
+depends "meson" "cmake" "libffi" "python" "pcre"
 
 wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/glib/$VERSION_L/glib-$VERSION.tar.xz"
 rm -rf glib-$VERSION && tar -Jxf "glib-$VERSION.tar.xz"
