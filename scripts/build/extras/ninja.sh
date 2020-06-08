@@ -8,4 +8,5 @@ source $DIR/common.sh
 
 depends "python3"
 
+pip3 install --upgrade pip
 pip3 install --quiet "ninja==$VERSION"

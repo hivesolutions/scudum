@@ -8,4 +8,5 @@ source $DIR/common.sh
 
 depends "python3" "ninja" "libffi"
 
+pip3 install --upgrade pip
 pip3 install --quiet "meson==$VERSION"
