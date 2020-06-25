@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.8.0}
+VERSION=${VERSION-1.13.16}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,9 +8,9 @@ source $DIR/common.sh
 
 depends "expat"
 
-wget --content-disposition "http://dbus.freedesktop.org/releases/dbus/dbus-$VERSION.tar.gz"
-rm -rf dbus-$VERSION && tar -zxf "dbus-$VERSION.tar.gz"
-rm -f "dbus-$VERSION.tar.gz"
+wget --content-disposition "http://dbus.freedesktop.org/releases/dbus/dbus-$VERSION.tar.xz"
+rm -rf dbus-$VERSION && tar -Jxf "dbus-$VERSION.tar.xz"
+rm -f "dbus-$VERSION.tar.xz"
 cd dbus-$VERSION
 
 ./configure\
