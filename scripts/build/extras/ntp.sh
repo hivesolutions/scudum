@@ -7,7 +7,7 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://archive.ntp.org/ntp4/ntp-$VERSION_M/ntp-$VERSION.tar.gz"\
+rget "https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-$VERSION_M/ntp-$VERSION.tar.gz"\
     "https://ftp.osuosl.org/pub/blfs/conglomeration/ntp/ntp-$VERSION.tar.gz"
 rm -rf ntp-$VERSION && tar -zxf "ntp-$VERSION.tar.gz"
 rm -f "ntp-$VERSION.tar.gz"
