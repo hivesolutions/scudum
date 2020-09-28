@@ -9,8 +9,8 @@ source $DIR/common.sh
 depends "libpcap"
 
 wget --content-disposition "https://github.com/raboof/nethogs/archive/v$VERSION.tar.gz"
-rm -rf nethogs-$VERSION && tar -zxf "v$VERSION.tar.gz"
-rm -f "v$VERSION.tar.gz"
+rm -rf nethogs-$VERSION && tar -zxf "nethogs-$VERSION.tar.gz"
+rm -f "nethogs-$VERSION.tar.gz"
 cd nethogs-$VERSION
 
 make && make PREFIX=$PREFIX install
