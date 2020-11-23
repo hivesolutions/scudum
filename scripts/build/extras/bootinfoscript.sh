@@ -9,7 +9,7 @@ source $DIR/common.sh
 rm -rf bootinfoscript-$VERSION && mkdir -p bootinfoscript-$VERSION
 cd bootinfoscript-$VERSION
 
-wget --content-disposition "http://downloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz?use_mirror=netix"
+wget --content-disposition "http://downloads.sourceforge.net/bootinfoscript/bootinfoscript-$VERSION.tar.gz?use_mirror=netix" "--output-document=bootinfoscript-$VERSION.tar.gz"
 tar -zxf "bootinfoscript-$VERSION.tar.gz"
 rm -f "bootinfoscript-$VERSION.tar.xz"
 

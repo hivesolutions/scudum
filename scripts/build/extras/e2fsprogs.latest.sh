@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://downloads.sourceforge.net/e2fsprogs/e2fsprogs-$VERSION.tar.gz?use_mirror=netix"
+wget --content-disposition "http://downloads.sourceforge.net/e2fsprogs/e2fsprogs-$VERSION.tar.gz?use_mirror=netix" CUnit-$VERSION.tar.bz2
 rm -rf e2fsprogs-$VERSION && tar -zxf "e2fsprogs-$VERSION.tar.gz"
 rm -f "e2fsprogs-$VERSION.tar.gz"
 cd e2fsprogs-$VERSION
