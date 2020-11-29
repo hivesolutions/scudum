@@ -10,7 +10,8 @@ depends "libpng"
 
 rget "http://downloads.sourceforge.net/freetype/freetype-$VERSION.tar.gz?use_mirror=netix"\
     "http://download.savannah.gnu.org/releases/freetype/freetype-$VERSION.tar.gz"\
-    "http://mirrors.zerg.biz/nongnu/freetype/freetype-$VERSION.tar.gz"
+    "http://mirrors.zerg.biz/nongnu/freetype/freetype-$VERSION.tar.gz"\
+    "--output-document=freetype-$VERSION.tar.gz"
 rm -rf freetype-$VERSION && tar -zxf "freetype-$VERSION.tar.gz"
 rm -f "freetype-$VERSION.tar.gz"
 cd freetype-$VERSION

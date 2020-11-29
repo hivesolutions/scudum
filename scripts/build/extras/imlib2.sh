@@ -9,7 +9,8 @@ source $DIR/common.sh
 depends "xorg-libs" "libpng" "jpeg-turbo" "tiff"
 
 rget "http://downloads.sourceforge.net/enlightenment/imlib2-$VERSION.tar.bz2?use_mirror=netix"\
-    "ftp://ftp.kajak.org.pl/pub/distfiles/imlib2-$VERSION.tar.bz2"
+    "ftp://ftp.kajak.org.pl/pub/distfiles/imlib2-$VERSION.tar.bz2"\
+    "--output-document=imlib2-$VERSION.tar.bz2"
 rm -rf imlib2-$VERSION && tar -jxf "imlib2-$VERSION.tar.bz2"
 rm -f "imlib2-$VERSION.tar.bz2"
 cd imlib2-$VERSION

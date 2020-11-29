@@ -10,7 +10,8 @@ export ac_cv_func_malloc_0_nonnull=yes
 export ac_cv_func_realloc_0_nonnull=yes
 
 rgeti "http://downloads.sourceforge.net/procps-ng/procps-ng-$VERSION.tar.xz?use_mirror=netix"\
-    "https://qa.debian.org/watch/sf.php/procps-ng/procps-ng-$VERSION.tar.xz"
+    "https://qa.debian.org/watch/sf.php/procps-ng/procps-ng-$VERSION.tar.xz"\
+    "--output-document=procps-ng-$VERSION.tar.xz"
 rm -rf procps-ng-$VERSION && tar -Jxf "procps-ng-$VERSION.tar.xz"
 rm -f "procps-ng-$VERSION.tar.xz"
 cd procps-ng-$VERSION

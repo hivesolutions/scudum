@@ -14,7 +14,7 @@ else
     ARGS="--user"
 fi
 
-wget --content-disposition "http://downloads.sourceforge.net/scons/scons-$VERSION.tar.gz?use_mirror=netix"
+wget --content-disposition "http://downloads.sourceforge.net/scons/scons-$VERSION.tar.gz?use_mirror=netix" "--output-document=scons-$VERSION.tar.gz"
 rm -rf scons-$VERSION && tar -zxf "scons-$VERSION.tar.gz"
 rm -f "scons-$VERSION.tar.gz"
 cd scons-$VERSION

@@ -7,7 +7,8 @@ set -e +h
 source $DIR/../base/functions.sh
 
 rget "http://downloads.sourceforge.net/expect/expect$VERSION.tar.gz?use_mirror=netix"\
-   "http://sources.buildroot.net/expect/expect$VERSION.tar.gz"
+   "http://sources.buildroot.net/expect/expect$VERSION.tar.gz"\
+   "--output-document=expect$VERSION.tar.gz"
 rm -rf expect$VERSION && tar -zxf "expect$VERSION.tar.gz"
 rm -f "expect$VERSION.tar.gz"
 cd expect$VERSION
