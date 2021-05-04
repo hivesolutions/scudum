@@ -13,5 +13,6 @@ rm -rf htop-$VERSION && tar -zxf "htop-$VERSION.tar.gz"
 rm -f "htop-$VERSION.tar.gz"
 cd htop-$VERSION
 
+./autogen.sh
 ./configure --prefix=$PREFIX
 make && make install
