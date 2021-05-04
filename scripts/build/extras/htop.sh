@@ -8,7 +8,7 @@ source $DIR/common.sh
 
 depends "python"
 
-wget --content-disposition "https://bintray.com/htop/source/download_file?file_path=htop-$VERSION.tar.gz"
+wget --content-disposition "https://github.com/htop-dev/htop/archive/refs/tags/$VERSION.tar.gz" "--output-document=htop-$VERSION.tar.gz"
 rm -rf htop-$VERSION && tar -zxf "htop-$VERSION.tar.gz"
 rm -f "htop-$VERSION.tar.gz"
 cd htop-$VERSION
