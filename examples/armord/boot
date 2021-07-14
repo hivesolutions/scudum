@@ -1,7 +1,7 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
-export DATA_ORIGIN=${DATA_ORIGIN-//files.hive/data}
+export DATA_ORIGIN=${DATA_ORIGIN-//ipv4.files.hive/data}
 export DATA_TARGET=${DATA_TARGET-/data}
 export DATA_USERNAME=${DATA_USERNAME-bot_admin}
 export DATA_PASSWORD=${DATA_PASSWORD-anonymous}
