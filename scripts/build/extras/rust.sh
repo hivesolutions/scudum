@@ -1,4 +1,4 @@
-VERSION=${VERSION-1.44.0}
+VERSION=${VERSION-1.60.0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
