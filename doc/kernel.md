@@ -36,6 +36,8 @@ The upgrading operation may be a complex one as it involves changing the configu
 
 For some of the files (eg: `large` and `basic`) it might be interesting to use the Ubuntu config files stored in `/boot/config-xxx-generic` as a reference in the construction of them. For that install Ubuntu in a VM and then use **Ukuu** to upgrade the kernel to desired version.
 
+An alternative way of building a base `.config` file from the Ubuntu distribution one is to download the `linux-modules-*.deb` file from the [https://kernel.ubuntu.com/~kernel-ppa/mainline/](https://kernel.ubuntu.com/~kernel-ppa/mainline/) repository and then extract the config file from it.
+
 It may also be interesting to "port" the blacklisted modules from the Ubuntu distribution at `/etc/modprobe.d/blacklist-*.conf`.
 
 For the Ubuntu configuration to work under Scudum environment these extra directives must be included:
