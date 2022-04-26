@@ -12,7 +12,7 @@ else
     ARGS="--user"
 fi
 
-rm -f get-pip.py && wget --content-disposition "https://bootstrap.pypa.io/get-pip.py"
+rm -f get-pip.py && wget --content-disposition "https://bootstrap.pypa.io/pip/2.7/get-pip.py"
 python get-pip.py $ARGS
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
