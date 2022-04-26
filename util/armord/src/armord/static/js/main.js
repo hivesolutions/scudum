@@ -1,5 +1,5 @@
 // Hive Armor Daemon
-// Copyright (c) 2008-2020 Hive Solutions Lda.
+// Copyright (c) 2008-2022 Hive Solutions Lda.
 //
 // This file is part of Hive Armor Daemon.
 //
@@ -20,5 +20,5 @@
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2020 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2022 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
