@@ -57,7 +57,7 @@ setuptools.setup(
         "" : os.path.normpath("src")
     },
     install_requires = [
-        "armor_api"
+        "armor-api"
     ],
     entry_points = {
         "console_scripts" : [
