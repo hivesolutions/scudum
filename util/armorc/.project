@@ -3,7 +3,7 @@
 	<name>armorc</name>
 	<comment></comment>
 	<projects>
-		<project>armor_api</project>
+		<project>armor-api</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
