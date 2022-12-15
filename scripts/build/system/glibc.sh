@@ -107,7 +107,7 @@ if [ "$SCUDUM_CROSS" == "0" ] ; then
     mkdir -pv $ZONEINFO/{posix,right}
 
     for tz in etcetera southamerica northamerica europe africa antarctica\
-        asia australasia backward pacificnew systemv; do
+        asia australasia backward; do
         zic -L /dev/null -d $ZONEINFO -y "sh yearistype.sh" ${tz}
         zic -L /dev/null -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
         zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}
