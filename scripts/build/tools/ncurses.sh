@@ -10,7 +10,7 @@ cd ncurses-$VERSION
 CPPFLAGS="-P" ./configure\
     --prefix=$PREFIX\
     --with-shared\
-    --with-termlib\
+    --without-termlib\
     --without-debug\
     --without-ada\
     --enable-widec\
@@ -19,5 +19,3 @@ CPPFLAGS="-P" ./configure\
 make && make install
 
 ln -svf libncursesw.so $PREFIX/lib/libncurses.so
-ln -svf libtinfow.so $PREFIX/lib/libtinfo.so
-ln -svf libtinfow.so $PREFIX/lib/libtinfo.so.6

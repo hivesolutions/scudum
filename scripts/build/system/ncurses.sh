@@ -11,7 +11,7 @@ cd ncurses-$VERSION
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --mandir=/usr/share/man\
-    --with-shared\
+    --without-termlib\
     --with-termlib\
     --without-debug\
     --without-normal\
@@ -35,8 +35,6 @@ echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -svf libncurses.so /usr/lib/libcurses.so
 ln -svf libncursesw.a /usr/lib/libcursesw.a
 ln -svf libncurses.a /usr/lib/libcurses.a
-ln -svf libtinfow.so /usr/lib/libtinfo.so
-ln -svf libtinfow.so /usr/lib/libtinfo.so.6
 
 mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION
