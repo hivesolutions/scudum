@@ -11,8 +11,8 @@ cd ncurses-$VERSION
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --mandir=/usr/share/man\
+    --with-shared\
     --without-termlib\
-    --with-termlib\
     --without-debug\
     --without-normal\
     --enable-pc-files\
