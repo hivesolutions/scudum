@@ -1,18 +1,18 @@
 # exports the location that is assumed to contain
-# the persitent storage sub-filesystem that is going
+# the persistent storage sub-filesystem that is going
 # to be used for the build process in case it exists
 # (this allows for larger builds using volatile system)
 export PERSIST=${PERSIST-/pst}
 
-# tries to retrive the proper (cpu) architecture from the
+# tries to retrieve the proper (CPU) architecture from the
 # current system in case it has not been provided by the
 # user through the command line options (as expected)
 export SCUDUM_ARCH=${SCUDUM_ARCH-$(uname -m)}
 
 # uses the base arch value and normalizes it so that the (base) arch
 # is more generalized (eg: arm6, arm7, arm8 are all considered arm)
-# this is useful for operations where the general cpu description is
-# required instead of the more specific version of the cpu
+# this is useful for operations where the general CPU description is
+# required instead of the more specific version of the CPU
 case "$SCUDUM_ARCH" in
     arm*)
         export SCUDUM_BARCH=arm

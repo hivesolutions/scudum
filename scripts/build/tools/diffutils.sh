@@ -1,4 +1,4 @@
-VERSION=${VERSION-3.3}
+VERSION=${VERSION-3.8}
 
 set -e +h
 
