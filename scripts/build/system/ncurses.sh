@@ -1,4 +1,4 @@
-VERSION=${VERSION-6.0}
+VERSION=${VERSION-6.2}
 
 set -e +h
 
@@ -12,6 +12,7 @@ cd ncurses-$VERSION
     --prefix=/usr\
     --mandir=/usr/share/man\
     --with-shared\
+    --with-termlib\
     --without-debug\
     --without-normal\
     --enable-pc-files\
@@ -34,6 +35,8 @@ echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -svf libncurses.so /usr/lib/libcurses.so
 ln -svf libncursesw.a /usr/lib/libcursesw.a
 ln -svf libncurses.a /usr/lib/libcurses.a
+ln -svf libtinfow.so /usr/lib/libtinfo.so
+ln -svf libtinfow.so /usr/lib/libtinfo.so.6
 
 mkdir -pv /usr/share/doc/ncurses-$VERSION
 cp -v -R doc/* /usr/share/doc/ncurses-$VERSION

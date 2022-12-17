@@ -1,4 +1,4 @@
-VERSION=${VERSION-6.0}
+VERSION=${VERSION-6.2}
 
 set -e +h
 
@@ -10,9 +10,14 @@ cd ncurses-$VERSION
 CPPFLAGS="-P" ./configure\
     --prefix=$PREFIX\
     --with-shared\
+    --with-termlib\
     --without-debug\
     --without-ada\
     --enable-widec\
     --enable-overwrite
 
 make && make install
+
+ln -svf libncursesw.so $PREFIX/lib/libncurses.so
+ln -svf libtinfow.so $PREFIX/lib/libtinfo.so
+ln -svf libtinfow.so $PREFIX/lib/libtinfo.so.6
