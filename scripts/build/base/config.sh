@@ -132,7 +132,7 @@ fi
 case "$GCC_FLAVOUR" in
     latest)
         export GCC_BUILD_BINARY="gcc.latest"
-        export GCC_BUILD_VERSION="9.3.0"
+        export GCC_BUILD_VERSION="9.5.0"
         export SCUDUM_VENDOR=${SCUDUM_VENDOR-pc}
         ;;
     normal)

@@ -55,12 +55,16 @@ fi
 # based and if that's the case (host is not target) runs
 # the cross compilation specific scripts
 if [ "$SCUDUM_CROSS" == "1" ] && [ "$BUILD_CROSS" == "1" ]; then
+    echo "root: starting build process for cross tools..."
     $DIR/base/cross.sh
+    echo "root: finished build process for cross tools"
 fi
 
 # verifies if the current build process is meant to build the
 # various tools (base toolchain) and then acts accordingly
 if [ "$BUILD_TOOLS" == "1" ]; then
+    echo "root: starting build process for tools..."
+
     # runs the complete set of package specific scripts
     # in order to build their source code properly
     $DIR/tools/binutils.pass1.sh
@@ -113,6 +117,8 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     # so that some disk space is spared by removing the debug
     # and the unneeded symbols from the libraries
     $DIR/tools/strip.sh
+
+    echo "root: finished build process for tools"
 fi
 
 # run the output operation that "prints" the current configuration

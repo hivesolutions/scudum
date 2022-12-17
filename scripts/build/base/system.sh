@@ -17,6 +17,8 @@ source /tools/repo/scripts/build/base/config.system.sh
 
 unset VERSION
 
+echo "system: starting system build process..."
+
 # prints some information about the current configuration
 # that is going to be used in the system building operation
 # and then sleeps for some time to display this information
@@ -102,3 +104,5 @@ source /tools/repo/scripts/build/base/config.sysroot.sh
 /tools/repo/scripts/build/system/dhcp.sh
 
 cd .. && rm -rf sources
+
+echo "system: finished system build process"
