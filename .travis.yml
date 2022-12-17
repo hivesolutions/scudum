@@ -1,4 +1,4 @@
 sudo: required
 dist: xenial
 language: c
-script: ./travis/build.sh
+script: ./travis/build.sh > /dev/null
