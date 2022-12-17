@@ -1,14 +1,11 @@
-VERSION=${VERSION-1.0.6}
+VERSION=${VERSION-1.0.8}
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://downloads.sourceforge.net/bzip2/bzip2-$VERSION.tar.gz?use_mirror=netix" "--output-document=bzip2-$VERSION.tar.gz"
+wget --no-check-certificate --content-disposition "https://sourceware.org/pub/bzip2/bzip2-$VERSION.tar.gz"
 rm -rf bzip2-$VERSION && tar -zxf "bzip2-$VERSION.tar.gz"
 rm -f "bzip2-$VERSION.tar.gz"
 cd bzip2-$VERSION
-
-wget --no-check-certificate --content-disposition "http://archive.hive.pt/files/lfs/patches/bzip2-$VERSION-install_docs-1.patch"
-patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile

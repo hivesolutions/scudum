@@ -83,6 +83,8 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/bzip2.sh
     $DIR/tools/coreutils.sh
     $DIR/tools/diffutils.sh
+    $DIR/tools/xz.sh
+    $DIR/tools/zlib.sh
     $DIR/tools/file.sh
     $DIR/tools/findutils.sh
     $DIR/tools/gawk.sh
@@ -96,8 +98,6 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/sed.sh
     $DIR/tools/tar.sh
     $DIR/tools/texinfo.sh
-    $DIR/tools/xz.sh
-    $DIR/tools/zlib.sh
     $DIR/tools/pkg-config.sh
     $DIR/tools/util-linux.sh
     $DIR/tools/shadow.sh
