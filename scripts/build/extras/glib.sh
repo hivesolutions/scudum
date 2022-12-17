@@ -14,5 +14,5 @@ rm -rf glib-$VERSION && tar -Jxf "glib-$VERSION.tar.xz"
 rm -f "glib-$VERSION.tar.xz"
 cd glib-$VERSION
 
-meson _build -Druntime_libdir=$PREFIX -Dselinux=false
+meson _build -Druntime_libdir=$PREFIX -Dselinux=disabled
 ninja -C _build && ninja -C _build install
