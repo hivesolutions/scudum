@@ -18,4 +18,5 @@ CPPFLAGS="-P" ./configure\
 
 make && make install
 
-ln -svf libncursesw.so $PREFIX/lib/libncurses.so
+ln -svf libncursesw.so.6 /usr/lib/libtinfo.so.6
+ln -svf libtinfo.so.6 /usr/lib/libtinfo.so
