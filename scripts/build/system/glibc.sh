@@ -26,8 +26,8 @@ cd glibc-build
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --libexecdir=/usr/lib/glibc\
+    --with-headers=/usr/include\
     --enable-kernel=3.2\
-    --enable-obsolete-rpc\
     --enable-stack-protector=strong\
     --disable-werror\
     --disable-multilib\
@@ -45,15 +45,9 @@ touch /etc/ld.so.conf
 make install
 
 # installs the configuration file and runtime directory
-# for nscd (as originally expected)
+# for NSCD (as originally expected)
 cp -v ../glibc-$VERSION/nscd/nscd.conf /etc/nscd.conf
 mkdir -pv /var/cache/nscd
-
-# installs nis and rpc related headers that are
-# not installed by default
-cp -v ../glibc-$VERSION/sunrpc/rpc/*.h /usr/include/rpc
-cp -v ../glibc-$VERSION/sunrpc/rpcsvc/*.h /usr/include/rpcsvc
-cp -v ../glibc-$VERSION/nis/rpcsvc/*.h /usr/include/rpcsvc
 
 # defines the the various locales that are going
 # ot be used by the base libraries compilation
