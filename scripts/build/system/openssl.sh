@@ -1,4 +1,10 @@
-VERSION=${VERSION-1.1.1s}
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    VERSION=${VERSION-1.0.2u}
+    VERSION_L=${VERSION_L-1.0.2}
+else
+    VERSION=${VERSION-1.1.1q}
+    VERSION_L=${VERSION_L-1.1.1}
+fi
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,8 +14,8 @@ source $DIR/../base/functions.sh
 
 unset MAKEFLAGS TEST
 
-rgeti "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
-    "http://mirrors.ibiblio.org/openssl/source/openssl-$VERSION.tar.gz"
+rgeti "https://www.openssl.org/source/old/$VERSION_L/openssl-$VERSION.tar.gz"\
+    "http://mirrors.ibiblio.org/openssl/source/old/$VERSION_L/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
