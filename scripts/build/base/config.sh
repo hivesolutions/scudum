@@ -78,7 +78,7 @@ export BUILD_CROSS=${BUILD_CROSS-1}
 export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 
 # exports the flag that defines the level of parallelism
-# for the compilation of the various elements, this vaçue
+# for the compilation of the various elements, this value
 # should be enough to take advantage of the various cores,
 # this flag should also be used carefully as it is know to
 # create some problems in compilation of some packages
@@ -105,7 +105,7 @@ cifs-utils ntfsprogs wireless-tools wpa-supplicant"
 # verifies the level of matching of the current target arch
 # and the hosting one and according to that defines the default
 # value to be used in the scudum cross (compilation) flag, note
-# that this value may always be overriden by command line
+# that this value may always be overridden by command line
 if [ "$SCUDUM_BARCH" != "$SCUDUM_HOST" ]; then
     export SCUDUM_CROSS=${SCUDUM_CROSS-1}
 else
