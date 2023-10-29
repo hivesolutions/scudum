@@ -166,6 +166,7 @@ if [ -e config ]; then
 fi
 
 print_scudum() {
+    echo "DATE := $(date)"
     echo "PERSIST := $PERSIST"
     echo "SCUDUM := $SCUDUM"
     echo "SCUDUM_HOST := $SCUDUM_HOST"
