@@ -116,12 +116,16 @@ else
     cp -pv $SCUDUM/boot/initrd.img $IMG_DIR/initrd.img
 fi
 
-echo "make.rasp: intializing $FILE with $BLOCK_COUNT blocks of size $BLOCK_SIZE ($SIZE bytes)"
+echo "make.rasp: initializing $FILE with $BLOCK_COUNT blocks of size $BLOCK_SIZE ($SIZE bytes)"
 
 dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
+echo "make.rasp: setting up partition table for $FILE (using fdisk) with $HEADS heads and $SECTORS sectors"
+
 (echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
 sleep $SLEEP_TIME && sync
+
+echo "mask.rasp: setting up loop devices for $FILE"
 
 DEV_LOOP_DEVICE=$(losetup -f)
 DEV_LOOP_NAME=$(echo "$DEV_LOOP_DEVICE" | grep -oE "[^/]+$")
