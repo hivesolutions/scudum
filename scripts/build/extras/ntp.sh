@@ -13,8 +13,5 @@ rm -rf ntp-$VERSION && tar -zxf "ntp-$VERSION.tar.gz"
 rm -f "ntp-$VERSION.tar.gz"
 cd ntp-$VERSION
 
-wget --content-disposition "http://archive.hive.pt/files/lfs/patches/ntp-$VERSION-glibc-1.patch"
-patch -Np1 -i ntp-$VERSION-glibc-1.patch
-
 ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-yielding-select=yes
 make && make install
