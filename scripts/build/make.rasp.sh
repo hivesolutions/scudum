@@ -52,7 +52,7 @@ else
 fi
 
 if type apt-get &> /dev/null; then
-    apt-get -y install squashfs-tools dosfstools mtools kpartx
+    apt-get -y install squashfs-tools dosfstools mtools kpartx fdisk
 elif type scu &> /dev/null; then
     env -u VERSION scu install squashfs-tools dosfstools mtools kpartx
 else
