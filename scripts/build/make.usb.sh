@@ -97,7 +97,7 @@ dd if=/dev/zero of=$FILE bs=$BLOCK_SIZE count=$BLOCK_COUNT && sync
 
 echo "make.rasp: setting up partition table for $FILE (using fdisk) with $HEADS heads and $SECTORS sectors"
 
-(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE &> /dev/null
+(echo n; echo p; echo 1; echo ; echo ; echo a; echo 1; echo t; echo c; echo w) | fdisk -H $HEADS -S $SECTORS $FILE
 sleep $SLEEP_TIME && sync
 
 if [ -e $PREFIX/lib/syslinux/mbr ]; then
