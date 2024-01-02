@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$VERSION.tgz"\
+rget "https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-$VERSION.tgz"\
+    "ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$VERSION.tgz"\
     "ftp://ftp.edu.ee/gentoo/distfiles/sgml-common-$VERSION.tgz"
 rm -rf sgml-common-$VERSION && tar -zxf "sgml-common-$VERSION.tgz"
 rm -f "sgml-common-$VERSION.tgz"
