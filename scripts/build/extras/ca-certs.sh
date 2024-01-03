@@ -6,7 +6,7 @@ source $DIR/common.sh
 
 rget http://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt
 
-echo "#CVS_ID @# $ RCSfile: certdata.txt $ $Revision:  $ $Date: $" > certdata.txt
+echo "#CVS_ID @# $ RCSfile: certdata.txt $ $Revision:  $ $Date: $" >> certdata.txt
 
 rm -f /usr/share/ssl/certdata.txt &&\
     mv certdata.txt /usr/share/ssl
