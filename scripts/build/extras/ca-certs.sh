@@ -9,4 +9,4 @@ rget http://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/bu
 rm -f /usr/share/ssl/certdata.txt &&\
     mv certdata.txt /usr/share/ssl
 
-cert.build
+FORCE=1 cert.build
