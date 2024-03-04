@@ -40,22 +40,19 @@ __license__ = "Apache License, Version 2.0"
 import appier
 import appier_extras
 
-class ArmordApp(appier.WebApp):
 
+class ArmordApp(appier.WebApp):
     def __init__(self, *args, **kwargs):
         appier.WebApp.__init__(
-            self,
-            name = "armord",
-            parts = (
-                appier_extras.AdminPart,
-            ),
-            *args, **kwargs
+            self, name="armord", parts=(appier_extras.AdminPart,), *args, **kwargs
         )
         self.login_redirect = "base.index"
+
 
 def main():
     app = ArmordApp()
     app.serve()
+
 
 if __name__ == "__main__":
     app = ArmordApp()

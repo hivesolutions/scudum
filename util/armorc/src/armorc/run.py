@@ -41,11 +41,13 @@ import sys
 
 import armorc
 
+
 def main():
     # validates that the provided number of arguments
     # is the expected one, in case it's not raises a
     # runtime error indicating the problem
-    if len(sys.argv) < 2: raise RuntimeError("Invalid number of arguments")
+    if len(sys.argv) < 2:
+        raise RuntimeError("Invalid number of arguments")
 
     # unpacks the second argument as the name of the script
     # that is meant to be run for armor
@@ -68,6 +70,7 @@ def main():
     # current context and then calls it with the arguments
     command = getattr(client, "run_" + command_name)
     command(*args)
+
 
 if __name__ == "__main__":
     main()

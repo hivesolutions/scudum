@@ -42,26 +42,18 @@ import appier
 from . import base
 from . import domain
 
+
 class Node(base.ArmorBase):
+    name = appier.field(index=True, default=True)
 
-    name = appier.field(
-        index = True,
-        default = True
-    )
-
-    domain = appier.field(
-        type = appier.reference(
-            domain.Domain,
-            name = "name"
-        )
-    )
+    domain = appier.field(type=appier.reference(domain.Domain, name="name"))
 
     @classmethod
     def validate(cls):
         return super(Node, cls).validate() + [
             appier.not_null("name"),
             appier.not_empty("name"),
-            appier.not_duplicate("name", cls._name())
+            appier.not_duplicate("name", cls._name()),
         ]
 
     @classmethod

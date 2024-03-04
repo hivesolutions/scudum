@@ -42,44 +42,26 @@ import appier
 from . import base
 from . import node
 
+
 class Asset(base.ArmorBase):
+    name = appier.field(index=True, default=True)
 
-    name = appier.field(
-        index = True,
-        default = True
-    )
+    path = appier.field(index=True)
 
-    path = appier.field(
-        index = True
-    )
+    owner = appier.field(index=True)
 
-    owner = appier.field(
-        index = True
-    )
+    permissions = appier.field(type=int)
 
-    permissions = appier.field(
-        type = int
-    )
+    data = appier.field(type=appier.File, private=True)
 
-    data = appier.field(
-        type = appier.File,
-        private = True
-    )
-
-    node = appier.field(
-        type = appier.reference(
-            node.Node,
-            name = "name"
-        )
-    )
+    node = appier.field(type=appier.reference(node.Node, name="name"))
 
     @classmethod
     def validate(cls):
         return super(Asset, cls).validate() + [
             appier.not_null("name"),
             appier.not_empty("name"),
-
-            appier.not_null("node")
+            appier.not_null("node"),
         ]
 
     @classmethod

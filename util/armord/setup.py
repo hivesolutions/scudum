@@ -41,46 +41,31 @@ import os
 import setuptools
 
 setuptools.setup(
-    name = "armord",
-    version = "0.1.7",
-    author = "Hive Solutions Lda.",
-    author_email = "development@hive.pt",
-    description = "Armor Daemon",
-    license = "Apache License, Version 2.0",
-    keywords = "armor daemon",
-    url = "http://scudum.hive.pt",
-    zip_safe = False,
-    packages = [
-        "armord",
-        "armord.controllers",
-        "armord.models"
-    ],
-    package_dir = {
-        "" : os.path.normpath("src")
-    },
-    package_data = {
-        "armord" : [
+    name="armord",
+    version="0.1.7",
+    author="Hive Solutions Lda.",
+    author_email="development@hive.pt",
+    description="Armor Daemon",
+    license="Apache License, Version 2.0",
+    keywords="armor daemon",
+    url="http://scudum.hive.pt",
+    zip_safe=False,
+    packages=["armord", "armord.controllers", "armord.models"],
+    package_dir={"": os.path.normpath("src")},
+    package_data={
+        "armord": [
             "static/css/*",
             "static/fonts/*",
             "static/images/*.png",
             "static/images/*.ico",
             "static/js/*",
             "templates/*.tpl",
-            "templates/partials/*.tpl"
+            "templates/partials/*.tpl",
         ]
     },
-    install_requires = [
-        "appier",
-        "appier-extras",
-        "jinja2",
-        "pymongo"
-    ],
-    entry_points = {
-        "console_scripts" : [
-            "armord = armord.main:main"
-        ]
-    },
-    classifiers = [
+    install_requires=["appier", "appier-extras", "jinja2", "pymongo"],
+    entry_points={"console_scripts": ["armord = armord.main:main"]},
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
         "License :: OSI Approved :: Apache Software License",
@@ -95,6 +80,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7"
-    ]
+        "Programming Language :: Python :: 3.7",
+    ],
 )

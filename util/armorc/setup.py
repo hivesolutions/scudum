@@ -41,30 +41,20 @@ import os
 import setuptools
 
 setuptools.setup(
-    name = "armorc",
-    version = "0.2.14",
-    author = "Hive Solutions Lda.",
-    author_email = "development@hive.pt",
-    description = "Armor Client",
-    license = "Apache License, Version 2.0",
-    keywords = "armor client",
-    url = "http://scudum.hive.pt",
-    zip_safe = False,
-    packages = [
-        "armorc"
-    ],
-    package_dir = {
-        "" : os.path.normpath("src")
-    },
-    install_requires = [
-        "armor-api"
-    ],
-    entry_points = {
-        "console_scripts" : [
-            "armorc = armorc.run:main"
-        ]
-    },
-    classifiers = [
+    name="armorc",
+    version="0.2.14",
+    author="Hive Solutions Lda.",
+    author_email="development@hive.pt",
+    description="Armor Client",
+    license="Apache License, Version 2.0",
+    keywords="armor client",
+    url="http://scudum.hive.pt",
+    zip_safe=False,
+    packages=["armorc"],
+    package_dir={"": os.path.normpath("src")},
+    install_requires=["armor-api"],
+    entry_points={"console_scripts": ["armorc = armorc.run:main"]},
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
         "License :: OSI Approved :: Apache Software License",
@@ -79,6 +69,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7"
-    ]
+        "Programming Language :: Python :: 3.7",
+    ],
 )

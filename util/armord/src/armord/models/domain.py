@@ -41,45 +41,30 @@ import appier
 
 from . import base
 
+
 class Domain(base.ArmorBase):
+    name = appier.field(index=True, default=True)
 
-    name = appier.field(
-        index = True,
-        default = True
-    )
+    private_key = appier.field(meta="longtext")
 
-    private_key = appier.field(
-        meta = "longtext"
-    )
+    public_key = appier.field(meta="longtext")
 
-    public_key = appier.field(
-        meta = "longtext"
-    )
+    authorized_keys = appier.field(meta="longtext")
 
-    authorized_keys = appier.field(
-        meta = "longtext"
-    )
-
-    cifs_path = appier.field(
-        index = True
-    )
+    cifs_path = appier.field(index=True)
 
     cifs_username = appier.field()
 
-    cifs_password = appier.field(
-        meta = "secret"
-    )
+    cifs_password = appier.field(meta="secret")
 
-    git_url = appier.field(
-        index = True
-    )
+    git_url = appier.field(index=True)
 
     @classmethod
     def validate(cls):
         return super(Domain, cls).validate() + [
             appier.not_null("name"),
             appier.not_empty("name"),
-            appier.not_duplicate("name", cls._name())
+            appier.not_duplicate("name", cls._name()),
         ]
 
     @classmethod

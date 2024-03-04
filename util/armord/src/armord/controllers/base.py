@@ -39,21 +39,15 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
-class BaseController(appier.Controller):
 
+class BaseController(appier.Controller):
     @appier.route("/", "GET")
     @appier.route("/index", "GET")
-    @appier.ensure(token = "base")
+    @appier.ensure(token="base")
     def index(self):
-        return self.template(
-            "index.html.tpl",
-            link = "home"
-        )
+        return self.template("index.html.tpl", link="home")
 
     @appier.route("/about", "GET")
-    @appier.ensure(token = "base")
+    @appier.ensure(token="base")
     def about(self):
-        return self.template(
-            "about.html.tpl",
-            link = "about"
-        )
+        return self.template("about.html.tpl", link="about")

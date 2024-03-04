@@ -39,5 +39,6 @@ __license__ = "Apache License, Version 2.0"
 
 import appier_extras
 
+
 class ArmorBase(appier_extras.admin.Base):
     pass
