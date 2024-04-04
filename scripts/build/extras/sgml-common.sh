@@ -13,7 +13,7 @@ rm -rf sgml-common-$VERSION && tar -zxf "sgml-common-$VERSION.tgz"
 rm -f "sgml-common-$VERSION.tgz"
 cd sgml-common-$VERSION
 
-wget --content-disposition "https://lfs.mirror.fileplanet.com/patches/downloads/sgml-common/sgml-common-0.6.3-manpage-1.patch"
+wget --content-disposition "https://lfs.mirror.fileplanet.com/patches/downloads/sgml-common/sgml-common-$VERSION-manpage-1.patch"
 patch -Np1 -i sgml-common-$VERSION-manpage-1.patch
 
 autoreconf -f -i
