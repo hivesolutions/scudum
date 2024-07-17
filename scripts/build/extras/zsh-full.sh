@@ -13,6 +13,7 @@ sed -i 's/ZSH_THEME=".*"/ZSH_THEME="pygmalion"/g' /root/.zshrc
 
 rm -f /etc/environ.zsh && cp -p /etc/environ /etc/environ.zsh
 sed -i 's/ == / = /g' /etc/environ.zsh
+sed -i 's/export PS1="\\u@\\h:\\w# "//g' /etc/environ.zsh
 
 cat >> /root/.zshrc  << "EOF"
 bindkey "\e[1~" beginning-of-line
