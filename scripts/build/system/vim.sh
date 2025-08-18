@@ -5,7 +5,7 @@ VERSION_L=${VERSION_L-82}
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "ftp://ftp.vim.org/pub/vim/unix/vim-$VERSION.tar.bz2"
+wget --no-check-certificate --content-disposition "https://ftp.nluug.nl/pub/vim/unix/vim-$VERSION.tar.bz2"
 rm -rf vim$VERSION_L && tar -jxf "vim-$VERSION.tar.bz2"
 rm -f "vim-$VERSION.tar.bz2"
 cd vim$VERSION_L
