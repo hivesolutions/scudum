@@ -13,5 +13,7 @@ rm -rf btrfs-progs-v$VERSION && tar -zxf "btrfs-progs-v$VERSION.tar.gz"
 rm -f "btrfs-progs-v$VERSION.tar.gz"
 cd btrfs-progs-v$VERSION
 
+export XMLTOFLAGS="--skip-validation"
+
 ./configure --prefix=$PREFIX
 make NO_DOCUMENTATION=1 XMLTOFLAGS="--skip-validation" && make install NO_DOCUMENTATION=1 XMLTOFLAGS="--skip-validation"
