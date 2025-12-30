@@ -14,4 +14,4 @@ rm -f "btrfs-progs-v$VERSION.tar.gz"
 cd btrfs-progs-v$VERSION
 
 ./configure --prefix=$PREFIX
-make && make install
+make NO_DOCUMENTATION=1 && make install NO_DOCUMENTATION=1
