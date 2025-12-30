@@ -6,7 +6,7 @@ set -e +h
 
 source $DIR/common.sh
 
-depends "libxml2 libxslt docbook"
+depends "libxml2 libxslt"
 
 wget --content-disposition "https://releases.pagure.org/xmlto/xmlto-$VERSION.tar.bz2"
 rm -rf xmlto-$VERSION && tar -jxf "xmlto-$VERSION.tar.bz2"
