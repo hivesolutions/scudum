@@ -16,9 +16,27 @@ set -e
 
 source /etc/environ
 
-mkdir -p $DATA_TARGET && mount -t cifs -o vers=1.0,username=$DATA_USERNAME,password=$DATA_PASSWORD $DATA_ORIGIN $DATA_TARGET
+# Retry function: retries a command up to MAX_RETRIES times with RETRY_DELAY
+# seconds between attempts, allows for a command to fail and be retried.
+retry() {
+    local max_retries=${MAX_RETRIES:-10}
+    local retry_delay=${RETRY_DELAY:-30}
+    local attempt=1
 
-pip install --quiet netius tinydb armord
+    until "$@"; do
+        if [ $attempt -ge $max_retries ]; then
+            echo "Command failed after $max_retries attempts: $*"
+            return 1
+        fi
+        echo "Attempt $attempt failed. Retrying in $retry_delay seconds..."
+        sleep $retry_delay
+        attempt=$((attempt + 1))
+    done
+}
+
+mkdir -p $DATA_TARGET && retry mount -t cifs -o vers=1.0,username=$DATA_USERNAME,password=$DATA_PASSWORD $DATA_ORIGIN $DATA_TARGET
+
+retry pip install --quiet netius tinydb armord
 
 SERVER=$ARMOR_SERVER \
 HOST=$ARMOR_HOST \
