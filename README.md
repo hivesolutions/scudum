@@ -28,7 +28,7 @@ docker run --name scudum --privileged -d -v /mnt/builds:/mnt/builds hivesolution
 
 ### Environment
 
-The currently recommended environments are Ubuntu 14.04+ or Scudum itself configured for building.
+The currently recommended environments are Ubuntu 22.04, 24.04 or 26.04, or Scudum itself configured for building.
 
 ### Installation
 
