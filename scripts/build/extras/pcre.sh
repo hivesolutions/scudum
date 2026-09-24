@@ -6,7 +6,9 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://downloads.sourceforge.net/pcre/pcre-$VERSION.tar.gz?use_mirror=netix" "--output-document=pcre-$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/pcre/$VERSION/pcre-$VERSION.tar.gz"\
+    "http://downloads.sourceforge.net/pcre/pcre-$VERSION.tar.gz?use_mirror=netix"\
+    "--output-document=pcre-$VERSION.tar.gz"
 rm -rf pcre-$VERSION && tar -zxf "pcre-$VERSION.tar.gz"
 rm -f "pcre-$VERSION.tar.gz"
 cd pcre-$VERSION

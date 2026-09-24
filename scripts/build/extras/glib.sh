@@ -9,7 +9,8 @@ source $DIR/common.sh
 
 depends "meson" "libffi" "python" "pcre"
 
-wget --content-disposition "http://ftp.gnome.org/pub/gnome/sources/glib/$VERSION_L/glib-$VERSION.tar.xz"
+rget "https://mirrors.hive.pt/mirrors/scudum/glib/$VERSION/glib-$VERSION.tar.xz"\
+    "http://ftp.gnome.org/pub/gnome/sources/glib/$VERSION_L/glib-$VERSION.tar.xz"
 rm -rf glib-$VERSION && tar -Jxf "glib-$VERSION.tar.xz"
 rm -f "glib-$VERSION.tar.xz"
 cd glib-$VERSION

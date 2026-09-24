@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "https://www.infradead.org/~tgr/libnl/files/libnl-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/libnl/$VERSION/libnl-$VERSION.tar.gz"\
+    "https://www.infradead.org/~tgr/libnl/files/libnl-$VERSION.tar.gz"\
     "http://sources.openelec.tv/mirror/libnl/libnl-$VERSION.tar.gz"
 rm -rf libnl-$VERSION && tar -zxf "libnl-$VERSION.tar.gz"
 rm -f "libnl-$VERSION.tar.gz"

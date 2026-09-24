@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "http://0pointer.de/lennart/projects/libdaemon/libdaemon-$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/libdaemon/$VERSION/libdaemon-$VERSION.tar.gz"\
+    "http://0pointer.de/lennart/projects/libdaemon/libdaemon-$VERSION.tar.gz"
 rm -rf libdaemon-$VERSION && tar -zxf "libdaemon-$VERSION.tar.gz"
 rm -f "libdaemon-$VERSION.tar.gz"
 cd libdaemon-$VERSION

@@ -7,7 +7,8 @@ set -e +h
 
 source $DIR/common.sh
 
-wget --content-disposition "https://github.com/libexpat/libexpat/releases/download/R_$VERSION_L/expat-$VERSION.tar.bz2"
+rget "https://mirrors.hive.pt/mirrors/scudum/expat/$VERSION/expat-$VERSION.tar.bz2"\
+    "https://github.com/libexpat/libexpat/releases/download/R_$VERSION_L/expat-$VERSION.tar.bz2"
 rm -rf expat-$VERSION && tar -jxf "expat-$VERSION.tar.bz2"
 rm -f "expat-$VERSION.tar.bz2"
 cd expat-$VERSION
