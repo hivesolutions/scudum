@@ -6,7 +6,7 @@ fi
 
 echo "Building initial file structure"
 
-mkdir -pv /{boot,home,mnt,opt,srv}
+mkdir -pv /{boot,home,mnt,opt,run,srv}
 mkdir -pv /etc/{opt,sysconfig}
 mkdir -pv /lib/firmware
 mkdir -pv /media/{floppy,cdrom}
