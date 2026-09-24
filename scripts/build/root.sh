@@ -87,6 +87,8 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/sed.sh
     $DIR/tools/tar.sh
     $DIR/tools/xz.sh
+    $DIR/tools/openssl.sh
+    $DIR/tools/wget.sh
     $DIR/tools/binutils.pass2.sh
     $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
 

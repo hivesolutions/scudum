@@ -19,7 +19,6 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 fi
 
 export EFLAGS=""
-export PERL5LIB="/tools/lib/perl5:/tools/lib/perl5/site_perl"
 
 if [ ! -z "$GCC_BUILD_ARCH" ]; then export EFLAGS="$EFLAGS -march=$GCC_BUILD_ARCH"; fi
 if [ ! -z "$GCC_BUILD_CPU" ]; then export EFLAGS="$EFLAGS -mcpu=$GCC_BUILD_CPU"; fi
