@@ -6,24 +6,33 @@ fi
 
 echo "Building initial file structure"
 
-mkdir -pv /{boot,home,mnt,opt,run,srv}
-mkdir -pv /etc/{opt,sysconfig}
-mkdir -pv /lib/firmware
-mkdir -pv /media/{floppy,cdrom}
-mkdir -pv /usr/{,local/}{include,src}
-mkdir -pv /usr/lib/locale
-mkdir -pv /usr/local/{bin,lib,sbin}
-mkdir -pv /usr/{,local/}share/{color,dict,doc,info,locale,man}
-mkdir -pv /usr/{,local/}share/{misc,terminfo,zoneinfo}
-mkdir -pv /usr/{,local/}share/man/man{1..8}
-mkdir -pv /var/{cache,local,log,mail,opt,spool}
-mkdir -pv /var/lib/{color,misc,locate}
-
-ln -svf /run /var/run
-ln -svf /run/lock /var/lock
+mkdir -pv /{bin,boot,etc/{opt,sysconfig},home,lib,mnt,opt,run}
+mkdir -pv /{media/{floppy,cdrom},sbin,srv,var}
 
 install -dv -m 0750 /root
 install -dv -m 1777 /tmp /var/tmp
+
+mkdir -pv /usr/{,local/}{bin,include,lib,sbin,src}
+mkdir -pv /usr/{,local/}share/{doc,info,locale,man}
+mkdir -pv /usr/{,local/}share/{misc,terminfo,zoneinfo}
+mkdir -pv /usr/{,local/}share/man/man{1..8}
+
+for dir in /usr /usr/local; do
+    ln -svf share/{man,doc,info} $dir
+done
+
+case $SCUDUM_ARCH in
+    arm*|x86_64)
+        ln -svf lib /usr/lib64
+        ln -svf lib /usr/local/lib64
+        ;;
+esac
+
+mkdir -pv /run/var
+mkdir -pv /var/{log,mail,spool}
+ln -svf /run /var/run
+ln -svf /run/lock /var/lock
+mkdir -pv /var/{opt,cache,lib/{misc,locate},local}
 
 echo "Toucing /etc/mtab file for initial usage"
 
