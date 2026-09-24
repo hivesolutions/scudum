@@ -18,12 +18,11 @@ cd openssl-$VERSION
 
 ./config\
     --prefix=/usr\
-    --openssldir=/etc/ssl\
+    --openssldir=/usr/ssl\
     --libdir=lib\
     shared\
     zlib-dynamic
 
 make && make install_sw install_ssldirs
 
-# keeps the legacy /usr/ssl path (used by cert.build and curl) working
-ln -svfn /etc/ssl /usr/ssl
+ln -svf /usr/ssl /etc/ssl

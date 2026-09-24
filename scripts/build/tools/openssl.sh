@@ -17,7 +17,7 @@ cd openssl-$VERSION
 
 ./Configure linux-$SCUDUM_HOST\
     --prefix=/usr\
-    --openssldir=/etc/ssl\
+    --openssldir=/usr/ssl\
     --libdir=lib\
     --cross-compile-prefix=$SCUDUM_TARGET-\
     shared
