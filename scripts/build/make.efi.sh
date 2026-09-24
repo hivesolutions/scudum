@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 EFI_NAME=${EFI_NAME-efiboot.img}
+EFI_SIZE=${EFI_SIZE-4096}
 GRUB_EMBED=${GRUB_EMBED-boot/grub/grub.cfg.embed}
+GRUB_DIR=${GRUB_DIR-/usr/lib/grub/x86_64-efi}
 
 CUR=$(pwd)
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -28,20 +30,33 @@ fi
 
 MOUNTPOINT=$(mktemp -d)
 
+# filters the modules to the ones available in the installed grub
+# version, as newer versions drop some of them (eg: efi_uga in 2.14)
+modules=""
+for module in part_gpt part_msdos fat ext2 ntfs hfs hfsplus iso9660 udf ufs1 ufs2\
+    zfs chain linux boot appleldr scsi ahci ehci configfile normal regexp\
+    minicmd reboot halt search search_fs_file search_fs_uuid\
+    search_label gfxterm gfxmenu efi_gop efi_uga all_video loadbios\
+    gzio echo true probe loadenv bitmap_scale font cat help ls png\
+    jpeg tga test at_keyboard usb_keyboard sleep usbms; do
+    if [ -e $GRUB_DIR/$module.mod ]; then
+        modules="$modules $module"
+    else
+        echo "make.efi: skipping '$module' module, not available in $GRUB_DIR"
+    fi
+done
+
 grub-mkimage\
     --format=x86_64-efi\
     --output=bootx64.efi\
     --config=$SCUDUM/$GRUB_EMBED\
     --compression=$compression\
     --prefix=/EFI/BOOT\
-    part_gpt part_msdos fat ext2 ntfs hfs hfsplus iso9660 udf ufs1 ufs2\
-    zfs chain linux boot appleldr scsi ahci ehci configfile normal regexp\
-    minicmd reboot halt search search_fs_file search_fs_uuid\
-    search_label gfxterm gfxmenu efi_gop efi_uga all_video loadbios\
-    gzio echo true probe loadenv bitmap_scale font cat help ls png\
-    jpeg tga test at_keyboard usb_keyboard sleep usbms
+    $modules
 
-dd if=/dev/zero of=$EFI_NAME bs=1K count=1440
+# the image size (in KB) leaves room for newer grub versions, the
+# previous 1440K floppy size only has 18K free with GRUB 2.14
+dd if=/dev/zero of=$EFI_NAME bs=1K count=$EFI_SIZE
 mkdosfs -F 12 $EFI_NAME
 mount -o loop $EFI_NAME $MOUNTPOINT
 
