@@ -1,14 +1,25 @@
-VERSION=${VERSION-1.4.19}
+VERSION=${VERSION-1.4.21}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/m4/m4-$VERSION.tar.bz2"
-rm -rf m4-$VERSION && tar -jxf "m4-$VERSION.tar.bz2"
-rm -f "m4-$VERSION.tar.bz2"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/m4/$VERSION/m4-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/m4/m4-$VERSION.tar.xz"
+rm -rf m4-$VERSION && tar -Jxf "m4-$VERSION.tar.xz"
+rm -f "m4-$VERSION.tar.xz"
 cd m4-$VERSION
 
-sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
-echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
+cat > $SCUDUM/usr/share/config.site << EOF
+ac_cv_func_posix_spawn_file_actions_addchdir=yes
+ac_cv_func_posix_spawn_file_actions_addfchdir=yes
+EOF
 
-./configure --prefix=$PREFIX
-make && make install
+./configure\
+    --prefix=/usr\
+    --host=$SCUDUM_TARGET\
+    --build=$(build-aux/config.guess)
+
+make && make DESTDIR=$SCUDUM install

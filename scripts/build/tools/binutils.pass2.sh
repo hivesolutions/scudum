@@ -1,22 +1,33 @@
-VERSION=${VERSION-2.34}
+VERSION=${VERSION-2.47}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/binutils/binutils-$VERSION.tar.bz2"
-rm -rf binutils-$VERSION && tar -jxf "binutils-$VERSION.tar.bz2"
-rm -f "binutils-$VERSION.tar.bz2"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/binutils/$VERSION/binutils-$VERSION.tar.xz"\
+    "https://sourceware.org/pub/binutils/releases/binutils-$VERSION.tar.xz"
+rm -rf binutils-$VERSION && tar -Jxf "binutils-$VERSION.tar.xz"
+rm -f "binutils-$VERSION.tar.xz"
 cd binutils-$VERSION
 
-CC=$SCUDUM_TARGET-gcc AR=$SCUDUM_TARGET-ar RANLIB=$SCUDUM_TARGET-ranlib ./configure\
-    --prefix=$PREFIX\
+sed '6031s/$add_dir//' -i ltmain.sh
+
+mkdir -v build && cd build
+
+../configure\
+    --prefix=/usr\
+    --build=$(../config.guess)\
+    --host=$SCUDUM_TARGET\
     --disable-nls\
+    --enable-shared\
+    --enable-gprofng=no\
     --disable-werror\
-    --disable-multilib\
-    --with-lib-path=$PREFIX/lib\
-    --with-sysroot
+    --enable-64-bit-bfd\
+    --enable-new-dtags\
+    --enable-default-hash-style=gnu
 
-make && make install
+make && make DESTDIR=$SCUDUM install
 
-make -C ld clean
-make -C ld LIB_PATH=/usr/lib:/lib
-cp -v ld/ld-new $PREFIX/bin
+rm -v $SCUDUM/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
