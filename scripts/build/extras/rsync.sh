@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "https://github.com/RsyncProject/rsync/releases/download/v$VERSION/rsync-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/rsync/$VERSION/rsync-$VERSION.tar.gz"\
+    "https://github.com/RsyncProject/rsync/releases/download/v$VERSION/rsync-$VERSION.tar.gz"\
     "https://download.samba.org/pub/rsync/src/rsync-$VERSION.tar.gz"\
     "https://www.mirrorservice.org/sites/rsync.samba.org/src/rsync-$VERSION.tar.gz"
 rm -rf rsync-$VERSION && tar -zxf "rsync-$VERSION.tar.gz"
