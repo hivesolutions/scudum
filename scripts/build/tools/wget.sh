@@ -12,7 +12,8 @@ rm -rf wget-$VERSION && tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
-OPENSSL_CFLAGS="-I$SCUDUM/usr/include" OPENSSL_LIBS="-lssl -lcrypto" ./configure\
+PKG_CONFIG_LIBDIR=$SCUDUM/usr/lib/pkgconfig PKG_CONFIG_SYSROOT_DIR=$SCUDUM\
+    OPENSSL_CFLAGS="-I$SCUDUM/usr/include" OPENSSL_LIBS="-lssl -lcrypto" ./configure\
     --prefix=/usr\
     --host=$SCUDUM_TARGET\
     --build=$(build-aux/config.guess)\
