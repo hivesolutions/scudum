@@ -1,11 +1,32 @@
 name: Main Workflow
 on: [push]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: main-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    runs-on: [self-hosted, ubuntu, scudum]
+    env:
+      DEBIAN_FRONTEND: noninteractive
     steps:
-      - uses: actions/checkout@v1
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y -q wget git
-      - run: sudo ./travis/build.sh
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Install Scudum tools
+        run: |
+          apt-get update
+          apt-get install -y -q wget git
+          make install
+
+      - name: Install Scudum root
+        run: scudum install
+
+      - name: Build ISO
+        run: scudum make.iso

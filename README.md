@@ -300,5 +300,4 @@ Scudum is currently licensed under the [Apache License, Version 2.0](http://www.
 
 ## Build Automation
 
-[![Build Status](https://app.travis-ci.com/hivesolutions/scudum.svg?branch=master)](https://travis-ci.com/github/hivesolutions/scudum)
 [![Build Status GitHub](https://github.com/hivesolutions/scudum/workflows/Main%20Workflow/badge.svg)](https://github.com/hivesolutions/scudum/actions)
