@@ -1,10 +1,15 @@
-VERSION=${VERSION-2.30}
+VERSION=${VERSION-20260805}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://archive.hive.pt/files/lfs/iana-etc-$VERSION.tar.bz2"
-rm -rf iana-etc-$VERSION && tar -jxf "iana-etc-$VERSION.tar.bz2"
-rm -f "iana-etc-$VERSION.tar.bz2"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/iana-etc/$VERSION/iana-etc-$VERSION.tar.gz"\
+    "https://github.com/Mic92/iana-etc/releases/download/$VERSION/iana-etc-$VERSION.tar.gz"
+rm -rf iana-etc-$VERSION && tar -zxf "iana-etc-$VERSION.tar.gz"
+rm -f "iana-etc-$VERSION.tar.gz"
 cd iana-etc-$VERSION
 
-make && make install
+cp -v services protocols /etc

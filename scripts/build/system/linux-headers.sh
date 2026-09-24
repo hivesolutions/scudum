@@ -1,16 +1,20 @@
-VERSION=${VERSION-4.19.126}
-VERSION_L=${VERSION_L-4.x}
+VERSION=${VERSION-6.18.53}
+VERSION_L=${VERSION_L-6.x}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "https://www.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/linux/$VERSION/linux-$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"
 rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION
 
 make mrproper
-make ARCH=$SCUDUM_BARCH headers_check
-make ARCH=$SCUDUM_BARCH INSTALL_HDR_PATH=dest headers_install
+make ARCH=$SCUDUM_BARCH headers
 
-find dest/include \( -name .install -o -name ..install.cmd \) -delete
-cp -rv dest/include/* /usr/include
+find usr/include -type f ! -name '*.h' -delete
+cp -rv usr/include /usr

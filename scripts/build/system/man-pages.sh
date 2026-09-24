@@ -1,10 +1,17 @@
-VERSION=${VERSION-5.09}
+VERSION=${VERSION-6.18}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/man-pages/$VERSION/man-pages-$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-$VERSION.tar.xz"
 rm -rf man-pages-$VERSION && tar -Jxf "man-pages-$VERSION.tar.xz"
-rm -f "man-pages-$VERSION.tar.gz"
+rm -f "man-pages-$VERSION.tar.xz"
 cd man-pages-$VERSION
 
-make install
+rm -v man3/crypt*
+
+make -R GIT=false prefix=/usr install

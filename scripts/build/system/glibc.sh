@@ -1,22 +1,31 @@
-VERSION=${VERSION-2.36}
-VERSION_T=${VERSION_T-2022g}
+VERSION=${VERSION-2.44}
+VERSION_T=${VERSION_T-2026c}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
+
+source $DIR/../base/functions.sh
 
 unset CFLAGS CXXFLAGS
 
 if [ "$CROSSCC" != "" ]; then export CC="$CROSSCC"; fi
 if [ "$CROSSCXX" != "" ]; then export CXX="$CROSSCXX"; fi
 
-if [ "$SCUDUM_CROSS" == "0" ]; then
-    export CC="gcc -isystem /usr/lib/gcc/$ARCH_TARGET/$GCC_BUILD_VERSION/include -isystem /usr/include"
-fi
-
-wget --no-check-certificate --content-disposition "http://www.iana.org/time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/glibc/glibc-$VERSION.tar.xz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/glibc/$VERSION/tzdata$VERSION_T.tar.gz"\
+    "https://www.iana.org/time-zones/repository/releases/tzdata$VERSION_T.tar.gz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/glibc/$VERSION/glibc-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/glibc/glibc-$VERSION.tar.xz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/glibc/$VERSION/glibc-fhs-1.patch"\
+    "https://www.linuxfromscratch.org/patches/lfs/13.1/glibc-fhs-1.patch"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/glibc/$VERSION/glibc-$VERSION-upstream_fixes-1.patch"\
+    "https://www.linuxfromscratch.org/patches/lfs/13.1/glibc-$VERSION-upstream_fixes-1.patch"
 rm -rf glibc-$VERSION && tar -Jxf "glibc-$VERSION.tar.xz"
 rm -f "glibc-$VERSION.tar.xz"
 cd glibc-$VERSION
+
+patch -Np1 -i ../glibc-fhs-1.patch
+patch -Np1 -i ../glibc-$VERSION-upstream_fixes-1.patch
 
 cd ..
 rm -rf glibc-build && mkdir glibc-build
@@ -24,14 +33,14 @@ cd glibc-build
 
 ../glibc-$VERSION/configure\
     --host=$ARCH_TARGET\
+    --build=$(../glibc-$VERSION/scripts/config.guess)\
     --prefix=/usr\
-    --libexecdir=/usr/lib/glibc\
-    --with-headers=/usr/include\
-    --enable-kernel=3.2\
-    --enable-stack-protector=strong\
     --disable-werror\
-    --disable-multilib\
-    --$GCC_MULTIARCH-multi-arch
+    --disable-nscd\
+    --enable-stack-protector=strong\
+    --enable-kernel=5.10\
+    --$GCC_MULTIARCH-multi-arch\
+    libc_cv_slibdir=/usr/lib
 
 make
 
@@ -42,12 +51,12 @@ fi
 
 touch /etc/ld.so.conf
 
+# skips the outdated installation sanity check (fails on modern glibc)
+sed '/test-installation/s@$(PERL)@echo not running@' -i ../glibc-$VERSION/Makefile
+
 make install
 
-# installs the configuration file and runtime directory
-# for NSCD (as originally expected)
-cp -v ../glibc-$VERSION/nscd/nscd.conf /etc/nscd.conf
-mkdir -pv /var/cache/nscd
+sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 
 # defines the the various locales that are going
 # ot be used by the base libraries compilation
@@ -102,14 +111,14 @@ if [ "$SCUDUM_CROSS" == "0" ] ; then
 
     for tz in etcetera southamerica northamerica europe africa antarctica\
         asia australasia backward; do
-        zic -L /dev/null -d $ZONEINFO -y "sh yearistype.sh" ${tz}
-        zic -L /dev/null -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
-        zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}
+        zic -L /dev/null -d $ZONEINFO ${tz}
+        zic -L /dev/null -d $ZONEINFO/posix ${tz}
+        zic -L leapseconds -d $ZONEINFO/right ${tz}
     done
 
-    cp -v zone.tab iso3166.tab $ZONEINFO
+    cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
     zic -d $ZONEINFO -p America/New_York
-    unset ZONEINFO
+    unset ZONEINFO tz
 fi
 
 cat > /etc/ld.so.conf << "EOF"

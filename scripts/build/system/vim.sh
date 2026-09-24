@@ -1,14 +1,19 @@
 [ "$SCUDUM_CROSS" == "1" ] && exit 0 || true
 
-VERSION=${VERSION-8.2}
-VERSION_L=${VERSION_L-82}
+VERSION=${VERSION-9.2.1025}
+VERSION_L=${VERSION_L-92}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "https://ftp.nluug.nl/pub/vim/unix/vim-$VERSION.tar.bz2"
-rm -rf vim$VERSION_L && tar -jxf "vim-$VERSION.tar.bz2"
-rm -f "vim-$VERSION.tar.bz2"
-cd vim$VERSION_L
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/vim/$VERSION/vim-$VERSION.tar.gz"\
+    "https://github.com/vim/vim/archive/v$VERSION/vim-$VERSION.tar.gz"
+rm -rf vim-$VERSION && tar -zxf "vim-$VERSION.tar.gz"
+rm -f "vim-$VERSION.tar.gz"
+cd vim-$VERSION
 
 echo "#define SYS_VIMRC_FILE \"/etc/vimrc\"" >> src/feature.h
 

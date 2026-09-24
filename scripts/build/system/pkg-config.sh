@@ -1,21 +1,27 @@
-VERSION=${VERSION-0.29.2}
+VERSION=${VERSION-3.0.5}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://pkgconfig.freedesktop.org/releases/pkg-config-$VERSION.tar.gz"
-rm -rf pkg-config-$VERSION && tar -zxf "pkg-config-$VERSION.tar.gz"
-rm -f "pkg-config-$VERSION.tar.gz"
-cd pkg-config-$VERSION
+source $DIR/../base/functions.sh
 
-sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' glib/configure
+rgeti "https://mirrors.hive.pt/mirrors/scudum/pkgconf/$VERSION/pkgconf-$VERSION.tar.xz"\
+    "https://distfiles.ariadne.space/pkgconf/pkgconf-$VERSION.tar.xz"
+rm -rf pkgconf-$VERSION && tar -Jxf "pkgconf-$VERSION.tar.xz"
+rm -f "pkgconf-$VERSION.tar.xz"
+cd pkgconf-$VERSION
 
+# uses the autotools build as meson and ninja are not available
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --with-internal-glib\
-    --disable-host-tool\
-    --docdir=/usr/share/doc/pkg-config-$VERSION
+    --disable-static\
+    --docdir=/usr/share/doc/pkgconf-$VERSION
 
 make
 test $TEST && make check
 make install
+
+ln -svf pkgconf /usr/bin/pkg-config
+ln -svf pkgconf.1 /usr/share/man/man1/pkg-config.1

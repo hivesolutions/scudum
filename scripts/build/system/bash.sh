@@ -1,16 +1,22 @@
-VERSION=${VERSION-4.4}
-VERSION_L=${VERSION_L-44}
-PATCH_SEQ=${PATCH_SEQ-1 12}
+VERSION=${VERSION-5.3}
+VERSION_L=${VERSION_L-53}
+PATCH_SEQ=${PATCH_SEQ-1 20}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/bash/bash-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/bash/$VERSION/bash-$VERSION.tar.gz"\
+    "https://ftpmirror.gnu.org/bash/bash-$VERSION.tar.gz"
 rm -rf bash-$VERSION && tar -zxf "bash-$VERSION.tar.gz"
 rm -f "bash-$VERSION.tar.gz"
 cd bash-$VERSION
 
 for index in $(seq -f "%03g" $PATCH_SEQ); do
-    wget --no-check-certificate http://ftp.gnu.org/gnu/bash/bash-$VERSION-patches/bash$VERSION_L-$index
+    rgeti "https://mirrors.hive.pt/mirrors/scudum/bash/$VERSION/bash$VERSION_L-$index"\
+        "https://ftpmirror.gnu.org/bash/bash-$VERSION-patches/bash$VERSION_L-$index"
     patch -Np0 -i bash$VERSION_L-$index
 done
 
@@ -20,7 +26,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    ac_cv_rl_version=6.3\
+    ac_cv_rl_version=8.3\
     bash_cv_sys_siglist=yes\
     bash_cv_under_sys_siglist=yes\
     bash_cv_wexitstatus_offset=8\
@@ -34,16 +40,14 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     ./configure\
         --host=$ARCH_TARGET\
         --prefix=/usr\
-        --bindir=/bin\
-        --htmldir=/usr/share/doc/bash-$VERSION\
+        --docdir=/usr/share/doc/bash-$VERSION\
         --without-bash-malloc\
         --with-installed-readline
 else
     ./configure\
         --host=$ARCH_TARGET\
         --prefix=/usr\
-        --bindir=/bin\
-        --htmldir=/usr/share/doc/bash-$VERSION\
+        --docdir=/usr/share/doc/bash-$VERSION\
         --without-bash-malloc\
         --with-installed-readline
 fi
@@ -53,9 +57,6 @@ make
 chown -Rv nobody .
 test $TEST && su nobody -s /bin/bash -c "PATH=$PATH make tests"
 make install
-
-ln -svf /bin/sh /usr/bin/sh
-ln -svf /bin/bash /usr/bin/bash
 
 echo "/bin/sh" >> /etc/shells
 echo "/bin/bash" >> /etc/shells

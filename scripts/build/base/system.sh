@@ -59,6 +59,7 @@ source /tools/repo/scripts/build/base/config.sysroot.sh
 /tools/repo/scripts/build/system/sed.sh
 /tools/repo/scripts/build/system/bzip2.sh
 /tools/repo/scripts/build/system/pkg-config.sh
+/tools/repo/scripts/build/system/libxcrypt.sh
 /tools/repo/scripts/build/system/ncurses.sh
 /tools/repo/scripts/build/system/util-linux.sh
 /tools/repo/scripts/build/system/psmisc.sh

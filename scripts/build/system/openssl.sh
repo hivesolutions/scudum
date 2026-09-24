@@ -1,10 +1,5 @@
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    VERSION=${VERSION-1.0.2u}
-    VERSION_L=${VERSION_L-1.0.2}
-else
-    VERSION=${VERSION-1.1.1q}
-    VERSION_L=${VERSION_L-1.1.1}
-fi
+VERSION=${VERSION-3.5.8}
+VERSION_L=${VERSION_L-3.5}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -12,28 +7,23 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-unset MAKEFLAGS TEST
+unset TEST
 
-rgeti "https://www.openssl.org/source/old/$VERSION_L/openssl-$VERSION.tar.gz"\
-    "http://mirrors.ibiblio.org/openssl/source/old/$VERSION_L/openssl-$VERSION.tar.gz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/openssl/$VERSION/openssl-$VERSION.tar.gz"\
+    "https://github.com/openssl/openssl/releases/download/openssl-$VERSION/openssl-$VERSION.tar.gz"\
+    "https://www.openssl.org/source/old/$VERSION_L/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    case "$SCUDUM_ARCH" in
-        arm*)
-            ./Configure linux-generic32 shared --prefix=/usr --openssldir=/usr/ssl
-            make && make install
-            ;;
-        *)
-            ./config shared --prefix=/usr --openssldir=/usr/ssl os/compiler:$ARCH_TARGET-gcc
-            make depend && make && make install
-            ;;
-    esac
-else
-    ./config shared --prefix=/usr --openssldir=/usr/ssl
-    make depend && make && make install
-fi
+./config\
+    --prefix=/usr\
+    --openssldir=/etc/ssl\
+    --libdir=lib\
+    shared\
+    zlib-dynamic
 
-ln -svf /usr/ssl /etc/ssl
+make && make install_sw install_ssldirs
+
+# keeps the legacy /usr/ssl path (used by cert.build and curl) working
+ln -svfn /etc/ssl /usr/ssl

@@ -1,29 +1,22 @@
-VERSION=${VERSION-1.22.2}
+VERSION=${VERSION-1.24.1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
+source $DIR/../base/functions.sh
+
 unset MAKEFLAGS
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/groff/groff-$VERSION.tar.gz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/groff/$VERSION/groff-$VERSION.tar.gz"\
+    "https://ftpmirror.gnu.org/groff/groff-$VERSION.tar.gz"
 rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"
 rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    PAGE=letter CC=gcc CXX=g++ AR=ar RANLIB=ranlib CFLAGS="" CXXFLAGS="" LDFLAGS="" ./configure --prefix=/tools
-    make && make install
-    make clean
-fi
-
 PAGE=letter ./configure --host=$ARCH_TARGET --prefix=/usr
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    make GROFF_BIN_PATH=/tools/bin GROFFBIN=groff
-else
-    make
-fi
-
-mkdir -pv /usr/share/doc/groff-$VERSION/pdf
+make
 make install
 
 ln -svf eqn /usr/bin/geqn

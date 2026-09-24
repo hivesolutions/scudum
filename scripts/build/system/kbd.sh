@@ -1,21 +1,24 @@
-VERSION=${VERSION-2.2.0}
+VERSION=${VERSION-2.10.0}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.altlinux.org/pub/people/legion/kbd/kbd-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/kbd/$VERSION/kbd-$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/utils/kbd/kbd-$VERSION.tar.xz"
 rm -rf kbd-$VERSION && tar -Jxf "kbd-$VERSION.tar.xz"
 rm -f "kbd-$VERSION.tar.xz"
 cd kbd-$VERSION
 
-wget --no-check-certificate --content-disposition "http://archive.hive.pt/files/lfs/patches/kbd-$VERSION-backspace-1.patch"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/kbd/$VERSION/kbd-$VERSION-backspace-1.patch"\
+    "https://www.linuxfromscratch.org/patches/lfs/13.1/kbd-$VERSION-backspace-1.patch"
 patch -Np1 -i kbd-$VERSION-backspace-1.patch
 
-sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
+sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
 
-./configure --host=$ARCH_TARGET --prefix=/usr --datadir=/lib/kbd\
-    --disable-vlock
+./configure --host=$ARCH_TARGET --prefix=/usr --disable-vlock
 
-make M4=/tools/bin/m4 && make install
-
-mv -v /usr/bin/{kbd_mode,loadkeys,openvt,setfont} /bin
+make && make install

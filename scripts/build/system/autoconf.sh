@@ -1,8 +1,13 @@
-VERSION=${VERSION-2.69}
+VERSION=${VERSION-2.73}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/autoconf/autoconf-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/autoconf/$VERSION/autoconf-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/autoconf/autoconf-$VERSION.tar.xz"
 rm -rf autoconf-$VERSION && tar -Jxf "autoconf-$VERSION.tar.xz"
 rm -f "autoconf-$VERSION.tar.xz"
 cd autoconf-$VERSION

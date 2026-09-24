@@ -1,10 +1,15 @@
-VERSION=${VERSION-4.4.2}
+VERSION=${VERSION-4.4.3-P1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
+source $DIR/../base/functions.sh
+
 unset MAKEFLAGS
 
-wget --no-check-certificate --content-disposition "ftp://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
+rgeti "https://mirrors.hive.pt/mirrors/scudum/dhcp/$VERSION/dhcp-$VERSION.tar.gz"\
+    "https://ftp.isc.org/isc/dhcp/$VERSION/dhcp-$VERSION.tar.gz"
 rm -rf dhcp-$VERSION && tar -zxf "dhcp-$VERSION.tar.gz"
 rm -f "dhcp-$VERSION.tar.gz"
 cd dhcp-$VERSION
@@ -14,8 +19,10 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     export BUILD_CC=gcc
 fi
 
+# the sources predate c23 (default since gcc 15) so gnu17 is required
 if [ -z "$CFLAGS" ]; then export CFLAGS="-O2"; fi
-CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
+CFLAGS="$CFLAGS -Wall -fno-strict-aliasing -std=gnu17\
+    -D_PATH_DHCLIENT_SCRIPT='\"/usr/sbin/dhclient-script\"'\
     -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'\
     -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'" ./configure\
     --host=$ARCH_TARGET\
@@ -30,5 +37,5 @@ CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'\
 
 make && make install
 
-mv -v /usr/sbin/dhclient /sbin &&
-install -v -m755 client/scripts/linux /sbin/dhclient-script
+install -v -m755 client/scripts/linux /usr/sbin/dhclient-script
+install -v -dm755 /var/lib/dhclient

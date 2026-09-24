@@ -1,19 +1,23 @@
-VERSION=${VERSION-4.9.3}
+VERSION=${VERSION-9.2}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/pub/gnu/nano/nano-$VERSION.tar.gz"
-rm -rf nano-$VERSION && tar -zxf "nano-$VERSION.tar.gz"
-rm -f "nano-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/nano/$VERSION/nano-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/nano/nano-$VERSION.tar.xz"
+rm -rf nano-$VERSION && tar -Jxf "nano-$VERSION.tar.xz"
+rm -f "nano-$VERSION.tar.xz"
 cd nano-$VERSION
 
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --sysconfdir=/etc\
-    --enable-utf8
+    --enable-utf8\
+    --docdir=/usr/share/doc/nano-$VERSION
 
 make && make install
 

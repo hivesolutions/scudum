@@ -1,26 +1,34 @@
-VERSION=${VERSION-1.9.4}
+VERSION=${VERSION-2.8}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/inetutils/inetutils-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/inetutils/$VERSION/inetutils-$VERSION.tar.gz"\
+    "https://ftpmirror.gnu.org/inetutils/inetutils-$VERSION.tar.gz"
 rm -rf inetutils-$VERSION && tar -zxf "inetutils-$VERSION.tar.gz"
 rm -f "inetutils-$VERSION.tar.gz"
 cd inetutils-$VERSION
 
-echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
+sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
 
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --libexecdir=/usr/sbin\
+    --bindir=/usr/bin\
     --localstatedir=/var\
     --disable-logger\
-    --disable-syslogd\
     --disable-whois\
+    --disable-rcp\
+    --disable-rexec\
+    --disable-rlogin\
+    --disable-rsh\
     --disable-servers
 
 make
 test $TEST && make check
 make install
-mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
-mv -v /usr/bin/ifconfig /sbin
+
+mv -v /usr/{,s}bin/ifconfig
