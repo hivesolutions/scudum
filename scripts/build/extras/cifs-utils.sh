@@ -16,7 +16,8 @@ rm -rf cifs-utils-$VERSION && tar -jxf "cifs-utils-$VERSION.tar.bz2"
 rm -f "cifs-utils-$VERSION.tar.bz2"
 cd cifs-utils-$VERSION
 
-./configure\
+# the sources predate c23 (default since gcc 15) so gnu17 is required
+CFLAGS="$CFLAGS -std=gnu17" ./configure\
     --host=$ARCH_TARGET\
     --prefix=$PREFIX\
     --disable-cifsupcall\

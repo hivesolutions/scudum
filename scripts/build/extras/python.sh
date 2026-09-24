@@ -46,6 +46,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
 
     if [ "$PYTHON_TEMP" == "1" ]; then rm -rf $target_dir; fi
 else
-    ./configure --prefix=$PREFIX --enable-shared
+    # the sources predate c23 (default since gcc 15) so gnu17 is required
+    CFLAGS="$CFLAGS -std=gnu17" ./configure --prefix=$PREFIX --enable-shared
     make && make install
 fi

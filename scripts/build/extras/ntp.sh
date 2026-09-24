@@ -18,5 +18,10 @@ rm -rf ntp-$VERSION && tar -zxf "ntp-$VERSION.tar.gz"
 rm -f "ntp-$VERSION.tar.gz"
 cd ntp-$VERSION
 
+# fixes the configure checks that fail with modern glibc and gcc versions
+sed -i 's/getclock/getclock memchr/' sntp/m4/ntp_libntp.m4
+sed -i 's/pthread_detach(NULL)/pthread_detach(0)/' sntp/m4/openldap-thread-check.m4
+autoreconf -fiv
+
 ./configure --host=$ARCH_TARGET --prefix=$PREFIX --with-yielding-select=yes
 make && make install
