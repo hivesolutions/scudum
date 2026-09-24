@@ -1,0 +1,86 @@
+name: Root Workflow
+on:
+  schedule:
+    - cron: "12 1 * * 6"
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: The variant of root build that should be performed
+        type: choice
+        default: all
+        options:
+          - all
+          - linux_x86
+          - rasp_arm6
+          - rasp_arm7
+      deploy:
+        description: If the build should be deployed to the repository
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: root
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  build:
+    name: Build
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        variant: ${{ fromJSON((github.event_name == 'schedule' || inputs.variant == 'all') && '["linux_x86", "rasp_arm6", "rasp_arm7"]' || format('["{0}"]', inputs.variant)) }}
+    runs-on: [self-hosted, ubuntu, scudum]
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      VARIANT: ${{ matrix.variant }}
+      DEPLOY: ${{ github.event_name == 'schedule' || inputs.deploy }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Install Scudum tools
+        run: |
+          apt-get update
+          make install
+
+      - name: Mount the builds storage
+        id: mount
+        if: env.DEPLOY == 'true'
+        run: |
+          apt-get install -y -q cifs-utils
+          scudum mount
+
+      - name: Build root
+        run: |
+          case "$VARIANT" in
+              linux_x86)
+                  GCC_FLAVOUR=latest scudum root
+                  ;;
+              rasp_arm6)
+                  SCUDUM_ARCH=arm6 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
+                  GCC_BUILD_ARCH=armv6zk GCC_BUILD_TUNE=arm1176jzf-s GCC_BUILD_FPU=vfp \
+                  GCC_BUILD_FLOAT=hard GCC_FLAVOUR=latest scudum root
+                  ;;
+              rasp_arm7)
+                  SCUDUM_ARCH=arm7 SCUDUM_VENDOR=rasp SCUDUM_SYSTEM=linux-gnueabihf \
+                  GCC_BUILD_ARCH=armv7-a GCC_BUILD_TUNE=cortex-a7 GCC_BUILD_FPU=neon-vfpv4 \
+                  GCC_BUILD_FLOAT=hard GCC_FLAVOUR=latest scudum root
+                  ;;
+              *)
+                  GCC_FLAVOUR=latest scudum root
+                  ;;
+          esac
+
+      - name: Deploy root
+        if: env.DEPLOY == 'true'
+        run: scudum deploy
+
+      - name: Unmount the builds storage
+        if: always() && steps.mount.outcome != 'skipped'
+        run: scudum umount
