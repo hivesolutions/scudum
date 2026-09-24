@@ -1,4 +1,4 @@
-VERSION=${VERSION-0.13.2}
+VERSION=${VERSION-0.15.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -9,7 +9,7 @@ source $DIR/common.sh
 depends "avahi" "glib"
 
 rget "https://mirrors.hive.pt/mirrors/scudum/nss-mdns/$VERSION/nss-mdns-$VERSION.tar.gz"\
-    "https://github.com/lathiat/nss-mdns/releases/download/v$VERSION/nss-mdns-$VERSION.tar.gz"
+    "https://github.com/avahi/nss-mdns/releases/download/v$VERSION/nss-mdns-$VERSION.tar.gz"
 rm -rf nss-mdns-$VERSION && tar -zxf "nss-mdns-$VERSION.tar.gz"
 rm -f "nss-mdns-$VERSION.tar.gz"
 cd nss-mdns-$VERSION
