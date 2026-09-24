@@ -20,4 +20,5 @@ sed -i 's/as_fn_error ()/as_fn_error ()\n{\nreturn 0\n}\nold_as_fn_error ()\n/' 
     --with-gitconfig=/etc/gitconfig\
     --with-python=python3
 
-make && make install
+# builds without the rust based parts (no rust toolchain in the root)
+make NO_RUST=1 && make NO_RUST=1 install
