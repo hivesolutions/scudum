@@ -1,4 +1,5 @@
-VERSION=${VERSION-3.2.25}
+VERSION=${VERSION-3.12.0}
+VERSION_L=${VERSION_L-3_12_0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -7,8 +8,7 @@ set -e +h
 source $DIR/common.sh
 
 rget "https://mirrors.hive.pt/mirrors/scudum/libnl/$VERSION/libnl-$VERSION.tar.gz"\
-    "https://www.infradead.org/~tgr/libnl/files/libnl-$VERSION.tar.gz"\
-    "http://sources.openelec.tv/mirror/libnl/libnl-$VERSION.tar.gz"
+    "https://github.com/thom311/libnl/releases/download/libnl$VERSION_L/libnl-$VERSION.tar.gz"
 rm -rf libnl-$VERSION && tar -zxf "libnl-$VERSION.tar.gz"
 rm -f "libnl-$VERSION.tar.gz"
 cd libnl-$VERSION
