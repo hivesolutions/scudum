@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://files.stage.hive.pt/lfs/iptables-$VERSION.tar.bz2"\
+rget "https://mirrors.hive.pt/mirrors/scudum/iptables/$VERSION/iptables-$VERSION.tar.bz2"\
+    "http://files.stage.hive.pt/lfs/iptables-$VERSION.tar.bz2"\
     "http://www.netfilter.org/projects/iptables/files/iptables-$VERSION.tar.bz2"
 rm -rf iptables-$VERSION && tar -jxf "iptables-$VERSION.tar.bz2"
 rm -f "iptables-$VERSION.tar.bz2"

@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "xml-parser"
 
-wget --content-disposition "https://launchpad.net/intltool/trunk/$VERSION/+download/intltool-$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/intltool/$VERSION/intltool-$VERSION.tar.gz"\
+    "https://launchpad.net/intltool/trunk/$VERSION/+download/intltool-$VERSION.tar.gz"
 rm -rf intltool-$VERSION && tar -zxf "intltool-$VERSION.tar.gz"
 rm -f "intltool-$VERSION.tar.gz"
 cd intltool-$VERSION

@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "ftp://sourceware.org/pub/libffi/libffi-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/libffi/$VERSION/libffi-$VERSION.tar.gz"\
+    "ftp://sourceware.org/pub/libffi/libffi-$VERSION.tar.gz"\
     "http://www.mirrorservice.org/sites/sourceware.org/pub/libffi/libffi-$VERSION.tar.gz"
 rm -rf libffi-$VERSION && tar -zxf "libffi-$VERSION.tar.gz"
 rm -f "libffi-$VERSION.tar.gz"

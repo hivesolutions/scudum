@@ -30,7 +30,7 @@ rgeti() {
             urls+=("$value")
         fi
     done
-    for url in "$@"; do
+    for url in ${urls[*]}; do
         wget --no-check-certificate --content-disposition --tries=1 --timeout=20 $url ${params[*]} && return 0
     done
     return 1

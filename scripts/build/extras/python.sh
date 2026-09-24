@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "sqlite3" "pcre"
 
-wget --content-disposition "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz"
+rget "https://mirrors.hive.pt/mirrors/scudum/python/$VERSION/Python-$VERSION.tgz"\
+    "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz"
 rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
 rm -f "Python-$VERSION.tgz"
 cd Python-$VERSION

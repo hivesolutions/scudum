@@ -8,7 +8,8 @@ source $DIR/common.sh
 
 depends "intltool" "glib" "libdaemon"
 
-wget --content-disposition "https://github.com/lathiat/avahi/releases/download/v$VERSION/avahi-$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/avahi/$VERSION/avahi-$VERSION.tar.gz"\
+    "https://github.com/lathiat/avahi/releases/download/v$VERSION/avahi-$VERSION.tar.gz"
 rm -rf avahi-$VERSION && tar -zxf "avahi-$VERSION.tar.gz"
 rm -f "avahi-$VERSION.tar.gz"
 cd avahi-$VERSION

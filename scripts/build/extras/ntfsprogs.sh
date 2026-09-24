@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "http://archive.hive.pt/files/lfs/ntfsprogs-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/ntfsprogs/$VERSION/ntfsprogs-$VERSION.tar.gz"\
+    "http://archive.hive.pt/files/lfs/ntfsprogs-$VERSION.tar.gz"\
     "http://downloads.sourceforge.net/linux-ntfs/ntfsprogs-$VERSION.tar.gz?use_mirror=netix"\
     "--output-document=ntfsprogs-$VERSION.tar.gz"
 rm -rf ntfsprogs-$VERSION && tar -zxf "ntfsprogs-$VERSION.tar.gz"

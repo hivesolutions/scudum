@@ -6,15 +6,16 @@ set -e +h
 
 source $DIR/common.sh
 
-unset MAKEFLAGS TEST
+unset TEST
 
-rget "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/openssl/$VERSION/openssl-$VERSION.tar.gz"\
+    "https://www.openssl.org/source/openssl-$VERSION.tar.gz"\
     "http://mirrors.ibiblio.org/openssl/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
 ./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
-make depend && make && make install
+make && make install_sw install_ssldirs
 
 ln -svf $PREFIX/ssl /etc/ssl

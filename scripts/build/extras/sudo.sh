@@ -6,7 +6,8 @@ set -e +h
 
 source $DIR/common.sh
 
-rget "https://www.sudo.ws/dist/sudo-$VERSION.tar.gz"\
+rget "https://mirrors.hive.pt/mirrors/scudum/sudo/$VERSION/sudo-$VERSION.tar.gz"\
+    "https://www.sudo.ws/dist/sudo-$VERSION.tar.gz"\
     "http://ftp3.usa.openbsd.org/pub/sudo/sudo-$VERSION.tar.gz"
 rm -rf sudo-$VERSION && tar -zxf "sudo-$VERSION.tar.gz"
 rm -f "sudo-$VERSION.tar.gz"
