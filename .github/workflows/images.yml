@@ -1,0 +1,114 @@
+name: Images Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: The type of Scudum build to be created
+        type: choice
+        default: iso
+        options:
+          - iso
+          - usb
+          - rasp
+          - tgz
+          - cpio
+          - pkg
+          - docker
+      kvariant:
+        description: The kernel variant to be used
+        type: choice
+        default: large
+        options:
+          - large
+          - basic
+          - rasp
+          - rasp2
+      arch:
+        description: The base architecture to be used for the Scudum base installation
+        type: choice
+        default: x86_64
+        options:
+          - x86_64
+          - arm6
+          - arm7
+      flavor:
+        description: The Scudum flavor to be used (eg, armor, armord, seed, simple, viriatum)
+        type: string
+        default: default
+      deploy:
+        description: If the build should be deployed to the repository
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: images
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  build:
+    name: Build
+    timeout-minutes: 240
+    runs-on: [self-hosted, ubuntu, scudum]
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      BUILD_TYPE: ${{ inputs.build_type }}
+      KVARIANT: ${{ inputs.kvariant }}
+      ARCH: ${{ inputs.arch }}
+      FLAVOR: ${{ inputs.flavor }}
+      DEPLOY: ${{ inputs.deploy }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Validate flavor
+        run: |
+          if [ "$FLAVOR" != "default" ]; then
+              if [[ ! "$FLAVOR" =~ ^[a-z0-9_-]+$ ]] || [ ! -d "examples/$FLAVOR" ]; then
+                  echo "Invalid flavor '$FLAVOR', available: default $(cd examples && echo *)"
+                  exit 1
+              fi
+          fi
+
+      - name: Install Scudum tools
+        run: |
+          apt-get update
+          make install
+
+      - name: Install Scudum root
+        run: scudum install
+
+      - name: Start Docker service
+        if: env.BUILD_TYPE == 'docker'
+        run: |
+          service docker start
+          timeout 60 sh -c "until docker info > /dev/null 2>&1; do sleep 1; done"
+
+      - name: Login to DockerHub
+        if: env.BUILD_TYPE == 'docker' && env.DEPLOY == 'true'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Mount the builds storage
+        id: mount
+        if: env.DEPLOY == 'true' && env.BUILD_TYPE != 'docker'
+        run: |
+          apt-get install -y -q cifs-utils
+          scudum mount
+
+      - name: Build image
+        run: |
+          if [ "$FLAVOR" != "default" ]; then
+              cd "/usr/scudum/examples/$FLAVOR"
+          fi
+          if [ "$DEPLOY" == "true" ]; then DEPLOY_S="1"; else DEPLOY_S="0"; fi
+          KVARIANT="$KVARIANT" DEPLOY="$DEPLOY_S" scudum "make.$BUILD_TYPE"
+
+      - name: Unmount the builds storage
+        if: always() && steps.mount.outcome != 'skipped'
+        run: scudum umount
