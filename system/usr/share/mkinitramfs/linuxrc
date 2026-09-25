@@ -55,11 +55,15 @@ rootdir=/ram
 mountdir=/ram
 storagedir=/ram
 
-# mounts the proc and sys filesystems as they are required
-# for some of the operations in the linuxrc
-mkdir -p /proc /sys
+# mounts the proc, sys and dev filesystems as they are required
+# for some of the operations in the linuxrc (the kernel does not
+# mount the dev filesystem for an initramfs), sys and dev use the
+# source and options of the fstab as they are moved into the new
+# root (so that they are not mounted again from the fstab)
+mkdir -p /proc /sys /dev
 mount -t proc none /proc
-mount -t sysfs none /sys
+mount -t sysfs -o nosuid,noexec,nodev sysfs /sys
+mount -t devtmpfs -o mode=0755,nosuid devtmpfs /dev
 
 # iterates over the complete set of arguments in the command
 # line string (kernel boot string) to try to find some options
@@ -333,19 +337,12 @@ tar -zxf $mountdir/source/images/etc.tar.gz --warning=no-timestamp &> $output
 # on the boot process some actions may be taken
 test "$USE_OVERLAYFS" == "1" && touch etc/scudum/OVERLAYFS
 
-# creates the (fallback) directory to hold the reference
-# to the original initrd directory (after pivot)
-mkdir -p initrd
-
-# runs the pivot operation setting the current directory
-# as the root for execution (the root directory becomes the root)
-pivot_root . initrd
-
-# changes to new root and swap to new root's devices
-# this should trigger the inital system loading (init)
-exec /usr/sbin/chroot . /sbin/init < dev/console > dev/console 2>&1
+# switches to the new root, moving the special file systems
+# into it and releasing the initramfs memory, and runs the
+# init on it, this should trigger the inital system loading
+exec switch_root $rootdir /sbin/init < /dev/console > /dev/console 2>&1
 
 # it should never reach this place as reaching it means
-# that a problem occurend in the execution of the chroot
+# that a problem occurend in the execution of the switch root
 # operation that marks the beginning of the execution
 exit

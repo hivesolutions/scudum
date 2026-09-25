@@ -29,14 +29,6 @@ INITRAMFS_FILE=${INITRAMFS_FILE-initrd.img}
 # and control the way the package is going to be created
 USE_FIRMWARE=${USE_FIRMWARE-0}
 
-# defines the proper size (in kilo-bytes) for the disk to be
-# created taking into account the current configuration
-if [ "$USE_FIRMWARE" == "1" ]; then
-    DISK_SIZE=${DISK_SIZE-524288}
-else
-    DISK_SIZE=${DISK_SIZE-16384}
-fi
-
 # verifies if the (optional) kernel version argument has been
 # provided and if that's the case stores it under the proper
 # variable so that it may be used latter for operations
@@ -61,7 +53,7 @@ if [ -x /bin/udevadm ] ; then binfiles="$binfiles udevadm"; fi
 
 # creates the initial set of files from the system binaries set
 # that are going to be copied into the initrd file
-sbinfiles="modprobe blkid switch_root pivot_root"
+sbinfiles="modprobe blkid switch_root"
 
 # optional files and locations, meaning that if they don't exist
 # there's no critical error to be raised (optional)
@@ -88,25 +80,13 @@ unsort() {
 # that are going to be parts of the initird creation
 DATADIR=${DATADIR-/usr/share/mkinitramfs}
 INIT_IN=${INIT_IN-linuxrc}
-INIT_OUT=${INIT_OUT-linuxrc}
+INIT_OUT=${INIT_OUT-init}
 
 # creates a temporary working directory, where the
 # files will be stored for the creation of the image
+# (it becomes the root directory of the initramfs)
 TEMP_DIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
-
-# creates the ramdisk file and zeros it taking into
-# account the requested size (this is very important)
-rm -f ramdisk
-dd if=/dev/zero of=ramdisk bs=1k count=$DISK_SIZE &> /dev/null
-LOOP_DEVICE=$(losetup -f)
-losetup -d $LOOP_DEVICE > /dev/null 2>&1 || true
-losetup $LOOP_DEVICE ramdisk
-
-# creates the the ext2 based file system in the loop
-# device and then mounts it under the temporary directory
-mke2fs -j $LOOP_DEVICE &> /dev/null
-mount $LOOP_DEVICE $TEMP_DIR
-rm -rf $TEMP_DIR/lost+found
+chmod 755 $TEMP_DIR
 
 # creates base directory structure according to the pre-defined
 # rules of tree structures (ensures compatibility)
@@ -247,18 +227,10 @@ if [ -n "$KERNEL_VERSION" ]; then
     depmod -b $TEMP_DIR $KERNEL_VERSION
 fi
 
-# syncs the current filesystem and the unmounts
-# it removing then the directory reference
-sync
-umount $TEMP_DIR
-losetup -d $LOOP_DEVICE
-rm -rf $TEMP_DIR
-
-# runs the compression of the ramdisk into the init
-# rma file and then removes the ramdisk file (as it
-# is no longer required for the operation)
-gzip -9 -c ramdisk > $INITRAMFS_FILE
-rm -rf ramdisk
+# creates the (newc) cpio archive with the contents of the
+# temporary directory and compresses it into the initramfs
+# file, that the kernel unpacks into its root file system
+(cd $TEMP_DIR && find . | cpio -o -H newc --quiet) | gzip -9 > $INITRAMFS_FILE
 
 # copies the initramfs file to the various repositories
 # of information that are valid for booting, and then removes

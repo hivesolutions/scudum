@@ -55,21 +55,6 @@ case "${1}" in
             break
         done
         evaluate_retval
-
-        # verifies if the current system structure contains the
-        # persistence structure and if that's not the case, exits
-        # the current working login, nothing remaining to be done
-        if [ ! -d /initrd ]; then exit; fi
-
-        # prints a message about the release of the initrd (ramfs)
-        # memory and then unmounts the various file systems, so that
-        # no extra memory is leaked (releases extra memory)
-        log_info_msg "Releasing unused memory from initrd..."
-        umount /initrd/proc
-        umount /initrd/sys
-        umount -l /initrd
-        rm -rf /initrd
-        evaluate_retval
         ;;
 
     *)
