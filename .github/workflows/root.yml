@@ -34,7 +34,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        variant: ${{ fromJSON((github.event_name == 'schedule' || inputs.variant == 'all') && '["linux_x86", "rasp_arm6", "rasp_arm7"]' || format('["{0}"]', inputs.variant)) }}
+        variant: ${{ fromJSON((github.event_name == 'schedule' || inputs.variant == 'all') && '["linux_x86"]' || format('["{0}"]', inputs.variant)) }}
     runs-on: [self-hosted, ubuntu, scudum]
     env:
       DEBIAN_FRONTEND: noninteractive
