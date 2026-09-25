@@ -173,13 +173,13 @@ if [ "$KTARGET" == "" ]; then
     echo "kernel.build: using general/default target for building ..."
     ARCH=$KARCH make $KFLAGS -j $CONCURRENCY
     echo "kernel.build: building modules (modules_install) ..."
-    ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install INSTALL_MOD_STRIP=1
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make olddefconfig
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY
     echo "kernel.build: building modules (modules_install) ..."
-    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install
+    ARCH=$KARCH CROSS_COMPILE=$KTARGET- make modules_install INSTALL_MOD_PATH=modules_install INSTALL_MOD_STRIP=1
 fi
 
 # retrieves the full and canonical name of the current

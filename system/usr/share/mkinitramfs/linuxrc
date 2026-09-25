@@ -86,7 +86,7 @@ done
 # prints a message marking the start of the linux
 # so that the end-user may know that interaction
 # is now enable (at least using keyboard)
-echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2022"
+echoi "Welcome to the Scudum Linux - Copyright Hive Solutions Lda. 2008-2026"
 
 # constructs the proper output string, taking into
 # account if the current boot is silent or not
@@ -296,8 +296,9 @@ if [ "$PERFORMANCE" == "1" ]; then
 fi
 
 # creates a symbolic link between the arch dependent directory
-# for libraries and the more generic one (legacy compatibility)
-ln -s lib lib64
+# for libraries and the more generic one (legacy compatibility),
+# unless the root already has it (merged usr structure)
+test -e lib64 || ln -s lib lib64
 
 # prints a message about the starting of the creation
 # of the various directories in preparation for the pivot

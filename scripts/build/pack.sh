@@ -59,7 +59,7 @@ else
     strip=strip
 fi
 
-find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f -exec $strip --strip-debug "{}" ";" || true
+find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f ! -name "*.ko" -exec $strip --strip-debug "{}" ";" || true
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     rm -rf $SCUDUM/tools/repo
