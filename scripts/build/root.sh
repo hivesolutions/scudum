@@ -23,6 +23,21 @@ $DIR/base/deps.sh
 source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
+# verifies that the current build is not a cross architecture one,
+# as the cross compilation based bootstrap installs the temporary
+# tools into the root (would be mixed with the target libraries)
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    echo "root: cross architecture builds are not supported yet"
+    exit 1
+fi
+
+# verifies that the selected GCC flavour is supported by the
+# cross compilation based bootstrap (only latest is supported)
+if [ "$GCC_BUILD_BINARY" != "gcc.latest" ]; then
+    echo "root: GCC flavour '$GCC_FLAVOUR' is not supported, use 'latest'"
+    exit 1
+fi
+
 # removes a series of variables from the current environment
 # so that no issues occur in the installation of the various
 # parts of the root infra-structure and system
