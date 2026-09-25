@@ -31,14 +31,16 @@ fi
 MOUNTPOINT=$(mktemp -d)
 
 # filters the modules to the ones available in the installed grub
-# version, as newer versions drop some of them (eg: efi_uga in 2.14)
+# version, as newer versions drop some of them (eg: efi_uga in 2.14),
+# note that no native disk drivers (eg: ahci, ehci) are included as
+# loading them stops the firmware disk access used to find the media
 modules=""
 for module in part_gpt part_msdos fat ext2 ntfs hfs hfsplus iso9660 udf ufs1 ufs2\
-    zfs chain linux boot appleldr scsi ahci ehci configfile normal regexp\
+    zfs chain linux boot appleldr configfile normal regexp\
     minicmd reboot halt search search_fs_file search_fs_uuid\
     search_label gfxterm gfxmenu efi_gop efi_uga all_video loadbios\
     gzio echo true probe loadenv bitmap_scale font cat help ls png\
-    jpeg tga test at_keyboard usb_keyboard sleep usbms; do
+    jpeg tga test at_keyboard usb_keyboard sleep; do
     if [ -e $GRUB_DIR/$module.mod ]; then
         modules="$modules $module"
     else
