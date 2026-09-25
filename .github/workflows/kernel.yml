@@ -1,0 +1,91 @@
+name: Kernel Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: The kernel variant to be built
+        type: choice
+        default: large
+        options:
+          - large
+          - basic
+          - rasp
+          - rasp2
+      minor:
+        description: The kernel version to be built (eg, 7.2.7), defaults to the one in kernel.build
+        type: string
+        default: ""
+      karch:
+        description: The architecture of the kernel to be built (eg, x86, arm)
+        type: string
+        default: ""
+      ktarget:
+        description: The prefix of the toolchain used for cross compilation
+        type: string
+        default: ""
+      kflags:
+        description: The extra flags to be passed to the kernel make
+        type: string
+        default: ""
+      deploy:
+        description: If the kernel should be deployed to the repository
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kernel
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  build:
+    name: Build
+    timeout-minutes: 180
+    runs-on: [self-hosted, ubuntu, scudum]
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      VARIANT: ${{ inputs.variant }}
+      MINOR: ${{ inputs.minor }}
+      KARCH: ${{ inputs.karch }}
+      KTARGET: ${{ inputs.ktarget }}
+      KFLAGS: ${{ inputs.kflags }}
+      DEPLOY: ${{ inputs.deploy }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Install Scudum tools
+        run: |
+          apt-get update
+          apt-get install -y -q cpio xz-utils bc kmod bison flex libelf-dev libssl-dev
+          make install install-system
+
+      - name: Mount the builds storage
+        id: mount
+        if: env.DEPLOY == 'true'
+        run: |
+          apt-get install -y -q cifs-utils
+          scudum mount
+
+      - name: Build kernel
+        run: |
+          case "$VARIANT" in
+              rasp*)
+                  rm -rf tools && git clone --depth 1 https://github.com/raspberrypi/tools.git
+                  export PATH=$PATH:$(pwd)/tools/arm-bcm2708/arm-linux-gnueabihf/bin
+                  KARCH=${KARCH:-arm}
+                  KTARGET=${KTARGET:-$(pwd)/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf}
+                  ;;
+              *)
+                  KARCH=${KARCH:-x86}
+                  ;;
+          esac
+          if [ "$DEPLOY" != "true" ]; then export REPO=$(pwd)/kernel; fi
+          KARCH=$KARCH KTARGET=$KTARGET KFLAGS=$KFLAGS MINOR=$MINOR VARIANT=$VARIANT DEPLOY=1 kernel.build
+
+      - name: Unmount the builds storage
+        if: always() && steps.mount.outcome != 'skipped'
+        run: scudum umount
