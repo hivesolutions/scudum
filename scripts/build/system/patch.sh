@@ -1,10 +1,15 @@
-VERSION=${VERSION-2.7.5}
+VERSION=${VERSION-2.8}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/patch/patch-$VERSION.tar.xz"
-rm -rf atch-$VERSION && tar -Jxf "patch-$VERSION.tar.xz"
-rm -f  "patch-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/patch/$VERSION/patch-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/patch/patch-$VERSION.tar.xz"
+rm -rf patch-$VERSION && tar -Jxf "patch-$VERSION.tar.xz"
+rm -f "patch-$VERSION.tar.xz"
 cd patch-$VERSION
 
 ./configure --host=$ARCH_TARGET --prefix=/usr

@@ -1,8 +1,13 @@
-VERSION=${VERSION-1.15.1}
+VERSION=${VERSION-1.18.1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/automake/automake-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/automake/$VERSION/automake-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/automake/automake-$VERSION.tar.xz"
 rm -rf automake-$VERSION && tar -Jxf "automake-$VERSION.tar.xz"
 rm -f "automake-$VERSION.tar.xz"
 cd automake-$VERSION

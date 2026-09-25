@@ -23,6 +23,21 @@ $DIR/base/deps.sh
 source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
+# verifies that the current build is not a cross architecture one,
+# as the cross compilation based bootstrap installs the temporary
+# tools into the root (would be mixed with the target libraries)
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    echo "root: cross architecture builds are not supported yet"
+    exit 1
+fi
+
+# verifies that the selected GCC flavour is supported by the
+# cross compilation based bootstrap (only latest is supported)
+if [ "$GCC_BUILD_BINARY" != "gcc.latest" ]; then
+    echo "root: GCC flavour '$GCC_FLAVOUR' is not supported, use 'latest'"
+    exit 1
+fi
+
 # removes a series of variables from the current environment
 # so that no issues occur in the installation of the various
 # parts of the root infra-structure and system
@@ -72,46 +87,25 @@ if [ "$BUILD_TOOLS" == "1" ]; then
     $DIR/tools/linux-headers.sh
     $DIR/tools/glibc.sh
     $DIR/tools/libstdc++.sh
-    $DIR/tools/binutils.pass2.sh
-    $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
-    $DIR/tools/tcl.sh
-    $DIR/tools/expect.sh
-    $DIR/tools/dejagnu.sh
-    $DIR/tools/check.sh
+    $DIR/tools/m4.sh
     $DIR/tools/ncurses.sh
     $DIR/tools/bash.sh
-    $DIR/tools/bzip2.sh
     $DIR/tools/coreutils.sh
     $DIR/tools/diffutils.sh
-    $DIR/tools/xz.sh
-    $DIR/tools/zlib.sh
     $DIR/tools/file.sh
     $DIR/tools/findutils.sh
     $DIR/tools/gawk.sh
-    $DIR/tools/gettext.sh
     $DIR/tools/grep.sh
     $DIR/tools/gzip.sh
-    $DIR/tools/m4.sh
     $DIR/tools/make.sh
     $DIR/tools/patch.sh
-    $DIR/tools/perl.sh
     $DIR/tools/sed.sh
     $DIR/tools/tar.sh
-    $DIR/tools/texinfo.sh
-    $DIR/tools/pkg-config.sh
-    $DIR/tools/util-linux.sh
-    $DIR/tools/shadow.sh
-    $DIR/tools/e2fsprogs.sh
-    $DIR/tools/bc.sh
-    $DIR/tools/kmod.sh
+    $DIR/tools/xz.sh
     $DIR/tools/openssl.sh
-    $DIR/tools/bison.sh
-    $DIR/tools/flex.sh
-    $DIR/tools/curl.sh
-    $DIR/tools/git.sh
-    $DIR/tools/gperf.sh
     $DIR/tools/wget.sh
-    $DIR/tools/python3.sh
+    $DIR/tools/binutils.pass2.sh
+    $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
 
     # runs the strip operation on the complete set of tools
     # so that some disk space is spared by removing the debug

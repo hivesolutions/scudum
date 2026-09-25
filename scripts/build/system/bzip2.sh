@@ -1,11 +1,20 @@
 VERSION=${VERSION-1.0.8}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
-wget --no-check-certificate --content-disposition "https://sourceware.org/pub/bzip2/bzip2-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/bzip2/$VERSION/bzip2-$VERSION.tar.gz"\
+    "https://www.sourceware.org/pub/bzip2/bzip2-$VERSION.tar.gz"
 rm -rf bzip2-$VERSION && tar -zxf "bzip2-$VERSION.tar.gz"
 rm -f "bzip2-$VERSION.tar.gz"
 cd bzip2-$VERSION
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/bzip2/$VERSION/bzip2-$VERSION-install_docs-1.patch"\
+    "https://www.linuxfromscratch.org/patches/lfs/13.1/bzip2-$VERSION-install_docs-1.patch"
+patch -Np1 -i bzip2-$VERSION-install_docs-1.patch
 
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
@@ -26,9 +35,12 @@ else
     make PREFIX=/usr install
 fi
 
-cp -v bzip2-shared /bin/bzip2
-cp -av libbz2.so* /lib
-ln -svf ../../lib/libbz2.so.1.0 /usr/lib/libbz2.so
-rm -v /usr/bin/{bunzip2,bzcat,bzip2}
-ln -svf bzip2 /bin/bunzip2
-ln -svf bzip2 /bin/bzcat
+cp -av libbz2.so.* /usr/lib
+ln -svf libbz2.so.$VERSION /usr/lib/libbz2.so
+ln -svf libbz2.so.$VERSION /usr/lib/libbz2.so.1
+
+cp -v bzip2-shared /usr/bin/bzip2
+ln -svf bzip2 /usr/bin/bunzip2
+ln -svf bzip2 /usr/bin/bzcat
+
+rm -fv /usr/lib/libbz2.a

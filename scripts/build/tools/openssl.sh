@@ -1,5 +1,4 @@
-VERSION=${VERSION-1.0.2u}
-VERSION_L=${VERSION_L-1.0.2}
+VERSION=${VERSION-3.5.8}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -7,16 +6,20 @@ set -e +h
 
 source $DIR/../base/functions.sh
 
-unset MAKEFLAGS TEST
+unset TEST
 
-rget "https://www.openssl.org/source/old/$VERSION_L/openssl-$VERSION.tar.gz"\
-    "http://mirrors.ibiblio.org/openssl/source/old/$VERSION_L/openssl-$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/openssl/$VERSION/openssl-$VERSION.tar.gz"\
+    "https://github.com/openssl/openssl/releases/download/openssl-$VERSION/openssl-$VERSION.tar.gz"\
+    "https://www.openssl.org/source/openssl-$VERSION.tar.gz"
 rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
-./config shared --prefix=$PREFIX --openssldir=$PREFIX/ssl
-make depend && make && make install
+./Configure linux-$SCUDUM_HOST\
+    --prefix=/usr\
+    --openssldir=/usr/ssl\
+    --libdir=lib\
+    --cross-compile-prefix=$SCUDUM_TARGET-\
+    shared
 
-rm -rf $PREFIX/ssl/certs
-ln -svf /usr/ssl/certs $PREFIX/ssl/certs
+make && make DESTDIR=$SCUDUM install_sw install_ssldirs

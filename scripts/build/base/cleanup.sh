@@ -30,6 +30,19 @@ rm -rf $SCUDUM && mkdir -pv $SCUDUM
 rm -rf $SCUDUM/tools && mkdir -pv $SCUDUM/tools
 rm -rf /tools && ln -svf $SCUDUM/tools /
 
+# creates the limited directory layout of the target system
+# using the merged usr structure (bin, lib and sbin are links)
+mkdir -pv $SCUDUM/{etc,var} $SCUDUM/usr/{bin,lib,sbin}
+for dir in bin lib sbin; do
+    ln -svf usr/$dir $SCUDUM/$dir
+done
+
+case $SCUDUM_HOST in
+    x86_64)
+        mkdir -pv $SCUDUM/lib64
+        ;;
+esac
+
 # verifies if the current kind of build is cross based
 # if that's the case created the proper cross references
 if [ "$SCUDUM_CROSS" == "1" ]; then

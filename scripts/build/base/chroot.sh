@@ -68,12 +68,12 @@ else
     TARGET_PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin
 fi
 
-chroot $SCUDUM /tools/bin/env -i\
+chroot $SCUDUM /usr/bin/env -i\
     HOME=/root\
     TERM="$TERM"\
     PS1="\u:\w\$ "\
     PATH="$TARGET_PATH"\
-    /tools/bin/bash $CHROOT_ARGS $@
+    /bin/bash $CHROOT_ARGS $@
 result=$?
 
 SCUDUM=$SCUDUM $DIR/release.sh

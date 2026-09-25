@@ -1,8 +1,13 @@
-VERSION=${VERSION-25}
+VERSION=${VERSION-34.2}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/kmod/$VERSION/kmod-$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$VERSION.tar.xz"
 rm -rf kmod-$VERSION && tar -Jxf "kmod-$VERSION.tar.xz"
 rm -f "kmod-$VERSION.tar.xz"
 cd kmod-$VERSION
@@ -10,8 +15,6 @@ cd kmod-$VERSION
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --bindir=/bin\
-    --libdir=/lib\
     --sysconfdir=/etc\
     --disable-manpages\
     --with-xz\
@@ -19,10 +22,6 @@ cd kmod-$VERSION
 
 make
 test $TEST && make check
-make pkgconfigdir=/usr/lib/pkgconfig install
+make install
 
-for target in depmod insmod modinfo modprobe rmmod; do
-    ln -svf ../bin/kmod /sbin/$target
-done
-
-ln -svf kmod /bin/lsmod
+ln -svf kmod /usr/bin/lsmod

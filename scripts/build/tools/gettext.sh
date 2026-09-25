@@ -1,18 +1,18 @@
-VERSION=${VERSION-0.19.8.1}
+VERSION=${VERSION-1.0}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/gettext/gettext-$VERSION.tar.gz"
-rm -rf gettext-$VERSION && tar -zxf "gettext-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/gettext/$VERSION/gettext-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/gettext/gettext-$VERSION.tar.xz"
+rm -rf gettext-$VERSION && tar -Jxf "gettext-$VERSION.tar.xz"
 rm -f "gettext-$VERSION.tar.xz"
 cd gettext-$VERSION
 
-cd gettext-tools
-EMACS="no" ./configure --prefix=$PREFIX --disable-shared
-make -C gnulib-lib
-make -C intl pluralx.c
-make -C src msgfmt
-make -C src msgmerge
-make -C src xgettext
-cp -v src/{msgfmt,msgmerge,xgettext} /tools/bin
-cd ..
+./configure --disable-shared
+make
+
+cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin

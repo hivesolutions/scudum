@@ -1,15 +1,21 @@
-VERSION=${VERSION-4.6.0}
+VERSION=${VERSION-4.11.0}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/findutils/findutils-$VERSION.tar.gz"
-rm -rf findutils-$VERSION && tar -zxf "findutils-$VERSION.tar.gz"
-rm -f "findutils-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/findutils/$VERSION/findutils-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/findutils/findutils-$VERSION.tar.xz"
+rm -rf findutils-$VERSION && tar -Jxf "findutils-$VERSION.tar.xz"
+rm -f "findutils-$VERSION.tar.xz"
 cd findutils-$VERSION
 
-sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' gl/lib/*.c
-sed -i '/unistd/a #include <sys/sysmacros.h>' gl/lib/mountlist.c
-echo "#define _IO_IN_BACKUP 0x100" >> gl/lib/stdio-impl.h
+./configure\
+    --prefix=/usr\
+    --localstatedir=/var/lib/locate\
+    --host=$SCUDUM_TARGET\
+    --build=$(build-aux/config.guess)
 
-./configure --prefix=$PREFIX
-make && make install
+make && make DESTDIR=$SCUDUM install

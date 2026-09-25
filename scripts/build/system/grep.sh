@@ -1,13 +1,20 @@
-VERSION=${VERSION-3.1}
+VERSION=${VERSION-3.12}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/grep/grep-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/grep/$VERSION/grep-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/grep/grep-$VERSION.tar.xz"
 rm -rf grep-$VERSION && tar -Jxf "grep-$VERSION.tar.xz"
 rm -f "grep-$VERSION.tar.xz"
 cd grep-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=/usr --bindir=/bin
+sed -i "s/echo/#echo/" src/egrep.sh
+
+./configure --host=$ARCH_TARGET --prefix=/usr
 
 make
 test $TEST && make check

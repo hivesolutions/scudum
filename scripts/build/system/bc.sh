@@ -1,12 +1,21 @@
-VERSION=${VERSION-1.06}
+VERSION=${VERSION-7.0.3}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/bc/bc-$VERSION.tar.gz"
-rm -rf bc-$VERSION && tar -zxf "bc-$VERSION.tar.gz"
-rm -f "bc-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/bc/$VERSION/bc-$VERSION.tar.xz"\
+    "https://github.com/gavinhoward/bc/releases/download/$VERSION/bc-$VERSION.tar.xz"
+rm -rf bc-$VERSION && tar -Jxf "bc-$VERSION.tar.xz"
+rm -f "bc-$VERSION.tar.xz"
 cd bc-$VERSION
 
-./configure --host=$ARCH_TARGET --prefix=/usr
+CC="${CC:-gcc} -std=c99" ./configure\
+    --prefix=/usr\
+    -G\
+    -O3\
+    -r
 
 make && make install

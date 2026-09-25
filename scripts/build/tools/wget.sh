@@ -1,12 +1,24 @@
-VERSION=${VERSION-1.21.3}
+VERSION=${VERSION-1.25.0}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/wget/wget-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/wget/$VERSION/wget-$VERSION.tar.gz"\
+    "https://ftpmirror.gnu.org/wget/wget-$VERSION.tar.gz"
 rm -rf wget-$VERSION && tar -zxf "wget-$VERSION.tar.gz"
 rm -f "wget-$VERSION.tar.gz"
 cd wget-$VERSION
 
-./configure --prefix=$PREFIX --with-ssl=openssl --with-libssl-prefix=$PREFIX
+PKG_CONFIG_LIBDIR=$SCUDUM/usr/lib/pkgconfig PKG_CONFIG_SYSROOT_DIR=$SCUDUM\
+    OPENSSL_CFLAGS="-I$SCUDUM/usr/include" OPENSSL_LIBS="-lssl -lcrypto" ./configure\
+    --prefix=/usr\
+    --host=$SCUDUM_TARGET\
+    --build=$(build-aux/config.guess)\
+    --sysconfdir=/etc\
+    --with-ssl=openssl\
+    --without-libpsl
 
-make && make install
+make && make DESTDIR=$SCUDUM install

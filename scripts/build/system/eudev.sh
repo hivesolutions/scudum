@@ -1,44 +1,32 @@
-VERSION=${VERSION-3.2.7}
+VERSION=${VERSION-3.2.14}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://dev.gentoo.org/~blueness/eudev/eudev-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/eudev/$VERSION/eudev-$VERSION.tar.gz"\
+    "https://github.com/eudev-project/eudev/releases/download/v$VERSION/eudev-$VERSION.tar.gz"
 rm -rf eudev-$VERSION && tar -zxf "eudev-$VERSION.tar.gz"
 rm -f "eudev-$VERSION.tar.gz"
 cd eudev-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    cat > config.cache << "EOF"
-HAVE_BLKID=1
-BLKID_LIBS="-lblkid"
-EOF
-else
-    cat > config.cache << "EOF"
-HAVE_BLKID=1
-BLKID_LIBS="-lblkid"
-BLKID_CFLAGS="-I/tools/include"
-EOF
-fi
-
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --bindir=/sbin\
-    --sbindir=/sbin\
-    --libdir=/usr/lib\
+    --bindir=/usr/sbin\
     --sysconfdir=/etc\
-    --libexecdir=/lib\
-    --with-rootprefix=\
-    --with-rootlibdir=/lib\
     --enable-manpages\
-    --disable-static\
-    --config-cache
+    --disable-static
 
-LIBRARY_PATH=/tools/lib make
+make
 
-mkdir -pv /lib/udev/devices
-mkdir -pv /lib/udev/devices/pts
-mkdir -pv /lib/udev/rules.d
+mkdir -pv /usr/lib/udev/devices
+mkdir -pv /usr/lib/udev/devices/pts
+mkdir -pv /usr/lib/udev/rules.d
 mkdir -pv /etc/udev/rules.d
 
-make LD_LIBRARY_PATH=/tools/lib install
+make install
+
+udevadm hwdb --update

@@ -1,17 +1,20 @@
-VERSION=${VERSION-4.4}
+VERSION=${VERSION-4.10}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/sed/sed-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/sed/$VERSION/sed-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/sed/sed-$VERSION.tar.xz"
 rm -rf sed-$VERSION && tar -Jxf "sed-$VERSION.tar.xz"
 rm -f "sed-$VERSION.tar.xz"
 cd sed-$VERSION
 
 ./configure\
     --host=$ARCH_TARGET\
-    --prefix=/usr\
-    --bindir=/bin\
-    --htmldir=/usr/share/doc/sed-$VERSION
+    --prefix=/usr
 
 make
 make html
@@ -20,5 +23,3 @@ make install
 
 install -d -m755 /usr/share/doc/sed-$VERSION
 install -m644 doc/sed.html /usr/share/doc/sed-$VERSION
-
-ln -s /bin/sed /usr/bin/sed

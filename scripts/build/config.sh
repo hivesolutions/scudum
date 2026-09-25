@@ -53,17 +53,18 @@ fi
 
 # clones the current scudum distribution to obtain the latest version
 # of its scripts that are going to be included with this build, notice
-# that there's some sanitization of the contents
+# that there's some sanitization of the contents and that the copy keeps
+# the directory links of the root (merged usr structure)
 git clone --depth 1 "https://github.com/hivesolutions/scudum.git" $BASE/scudum.git
 find $BASE/scudum.git/system -name .cignore -delete
 find $BASE/scudum.git/system -name .gitignore -delete
-cp -rpv $BASE/scudum.git/system/* $SCUDUM
+tar -C $BASE/scudum.git/system -c . | tar -C $SCUDUM --keep-directory-symlink -xv
 rm -rf $BASE/scudum.git
 
 # in case the system directory exists in the base scudum tools then copies
 # it into the root directory of the scudum installation (base code)
 if [ -e system ]; then
-    cp -rpv system/* $SCUDUM
+    tar -C system -c . | tar -C $SCUDUM --keep-directory-symlink -xv
 fi
 
 if [ -e boot ] && [ -f boot ]; then

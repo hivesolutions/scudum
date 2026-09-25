@@ -1,10 +1,15 @@
-VERSION=${VERSION-0.19.8.1}
+VERSION=${VERSION-1.0}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/gettext/gettext-$VERSION.tar.gz"
-rm -rf gettext-$VERSION && tar -zxf "gettext-$VERSION.tar.gz"
-rm -f "gettext-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/gettext/$VERSION/gettext-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/gettext/gettext-$VERSION.tar.xz"
+rm -rf gettext-$VERSION && tar -Jxf "gettext-$VERSION.tar.xz"
+rm -f "gettext-$VERSION.tar.xz"
 cd gettext-$VERSION
 
 ./configure\
@@ -16,3 +21,5 @@ cd gettext-$VERSION
 make
 test $TEST && make check
 make install
+
+chmod -v 0755 /usr/lib/preloadable_libintl.so

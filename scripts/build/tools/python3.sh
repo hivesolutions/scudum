@@ -1,11 +1,21 @@
-VERSION=${VERSION-3.11.1}
+VERSION=${VERSION-3.14.7}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz"
-rm -rf Python-$VERSION && tar -zxf "Python-$VERSION.tgz"
-rm -f "Python-$VERSION.tgz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/python3/$VERSION/Python-$VERSION.tar.xz"\
+    "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tar.xz"
+rm -rf Python-$VERSION && tar -Jxf "Python-$VERSION.tar.xz"
+rm -f "Python-$VERSION.tar.xz"
 cd Python-$VERSION
 
-./configure --prefix=$PREFIX --enable-shared
+./configure\
+    --prefix=/usr\
+    --enable-shared\
+    --without-ensurepip\
+    --without-static-libpython
+
 make && make install

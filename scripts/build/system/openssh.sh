@@ -1,8 +1,13 @@
-VERSION=${VERSION-9.5p1}
+VERSION=${VERSION-10.5p1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/openssh/$VERSION/openssh-$VERSION.tar.gz"\
+    "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VERSION.tar.gz"
 rm -rf openssh-$VERSION && tar -zxf "openssh-$VERSION.tar.gz"
 rm -f "openssh-$VERSION.tar.gz"
 cd openssh-$VERSION
@@ -27,8 +32,10 @@ fi
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --sysconfdir=/etc/ssh\
-    --with-md5-passwords\
-    --with-privsep-path=/var/lib/sshd
+    --with-privsep-path=/var/lib/sshd\
+    --with-default-path=/usr/bin\
+    --with-superuser-path=/usr/sbin:/usr/bin\
+    --with-pid-dir=/run
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     make && make STRIP_OPT="" install-nokeys

@@ -1,22 +1,28 @@
-VERSION=${VERSION-1.5.1}
+VERSION=${VERSION-2.7.2}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://www.infodrom.org/projects/sysklogd/download/sysklogd-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/sysklogd/$VERSION/sysklogd-$VERSION.tar.gz"\
+    "https://github.com/troglobit/sysklogd/releases/download/v$VERSION/sysklogd-$VERSION.tar.gz"
 rm -rf sysklogd-$VERSION && tar -zxf "sysklogd-$VERSION.tar.gz"
 rm -f "sysklogd-$VERSION.tar.gz"
 cd sysklogd-$VERSION
 
-sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
-sed -i 's/union wait/int/' syslogd.c
+./configure\
+    --host=$ARCH_TARGET\
+    --prefix=/usr\
+    --sysconfdir=/etc\
+    --runstatedir=/run\
+    --without-logger\
+    --disable-static\
+    --docdir=/usr/share/doc/sysklogd-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC="$CC"
-    make INSTALL="/tools/bin/install --strip-program=/cross/$ARCH_TARGET/bin/strip" BINDIR=/sbin install
-else
-    make
-    make BINDIR=/sbin install
-fi
+make
+make install
 
 cat > /etc/syslog.conf << "EOF"
 auth,authpriv.* -/var/log/auth.log
@@ -26,5 +32,8 @@ kern.* -/var/log/kern.log
 mail.* -/var/log/mail.log
 user.* -/var/log/user.log
 *.emerg *
+
+# do not open any internet ports
+secure_mode 2
 
 EOF

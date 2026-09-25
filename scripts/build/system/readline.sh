@@ -1,35 +1,38 @@
-VERSION=${VERSION-7.0}
-VERSION_L=${VERSION_L-70}
-PATCH_SEQ=${PATCH_SEQ-1 3}
+VERSION=${VERSION-8.3}
+VERSION_L=${VERSION_L-83}
+PATCH_SEQ=${PATCH_SEQ-1 6}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --no-check-certificate --content-disposition "http://ftp.gnu.org/gnu/readline/readline-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/readline/$VERSION/readline-$VERSION.tar.gz"\
+    "https://ftpmirror.gnu.org/readline/readline-$VERSION.tar.gz"
 rm -rf readline-$VERSION && tar -zxf "readline-$VERSION.tar.gz"
 rm -f "readline-$VERSION.tar.gz"
 cd readline-$VERSION
 
 for index in $(seq -f "%03g" $PATCH_SEQ); do
-    wget --no-check-certificate http://ftp.gnu.org/gnu/readline/readline-$VERSION-patches/readline$VERSION_L-$index
+    rgeti "https://mirrors.hive.pt/mirrors/scudum/readline/$VERSION/readline$VERSION_L-$index"\
+        "https://ftpmirror.gnu.org/readline/readline-$VERSION-patches/readline$VERSION_L-$index"
     patch -Np0 -i readline$VERSION_L-$index
 done
 
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
+sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
-    --libdir=/lib
+    --disable-static\
+    --with-curses\
+    --docdir=/usr/share/doc/readline-$VERSION
 
-make SHLIB_LIBS="-L/tools/lib -lncurses"
-make SHLIB_LIBS="-L/tools/lib -lncurses" install
-
-mv -v /lib/lib{readline,history}.a /usr/lib
-
-rm -v /lib/lib{readline,history}.so
-ln -svf ../../lib/libreadline.so.7 /usr/lib/libreadline.so
-ln -svf ../../lib/libhistory.so.7 /usr/lib/libhistory.so
+make SHLIB_LIBS="-lncursesw"
+make SHLIB_LIBS="-lncursesw" install
 
 mkdir -pv /usr/share/doc/readline-$VERSION
 install -v -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-$VERSION
