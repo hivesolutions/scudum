@@ -296,8 +296,9 @@ if [ "$PERFORMANCE" == "1" ]; then
 fi
 
 # creates a symbolic link between the arch dependent directory
-# for libraries and the more generic one (legacy compatibility)
-ln -s lib lib64
+# for libraries and the more generic one (legacy compatibility),
+# unless the root already has it (merged usr structure)
+test -e lib64 || ln -s lib lib64
 
 # prints a message about the starting of the creation
 # of the various directories in preparation for the pivot
