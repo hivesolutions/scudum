@@ -1,5 +1,5 @@
-VERSION=${VERSION-5.17.4}
-VERSION_L=${VERSION_L-5.x}
+VERSION=${VERSION-7.2.7}
+VERSION_L=${VERSION_L-7.x}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 

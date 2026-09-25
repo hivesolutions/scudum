@@ -48,8 +48,8 @@ case "$KARCH" in
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
-        MAJOR=${MAJOR-5.x}
-        MINOR=${MINOR-5.17.4}
+        MAJOR=${MAJOR-7.x}
+        MINOR=${MINOR-7.2.7}
         ;;
 esac
 
