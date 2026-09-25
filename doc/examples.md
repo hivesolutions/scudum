@@ -33,5 +33,5 @@ VARIANT=basic DEPLOY=1 kernel.build
 #### Build the basic version of the 4.19.67 kernel and deploy
 
 ```bash
-MAJOR=5.x MINOR=5.17.4 VARIANT=basic DEPLOY=1 kernel.build
+MAJOR=7.x MINOR=7.2.7 VARIANT=basic DEPLOY=1 kernel.build
 ```
