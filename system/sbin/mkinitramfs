@@ -230,7 +230,9 @@ fi
 # creates the (newc) cpio archive with the contents of the
 # temporary directory and compresses it into the initramfs
 # file, that the kernel unpacks into its root file system
-(cd $TEMP_DIR && find . | cpio -o -H newc --quiet) | gzip -9 > $INITRAMFS_FILE
+(cd $TEMP_DIR && find . | cpio -o -H newc --quiet) > $TEMP_DIR.cpio
+gzip -9 -c $TEMP_DIR.cpio > $INITRAMFS_FILE
+rm -f $TEMP_DIR.cpio
 
 # copies the initramfs file to the various repositories
 # of information that are valid for booting, and then removes
