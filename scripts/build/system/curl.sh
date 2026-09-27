@@ -12,12 +12,23 @@ rm -rf curl-$VERSION && tar -Jxf "curl-$VERSION.tar.xz"
 rm -f "curl-$VERSION.tar.xz"
 cd curl-$VERSION
 
-./configure\
-    --host=$ARCH_TARGET\
-    --prefix=/usr\
-    --disable-static\
-    --with-openssl\
-    --without-libpsl\
-    --with-ca-bundle=/usr/ssl/ca-bundle.crt
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    ./configure\
+        --host=$ARCH_TARGET\
+        --prefix=/usr\
+        --disable-static\
+        --disable-docs\
+        --with-openssl\
+        --without-libpsl\
+        --with-ca-bundle=/usr/ssl/ca-bundle.crt
+else
+    ./configure\
+        --host=$ARCH_TARGET\
+        --prefix=/usr\
+        --disable-static\
+        --with-openssl\
+        --without-libpsl\
+        --with-ca-bundle=/usr/ssl/ca-bundle.crt
+fi
 
 make && make install

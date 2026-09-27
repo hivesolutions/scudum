@@ -34,6 +34,14 @@ ln -svf /run /var/run
 ln -svf /run/lock /var/lock
 mkdir -pv /var/{opt,cache,lib/{misc,locate},local}
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    echo "Creating symbolic links for the host root binaries"
+
+    ln -svf /tools/bin/{bash,cat,echo,env,pwd,stty} /bin
+    ln -svf /tools/bin/perl /usr/bin
+    ln -svf bash /bin/sh
+fi
+
 echo "Toucing /etc/mtab file for initial usage"
 
 touch /etc/mtab

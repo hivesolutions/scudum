@@ -16,8 +16,8 @@ sed -i /ARPD/d Makefile
 rm -fv man/man8/arpd.8
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    make CC="$CC" HOSTCC=gcc NETNS_RUN_DIR=/run/netns
-    make CC="$CC" HOSTCC=gcc SBINDIR=/usr/sbin install
+    make CC="$CC" HOSTCC="$HOSTCC" NETNS_RUN_DIR=/run/netns
+    make CC="$CC" HOSTCC="$HOSTCC" SBINDIR=/usr/sbin install
 else
     make NETNS_RUN_DIR=/run/netns
     make SBINDIR=/usr/sbin install

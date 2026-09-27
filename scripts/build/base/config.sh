@@ -76,6 +76,7 @@ export BUILD_CLEAN=${BUILD_CLEAN-1}
 export BUILD_TOOLS=${BUILD_TOOLS-1}
 export BUILD_CROSS=${BUILD_CROSS-1}
 export BUILD_SYSTEM=${BUILD_SYSTEM-1}
+export BUILD_HOST=${BUILD_HOST-0}
 export BUILD_TIMEOUT=${BUILD_TIMEOUT-10}
 
 # exports the flag that defines the level of parallelism
@@ -191,6 +192,7 @@ print_scudum() {
     echo "BUILD_TOOLS := $BUILD_TOOLS"
     echo "BUILD_CROSS := $BUILD_CROSS"
     echo "BUILD_SYSTEM := $BUILD_SYSTEM"
+    echo "BUILD_HOST := $BUILD_HOST"
     echo "BUILD_TIMEOUT := $BUILD_TIMEOUT"
     echo "MAKEFLAGS := $MAKEFLAGS"
     echo "TEST := $TEST"

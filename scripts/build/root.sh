@@ -82,7 +82,7 @@ if [ "$BUILD_TOOLS" == "1" ]; then
             -u GCC_BUILD_ARCH -u GCC_BUILD_CPU -u GCC_BUILD_TUNE\
             -u GCC_BUILD_FPU -u GCC_BUILD_FLOAT\
             SCUDUM=$SCUDUM/tools PERSIST=$SCUDUM/tools/pst\
-            SCUDUM_ARCH=$SCUDUM_HOST SCUDUM_CROSS=0 BUILD_SYSTEM=0\
+            SCUDUM_ARCH=$SCUDUM_HOST SCUDUM_CROSS=0 BUILD_SYSTEM=0 BUILD_HOST=1\
             $DIR/root.sh
         rm -rf $SCUDUM/tools/tools
     else
@@ -122,17 +122,15 @@ if [ "$SCUDUM_CROSS" == "0" ]; then
     $DIR/base/chroot.sh /tools/repo/scripts/build/base/temporary.sh
 fi
 
+# builds the extra tools that the host root of a cross build
+# requires to cross compile the system in the target root
+if [ "$BUILD_HOST" == "1" ]; then
+    $DIR/base/chroot.sh /tools/repo/scripts/build/base/host.sh
+fi
+
 # verifies if the current build process is meant to build the final
 # system, the host root of a cross build stops at the temporary tools
 if [ "$BUILD_SYSTEM" == "1" ]; then
-    # verifies that the current build is not a cross architecture one,
-    # as the cross compilation of the system in the chroot (with the
-    # host root tools) is not supported yet
-    if [ "$SCUDUM_CROSS" == "1" ]; then
-        echo "root: cross architecture system builds are not supported yet"
-        exit 1
-    fi
-
     $DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
 
     # runs the final strip operation on the generated files so
