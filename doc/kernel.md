@@ -51,7 +51,6 @@ It may also be interesting to "port" the blacklisted modules from the Ubuntu dis
 For the Ubuntu configuration to work under Scudum environment these extra directives must be included:
 
 ```text
-CONFIG_BLK_DEV_RAM=y
 CONFIG_USB_STORAGE=y
 ```
 
