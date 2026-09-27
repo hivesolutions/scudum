@@ -12,15 +12,14 @@ rm -rf bison-$VERSION && tar -Jxf "bison-$VERSION.tar.xz"
 rm -f "bison-$VERSION.tar.xz"
 cd bison-$VERSION
 
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    export ac_cv_path_M4=/usr/bin/m4
-    export ac_cv_prog_gnu_m4_gnu=yes
-fi
-
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
     --docdir=/usr/share/doc/bison-$VERSION
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i "s|define M4 \"$M4\"|define M4 \"/usr/bin/m4\"|" lib/config.h
+fi
 
 make
 test $TEST && make check
