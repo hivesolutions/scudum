@@ -31,6 +31,7 @@ rm -rf glibc-build && mkdir glibc-build
 cd glibc-build
 
 echo "rootsbindir=/usr/sbin" > configparms
+echo "user-defined-trusted-dirs=/tools/usr/lib" >> configparms
 
 ../glibc-$VERSION/configure\
     --prefix=/usr\

@@ -23,14 +23,6 @@ $DIR/base/deps.sh
 source $DIR/base/config.sh
 source $DIR/base/config.tools.sh
 
-# verifies that the current build is not a cross architecture one,
-# as the cross compilation based bootstrap installs the temporary
-# tools into the root (would be mixed with the target libraries)
-if [ "$SCUDUM_CROSS" == "1" ]; then
-    echo "root: cross architecture builds are not supported yet"
-    exit 1
-fi
-
 # verifies that the selected GCC flavour is supported by the
 # cross compilation based bootstrap (only latest is supported)
 if [ "$GCC_BUILD_BINARY" != "gcc.latest" ]; then
@@ -80,37 +72,22 @@ fi
 if [ "$BUILD_TOOLS" == "1" ]; then
     echo "root: starting build process for tools..."
 
-    # runs the complete set of package specific scripts
-    # in order to build their source code properly
-    $DIR/tools/binutils.pass1.sh
-    $DIR/tools/$GCC_BUILD_BINARY.pass1.sh
-    $DIR/tools/linux-headers.sh
-    $DIR/tools/glibc.sh
-    $DIR/tools/libstdc++.sh
-    $DIR/tools/m4.sh
-    $DIR/tools/ncurses.sh
-    $DIR/tools/bash.sh
-    $DIR/tools/coreutils.sh
-    $DIR/tools/diffutils.sh
-    $DIR/tools/file.sh
-    $DIR/tools/findutils.sh
-    $DIR/tools/gawk.sh
-    $DIR/tools/grep.sh
-    $DIR/tools/gzip.sh
-    $DIR/tools/make.sh
-    $DIR/tools/patch.sh
-    $DIR/tools/sed.sh
-    $DIR/tools/tar.sh
-    $DIR/tools/xz.sh
-    $DIR/tools/openssl.sh
-    $DIR/tools/wget.sh
-    $DIR/tools/binutils.pass2.sh
-    $DIR/tools/$GCC_BUILD_BINARY.pass2.sh
-
-    # runs the strip operation on the complete set of tools
-    # so that some disk space is spared by removing the debug
-    # and the unneeded symbols from the libraries
-    $DIR/tools/strip.sh
+    # in case the current build is cross based the tools are a
+    # complete host (temporary) root built inside the tools directory
+    # of the target root, as its binaries are the ones that run in
+    # the chroot while the system is cross compiled, otherwise the
+    # tools are built directly into the root (as expected)
+    if [ "$SCUDUM_CROSS" == "1" ]; then
+        env -u ARCH_TARGET -u SCUDUM_VENDOR -u SCUDUM_SYSTEM\
+            -u GCC_BUILD_ARCH -u GCC_BUILD_CPU -u GCC_BUILD_TUNE\
+            -u GCC_BUILD_FPU -u GCC_BUILD_FLOAT\
+            SCUDUM=$SCUDUM/tools PERSIST=$SCUDUM/tools/pst\
+            SCUDUM_ARCH=$SCUDUM_HOST SCUDUM_CROSS=0 BUILD_SYSTEM=0\
+            $DIR/root.sh
+        rm -rf $SCUDUM/tools/tools
+    else
+        $DIR/base/tools.sh
+    fi
 
     echo "root: finished build process for tools"
 fi
@@ -137,8 +114,28 @@ hash -r && sync
 # set is started from "now on" (as expected)
 chown -R root:root $SCUDUM/tools
 if [ -d $SCUDUM/cross ]; then chown -R root:root $SCUDUM/cross; fi
-$DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
 
-# runs the final strip operation on the generated files so
-# that some of the size for the files is spared
-$DIR/base/chroot.sh /tools/repo/scripts/build/system/strip.sh
+# builds the temporary tools that could not be cross compiled before
+# entering the chroot, for cross builds these are already part of the
+# host root in the tools directory (built by its own root operation)
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    $DIR/base/chroot.sh /tools/repo/scripts/build/base/temporary.sh
+fi
+
+# verifies if the current build process is meant to build the final
+# system, the host root of a cross build stops at the temporary tools
+if [ "$BUILD_SYSTEM" == "1" ]; then
+    # verifies that the current build is not a cross architecture one,
+    # as the cross compilation of the system in the chroot (with the
+    # host root tools) is not supported yet
+    if [ "$SCUDUM_CROSS" == "1" ]; then
+        echo "root: cross architecture system builds are not supported yet"
+        exit 1
+    fi
+
+    $DIR/base/chroot.sh /tools/repo/scripts/build/base/system.sh
+
+    # runs the final strip operation on the generated files so
+    # that some of the size for the files is spared
+    $DIR/base/chroot.sh /tools/repo/scripts/build/system/strip.sh
+fi

@@ -14,6 +14,9 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export LDFLAGS="-L/usr/lib -L/lib"
             export CC="$CC $CROSSFLAGS"
             export CXX="$CXX $CROSSFLAGS"
+            export M4="/tools/bin/m4"
+            export BISON_PKGDATADIR="/tools/usr/share/bison"
+            export MAGIC="/tools/usr/share/misc/magic.mgc"
             ;;
     esac
 fi

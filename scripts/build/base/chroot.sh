@@ -64,16 +64,20 @@ fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     TARGET_PATH=/cross/bin:/cross/sbin:/tools/bin:/tools/sbin:/bin:/usr/bin:/sbin:/usr/sbin
+    TARGET_SHELL=/tools/bin/bash
+    TARGET_ENV=/tools/bin/env
 else
     TARGET_PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin
+    TARGET_SHELL=/bin/bash
+    TARGET_ENV=/usr/bin/env
 fi
 
-chroot $SCUDUM /usr/bin/env -i\
+chroot $SCUDUM $TARGET_ENV -i\
     HOME=/root\
     TERM="$TERM"\
     PS1="\u:\w\$ "\
     PATH="$TARGET_PATH"\
-    /bin/bash $CHROOT_ARGS $@
+    $TARGET_SHELL $CHROOT_ARGS $@
 result=$?
 
 SCUDUM=$SCUDUM $DIR/release.sh
