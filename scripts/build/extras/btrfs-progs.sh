@@ -1,4 +1,4 @@
-VERSION=${VERSION-5.3}
+VERSION=${VERSION-7.1}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
@@ -8,9 +8,14 @@ source $DIR/common.sh
 
 depends "attr" "lzo" "zstd" "acl" "python3"
 
-wget --content-disposition "https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VERSION.tar.gz"
-rm -rf btrfs-progs-v$VERSION && tar -zxf "btrfs-progs-v$VERSION.tar.gz"
-rm -f "btrfs-progs-v$VERSION.tar.gz"
+# installs the setuptools required by the python bindings, as
+# the python3 pip bootstrap no longer includes it since 3.12
+pip3 install --quiet setuptools
+
+rget "https://mirrors.hive.pt/mirrors/scudum/btrfs-progs/$VERSION/btrfs-progs-v$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VERSION.tar.xz"
+rm -rf btrfs-progs-v$VERSION && tar -Jxf "btrfs-progs-v$VERSION.tar.xz"
+rm -f "btrfs-progs-v$VERSION.tar.xz"
 cd btrfs-progs-v$VERSION
 
 ./configure --prefix=$PREFIX --disable-documentation

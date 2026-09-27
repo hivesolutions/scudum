@@ -1,4 +1,4 @@
-VERSION=${VERSION-18.12.1}
+VERSION=${VERSION-26.10.0}
 SNAPSHOT=${SNAPSHOT-0}
 
 DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
@@ -9,13 +9,14 @@ source $DIR/common.sh
 
 depends "which" "python3"
 
-wget --content-disposition "http://nodejs.org/dist/v$VERSION/node-v$VERSION.tar.gz"
-rm -rf node-v$VERSION && tar -zxf "node-v$VERSION.tar.gz"
-rm -f "node-v$VERSION.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/nodejs/$VERSION/node-v$VERSION.tar.xz"\
+    "https://nodejs.org/dist/v$VERSION/node-v$VERSION.tar.xz"
+rm -rf node-v$VERSION && tar -Jxf "node-v$VERSION.tar.xz"
+rm -f "node-v$VERSION.tar.xz"
 cd node-v$VERSION
 
 if [ "$SNAPSHOT" == "1" ]; then
-    ./configure --prefix=$PREFIX --without-snapshot
+    ./configure --prefix=$PREFIX --without-node-snapshot
 else
     ./configure --prefix=$PREFIX
 fi
