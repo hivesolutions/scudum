@@ -11,12 +11,13 @@ on:
           - basic
           - rasp
           - rasp2
+          - rasp8
       minor:
         description: The kernel version to be built (eg, 7.2.7), defaults to the one in kernel.build
         type: string
         default: ""
       karch:
-        description: The architecture of the kernel to be built (eg, x86, arm)
+        description: The architecture of the kernel to be built (eg, x86, arm, arm64)
         type: string
         default: ""
       ktarget:
@@ -73,11 +74,15 @@ jobs:
       - name: Build kernel
         run: |
           case "$VARIANT" in
+              rasp8)
+                  apt-get install -y -q gcc-aarch64-linux-gnu
+                  KARCH=${KARCH:-arm64}
+                  KTARGET=${KTARGET:-aarch64-linux-gnu}
+                  ;;
               rasp*)
-                  rm -rf tools && git clone --depth 1 https://github.com/raspberrypi/tools.git
-                  export PATH=$PATH:$(pwd)/tools/arm-bcm2708/arm-linux-gnueabihf/bin
+                  apt-get install -y -q gcc-arm-linux-gnueabihf
                   KARCH=${KARCH:-arm}
-                  KTARGET=${KTARGET:-$(pwd)/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf}
+                  KTARGET=${KTARGET:-arm-linux-gnueabihf}
                   ;;
               *)
                   KARCH=${KARCH:-x86}

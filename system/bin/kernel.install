@@ -18,10 +18,12 @@ case "$ARCH" in
     arm*)
         VARIANT=${VARIANT-${1-rasp}}
         KNAME=${KNAME-${2-vmlinuz}}
+        DTBS=${DTBS-1}
         ;;
     *)
         VARIANT=${VARIANT-${1-basic}}
         KNAME=${KNAME-${2-vmlinuz}}
+        DTBS=${DTBS-0}
         ;;
 esac
 
@@ -38,6 +40,7 @@ wget "$REPO/$NAME-$VARIANT-$VERSION"
 wget "$REPO/$NAME-$VARIANT-$VERSION.config"
 wget "$REPO/$NAME-$VARIANT-$VERSION.info"
 wget "$REPO/$NAME-$VARIANT-$VERSION.modules.tar.gz"
+if [ "$DTBS" == "1" ]; then wget "$REPO/$NAME-$VARIANT-$VERSION.dtbs.tar.gz"; fi
 
 cp -v $NAME-$VARIANT-$VERSION /boot/$KNAME
 
@@ -48,7 +51,10 @@ cp -v $NAME-$VARIANT-$VERSION.info /etc/scudum/KERNEL
 if [ "$KNAME" == "vmlinuz" ]; then rm -rf /lib/modules; fi
 tar -zxvf $NAME-$VARIANT-$VERSION.modules.tar.gz -C /lib
 
+if [ "$DTBS" == "1" ]; then mkdir -p /rasp && tar -zxvf $NAME-$VARIANT-$VERSION.dtbs.tar.gz -C /rasp; fi
+
 rm -f $NAME-$VARIANT-$VERSION
 rm -f $NAME-$VARIANT-$VERSION.config
 rm -f $NAME-$VARIANT-$VERSION.info
 rm -f $NAME-$VARIANT-$VERSION.modules.tar.gz
+rm -f $NAME-$VARIANT-$VERSION.dtbs.tar.gz

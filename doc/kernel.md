@@ -24,19 +24,18 @@ one should be connected with the target repository and the issue:
 VARIANT=large VERSION=latest kernel.install
 ```
 
-Special versions of the kernel exist for the ARM process environment specially for usage under
-the Raspberry Pi infra-structure for that the `crosstool` toolchain is required:
+Special versions of the kernel exist for the ARM process environment specially for usage under the Raspberry Pi infra-structure for that a cross compilation toolchain is required (eg: the Ubuntu one):
 
 ```bash
-scu install crosstool-rasp
+apt-get install gcc-arm-linux-gnueabihf
 KARCH=arm \
-KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf \
+KTARGET=arm-linux-gnueabihf \
 VARIANT=rasp \
 DEPLOY=1 \
 kernel.build
 ```
 
-To build the kernel optimized for Raspberry Pi 2 use `VARIANT=rasp2`.
+To build the kernel for Raspberry Pi 2 and 3 use `VARIANT=rasp2`, and for Raspberry Pi 4 and 5 (64 bit) use `VARIANT=rasp8` with `KARCH=arm64` and `KTARGET=aarch64-linux-gnu` (from `gcc-aarch64-linux-gnu`).
 
 ## Upgrading
 
