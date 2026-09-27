@@ -21,6 +21,5 @@ ln -svf lib $PREFIX_CROSS/$ARCH_TARGET/lib64
 
 rm -f $PREFIX_CROSS/bin/cross-ldd
 echo '#!/bin/sh' >> $PREFIX_CROSS/bin/cross-ldd
-echo "$ARCH_TARGET-readelf -d \$1 | grep \"Shared library\" | sed \"s/\t//\" | \
-cut -d \" \" -f26 | sed \"s/\[//\" | sed \"s/\]//\" | cat" >> $PREFIX_CROSS/bin/cross-ldd
+echo "$ARCH_TARGET-readelf -d \$1 | sed -n \"s/.*Shared library: \[\(.*\)\]/\1/p\"" >> $PREFIX_CROSS/bin/cross-ldd
 chmod +x $PREFIX_CROSS/bin/cross-ldd

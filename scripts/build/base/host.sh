@@ -29,6 +29,7 @@ cd sources
 /tools/repo/scripts/build/tools/gperf.sh
 /tools/repo/scripts/build/tools/flex.sh
 /tools/repo/scripts/build/tools/bzip2.sh
+/tools/repo/scripts/build/tools/cpio.sh
 
 cd .. && rm -rf sources
 
