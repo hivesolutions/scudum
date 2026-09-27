@@ -63,6 +63,7 @@ find $SCUDUM/{,usr/,initrd/}{bin,lib,sbin} -type f ! -name "*.ko" -exec $strip -
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     rm -rf $SCUDUM/tools/repo
+    find $SCUDUM/tools/usr/{bin,sbin,lib,libexec} $SCUDUM/cross/{bin,lib,libexec} -type f -exec strip --strip-debug "{}" ";" 2> /dev/null || true
 else
     rm -rf $SCUDUM/cross
     rm -rf $SCUDUM/tools
