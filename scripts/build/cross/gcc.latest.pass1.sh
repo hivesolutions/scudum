@@ -1,25 +1,33 @@
-VERSION=${VERSION-9.5.0}
-VERSION_MPFR=${VERSION_MPFR-4.0.2}
-VERSION_GMP=${VERSION_GMP-6.2.0}
-VERSION_MPC=${VERSION_MPC-1.1.0}
+VERSION=${VERSION-16.2.0}
+VERSION_MPFR=${VERSION_MPFR-4.2.2}
+VERSION_GMP=${VERSION_GMP-6.3.0}
+VERSION_MPC=${VERSION_MPC-1.4.1}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
-rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
-rm -f "gcc-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/gcc/$VERSION/gcc-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/gcc/gcc-$VERSION/gcc-$VERSION.tar.xz"
+rm -rf gcc-$VERSION && tar -Jxf "gcc-$VERSION.tar.xz"
+rm -f "gcc-$VERSION.tar.xz"
 cd gcc-$VERSION
 
-wget --content-disposition "http://ftp.gnu.org/gnu/mpfr/mpfr-$VERSION_MPFR.tar.xz"
+rget "https://mirrors.hive.pt/mirrors/scudum/mpfr/$VERSION_MPFR/mpfr-$VERSION_MPFR.tar.xz"\
+    "https://ftpmirror.gnu.org/mpfr/mpfr-$VERSION_MPFR.tar.xz"
 tar -Jxf "mpfr-$VERSION_MPFR.tar.xz"
 mv mpfr-$VERSION_MPFR mpfr
 
-wget --content-disposition "http://ftp.gnu.org/gnu/gmp/gmp-$VERSION_GMP.tar.xz"
+rget "https://mirrors.hive.pt/mirrors/scudum/gmp/$VERSION_GMP/gmp-$VERSION_GMP.tar.xz"\
+    "https://ftpmirror.gnu.org/gmp/gmp-$VERSION_GMP.tar.xz"
 tar -Jxf "gmp-$VERSION_GMP.tar.xz"
 mv gmp-$VERSION_GMP gmp
 
-wget --content-disposition "http://ftp.gnu.org/gnu/mpc/mpc-$VERSION_MPC.tar.gz"
-tar -zxf "mpc-$VERSION_MPC.tar.gz"
+rget "https://mirrors.hive.pt/mirrors/scudum/mpc/$VERSION_MPC/mpc-$VERSION_MPC.tar.xz"\
+    "https://ftpmirror.gnu.org/mpc/mpc-$VERSION_MPC.tar.xz"
+tar -Jxf "mpc-$VERSION_MPC.tar.xz"
 mv mpc-$VERSION_MPC mpc
 
 sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure

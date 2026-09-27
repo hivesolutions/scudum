@@ -1,10 +1,15 @@
 VERSION=${VERSION-$GCC_BUILD_VERSION}
 
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
 set -e +h
 
-wget --content-disposition "http://ftp.gnu.org/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.gz"
-rm -rf gcc-$VERSION && tar -zxf "gcc-$VERSION.tar.gz"
-rm -f "gcc-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/gcc/$VERSION/gcc-$VERSION.tar.xz"\
+    "https://ftpmirror.gnu.org/gcc/gcc-$VERSION/gcc-$VERSION.tar.xz"
+rm -rf gcc-$VERSION && tar -Jxf "gcc-$VERSION.tar.xz"
+rm -f "gcc-$VERSION.tar.xz"
 cd gcc-$VERSION
 
 cd ..

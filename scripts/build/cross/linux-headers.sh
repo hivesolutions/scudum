@@ -1,16 +1,22 @@
-VERSION=${VERSION-4.19.126}
-VERSION_L=${VERSION_L-4.x}
+VERSION=${VERSION-7.2.7}
+VERSION_L=${VERSION_L-7.x}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "https://www.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"
+source $DIR/../base/functions.sh
+
+rget "https://mirrors.hive.pt/mirrors/scudum/linux/$VERSION/linux-$VERSION.tar.xz"\
+    "https://cdn.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"\
+    "https://www.kernel.org/pub/linux/kernel/v$VERSION_L/linux-$VERSION.tar.xz"
 rm -rf linux-$VERSION && tar -Jxf "linux-$VERSION.tar.xz"
 rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION
 
 make mrproper
-make ARCH=$SCUDUM_BARCH headers_check
-make ARCH=$SCUDUM_BARCH INSTALL_HDR_PATH=dest headers_install
+make ARCH=$SCUDUM_BARCH headers
+find usr/include -type f ! -name '*.h' -delete
 
 mkdir -p $PREFIX_CROSS/sysroot/usr/include
-cp -rv dest/include/* $PREFIX_CROSS/sysroot/usr/include
+cp -rv usr/include/* $PREFIX_CROSS/sysroot/usr/include
