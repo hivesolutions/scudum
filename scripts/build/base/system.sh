@@ -105,4 +105,10 @@ source /tools/repo/scripts/build/base/config.sysroot.sh
 
 cd .. && rm -rf sources
 
+# removes the temporary toolchain of the tools stage (built for the scudum
+# target triplet), as the system one uses the triplet of the target system
+if [ "$SCUDUM_CROSS" == "0" ] && [ "$SCUDUM_TARGET" != "$ARCH_TARGET" ]; then
+    find /usr -depth -name "$SCUDUM_TARGET*" -exec rm -rf {} +
+fi
+
 echo "system: finished system build process"
