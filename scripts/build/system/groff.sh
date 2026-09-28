@@ -14,9 +14,24 @@ rm -rf groff-$VERSION && tar -zxf "groff-$VERSION.tar.gz"
 rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    CONFIG_SITE= PAGE=letter CC="$HOSTCC" CXX="$CXX_FOR_BUILD" AR=ar RANLIB=ranlib\
+        CFLAGS="" CXXFLAGS="" LDFLAGS="" ./configure --prefix=/tools/usr
+    make && make install
+    make clean
+
+    sed -i 's|GROFF_COMMAND=test-groff|GROFF_COMMAND=$(abs_top_builddir)/test-groff|' Makefile.in
+    sed -i -e 's|^GROFF_BIN_PATH=$builddir|GROFF_BIN_PATH=/tools/bin|'\
+        -e 's|^exec $builddir/groff|exec /tools/bin/groff|' test-groff.in
+fi
+
 PAGE=letter ./configure --host=$ARCH_TARGET --prefix=/usr
 
-make
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make GROFF_BIN_PATH=/tools/bin GROFFBIN=groff
+else
+    make
+fi
 make install
 
 ln -svf eqn /usr/bin/geqn

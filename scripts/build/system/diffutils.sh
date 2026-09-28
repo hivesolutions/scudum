@@ -12,6 +12,11 @@ rm -rf diffutils-$VERSION && tar -Jxf "diffutils-$VERSION.tar.xz"
 rm -f "diffutils-$VERSION.tar.xz"
 cd diffutils-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    export gl_cv_func_strcasecmp_works=yes
+    export ac_cv_path_PR_PROGRAM=/usr/bin/pr
+fi
+
 ./configure --host=$ARCH_TARGET --prefix=/usr
 
 make

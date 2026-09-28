@@ -12,6 +12,9 @@ rm -rf ncurses-$VERSION && tar -zxf "ncurses-$VERSION.tar.gz"
 rm -f "ncurses-$VERSION.tar.gz"
 cd ncurses-$VERSION
 
+extra=""
+[ "$SCUDUM_CROSS" == "1" ] && extra="--with-strip-program=$ARCH_TARGET-strip" || true
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\
@@ -23,7 +26,8 @@ cd ncurses-$VERSION
     --with-cxx-shared\
     --enable-pc-files\
     --enable-widec\
-    --with-pkg-config-libdir=/usr/lib/pkgconfig
+    --with-pkg-config-libdir=/usr/lib/pkgconfig\
+    $extra
 
 make && make DESTDIR=$PWD/dest install
 

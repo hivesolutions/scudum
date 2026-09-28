@@ -30,17 +30,6 @@ sleep $BUILD_TIMEOUT
 rm -rf sources && mkdir sources
 cd sources
 
-# builds the temporary tools that are required by the final system
-# and that could not be cross compiled before entering the chroot
-/tools/repo/scripts/build/tools/gettext.sh
-/tools/repo/scripts/build/tools/bison.sh
-/tools/repo/scripts/build/tools/perl.sh
-/tools/repo/scripts/build/tools/zlib.sh
-/tools/repo/scripts/build/tools/mpdecimal.sh
-/tools/repo/scripts/build/tools/python3.sh
-/tools/repo/scripts/build/tools/texinfo.sh
-/tools/repo/scripts/build/tools/util-linux.sh
-
 /tools/repo/scripts/build/system/linux-headers.sh
 /tools/repo/scripts/build/system/man-pages.sh
 /tools/repo/scripts/build/system/glibc.sh

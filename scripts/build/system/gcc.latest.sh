@@ -56,8 +56,10 @@ ln -svf gcc.1 /usr/share/man/man1/cc.1
 install -v -dm755 /usr/lib/bfd-plugins
 ln -sfv ../../libexec/gcc/$ARCH_TARGET/$VERSION/liblto_plugin.so /usr/lib/bfd-plugins/liblto_plugin.so
 
-echo "int main(){}" > dummy.c && cc dummy.c -v -Wl,--verbose &> dummy.log
-readelf -l a.out | grep ": /lib" && ./a.out && rm -v dummy.c a.out
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    echo "int main(){}" > dummy.c && cc dummy.c -v -Wl,--verbose &> dummy.log
+    readelf -l a.out | grep ": /lib" && ./a.out && rm -v dummy.c a.out
+fi
 
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib

@@ -1,0 +1,4 @@
+# forces the cross compilation mode of the configure scripts, as the host
+# may be able to run the programs of the target (eg: qemu with binfmt)
+# while the target root is still incomplete (eg: no libstdc++ before gcc)
+cross_compiling=yes

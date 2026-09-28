@@ -107,5 +107,6 @@ if [ $BEXTRAS == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/scu.build; fi
 if [ $BACCOUNT == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/account.build; fi
 if [ $BKERNEL == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install $KVARIANT; fi
 if [ $BKERNEL == "1" ] && [ "$KVARIANT" == "rasp" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install "$KVARIANT"2 vmlinuz7; fi
+if [ $BKERNEL == "1" ] && [ "$KVARIANT" == "rasp" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/kernel.install "$KVARIANT"8 vmlinuz8; fi
 if [ $BINIT == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/init.build; fi
 if [ $BINITRD == "1" ]; then CHROOT_ARGS=$CHROOT_ARGS $CHROOT /bin/initrd.build; fi

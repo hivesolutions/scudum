@@ -14,7 +14,12 @@ rm -f "linux-$VERSION.tar.xz"
 cd linux-$VERSION
 
 make mrproper
-make ARCH=$SCUDUM_BARCH headers
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make ARCH=$SCUDUM_BARCH HOSTCC="$HOSTCC" headers
+else
+    make ARCH=$SCUDUM_BARCH headers
+fi
 
 find usr/include -type f ! -name '*.h' -delete
 cp -rv usr/include /usr

@@ -108,6 +108,10 @@ if [ -e $SCUDUM/boot/vmlinuz7 ]; then
     cp -pv $SCUDUM/boot/vmlinuz7 $IMG_DIR/kernel7.img
 fi
 
+if [ -e $SCUDUM/boot/vmlinuz8 ]; then
+    cp -pv $SCUDUM/boot/vmlinuz8 $IMG_DIR/kernel8.img
+fi
+
 if [ "$BASIC_INITRD" == "1" ]; then
     cp -pv $SCUDUM/boot/initrd.basic.img $IMG_DIR/initrd.img
 elif [ "$LARGE_INITRD" == "1" ]; then

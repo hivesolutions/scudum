@@ -17,6 +17,10 @@ cd bison-$VERSION
     --prefix=/usr\
     --docdir=/usr/share/doc/bison-$VERSION
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    sed -i "s|define M4 \"$M4\"|define M4 \"/usr/bin/m4\"|" lib/config.h
+fi
+
 make
 test $TEST && make check
 make install

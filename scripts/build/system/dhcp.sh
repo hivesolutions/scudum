@@ -16,7 +16,6 @@ cd dhcp-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
     unset CFLAGS
-    export BUILD_CC=gcc
 fi
 
 # the sources predate c23 (default since gcc 15) so gnu17 is required
