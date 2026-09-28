@@ -69,8 +69,18 @@ unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
 # file dependencies and storage under the unsorted file for operation
 # the operation should be cross compilation ready
 unsort() {
+    local library
+
     if [ -e /cross/bin/cross-ldd ]; then
-        (cross-ldd $(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted) &> /dev/null
+        # the cross ldd only lists the direct dependencies of a file so
+        # the ones of each new library are resolved too (eg: the dynamic
+        # loader is only a dependency of libc)
+        for library in $(cross-ldd $(PATH=/sbin:/usr/sbin:/bin:/usr/bin:/lib:/usr/lib type -p $1) 2> /dev/null); do
+            if ! grep -qx "$library" $unsorted; then
+                echo "$library" >> $unsorted
+                unsort $library
+            fi
+        done
     else
         ldd $(PATH=/sbin:/usr/sbin:/bin:/usr/bin type -p $1) | sed "s/\t//" | cut -d " " -f1 >> $unsorted
     fi
@@ -209,6 +219,10 @@ sort $unsorted | uniq | while read library ; do
 
     copy $library lib
 done
+
+# verifies that the dynamic loader has been copied, as without it
+# none of the binaries of the initramfs is able to run
+ls $TEMP_DIR/lib/ld-linux* > /dev/null
 
 if [ -d /lib/udev ]; then
     cp -a /lib/udev $TEMP_DIR/lib
