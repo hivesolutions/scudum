@@ -15,7 +15,7 @@ rm -f "groff-$VERSION.tar.gz"
 cd groff-$VERSION
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    PAGE=letter CC="$HOSTCC" CXX="$CXX_FOR_BUILD" AR=ar RANLIB=ranlib\
+    CONFIG_SITE= PAGE=letter CC="$HOSTCC" CXX="$CXX_FOR_BUILD" AR=ar RANLIB=ranlib\
         CFLAGS="" CXXFLAGS="" LDFLAGS="" ./configure --prefix=/tools/usr
     make && make install
     make clean

@@ -59,6 +59,7 @@ AR=ar LDFLAGS="-Wl,-rpath,$PREFIX_CROSS/sysroot/lib" ../gcc-$VERSION/configure\
     --disable-bootstrap\
     --disable-libgomp\
     --disable-libsanitizer\
+    --without-zstd\
     --with-mpfr-include=$(pwd)/../gcc-$VERSION/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs\
     $extra

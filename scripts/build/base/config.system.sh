@@ -18,6 +18,7 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export BISON_PKGDATADIR="/tools/usr/share/bison"
             export MAGIC="/tools/usr/share/misc/magic.mgc"
             export GCONV_PATH="/tools/usr/lib/gconv"
+            export CONFIG_SITE="/tools/repo/scripts/build/base/cross.site"
             export CC_FOR_BUILD="gcc --sysroot=/tools"
             export CXX_FOR_BUILD="g++ --sysroot=/tools"
             export BUILD_CC="gcc --sysroot=/tools"
