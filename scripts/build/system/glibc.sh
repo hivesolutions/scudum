@@ -88,6 +88,16 @@ if [ "$SCUDUM_CROSS" == "0" ] ; then
     make localedata/install-locales
 fi
 
+# a cross compiled root can not run its own localedef, so the base
+# locales are compiled by the localedef of the host root (tools) run
+# through its loader, as its glibc programs use /usr/lib as loader path
+if [ "$SCUDUM_CROSS" == "1" ] ; then
+    mkdir -pv /usr/lib/locale
+
+    /lib64/ld-linux-x86-64.so.2 /tools/usr/bin/localedef -i C -f UTF-8 C.UTF-8
+    /lib64/ld-linux-x86-64.so.2 /tools/usr/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
+fi
+
 cat > /etc/nsswitch.conf << "EOF"
 passwd: files
 group: files
@@ -102,24 +112,31 @@ ethers: files
 rpc: files
 EOF
 
-if [ "$SCUDUM_CROSS" == "0" ] ; then
-    tar -xf ../tzdata$VERSION_T.tar.gz
-    rm -f ../tzdata$VERSION_T.tar.gz
-
-    ZONEINFO=/usr/share/zoneinfo
-    mkdir -pv $ZONEINFO/{posix,right}
-
-    for tz in etcetera southamerica northamerica europe africa antarctica\
-        asia australasia backward; do
-        zic -L /dev/null -d $ZONEINFO ${tz}
-        zic -L /dev/null -d $ZONEINFO/posix ${tz}
-        zic -L leapseconds -d $ZONEINFO/right ${tz}
-    done
-
-    cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
-    zic -d $ZONEINFO -p America/New_York
-    unset ZONEINFO tz
+# a cross compiled root can not run its own zic, so the time zones are
+# compiled by the zic of the host root (tools) run through its loader,
+# as the compiled time zone files are the same for every architecture
+if [ "$SCUDUM_CROSS" == "1" ] ; then
+    zic="/lib64/ld-linux-x86-64.so.2 /tools/usr/sbin/zic"
+else
+    zic=zic
 fi
+
+tar -xf ../tzdata$VERSION_T.tar.gz
+rm -f ../tzdata$VERSION_T.tar.gz
+
+ZONEINFO=/usr/share/zoneinfo
+mkdir -pv $ZONEINFO/{posix,right}
+
+for tz in etcetera southamerica northamerica europe africa antarctica\
+    asia australasia backward; do
+    $zic -L /dev/null -d $ZONEINFO ${tz}
+    $zic -L /dev/null -d $ZONEINFO/posix ${tz}
+    $zic -L leapseconds -d $ZONEINFO/right ${tz}
+done
+
+cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
+$zic -d $ZONEINFO -p America/New_York
+unset ZONEINFO tz zic
 
 cat > /etc/ld.so.conf << "EOF"
 /usr/lib
