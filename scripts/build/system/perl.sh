@@ -50,3 +50,7 @@ fi
 make
 test $TEST && make -k test
 make install
+
+# removes the static library left by the (relocatable) temporary perl,
+# as the system perl only provides the shared one
+rm -f /usr/lib/perl5/$VERSION_L/core_perl/CORE/libperl.a

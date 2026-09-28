@@ -24,6 +24,7 @@ fi
 # if all is not defined the pre-defined one (intel)
 KARCH=${KARCH-${SCUDUM_BARCH-x86}}
 KTARGET=${KTARGET-}
+KTARGET_COMPAT=${KTARGET_COMPAT-}
 
 # verifies if the major version value is not properly defined and if
 # that's the case unset it (to use the default value)
@@ -186,6 +187,13 @@ if [ "$KTARGET" == "" ]; then
     ARCH=$KARCH make modules_install INSTALL_MOD_PATH=modules_install INSTALL_MOD_STRIP=1
 else
     echo "kernel.build: using '$KTARGET' target for building ..."
+
+    # in case a compat toolchain is defined (32 bit userland on a 64 bit
+    # kernel) exports it so that the compat vdso is built as well
+    if [ "$KTARGET_COMPAT" != "" ]; then
+        export CROSS_COMPILE_COMPAT=$KTARGET_COMPAT-
+    fi
+
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make olddefconfig
     ARCH=$KARCH CROSS_COMPILE=$KTARGET- make $KFLAGS -j $CONCURRENCY
     echo "kernel.build: building modules (modules_install) ..."

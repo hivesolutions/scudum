@@ -75,9 +75,10 @@ jobs:
         run: |
           case "$VARIANT" in
               rasp8)
-                  apt-get install -y -q gcc-aarch64-linux-gnu
+                  apt-get install -y -q gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf
                   KARCH=${KARCH:-arm64}
                   KTARGET=${KTARGET:-aarch64-linux-gnu}
+                  KTARGET_COMPAT=${KTARGET_COMPAT:-arm-linux-gnueabihf}
                   ;;
               rasp*)
                   apt-get install -y -q gcc-arm-linux-gnueabihf
@@ -89,7 +90,7 @@ jobs:
                   ;;
           esac
           if [ "$DEPLOY" != "true" ]; then export REPO=$(pwd)/kernel; fi
-          KARCH=$KARCH KTARGET=$KTARGET KFLAGS=$KFLAGS MINOR=$MINOR VARIANT=$VARIANT DEPLOY=1 kernel.build
+          KARCH=$KARCH KTARGET=$KTARGET KTARGET_COMPAT=$KTARGET_COMPAT KFLAGS=$KFLAGS MINOR=$MINOR VARIANT=$VARIANT DEPLOY=1 kernel.build
 
       - name: Unmount the builds storage
         if: always() && steps.mount.outcome != 'skipped'
