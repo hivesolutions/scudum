@@ -35,6 +35,10 @@ on:
         description: The Scudum flavor to be used (eg, armor, armord, seed, simple, viriatum)
         type: string
         default: default
+      extras:
+        description: If the extra packages should be built into the image
+        type: boolean
+        default: true
       deploy:
         description: If the build should be deployed to the repository
         type: boolean
@@ -59,6 +63,7 @@ jobs:
       KVARIANT: ${{ inputs.kvariant }}
       ARCH: ${{ inputs.arch }}
       FLAVOR: ${{ inputs.flavor }}
+      BUILD_EXTRAS: ${{ inputs.extras }}
       DEPLOY: ${{ inputs.deploy }}
     steps:
       - name: Checkout code
@@ -71,6 +76,13 @@ jobs:
                   echo "Invalid flavor '$FLAVOR', available: default $(cd examples && echo *)"
                   exit 1
               fi
+          fi
+
+      - name: Validate kernel variant
+        run: |
+          if [ "$BUILD_TYPE" == "rasp" ] && [[ "$KVARIANT" != rasp* ]]; then
+              echo "Invalid kernel variant '$KVARIANT' for rasp, use rasp or rasp2"
+              exit 1
           fi
 
       - name: Install Scudum tools
@@ -106,8 +118,9 @@ jobs:
           if [ "$FLAVOR" != "default" ]; then
               cd "/usr/scudum/examples/$FLAVOR"
           fi
+          if [ "$BUILD_EXTRAS" == "true" ]; then BEXTRAS_S="1"; else BEXTRAS_S="0"; fi
           if [ "$DEPLOY" == "true" ]; then DEPLOY_S="1"; else DEPLOY_S="0"; fi
-          KVARIANT="$KVARIANT" DEPLOY="$DEPLOY_S" scudum "make.$BUILD_TYPE"
+          BEXTRAS="$BEXTRAS_S" KVARIANT="$KVARIANT" DEPLOY="$DEPLOY_S" scudum "make.$BUILD_TYPE"
 
       - name: Unmount the builds storage
         if: always() && steps.mount.outcome != 'skipped'

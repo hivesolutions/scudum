@@ -1,1 +1,1 @@
-initramfs initrd.img
+initramfs initrd.img followkernel

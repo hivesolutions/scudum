@@ -49,3 +49,13 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
     rm -rf $SCUDUM/cross && mkdir -pv $SCUDUM/cross
     rm -rf /cross && ln -svf $SCUDUM/cross /
 fi
+
+# in case the current build is cross based links the loader of the host
+# root (built in tools) so that its binaries run inside the target root
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    case $SCUDUM_HOST in
+        x86_64)
+            ln -svf /tools/usr/lib/ld-linux-x86-64.so.2 $SCUDUM/lib64
+            ;;
+    esac
+fi

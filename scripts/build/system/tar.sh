@@ -24,4 +24,9 @@ FORCE_UNSAFE_CONFIGURE=1\
 make
 test $TEST && make check
 make install
-make -C doc install-html docdir=/usr/share/doc/tar-$VERSION
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    make -C doc install-html docdir=/usr/share/doc/tar-$VERSION\
+        MAKEINFO="/tools/bin/perl /tools/bin/makeinfo"
+else
+    make -C doc install-html docdir=/usr/share/doc/tar-$VERSION
+fi

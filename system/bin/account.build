@@ -3,4 +3,19 @@
 
 set -e +h
 
-echo "root:root" | chpasswd
+if [ -e /config ]; then
+    source /config
+fi
+
+# in case the root is cross compiled the shadow tools of the target
+# can not run, so the shadow files are created from the passwd and
+# group files and the password is hashed by the host root openssl
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    day=$(expr $(date +%s) / 86400)
+    test -e /etc/shadow || awk -F: -v day=$day '{ print $1 ":*:" day ":0:99999:7:::" }' /etc/passwd > /etc/shadow
+    test -e /etc/gshadow || awk -F: '{ print $1 ":!::" $4 }' /etc/group > /etc/gshadow
+    chmod 600 /etc/shadow /etc/gshadow
+    sed -i "s|^root:[^:]*:|root:$(openssl passwd -6 root):|" /etc/shadow
+else
+    echo "root:root" | chpasswd
+fi

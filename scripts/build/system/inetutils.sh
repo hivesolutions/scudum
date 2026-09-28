@@ -14,6 +14,10 @@ cd inetutils-$VERSION
 
 sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
 
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    echo '#define PATH_PROCNET_DEV "/proc/net/dev"' >> ifconfig/system/linux.h
+fi
+
 ./configure\
     --host=$ARCH_TARGET\
     --prefix=/usr\

@@ -49,6 +49,7 @@ extra=""
     --with-sysroot=$PREFIX_CROSS/sysroot\
     --with-newlib\
     --without-headers\
+    --without-zstd\
     --with-local-prefix=$PREFIX_CROSS/sysroot\
     --disable-nls\
     --disable-shared\
