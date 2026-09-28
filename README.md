@@ -211,13 +211,11 @@ hash -r
 MAJOR=7.x MINOR=7.2.7 VARIANT=basic DEPLOY=1 kernel.build
 ```
 
-To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that a
-special variant exists for Raspberry Pi 2 kernel (`VARIANT=rasp2`):
+To build kernel for the Raspberry Pi, with the proper toolchain installed use, note that special variants exist for Raspberry Pi 2 and 3 (`VARIANT=rasp2`) and for Raspberry Pi 4 and 5 (`VARIANT=rasp8` with `KARCH=arm64` and `KTARGET=aarch64-linux-gnu`):
 
 ```bash
-scu install scudum-system elfutils crosstool-rasp
-hash -r
-KARCH=arm KTARGET=/opt/arm-rasp-linux-gnueabihf/bin/arm-rasp-linux-gnueabihf DEPLOY=1 kernel.build
+apt-get install gcc-arm-linux-gnueabihf
+KARCH=arm KTARGET=arm-linux-gnueabihf DEPLOY=1 kernel.build
 ```
 
 ## Armor

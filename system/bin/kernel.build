@@ -40,10 +40,15 @@ fi
 # switches over the selected/current scudum process architecture
 # so that the proper conditions are defined for target machines
 case "$KARCH" in
+    arm64)
+        VARIANT=${VARIANT-${1-rasp8}}
+        MAJOR=${MAJOR-6.x}
+        MINOR=${MINOR-6.18}
+        ;;
     arm*)
         VARIANT=${VARIANT-${1-rasp}}
-        MAJOR=${MAJOR-4.x}
-        MINOR=${MINOR-4.19}
+        MAJOR=${MAJOR-6.x}
+        MINOR=${MINOR-6.18}
         CFLAGS="$CFLAGS -mfloat-abi=soft"
         ;;
     *)
@@ -73,6 +78,7 @@ FILE_CONFIG=${FILE_CONFIG-$FILE.config}
 FILE_INFO=${FILE_INFO-$FILE.info}
 FILE_MODULES=${FILE_MODULES-$FILE.modules.tar.gz}
 FILE_SOURCE=${FILE_SOURCE-$FILE.source.tar.gz}
+FILE_DTBS=${FILE_DTBS-$FILE.dtbs.tar.gz}
 REPO=${REPO-/mnt/builds/$NAME_L}
 CONFIG=${CONFIG-$PREFIX/system/boot/config.$VARIANT}
 FALLBACK=${FALLBACK-/boot/config.$VARIANT}
@@ -84,6 +90,7 @@ LATEST_CONFIG=$LATEST.config
 LATEST_INFO=$LATEST.info
 LATEST_MODULES=$LATEST.modules.tar.gz
 LATEST_SOURCE=$LATEST.source.tar.gz
+LATEST_DTBS=$LATEST.dtbs.tar.gz
 
 # tries to detect the proper configuration file path by
 # verifying the existence of the config path, this strategy
@@ -103,6 +110,9 @@ fi
 # switches on the target architecture so that if a scpecial
 # architecture is used the name of the kernel is changed
 case "$KARCH" in
+    arm64)
+        NAME=${NAME-linux-rasp64-$MINOR}
+        ;;
     arm*)
         NAME=${NAME-linux-rasp-$MINOR}
         ;;
@@ -201,10 +211,30 @@ pushd modules_install/lib
 popd
 rm -rf modules_install
 
+# in case the target architecture is arm packages the device trees
+# and the overlays of the kernel, as the boot firmware of the Raspberry
+# Pi loads them from the boot partition (must match the kernel)
+case "$KARCH" in
+    arm*)
+        rm -rf dtbs && mkdir -p dtbs/overlays
+        cp -v arch/$KARCH/boot/dts/broadcom/bcm27*.dtb dtbs
+        cp -v arch/$KARCH/boot/dts/overlays/*.dtb* dtbs/overlays
+        cp -v arch/$KARCH/boot/dts/overlays/README dtbs/overlays
+        tar -zcvf dtbs.tar.gz -C dtbs .
+        rm -rf dtbs
+        ;;
+esac
+
 # verifies if the xz version of the image exists and if that's
 # the case renames it to the "old" naming of the same file (gzip)
 if [ -e arch/$KARCH/boot/zImage ]; then
     mv arch/$KARCH/boot/zImage arch/$KARCH/boot/bzImage
+fi
+
+# verifies if the gzip version of the (arm64) image exists and if
+# that's the case renames it to the "old" naming of the same file
+if [ -e arch/$KARCH/boot/Image.gz ]; then
+    mv arch/$KARCH/boot/Image.gz arch/$KARCH/boot/bzImage
 fi
 
 if [ "$DEPLOY" == "1" ]; then
@@ -217,6 +247,7 @@ if [ "$DEPLOY" == "1" ]; then
     cp -pv .config $FILE_CONFIG
     cp -pv info $FILE_INFO
     cp -pv modules.tar.gz $FILE_MODULES
+    if [ -e dtbs.tar.gz ]; then cp -pv dtbs.tar.gz $FILE_DTBS; fi
 
     # creates the target repository directory (if required)
     # and moves the complete set of files that describe the
@@ -226,6 +257,7 @@ if [ "$DEPLOY" == "1" ]; then
     mv -fv $FILE_CONFIG $REPO
     mv -fv $FILE_INFO $REPO
     mv -fv $FILE_MODULES $REPO
+    if [ -e $FILE_DTBS ]; then mv -fv $FILE_DTBS $REPO; fi
 
     # runs the cleanup to make the source directory canonical
     # and ready for external module building
@@ -235,6 +267,7 @@ if [ "$DEPLOY" == "1" ]; then
     # are not considered to be part of the source
     rm -fv info
     rm -fv modules.tar.gz
+    rm -fv dtbs.tar.gz
 
     # creates the the source compressed file that can latter
     # be used for the building of external modules
@@ -253,11 +286,13 @@ if [ "$DEPLOY" == "1" ]; then
     rm -fv $LATEST_INFO
     rm -fv $LATEST_MODULES
     rm -fv $LATEST_SOURCE
+    rm -fv $LATEST_DTBS
     ln -sv $FILE $LATEST
     ln -sv $FILE_CONFIG $LATEST_CONFIG
     ln -sv $FILE_INFO $LATEST_INFO
     ln -sv $FILE_MODULES $LATEST_MODULES
     ln -sv $FILE_SOURCE $LATEST_SOURCE
+    if [ -e $FILE_DTBS ]; then ln -sv $FILE_DTBS $LATEST_DTBS; fi
 else
     echo "kernel.build: installing '$VARIANT' kernel into the system ..."
 
@@ -268,6 +303,9 @@ else
     rm -rf /lib/modules
     tar -zxvf modules.tar.gz -C /lib
 
+    if [ -e dtbs.tar.gz ]; then mkdir -p /rasp && tar -zxvf dtbs.tar.gz -C /rasp; fi
+
     rm -fv info
     rm -fv modules.tar.gz
+    rm -fv dtbs.tar.gz
 fi
