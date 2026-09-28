@@ -1,14 +1,21 @@
-[ "$SCUDUM_CROSS" == "0" ] && exit 0 || true
-
 VERSION=${VERSION-2.6.4}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "https://github.com/westes/flex/releases/download/v$VERSION/flex-$VERSION.tar.gz"
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/flex/$VERSION/flex-$VERSION.tar.gz"\
+    "https://github.com/westes/flex/releases/download/v$VERSION/flex-$VERSION.tar.gz"
 rm -rf flex-$VERSION && tar -zxf "flex-$VERSION.tar.gz"
 rm -f "flex-$VERSION.tar.gz"
 cd flex-$VERSION
 
-./configure --prefix=$PREFIX
+./configure\
+    --prefix=/usr\
+    --disable-static
 
 make && make install
+
+ln -svf flex /usr/bin/lex

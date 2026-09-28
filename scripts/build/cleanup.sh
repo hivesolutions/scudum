@@ -64,13 +64,18 @@ else
 fi
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
-    sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
+    sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{autoconf,autom4te,autoheader,autoreconf,autoscan,autoupdate,ifnames}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{aclocal*,automake*}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{libtool,libtoolize}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{ldd,c_rehash,git-cvsserver}
-    sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{afmtodit,gropdf,pdfmom,mmroff}
+    sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{afmtodit,chem,grog,gropdf,pdfmom,mmroff}
     sed -i 's/\/tools\/bin/\/usr\/bin/g' $SCUDUM/usr/bin/{xtrace,zgrep,updatedb,tzselect,sotruss,mtrace,mk_cmds}
 fi
 
 rm -rf $SCUDUM/cross
 rm -rf $SCUDUM/tools
+
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -f $SCUDUM/lib64/ld-linux-x86-64.so.2
+    rmdir $SCUDUM/lib64 2> /dev/null || true
+fi

@@ -1,16 +1,21 @@
-VERSION=${VERSION-0.29.2}
+VERSION=${VERSION-3.0.5}
+
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 
 set -e +h
 
-wget --content-disposition "http://pkgconfig.freedesktop.org/releases/pkg-config-$VERSION.tar.gz"
-rm -rf pkg-config-$VERSION && tar -zxf "pkg-config-$VERSION.tar.gz"
-rm -f "pkg-config-$VERSION.tar.gz"
-cd pkg-config-$VERSION
+source $DIR/../base/functions.sh
+
+rgeti "https://mirrors.hive.pt/mirrors/scudum/pkgconf/$VERSION/pkgconf-$VERSION.tar.xz"\
+    "https://distfiles.ariadne.space/pkgconf/pkgconf-$VERSION.tar.xz"
+rm -rf pkgconf-$VERSION && tar -Jxf "pkgconf-$VERSION.tar.xz"
+rm -f "pkgconf-$VERSION.tar.xz"
+cd pkgconf-$VERSION
 
 ./configure\
-    --prefix=$PREFIX\
-    --with-internal-glib\
-    --disable-host-tool\
-    --docdir=$PREFIX/share/doc/pkg-config-$VERSION
+    --prefix=/usr\
+    --disable-static
 
 make && make install
+
+ln -svf pkgconf /usr/bin/pkg-config

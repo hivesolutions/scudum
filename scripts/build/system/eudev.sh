@@ -29,4 +29,6 @@ mkdir -pv /etc/udev/rules.d
 
 make install
 
-udevadm hwdb --update
+if [ "$SCUDUM_CROSS" == "0" ]; then
+    udevadm hwdb --update
+fi

@@ -12,10 +12,19 @@ rm -rf bc-$VERSION && tar -Jxf "bc-$VERSION.tar.xz"
 rm -f "bc-$VERSION.tar.xz"
 cd bc-$VERSION
 
-CC="${CC:-gcc} -std=c99" ./configure\
-    --prefix=/usr\
-    -G\
-    -O3\
-    -r
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    CC="$ARCH_TARGET-gcc" CFLAGS="$CROSSFLAGS $EFLAGS --sysroot=/ -std=c99"\
+        HOSTCFLAGS="-std=c99" ./configure\
+        --prefix=/usr\
+        -G\
+        -O3\
+        -r
+else
+    CC="${CC:-gcc} -std=c99" ./configure\
+        --prefix=/usr\
+        -G\
+        -O3\
+        -r
+fi
 
 make && make install

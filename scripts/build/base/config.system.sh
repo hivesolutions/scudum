@@ -10,13 +10,19 @@ if [ "$SCUDUM_CROSS" == "1" ]; then
             export CROSSCXX="$ARCH_TARGET-g++"
             export LD_LIBRARY_PATH="/usr/lib:/lib"
             export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/lib/pkgconfig"
-            export CROSSFLAGS="-I/usr/include -I/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
+            export CROSSFLAGS="-idirafter /usr/include -Wl,-rpath,/usr/lib -Wl,-rpath,/lib"
             export LDFLAGS="-L/usr/lib -L/lib"
             export CC="$CC $CROSSFLAGS"
             export CXX="$CXX $CROSSFLAGS"
             export M4="/tools/bin/m4"
             export BISON_PKGDATADIR="/tools/usr/share/bison"
             export MAGIC="/tools/usr/share/misc/magic.mgc"
+            export GCONV_PATH="/tools/usr/lib/gconv"
+            export CONFIG_SITE="/tools/repo/scripts/build/base/cross.site"
+            export CC_FOR_BUILD="gcc --sysroot=/tools"
+            export CXX_FOR_BUILD="g++ --sysroot=/tools"
+            export BUILD_CC="gcc --sysroot=/tools"
+            export HOSTCC="gcc --sysroot=/tools"
             ;;
     esac
 fi

@@ -16,12 +16,21 @@ rm -rf openssl-$VERSION && tar -zxf "openssl-$VERSION.tar.gz"
 rm -f "openssl-$VERSION.tar.gz"
 cd openssl-$VERSION
 
-./config\
-    --prefix=/usr\
-    --openssldir=/usr/ssl\
-    --libdir=lib\
-    shared\
-    zlib-dynamic
+if [ "$SCUDUM_CROSS" == "1" ]; then
+    perl Configure linux-armv4\
+        --prefix=/usr\
+        --openssldir=/usr/ssl\
+        --libdir=lib\
+        shared\
+        zlib-dynamic
+else
+    ./config\
+        --prefix=/usr\
+        --openssldir=/usr/ssl\
+        --libdir=lib\
+        shared\
+        zlib-dynamic
+fi
 
 make && make install_sw install_ssldirs
 
