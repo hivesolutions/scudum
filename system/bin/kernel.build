@@ -63,10 +63,12 @@ esac
 # this should include for instance the firmware file selection
 case "$VARIANT" in
     rasp*)
-        FIRMWARE_FILE=${FIRWARE_FILE-firmware.rasp.tar.xz}
+        FIRMWARE_VERSION=${FIRMWARE_VERSION-20260928}
+        FIRMWARE_FILE=${FIRMWARE_FILE-firmware.rasp.$FIRMWARE_VERSION.tar.xz}
+        FIRMWARE_SHA256=${FIRMWARE_SHA256-076493a0dc729356dd7816b4c21491fbce6a24b2654d518e224746f8730b1560}
         ;;
     *)
-        FIRMWARE_FILE=${FIRWARE_FILE-firmware.tar.xz}
+        FIRMWARE_FILE=${FIRMWARE_FILE-firmware.tar.xz}
         ;;
 esac
 
@@ -212,7 +214,11 @@ pushd modules_install/lib
     rm -f modules/$release/build && rm -f modules/$release/source
     ln -s /opt/src/linux modules/$release/build
     mkdir -p modules firmware
-    wget "https://github.com/hivesolutions/patches/raw/master/firmware/$FIRMWARE_FILE"
+    # retrieves the firmware package from the mirror first (when it's
+    # versioned) and then verifies its checksum (when it's pinned)
+    if [ "$FIRMWARE_VERSION" != "" ]; then wget --tries=1 --timeout=20 "https://mirrors.hive.pt/mirrors/scudum/firmware/$FIRMWARE_VERSION/$FIRMWARE_FILE" || rm -f $FIRMWARE_FILE; fi
+    if [ ! -e $FIRMWARE_FILE ]; then wget "https://github.com/hivesolutions/patches/raw/master/firmware/$FIRMWARE_FILE"; fi
+    if [ "$FIRMWARE_SHA256" != "" ]; then echo "$FIRMWARE_SHA256  $FIRMWARE_FILE" | sha256sum -c -; fi
     tar --skip-old-files -Jxvf $FIRMWARE_FILE
     tar -zcvf modules.tar.gz modules firmware
     mv modules.tar.gz ../..
