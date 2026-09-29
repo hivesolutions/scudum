@@ -74,4 +74,4 @@ update these same package is to use the pre-compiled Ubuntu packages [here](http
 The newly created firmware package should be placed [here](https://github.com/hivesolutions/patches/tree/master/firmware). Whenever
 a new package is created a merged with the previous one should be done.
 
-The Raspberry Pi should have a special (smaller) firmware package retrieved from the Raspbian image file from the [download website](https://www.raspberrypi.org/downloads/raspbian/).
+The Raspberry Pi uses a dedicated (smaller) firmware package `firmware.rasp.<date>.tar.xz` assembled from the Raspberry Pi OS `firmware-brcm80211` and `bluez-firmware` packages (with the board specific symbolic links, eg, `brcmfmac43455-sdio.raspberrypi,5-model-b.bin`, that the kernel requests first), the signed `regulatory.db` from wireless-regdb and the older files that the Raspberry Pi modules can still load, with the source and licence of each file listed in its `WHENCE`. It is served from the Hive mirror (`mirrors/scudum/firmware/<date>/`) with the patches repository as fallback, and its version and sha256 are pinned in `kernel.build`.
