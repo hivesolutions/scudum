@@ -27,6 +27,7 @@ fi
 VERSION=$(echo $REVISION | cut -f2 -d" ")
 
 TEMPDIR=$(mktemp -d)
+TODAY=$(date -u +%Y%m%d)
 TRUSTATTRIBUTES="CKA_TRUST_SERVER_AUTH"
 BUNDLE="ca-bundle-${VERSION}.crt"
 CONVERTSCRIPT="/usr/bin/make-cert.pl"
@@ -58,11 +59,18 @@ mkdir -p certs
 rm -f certs/*      # Make sure the directory is clean
 
 for tempfile in ${TEMPDIR}/certs/*.tmp; do
-  # Make sure that the cert is trusted...
-  grep "CKA_TRUST_SERVER_AUTH" "${tempfile}" | \
-    egrep "TRUST_UNKNOWN|NOT_TRUSTED" > /dev/null
+  # Make sure that the cert is trusted for server authentication and
+  # that its server distrust after date (if any) has not been reached
+  distrust=$(sed -n "/^CKA_NSS_SERVER_DISTRUST_AFTER MULTILINE_OCTAL/,/^END/p" "${tempfile}" | \
+    sed "1d;\$d" | tr -d "\n")
+  if test -n "${distrust}"; then
+    distrust="20$(printf "${distrust}" | cut -c 1-6)"
+  fi
 
-  if test "${?}" = "0"; then
+  grep "CKA_TRUST_SERVER_AUTH" "${tempfile}" | \
+    grep "CKT_NSS_TRUSTED_DELEGATOR" > /dev/null
+
+  if test "${?}" != "0" || test "${distrust:-99999999}" -lt "${TODAY}"; then
     # Throw a meaningful error and remove the file
     cp "${tempfile}" tempfile.cer
     perl ${CONVERTSCRIPT} > tempfile.crt
@@ -78,16 +86,27 @@ for tempfile in ${TEMPDIR}/certs/*.tmp; do
   cp "${tempfile}" tempfile.cer
   perl ${CONVERTSCRIPT} > tempfile.crt
   keyhash=$(openssl x509 -noout -in tempfile.crt -hash)
-  mv tempfile.crt "certs/${keyhash}.pem"
+
+  # Make sure that the cert is not expired...
+  if ! openssl x509 -noout -in tempfile.crt -checkend 0 > /dev/null; then
+    echo "Certificate ${keyhash} is expired!  Removing..."
+    rm -f tempfile.cer tempfile.crt "${tempfile}"
+    continue
+  fi
+
+  # Name the file by the fingerprint, as different certs may share the
+  # subject hash, openssl rehash creates the hash links (.0, .1, ...)
+  keyfp=$(openssl x509 -noout -in tempfile.crt -fingerprint -sha256 | cut -d "=" -f 2 | tr -d ":")
+  mv tempfile.crt "certs/${keyhash}-${keyfp}.pem"
   rm -f tempfile.cer "${tempfile}"
-  echo "Created ${keyhash}.pem"
+  echo "Created ${keyhash}-${keyfp}.pem"
 done
 
 # Remove blacklisted files
 # MD5 Collision Proof of Concept CA
-if test -f certs/8f111d69.pem; then
+if ls certs/8f111d69-*.pem > /dev/null 2>&1; then
   echo "Certificate 8f111d69 is not trusted!  Removing..."
-  rm -f certs/8f111d69.pem
+  rm -f certs/8f111d69-*.pem
 fi
 
 # Finally, generate the bundle and clean up.

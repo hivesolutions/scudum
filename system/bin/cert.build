@@ -16,6 +16,7 @@ rm -f certdata.txt &&\
     remove-expired-certs.sh certs
 
 install -d $SSLDIR/certs &&\
+    rm -f $SSLDIR/certs/*.pem $SSLDIR/certs/*.[0-9] &&\
     cp -v certs/*.pem $SSLDIR/certs &&\
     openssl rehash $SSLDIR/certs &&\
     install ca-bundle*.crt $SSLDIR/ca-bundle.crt &&\
