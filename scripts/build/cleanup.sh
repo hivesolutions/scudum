@@ -76,6 +76,7 @@ rm -rf $SCUDUM/cross
 rm -rf $SCUDUM/tools
 
 if [ "$SCUDUM_CROSS" == "1" ]; then
+    rm -f $SCUDUM/etc/ld.so.cache
     rm -f $SCUDUM/lib64/ld-linux-x86-64.so.2
     rmdir $SCUDUM/lib64 2> /dev/null || true
 fi
